@@ -1,0 +1,22 @@
+# Setup
+title: 'hacker tools'
+url: https://hacker-tools.github.io
+
+# Settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+highlighter: rouge
+permalink: /:title/
+future: true
+# safe: true # breaks local rendering if enabled
+timezone: America/New_York
+analytics:
+  tracking_id: UA-53167467-10
+
+# Excludes
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

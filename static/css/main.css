@@ -1,0 +1,248 @@
+/* Copyright (c) 2017 Anish Athalye */
+
+/* Basic styling */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-rendering: geometricPrecision;
+}
+
+html {
+  font-size: 14px;
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+@media(min-width: 480px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  margin: 0;
+  color: #000;
+  background-color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 1rem;
+  font-weight: bold;
+  line-height: 1.25;
+  font-size: 1rem;
+}
+
+h1 {
+  margin-top: 1.25rem;
+  font-size: 1.5rem;
+}
+
+h2 {
+  margin-top: 1.25rem;
+  font-size: 1.1rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+ul {
+  list-style-position: inside;
+  padding-left: 1rem;
+}
+
+li > ul {
+  padding-left: 2rem;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+ul li:before {
+  content: "\2013  "; /* note: extra space needed because first is consumed by css parser */
+  position: absolute;
+  margin-left: -1rem;
+}
+
+pre, code {
+  font-family: "Source Code Pro", "Menlo", "DejaVu Sans Mono", "Lucida Console", monospace;
+}
+
+code:before {
+  content: "`";
+}
+
+code:after {
+  content: "`";
+}
+
+code {
+  color: #6c71c4;
+}
+
+pre {
+  color: #000;
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px dashed #444;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  font-size: .8rem;
+}
+
+pre code {
+  color: inherit;
+}
+
+pre code:before {
+  content: none;
+}
+
+pre code:after {
+  content: none;
+}
+
+a {
+  color: #006400;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #fff;
+  background-color: #006400;
+}
+
+img, video {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  max-width: 100%;
+  max-height: 80vh;
+}
+
+video {
+  margin-bottom: 1rem;
+}
+
+summary {
+  outline: none;
+  user-select: none;
+}
+
+/* Elements */
+
+#content {
+  max-width: 40rem;
+  margin: auto;
+  margin-bottom: 2rem;
+  padding: 1rem 1rem 0 1rem;
+}
+
+#nav-bg {
+  margin: 0;
+  padding: 0.25rem 1rem;
+  font-family: "Source Code Pro", "Menlo", "DejaVu Sans Mono", "Lucida Console", monospace;
+  background: #006400;
+  color: #fff;
+}
+
+#top-nav {
+  max-width: 40rem;
+  margin: auto;
+  text-align: center;
+}
+
+#top-nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#top-nav a:hover {
+  color: #000;
+  background-color: #fff;
+}
+
+a#logo {
+  color: #0f0;
+}
+
+a:hover#logo {
+  color: #000;
+}
+
+#menu-icon {
+  display: none;
+}
+
+.trigger {
+  display: none;
+}
+
+input[type=checkbox]:checked ~ .trigger {
+  display:block;
+  margin: auto;
+}
+
+.menu-label {
+  font-family: "Source Code Pro", "Menlo", "DejaVu Sans Mono", "Lucida Console", monospace;
+}
+
+input[type=checkbox] ~ .menu-label:after {
+  content: "(+)";
+}
+
+input[type=checkbox]:checked ~ .menu-label:after {
+  content: "(-)";
+}
+
+.nav-link {
+  display: block;
+}
+
+.trigger-child {
+  display: inline-block;
+  text-align: initial;
+}
+
+.nav-link:before {
+  content: "- ";
+}
+
+/* in terms of our fixed-width layout; if smaller than this, we want to
+ * collapse the menu */
+@media (min-width: 40rem) {
+  .menu-label {
+    display: none;
+  }
+
+  .trigger {
+    display: inline;
+    padding-top: inherit;
+  }
+
+  .trigger-child {
+    display: inline;
+    text-align: initial;
+  }
+
+  .nav-link {
+    display: initial;
+  }
+
+  .nav-link:before {
+    content: "| ";
+  }
+}

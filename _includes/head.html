@@ -1,0 +1,60 @@
+<head>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- TODO
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  -->
+
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="og:url" content="{{ page.url | prepend: site.url }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+
+  {% if page.description %}
+    {% assign description = page.description | strip_newlines %}
+    <meta name="description" content="{{ description }}">
+    <meta name="twitter:description" content="{{ description }}">
+    <meta property="og:description" content="{{ description }}">
+  {% endif %}
+
+  {% if page.short_title %}
+    {% assign title = page.short_title %}
+  {% elsif page.title %}
+    {% assign title = page.title %}
+  {% else %}
+    {% assign title = site.title %}
+  {% endif %}
+  <meta name="twitter:title" content="{{ title }}">
+  <meta property="og:title" content="{{ title }}">
+
+  {% if page.thumbnail %}
+    <meta name="twitter:image:src" content="{{ page.thumbnail | prepend: site.url }}">
+    <meta property="og:image" content="{{ page.thumbnail | prepend: site.url }}">
+  {% endif %}
+
+  <title>
+    {% if page.title %}
+      {{ page.title }} &middot; {{ site.title }}
+    {% else %}
+      {{ site.title }}
+    {% endif %}
+  </title>
+
+  <link rel="stylesheet" href="/static/css/main.css">
+  <link rel="stylesheet" href="/static/css/syntax.css">
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:200,300,400,500,600,700,900&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.tracking_id }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '{{ site.analytics.tracking_id }}');
+  </script>
+
+</head>

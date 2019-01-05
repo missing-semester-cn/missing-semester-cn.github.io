@@ -1,0 +1,3 @@
+<a href="{% if include.href %}{{ include.href }}{% else %}{{ include.src }}{% endif %}">
+  <img src="{{ include.src }}" alt="{{ include.alt }}" style="width: 100%; max-width: {{ include.width }}px; max-height: 100%;">
+</a>
