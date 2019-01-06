@@ -142,6 +142,33 @@ summary {
   user-select: none;
 }
 
+hr {
+  position: relative;
+  margin: 1.5rem 0;
+  border: 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #fff;
+}
+
+/* Classes */
+
+.title {
+  font-size: 2rem;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin-left: 1rem;
+}
+
+.small {
+  font-size: 0.75rem;
+}
+
+.center {
+  text-align: center;
+}
+
 /* Elements */
 
 #content {
