@@ -41,4 +41,4 @@ Have any questions? Send us an email at
 
 ---
 
-<p class="small center">Taught as part of <a href="https://sipb.mit.edu/iap/">SIPB IAP 2019</a>.</p>
+<p class="small center">Taught as part of <a href="https://sipb.mit.edu/iap/">SIPB IAP 2019</a>. Co-sponsored by <a href="https://sipb.mit.edu/">SIPB</a> and <a href="https://www.eecs.mit.edu/">MIT EECS</a>.</p>
