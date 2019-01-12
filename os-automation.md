@@ -3,4 +3,4 @@ layout: page
 title: "OS Automation"
 ---
 
-Content coming soon
+Lecture notes will be available by the start of lecture.
