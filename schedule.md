@@ -8,27 +8,27 @@ blocks, with a 10 minute break in between.
 
 # Tuesday, 1/15
 
-- [Course overview](/course-overview/), [virtual machines](/virtual-machines/), [dotfiles](/dotfiles/)
+- [Course overview](/course-overview/), [virtual machines and containers](/virtual-machines/)
 - [Shell and scripting](/shell/)
 
 # Thursday, 1/17
 
-- [Terminal emulators and multiplexers](/terminal/)
+- [Command-line environment](/terminal/)
 - [Data wrangling](/data-wrangling/)
 
 # Tuesday, 1/22
 
 - [Editors](/editors/)
-- [IDEs](/ides/)
+- [Version control](/version-control/)
 
 # Thursday, 1/24
 
-- [Version control](/version-control/) and [backups](/backups/)
+- [Dotfiles](/dotfiles/) and [backups](/backups/)
 - [Debuggers, logging, profilers, and monitoring](/debuggers-logging-profilers-monitoring/)
 
 # Tuesday, 1/29
 
-- [Package management](/package-management/)
+- [Package management and dependency management](/package-management/)
 - [OS customization](/os-customization/) and [OS automation](/os-automation/)
 
 # Thursday, 1/31
