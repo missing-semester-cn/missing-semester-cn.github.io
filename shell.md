@@ -72,6 +72,13 @@ foo=bar
 echo $foo
 ```
 
+There are a bunch of "special" variables too:
+
+ - `$1` to `$9`: arguments to the script
+ - `$0` name of the script itself
+ - `$#` number of arguments
+ - `$$` process ID of current shell
+
 To only print directories
 
 ```shell
@@ -86,7 +93,7 @@ More to unpack here:
    - can also hook in an `else` or `elif`
    - again, no curly braces, so `then` + `fi`
  - `test` is another program that provides various checks and
-   comparisons, and exits with 0 if they're true
+   comparisons, and exits with 0 if they're true (`$?`)
    - `man COMMAND` is your friend: `man test`
    - can also be invoked with `[` + `]`: `[ -d $f ]`
      - take a look at `man test` and `which "["`
@@ -134,6 +141,8 @@ Whitespace issues don't stop there:
  - _can_ work around this with `[ "x$foo" = "xbar" ]`, but bleh
  - instead, use `[[`: bash built-in comparator that has special parsing
    - also allows `&&` instead of `-a`, `||` over `-o`, etc.
+
+<!-- TODO: arrays? $@. ${array[@]} vs "${array[@]}". -->
 
 ## Composability
 
@@ -203,6 +212,7 @@ What if you want to run longer-term things in the background?
    - `bg` runs the last job in the background (as if you did `&`)
  - background jobs are still tied to your current session, and exit if
    you log out. `disown` lets you sever that connection. or use `nohup`.
+ - `$!` is pid of last background process
 
 <!-- TODO: process output control (^S and ^Q)? -->
 
