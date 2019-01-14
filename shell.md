@@ -1,6 +1,7 @@
 ---
 layout: page
 title: "Shell and Scripting"
+presenter: Jon
 ---
 
 The shell is an efficient, textual interface to your computer.
