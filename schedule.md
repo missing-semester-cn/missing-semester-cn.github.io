@@ -13,7 +13,7 @@ blocks, with a 10 minute break in between.
 
 # Thursday, 1/17
 
-- [Command-line environment](/terminal/)
+- [Command-line environment](/command-line/)
 - [Data wrangling](/data-wrangling/)
 
 # Tuesday, 1/22
@@ -24,7 +24,7 @@ blocks, with a 10 minute break in between.
 # Thursday, 1/24
 
 - [Dotfiles](/dotfiles/) and [backups](/backups/)
-- [Debuggers, logging, profilers, and monitoring](/debuggers-logging-profilers-monitoring/)
+- [Machine introspection](/machine-introspection/) and [program introspection](/program-introspection/)
 
 # Tuesday, 1/29
 

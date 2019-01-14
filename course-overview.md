@@ -1,6 +1,7 @@
 ---
 layout: page
 title: "Course Overview"
+presenter: Anish
 ---
 
 # Motivation

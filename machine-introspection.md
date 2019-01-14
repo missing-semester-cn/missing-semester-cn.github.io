@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Security and Privacy"
+title: "Machine Introspection"
 presenter: Jon
 ---
 
