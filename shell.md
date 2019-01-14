@@ -34,11 +34,13 @@ Can either write programs directly at the prompt, or into a file.
 ## Working with the shell
 
 Run a command a bunch of times:
+
 ```shell
 for i in $(seq 1 5); do echo hello; done
 ```
 
 There's a lot to unpack:
+
  - `for x in list; do BODY; done`
    - `;` terminates a command -- equivalent to newline
    - split `list`, assign each to `x`, and run body
@@ -64,17 +66,20 @@ for f in $(ls); do echo $f; done
 
 Will print each file name in the current directory.
 Can also set variables using `=` (no space!):
+
 ```shell
 foo=bar
 echo $foo
 ```
 
 To only print directories
+
 ```shell
 for f in $(ls); do if test -d $f; then echo dir $f; fi; done
 ```
 
 More to unpack here:
+
  - `if CONDITION; then BODY; fi`
    - `CONDITION` is a command; if it returns with exit status 0
      (success), then `BODY` is run.
@@ -87,6 +92,7 @@ More to unpack here:
      - take a look at `man test` and `which "["`
 
 But wait! This is wrong! What if a file is called "My Documents"?
+
  - `for f in $(ls)` expands to `for f in My Documents`
  - first do the test on `My`, then on `Documents`
  - not what we wanted!
@@ -95,6 +101,7 @@ But wait! This is wrong! What if a file is called "My Documents"?
 ## Argument splitting
 
 Bash splits arguments by whitespace; not always what you want!
+
  - need to use quoting to handle spaces in arguments
    `for f in "My Documents"` would work correctly
  - same problem somewhere else -- do you see where?
@@ -106,6 +113,7 @@ Bash splits arguments by whitespace; not always what you want!
    what does `for f in "$(ls)"` do do you think?
 
 Globbing is the answer!
+
  - bash knows how to look for files using patterns:
    - `*` any string of characters
    - `?` any single character
@@ -120,6 +128,7 @@ Globbing is the answer!
      all three-letter text files starting with p in subdirs of `foo`
 
 Whitespace issues don't stop there:
+
  - `if [ "$foo" = "bar" ]; then` -- see the issue?
  - what if `$foo` is empty? arguments to `[` are `=` and `bar`...
  - _can_ work around this with `[ "x$foo" = "xbar" ]`, but bleh
@@ -132,11 +141,13 @@ Shell is powerful in part because of composability. Can chain multiple
 programs together rather than have one program that does everything.
 
 The key character is `|` (pipe).
+
  - `a | b` means run both `a` and `b`
    send all output of `a` as input to `b`
    print the output of `b`
 
 All programs you launch ("processes") have three "streams":
+
  - `STDIN`: when the program reads input, it comes from here
  - `STDOUT`: when the program prints something, it goes here
  - `STDERR`: a 2nd output the program can choose to use
@@ -165,6 +176,7 @@ all their output to `tac`, which prints its input in reverse order.
 A lesser-known, but super useful one is _process substitution_.
 `b <(a)` will run `a`, generate a temporary file-name for its output
 stream, and pass that file-name to `b`. For example:
+
 ```shell
 diff <(journalctl -b -1 | head -n20) <(journalctl -b -2 | head -n20)
 ```
@@ -176,6 +188,7 @@ log and the one before that.
 ## Job and process control
 
 What if you want to run longer-term things in the background?
+
  - the `&` suffix runs a program "in the background"
    - it will give you back your prompt immediately
    - handy if you want to run two programs at the same time
@@ -194,6 +207,7 @@ What if you want to run longer-term things in the background?
 <!-- TODO: process output control (^S and ^Q)? -->
 
 What about other stuff running on your computer?
+
  - `ps` is your friend: lists running processes
    - `ps -A`: print processes from all users (also `ps ax`)
    - `ps` has *many* arguments: see `man ps`
