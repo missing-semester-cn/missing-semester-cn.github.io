@@ -23,15 +23,18 @@ form of demos) that may not be in the notes.
 
 Each class is split into two 50-minute lectures with a 10-minute break in
 between. Lectures are mostly live demonstrations followed by hands-on
-exercises. We might have a short amount of time at the end of each lecture to
-get started on the exercises in an office-hours-style setting.
+exercises. We might have a short amount of time at the end of each class to get
+started on the exercises in an office-hours-style setting.
 
 To make the most of the class, you should go through all the exercises on your
 own. We'll inspire you to learn more about your tools, and we'll show you
 what's possible and cover some of the basics in detail, but we can't teach you
 everything in the time we have.
 
-Please post questions on [Piazza](https://piazza.com/class/jqjpgaeaz77785).
+Please post questions on [Piazza](https://piazza.com/class/jqjpgaeaz77785). In
+addition, we ask that you share your knowledge with your classmates through
+Piazza --- for "homework" for each lecture, create a Piazza note about something
+you've learned or something you'd like to share about the topic.
 
 # Exercises
 
