@@ -31,6 +31,8 @@ own. We'll inspire you to learn more about your tools, and we'll show you
 what's possible and cover some of the basics in detail, but we can't teach you
 everything in the time we have.
 
+Please post questions on [Piazza](https://piazza.com/class/jqjpgaeaz77785).
+
 # Exercises
 
 1. Fill out the [registration form](https://goo.gl/forms/HSdsUQ204Ow8BgUs2) if
