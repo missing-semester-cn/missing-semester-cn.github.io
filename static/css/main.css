@@ -70,6 +70,14 @@ ul li {
   list-style-type: none;
 }
 
+ul, ol {
+  margin-bottom: 1rem;
+}
+
+ul ul, ol ul, ul ol, ol ol {
+  margin-bottom: inherit;
+}
+
 ul li:before {
   content: "\2013  "; /* note: extra space needed because first is consumed by css parser */
   position: absolute;
