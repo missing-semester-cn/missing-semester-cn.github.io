@@ -64,6 +64,7 @@ ul {
 
 li > ul {
   padding-left: 2rem;
+  margin-bottom: 1rem;
 }
 
 ul li {
