@@ -269,7 +269,7 @@ We briefly discussed that the `PATH` environment variable is used to locate the 
 
 Sometimes piping doesn't quite work because the command being piped into does not expect the newline separated format. For example `file` command tells you properties of the file.
 
-Try running `ls | file` and `ls | xargs file`. What is `xargs` doing? Note that this works because `file` accepts arbitrarily many arguments.
+Try running `ls | file` and `ls | xargs file`. What is `xargs` doing?
 
 1. **Misc**
 
