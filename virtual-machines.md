@@ -55,4 +55,40 @@ be unsuitable for certain applications.
 
 # Containers
 
-Coming soon!
+Virtual Machines are relatively heavy-weight; what if you want to spin
+up machines in an automated fashion? Enter containers!
+
+ - Amazon Firecracker
+ - Docker
+ - rkt
+ - lxc
+
+Containers are _mostly_ just an assembly of various Linux security
+features, like virtual file system, virtual network interfaces, chroots,
+virtual memory tricks, and the like, that together give the appearance
+of virtualization.
+
+Not quite as secure or isolated as a VM, but pretty close and getting
+better. Usually higher performance, and much faster to start, but not
+always.
+
+Containers are handy for when you want to run an automated task in a
+standardized setup:
+
+ - Build systems
+ - Development environments
+ - Pre-packaged servers
+ - Running untrusted programs
+   - Grading student submissions
+   - (Some) cloud computing
+ - Continuous integration
+   - Travis CI
+   - GitHub Actions
+
+Usually, you write a file that defines how to construct your container.
+You start with some minimal _base image_ (like Alpine Linux), and then
+a list of commands to run to set up the environment you want (install
+packages, copy files, build stuff, write config files, etc.). Normally,
+there's also a way to specify any external ports that should be
+available, and an _entrypoint_ that dictates what command should be run
+when the container is started (like a grading script).
