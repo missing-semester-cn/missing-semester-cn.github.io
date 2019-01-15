@@ -20,7 +20,7 @@ to customize your tools, and how to extend your tools.
 
 We have 6 lectures covering a [variety of topics](/schedule/). We have lecture
 notes online, but there will be a lot of content covered in class (e.g. in the
-form of demos) that may not be in the notes.
+form of demos) that may not be in the notes. We will be recording lectures.
 
 Each class is split into two 50-minute lectures with a 10-minute break in
 between. Lectures are mostly live demonstrations followed by hands-on
@@ -34,8 +34,8 @@ everything in the time we have.
 
 Please post questions on [Piazza](https://piazza.com/class/jqjpgaeaz77785). In
 addition, we ask that you share your knowledge with your classmates through
-Piazza --- for "homework" for each lecture, create a Piazza note about something
-you've learned or something you'd like to share about the topic.
+Piazza --- **for "homework" for each lecture, create a Piazza note about
+something you've learned or something you'd like to share about the topic**.
 
 # Exercises
 
