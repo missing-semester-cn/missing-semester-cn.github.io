@@ -268,7 +268,7 @@ Also, a double dash `--` is used in built-in commands and many other commands to
 
     Sometimes piping doesn't quite work because the command being piped into does not expect the newline separated format. For example `file` command tells you properties of the file.
 
-    Try running `ls | file` and `ls | xargs file`. What is `xargs` doing? Note that this works because `file` accepts arbitrarily many arguments.
+    Try running `ls | file` and `ls | xargs file`. What is `xargs` doing?
 
 1. **Misc**
     - Try running `touch {a,b}{a,b}` then `ls` what did appear?
