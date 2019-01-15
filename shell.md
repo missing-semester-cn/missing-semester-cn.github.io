@@ -231,8 +231,49 @@ What about other stuff running on your computer?
    - also `SIGTERM` (`-15` or `-TERM`): tell it to exit gracefully
      equivalent to `^C`
 
-## Exercises and further reading
 
-QoL stuff: fasd/autojump, fzf, rg, fd, etc.
+<!-- TODO: cover xargs?-->
 
-TODO
+
+## Flags
+
+Most command line utilities take parameters using **flags**. Flags usually come in short form (`-h`) and long form (`--help`). Usually running `CMD -h` or `man CMD` will give you
+Short flags can usually be combined so running `rm -r -f` is equivalent to running `rm -rf` or `rm -fr`.
+Some common flags are a de facto standard and you will seem them in many applications:
+
+* `-a` commonly refers to all files (i.e. also including those that start with a period)
+* `-f` usually refers to forcing something, like `rm -f`
+* `-h` displays the help for most commands
+* `-v` usually enables a verbose output
+* `-V` usually prints the version of the command
+
+Also, a double dash `--` is used in built-in commands and many other commands to signify the end of command options, after which only positional parameters are accepted. So if you have a file called `-v` (which you can) and want to grep it `grep pattern -- -v` will work whereas `grep pattern -v` won't.
+
+## Exercises
+
+1. **PATH, which, type**
+We briefly discussed that the `PATH` environment variable is used to locate the programs that you run through the command line. Let's explore that a little further
+
+- Run `echo $PATH` (or `echo $PATH | tr -s ':' '\n'` for pretty printing) and examine its contents, what locations are listed?
+- The command `which` locates a program in the user PATH. Try running `which` for common commands like `echo`, `ls` or . Note that `which` is a bit limited since it does not understand shell aliases. Try running `type` and `command -v` for those same commands. How is the output different?
+- Run `export PATH` and try running the previous commands again, some work and some don't, can you figure out why?
+
+2. **Special Variables**
+
+  - What does the variable `~` expands as?
+  - What does the variable `$?` do?
+  - What does the variable `$_` do?
+  - What does the variable `!!` expand to? What about `!!*`? And `!l`?
+  - Look for documentation for these options and familiarize yourself with them
+
+3. **Keyboard shortcuts**
+
+As with any application you use frequently is worth familiarising yourself with its keyboard shortcuts. Type the following ones and try figuring out what they do and in what scenarios it might be convenient knowing about them. For some of them it might be easier searching online about what they do.
+
+  - `Ctrl+A`
+  - `Ctrl+E`
+  - `Ctrl+R`
+  - `Ctrl+L`
+  - `Ctrl+C`
+  - `Ctrl+D`
+
