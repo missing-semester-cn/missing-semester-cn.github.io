@@ -36,7 +36,7 @@ Can either write programs directly at the prompt, or into a file.
 
 Run a command a bunch of times:
 
-```shell
+```bash
 for i in $(seq 1 5); do echo hello; done
 ```
 
@@ -51,7 +51,7 @@ There's a lot to unpack:
    - run the program `seq` with arguments `1` and `5`
    - substitute entire `$()` with the output of that program
    - equivalent to
-     ```shell
+     ```bash
      for i in 1 2 3 4 5
      ```
  - `echo hello`
@@ -61,14 +61,14 @@ There's a lot to unpack:
    - all commands are searched for in `$PATH` (colon-separated)
 
 We have variables:
-```shell
+```bash
 for f in $(ls); do echo $f; done
 ```
 
 Will print each file name in the current directory.
 Can also set variables using `=` (no space!):
 
-```shell
+```bash
 foo=bar
 echo $foo
 ```
@@ -82,7 +82,7 @@ There are a bunch of "special" variables too:
 
 To only print directories
 
-```shell
+```bash
 for f in $(ls); do if test -d $f; then echo dir $f; fi; done
 ```
 
@@ -187,7 +187,7 @@ A lesser-known, but super useful one is _process substitution_.
 `b <(a)` will run `a`, generate a temporary file-name for its output
 stream, and pass that file-name to `b`. For example:
 
-```shell
+```bash
 diff <(journalctl -b -1 | head -n20) <(journalctl -b -2 | head -n20)
 ```
 will show you the difference between the first 20 lines of the last boot
