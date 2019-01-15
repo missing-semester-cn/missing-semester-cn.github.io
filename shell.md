@@ -251,29 +251,44 @@ Also, a double dash `--` is used in built-in commands and many other commands to
 
 ## Exercises
 
+1. If you are completely new to the shell you may want to read a more comprenhensive guide about it such as [BashGuide](http://mywiki.wooledge.org/BashGuide)
+
 1. **PATH, which, type**
 We briefly discussed that the `PATH` environment variable is used to locate the programs that you run through the command line. Let's explore that a little further
 
-- Run `echo $PATH` (or `echo $PATH | tr -s ':' '\n'` for pretty printing) and examine its contents, what locations are listed?
-- The command `which` locates a program in the user PATH. Try running `which` for common commands like `echo`, `ls` or . Note that `which` is a bit limited since it does not understand shell aliases. Try running `type` and `command -v` for those same commands. How is the output different?
-- Run `export PATH` and try running the previous commands again, some work and some don't, can you figure out why?
+    - Run `echo $PATH` (or `echo $PATH | tr -s ':' '\n'` for pretty printing) and examine its contents, what locations are listed?
+    - The command `which` locates a program in the user PATH. Try running `which` for common commands like `echo`, `ls` or . Note that `which` is a bit limited since it does not understand shell aliases. Try running `type` and `command -v` for those same commands. How is the output different?
+    - Run `export PATH` and try running the previous commands again, some work and some don't, can you figure out why?
 
-2. **Special Variables**
+1. **Special Variables**
 
-  - What does the variable `~` expands as?
-  - What does the variable `$?` do?
-  - What does the variable `$_` do?
-  - What does the variable `!!` expand to? What about `!!*`? And `!l`?
-  - Look for documentation for these options and familiarize yourself with them
+    - What does the variable `~` expands as? What about `.`? And `..`?
+    - What does the variable `$?` do?
+    - What does the variable `$_` do?
+    - What does the variable `!!` expand to? What about `!!*`? And `!l`?
+    - Look for documentation for these options and familiarize yourself with them
 
-3. **Keyboard shortcuts**
+1. **xargs**
+
+Sometimes piping doesn't quite work because the command being piped into does not expect the newline separated format. For example `file` command tells you properties of the file.
+
+Try running `ls | file` and `ls | xargs file`. What is `xargs` doing? Note that this works because `file` accepts arbitrarily many arguments.
+
+1. **Misc**
+
+- Try running `touch {a,b}{a,b}` then `ls` what did appear?
+- Sometimes you want to keep STDIN and still pipe it to a file. Try running `echo HELLO | tee hello.txt`
+- Try running `cat hello.txt > hello.txt ` what do you expect to happen? What does happen?
+- Run `echo HELLO > hello.txt` and then run `echo WORLD >> hello.txt`. What are the contents of `hello.txt`? How is `>` different from `>>`?
+- Run `printf "\e[38;5;81mfoo\e[0m\n"`. How was the ouput different? If you want to know more seach for  ANSI color escape sequences.
+- Run `touch a.txt` then run `^txt^log` what did bash do for you? In the same vein, run `fc`. What does it do?
+
+1. **Keyboard shortcuts**
 
 As with any application you use frequently is worth familiarising yourself with its keyboard shortcuts. Type the following ones and try figuring out what they do and in what scenarios it might be convenient knowing about them. For some of them it might be easier searching online about what they do.
 
-  - `Ctrl+A`
-  - `Ctrl+E`
+  - `Ctrl+A`, `Ctrl+E`
   - `Ctrl+R`
   - `Ctrl+L`
-  - `Ctrl+C`
-  - `Ctrl+D`
-
+  - `Ctrl+C`, `Ctrl+\` and  `Ctrl+D`
+  - `Ctrl+U` and `Ctrl+Y`
