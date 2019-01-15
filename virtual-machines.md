@@ -35,6 +35,17 @@ potentially destructive actions, among other things.
 Virtual machines are generally slower than running on bare metal, so they may
 be unsuitable for certain applications.
 
+## Setup
+
+- **Resources**: shared with host machine; be aware of this when allocating
+physical resources.
+
+- **Networking**: many options, default NAT should work fine for most use
+cases.
+
+- **Guest addons**: many hypervisors can install software in the guest to
+enable nicer integration with host system. You should use this if you can.
+
 ## Resources
 
 - Hypervisors
@@ -52,6 +63,9 @@ be unsuitable for certain applications.
 1. Experiment with snapshots. Try things that you've always wanted to try, like
    running `sudo rm -rf --no-preserve-root /`, and see if you can recover
    easily.
+
+1. Install guest addons and experiment with different windowing modes, file
+   sharing, and other features.
 
 # Containers
 
