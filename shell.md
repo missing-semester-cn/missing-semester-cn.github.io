@@ -208,7 +208,7 @@ What if you want to run longer-term things in the background?
  - see all such processes with `jobs`
    - notice that it shows "Running"
  - bring it to the foreground with `fg %JOB` (no argument is latest)
- - if you want to background the current program: `^Z` + `bg`
+ - if you want to background the current program: `^Z` + `bg` (Here `^Z` means pressing `Ctrl+Z`)
    - `^Z` stops the current process and makes it a "job"
    - `bg` runs the last job in the background (as if you did `&`)
  - background jobs are still tied to your current session, and exit if
@@ -232,13 +232,10 @@ What about other stuff running on your computer?
      equivalent to `^C`
 
 
-<!-- TODO: cover xargs?-->
-
-
 ## Flags
 
-Most command line utilities take parameters using **flags**. Flags usually come in short form (`-h`) and long form (`--help`). Usually running `CMD -h` or `man CMD` will give you
-Short flags can usually be combined so running `rm -r -f` is equivalent to running `rm -rf` or `rm -fr`.
+Most command line utilities take parameters using **flags**. Flags usually come in short form (`-h`) and long form (`--help`). Usually running `CMD -h` or `man CMD` will give you a list of the flags the program takes.
+Short flags can usually be combined, running `rm -r -f` is equivalent to running `rm -rf` or `rm -fr`.
 Some common flags are a de facto standard and you will seem them in many applications:
 
 * `-a` commonly refers to all files (i.e. also including those that start with a period)
@@ -247,11 +244,11 @@ Some common flags are a de facto standard and you will seem them in many applica
 * `-v` usually enables a verbose output
 * `-V` usually prints the version of the command
 
-Also, a double dash `--` is used in built-in commands and many other commands to signify the end of command options, after which only positional parameters are accepted. So if you have a file called `-v` (which you can) and want to grep it `grep pattern -- -v` will work whereas `grep pattern -v` won't.
+Also, a double dash `--` is used in built-in commands and many other commands to signify the end of command options, after which only positional parameters are accepted. So if you have a file called `-v` (which you can) and want to grep it `grep pattern -- -v` will work whereas `grep pattern -v` won't. In fact, one way to create such file is to do `touch -- -v`.
 
 ## Exercises
 
-1. If you are completely new to the shell you may want to read a more comprenhensive guide about it such as [BashGuide](http://mywiki.wooledge.org/BashGuide)
+1. If you are completely new to the shell you may want to read a more comprehensive guide about it such as [BashGuide](http://mywiki.wooledge.org/BashGuide)
 
 1. **PATH, which, type**
 We briefly discussed that the `PATH` environment variable is used to locate the programs that you run through the command line. Let's explore that a little further
@@ -280,15 +277,15 @@ Try running `ls | file` and `ls | xargs file`. What is `xargs` doing? Note that 
 - Sometimes you want to keep STDIN and still pipe it to a file. Try running `echo HELLO | tee hello.txt`
 - Try running `cat hello.txt > hello.txt ` what do you expect to happen? What does happen?
 - Run `echo HELLO > hello.txt` and then run `echo WORLD >> hello.txt`. What are the contents of `hello.txt`? How is `>` different from `>>`?
-- Run `printf "\e[38;5;81mfoo\e[0m\n"`. How was the ouput different? If you want to know more seach for  ANSI color escape sequences.
+- Run `printf "\e[38;5;81mfoo\e[0m\n"`. How was the output different? If you want to know more search for  ANSI color escape sequences.
 - Run `touch a.txt` then run `^txt^log` what did bash do for you? In the same vein, run `fc`. What does it do?
 
 1. **Keyboard shortcuts**
 
-As with any application you use frequently is worth familiarising yourself with its keyboard shortcuts. Type the following ones and try figuring out what they do and in what scenarios it might be convenient knowing about them. For some of them it might be easier searching online about what they do.
+As with any application you use frequently is worth familiarising yourself with its keyboard shortcuts. Type the following ones and try figuring out what they do and in what scenarios it might be convenient knowing about them. For some of them it might be easier searching online about what they do. (remember that `^X` means pressing `Ctrl+X`)
 
-  - `Ctrl+A`, `Ctrl+E`
-  - `Ctrl+R`
-  - `Ctrl+L`
-  - `Ctrl+C`, `Ctrl+\` and  `Ctrl+D`
-  - `Ctrl+U` and `Ctrl+Y`
+  - `^A`, `^E`
+  - `^R`
+  - `^L`
+  - `^C`, `^\` and  `^D`
+  - `^U` and `^Y`
