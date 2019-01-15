@@ -49,9 +49,13 @@ enable nicer integration with host system. You should use this if you can.
 ## Resources
 
 - Hypervisors
+
     - [VirtualBox](https://www.virtualbox.org/) (open-source)
+    - [Virt-manager](https://virt-manager.org/) (open-source, manages KVM virtual machines and LXC containers)
     - [VMWare](https://www.vmware.com/) (commercial, available from IS&T [for
     MIT students](https://ist.mit.edu/vmware-fusion))
+
+    If you are already familiar with popular hypervisors/VMs you many want to learn more about how to do this from a command line friendly way. One option is the [libvirt](https://wiki.libvirt.org/page/UbuntuKVMWalkthrough) toolkit which allows you to manage multiple different virtualization providers/hypervisors.
 
 ## Exercises
 
@@ -63,6 +67,8 @@ enable nicer integration with host system. You should use this if you can.
 1. Experiment with snapshots. Try things that you've always wanted to try, like
    running `sudo rm -rf --no-preserve-root /`, and see if you can recover
    easily.
+
+1. Read what a [fork-bomb](https://en.wikipedia.org/wiki/Fork_bomb) (`:(){ :|:& };:`) is and run it on the VM to see that the resource isolation (CPU, Memory, &c) works.
 
 1. Install guest addons and experiment with different windowing modes, file
    sharing, and other features.
@@ -86,6 +92,11 @@ Not quite as secure or isolated as a VM, but pretty close and getting
 better. Usually higher performance, and much faster to start, but not
 always.
 
+The performance boost comes from the fact that unlike VMs which run an entire copy of the operating system, containers share the linux kernel with the host. However note that if you are running linux containers on Windows/macOS a Linux VM will need to be active as a middle layer between the two.
+
+![Docker vs VM](https://i2.wp.com/blog.docker.com/wp-content/uploads/Blog.-Are-containers-..VM-Image-1.png?ssl=1)
+_Comparison between Docker containers and Virtual Machines. Credit: blog.docker.com_
+
 Containers are handy for when you want to run an automated task in a
 standardized setup:
 
@@ -99,6 +110,8 @@ standardized setup:
    - Travis CI
    - GitHub Actions
 
+Moreover, container software like Docker has also been extensively used as a solution for [dependency hell](https://en.wikipedia.org/wiki/Dependency_hell). If a machine needs to be running many services with conflicting dependencies they can be isolated using containers.
+
 Usually, you write a file that defines how to construct your container.
 You start with some minimal _base image_ (like Alpine Linux), and then
 a list of commands to run to set up the environment you want (install
@@ -106,3 +119,11 @@ packages, copy files, build stuff, write config files, etc.). Normally,
 there's also a way to specify any external ports that should be
 available, and an _entrypoint_ that dictates what command should be run
 when the container is started (like a grading script).
+
+In a similar fashion to code repository websites (like [GitHub](https://github.com/)) there are some container repository websites (like [DockerHub](https://hub.docker.com/))where many software services have prebuilt images that one can easily deploy.
+
+## Exercises
+
+1. Choose a container software (Docker, LXC, …) and install a simple Linux image. Try SSHing into it.
+
+1. Search and download a prebuilt container image for a popular web server (nginx, apache, …)
