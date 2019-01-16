@@ -254,8 +254,8 @@ Also, a double dash `--` is used in built-in commands and many other commands to
 
     We briefly discussed that the `PATH` environment variable is used to locate the programs that you run through the command line. Let's explore that a little further
     - Run `echo $PATH` (or `echo $PATH | tr -s ':' '\n'` for pretty printing) and examine its contents, what locations are listed?
-    - The command `which` locates a program in the user PATH. Try running `which` for common commands like `echo`, `ls` or . Note that `which` is a bit limited since it does not understand shell aliases. Try running `type` and `command -v` for those same commands. How is the output different?
-    - Run `export PATH` and try running the previous commands again, some work and some don't, can you figure out why?
+    - The command `which` locates a program in the user PATH. Try running `which` for common commands like `echo`, `ls` or `mv`. Note that `which` is a bit limited since it does not understand shell aliases. Try running `type` and `command -v` for those same commands. How is the output different?
+    - Run `PATH=` and try running the previous commands again, some work and some don't, can you figure out why?
 
 1. **Special Variables**
     - What does the variable `~` expands as? What about `.`? And `..`?
