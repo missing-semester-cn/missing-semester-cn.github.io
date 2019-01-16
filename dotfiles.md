@@ -90,6 +90,9 @@ machine-specific settings.
 
 - [GitHub does dotfiles](http://dotfiles.github.io/): dotfile frameworks,
 utilities, examples, and tutorials
+- [Shell startup
+  scripts](https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html): an
+  explanation of the different configuration files used for your shell
 
 # Exercises
 
