@@ -329,6 +329,16 @@ ssh myserver journalctl
  | gnuplot -p -e 'set boxwidth 0.5; plot "-" using 1:xtic(2) with boxes'
 ```
 
+## Data wrangling to make arguments
+
+Sometimes you want to do data wrangling to find things to install or
+remove based on some longer list. The data wrangling we've talked about
+so far + `xargs` can be a powerful combo:
+
+```bash
+rustup toolchain list | grep nightly | grep -vE "nightly-x86|01-17" | sed 's/-x86.*//' | xargs rustup toolchain uninstall
+```
+
 # Exercises
 
  - If you are not familiar with Regular Expressions
