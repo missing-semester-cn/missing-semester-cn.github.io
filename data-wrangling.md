@@ -331,8 +331,39 @@ ssh myserver journalctl
 
 # Exercises
 
-- If you are not familiar with Regular Expressions [here](https://regexone.com/) is a short interactive tutorial that covers most of the basics
-- How is `sed s/REGEX/SUBSTITUTION/g` different from the regular sed? What about `sed s/REGEX/SUBSTITUTION/I`?
-- To do inplace substitution it is quite tempting to do something like `sed s/REGEX/SUBSTITUTION/ input.txt > input.txt`. However this is a bad idea, why? Is this particular to `sed`?
-
-
+ - If you are not familiar with Regular Expressions
+   [here](https://regexone.com/) is a short interactive tutorial that
+   covers most of the basics
+ - How is `sed s/REGEX/SUBSTITUTION/g` different from the regular sed?
+   What about `/I` or `/m`?
+ - To do in-place substitution it is quite tempting to do something like
+   `sed s/REGEX/SUBSTITUTION/ input.txt > input.txt`. However this is a
+   bad idea, why? Is this particular to `sed`?
+ - Look for boot messages that are _not_ shared between your past three
+   reboots (see `journalctl`'s `-b` flag). You may want to just mash all
+   the boot logs together in a single file, as that may make things
+   easier.
+ - Produce some statistics of your system boot time over the last ten
+   boots using the log timestamp of the messages 
+   ```
+   Logs begin at ...
+   ```
+   and
+   ```
+   systemd[577]: Startup finished in ...
+   ```
+ - Find the number of words (in `/usr/share/dict/words`) that contain at
+   least three `a`s and don't have a `'s` ending. What are the three
+   most common last two letters of those words? `sed`'s `y` command, or
+   the `tr` program, may help you with case insensitivity. How many
+   of those two-letter combinations are there? And for a challenge:
+   which combinations do not occur?
+ - Find an online data set like [this
+   one](https://stats.wikimedia.org/EN/TablesWikipediaZZ.htm) or [this
+   one](https://ucr.fbi.gov/crime-in-the-u.s/2016/crime-in-the-u.s.-2016/topic-pages/tables/table-1).
+   Fetch it using `curl` and extract out just two columns of numerical
+   data. If you're fetching HTML data,
+   [`pup`](https://github.com/EricChiang/pup) might be helpful. For JSON
+   data, try [`jq`](https://stedolan.github.io/jq/). Find the min and
+   max of one column in a single command, and the sum of the difference
+   between the two columns in another.
