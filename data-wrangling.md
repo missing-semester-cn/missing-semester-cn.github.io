@@ -51,7 +51,7 @@ substitution. For example, we can write:
 ```bash
 ssh myserver journalctl
  | grep sshd
- | grep "Disconnected from" 
+ | grep "Disconnected from"
  | sed 's/.*Disconnected from //'
 ```
 
@@ -172,7 +172,7 @@ Okay, so we now have
 ```bash
 ssh myserver journalctl
  | grep sshd
- | grep "Disconnected from" 
+ | grep "Disconnected from"
  | sed -E 's/.*Disconnected from (invalid |authenticating )?user (.*) [^ ]+ port [0-9]+( \[preauth\])?$/\2/'
 ```
 
@@ -196,7 +196,7 @@ ones:
 ```bash
 ssh myserver journalctl
  | grep sshd
- | grep "Disconnected from" 
+ | grep "Disconnected from"
  | sed -E 's/.*Disconnected from (invalid |authenticating )?user (.*) [^ ]+ port [0-9]+( \[preauth\])?$/\2/'
  | sort | uniq -c
 ```
@@ -209,7 +209,7 @@ the most common logins:
 ```bash
 ssh myserver journalctl
  | grep sshd
- | grep "Disconnected from" 
+ | grep "Disconnected from"
  | sed -E 's/.*Disconnected from (invalid |authenticating )?user (.*) [^ ]+ port [0-9]+( \[preauth\])?$/\2/'
  | sort | uniq -c
  | sort -nk1,1 | tail -n10
@@ -230,7 +230,7 @@ usernames, and maybe not one per line?
 ```bash
 ssh myserver journalctl
  | grep sshd
- | grep "Disconnected from" 
+ | grep "Disconnected from"
  | sed -E 's/.*Disconnected from (invalid |authenticating )?user (.*) [^ ]+ port [0-9]+( \[preauth\])?$/\2/'
  | sort | uniq -c
  | sort -nk1,1 | tail -n10
@@ -295,7 +295,7 @@ You can do math!
 ```
 
 ```bash
-echo "2*($(data | paste -sd+))" | bc -l 
+echo "2*($(data | paste -sd+))" | bc -l
 ```
 
 You can get stats in a variety of ways.
@@ -305,7 +305,7 @@ have R:
 ```bash
 ssh myserver journalctl
  | grep sshd
- | grep "Disconnected from" 
+ | grep "Disconnected from"
  | sed -E 's/.*Disconnected from (invalid |authenticating )?user (.*) [^ ]+ port [0-9]+( \[preauth\])?$/\2/'
  | sort | uniq -c
  | awk '{print $1}' | R --slave -e 'x <- scan(file="stdin", quiet=TRUE); summary(x)'
@@ -322,7 +322,7 @@ If you just want some simple plotting, `gnuplot` is your friend:
 ```bash
 ssh myserver journalctl
  | grep sshd
- | grep "Disconnected from" 
+ | grep "Disconnected from"
  | sed -E 's/.*Disconnected from (invalid |authenticating )?user (.*) [^ ]+ port [0-9]+( \[preauth\])?$/\2/'
  | sort | uniq -c
  | sort -nk1,1 | tail -n10
@@ -331,4 +331,8 @@ ssh myserver journalctl
 
 # Exercises
 
-TODO
+- If you are not familiar with Regular Expressions [here](https://regexone.com/) is a short interactive tutorial that covers most of the basics
+- How is `sed s/REGEX/SUBSTITUTION/g` different from the regular sed? What about `sed s/REGEX/SUBSTITUTION/I`?
+- To do inplace substitution it is quite tempting to do something like `sed s/REGEX/SUBSTITUTION/ input.txt > input.txt`. However this is a bad idea, why? Is this particular to `sed`?
+
+
