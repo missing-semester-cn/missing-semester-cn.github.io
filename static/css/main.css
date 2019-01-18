@@ -162,6 +162,10 @@ hr {
   font-size: 0.75rem;
 }
 
+.small p {
+  margin-bottom: 0;
+}
+
 .center {
   text-align: center;
 }
