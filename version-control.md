@@ -326,10 +326,19 @@ if your push is rejected, what do you do?
 
 # Exercises
 
+ - On a repo try modifying an existing file. What happens when you do `git stash`? What do you see when running `git log --all --oneline`? Run `git stash pop` to undo what you did with `git stash`. In what scenario might this be useful?
+
+ - One common mistake when learning git is to commit large files that should not be managed by git or adding sensitive information. Try adding a file to a repository, making some commits and then deleting that file from history (you may want to look at [this](https://help.github.com/articles/removing-sensitive-data-from-a-repository/)). Also if you do want git to manage large  files for you, look into [Git-LFS](https://git-lfs.github.com/)
+
+ - Git is really convenient for undoing changes but one has to be familiar even with the most unlikely changes
+    - If a file is mistakenly modified in some commit it can be reverted with `git revert`. However if a commit involves several changes `revert` might not be the best option. How can we use `git checkout` to recover a file version from a specific commit?
+    - Create a branch, make a commit in said branch and then delete it. Can you still recover said commit? Try looking into `git reflog`. (Note: Recover dangling things quickly, git will periodically automatically clean up commits that nothing points to.)
+    - If one is too trigger happy with `git reset --hard` instead of `git reset` changes can be easily lost. However since the changes were staged, we can recover them. (look into `git fsck --lost-found` and `.git/lost-found`)
+
+ - In any git repo look under the folder `.git/hooks` you will find a bunch of scripts that end with `.sample`. If you rename them without the `.sample` they will run based on their name. For instance `pre-commit` will execute before doing a commit. Experiment with them
+
  - forced push + `--force-with-lease`
  - git merge/rebase --abort
- - git stash
- - git reflog
  - git hooks
  - .gitconfig + aliases
  - git blame
