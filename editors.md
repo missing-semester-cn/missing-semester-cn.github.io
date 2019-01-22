@@ -89,13 +89,15 @@ Escape.
 
 ### Basics
 
-Vim Ex-commands are issued through `:{command}` in normal mode.
+Vim ex commands are issued through `:{command}` in normal mode.
 
 - `:q` quit (close window)
 - `:w` save
 - `:wq` save and quit
 - `:e {name of file}` open file for editing
-- `:help topic` open help
+- `:help {topic}` open help
+    - `:help :w` opens help for the `:w` ex command
+    - `:help w` opens help for the `w` movement
 
 ### Movement
 
@@ -150,6 +152,7 @@ powerful, composable commands).
 - visual mode + manipulation
     - select text, `d` to delete it or `c` to change it
 - `u` to undo, `<C-r` to redo
+- Lots more to learn: e.g. `~` flips the case of a character
 
 ### Resources
 
