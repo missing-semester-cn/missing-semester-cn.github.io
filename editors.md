@@ -228,10 +228,10 @@ better way of doing this", there probably is: look it up online.
             - `qe^r"f>s": "<ESC>f<C"<ESC>q`
         - Macro to format a person
             - Go to line with `<person>`
-            - `qpS{<ESC>j@ej@eA,<ESC>jS},<ESC>q`
+            - `qpS{<ESC>j@eA,<ESC>j@ejS},<ESC>q`
         - Macro to format a person and go to the next person
             - Go to line with `<person>`
-            - `qq@pjq`j@ej@eA,<ESC>jj@ej@eA,<ESC>jj@ej@eA,<ESC>j
+            - `qq@pjq`
         - Execute macro until end of file
             - `999@q`
         - Manually remove last `,` and add `[` and `]` delimiters
