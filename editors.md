@@ -278,9 +278,11 @@ emulation.
 [sshfs](https://github.com/libfuse/sshfs) can mount a folder on a remote server
 locally, and then you can use a local editor.
 
+{% comment %}
 # Resources
 
 TODO resources for other editors?
+{% endcomment %}
 
 # Exercises
 
