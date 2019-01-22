@@ -40,9 +40,11 @@ the _core_ "thing" in git is a commit.
  - commit has author + commit message
  - also has the hash of any _ancestor commits_
    usually just the hash of the previous commit
- - commit also stores a _diff_, a representation of how you get from the
-   commit's ancestors to the commit (e.g., remove this line in this
+ - commit also represents a _diff_, a representation of how you get from
+   the commit's ancestors to the commit (e.g., remove this line in this
    file, add these lines to this file, rename that file, etc.)
+   - in reality, git stores the full before and after state
+   - probably don't want to store big files that change!
 
 initially, the _repository_ (roughly: the folder that git manages) has
 no content, and no commits. let's set that up:
@@ -137,6 +139,7 @@ commit hashes, master, and `HEAD`. but there's more!
      - any commits you make will now update the `b` name
      - switch back to master with `git checkout master`
        - all your changes in `b` are hidden away
+     - a very handy way to be able to easily test out changes
  - tags are other names that never change, and that have their own
    message. often used to mark releases + changelogs.
  - `NAME^` means "the commit before `NAME`
@@ -150,7 +153,7 @@ commit hashes, master, and `HEAD`. but there's more!
  - `-` means "the previous name"
  - most commands operate on `HEAD` unless you give another argument
 
-## Clean up your mess.
+## Clean up your mess
 
 your commit history will _very_ often end up as:
 
@@ -183,8 +186,13 @@ changed. git lets you clean up these things:
    - `s`: combine commit with previous and edit commit message
    - `f`: "fixup" -- combine commit with previous; discard commit msg
    - at the end, `HEAD` is made to point to what is now the last commit
+   - often referred to as _squashing_ commits
+   - what it really does: rewind `HEAD` to rebase start point, then
+     re-apply the commits in order as directed.
+ - `git reset --hard NAME`: reset the state of all files to that of
+   `NAME` (or `HEAD` if no name is given). handy for undoing changes.
 
-## Playing with others.
+## Playing with others
 
 a common use-case for version control is to allow multiple people to
 make changes to a set of files without stepping on each other's toes.
@@ -222,7 +230,7 @@ updates `github/master` to point to their commit (we'll get back to
 that in a second), then when you `git fetch github`, you'll be able to
 see their changes with `git log github/master`.
 
-## Working with others.
+## Working with others
 
 so far, branches seem pretty useless: you can create them, do work on
 them, but then what? eventually, you'll just make master point to them
@@ -269,12 +277,63 @@ scary...
  - once you've _resolved_ the conflict by figuring out what the file
    should now look like, stage those changes with `git add`.
  - when all the conflicts are resolved, finish with `git commit`
+   - you can give up with `git merge --abort`
 
 you've just resolved your first git merge conflict! \o/
 now you can publish your finished changes with `git push`
 
-## fast-forward, forced pushes
+## When worlds collide
 
-## rebase vs merge
+when you `push`, git checks that no-one else's work is lost if you
+update the remote name you're pushing too. it does this by checking
+that the current commit of the remote name is an ancestor of the commit
+you are pushing. if it is, git can safely just update the name; this is
+called _fast-forwarding_. if it is not, git will refuse to update the
+remote name, and tell you there have been changes.
 
-## git stash
+if your push is rejected, what do you do?
+
+ - merge remote changes with `git pull` (i.e., `fetch` + `merge`)
+ - force the push with `--force`: this will lose other people's changes!
+   - there's also `--force-with-lease`, which will only force the change
+     if the remote name hasn't changed since the last time you fetched
+     from that remote. much safer!
+   - if you've rebased local commits that you've previously pushed
+     ("history rewriting"; probably don't do this), you'll have to force
+     push. think about why!
+ - try to re-apply your changes "on top of" the changes made remotely
+   - this is a `rebase`!
+     - rewind all local commits since shared ancestor
+     - fast-forward `HEAD` to commit at remote name
+     - apply local commits in-order
+       - may have conflicts you have to manually resolve
+       - `git rebase --continue` or `--abort`
+     - lots more [here](https://git-scm.com/book/en/v2/Git-Branching-Rebasing)
+   - `git pull --rebase` will start this process for you
+   - whether you should merge or rebase is a hot topic! some good reads:
+     - [this](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
+     - [this](https://derekgourlay.com/blog/git-when-to-merge-vs-when-to-rebase/)
+     - [this](https://stackoverflow.com/questions/804115/when-do-you-use-git-rebase-instead-of-git-merge)
+
+# Further reading
+
+[![XKCD on git](https://imgs.xkcd.com/comics/git.png)](https://xkcd.com/1597/)
+
+ - [Learn git branching](https://learngitbranching.js.org/)
+ - [How to explain git in simple words](https://smusamashah.github.io/blog/2017/10/14/explain-git-in-simple-words)
+ - [Git from the bottom up](https://jwiegley.github.io/git-from-the-bottom-up/)
+ - [The Pro Git book](https://git-scm.com/book/en/v2)
+
+# Exercises
+
+ - forced push + `--force-with-lease`
+ - git merge/rebase --abort
+ - git stash
+ - git reflog
+ - git hooks
+ - .gitconfig + aliases
+ - git blame
+ - visualization
+   - `gitk --all`
+   - `git log --graph --all --decorate`
+ - exercise about why rebasing public commits is bad
