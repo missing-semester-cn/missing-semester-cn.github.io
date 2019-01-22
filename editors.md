@@ -95,6 +95,7 @@ Vim ex commands are issued through `:{command}` in normal mode.
 - `:w` save
 - `:wq` save and quit
 - `:e {name of file}` open file for editing
+- `:ls` show open buffers
 - `:help {topic}` open help
     - `:help :w` opens help for the `:w` ex command
     - `:help w` opens help for the `w` movement
