@@ -262,11 +262,12 @@ Lists of plugins:
 For many popular editors (e.g. vim and emacs), many other tools support editor
 emulation.
 
+- Shell
+    - bash: `set -o vi`
+    - zsh: `bindkey -v`
+    - `export EDITOR=vim` (environment variable used by programs like `git`)
 - `~/.inputrc`
     - `set editing-mode vi`
-- Shell
-    - `export EDITOR=vim` (environment variable used by programs like `git`)
-    - zsh: `bindkey -v`
 
 ## Resources
 
