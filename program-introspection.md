@@ -41,7 +41,14 @@ Commands:
 
 ## PDB
 
+[PDB](https://docs.python.org/3/library/pdb.html) is the Python debugger.
+
+Insert `import pdb; pdb.set_trace()` where you want to drop into PDB, basically
+a hybrid of a debugger (like GDB) and a Python shell.
+
 ## Web browser Developer Tools
+
+Another example of a debugger, this time with a graphical interface.
 
 # Profiling
 
