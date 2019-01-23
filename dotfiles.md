@@ -37,8 +37,8 @@ copy configurations though).
 # Organization
 
 How should you organize your dotfiles? They should be in their own folder,
-under version control, and symlinked into place using a script. This has the
-benefits of:
+under version control, and **symlinked** into place using a script. This has
+the benefits of:
 
 - **Easy installation**: if you log in to a new machine, applying your
 customizations will only take a minute
@@ -48,6 +48,26 @@ in sync
 - **Change tracking**: you're probably going to be maintaining your dotfiles
 for your entire programming career, and version history is nice to have for
 long-lived projects
+
+```shell
+cd ~/src
+mkdir dotfiles
+cd dotfiles
+git init
+touch bashrc
+# create a bashrc with some settings, e.g.:
+#     PS1='\w > '
+touch install
+chmod +x install
+# insert the following into the install script:
+#     #!/usr/bin/env bash
+#     BASEDIR=$(dirname $0)
+#     cd $BASEDIR
+#
+#     ln -s ${PWD}/bashrc ~/.bashrc
+git add bashrc install
+git commit -m 'Initial commit'
+```
 
 # Advanced topics
 
@@ -68,8 +88,8 @@ If the configuration file supports it, use the equivalent of if-statements to
 apply machine specific customizations. For example, your shell could have a line
 like:
 
-```
-if [[ "$(uname)" == "Darwin" ]]; then {do something}; fi
+```shell
+if [[ "$(uname)" == "Darwin" ]]; then {do_something}; fi
 ```
 
 ### Includes
@@ -88,6 +108,10 @@ machine-specific settings.
 
 # Resources
 
+- Your instructors' dotfiles:
+  [Anish](https://github.com/anishathalye/dotfiles),
+  [Jon](https://github.com/jonhoo/configs),
+  [Jose](https://github.com/jjgo/dotfiles)
 - [GitHub does dotfiles](http://dotfiles.github.io/): dotfile frameworks,
 utilities, examples, and tutorials
 - [Shell startup
@@ -96,8 +120,8 @@ utilities, examples, and tutorials
 
 # Exercises
 
-1. Create a folder for your dotfiles (and set up version control, or wait till
-   we [cover that](/version-control/) in lecture).
+1. Create a folder for your dotfiles and set up [version
+   control](/version-control/).
 
 1. Add a configuration for at least one program, e.g. your shell, with some
    customization (to start off, it can be something as simple as customizing
@@ -111,3 +135,5 @@ utilities, examples, and tutorials
 1. Test your installation script on a fresh virtual machine.
 
 1. Migrate all of your current tool configurations to your dotfiles repository.
+
+1. Publish your dotfiles on GitHub.
