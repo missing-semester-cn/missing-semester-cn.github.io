@@ -30,7 +30,9 @@ You can learn about your tool's settings by reading online documentation or
 search the internet for blog posts about specific programs, where authors will
 tell you about their preferred customizations. Yet another way to learn about
 customizations is to look through other people's dotfiles: you can find tons of
-dotfiles repositories on GitHub --- see the most popular one
+[dotfiles
+repositories](https://github.com/search?o=desc&q=dotfiles&s=stars&type=Repositories)
+on GitHub --- see the most popular one
 [here](https://github.com/mathiasbynens/dotfiles) (we advise you not to blindly
 copy configurations though).
 
