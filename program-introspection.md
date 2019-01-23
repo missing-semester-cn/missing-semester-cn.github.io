@@ -50,10 +50,30 @@ a hybrid of a debugger (like GDB) and a Python shell.
 
 Another example of a debugger, this time with a graphical interface.
 
+# strace
+
+Observe system calls a program makes: `strace {program}`.
+
 # Profiling
 
 Types of profiling: CPU, memory, etc.
 
+Simplest profiler: `time`.
+
 ## Go
 
+Run test code with CPU profiler: `go test -cpuprofile=cpu.out`
+
+Analyze profile: `go tool pprof -web cpu.out`
+
+Run test code with CPU profiler: `go test -memprofile=cpu.out`
+
+Analyze profile: `go tool pprof -web mem.out`
+
 ## Perf
+
+Basic performance stats: `perf stat {command}`
+
+Run a program with the profiler: `perf record {command}`
+
+Analyze profile: `perf report`
