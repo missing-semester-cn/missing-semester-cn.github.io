@@ -4,8 +4,6 @@ title: "Command-line environment"
 presenter: Jose
 ---
 
-# Command-line Environment
-
 ## Aliases & Functions
 
 As you can imagine it can become tiresome typing long commands that involve many flags or verbose options. Nevertheless, most shells support **aliasing**. For instance, an alias in bash has the following structure (note there is no space around the `=` sign):
