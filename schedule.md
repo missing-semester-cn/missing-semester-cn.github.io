@@ -29,7 +29,7 @@ blocks, with a 10 minute break in between.
 # Tuesday, 1/29
 
 - [Package management and dependency management](/package-management/)
-- [OS customization](/os-customization/) and [OS automation](/os-automation/)
+- [OS customization](/os-customization/) and [automation](/automation/)
 
 # Thursday, 1/31
 
