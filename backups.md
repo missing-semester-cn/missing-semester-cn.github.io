@@ -46,3 +46,25 @@ However, making several copies of your data might be extremely costly in terms o
 Since we might be backing up to untrusted third parties like cloud providers it is worth considering that if you backup your data is copied *as is* then it could potentially be looked by unwanted agents. Documents like your taxes are sensitive information that should not be backed up in plain format. To prevent this, many backup solutions offer **client side encryption** where data is encrypted before being sent to the server. That way the server cannot read the data it is storing but you can decrypt it with your secret key.
 
 As a side note, if your disk (or home partition) is not encrypted, then anyone that get ahold of your computer can manage to override the user access controls and read your data. Modern hardware supports fast and efficient read and writes of encrypted data so you might want to consider enabling **full disk encryption**.
+
+
+
+## Additional considerations
+
+Some other things you may want to look into are:
+
+- **Periodic backups**: outdated backups can become pretty useless. Making backups regularly should be a consideration for your system
+- **Bootable backups**: some programs allow you to clone your entire disk. That way you have an image that contains an entire copy of your system you can boot directly from.
+- **Differential backup strategies**, you may not necessarily care the same about all your data. You can define different backup policies for different types of data.
+- **Append only backups** an additional consideration is to enforce append only operations to your backup repositories in order to prevent malicious agents to delete them if they get ahold of your machine.
+
+
+## Webservices
+
+Not all the data that you use lives on your hard disk. If you use **webservices** then it might be the case that some data you care about is stored there such as Google Docs presentations or Spotify playslists. Figuring out a backup solution in scenario is somewaht trickier. Nevertheless, most of these services offer you the possibility to download that data, either directly or through a web API.
+
+
+## Webpages
+
+Similarly, some high quality content can be found online in the form of webpages. If said content is static one can easily back it up by just saving the website and all of its attachments. Another alternative is the [Wayback Machine](https://archive.org/web/), a massive digital archive of the World Wide Web managed by the [Internet Archive](https://archive.org/), a non profit organization focused on the preservation of all sorts of media. The Wayback Machine allows you to capture and archive webpages being able to later retrieve all the snapshots that have been archived for that website. If you find it useful, consider [donating](https://archive.org/donate/) to the project.
+
