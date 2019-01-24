@@ -24,11 +24,10 @@ blocks, with a 10 minute break in between.
 # Thursday, 1/24
 
 - [Dotfiles](/dotfiles/), [backups](/backups/) and [automation](/automation/)
-- [Machine introspection](/machine-introspection/) and [program introspection](/program-introspection/)
+- [Machine introspection](/machine-introspection/)
 
 # Tuesday, 1/29
-
-- [Package management and dependency management](/package-management/)
+- [Program introspection](/program-introspection/) and [package/dependency management](/package-management/)
 - [OS customization](/os-customization/) and [Remote Machines](/remotes/)
 
 # Thursday, 1/31
