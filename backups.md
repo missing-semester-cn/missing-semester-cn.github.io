@@ -68,3 +68,19 @@ Not all the data that you use lives on your hard disk. If you use **webservices*
 
 Similarly, some high quality content can be found online in the form of webpages. If said content is static one can easily back it up by just saving the website and all of its attachments. Another alternative is the [Wayback Machine](https://archive.org/web/), a massive digital archive of the World Wide Web managed by the [Internet Archive](https://archive.org/), a non profit organization focused on the preservation of all sorts of media. The Wayback Machine allows you to capture and archive webpages being able to later retrieve all the snapshots that have been archived for that website. If you find it useful, consider [donating](https://archive.org/donate/) to the project.
 
+
+## Resources
+
+Some good backup programs and services we have used and can honestly recommend:
+
+- [Tarsnap](https://www.tarsnap.com/) - deduplicated, encrypted online backup service for the truly paranoid.
+- [Borg Backup](https://borgbackup.readthedocs.io) - deduplicated backup program that supports compression and authenticated encryption. If you need a cloud provider [rsync.net](https://www.rsync.net/products/attic.html) has special offerings for borg/attic users.
+
+
+## Exercises
+
+- Consider how you are (not) backing up your data and look into fixing/improving that.
+
+- Choose a webservice you use often (Spotify, Google Music, &c) and figure out what options for backing up your data are. Often people have already made solutions based on available APIs.
+
+- Think of a website you have visited repeatedly over the years and look it up in the [wayback machine](https://archive.org/web/), how many versions does it have?
