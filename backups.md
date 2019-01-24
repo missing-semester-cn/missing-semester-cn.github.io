@@ -61,7 +61,7 @@ Some other things you may want to look into are:
 
 ## Webservices
 
-Not all the data that you use lives on your hard disk. If you use **webservices** then it might be the case that some data you care about is stored there such as Google Docs presentations or Spotify playslists. Figuring out a backup solution in scenario is somewaht trickier. Nevertheless, most of these services offer you the possibility to download that data, either directly or through a web API.
+Not all the data that you use lives on your hard disk. If you use **webservices** then it might be the case that some data you care about is stored there such as Google Docs presentations or Spotify playlists. Figuring out a backup solution in scenario is somewhat trickier. Nevertheless, most of these services offer you the possibility to download that data, either directly or through a web API.
 
 
 ## Webpages
@@ -83,4 +83,4 @@ Some good backup programs and services we have used and can honestly recommend:
 
 - Choose a webservice you use often (Spotify, Google Music, &c) and figure out what options for backing up your data are. Often people have already made solutions based on available APIs.
 
-- Think of a website you have visited repeatedly over the years and look it up in the [wayback machine](https://archive.org/web/), how many versions does it have?
+- Think of a website you have visited repeatedly over the years and look it up in [archive.org](https://archive.org/web/), how many versions does it have?
