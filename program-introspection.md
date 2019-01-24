@@ -28,7 +28,7 @@ Open GDB:
 
 `gdb example`
 
-Commands:
+Some commands:
 
 - `run`
 - `b {name of function}` - set a breakpoint
@@ -38,6 +38,7 @@ Commands:
 - `p {variable}` - print value of variable
 - `watch {expression}` - set a watchpoint that triggers when the value of the expression changes
 - `rwatch {expression}` - set a watchpoint that triggers when the value is read
+- `layout`
 
 ## PDB
 
