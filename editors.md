@@ -273,15 +273,15 @@ emulation.
 - `~/.inputrc`
     - `set editing-mode vi`
 
+There are even vim keybinding extensions for web [browsers](http://vim.wikia.com/wiki/Vim_key_bindings_for_web_browsers) some popular one are [Vimium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en) for Google Chrome and [Tridactyl](https://github.com/tridactyl/tridactyl) for Firefox.
+
+
 ## Resources
 
 - [Vim Tips Wiki](http://vim.wikia.com/wiki/Vim_Tips_Wiki)
 - [Vim Advent Calendar](https://vimways.org/2018/): various Vim tips
-
-# Remote Editing
-
-[sshfs](https://github.com/libfuse/sshfs) can mount a folder on a remote server
-locally, and then you can use a local editor.
+- [Neovim](https://neovim.io/) is a modern vim reimplementation with more active development.
+- [Vim Golf](http://www.vimgolf.com/): Various Vim challenges
 
 {% comment %}
 # Resources
@@ -295,7 +295,7 @@ TODO resources for other editors?
    Vim) and at least one GUI editor (e.g. Atom). Learn through tutorials like
    `vimtutor` (or the equivalents for other editors). To get a real feel for a
    new editor, commit to using it exclusively for a couple days while going
-   about your work. 
+   about your work.
 
 1. Customize your editor. Look through tips and tricks online, and look through
    other people's configurations (often, they are well-documented).
