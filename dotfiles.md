@@ -23,6 +23,10 @@ You probably have some dotfiles set up already. Some places to look:
 - `~/.vim`
 - `~/.gitconfig`
 
+Some programs don't put the files under your home folder directly and instead they put them in a folder under `~/.config`.
+
+Dotfiles are not exclusive to command line applications, for instance the [MPV](https://mpv.io/) video player can be configured editing files under `~/.config/mpv`
+
 # Learning to customize tools
 
 You can learn about your tool's settings by reading online documentation or
@@ -87,11 +91,17 @@ logically straightforward but can be pretty heavyweight.
 ### If statements
 
 If the configuration file supports it, use the equivalent of if-statements to
-apply machine specific customizations. For example, your shell could have a line
+apply machine specific customizations. For example, your shell could have something
 like:
 
 ```shell
+if [[ "$(uname)" == "Linux" ]]; then {do_something else}; fi
+
+# Darwin is the architecture name for macOS systems
 if [[ "$(uname)" == "Darwin" ]]; then {do_something}; fi
+
+# You can also make it machine specific
+if [[ "$(hostname)" == "myServer" ]]; then {do_something}; fi
 ```
 
 ### Includes
@@ -107,6 +117,15 @@ a `~/.gitconfig` can have a setting:
 And then on each machine, `~/.gitconfig_local` can contain machine-specific
 settings. You could even track these in a separate repository for
 machine-specific settings.
+
+This idea is also useful if you want different programs to share some configurations. For instance if you want both `bash` and `zsh` to share the same set of aliases you can write them under `.aliases` and have the following block in both.
+
+```bash
+# Test if ~/.aliases exists and source it
+if [ -f ~/.aliases ]; then
+    source ~/.aliases
+fi
+```
 
 # Resources
 
