@@ -80,8 +80,10 @@ Some good backup programs and services we have used and can honestly recommend:
 
 ## Exercises
 
-- Consider how you are (not) backing up your data and look into fixing/improving that.
+1. Consider how you are (not) backing up your data and look into fixing/improving that.
 
-- Choose a webservice you use often (Spotify, Google Music, &c) and figure out what options for backing up your data are. Often people have already made solutions based on available APIs.
+1. Choose a webservice you use often (Spotify, Google Music, &c) and figure out what options for backing up your data are. Often people have already made solutions based on available APIs.
 
-- Think of a website you have visited repeatedly over the years and look it up in [archive.org](https://archive.org/web/), how many versions does it have?
+1. Think of a website you have visited repeatedly over the years and look it up in [archive.org](https://archive.org/web/), how many versions does it have?
+
+1. One way to efficiently implement deduplication is to use hardlinks. Whereas symbolic link (also called soft link) is a file that points to another file or folder, a hardlink is a exact copy of the pointer (it uses the same inode and points to the same place in the disk). Thus if the original file is removed a symlink stops working whereas a hard link doesn't. However, hardlinks only work for files. Try using the command `ln` to create hard links and compare them to symlinks created with `ln -s`. (In macOS you will need to install the gnu coreutils or the hln package).

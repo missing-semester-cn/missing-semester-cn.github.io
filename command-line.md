@@ -153,18 +153,18 @@ The [tldr](https://github.com/tldr-pages/tldr) command is a community driven doc
 
 ### `aunpack` vs `tar/unzip/unrar`
 
-As [this xkcd](https://xkcd.com/1168/) references it can be quite tricky to remember the options and sometimes you need a different tool altogether such as `unrar` for rar files.
+As [this xkcd](https://xkcd.com/1168/) references, it can be quite tricky to remember the options for `tar` and sometimes you need a different tool altogether such as `unrar` for .rar files.
 The [atool](https://www.nongnu.org/atool/) package provides the `aunpack` command which will figure out the correct options and always put the extracted archives in a new folder.
 
 
 ## Exercises
 
-- Run `cat .bash_history | sort | uniq -c | sort -rn | head -n 10` (or `cat .zhistory | sort | uniq -c | sort -rn | head -n 10` for zsh)  to get top 10 most used commands and consider writing sorter aliases for them
-- Choose a terminal emulator and figure out how to change the following properties:
+1. Run `cat .bash_history | sort | uniq -c | sort -rn | head -n 10` (or `cat .zhistory | sort | uniq -c | sort -rn | head -n 10` for zsh)  to get top 10 most used commands and consider writing sorter aliases for them
+1. Choose a terminal emulator and figure out how to change the following properties:
     - Font choice
     - Color scheme. How many colors does a standard scheme have? why?
     - Scrollback history size
 
-- Install `fasd` or some similar software and write a bash/zsh function called `v` that performs fuzzy matching on the passed arguments and opens up the top result in your editor of choice. Then, modify it so that if there are multiple matches you can select them with `fzf`.
-- Since `fzf` is quite convenient for performing fuzzy searches and the shell history is quite prone to those kind of searches, investigate how to bind `fzf` to `^R`. You can find some info [here](https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings)
-- What does the `--bar` option do in `ack`?
+1. Install `fasd` or some similar software and write a bash/zsh function called `v` that performs fuzzy matching on the passed arguments and opens up the top result in your editor of choice. Then, modify it so that if there are multiple matches you can select them with `fzf`.
+1. Since `fzf` is quite convenient for performing fuzzy searches and the shell history is quite prone to those kind of searches, investigate how to bind `fzf` to `^R`. You can find some info [here](https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings)
+1. What does the `--bar` option do in `ack`?
