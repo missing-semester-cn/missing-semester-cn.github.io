@@ -341,20 +341,22 @@ rustup toolchain list | grep nightly | grep -vE "nightly-x86|01-17" | sed 's/-x8
 
 # Exercises
 
- - If you are not familiar with Regular Expressions
+1. If you are not familiar with Regular Expressions
    [here](https://regexone.com/) is a short interactive tutorial that
    covers most of the basics
- - How is `sed s/REGEX/SUBSTITUTION/g` different from the regular sed?
+1. How is `sed s/REGEX/SUBSTITUTION/g` different from the regular sed?
    What about `/I` or `/m`?
- - To do in-place substitution it is quite tempting to do something like
+1. To do in-place substitution it is quite tempting to do something like
    `sed s/REGEX/SUBSTITUTION/ input.txt > input.txt`. However this is a
    bad idea, why? Is this particular to `sed`?
- - Look for boot messages that are _not_ shared between your past three
+1. Implement a simple grep equivalent tool in a language you are familiar with using regex. If you want the output to be color highlighted like grep is, search for ANSI color escape sequences.
+1. Sometimes some operations like renaming files can be tricky with raw commands like `mv` . `rename` is a nifty tool to achieve this and has a sed-like syntax. Try creating a bunch of files with spaces in their names and use `rename` to replace them with underscores.
+1. Look for boot messages that are _not_ shared between your past three
    reboots (see `journalctl`'s `-b` flag). You may want to just mash all
    the boot logs together in a single file, as that may make things
    easier.
- - Produce some statistics of your system boot time over the last ten
-   boots using the log timestamp of the messages 
+1. Produce some statistics of your system boot time over the last ten
+   boots using the log timestamp of the messages
    ```
    Logs begin at ...
    ```
@@ -362,13 +364,13 @@ rustup toolchain list | grep nightly | grep -vE "nightly-x86|01-17" | sed 's/-x8
    ```
    systemd[577]: Startup finished in ...
    ```
- - Find the number of words (in `/usr/share/dict/words`) that contain at
+1. Find the number of words (in `/usr/share/dict/words`) that contain at
    least three `a`s and don't have a `'s` ending. What are the three
    most common last two letters of those words? `sed`'s `y` command, or
    the `tr` program, may help you with case insensitivity. How many
    of those two-letter combinations are there? And for a challenge:
    which combinations do not occur?
- - Find an online data set like [this
+1. Find an online data set like [this
    one](https://stats.wikimedia.org/EN/TablesWikipediaZZ.htm) or [this
    one](https://ucr.fbi.gov/crime-in-the-u.s/2016/crime-in-the-u.s.-2016/topic-pages/tables/table-1).
    Maybe another one [from
