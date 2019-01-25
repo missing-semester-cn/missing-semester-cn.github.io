@@ -61,3 +61,12 @@ One caveat of using cron is that if the computer is powered off or asleep when t
 1. Make a script that looks every minute in your downloads folder for any file that is a picture (you can look into [MIME types](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) or use a regular expression to match common extensions) and moves them into your Pictures folder.
 
 1. Write a cron script to weekly check for outdated packages in your system and prompts you to update them or updates them automatically.
+
+
+
+{% comment %}
+
+- [fswatch](https://github.com/emcrisostomo/fswatch)
+- GUI automation (pyautogui) [Automating the boring stuff Chapter 18](https://automatetheboringstuff.com/chapter18/)
+
+{% endcomment %}
