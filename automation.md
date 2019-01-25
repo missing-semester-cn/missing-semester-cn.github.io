@@ -4,7 +4,7 @@ title: "Automation"
 presenter: Jose
 ---
 
-Sometims you write a script that does something but you want for it to run periodically, say a backup task. You can always write an *ad hoc* solution that runs in the background and comes online periodically. However, most UNIX systems come with the cron daemon which can run task with a frequency up to a minute based on simple rules.
+Sometimes you write a script that does something but you want for it to run periodically, say a backup task. You can always write an *ad hoc* solution that runs in the background and comes online periodically. However, most UNIX systems come with the cron daemon which can run task with a frequency up to a minute based on simple rules.
 
 On most UNIX systems the cron daemon, `crond` will be running by default but you can always check using `ps aux | grep crond`.
 
@@ -58,6 +58,6 @@ One caveat of using cron is that if the computer is powered off or asleep when t
 
 ## Exercises
 
-- Make a script that looks every minute in your downloads folder for any file that is a picture (you can look into MIME types or use a regular expression to match common extensions) and moves them into your Pictures folder.
+1. Make a script that looks every minute in your downloads folder for any file that is a picture (you can look into [MIME types](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) or use a regular expression to match common extensions) and moves them into your Pictures folder.
 
-- Write a cron script to weekly check for outdated packages in your system and prompts you to update them or updates them automatically.
+1. Write a cron script to weekly check for outdated packages in your system and prompts you to update them or updates them automatically.

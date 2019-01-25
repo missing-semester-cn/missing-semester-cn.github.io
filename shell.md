@@ -248,7 +248,7 @@ Also, a double dash `--` is used in built-in commands and many other commands to
 
 ## Exercises
 
-1. If you are completely new to the shell you may want to read a more comprehensive guide about it such as [BashGuide](http://mywiki.wooledge.org/BashGuide)
+1. If you are completely new to the shell you may want to read a more comprehensive guide about it such as [BashGuide](http://mywiki.wooledge.org/BashGuide). If you want a more indepth introduction [The Linux Command Line](http://linuxcommand.org/tlcl.php) is a good resource.
 
 1. **PATH, which, type**
 
