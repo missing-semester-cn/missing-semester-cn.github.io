@@ -273,7 +273,7 @@ emulation.
 - `~/.inputrc`
     - `set editing-mode vi`
 
-There are even vim keybinding extensions for web [browsers](http://vim.wikia.com/wiki/Vim_key_bindings_for_web_browsers) some popular one are [Vimium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en) for Google Chrome and [Tridactyl](https://github.com/tridactyl/tridactyl) for Firefox.
+There are even vim keybinding extensions for web [browsers](http://vim.wikia.com/wiki/Vim_key_bindings_for_web_browsers), some popular ones are [Vimium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en) for Google Chrome and [Tridactyl](https://github.com/tridactyl/tridactyl) for Firefox.
 
 
 ## Resources
@@ -305,3 +305,5 @@ TODO resources for other editors?
 1. Commit to using a powerful editor for at least a couple weeks: you should
    start seeing the benefits by then. At some point, you should be able to get
    your editor to work as fast as you think.
+
+1. Install a linter (e.g. pyflakes for python) link it to your editor and test it is working.
