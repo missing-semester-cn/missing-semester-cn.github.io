@@ -270,6 +270,41 @@ Also, a double dash `--` is used in built-in commands and many other commands to
 
     Try running `ls | file` and `ls | xargs file`. What is `xargs` doing?
 
+
+1. **Shebang**
+
+    When you write a script you can specify to your shell what interpreter should be used to interpret the script by using a [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) line. Write a script called `hello` with the following contentsmake  it executable with `chmod +x hello`. Then execute it with `./hello`. Then remove the first line and execute it again? How is the shell using that first line?
+
+
+    ```bash
+      #! /usr/bin/python
+
+      print("Hello World!")
+    ```
+
+    You will often see programs that have a shebang that looks like `#! usr/bin/env bash`. This is a more portable solution with it own set of [advantages and disadvantages](https://unix.stackexchange.com/questions/29608/why-is-it-better-to-use-usr-bin-env-name-instead-of-path-to-name-as-my). How is `env` different from `which`? What environment vairable does `env` use to decide what program to run?
+
+
+1. **Pipes, process substitution, subshell**
+
+    Create a script called `slow_seq.sh` with the following contents and do `chmod +x slow_seq.sh` to make it executable.
+
+    ```bash
+      #! /usr/bin/env bash
+
+      for i in $(seq 1 10); do
+              echo $i;
+              sleep 1;
+      done
+    ```
+
+    There is a way in which pipes (and process substitution) differ from using subshell execution, i.e. `$()`. Run the following commands and observe the differences:
+
+    - `./slow_seq.sh | grep -P "[3-6]"`
+    - `grep -P "[3-6]" <(./script.sh)`
+    - `echo $(./script.sh) | grep -P "[3-6]"`
+
+
 1. **Misc**
     - Try running `touch {a,b}{a,b}` then `ls` what did appear?
     - Sometimes you want to keep STDIN and still pipe it to a file. Try running `echo HELLO | tee hello.txt`
@@ -277,6 +312,16 @@ Also, a double dash `--` is used in built-in commands and many other commands to
     - Run `echo HELLO > hello.txt` and then run `echo WORLD >> hello.txt`. What are the contents of `hello.txt`? How is `>` different from `>>`?
     - Run `printf "\e[38;5;81mfoo\e[0m\n"`. How was the output different? If you want to know more search for  ANSI color escape sequences.
     - Run `touch a.txt` then run `^txt^log` what did bash do for you? In the same vein, run `fc`. What does it do?
+
+{% comment %}
+
+TODO
+
+1. **parallel**
+- set -e, set -x
+- traps
+
+{% endcomment %}
 
 1. **Keyboard shortcuts**
 
