@@ -15,13 +15,16 @@ common ideas.
 Packages are hosted in _package repositories_. There are different repositories
 for different languages (and sometimes multiple for a particular language),
 such as [PyPI](https://pypi.org/) for Python, [RubyGems](https://rubygems.org/)
-for Ruby, and [crates.io](https://crates.io/) for Rust.
+for Ruby, and [crates.io](https://crates.io/) for Rust. They generally store
+software (source code and sometimes pre-compiled binaries for specific
+platforms) for all versions of a package.
 
 # Semantic versioning
 
 Software evolves over time, and we need a way to refer to software versions.
-One way would be to refer to software by commit hash, but we can do better in
-terms of communicating more information: using version numbers.
+Some simple ways could be to refer to software by a sequence number or a commit
+hash, but we can do better in terms of communicating more information: using
+version numbers.
 
 There are many approaches; one popular one is [Semantic
 Versioning](https://semver.org/):
@@ -51,9 +54,9 @@ they should not introduce any backward-incompatible changes.
 # Lock files
 
 In addition to specifying versions, it can be nice to enforce that the
-_contents_ of the dependency have not changed. Some tools use _lock files_ to
-specify cryptographic hashes of dependencies (along with versions) that are
-checked on package install.
+_contents_ of the dependency have not changed to prevent tampering. Some tools
+use _lock files_ to specify cryptographic hashes of dependencies (along with
+versions) that are checked on package install.
 
 # Specifying versions
 
@@ -85,8 +88,8 @@ If you're developing multiple software projects, they may depend on different
 versions of a particular piece of software. Sometimes, your build tool will
 handle this naturally (e.g. by building a static binary).
 
-For other build tools and programming languages, you can handle this with
-virtual environments (e.g. with the
+For other build tools and programming languages, one approach is handling this
+with virtual environments (e.g. with the
 [virtualenv](https://docs.python-guide.org/dev/virtualenvs/) tool for Python).
 Instead of installing dependencies system-wide, you can install dependencies
 per-project in a virtual environment, and _activate_ the virtual environment
