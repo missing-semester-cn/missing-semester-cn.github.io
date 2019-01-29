@@ -19,6 +19,9 @@ use the caps lock key very much, then you can remap it to something more
 useful. If you are a Vim user, for example, you might want to remap caps lock
 to escape.
 
+On macOS, you can do some remappings through Keyboard settings in System
+Preferences; for more complicated mappings, you need special software.
+
 ## Remapping to arbitrary commands
 
 You don't just have to remap keys to other keys: there are tools that will let
@@ -65,6 +68,7 @@ layout trivial.
 
 - [Hammerspoon](https://www.hammerspoon.org/) - macOS desktop automation
 - [Spectacle](https://www.spectacleapp.com/) - macOS window manager
+- [Karabiner](https://pqrs.org/osx/karabiner/) - sophisticated macOS keyboard remapping
 - [r/unixporn](https://www.reddit.com/r/unixporn/) - screenshots and
 documentation of people's fancy configurations
 
