@@ -8,7 +8,7 @@ blocks, with a 10 minute break in between.
 
 # Tuesday, 1/15
 
-- [Course overview](/course-overview/), [virtual machines and containers](/virtual-machines/)
+- [Course overview](/course-overview/) and [virtual machines and containers](/virtual-machines/)
 - [Shell and scripting](/shell/)
 
 # Thursday, 1/17
@@ -23,8 +23,8 @@ blocks, with a 10 minute break in between.
 
 # Thursday, 1/24
 
-- [Dotfiles](/dotfiles/), [backups](/backups/) and [automation](/automation/)
-- [Machine introspection](/machine-introspection/)
+- [Dotfiles](/dotfiles/) and [backups](/backups/)
+- [Automation](/automation/) and [machine introspection](/machine-introspection/)
 
 # Tuesday, 1/29
 - [Program introspection](/program-introspection/) and [package/dependency management](/package-management/)
