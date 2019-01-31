@@ -41,7 +41,9 @@ that has a lot of sane advice, and is decently up-to-date. @thegrugq
 also has a good blog post on [travel security
 advice](https://medium.com/@thegrugq/stop-fabricating-travel-security-advice-35259bf0e869)
 that's worth reading. We'll repeat much of the advice from those sources
-here, plus some more.
+here, plus some more. Also, get a [USB data
+blocker](https://www.amazon.com/dp/B00QRRZ2QM), because [USB is
+scary](https://www.bleepingcomputer.com/news/security/heres-a-list-of-29-different-types-of-usb-attacks/).
 
 ## Authentication
 
