@@ -72,7 +72,6 @@ body {
     color: #eee;
     font-family: Fira Code;
     font-size: 16pt;
-    max-width:
 }
 
 a:link {
