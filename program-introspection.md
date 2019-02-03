@@ -3,7 +3,7 @@ layout: lecture
 title: "Program Introspection"
 presenter: Anish
 video:
-  aspect: 56.25
+  aspect: 62.5
   id: 74MhV-7hYzg
 ---
 

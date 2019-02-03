@@ -3,7 +3,7 @@ layout: lecture
 title: "OS Customization"
 presenter: Anish
 video:
-  aspect: 56.25
+  aspect: 62.5
   id: epSRVqQzeDo
 ---
 
