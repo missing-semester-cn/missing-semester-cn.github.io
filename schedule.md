@@ -28,7 +28,7 @@ blocks, with a 10 minute break in between.
 
 # Tuesday, 1/29
 - [Program introspection](/program-introspection/) and [package/dependency management](/package-management/)
-- [OS customization](/os-customization/) and [Remote Machines](/remotes/)
+- [OS customization](/os-customization/) and [Remote Machines](/remote-machines/)
 
 # Thursday, 1/31
 

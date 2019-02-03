@@ -1,7 +1,10 @@
 ---
-layout: page
+layout: lecture
 title: "Machine Introspection"
 presenter: Jon
+video:
+  aspect: 56.25
+  id: eNYT2Oq3PF8
 ---
 
 Sometimes, computers misbehave. And very often, you want to know why.

@@ -1,7 +1,10 @@
 ---
-layout: page
+layout: lecture
 title: "Command-line environment"
 presenter: Jose
+video:
+  aspect: 56.25
+  id: i0rf1gpKL1E
 ---
 
 ## Aliases & Functions

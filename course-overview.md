@@ -1,7 +1,10 @@
 ---
-layout: page
+layout: lecture
 title: "Course Overview"
 presenter: Anish
+video:
+  aspect: 56.25
+  id: qw2c6ffSVOM
 ---
 
 # Motivation

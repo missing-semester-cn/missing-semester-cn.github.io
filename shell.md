@@ -1,7 +1,10 @@
 ---
-layout: page
+layout: lecture
 title: "Shell and Scripting"
 presenter: Jon
+video:
+  aspect: 56.25
+  id: Gn_zGUywz-Q
 ---
 
 The shell is an efficient, textual interface to your computer.

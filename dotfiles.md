@@ -1,7 +1,10 @@
 ---
-layout: page
+layout: lecture
 title: "Dotfiles"
 presenter: Anish
+video:
+  aspect: 56.25
+  id: YSZBWWJw3mI
 ---
 
 Many programs are configured using plain-text files known as "dotfiles"
