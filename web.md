@@ -3,7 +3,7 @@ layout: lecture
 title: "Web and Browsers"
 presenter: Jose
 video:
-  aspect: 56.25
+  aspect: 62.5
   id: XpZO3S8odec
 ---
 

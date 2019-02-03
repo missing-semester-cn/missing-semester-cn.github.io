@@ -3,7 +3,7 @@ layout: lecture
 title: "Dotfiles"
 presenter: Anish
 video:
-  aspect: 56.25
+  aspect: 62.5
   id: YSZBWWJw3mI
 ---
 

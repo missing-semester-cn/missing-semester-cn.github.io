@@ -3,7 +3,7 @@ layout: lecture
 title: "Command-line environment"
 presenter: Jose
 video:
-  aspect: 56.25
+  aspect: 62.5
   id: i0rf1gpKL1E
 ---
 

@@ -3,7 +3,7 @@ layout: lecture
 title: "Remote Machines"
 presenter: Jose
 video:
-  aspect: 56.25
+  aspect: 62.5
   id: X5c2Y8BCowM
 ---
 
