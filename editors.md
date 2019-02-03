@@ -1,7 +1,10 @@
 ---
-layout: page
+layout: lecture
 title: "Editors"
 presenter: Anish
+video:
+  aspect: 56.25
+  id: 1vLcusYSrI4
 ---
 
 # Importance of Editors

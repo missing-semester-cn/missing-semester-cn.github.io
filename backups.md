@@ -1,7 +1,10 @@
 ---
-layout: page
+layout: lecture
 title: "Backups"
 presenter: Jose
+video:
+  aspect: 56.25
+  id: lrpqYF8tcYQ
 ---
 
 There are two types of people:

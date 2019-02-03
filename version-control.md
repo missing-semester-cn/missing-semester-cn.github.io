@@ -1,7 +1,10 @@
 ---
-layout: page
+layout: lecture
 title: "Version Control"
 presenter: Jon
+video:
+  aspect: 56.25
+  id: 3fig2Vz8QXs
 ---
 
 Whenever you are working on something that changes over time, it's

@@ -1,7 +1,10 @@
 ---
-layout: page
+layout: lecture
 title: "OS Customization"
 presenter: Anish
+video:
+  aspect: 56.25
+  id: epSRVqQzeDo
 ---
 
 There is a lot you can do to customize your operating system beyond what is

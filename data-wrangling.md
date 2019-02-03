@@ -1,7 +1,10 @@
 ---
-layout: page
+layout: lecture
 title: "Data Wrangling"
 presenter: Jon
+video:
+  aspect: 56.25
+  id: VW2jn9Okjhw
 ---
 
 Have you ever had a bunch of text and wanted to do something with it?

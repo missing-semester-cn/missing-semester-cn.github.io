@@ -1,7 +1,10 @@
 ---
-layout: page
+layout: lecture
 title: "Virtual Machines and Containers"
 presenter: Anish, Jon
+video:
+  aspect: 56.25
+  id: LJ9ki5zq6Ik
 ---
 
 # Virtual Machines

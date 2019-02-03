@@ -1,7 +1,10 @@
 ---
-layout: page
+layout: lecture
 title: "Package Management and Dependency Management"
 presenter: Anish
+video:
+  aspect: 56.25
+  id: tgvt473T8xA
 ---
 
 Software usually builds on (a collection of) other software, which necessitates

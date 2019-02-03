@@ -1,7 +1,10 @@
 ---
-layout: page
+layout: lecture
 title: "Security and Privacy"
 presenter: Jon
+video:
+  aspect: 56.25
+  id: OBx_c-i-M8s
 ---
 
 The world is a scary place, and everyone's out to get you.
