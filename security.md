@@ -51,8 +51,16 @@ scary](https://www.bleepingcomputer.com/news/security/heres-a-list-of-29-differe
 ## Authentication
 
 The very first thing you should do, if you haven't already, is download
-a password manager (probably [1password](https://1password.com/) or
-[`pass`](https://www.passwordstore.org/)). Use it to generate passwords
+a password manager. Some good ones are:
+
+ - [1password](https://1password.com/)
+ - [KeePass](https://keepass.info/)
+ - [BitWarden](https://bitwarden.com/)
+ - [`pass`](https://www.passwordstore.org/)
+
+If you're particularly paranoid, use one that encrypts the passwords
+locally on your computer, as opposed to storing them in plain-text at
+the server. Use it to generate passwords
 for all the web sites you care about right now. Then, switch on
 two-factor authentication, ideally with a
 [FIDO/U2F](https://fidoalliance.org/) dongle (a
