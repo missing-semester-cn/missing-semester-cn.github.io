@@ -16,16 +16,11 @@ We’ll show you how to navigate the command line, use a powerful text editor,
 use version control efficiently, automate mundane tasks, manage packages and
 software, configure your desktop environment, and more.
 
-# Schedule
+# Lectures
 
-Lectures are 3:30pm-5:30pm on Tuesdays and Thursdays, starting on January 15th.
+Hacker Tools has concluded for IAP 2019.
+
 See [here](/lectures/) for links to all lecture videos and lecture notes.
-
-# Registration
-
-While registration is not _required_ to attend, if you intend to take the
-class, we ask that you fill out this [short
-form](https://goo.gl/forms/HSdsUQ204Ow8BgUs2).
 
 # Staff
 
