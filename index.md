@@ -39,6 +39,19 @@ Have any questions? Send us an email at
 [hacker-tools@mit.edu](mailto:hacker-tools@mit.edu) or post on
 [Piazza](https://piazza.com/class/jqjpgaeaz77785).
 
+# Beyond MIT
+
+We've also shared this class beyond MIT in the hopes that other may
+benefit from these resources. You can find posts and discussion on
+
+ - [Hacker News](https://news.ycombinator.com/item?id=19078281)
+ - [Lobsters](https://lobste.rs/s/h6157x/mit_hacker_tools_lecture_series_on)
+ - [`/r/learnprogramming`](https://www.reddit.com/r/learnprogramming/comments/an42uu/mit_hacker_tools_a_lecture_series_on_programmer/)
+ - [`/r/programming`](https://www.reddit.com/r/programming/comments/an3xki/mit_hacker_tools_a_lecture_series_on_programmer/)
+ - [Twitter](https://twitter.com/Jonhoo/status/1091896192332693504)
+ - [YouTube](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuiujH1lpn8cA9dsyulbYRv)
+ - [Facebook](https://www.facebook.com/jonhoo/posts/10161566630165387)
+
 ---
 
 <div class="small center">
