@@ -140,7 +140,7 @@ Globbing is the answer!
 
 Whitespace issues don't stop there:
 
- - `if [ "$foo" = "bar" ]; then` -- see the issue?
+ - `if [ $foo = "bar" ]; then` -- see the issue?
  - what if `$foo` is empty? arguments to `[` are `=` and `bar`...
  - _can_ work around this with `[ "x$foo" = "xbar" ]`, but bleh
  - instead, use `[[`: bash built-in comparator that has special parsing
