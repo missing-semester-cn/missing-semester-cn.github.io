@@ -19,7 +19,7 @@ software, configure your desktop environment, and more.
 # Schedule
 
 Lectures are 3:30pm-5:30pm on Tuesdays and Thursdays, starting on January 15th.
-See [here](/schedule/) for a full schedule.
+See [here](/lectures/) for links to all lecture videos and lecture notes.
 
 # Registration
 

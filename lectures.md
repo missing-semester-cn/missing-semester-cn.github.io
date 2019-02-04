@@ -1,10 +1,9 @@
 ---
 layout: page
-title: "Schedule"
+title: "Lectures"
 ---
 
-Lectures are 3:30pm-5:30pm in 32-124. Lectures are taught in two 50 minute
-blocks, with a 10 minute break in between.
+Click on specific topics below to see lecture videos and lecture notes.
 
 # Tuesday, 1/15
 

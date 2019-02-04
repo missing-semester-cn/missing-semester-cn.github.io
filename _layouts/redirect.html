@@ -1,0 +1,19 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+      {{ site.title }} -- {{ page.title }}
+    </title>
+    <meta http-equiv="refresh" content="0; url={{ page.redirect }}">
+  </head>
+  <body>
+    <script>
+      window.location = '{{ page.redirect }}';
+    </script>
+    <p>Redirecting you to <a href="{{ page.redirect }}">{{ page.redirect }}</a></p>
+  </body>
+</html>
