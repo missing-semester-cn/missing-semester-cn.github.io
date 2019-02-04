@@ -85,7 +85,8 @@ in a safe in the real world.
 
 Use [Signal](https://www.signal.org/) ([setup
 instructions](https://medium.com/@mshelton/signal-for-beginners-c6b44f76a1f0).
-[Wire](https://wire.com/en/) is fine too; WhatsApp is okay; [don't use
+[Wire](https://wire.com/en/) is [fine
+too](https://www.securemessagingapps.com/); WhatsApp is okay; [don't use
 Telegram](https://twitter.com/bascule/status/897187286554628096)).
 Desktop messengers are pretty broken (partially due to usually relying
 on Electron, which is a huge trust stack).
