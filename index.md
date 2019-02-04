@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Hacker Tools
-subtitle: IAP 2019
 ---
 
 Learn to make the most of the tools that
