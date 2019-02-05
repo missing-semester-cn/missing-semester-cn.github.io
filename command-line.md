@@ -162,7 +162,7 @@ The [atool](https://www.nongnu.org/atool/) package provides the `aunpack` comman
 
 ## Exercises
 
-1. Run `cat .bash_history | sort | uniq -c | sort -rn | head -n 10` (or `cat .zhistory | sort | uniq -c | sort -rn | head -n 10` for zsh)  to get top 10 most used commands and consider writing sorter aliases for them
+1. Run `cat .bash_history | sort | uniq -c | sort -rn | head -n 10` (or `cat .zhistory | sort | uniq -c | sort -rn | head -n 10` for zsh)  to get top 10 most used commands and consider writing shorter aliases for them
 1. Choose a terminal emulator and figure out how to change the following properties:
     - Font choice
     - Color scheme. How many colors does a standard scheme have? why?
