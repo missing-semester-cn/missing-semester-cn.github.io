@@ -107,7 +107,7 @@ In the next few subsections I will cover alternative tools for extremely common 
 
 ### `fasd` vs `cd`
 
-Even with improved path expansion and tab autocomplete, changing directories can become quite repetitive. [Fasd]https://github.com/clvv/fasd() (or [autojump](https://github.com/wting/autojump)) solves this issue by keeping track of recent and frequent folders you have been to and performing fuzzy matching.
+Even with improved path expansion and tab autocomplete, changing directories can become quite repetitive. [Fasd](https://github.com/clvv/fasd) (or [autojump](https://github.com/wting/autojump)) solves this issue by keeping track of recent and frequent folders you have been to and performing fuzzy matching.
 
 Thus if I have visited the path `/home/user/awesome_project/code` running `z code` will `cd` to it. If I have multiple folders called code I can disambiguate by running `z awe code` which will be closer match. Unlike autojump,  fasd also provides commands that instead of performing `cd` just expand frequent and /or recent files,folders or both.
 
