@@ -304,8 +304,8 @@ Also, a double dash `--` is used in built-in commands and many other commands to
     There is a way in which pipes (and process substitution) differ from using subshell execution, i.e. `$()`. Run the following commands and observe the differences:
 
     - `./slow_seq.sh | grep -P "[3-6]"`
-    - `grep -P "[3-6]" <(./script.sh)`
-    - `echo $(./script.sh) | grep -P "[3-6]"`
+    - `grep -P "[3-6]" <(./slow_seq.sh)`
+    - `echo $(./slow_seq.sh) | grep -P "[3-6]"`
 
 
 1. **Misc**
@@ -313,7 +313,7 @@ Also, a double dash `--` is used in built-in commands and many other commands to
     - Sometimes you want to keep STDIN and still pipe it to a file. Try running `echo HELLO | tee hello.txt`
     - Try running `cat hello.txt > hello.txt ` what do you expect to happen? What does happen?
     - Run `echo HELLO > hello.txt` and then run `echo WORLD >> hello.txt`. What are the contents of `hello.txt`? How is `>` different from `>>`?
-    - Run `printf "\e[38;5;81mfoo\e[0m\n"`. How was the output different? If you want to know more search for  ANSI color escape sequences.
+    - Run `printf "\e[38;5;81mfoo\e[0m\n"`. How was the output different? If you want to know more, search for ANSI color escape sequences.
     - Run `touch a.txt` then run `^txt^log` what did bash do for you? In the same vein, run `fc`. What does it do?
 
 {% comment %}
