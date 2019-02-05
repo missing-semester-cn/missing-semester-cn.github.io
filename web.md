@@ -7,6 +7,8 @@ video:
   id: XpZO3S8odec
 ---
 
+[Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anief6/web_and_browsers_iap_2019/)
+
 Apart from the terminal, the web browser is a tool you will find yourself spending significant amounts of time into. Thus it is worth learning how to use it efficiently and
 
 ## Shortcuts

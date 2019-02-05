@@ -7,6 +7,8 @@ video:
   id: Gn_zGUywz-Q
 ---
 
+[Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anieve/shell_and_scripting_iap_2019/)
+
 The shell is an efficient, textual interface to your computer.
 
 The shell prompt: what greets you when you open a terminal.

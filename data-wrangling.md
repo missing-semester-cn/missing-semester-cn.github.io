@@ -7,6 +7,8 @@ video:
   id: VW2jn9Okjhw
 ---
 
+[Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anicor/data_wrangling_iap_2019/)
+
 Have you ever had a bunch of text and wanted to do something with it?
 Good. That's what data wrangling is all about!
 Specifically, adapting data from one format to another, until you end up

@@ -7,6 +7,8 @@ video:
   id: YSZBWWJw3mI
 ---
 
+[Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anidcd/dotfiles_iap_2019/)
+
 Many programs are configured using plain-text files known as "dotfiles"
 (because the file names begin with a `.`, e.g. `~/.gitconfig`, so that they are
 hidden in the directory listing `ls` by default).

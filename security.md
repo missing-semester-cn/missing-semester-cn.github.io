@@ -7,6 +7,8 @@ video:
   id: OBx_c-i-M8s
 ---
 
+[Reddit Discussion](https://www.reddit.com/r/hackertools/comments/aniekk/security_and_privacy_iap_2019/)
+
 The world is a scary place, and everyone's out to get you.
 
 Okay, maybe not, but that doesn't mean you want to flaunt all your
