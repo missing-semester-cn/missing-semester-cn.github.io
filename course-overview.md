@@ -7,6 +7,8 @@ video:
   id: qw2c6ffSVOM
 ---
 
+[Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anic30/course_overview_iap_2019/)
+
 # Motivation
 
 This class is about [hacker](https://en.wikipedia.org/wiki/Hacker_culture)
@@ -35,12 +37,23 @@ own. We'll inspire you to learn more about your tools, and we'll show you
 what's possible and cover some of the basics in detail, but we can't teach you
 everything in the time we have.
 
+Please post questions on [r/hackertools]. In addition, we ask that you share your
+knowledge with your classmates through [r/hackertools] --- **for "homework" for each
+lecture, create a post or comment about something you've learned or something you'd
+like to share about the topic**.
+
+# Discussion
+
+You can find discussion about the class topics in the subreddit [r/hackertools]
+
+{% comment %}
+
+# Exercises
+
 Please post questions on [Piazza]. In addition, we ask that you share your
 knowledge with your classmates through Piazza --- **for "homework" for each
 lecture, create a Piazza note about something you've learned or something you'd
 like to share about the topic**.
-
-# Exercises
 
 1. Fill out the [registration form](https://goo.gl/forms/HSdsUQ204Ow8BgUs2) if
    you haven't already.
@@ -48,3 +61,8 @@ like to share about the topic**.
 1. Sign up for [Piazza].
 
 [Piazza]: https://piazza.com/class/jqjpgaeaz77785
+
+
+{% endcomment %}
+
+[r/hackertools]: https://www.reddit.com/r/hackertools

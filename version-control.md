@@ -7,6 +7,8 @@ video:
   id: 3fig2Vz8QXs
 ---
 
+[Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anid8p/version_control_iap_2019/)
+
 Whenever you are working on something that changes over time, it's
 useful to be able to _track_ those changes. This can be for a number of
 reasons: it gives you a record of what changed, how to undo it, who

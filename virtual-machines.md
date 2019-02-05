@@ -7,6 +7,8 @@ video:
   id: LJ9ki5zq6Ik
 ---
 
+[Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anicey/virtual_machines_and_containers_iap_2019/)
+
 # Virtual Machines
 
 Virtual machines are simulated computers. You can configure a guest virtual

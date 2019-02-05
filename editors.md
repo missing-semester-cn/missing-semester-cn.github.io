@@ -7,6 +7,8 @@ video:
   id: 1vLcusYSrI4
 ---
 
+[Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anid4e/editors_iap_2019/)
+
 # Importance of Editors
 
 As programmers, we spend most of our time editing plain-text files. It's worth

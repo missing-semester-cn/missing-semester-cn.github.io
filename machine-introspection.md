@@ -7,6 +7,8 @@ video:
   id: eNYT2Oq3PF8
 ---
 
+[Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anidns/machine_introspection_iap_2019/)
+
 Sometimes, computers misbehave. And very often, you want to know why.
 Let's look at some tools that help you do that!
 

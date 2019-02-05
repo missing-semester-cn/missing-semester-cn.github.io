@@ -7,6 +7,8 @@ video:
   id: i0rf1gpKL1E
 ---
 
+[Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anick3/commandline_environment_iap_2019/)
+
 ## Aliases & Functions
 
 As you can imagine it can become tiresome typing long commands that involve many flags or verbose options. Nevertheless, most shells support **aliasing**. For instance, an alias in bash has the following structure (note there is no space around the `=` sign):

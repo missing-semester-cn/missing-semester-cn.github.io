@@ -7,6 +7,8 @@ video:
   id: X5c2Y8BCowM
 ---
 
+[Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anie9u/remote_machines_iap_2019/)
+
 It has become more and more common for programmers to use remote servers in their everyday work. If you need to use remote servers in order to deploy backend software or you need a server with higher computational capabilities, you will end up using a Secure Shell (SSH). As with most tools covered, SSH is highly configurable so it is worth learning about it.
 
 

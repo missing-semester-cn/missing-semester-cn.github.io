@@ -30,8 +30,11 @@ Ortiz](http://josejg.com/).
 # Questions
 
 Have any questions? Send us an email at
-[hacker-tools@mit.edu](mailto:hacker-tools@mit.edu) or post on
+[hacker-tools@mit.edu](mailto:hacker-tools@mit.edu) or post on [r/hackertools](https://www.reddit.com/r/hackertools/)
+
+{% comment %}
 [Piazza](https://piazza.com/class/jqjpgaeaz77785).
+{% endcomment %}
 
 # Beyond MIT
 
