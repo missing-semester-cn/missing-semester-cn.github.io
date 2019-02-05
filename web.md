@@ -126,7 +126,7 @@ There are also script repositories such as [OpenUserJS](https://openuserjs.org/)
 ## Web APIs
 
 It has become more and more common for webservices to offer an application interface aka web API so you can interact with the services making web requests.
-A more in depth introduction to the topic can be found [here](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction). Web APIs can be useful for very many reasons:
+A more in depth introduction to the topic can be found [here](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction). There are [many public APIs](https://github.com/toddmotto/public-apis). Web APIs can be useful for very many reasons:
 
 - **Retrieval**. Web APIs can quite easily provide you information such as maps, weather or what your public ip address. For instance `curl ipinfo.io` will return a JSON object with some details about your public ip, region, location, &c. With proper parsing these tools can be integrated even with command line tools. The following bash functions talks to Googles autocompletion API and returns the first ten matches.
 
