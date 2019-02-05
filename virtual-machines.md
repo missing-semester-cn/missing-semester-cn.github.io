@@ -59,7 +59,7 @@ enable nicer integration with host system. You should use this if you can.
     - [VMWare](https://www.vmware.com/) (commercial, available from IS&T [for
     MIT students](https://ist.mit.edu/vmware-fusion))
 
-If you are already familiar with popular hypervisors/VMs you many want to learn more about how to do this from a command line friendly way. One option is the [libvirt](https://wiki.libvirt.org/page/UbuntuKVMWalkthrough) toolkit which allows you to manage multiple different virtualization providers/hypervisors.
+If you are already familiar with popular hypervisors/VMs you may want to learn more about how to do this from a command line friendly way. One option is the [libvirt](https://wiki.libvirt.org/page/UbuntuKVMWalkthrough) toolkit which allows you to manage multiple different virtualization providers/hypervisors.
 
 ## Exercises
 
