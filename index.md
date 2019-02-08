@@ -15,12 +15,20 @@ We’ll show you how to navigate the command line, use a powerful text editor,
 use version control efficiently, automate mundane tasks, manage packages and
 software, configure your desktop environment, and more.
 
-**See [here](/lectures/) for links to all lecture videos and lecture notes.**
+## Topics
+
+<ul>
+{% for lecture in site.data.lectures %}
+{% for topic in lecture.topics %}
+    <li><a href="{{ topic.url }}">{{ topic.title | capitalize }}</a></li>
+{% endfor %}
+{% endfor %}
+</ul>
 
 ## About the class
 
-**Lectures**: Hacker Tools has concluded for IAP 2019.<br />
-**Staff**: This class is co-taught by [Anish](https://www.anishathalye.com/), [Jon](https://thesquareplanet.com/), and [Jose](http://josejg.com/).<br />
+**Lectures**: Hacker Tools has concluded for IAP 2019.  
+**Staff**: This class is co-taught by [Anish](https://www.anishathalye.com/), [Jon](https://thesquareplanet.com/), and [Jose](http://josejg.com/).  
 **Questions**: Email us at [hacker-tools@mit.edu](mailto:hacker-tools@mit.edu) or post on [r/hackertools](https://www.reddit.com/r/hackertools/)
 
 ## Beyond MIT
