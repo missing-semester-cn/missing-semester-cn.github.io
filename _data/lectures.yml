@@ -1,0 +1,51 @@
+- date: Tuesday, 1/15
+  topics:
+    - title: course overview
+      url: /course-overview/
+    - title: virtual machines and containers
+      url: /virtual-machines/
+    - title: shell and scripting
+      url: /shell/
+
+- date: Thursday, 1/17
+  topics:
+    - title: command-line environment
+      url: /command-line/
+    - title: data wrangling
+      url: /data-wrangling/
+
+- date: Tuesday, 1/22
+  topics:
+    - title: editors
+      url: /editors/
+    - title: version control
+      url: /version-control/
+
+- date: Thursday, 1/24
+  topics:
+    - title: dotfiles
+      url: /dotfiles/
+    - title: backups
+      url: /backups/
+    - title: automation
+      url: /automation/
+    - title: machine introspection
+      url: /machine-introspection/
+
+- date: Tuesday, 1/29
+  topics:
+    - title: program introspection
+      url: /program-introspection/
+    - title: package/dependency management
+      url: /package-management/
+    - title: OS customization
+      url: /os-customization/
+    - title: remote machines
+      url: /remote-machines/
+
+- date: Thursday, 1/31
+  topics:
+    - title: web and browsers
+      url: /web/
+    - title: security and privacy
+      url: /security/

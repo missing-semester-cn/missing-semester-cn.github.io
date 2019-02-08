@@ -1,0 +1,18 @@
+---
+layout: page
+title: "Lectures"
+---
+
+<p>Click on specific topics below to see lecture videos and lecture notes.</p>
+
+{% for lecture in site.data.lectures %}
+
+    <h1>{{ lecture.date }}</h1>
+
+    <ul>
+    {% for topic in lecture.topics %}
+        <li><a href="{{ topic.url }}">{{ topic.title | capitalize }}</a></li>
+    {% endfor %}
+    </ul>
+
+{% endfor %}
