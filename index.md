@@ -17,15 +17,11 @@ software, configure your desktop environment, and more.
 
 **See [here](/lectures/) for links to all lecture videos and lecture notes.**
 
-**Lectures**: Hacker Tools has concluded for IAP 2019.
+## About the class
 
-**Staff**: This class is co-taught by [Anish Athalye](https://www.anishathalye.com/), [Jon
-Gjengset](https://thesquareplanet.com/), and [Jose Javier Gonzalez
-Ortiz](http://josejg.com/).
-
-**Questions**: Send us an email at
-[hacker-tools@mit.edu](mailto:hacker-tools@mit.edu) or post on
-[r/hackertools](https://www.reddit.com/r/hackertools/)
+**Lectures**: Hacker Tools has concluded for IAP 2019.<br />
+**Staff**: This class is co-taught by [Anish](https://www.anishathalye.com/), [Jon](https://thesquareplanet.com/), and [Jose](http://josejg.com/).<br />
+**Questions**: Email us at [hacker-tools@mit.edu](mailto:hacker-tools@mit.edu) or post on [r/hackertools](https://www.reddit.com/r/hackertools/)
 
 ## Beyond MIT
 
