@@ -15,34 +15,25 @@ We’ll show you how to navigate the command line, use a powerful text editor,
 use version control efficiently, automate mundane tasks, manage packages and
 software, configure your desktop environment, and more.
 
-# Lectures
+**See [here](/lectures/) for links to all lecture videos and lecture notes.**
 
-Hacker Tools has concluded for IAP 2019.
+**Lectures**: Hacker Tools has concluded for IAP 2019.
 
-See [here](/lectures/) for links to all lecture videos and lecture notes.
-
-# Staff
-
-This class is co-taught by [Anish Athalye](https://www.anishathalye.com/), [Jon
+**Staff**: This class is co-taught by [Anish Athalye](https://www.anishathalye.com/), [Jon
 Gjengset](https://thesquareplanet.com/), and [Jose Javier Gonzalez
 Ortiz](http://josejg.com/).
 
-# Questions
+**Questions**: Send us an email at
+[hacker-tools@mit.edu](mailto:hacker-tools@mit.edu) or post on
+[r/hackertools](https://www.reddit.com/r/hackertools/)
 
-Have any questions? Send us an email at
-[hacker-tools@mit.edu](mailto:hacker-tools@mit.edu) or post on [r/hackertools](https://www.reddit.com/r/hackertools/)
-
-{% comment %}
-[Piazza](https://piazza.com/class/jqjpgaeaz77785).
-{% endcomment %}
-
-# Beyond MIT
+## Beyond MIT
 
 We've also shared this class beyond MIT in the hopes that other may
 benefit from these resources. You can find posts and discussion on
 
  - [Hacker News](https://news.ycombinator.com/item?id=19078281)
- - [Lobsters](https://lobste.rs/s/h6157x/mit_hacker_tools_lecture_series_on)
+ - [Lobsters](https://lobste.rs/s/h6157x/mit_hacker_tools_lecture_series_on) — you'll need an [invite](https://lobste.rs/about#invitations) to comment
  - [`/r/learnprogramming`](https://www.reddit.com/r/learnprogramming/comments/an42uu/mit_hacker_tools_a_lecture_series_on_programmer/)
  - [`/r/programming`](https://www.reddit.com/r/programming/comments/an3xki/mit_hacker_tools_a_lecture_series_on_programmer/)
  - [Twitter](https://twitter.com/Jonhoo/status/1091896192332693504)
