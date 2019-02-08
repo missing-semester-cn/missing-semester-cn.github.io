@@ -32,6 +32,7 @@ Ortiz](http://josejg.com/).
 We've also shared this class beyond MIT in the hopes that other may
 benefit from these resources. You can find posts and discussion on
 
+ - [`/r/hackertools`](https://www.reddit.com/r/hackertools)
  - [Hacker News](https://news.ycombinator.com/item?id=19078281)
  - [Lobsters](https://lobste.rs/s/h6157x/mit_hacker_tools_lecture_series_on) — you'll need an [invite](https://lobste.rs/about#invitations) to comment
  - [`/r/learnprogramming`](https://www.reddit.com/r/learnprogramming/comments/an42uu/mit_hacker_tools_a_lecture_series_on_programmer/)
