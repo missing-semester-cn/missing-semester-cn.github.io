@@ -20,7 +20,7 @@ software, configure your desktop environment, and more.
 <ul>
 {% for lecture in site.data.lectures %}
 {% for topic in lecture.topics %}
-    <li><a href="{{ topic.url }}">{{ topic.title | capitalize }}</a></li>
+    <li><a href="{{ topic.url }}">{{ topic.title }}</a></li>
 {% endfor %}
 {% endfor %}
 </ul>
