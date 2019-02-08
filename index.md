@@ -17,6 +17,8 @@ software, configure your desktop environment, and more.
 
 ## Topics
 
+Click on specific topics below to see lecture videos and lecture notes.
+
 <ul>
 {% for lecture in site.data.lectures %}
 {% for topic in lecture.topics %}
