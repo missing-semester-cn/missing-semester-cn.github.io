@@ -4,7 +4,7 @@ title: "Shell and Scripting"
 presenter: Jon
 video:
   aspect: 56.25
-  id: Gn_zGUywz-Q
+  id: dbDRfmH5uSI
 ---
 
 [Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anieve/shell_and_scripting_iap_2019/)
