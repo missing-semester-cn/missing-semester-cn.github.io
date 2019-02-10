@@ -35,7 +35,7 @@ Click on specific topics below to see lecture videos and lecture notes.
 
 ## Beyond MIT
 
-We've also shared this class beyond MIT in the hopes that other may
+We've also shared this class beyond MIT in the hopes that others may
 benefit from these resources. You can find posts and discussion on
 
  - [`/r/hackertools`](https://www.reddit.com/r/hackertools)
