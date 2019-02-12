@@ -52,7 +52,7 @@ There's a lot to unpack:
    - split `list`, assign each to `x`, and run body
    - splitting is "whitespace splitting", which we'll get back to
    - no curly braces in shell, so `do` + `done`
- - `$(seq 1 10)`
+ - `$(seq 1 5)`
    - run the program `seq` with arguments `1` and `5`
    - substitute entire `$()` with the output of that program
    - equivalent to
