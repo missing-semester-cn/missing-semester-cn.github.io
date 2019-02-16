@@ -90,7 +90,7 @@ Moreover, Stylus can find styles written by other users and published in [userst
 
 ## Functionality Customization
 
-In the same way that you can modify the style, you can also modify the behaviour of a website by writing custom javascript and them sourcing it using a web browser extension such as [Tapermonkey](https://tampermonkey.net/)
+In the same way that you can modify the style, you can also modify the behaviour of a website by writing custom javascript and them sourcing it using a web browser extension such as [Tampermonkey](https://tampermonkey.net/)
 
 For example the following script enables vim-like navigation using the J and K keys.
 
