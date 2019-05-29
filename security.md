@@ -17,7 +17,8 @@ for attackers. Find out what your threat model is, and then design your
 security mechanisms around that! If the threat model is the NSA or
 Mossad, you're _probably_ going to have a bad time.
 
-There are _many_ ways to make your technical persona more secure. We'll
+There are _many_ ways to make your techn
+ical persona more secure. We'll
 touch on a lot of high-level things here, but this is a process, and
 educating yourself is one of the best things you can do. So:
 
@@ -118,12 +119,7 @@ trying to secure against?
    really wants your secrets.
  - Online attacks (someone has your laptop and it's on): use file
    encryption. There are two primary mechanisms for doing so
-    - Encrypted volumes: use something like [eCryptfs or
-      EncFS](https://wiki.archlinux.org/index.php/Disk_encryption#Stacked_filesystem_encryption)
-      to create a "filesystem in a file", which is then encrypted. You
-      can "mount" that file by providing the decryption key, and then
-      browse the files inside it freely. When you unmount it, those
-      files are all unavailable.
+    - Encrypted filesystems: stacked filesystem encryption software encrypts files individually rather than having encrypted block devices. You can "mount" these filesystems by providing the decryption key, and then browse the files inside it freely. When you unmount it, those files are all unavailable.  Modern solutions include [gocryptfs](https://github.com/rfjakob/gocryptfs) and [eCryptFS](http://ecryptfs.org/). More detailed comparisons can be found [here](https://nuetzlich.net/gocryptfs/comparison/) and [here](https://wiki.archlinux.org/index.php/disk_encryption#Comparison_table)
     - Encrypted files: encrypt individual files with symmetric
       encryption (see `gpg -c`) and a secret key. Or, like `pass`, also
       encrypt the key with your public key so only you can read it back
@@ -140,7 +136,7 @@ trying to secure against?
    and then consider whether you may want to try
    [VeraCrypt](https://www.veracrypt.fr/en/Home.html) (the maintained
    fork of good ol' TrueCrypt).
- - Encrypted backups: use [Tarsnap](https://www.tarsnap.com/).
+ - Encrypted backups: use [Tarsnap](https://www.tarsnap.com/) or [Borgbase](https://www.borgbase.com/)
     - Think about whether an attacker can delete your backups if they
       get a hold of your laptop!
 
