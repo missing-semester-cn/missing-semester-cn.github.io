@@ -53,6 +53,12 @@ Since we might be backing up to untrusted third parties like cloud providers it 
 As a side note, if your disk (or home partition) is not encrypted, then anyone that get ahold of your computer can manage to override the user access controls and read your data. Modern hardware supports fast and efficient read and writes of encrypted data so you might want to consider enabling **full disk encryption**.
 
 
+## Append only
+
+The properties reviewed so far focus on hardware failure or user mistakes but fail to address what happens if a malicious agent wanted to delete your data. Namely, say someone hacks into your system, are they able to wipe all your copies of the data you care about? If you worry about that scenario then you need some sort of append only backup solution. In general, this means having a server that will allow you to send new data but will refuse to delete existing data. Usually users have two keys, an append only key that supports  creating new backups and a full access key that also allows for deleting old backups that are no longer needed. The latter one is stored offline.
+
+Note that this is a quite challenging scenario since you need the ability to make changes whilst still preventing a malicious user from deleting your data. Existing commercial solutions include [Tarsnap](https://www.tarsnap.com/) and [Borgbase](https://www.borgbase.com/).
+
 
 ## Additional considerations
 
