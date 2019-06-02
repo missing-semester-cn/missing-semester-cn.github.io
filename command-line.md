@@ -131,7 +131,7 @@ If you are in need of navigating many folders and/or previewing many files, [ran
 
 ### `rg/fzf` vs `grep`
 
-`grep` is a great tool but if you want to grep through many files and once, there are better tools for that purpose. [ack](https://beyondgrep.com/), [ag](https://github.com/ggreer/the_silver_searcher) & [rg](https://github.com/BurntSushi/ripgrep) recursively search your current directory for a regex pattern while respecting your gitignore rules. They all work pretty similar but I favor `rg` due to how fast it can search my entire home directory.
+`grep` is a great tool but if you want to grep through many files at once, there are better tools for that purpose. [ack](https://beyondgrep.com/), [ag](https://github.com/ggreer/the_silver_searcher) & [rg](https://github.com/BurntSushi/ripgrep) recursively search your current directory for a regex pattern while respecting your gitignore rules. They all work pretty similar but I favor `rg` due to how fast it can search my entire home directory.
 
 Similarly, it can be easy to find yourself doing `CMD | grep PATTERN` over an over again. [fzf](https://github.com/junegunn/fzf) is a command line fuzzy finder that enables you to interactively filter the output of pretty much any command.
 
