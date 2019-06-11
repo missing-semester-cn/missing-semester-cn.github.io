@@ -85,9 +85,9 @@ Similarly, some high quality content can be found online in the form of webpages
 Some good backup programs and services we have used and can honestly recommend:
 
 - [Tarsnap](https://www.tarsnap.com/) - deduplicated, encrypted online backup service for the truly paranoid.
-- [Borg Backup](https://borgbackup.readthedocs.io) - deduplicated backup program that supports compression and authenticated encryption. If you need a cloud provider [rsync.net](https://www.rsync.net/products/attic.html) has special offerings for borg/attic users.
+- [Borg Backup](https://borgbackup.readthedocs.io) - deduplicated backup program that supports compression and authenticated encryption. If you need a cloud provider [rsync.net](https://www.rsync.net/products/borg.html) has special offerings for Borg users.
 - [rsync](https://rsync.samba.org/) is a utility that provides fast incremental file transfer. It is not a full backup solution.
-- [rclone](https://rclone.org/) like rsync but for cloud storage providers such as Amazon S3, Dropbox, Google Drive, &c. Supports client side encryption of remote folders.
+- [rclone](https://rclone.org/) like rsync but for cloud storage providers such as Amazon S3, Dropbox, Google Drive, rsync.net, &c. Supports client side encryption of remote folders.
 
 ## Exercises
 
