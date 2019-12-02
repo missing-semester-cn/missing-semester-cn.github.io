@@ -1,6 +1,6 @@
 # Setup
-title: 'hacker tools'
-url: https://hacker-tools.github.io
+title: 'the missing semester of your cs education'
+url: https://missing.csail.mit.edu
 
 # Settings
 markdown: kramdown
@@ -13,7 +13,7 @@ future: true
 # safe: true # breaks local rendering if enabled
 timezone: America/New_York
 analytics:
-  tracking_id: UA-53167467-10
+  tracking_id: UA-53167467-11
 
 # Excludes
 exclude:
