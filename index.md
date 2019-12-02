@@ -1,7 +1,9 @@
 ---
 layout: page
-title: Hacker Tools
+title: The Missing Semester of Your CS Education
 ---
+
+**Note: this site is under construction for the 2020 offering of this IAP class.**
 
 Learn to make the most of the tools that
 [hackers](https://en.wikipedia.org/wiki/Hacker_culture) have been using for
@@ -29,9 +31,8 @@ Click on specific topics below to see lecture videos and lecture notes.
 
 ## About the class
 
-**Lectures**: Hacker Tools has concluded for IAP 2019.  
 **Staff**: This class is co-taught by [Anish](https://www.anishathalye.com/), [Jon](https://thesquareplanet.com/), and [Jose](http://josejg.com/).  
-**Questions**: Email us at [hacker-tools@mit.edu](mailto:hacker-tools@mit.edu) or post on [r/hackertools](https://www.reddit.com/r/hackertools/)
+**Questions**: Email us at [missing-semester@mit.edu](mailto:missing-semester@mit.edu).
 
 ## Beyond MIT
 
@@ -50,6 +51,5 @@ benefit from these resources. You can find posts and discussion on
 ---
 
 <div class="small center">
-<p>Taught as part of <a href="https://sipb.mit.edu/iap/">SIPB IAP 2019</a>. Co-sponsored by <a href="https://sipb.mit.edu/">SIPB</a> and <a href="https://www.eecs.mit.edu/">MIT EECS</a>.</p>
-<p><a href="https://github.com/hacker-tools/hacker-tools.github.io">Source code</a>.</p>
+<p><a href="https://github.com/missing-semester/missing-semester">Source code</a>.</p>
 </div>

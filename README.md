@@ -1,6 +1,8 @@
-# Hacker Tools
+# The Missing Semester of Your CS Education
 
-Website for the [Hacker Tools](https://hacker-tools.github.io/) class!
+Website for the [The Missing Semester of Your CS Education](https://missing.csail.mit.edu/) class!
+
+(formerly known as [Hacker Tools](https://hacker-tools.github.io/))
 
 Contributions are most welcome! If you have edits or new content to add, please
 open an issue or submit a pull request.
