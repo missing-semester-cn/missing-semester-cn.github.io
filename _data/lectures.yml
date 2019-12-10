@@ -1,4 +1,4 @@
-- date: Tuesday, 1/15
+- date: Tuesday, 1/15/19
   topics:
     - title: Course overview
       url: /course-overview/
@@ -7,21 +7,21 @@
     - title: Shell and scripting
       url: /shell/
 
-- date: Thursday, 1/17
+- date: Thursday, 1/17/19
   topics:
     - title: Command-line environment
       url: /command-line/
     - title: Data wrangling
       url: /data-wrangling/
 
-- date: Tuesday, 1/22
+- date: Tuesday, 1/22/19
   topics:
     - title: Editors
       url: /editors/
     - title: Version control
       url: /version-control/
 
-- date: Thursday, 1/24
+- date: Thursday, 1/24/19
   topics:
     - title: Dotfiles
       url: /dotfiles/
@@ -32,7 +32,7 @@
     - title: Machine introspection
       url: /machine-introspection/
 
-- date: Tuesday, 1/29
+- date: Tuesday, 1/29/19
   topics:
     - title: Program introspection
       url: /program-introspection/
@@ -43,7 +43,7 @@
     - title: Remote machines
       url: /remote-machines/
 
-- date: Thursday, 1/31
+- date: Thursday, 1/31/19
   topics:
     - title: Web and browsers
       url: /web/
