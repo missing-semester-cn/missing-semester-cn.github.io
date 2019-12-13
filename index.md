@@ -28,8 +28,12 @@ The class will run in the afternoons, Monday through Thursday, from 1/13 to
 1/30. Lectures will be 50 minutes long. We will also have office hours after
 every class.
 
-We're in the process of reserving a classroom, so the location and exact
-time will be posted soon.
+**Location**: 35-225<br>
+**Time**: 2pm-3pm
+
+**Office hours**: 32-G9 lounge<br>
+**Time**: 3pm-4pm (immediately after lecture)
+
 
 ## Topics
 
