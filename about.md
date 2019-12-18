@@ -1,4 +1,7 @@
-# The Missing Semester of Your CS Education
+---
+layout: lecture
+title: "The Missing Semester of Your CS Education"
+---
 
 During a traditional Computer Science education, chances are you will
 take plenty of classes that teach you advanced topics within CS;
@@ -10,7 +13,7 @@ is instead left for students to pick up on their own: computing
 ecosystem literacy.
 
 What do we mean by that? Well, over the years, we (Anish Athalye, Jose
-Gonzalez Ortis, and Jon Gjengset) have helped teach several classes at
+Gonzalez Ortiz, and Jon Gjengset) have helped teach several classes at
 MIT, and over and over we are struck by how limited knowledge many
 students have of the tools available to them. Computers were built to
 automate manual tasks, yet students often perform menial and repetitive
@@ -32,24 +35,26 @@ student-run classes. While the lectures themselves are only available to
 MIT students, we will provide all lecture materials along with video
 recordings of lectures to the public.
 
-If this sounds like it might be for your, here are some concrete
+If this sounds like it might be for you, here are some concrete
 examples of what the class will teach:
 
  - How to stay sane when working with remote machines using SSH keys and
    terminal multiplexing. No more keeping many terminals open just to
    run two commands at once. No more typing your password every time you
-   connect. No more losing everything just because your internet
+   connect. No more losing everything just because your Internet
    disconnected or you had to reboot your laptop.
- - How to use virtual machines to try out new operating systems, isolate
-   unrelated projects, and keep your main machine clean and tidy. No
-   more accidentally corrupting your computer while doing a security
-   lab. No more millions of randomly installed packages with differing
-   versions.
- - How to efficiently edit files from the command-line, both locally and
-   remotely, and take advantage of advanced editor features. No more
-   copying files back and forth. No more repetitive file editing. No
+   <script id="asciicast-288948" src="https://asciinema.org/a/288948.js" async class="asciicast"></script>
+
+ - How to quickly find files that you are looking for.  No
    more clicking through files in your project until you find the one
    that has the code you want.
+   <script id="asciicast-288380" src="https://asciinema.org/a/288380.js" async class="asciicast"></script>
+
+ - How to efficiently edit files from the command-line, both locally and
+   remotely, and take advantage of advanced editor features. No more
+   copying files back and forth. No more repetitive file editing.
+   <script id="asciicast-288382" src="https://asciinema.org/a/288382.js" async class="asciicast"></script>
+
  - How to use version control _properly_, and take advantage of it to
    save you from disaster, collaborate with others, and quickly find and
    isolate problematic changes. No more `rm -rf; git clone`. No more
@@ -58,16 +63,25 @@ examples of what the class will teach:
    your code. No more "oh no, did we delete the working code?!". We'll
    even teach you how to contribute to other people's projects with pull
    requests!
- - How to quickly and easily modify, view, parse, plot, and compute over
-   data and files directly from the command-line. No more copy pasting
-   from log files. No more manually computing statistics over data. No
-   more spreadsheet plotting.
+   <script id="asciicast-288934" src="https://asciinema.org/a/288934.js" async class="asciicast"></script>
+
  - How to automate common and repetitive tasks with aliases, scripts,
    and build systems. No more copy-pasting commands from a text
    document. No more "run these 15 commands one after the other". No
    more "you forgot to run this thing" or "you forgot to pass this
    argument".
- - How to be on the internet without immediately revealing all of your
+   <script id="asciicast-288386" src="https://asciinema.org/a/288386.js" async class="asciicast"></script>
+
+ - How to quickly and easily modify, view, parse, plot, and compute over
+   data and files directly from the command-line. No more copy pasting
+   from log files. No more manually computing statistics over data. No
+   more spreadsheet plotting.
+ - How to use virtual machines to try out new operating systems, isolate
+   unrelated projects, and keep your main machine clean and tidy. No
+   more accidentally corrupting your computer while doing a security
+   lab. No more millions of randomly installed packages with differing
+   versions.
+ - How to be on the Internet without immediately revealing all of your
    secrets to the world. No more coming up with passwords that match the
    insane criteria yourself. No more unsecured, open WiFi networks. No
    more unencrypted messaging.
@@ -81,3 +95,14 @@ the precursor to this class, and covers many of the same topics.
 We hope to see you in January, whether virtually or in person!
 Happy hacking,
 Anish, Jose, and Jon
+
+<script>
+window.addEventListener('load', function() {
+   var x = document.getElementsByClassName("asciicast");
+   var i;
+   for (i = 0; i < x.length; i++) {
+     x[i].style.setProperty('margin-left', "-7rem");
+   }
+})
+
+</script>
