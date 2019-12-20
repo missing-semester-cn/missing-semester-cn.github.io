@@ -202,10 +202,9 @@ hr {
   padding: 1rem 1rem 0 1rem;
 }
 
-.asciicast {
-  max-width: none;
-  width: 60rem;
-  margin-left: -5rem;
+.demo {
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
 
 #nav-bg {
