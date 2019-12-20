@@ -43,17 +43,31 @@ examples of what the class will teach:
    run two commands at once. No more typing your password every time you
    connect. No more losing everything just because your Internet
    disconnected or you had to reboot your laptop.
-   <script id="asciicast-288948" src="https://asciinema.org/a/288948.js" async class="asciicast"></script>
+
+   In the example below we use `tmux` to keep sessions alive in remote servers and `mosh` to support network roaming and disconnection.
+
+   <video autoplay loop muted class='demo'>
+     <source src="/static/media/demos/ssh.mp4" type="video/mp4">
+   </video>
 
  - How to quickly find files that you are looking for.  No
    more clicking through files in your project until you find the one
    that has the code you want.
-   <script id="asciicast-288380" src="https://asciinema.org/a/288380.js" async class="asciicast"></script>
+
+   In the example below we quickly look for files with `fd` and for code snippets with `rg`. We also quickly `cd` and `vim` recent/frequent files/folder using `fasd`.
+
+   <video autoplay loop muted class='demo'>
+     <source src="/static/media/demos/find.mp4" type="video/mp4">
+   </video>
 
  - How to efficiently edit files from the command-line, both locally and
    remotely, and take advantage of advanced editor features. No more
    copying files back and forth. No more repetitive file editing.
-   <script id="asciicast-288382" src="https://asciinema.org/a/288382.js" async class="asciicast"></script>
+
+   Vim macros are one of its best features, in the example below we quickly convert an html table to csv format using a nested vim macro.
+   <video autoplay loop muted class='demo'>
+     <source src="/static/media/demos/vim.mp4" type="video/mp4">
+   </video>
 
  - How to use version control _properly_, and take advantage of it to
    save you from disaster, collaborate with others, and quickly find and
@@ -63,14 +77,22 @@ examples of what the class will teach:
    your code. No more "oh no, did we delete the working code?!". We'll
    even teach you how to contribute to other people's projects with pull
    requests!
-   <script id="asciicast-288934" src="https://asciinema.org/a/288934.js" async class="asciicast"></script>
+
+   In the example below we use `git bisect` to find which commit broke a unit test and then we fix it with `git revert`.s
+   <video autoplay loop muted class='demo'>
+     <source src="/static/media/demos/git.mp4" type="video/mp4">
+   </video>
 
  - How to automate common and repetitive tasks with aliases, scripts,
    and build systems. No more copy-pasting commands from a text
    document. No more "run these 15 commands one after the other". No
    more "you forgot to run this thing" or "you forgot to pass this
    argument".
-   <script id="asciicast-288386" src="https://asciinema.org/a/288386.js" async class="asciicast"></script>
+
+   For example, searching through your history quickly can be a huge time saver. In the example below we show several tricks related to navigating your shell history for `convert` commands.
+   <video autoplay loop muted class='demo'>
+     <source src="/static/media/demos/history.mp4" type="video/mp4">
+   </video>
 
  - How to quickly and easily modify, view, parse, plot, and compute over
    data and files directly from the command-line. No more copy pasting
