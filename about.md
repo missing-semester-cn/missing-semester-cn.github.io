@@ -78,7 +78,7 @@ examples of what the class will teach:
    even teach you how to contribute to other people's projects with pull
    requests!
 
-   In the example below we use `git bisect` to find which commit broke a unit test and then we fix it with `git revert`.s
+   In the example below we use `git bisect` to find which commit broke a unit test and then we fix it with `git revert`.
    <video autoplay="autoplay" loop="loop" muted defaultMuted playsinline  oncontextmenu="return false;"  preload="auto"  class="demo">
      <source src="/static/media/demos/git.mp4" type="video/mp4">
    </video>
@@ -117,14 +117,3 @@ the precursor to this class, and covers many of the same topics.
 We hope to see you in January, whether virtually or in person!
 Happy hacking,
 Anish, Jose, and Jon
-
-<script>
-window.addEventListener('load', function() {
-   var x = document.getElementsByClassName("asciicast");
-   var i;
-   for (i = 0; i < x.length; i++) {
-     x[i].style.setProperty('margin-left', "-7rem");
-   }
-})
-
-</script>
