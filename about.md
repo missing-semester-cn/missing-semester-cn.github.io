@@ -46,7 +46,7 @@ examples of what the class will teach:
 
    In the example below we use `tmux` to keep sessions alive in remote servers and `mosh` to support network roaming and disconnection.
 
-   <video autoplay loop muted class='demo'>
+   <video autoplay="autoplay" loop="loop" muted defaultMuted playsinline  oncontextmenu="return false;"  preload="auto"  class="demo">
      <source src="/static/media/demos/ssh.mp4" type="video/mp4">
    </video>
 
@@ -56,7 +56,7 @@ examples of what the class will teach:
 
    In the example below we quickly look for files with `fd` and for code snippets with `rg`. We also quickly `cd` and `vim` recent/frequent files/folder using `fasd`.
 
-   <video autoplay loop muted class='demo'>
+   <video autoplay="autoplay" loop="loop" muted defaultMuted playsinline  oncontextmenu="return false;"  preload="auto"  class="demo">
      <source src="/static/media/demos/find.mp4" type="video/mp4">
    </video>
 
@@ -65,7 +65,7 @@ examples of what the class will teach:
    copying files back and forth. No more repetitive file editing.
 
    Vim macros are one of its best features, in the example below we quickly convert an html table to csv format using a nested vim macro.
-   <video autoplay loop muted class='demo'>
+   <video autoplay="autoplay" loop="loop" muted defaultMuted playsinline  oncontextmenu="return false;"  preload="auto"  class="demo">
      <source src="/static/media/demos/vim.mp4" type="video/mp4">
    </video>
 
@@ -79,7 +79,7 @@ examples of what the class will teach:
    requests!
 
    In the example below we use `git bisect` to find which commit broke a unit test and then we fix it with `git revert`.s
-   <video autoplay loop muted class='demo'>
+   <video autoplay="autoplay" loop="loop" muted defaultMuted playsinline  oncontextmenu="return false;"  preload="auto"  class="demo">
      <source src="/static/media/demos/git.mp4" type="video/mp4">
    </video>
 
@@ -90,7 +90,7 @@ examples of what the class will teach:
    argument".
 
    For example, searching through your history quickly can be a huge time saver. In the example below we show several tricks related to navigating your shell history for `convert` commands.
-   <video autoplay loop muted class='demo'>
+   <video autoplay="autoplay" loop="loop" muted defaultMuted playsinline  oncontextmenu="return false;"  preload="auto"  class="demo">
      <source src="/static/media/demos/history.mp4" type="video/mp4">
    </video>
 
