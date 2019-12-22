@@ -124,7 +124,7 @@ there's also a way to specify any external ports that should be
 available, and an _entrypoint_ that dictates what command should be run
 when the container is started (like a grading script).
 
-In a similar fashion to code repository websites (like [GitHub](https://github.com/)) there are some container repository websites (like [DockerHub](https://hub.docker.com/))where many software services have prebuilt images that one can easily deploy.
+In a similar fashion to code repository websites (like [GitHub](https://github.com/)) there are some container repository websites (like [DockerHub](https://hub.docker.com/)) where many software services have prebuilt images that one can easily deploy.
 
 ## Exercises
 
