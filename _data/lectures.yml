@@ -1,51 +1,31 @@
-- date: Tuesday, 1/15/19
-  topics:
-    - title: Course overview
-      url: /course-overview/
-    - title: Virtual machines and containers
-      url: /virtual-machines/
-    - title: Shell and scripting
-      url: /shell/
-
-- date: Thursday, 1/17/19
-  topics:
-    - title: Command-line environment
-      url: /command-line/
-    - title: Data wrangling
-      url: /data-wrangling/
-
-- date: Tuesday, 1/22/19
-  topics:
-    - title: Editors
-      url: /editors/
-    - title: Version control
-      url: /version-control/
-
-- date: Thursday, 1/24/19
-  topics:
-    - title: Dotfiles
-      url: /dotfiles/
-    - title: Backups
-      url: /backups/
-    - title: Automation
-      url: /automation/
-    - title: Machine introspection
-      url: /machine-introspection/
-
-- date: Tuesday, 1/29/19
-  topics:
-    - title: Program introspection
-      url: /program-introspection/
-    - title: Package/dependency management
-      url: /package-management/
-    - title: OS customization
-      url: /os-customization/
-    - title: Remote machines
-      url: /remote-machines/
-
-- date: Thursday, 1/31/19
-  topics:
-    - title: Web and browsers
-      url: /web/
-    - title: Security and privacy
-      url: /security/
+- date: 1/13
+  name: Course overview + command shell
+  # url: ...
+- date: 1/14
+  name: Shell tools and scripting
+  previous: https://hacker-tools.github.io/shell/
+- date: 1/15
+  name: Editors
+  previous: https://hacker-tools.github.io/editors/
+- date: 1/16
+  name: Command-line environment
+- date: 1/20
+  name: (MLK day, no class)
+- date: 1/21
+  name: Data wrangling
+  previous: https://hacker-tools.github.io/data-wrangling/
+- date: 1/22
+  name: Version control
+  previous: https://hacker-tools.github.io/version-control/
+- date: 1/23
+  name: Debugging and profiling
+- date: 1/27
+  name: Metaprogramming
+  details: build systems, sermver, makefiles, CI
+- date: 1/28
+  name: Security and privacy
+  previous: https://hacker-tools.github.io/security/
+- date: 1/29
+  name: Potpourri
+- date: 1/30
+  name: Q&A
