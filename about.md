@@ -38,6 +38,47 @@ lectures to the public.
 If this sounds like it might be for you, here are some concrete
 examples of what the class will teach:
 
+## Command shell
+
+How to automate common and repetitive tasks with aliases, scripts,
+and build systems. No more copy-pasting commands from a text
+document. No more "run these 15 commands one after the other". No
+more "you forgot to run this thing" or "you forgot to pass this
+argument".
+
+For example, searching through your history quickly can be a huge time saver. In the example below we show several tricks related to navigating your shell history for `convert` commands.
+
+<video autoplay="autoplay" loop="loop" controls muted playsinline  oncontextmenu="return false;"  preload="auto"  class="demo">
+  <source src="/static/media/demos/history.mp4" type="video/mp4">
+</video>
+
+## Version control
+
+How to use version control _properly_, and take advantage of it to
+save you from disaster, collaborate with others, and quickly find and
+isolate problematic changes. No more `rm -rf; git clone`. No more
+merge conflicts (well, fewer of them at least). No more huge blocks
+of commented-out code. No more fretting over how to find what broke
+your code. No more "oh no, did we delete the working code?!". We'll
+even teach you how to contribute to other people's projects with pull
+requests!
+
+In the example below we use `git bisect` to find which commit broke a unit test and then we fix it with `git revert`.
+<video autoplay="autoplay" loop="loop" controls muted playsinline  oncontextmenu="return false;"  preload="auto"  class="demo">
+  <source src="/static/media/demos/git.mp4" type="video/mp4">
+</video>
+
+## Text editing
+
+How to efficiently edit files from the command-line, both locally and
+remotely, and take advantage of advanced editor features. No more
+copying files back and forth. No more repetitive file editing.
+
+Vim macros are one of its best features, in the example below we quickly convert an html table to csv format using a nested vim macro.
+<video autoplay="autoplay" loop="loop" controls muted playsinline  oncontextmenu="return false;"  preload="auto"  class="demo">
+  <source src="/static/media/demos/vim.mp4" type="video/mp4">
+</video>
+
 ## Remote machines
 
 How to stay sane when working with remote machines using SSH keys and
@@ -62,47 +103,6 @@ In the example below we quickly look for files with `fd` and for code snippets w
 
 <video autoplay="autoplay" loop="loop" controls muted playsinline  oncontextmenu="return false;"  preload="auto"  class="demo">
   <source src="/static/media/demos/find.mp4" type="video/mp4">
-</video>
-
-## Text editing
-
-How to efficiently edit files from the command-line, both locally and
-remotely, and take advantage of advanced editor features. No more
-copying files back and forth. No more repetitive file editing.
-
-Vim macros are one of its best features, in the example below we quickly convert an html table to csv format using a nested vim macro.
-<video autoplay="autoplay" loop="loop" controls muted playsinline  oncontextmenu="return false;"  preload="auto"  class="demo">
-  <source src="/static/media/demos/vim.mp4" type="video/mp4">
-</video>
-
-## Version control
-
-How to use version control _properly_, and take advantage of it to
-save you from disaster, collaborate with others, and quickly find and
-isolate problematic changes. No more `rm -rf; git clone`. No more
-merge conflicts (well, fewer of them at least). No more huge blocks
-of commented-out code. No more fretting over how to find what broke
-your code. No more "oh no, did we delete the working code?!". We'll
-even teach you how to contribute to other people's projects with pull
-requests!
-
-In the example below we use `git bisect` to find which commit broke a unit test and then we fix it with `git revert`.
-<video autoplay="autoplay" loop="loop" controls muted playsinline  oncontextmenu="return false;"  preload="auto"  class="demo">
-  <source src="/static/media/demos/git.mp4" type="video/mp4">
-</video>
-
-## Command shell
-
-How to automate common and repetitive tasks with aliases, scripts,
-and build systems. No more copy-pasting commands from a text
-document. No more "run these 15 commands one after the other". No
-more "you forgot to run this thing" or "you forgot to pass this
-argument".
-
-For example, searching through your history quickly can be a huge time saver. In the example below we show several tricks related to navigating your shell history for `convert` commands.
-
-<video autoplay="autoplay" loop="loop" controls muted playsinline  oncontextmenu="return false;"  preload="auto"  class="demo">
-  <source src="/static/media/demos/history.mp4" type="video/mp4">
 </video>
 
 ## Data wrangling
