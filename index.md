@@ -16,11 +16,11 @@ only enables you to spend less time on figuring out how to bend your tools to
 your will, but it also lets you solve problems that would previously seem
 impossibly complex.
 
-To read more about the motivation behind this class, see [here](/about/).
+Read about the [motivation behind this class](/about/).
 
 # Registration
 
-Sign up for the IAP 2020 class [here](https://forms.gle/TD1KnwCSV52qexVt9).
+Sign up for the IAP 2020 class by filling out this [registration form](https://forms.gle/TD1KnwCSV52qexVt9).
 
 # Schedule
 

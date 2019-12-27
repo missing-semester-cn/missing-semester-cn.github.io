@@ -9,8 +9,6 @@ title: "Lectures"
   <li>
   {% if lecture.url %}
     <strong>{{ lecture.date }}</strong>: <a href="{{ lecture.url }}">{{ lecture.name }}</a>
-  {% elsif lecture.previous %}
-    <strong>{{ lecture.date }}</strong>: {{ lecture.name }} [coming soon; see <a href="{{ lecture.previous }}">last year's version</a>]
   {% else %}
     <strong>{{ lecture.date }}</strong>: {{ lecture.name }} [coming soon]
   {% endif %}
@@ -24,4 +22,4 @@ title: "Lectures"
 
 <h2>Previous year's lectures</h2>
 
-<p>To see the lecture notes and videos from the IAP 2019 version of this class, see <a href="https://hacker-tools.github.io/lectures/">here</a>.</p>
+<p>You can find lecture notes and videos from last year's version of this class on the <a href="https://hacker-tools.github.io/lectures/">Hacker Tools IAP 2019</a> website.</p>
