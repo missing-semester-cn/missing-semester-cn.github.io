@@ -24,25 +24,8 @@ Sign up for the IAP 2020 class by filling out this [registration form](https://f
 
 # Schedule
 
-The class will run in the afternoons, Monday through Thursday, from 1/13 to
-1/30. Lectures will be 50 minutes long. We will also have office hours after
-every class.
-
-**Lecture**: 35-225<br>
-**Time**: 2pm-3pm
-
-**Office hours**: 32-G9 lounge<br>
-**Time**: 3pm-4pm (immediately after lecture)
-
-
-# Topics
-
-See [here](/lectures/) for more on this year's topics, including links to
-lecture notes and videos. If you want to get a sense of what the class was like
-last year, check out [last year's
-lectures](https://hacker-tools.github.io/lectures/).
-
-Here's the list of topics for IAP 2020:
+**Lecture**: 35-225, 2pm--3pm<br>
+**Office hours**: 32-G9 lounge, 3pm--4pm (every day, right after lecture)
 
 <ul>
 {% for lecture in site.data.lectures %}
@@ -50,7 +33,10 @@ Here's the list of topics for IAP 2020:
 {% endfor %}
 </ul>
 
-See [here](/lectures/) for more details.
+See [here](/lectures/) for more on this year's topics, including links to
+lecture notes and videos. If you want to get a sense of what the class was like
+last year, check out [last year's
+lectures](https://hacker-tools.github.io/lectures/).
 
 # About the class
 
@@ -63,7 +49,7 @@ We've also shared this class beyond MIT in the hopes that others may
 benefit from these resources. You can find posts and discussion on
 
  - [Hacker News](https://news.ycombinator.com/item?id=19078281)
- - [Lobsters](https://lobste.rs/s/h6157x/mit_hacker_tools_lecture_series_on) — you'll need an [invite](https://lobste.rs/about#invitations) to comment
+ - [Lobsters](https://lobste.rs/s/h6157x/mit_hacker_tools_lecture_series_on)
  - [/r/learnprogramming](https://www.reddit.com/r/learnprogramming/comments/an42uu/mit_hacker_tools_a_lecture_series_on_programmer/)
  - [/r/programming](https://www.reddit.com/r/programming/comments/an3xki/mit_hacker_tools_a_lecture_series_on_programmer/)
  - [Twitter](https://twitter.com/Jonhoo/status/1091896192332693504)
