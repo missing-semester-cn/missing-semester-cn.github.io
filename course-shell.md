@@ -131,7 +131,6 @@ command to execute. We can also execute a command with _arguments_:
 ```console
 missing:~$ echo hello
 hello
-missing:~$ 
 ```
 
 In this case, we told the shell to execute the program `echo` with the
@@ -162,7 +161,6 @@ missing:~$ which echo
 /bin/echo
 missing:~$ /bin/echo $PATH
 /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-missing:~$
 ```
 
 When we run the `echo` command, the shell sees that it should execute
@@ -203,7 +201,6 @@ missing:~$ pwd
 /home/missing
 missing:~$ ../../bin/echo hello
 hello
-missing:~$
 ```
 
 Notice that our shell prompt kept us informed about what our current
@@ -245,7 +242,6 @@ and options are available. For example, `ls --help` tells us:
 ```console
 missing:~$ ls -l /home
 drwxr-xr-x 1 missing     users          4096 Jun 15  2019 missing
-missing:~$ 
 ```
 
 This gives us a bunch more information about each file or directory
