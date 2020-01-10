@@ -1,6 +1,6 @@
 - date: 1/13
-  name: Course overview + command shell
-  # url: ...
+  name: Course overview + the shell
+  url: /course-shell/
 - date: 1/14
   name: Shell tools and scripting
 - date: 1/15
