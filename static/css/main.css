@@ -110,7 +110,7 @@ code {
 pre {
   color: #000;
   margin: 1rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.7rem;
   border: 1px dashed #444;
   word-wrap: break-word;
   white-space: pre-wrap;
@@ -122,6 +122,7 @@ pre code {
   color: inherit;
   background: none;
   font-size: 100%;
+  padding: 0;
 }
 
 a {
