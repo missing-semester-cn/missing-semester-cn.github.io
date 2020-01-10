@@ -241,7 +241,7 @@ and options are available. For example, `ls --help` tells us:
 
 ```console
 missing:~$ ls -l /home
-drwxr-xr-x 1 missing     users          4096 Jun 15  2019 missing
+drwxr-xr-x 1 missing  users  4096 Jun 15  2019 missing
 ```
 
 This gives us a bunch more information about each file or directory
