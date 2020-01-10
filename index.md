@@ -29,7 +29,13 @@ Sign up for the IAP 2020 class by filling out this [registration form](https://f
 
 <ul>
 {% for lecture in site.data.lectures %}
-    <li>{{ lecture.date }}: {{ lecture.name }}</li>
+  <li>
+  {% if lecture.url %}
+    <strong>{{ lecture.date }}</strong>: <a href="{{ lecture.url }}">{{ lecture.name }}</a>
+  {% else %}
+    <strong>{{ lecture.date }}</strong>: {{ lecture.name }}
+  {% endif %}
+  </li>
 {% endfor %}
 </ul>
 
