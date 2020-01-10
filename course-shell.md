@@ -302,7 +302,7 @@ input of another:
 
 ```console
 missing:~$ ls -l / | tail -n1
-drwxr-xr-x 1 root     root          4096 Jun 20  2019 var
+drwxr-xr-x 1 root  root  4096 Jun 20  2019 var
 missing:~$ curl --head --silent google.com | grep --ignore-case content-length | cut --delimiter=' ' -f2
 219
 ```
