@@ -321,4 +321,17 @@ there.
 
 ## Exercise
 
-TODO
+ 1. Create a new directory called `missing` under `/tmp`.
+ 2. Look up the `touch` program.
+ 3. Use `touch` to create a new file called `semester` in `missing`.
+ 4. Write the following into that file, one line at a time:
+    ```
+    #!/bin/sh
+    curl --head --silent https://missing.csail.mit.edu
+    ```
+ 5. Try to execute the file. Investigate why it doesn't work with `ls`.
+ 6. Look up the `chmod` program.
+ 7. Use `chmod` to make it possible to execute `semester`.
+ 8. Use `|` and `>` to write the "last modified" date output by
+    `semester` into a file called `last-modified.txt` in your home
+    directory.
