@@ -112,10 +112,9 @@ pre {
   margin: 1rem;
   padding: 0.5rem 0.7rem;
   border: 1px dashed #444;
-  word-wrap: break-word;
-  white-space: pre-wrap;
   /*font-size: .8rem;*/
   font-size: 11pt;
+  overflow-x: auto;
 }
 
 pre code {
