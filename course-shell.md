@@ -367,6 +367,12 @@ there.
     #!/bin/sh
     curl --head --silent https://missing.csail.mit.edu
     ```
+    The first line might be tricky to get working. It's helpful to know that
+    `#` starts a comment in Bash, and `!` has a special meaning even within
+    double-quoted (`"`) strings. Bash treats single-quoted strings (`'`)
+    differently: they will do the trick in this case. See the Bash
+    [quoting](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
+    manual page for more information.
  5. Try to execute the file. Investigate why it doesn't work with `ls`.
  6. Look up the `chmod` program.
  7. Use `chmod` to make it possible to run the command `./semester`.
