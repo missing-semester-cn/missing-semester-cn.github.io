@@ -310,6 +310,61 @@ missing:~$ curl --head --silent google.com | grep --ignore-case content-length |
 We will go into a lot more detail about how to take advantage of pipes
 in the lecture on data wrangling.
 
+## A versatile and powerful tool
+
+On most Unix-like systems, one user is special: the "root" user. You may
+have seen it in the file listings above. The root user is above (almost)
+all access restrictions, and can create, read, update, and delete any
+file in the system. You will not usually log into your system as the
+root user though, since it's too easy to accidentally break something.
+Instead, you will be using the `sudo` command. As its name implies, it
+lets you "do" something "as su" (short for "super user", or "root").
+When you get permission denied errors, it is usually because you need to
+do something as root. Though make sure you first double-check that you
+really wanted to do it that way!
+
+Once thing you need to be root in order to do is writing to the `sysfs`
+file system mounted under `/sys`. `sysfs` exposes a number of kernel
+parameters as files, so that you can easily reconfigure the kernel on
+the fly without specialized tools. For example, the brightness of your
+laptop's screen is exposed through a file called `brightness` under
+
+```
+/sys/class/backlight
+```
+
+By writing a value into that file, we can change the screen brightness.
+Your first instinct might be to do something like:
+
+```console
+$ sudo find /sys/class/backlight -name '*brightness*'
+/sys/class/backlight/thinkpad_screen/brightness
+$ sudo echo 3 > /sys/class/backlight/thinkpad_screen/brightness
+An error occurred while redirecting file '/sys/class/backlight/thinkpad_screen/brightness'
+open: Permission denied
+```
+
+This error may come as a surprise. After all, we ran the command with
+`sudo`! This is an important thing to know about the shell. Operations
+like `|`, `>`, and `<` are done _by the shell_, not by the individual
+program. `echo` and friends do not "know" about `|`. They just read from
+their input and write to their output, whatever it may be. In the case
+above, the _shell_ (which is authenticated just as your user) tries to
+open the brightness file for writing, before setting that as `sudo
+echo`'s output, but is prevented from doing so since the shell does not
+run as root. Using this knowledge, we can work around this:
+
+```console
+$ echo 3 | sudo tee /sys/class/backlight/thinkpad_screen/brightness
+```
+
+All sorts of fun things can be controlled through `/sys`, such as the
+state of various system LEDs:
+
+```console
+$ echo 1 | sudo tee /sys/class/leds/input6::scrolllock/brightness
+```
+
 # Next steps
 
 At this point you know your way around a shell enough to accomplish
@@ -335,3 +390,5 @@ there.
  8. Use `|` and `>` to write the "last modified" date output by
     `semester` into a file called `last-modified.txt` in your home
     directory.
+ 9. Write a command that reads out your laptop battery's power level or
+    your desktop machine's CPU temperature from `/sys`.
