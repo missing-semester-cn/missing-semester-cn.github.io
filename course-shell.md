@@ -168,7 +168,7 @@ the program `echo`, and then searches through the `:`-separated list of
 directories in `$PATH` for a file by that name. When it finds it, it
 runs it (assuming the file is _executable_; more on that later). We can
 find out which file is executed for a given program name using the
-`which` command. We can also bypass `$PATH` entirely by giving the
+`which` program. We can also bypass `$PATH` entirely by giving the
 _path_ to the file we want to execute.
 
 ## Navigating in the shell
@@ -264,7 +264,7 @@ rename/move a file), `cp` (to copy a file), and `mkdir` (to make a new
 directory).
 
 If you ever want _more_ information about a program's arguments, inputs,
-outputs, or how it works in general, give the `man` command a try. It
+outputs, or how it works in general, give the `man` program a try. It
 takes as an argument the name of a program, and shows you its _manual
 page_. Press `q` to exit.
 
@@ -323,7 +323,7 @@ When you get permission denied errors, it is usually because you need to
 do something as root. Though make sure you first double-check that you
 really wanted to do it that way!
 
-Once thing you need to be root in order to do is writing to the `sysfs`
+One thing you need to be root in order to do is writing to the `sysfs`
 file system mounted under `/sys`. `sysfs` exposes a number of kernel
 parameters as files, so that you can easily reconfigure the kernel on
 the fly without specialized tools. For example, the brightness of your
@@ -358,7 +358,9 @@ run as root. Using this knowledge, we can work around this:
 $ echo 3 | sudo tee /sys/class/backlight/thinkpad_screen/brightness
 ```
 
-All sorts of fun things can be controlled through `/sys`, such as the
+Since the `tee` program is the one to open the `/sys` file for writing,
+and _it_ is running as `root`, the permissions all work out. You can
+control all sorts of fun and useful things through `/sys`, such as the
 state of various system LEDs:
 
 ```console
