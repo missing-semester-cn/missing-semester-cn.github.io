@@ -317,10 +317,11 @@ By writing a value into that file, we can change the screen brightness.
 Your first instinct might be to do something like:
 
 ```console
-$ sudo find /sys/class/backlight -name '*brightness*'
+$ sudo find -L /sys/class/backlight -maxdepth 2 -name '*brightness*'
 /sys/class/backlight/thinkpad_screen/brightness
-$ sudo echo 3 > /sys/class/backlight/thinkpad_screen/brightness
-An error occurred while redirecting file '/sys/class/backlight/thinkpad_screen/brightness'
+$ cd /sys/class/backlight/thinkpad_screen
+$ sudo echo 3 > brightness
+An error occurred while redirecting file 'brightness'
 open: Permission denied
 ```
 
@@ -335,13 +336,13 @@ echo`'s output, but is prevented from doing so since the shell does not
 run as root. Using this knowledge, we can work around this:
 
 ```console
-$ echo 3 | sudo tee /sys/class/backlight/thinkpad_screen/brightness
+$ echo 3 | sudo tee brightness
 ```
 
 Since the `tee` program is the one to open the `/sys` file for writing,
 and _it_ is running as `root`, the permissions all work out. You can
 control all sorts of fun and useful things through `/sys`, such as the
-state of various system LEDs:
+state of various system LEDs (your path might be different):
 
 ```console
 $ echo 1 | sudo tee /sys/class/leds/input6::scrolllock/brightness
@@ -368,7 +369,7 @@ there.
     ```
  5. Try to execute the file. Investigate why it doesn't work with `ls`.
  6. Look up the `chmod` program.
- 7. Use `chmod` to make it possible to execute `semester`.
+ 7. Use `chmod` to make it possible to run the command `./semester`.
  8. Use `|` and `>` to write the "last modified" date output by
     `semester` into a file called `last-modified.txt` in your home
     directory.
