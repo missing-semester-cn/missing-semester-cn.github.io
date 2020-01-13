@@ -360,7 +360,7 @@ there.
 ## Exercise
 
  1. Create a new directory called `missing` under `/tmp`.
- 2. Look up the `touch` program.
+ 2. Look up the `touch` program. The `man` program is your friend.
  3. Use `touch` to create a new file called `semester` in `missing`.
  4. Write the following into that file, one line at a time:
     ```
