@@ -46,35 +46,15 @@ lectures, so the lectures are fairly dense. To allow you some time to
 get familiar with the content at your own pace, each lecture includes a
 set of exercises that guide you through the lecture's key points. After
 each lecture, we are hosting office hours where we will be present to
-help answer any questions you might have.
+help answer any questions you might have. If you are attending the class
+online, you can send us questions at
+[missing-semester@mit.edu](mailto:missing-semester@mit.edu).
 
 Due to the limited time we have, we won't be able to cover all the tools
 in the same level of detail a full-scale class might. Where possible, we
 will try to point you towards resources for digging further into a tool
 or topic, but if something particularly strikes your fancy, don't
 hesitate to reach out to us and ask for pointers!
-
-{% comment %}
-
-Please post questions on [r/hackertools]. In addition, we ask that you share your
-knowledge with your classmates through [r/hackertools] --- **for "homework" for each
-lecture, create a post or comment about something you've learned or something you'd
-like to share about the topic**.
-
-Please post questions on [Piazza]. In addition, we ask that you share your
-knowledge with your classmates through Piazza --- **for "homework" for each
-lecture, create a Piazza note about something you've learned or something you'd
-like to share about the topic**.
-
-1. Fill out the [registration form](https://goo.gl/forms/HSdsUQ204Ow8BgUs2) if
-   you haven't already.
-
-1. Sign up for [Piazza].
-
-[r/hackertools]: https://www.reddit.com/r/hackertools
-[Piazza]: https://piazza.com/class/jqjpgaeaz77785
-
-{% endcomment %}
 
 # Topic 1: The Shell
 
