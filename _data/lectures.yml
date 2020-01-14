@@ -5,7 +5,8 @@
   name: Shell tools and scripting
   url: /shell-tools/
 - date: 1/15
-  name: Editors
+  name: Editors (vim)
+  url: /editors/
 - date: 1/16
   name: Command-line environment
 - date: 1/20
@@ -13,7 +14,7 @@
 - date: 1/21
   name: Data wrangling
 - date: 1/22
-  name: Version control
+  name: Version control (git)
 - date: 1/23
   name: Debugging and profiling
 - date: 1/27
