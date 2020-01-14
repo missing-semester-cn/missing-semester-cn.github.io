@@ -6,7 +6,7 @@ presenter: Jose
 
 In this lecture we will present some of the basics of using bash as a scripting language along with a number of shell tools that cover several of the most common tasks that you will be constantly performing in the command line.
 
-## Shell Scripting
+# Shell Scripting
 
 So far we have seen how to execute commands in the shell and pipe them together.
 However, in many scenarios you will want to perform a series of commands and make use of control flow expressions like conditionals or loops.
@@ -158,9 +158,9 @@ Some differences between shell functions and scripts that you should keep in min
 - Functions are executed in the current shell environment whereas scripts execute in their own process. Thus, functions can modify environment variables, e.g. change your current directory, whereas scripts can't. Scripts will be passed by value environment variables that have been exported using [`export`](http://man7.org/linux/man-pages/man1/export.1p.html)
 - As with any programming language functions are a powerful construct to achieve modularity, code reuse and clarity of shell code. Often shell scripts will include their own function definitions.
 
-## Shell Tools
+# Shell Tools
 
-### Finding how to use commands
+## Finding how to use commands
 
 At this point you might be wondering how to find the flags for the commands in the aliasing section such as `ls -l`, `mv -i` and `mkdir -p`.
 More generally, given a command how do you go about finding out what it does and its different options?
@@ -177,7 +177,7 @@ Sometimes manpages can be overly detailed descriptions of the commands and it ca
 For instance, I find myself referring back to the tldr pages for [`tar`](https://tldr.ostera.io/tar) and [`ffmpeg`](https://tldr.ostera.io/ffmpeg) way more often than the manpages.
 
 
-### Finding files
+## Finding files
 
 One of the most common repetitive tasks that every programmer faces is finding files or directories.
 All UNIX-like systems come packaged with [`find`](http://man7.org/linux/man-pages/man1/find.1.html), a great shell tool to find files. Some examples:
@@ -217,7 +217,7 @@ Therefore one trade-off between the two is speed vs freshness.
 Moreover `find` and similar tools can also find files using attributes such as file size, modification time or file permissions while `locate` just uses the name.
 A more in depth comparison can be found [here](https://unix.stackexchange.com/questions/60205/locate-vs-find-usage-pros-and-cons-of-each-other).
 
-### Finding code
+## Finding code
 
 Finding files is useful but quite often you are after what is in the file.
 A common scenario is wanting to search for all files that contain some pattern, along with where in those files said pattern occurs.
@@ -245,7 +245,7 @@ rg --stats PATTERN
 
 Note that as with `find`/`fd`, it is important that you know that these problems can be quickly solved using one of these tools, while the specific tools you use are not as important.
 
-### Finding shell commands
+## Finding shell commands
 
 So far we have seen how to find files and code, but as you start spending more time in the shell you may want to find specific commands you typed at some point.
 The first thing to know is that the typing up arrow will give you back your last command and if you keep pressing it you will slowly go through your shell history.
@@ -266,7 +266,7 @@ Lastly, a thing to have in mind is that if you start a command with a leading sp
 This comes in handy when you are typing commands with passwords or other bits of sensitive information.
 If you make the mistake of not adding the leading space you can always manually remove the entry by editing your `.bash_history` or `.zhistory`.
 
-### Directory Navigation
+## Directory Navigation
 
 So far we have assumed that you already are where you need to be to perform these actions, but how do you go about quickly navigating directories?
 There are many simple ways that you could do this, such as writing shell aliases, creating symlinks with [ln -s](http://man7.org/linux/man-pages/man1/ln.1.html) but the truth is that developers have figured out quite clever and sophisticated solutions by now.
@@ -278,7 +278,7 @@ The most straightforward use is _autojump_ which adds a `z` command that you can
 
 More complex tools exists to quickly get an overview of a directory structure [`tree`](https://linux.die.net/man/1/tree), [`broot`](https://github.com/Canop/broot) or even full fledged file managers like [nnn](https://github.com/jarun/nnn) or [ranger](https://github.com/ranger/ranger)
 
-## Exercises
+# Exercises
 
 1. Read [`man ls`](http://man7.org/linux/man-pages/man1/ls.1.html) and write an `ls` command that lists files in the following manner
 
