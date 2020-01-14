@@ -8,11 +8,11 @@
   name: Editors (vim)
   url: /editors/
 - date: 1/16
-  name: Command-line environment
+  name: Data wrangling
 - date: 1/20
   name: (MLK day, no class)
 - date: 1/21
-  name: Data wrangling
+  name: Command-line environment
 - date: 1/22
   name: Version control (git)
 - date: 1/23
