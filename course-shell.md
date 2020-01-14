@@ -379,5 +379,6 @@ there.
  8. Use `|` and `>` to write the "last modified" date output by
     `semester` into a file called `last-modified.txt` in your home
     directory.
- 9. Write a command that reads out your laptop battery's power level or
-    your desktop machine's CPU temperature from `/sys`.
+ 9. Write a command that reads out your laptop battery's power level or your
+    desktop machine's CPU temperature from `/sys`. Note: if you're a macOS
+    user, your OS doesn't have sysfs, so you can skip this exercise.
