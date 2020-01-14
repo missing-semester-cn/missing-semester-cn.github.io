@@ -43,7 +43,7 @@ survey](https://insights.stackoverflow.com/survey/2019/#development-environments
 (there may be some bias because Stack Overflow users may not be representative
 of programmers as a whole). [Visual Studio
 Code](https://code.visualstudio.com/) is the most popular editor.
-[Vim](https://www.vim.org/) is the most popular CLI-based editor.
+[Vim](https://www.vim.org/) is the most popular command-line-based editor.
 
 ## Vim
 
@@ -91,12 +91,13 @@ it will delete the selection.
 
 In its default configuration, Vim shows the current mode in the bottom left.
 The initial/default mode is normal mode. You'll generally spend most of your
-time switching between normal mode and insert mode.
+time between normal mode and insert mode.
 
-You change modes by pressing `<ESC>` to switch from any mode back to normal
-mode. From normal mode, enter insert mode with `i`, replace mode with `R`,
-visual mode with `v`, visual line mode with `V`, visual block mode with
-`<C-v>`, and command-line mode with `:`.
+You change modes by pressing `<ESC>` (the escape key) to switch from any mode
+back to normal mode. From normal mode, enter insert mode with `i`, replace mode
+with `R`, visual mode with `v`, visual line mode with `V`, visual block mode
+with `<C-v>` (Ctrl-V, sometimes also written `^V`), and command-line mode with
+`:`.
 
 You use the `<ESC>` key a lot when using Vim: consider remapping Caps Lock to
 Escape ([macOS
@@ -195,7 +196,7 @@ are also called "verbs", because verbs act on nouns.
 - `s` substitute character (equal to `xi`)
 - visual mode + manipulation
     - select text, `d` to delete it or `c` to change it
-- `u` to undo, `<C-r` to redo
+- `u` to undo, `<C-r>` to redo
 - Lots more to learn: e.g. `~` flips the case of a character
 
 ## Counts
@@ -288,7 +289,7 @@ Vim is heavily customizable, and it's worth spending time exploring
 customization options. You can look at people's dotfiles on GitHub for
 inspiration, for example, your instructors' Vim configs
 ([Anish](https://github.com/anishathalye/dotfiles/blob/master/vimrc),
-[Jon](https://github.com/jonhoo/configs/blob/master/editor/.config/nvim/init.vim),
+[Jon](https://github.com/jonhoo/configs/blob/master/editor/.config/nvim/init.vim) (uses [neovim](https://neovim.io/)),
 [Jose](https://github.com/JJGO/dotfiles/blob/master/vim/.vimrc)). There are
 lots of good blog posts on this topic too. Try not to copy-and-paste people's
 full configuration, but read it, understand it, and take what you need.
@@ -372,7 +373,7 @@ better way of doing this", there probably is: look it up online.
 
 ## Multiple windows
 
-- `sp` / `vsp` to split windows
+- `:sp` / `:vsp` to split windows
 - Can have multiple views of the same buffer.
 
 ## Macros
