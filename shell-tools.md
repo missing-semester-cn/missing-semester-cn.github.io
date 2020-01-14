@@ -6,72 +6,16 @@ presenter: Jose
 
 In this lecture we will present some of the basics of using bash as a scripting language along with a number of shell tools that cover several of the most common tasks that you will be constantly performing in the command line.
 
-## Shell Aliases, Functions and Scripts
+## Shell Scripting
 
-### Aliases
-
-It can become tiresome typing long commands that involve many flags or verbose options.
-Nevertheless, most shells support **aliasing**.
-For instance, an alias in bash has the following structure:
-
-```bash
-alias alias_name="command_to_alias"
-```
-
-Note that there is no space around the equal sign `=`.
-This is because [`alias`](http://man7.org/linux/man-pages/man1/alias.1p.html) is a shell command that only takes one argument.
-Alias have many convenient features
-
-```bash
-# Make shorthands for common flags
-alias ll="ls -lh"
-
-# Save a lot of typing for common commands
-alias gc="git commit"
-
-# Overwrite existing commands
-alias mv="mv -i"           # -i prompts before overwrite
-alias mkdir="mkdir -p"     # -p make parent dirs as needed
-
-# Alias can be composed
-alias la="ls -A"
-alias lla="la -l"
-
-# To ignore an alias run it prepended with \
-\ls
-# Or can be disable an alias altogether using unalias
-unalias la
-
-# To get an alias definition just call it with alias
-alias ll
-# Will print ll='ls -lh'
-
-```
-
-### Functions
-
-In many scenarios aliases are not powerful enough, mainly when you are trying to chain commands together that take the same arguments.
-Aliases do not support taking in arguments so this is where **functions** enter into play.
-Shell functions are somewhere in between aliases and full blown shell scripts.
-Here is an example function that makes a directory and enters it.
-
-```bash
-mcd () {
-    mkdir -p $1
-    cd $1
-}
-```
-
-Note that alias and functions will not persist shell sessions by default.
-To make an alias persistent you need to include it in the shell startup script files like `.bashrc` or `.zshrc`.
-
-###  Scripts
+So far we have seen how to execute commands in the shell and pipe them together.
+However, in many scenarios you will want to perform a series of commands and make use of control flow expressions like conditionals or loops.
 
 Shell scripts are the next step in complexity.
 Most shells have their own scripting language with variables, control flow and its own syntax.
 What makes shell scripting different from other scripting programming language is that is optimized for performing shell related tasks.
 Thus, creating command pipelines, saving results into files or reading from standard input are primitives in shell scripting which makes it easier to use than general purpose scripting languages.
-For this section we will focus in bash scripting since it is the most common and `zsh` is compatible with it.
+For this section we will focus in bash scripting since it is the most common.
 
 To assign variables in bash use the syntax `foo=bar` and access the value of the variable with `$foo`.
 Note that `foo = bar` will not work since it is interpreted as calling the `foo` program with arguments `=` and `bar`.
@@ -83,37 +27,70 @@ Strings delimited with `'` are literal strings and will not substitute variable 
 ```bash
 foo=bar
 echo "$foo"
-# prints > bar
+# prints bar
 echo '$foo'
-# prints > $foo
+# prints $foo
 ```
 
-Pipes `|` are a core feature of scripting, pipes connect one program's output to the next program's input. We will cover them more in detail in the data wrangling lecture.
+As most programming languages bash supports control flow techniques including `if`, `case`, `while` and `for`.
+Similarly, `bash` has functions that take arguments and can operate with them. Here is an example of a function that creates a directory and `cd`s into it.
+
+
+```bash
+mcd () {
+    mkdir -p "$1"
+    cd "$1"
+}
+```
+
+Commands will often return output using `STDOUT`, errors through `STDERR` and a Return Code or Exit Status to report errors in a more script friendly manner.
+Return code or exit status is the way scripts/commands have to communicate how execution went.
+A value of 0 usually means everything went OK, anything different from 0 means an error occurred.
+
+Exit codes can be used to conditionally execute commands using `&&` (and operator) and `||` (or operator). Commands can also be separated within the same line using a semicolon `;`.
+Commands can also
+The `true` program will always have a 0 return code and the `false` command will always have a 1 return code.
+Let's see some examples
+
+```bash
+false || echo "Oops, fail"
+# Oops, fail
+
+true || echo "Will not be printed"
+#
+
+true && echo "Things went well"
+# Things went well
+
+false && echo "Will not be printed"
+#
+
+false ; echo "This will always run"
+# This will always run
+```
 
 Unlike other scripting languages, bash uses a variety of special symbols to refer to arguments, error codes and other relevant variables. Below is a list of some of them. A more comprehensive list can be found [here](https://www.tldp.org/LDP/abs/html/special-chars.html).
 - `$0` - Name of the script
 - `$1` to `$9` - Arguments to the script. `$1` is the first argument and so on.
 - `$@` - All the arguments
 - `$#` - Number of arguments
-- `$?` - [Return code](https://en.wikipedia.org/wiki/Exit_status) of the previous command. Return code or exit status is the way scripts/commands have to communicate how execution went. A value of 0 usually means everything went OK, anything different from 0 means an error occurred.
+- `$?` - Return code of the previous command
 - `$$` - Process Identification number for the current script
 - `!!` - Entire last command, including arguments. A common pattern is to execute a command only for it to fail due to missing permissions, then you can quickly execute it with sudo by doing `sudo !!`
-- `$_` - Last argument from the last command. You can also quickly get this by typing `Esc` followed by `.`
+- `$_` - Last argument from the last command. If you are in an interactive shell, you can also quickly get this value by typing `Esc` followed by `.`
 
-Another common pattern is wanting to get the output of a command as a variable. This can be done with _shell expansion_.
+Another common pattern is wanting to get the output of a command as a variable. This can be done with _command substitution_.
 Whenever you place $( CMD ) it will execute `CMD`, get the output of the command and substitute it in place.
 For example, if you do `for file in $(ls)`, the shell will first call `ls` and then iterate over those values.
-A lesser known similar feature is _process substitution_, `<( CMD )` will execute `CMD` and place the output in a temporary file and substitute the `<()` with that file's name. This is useful when commands expect values to be passed by file instead of by STDIN.
-For example, `diff <(ls foo) <(ls bar)` will show differences between files in `foo` and `bar`.
+A lesser known similar feature is _process substitution_, `<( CMD )` will execute `CMD` and place the output in a temporary file and substitute the `<()` with that file's name. This is useful when commands expect values to be passed by file instead of by STDIN. For example, `diff <(ls foo) <(ls bar)` will show differences between files in dirs  `foo` and `bar`.
 
-Lastly, as most programming languages bash supports control flow techniques including `if`, `case`, `while` and `for`, as well as functions.
 
 Since that was a huge information dump let's see an example that showcases some of these features. It will iterate through the arguments we provide, `grep` for the string `foobar` and append it to the file as a comment if it's not found.
 
 ```bash
 #!/bin/bash
 
-echo "Starting program at $(date)"
+echo "Starting program at $(date)" # Date will be substituted
 
 echo "Running program $0 with $# arguments with pid $$"
 
@@ -123,7 +100,7 @@ for file in $@; do
     # We redirect STDOUT and STDERR to a null register since we do not care about them
     if [[ $? -ne 0 ]]; then
         echo "File $file does not have any foobar, adding one"
-        echo "# foobar" >> $file
+        echo "# foobar" >> "$file"
     fi
 done
 ```
@@ -146,7 +123,21 @@ cp /path/to/project/foo.sh /path/to/project/bar.sh /path/to/project/baz.sh /newp
 # Globbing techniques can also be combined
 mv *{.py,.sh} folder
 # Will move all *.py and *.sh files
+
+
+mkdir foo bar
+# This creates files foo/a, foo/b, ... foo/h, bar/a, bar/b, ... bar/h
+touch {foo,bar}/{a..j}
+touch foo/x bar/y
+# Show differences between files in `foo` and `bar`
+diff <(ls foo) <(ls bar)
+# Outputs
+# < x
+# ---
+# > y
 ```
+
+<!-- Lastly, pipes `|` are a core feature of scripting. Pipes connect one program's output to the next program's input. We will cover them more in detail in the data wrangling lecture. -->
 
 Note that scripts need not necessarily be written in bash to be called from the terminal. For instance, here's a simple Python script that outputs its arguments in reversed order
 
@@ -278,7 +269,7 @@ If you make the mistake of not adding the leading space you can always manually 
 ### Directory Navigation
 
 So far we have assumed that you already are where you need to be to perform these actions, but how do you go about quickly navigating directories?
-By now you should have some good ideas about what you could use, such as shell aliases, creating symlinks with [ln -s](http://man7.org/linux/man-pages/man1/ln.1.html) but the truth is that developers have figured out quite clever solutions by now.
+There are many simple ways that you could do this, such as writing shell aliases, creating symlinks with [ln -s](http://man7.org/linux/man-pages/man1/ln.1.html) but the truth is that developers have figured out quite clever and sophisticated solutions by now.
 
 As with the theme of this course, you often want to optimize for the common case.
 Finding frequent and/or recent files and directories can be done through tools like [`fasd`](https://github.com/clvv/fasd)
@@ -289,7 +280,7 @@ More complex tools exists to quickly get an overview of a directory structure [`
 
 ## Exercises
 
-1. Create an alias for `ls` that lists files in the following manner
+1. Read [`man ls`](http://man7.org/linux/man-pages/man1/ls.1.html) and write an `ls` command that lists files in the following manner
 
 - Includes all files, including hidden files
 - Sizes are listed in human readable format (e.g. 454M instead of 454279954)
@@ -306,7 +297,6 @@ drwxr-xr-x   5 user group  160 Jan 14 09:53 .
 drwx------+ 47 user group 1.5K Jan 12 18:08 ..
 ```
 
-You will probably want to consult [`man ls`](http://man7.org/linux/man-pages/man1/ls.1.html) for this.
 <!-- ls -lath --color=auto -->
 
 1. Write bash functions  `marco` and `polo` that do the following.
@@ -318,7 +308,9 @@ marco() {
     export MARCO=$(pwd)
 }
 
-alias polo="cd $MARCO"
+polo() {
+    cd "$MARCO"
+}
  -->
 
 3. As we covered in lecture `find`'s `-exec` can be very powerful for performing operations over the files we are searching for.
