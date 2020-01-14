@@ -61,6 +61,12 @@ benefit from these resources. You can find posts and discussion on
  - [Twitter](https://twitter.com/Jonhoo/status/1091896192332693504)
  - [YouTube](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuiujH1lpn8cA9dsyulbYRv)
 
+## Acknowledgements
+
+We thank Elaine Mello, Jim Cain, and [MIT Open
+Learning](https://openlearning.mit.edu/) for making it possible for us to
+record lecture videos.
+
 ---
 
 <div class="small center">
