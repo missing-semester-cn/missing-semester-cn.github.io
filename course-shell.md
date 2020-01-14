@@ -357,7 +357,7 @@ lecture, we will talk about how to perform and automate more complex
 tasks using the shell and the many handy command-line programs out
 there.
 
-## Exercise
+# Exercises
 
  1. Create a new directory called `missing` under `/tmp`.
  2. Look up the `touch` program. The `man` program is your friend.
