@@ -65,7 +65,9 @@ benefit from these resources. You can find posts and discussion on
 
 We thank Elaine Mello, Jim Cain, and [MIT Open
 Learning](https://openlearning.mit.edu/) for making it possible for us to
-record lecture videos.
+record lecture videos; Anthony Zolnik and [MIT
+AeroAstro](https://aeroastro.mit.edu/) for A/V equipment; and Brandi Adams and
+[MIT EECS](https://www.eecs.mit.edu/) for supporting this class.
 
 ---
 
