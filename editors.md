@@ -304,7 +304,7 @@ plugins in there (e.g. via `git clone`).
 
 Here are some of our favorite plugins:
 
-- [ctrlp.vim](https://github.com/kien/ctrlp.vim): fuzzy file finder
+- [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim): fuzzy file finder
 - [ack.vim](https://github.com/mileszs/ack.vim): code search
 - [nerdtree](https://github.com/scrooloose/nerdtree): file explorer
 - [vim-easymotion](https://github.com/easymotion/vim-easymotion): magic motions
@@ -424,11 +424,25 @@ better way of doing this", there probably is: look it up online.
 1. Complete `vimtutor`. Note: it looks best in a
    [80x24](https://en.wikipedia.org/wiki/VT100) (80 columns by 24 lines)
    terminal window.
-1. Customize your Vim. You can start from our [basic vimrc](/files/vimrc) and
-   then look online for inspiration.
-1. Install and configure a plugin.
+1. Download our [basic vimrc](/files/vimrc) and save it to `~/.vimrc`. Read
+   through the well-commented file (using Vim!), and observe how Vim looks and
+   behaves slightly differently with the new config.
+1. Install and configure a plugin:
+   [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim).
+   1. Create the plugins directory with `mkdir -p ~/.vim/pack/vendor/start`
+   1. Download the plugin: `cd ~/.vim/pack/vendor/start; git clone
+      https://github.com/ctrlpvim/ctrlp.vim`
+   1. Read the
+      [documentation](https://github.com/ctrlpvim/ctrlp.vim/blob/master/readme.md)
+      for the plugin. Try using CtrlP to locate a file by navigating to a
+      project directory, opening Vim, and using the Vim command-line to start
+      `:CtrlP`.
+    1. Customize CtrlP by adding
+       [configuration](https://github.com/ctrlpvim/ctrlp.vim/blob/master/readme.md#basic-options)
+       to your `~/.vimrc` to open CtrlP by pressing Ctrl-P.
 1. Use vim for _all_ your text editing for the next month. Whenever something
    seems inefficient, or when you think "there must be a better way", try
    Googling it, there probably is. If you get stuck, come to office hours or
    send us an email.
 1. Configure your other tools to use Vim bindings.
+1. Further customize your `~/.vimrc` and install more plugins.

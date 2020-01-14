@@ -69,6 +69,10 @@ ul {
   padding-left: 1rem;
 }
 
+ol {
+  margin-left: 1rem;
+}
+
 li > ul {
   padding-left: 2rem;
 }
