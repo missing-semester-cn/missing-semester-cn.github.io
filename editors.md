@@ -444,5 +444,5 @@ better way of doing this", there probably is: look it up online.
    seems inefficient, or when you think "there must be a better way", try
    Googling it, there probably is. If you get stuck, come to office hours or
    send us an email.
-1. Configure your other tools to use Vim bindings.
+1. Configure your other tools to use Vim bindings (see instructions above).
 1. Further customize your `~/.vimrc` and install more plugins.
