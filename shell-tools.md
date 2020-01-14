@@ -43,12 +43,22 @@ mcd () {
 }
 ```
 
-Commands will often return output using `STDOUT`, errors through `STDERR` and a Return Code or Exit Status to report errors in a more script friendly manner.
+Here `$1` is the first argument to the script/function.
+Unlike other scripting languages, bash uses a variety of special variables to refer to arguments, error codes and other relevant variables. Below is a list of some of them. A more comprehensive list can be found [here](https://www.tldp.org/LDP/abs/html/special-chars.html).
+- `$0` - Name of the script
+- `$1` to `$9` - Arguments to the script. `$1` is the first argument and so on.
+- `$@` - All the arguments
+- `$#` - Number of arguments
+- `$?` - Return code of the previous command
+- `$$` - Process Identification number for the current script
+- `!!` - Entire last command, including arguments. A common pattern is to execute a command only for it to fail due to missing permissions, then you can quickly execute it with sudo by doing `sudo !!`
+- `$_` - Last argument from the last command. If you are in an interactive shell, you can also quickly get this value by typing `Esc` followed by `.`
+
+Commands will often return output using `STDOUT`, errors through `STDERR` and a Return Code to report errors in a more script friendly manner.
 Return code or exit status is the way scripts/commands have to communicate how execution went.
 A value of 0 usually means everything went OK, anything different from 0 means an error occurred.
 
 Exit codes can be used to conditionally execute commands using `&&` (and operator) and `||` (or operator). Commands can also be separated within the same line using a semicolon `;`.
-Commands can also
 The `true` program will always have a 0 return code and the `false` command will always have a 1 return code.
 Let's see some examples
 
@@ -69,18 +79,8 @@ false ; echo "This will always run"
 # This will always run
 ```
 
-Unlike other scripting languages, bash uses a variety of special symbols to refer to arguments, error codes and other relevant variables. Below is a list of some of them. A more comprehensive list can be found [here](https://www.tldp.org/LDP/abs/html/special-chars.html).
-- `$0` - Name of the script
-- `$1` to `$9` - Arguments to the script. `$1` is the first argument and so on.
-- `$@` - All the arguments
-- `$#` - Number of arguments
-- `$?` - Return code of the previous command
-- `$$` - Process Identification number for the current script
-- `!!` - Entire last command, including arguments. A common pattern is to execute a command only for it to fail due to missing permissions, then you can quickly execute it with sudo by doing `sudo !!`
-- `$_` - Last argument from the last command. If you are in an interactive shell, you can also quickly get this value by typing `Esc` followed by `.`
-
 Another common pattern is wanting to get the output of a command as a variable. This can be done with _command substitution_.
-Whenever you place $( CMD ) it will execute `CMD`, get the output of the command and substitute it in place.
+Whenever you place `$( CMD )` it will execute `CMD`, get the output of the command and substitute it in place.
 For example, if you do `for file in $(ls)`, the shell will first call `ls` and then iterate over those values.
 A lesser known similar feature is _process substitution_, `<( CMD )` will execute `CMD` and place the output in a temporary file and substitute the `<()` with that file's name. This is useful when commands expect values to be passed by file instead of by STDIN. For example, `diff <(ls foo) <(ls bar)` will show differences between files in dirs  `foo` and `bar`.
 
@@ -105,6 +105,8 @@ for file in $@; do
 done
 ```
 
+In the comparison we tested whether `$?` was not equal to 0.
+Bash implements many comparsions of this sort, you can find a detailed list in the manpage for [`test`](http://man7.org/linux/man-pages/man1/test.1.html)
 When performing comparisons in bash try to use double brackets `[[ ]]` in favor of simple brackets `[ ]`. Chances of making mistakes are lower although it won't be portable to `sh`. A more detailed explanation can be found [here](http://mywiki.wooledge.org/BashFAQ/031).
 
 When launching scripts, you will often want to provide arguments that are similar. Bash has ways of making this easier, expanding expressions by carrying out filename expansion. These techniques are often referred to as shell _globbing_.
@@ -129,7 +131,7 @@ mkdir foo bar
 # This creates files foo/a, foo/b, ... foo/h, bar/a, bar/b, ... bar/h
 touch {foo,bar}/{a..j}
 touch foo/x bar/y
-# Show differences between files in `foo` and `bar`
+# Show differences between files in foo and bar
 diff <(ls foo) <(ls bar)
 # Outputs
 # < x
@@ -138,6 +140,8 @@ diff <(ls foo) <(ls bar)
 ```
 
 <!-- Lastly, pipes `|` are a core feature of scripting. Pipes connect one program's output to the next program's input. We will cover them more in detail in the data wrangling lecture. -->
+
+Writing `bash` scripts can be tricky and unintutive. There are tools like [shellcheck](https://github.com/koalaman/shellcheck) that will help you find out errors in your sh/bash scripts.
 
 Note that scripts need not necessarily be written in bash to be called from the terminal. For instance, here's a simple Python script that outputs its arguments in reversed order
 
@@ -149,7 +153,7 @@ for arg in reversed(sys.argv[1:]):
 ```
 
 The shell knows to execute this script with a python interpreter instead of a shell command because we included a [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) line at the top of the script.
-It is good practice to write shebang lines using the [`env`](http://man7.org/linux/man-pages/man1/env.1.html) command that will resolve to wherever the command lives, increasing the portability of your scripts.
+It is good practice to write shebang lines using the [`env`](http://man7.org/linux/man-pages/man1/env.1.html) command that will resolve to wherever the command lives in the system, increasing the portability of your scripts. To resolve the location, `env` will make use of the `PATH` environment variable we introduced in the first lecture.
 For this example the shebang line would look like `#!/usr/bin/env python`.
 
 Some differences between shell functions and scripts that you should keep in mind are:
@@ -180,7 +184,7 @@ For instance, I find myself referring back to the tldr pages for [`tar`](https:/
 ## Finding files
 
 One of the most common repetitive tasks that every programmer faces is finding files or directories.
-All UNIX-like systems come packaged with [`find`](http://man7.org/linux/man-pages/man1/find.1.html), a great shell tool to find files. Some examples:
+All UNIX-like systems come packaged with [`find`](http://man7.org/linux/man-pages/man1/find.1.html), a great shell tool to find files. `find` will recursively search for files matching some criteria. Some examples:
 
 ```bash
 # Find all directories named src
@@ -197,7 +201,7 @@ This property can be incredibly helpful to simplify what could be fairly monoton
 ```bash
 # Delete all files with .tmp extension
 find . -name '*.tmp' -exec rm {} \;
-# Find all JPG files and convert them to PNG
+# Find all PNG files and convert them to JPG
 find . -name '*.png' -exec convert {} {.}.jpg \;
 ```
 
@@ -250,10 +254,14 @@ Note that as with `find`/`fd`, it is important that you know that these problems
 So far we have seen how to find files and code, but as you start spending more time in the shell you may want to find specific commands you typed at some point.
 The first thing to know is that the typing up arrow will give you back your last command and if you keep pressing it you will slowly go through your shell history.
 
+The `history` command will let you access your shell history programmatically.
+It will print your shell history to the standard output.
+If we want to search there we can pipe that output to `grep` and search for patterns.
+`history | grep find` will print commands with the substring "find".
+
 In most shells you can make use of `Ctrl+R` to perform backwards search through your history.
 After pressing `Ctrl+R` you can type a substring you want to match for commands in your history.
 As you keep pressing it you will cycle through the matches in your history.
-
 A nice addition on top of `Ctrl+R` comes with using [fzf](https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings#ctrl-r) bindings.
 `fzf` is a general purpose fuzzy finder that can used with many commands.
 Here is used to fuzzily match through your history and present results in a convenient and visually pleasing manner.
@@ -313,6 +321,39 @@ marco() {
 polo() {
     cd "$MARCO"
 }
+{% endcomment %}
+
+1. Say you have a command that fails rarely. In order to debug it you need to capture its output but it can be time consuming to get it.
+Write a bash script that runs the following script until it fails and captures its standard output and error streams to files and prints everything at the end.
+Bonus points if you can also report how many runs it took for the script to fail.
+
+```bash
+#!/usr/bin/env bash
+
+n=$(( RANDOM % 100 ))
+
+if [[ n -eq 42 ]]; then
+   echo "Something went wrong"
+   >&2 echo "The error was using magic numbers"
+   exit 1
+fi
+
+echo "Everything went according to plan"
+
+```
+
+{% comment %}
+#!/usr/bin/env bash
+
+count=0
+until [[ "$?" -ne 0 ]];
+do
+  count=$((count+1))
+  ./random.sh &> out.txt
+done
+
+echo "found error after $count runs"
+cat out.txt
 {% endcomment %}
 
 1. As we covered in lecture `find`'s `-exec` can be very powerful for performing operations over the files we are searching for.
