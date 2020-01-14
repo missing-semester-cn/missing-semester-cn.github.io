@@ -287,6 +287,49 @@ The most straightforward use is _autojump_ which adds a `z` command that you can
 
 More complex tools exists to quickly get an overview of a directory structure [`tree`](https://linux.die.net/man/1/tree), [`broot`](https://github.com/Canop/broot) or even full fledged file managers like [nnn](https://github.com/jarun/nnn) or [ranger](https://github.com/ranger/ranger)
 
-## Exercise
+## Exercises
 
-## Advanced Exercise
+1. Create an alias for `ls` that lists files in the following manner
+
+- Includes all files, including hidden files
+- Sizes are listed in human readable format (e.g. 454M instead of 454279954)
+- Files are ordered by recency
+- Output is colorized
+
+A sample output would look like this
+
+```
+-rw-r--r--   1 user group 1.1M Jan 14 09:53 baz
+drwxr-xr-x   5 user group  160 Jan 14 09:53 .
+-rw-r--r--   1 user group  514 Jan 14 06:42 bar
+-rw-r--r--   1 user group 106M Jan 13 12:12 foo
+drwx------+ 47 user group 1.5K Jan 12 18:08 ..
+```
+
+You will probably want to consult [`man ls`](http://man7.org/linux/man-pages/man1/ls.1.html) for this.
+<!-- ls -lath --color=auto -->
+
+1. Write bash functions  `marco` and `polo` that do the following.
+Whenever you execute `marco` the current path should be saved in some manner, then when you execute `polo`, no matter what directory you are in, `polo` should `cd` you back to the directory where you executed `marco`.
+For ease of debugging you can write the code in a file `marco.sh` and (re)load the definitions to your shell by executing `source marco.sh`.
+
+<!--
+marco() {
+    export MARCO=$(pwd)
+}
+
+alias polo="cd $MARCO"
+ -->
+
+3. As we covered in lecture `find`'s `-exec` can be very powerful for performing operations over the files we are searching for.
+However, what if we want to do something with **all** the files, like creating a zip file?
+As you have seen so far commands will take input from both arguments and STDIN.
+When piping commands, we are connecting STDOUT to STDIN, but some commands like `tar` take inputs from arguments.
+To bridge this disconnect there's the [`xargs`](http://man7.org/linux/man-pages/man1/xargs.1.html) command which will execute a command using STDIN as arguments.
+For example `ls | xargs rm` will delete the files in the current directory.
+
+Your task is to write a command that recursively finds all HTML files in the folder and makes a zip with them. Note that your command should work even if the files have spaces (hint: check `-d` flag for `xargs`)
+
+<!-- find . -type f -name "*.html" | xargs -d '\n'  tar -cvzf archive.tar.gz      -->
+
+4. (Advanced) Write a command or script to recursively find the most recently modified file in a directory. More generally, can you list all files by recency?
