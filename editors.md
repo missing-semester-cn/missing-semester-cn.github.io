@@ -440,7 +440,9 @@ better way of doing this", there probably is: look it up online.
     1. Customize CtrlP by adding
        [configuration](https://github.com/ctrlpvim/ctrlp.vim/blob/master/readme.md#basic-options)
        to your `~/.vimrc` to open CtrlP by pressing Ctrl-P.
-1. Use vim for _all_ your text editing for the next month. Whenever something
+1. To practice using Vim, re-do the [Demo](#demo) from lecture on your own
+   machine.
+1. Use Vim for _all_ your text editing for the next month. Whenever something
    seems inefficient, or when you think "there must be a better way", try
    Googling it, there probably is. If you get stuck, come to office hours or
    send us an email.
