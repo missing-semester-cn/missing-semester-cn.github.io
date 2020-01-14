@@ -1,0 +1,124 @@
+I use these notes as a reference when teaching. If you're a student who ended
+up here, you probably want to look at editors.md instead.
+
+writing words (essays) vs programming
+- programming: more time spent reading, navigating, editing, than writing in a
+  long stream
+- different programs for different purposes
+
+worth mastering an editor
+- it will save you hundreds of hours
+- worth investing time in this, unlike many other things
+
+how to learn
+- start with tutorial
+- stick with the editor for all code (and ideally word) editing tasks
+- avoid bad habits
+- look things up as you go
+- if it seems like there should be a better way, there probably is
+    - programmers care about their editors, so they're super powerful tools
+- timeline for learning
+    - in a couple hours: will learn basic editor functions (save, quit, ...)
+    - in 20 hours: will be as fast as you were with your old editor
+    - after that: benefits start
+    - you never stop learning (these are very fancy and powerful tools)
+
+which editor to learn?
+- people have strong opinions: editor wars
+- https://insights.stackoverflow.com/survey/2019/#development-environments-and-tools
+- VS Code is most popular GUI-based tool
+- Vim is most popular CLI-based tool
+- we are teaching you Vim
+    - all the instructors use Vim
+    - originated from Vi editor (1976), still being developed today
+    - interesting ideas
+    - lots of tools support Vim bindings (e.g. Vim emulation for VS Code has
+      1.4m downloads)
+    - has a bit of a learning curve (compared to GUI editor), but worth it
+    - worth learning even if you finally choose to use another editor
+
+this lecture
+- philosophy of vim: the neat ideas of this editor
+- basics
+- demos
+- exercises, resources to learn more
+    - starting with vimtutor
+    - this lecture: focus on ideas, not details
+
+modal editing (modal ~ "modes")
+- designed around idea that a lot of time is spent reading/navigating/making small edits
+- simplified picture: normal mode <-> insert mode
+- more complex picture: normal <-> {insert, replace, visual, v-line, v-block, command-line}
+- mode shown in bottom left
+- keystrokes have different meanings in different modes: e.g. `x`
+- remapping caps lock to escape
+
+basics
+- buffers vs tabs vs windows
+    - buffers ~ open files
+    - every tab has one or more windows
+    - a buffer can be open in 0 or more windows
+    - unlike e.g. web browser
+- command line
+    - `:` in normal mode
+    - :q, :w, :wq, :e {name of file}, :ls, :help {topic} (:help :w, :help w)
+- switching between normal mode and insert mode
+- that's all you need to know to get started. insert mode works as you expect.
+
+vim normal mode is a programming language (most important idea in vim)
+- once you learn the primitives, you can combine them in interesting ways
+- becomes muscle memory
+- movement
+- selection
+- edits
+- counts
+- modifiers
+
+demo (broken fizzbuzz)
+- main is never called
+  - `G` end of file
+  - `o` open new line below
+  - type in "if __name__ ..." thing
+- starts at 0 instead of 1
+  - search for `/range`
+  - `ww` to move forward 2 words
+  - `i` to insert text, "1, "
+  - `ea` to insert after limit, "+1"
+- newline for "fizzbuzz"
+  - `jj$i` to insert text at end of line
+  - add ", end=''"
+  - `jj.` to repeat for second print
+  - `jjo` to open line below if
+  - add "else: print()"
+- fizz fizz
+  - `ci'` to change fizz
+- command-line argument
+  - `ggO` to open above
+  - "import sys"
+  - `/10`
+  - `ci(` to "int(sys.argv[1])"
+
+customizing vim
+- ~/.vimrc
+- start with our basic config
+- look online for inspiration
+
+plugins
+- no plugin manager necessary: just put plugins in `~/.vim/pack/vendor/start/`
+- recommended plugins
+    - fuzzy file finder: ctrlp.vim
+    - code search: ack.vim
+    - directory navigation: nerdtree
+    - magic motions: vim-easymotion
+- see what your instructors use
+- find more: https://vimawesome.com/
+
+vim bindings in other tools
+- shell (set -o vi / bindkey -v)
+- $EDITOR
+- readline
+- Jupyter notebook
+
+advanced vim demos
+
+homework

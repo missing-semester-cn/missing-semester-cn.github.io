@@ -2,120 +2,157 @@
 layout: lecture
 title: "Editors"
 presenter: Anish
-video:
-  aspect: 62.5
-  id: 1vLcusYSrI4
+#video:
+#  aspect: 62.5
+#  id: 1vLcusYSrI4
 ---
 
-[Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anid4e/editors_iap_2019/)
+Writing English words and writing code are very different activities. When
+programming, you spend more time switching files, reading, navigating, and
+editing code compared to writing a long stream. It makes sense that there are
+different types of programs for writing English words versus code (e.g.
+Microsoft Word versus Visual Studio Code).
 
-# Importance of Editors
+As programmers, we spend most of our time editing code, so it's worth investing
+time mastering an editor that fits your needs. Here's how you learn a new
+editor:
 
-As programmers, we spend most of our time editing plain-text files. It's worth
-investing time learning an editor that fits your needs.
+- Start with a tutorial (i.e. this lecture, plus resources that we point out)
+- Stick with using the editor for all your text editing needs (even if it slows
+you down initially)
+- Look things up as you go: if it seems like there should be a better way to do
+something, there probably is
 
-How do you learn a new editor? You force yourself to use that editor for a
-while, even if it temporarily hampers your productivity. It'll pay off soon
-enough (two weeks is enough to learn the basics).
+If you follow the above method, fully committing to using the new program for
+all text editing purposes, the timeline for learning a sophisticated text
+editor looks like this. In an hour or two, you'll learn basic editor functions
+such as opening and editing files, save/quit, and navigating buffers. Once
+you're 20 hours in, you should be as fast as you were with your old editor.
+After that, the benefits start: you will have enough knowledge and muscle
+memory that using the new editor saves you time. Modern text editors are fancy
+and powerful tools, so the learning never stops: you'll get even faster as you
+learn more.
 
-We are going to teach you Vim, but we encourage you to experiment with other
-editors. It's a very personal choice, and people have [strong
-opinions](https://en.wikipedia.org/wiki/Editor_war).
+# Which editor to learn?
 
-We can't teach you how to use a powerful editor in 50 minutes, so we're going
-to focus on teaching you the basics, showing you some of the more advanced
-functionality, and giving you the resources to master the tool. We'll teach you
-lessons in the context of Vim, but most ideas will translate to any other
-powerful editor you use (and if they don't, then you probably shouldn't use
-that editor!).
-
-![Editor Learning Curves](/static/media/editor-learning-curves.jpg)
-
-<!-- source: https://blogs.msdn.microsoft.com/steverowe/2004/11/17/code-editor-learning-curves/ -->
-
-The editor learning curves graph is a myth. Learning the basics of a powerful
-editor is quite easy (even though it might take years to master).
+Programmers have [strong opinions](https://en.wikipedia.org/wiki/Editor_war)
+about their text editors.
 
 Which editors are popular today? See this [Stack Overflow
-survey](https://insights.stackoverflow.com/survey/2018/#technology-most-popular-development-environments)
+survey](https://insights.stackoverflow.com/survey/2019/#development-environments-and-tools)
 (there may be some bias because Stack Overflow users may not be representative
-of programmers as a whole).
+of programmers as a whole). [Visual Studio
+Code](https://code.visualstudio.com/) is the most popular editor.
+[Vim](https://www.vim.org/) is the most popular CLI-based editor.
 
-## Command-line Editors
+## Vim
 
-Even if you eventually settle on using a GUI editor, it's worth learning a
-command-line editor for easily editing files on remote machines.
+All the instructors of this class use Vim as their editor. Vim has a rich
+history; it originated from the Vi editor (1976), and it's still being
+developed today. Vim has some really neat ideas behind it, and for this reason,
+lots of tools support a Vim emulation mode (for example, 1.4 million people
+have installed [Vim emulation for VS code](https://github.com/VSCodeVim/Vim)).
+Vim is probably worth learning even if you finally end up switching to some
+other text editor.
 
-# Nano
+It's not possible to teach all of Vim's functionality in 50 minutes, so we're
+going to focus on explaining the philosophy of Vim, teaching you the basics,
+showing you some of the more advanced functionality, and giving you the
+resources to master the tool.
 
-Nano is a simple command-line editor.
+# Philosophy of Vim
 
-- Move with arrow keys
-- All other shortcuts (save, exit) shown at the bottom
+When programming, you spend most of your time reading/editing, not writing. For
+this reason, Vim is a _modal_ editor: it has different modes for inserting text
+vs manipulating text. Vim is programmable (with Vimscript and also other
+languages like Python), and Vim's interface itself is a programming language:
+keystrokes (with mneumonic names) are commands, and these commands are
+composable. Vim avoids the use of the mouse, because it's too slow; Vim even
+avoids using the arrow keys because it requires too much movement.
 
-# Vim
+The end result is an editor that can match the speed at which you think.
 
-Vi/Vim is a powerful text editor. It's a command-line program that's usually
-installed everywhere, which makes it convenient for editing files on a remote
-machine.
+# Modal editing
 
-Vim also has graphical versions, such as GVim and
-[MacVim](https://macvim-dev.github.io/macvim/). These provide additional
-features such as 24-bit color, menus, and popups.
+Vim's design is based on the idea that a lot of programmer time is spent
+reading, navigating, and making small edits, as opposed to writing long streams
+of text. For this reason, Vim has multiple operating modes.
 
-## Philosophy of Vim
+- **Normal**: for moving around a file and making edits
+- **Insert**: for inserting text
+- **Replace**: for replacing text
+- **Visual** (plain, line, or block) mode: for selecting blocks of text
+- **Command-line**: for running a command
 
-- When programming, you spend most of your time reading/editing, not writing
-    - Vim is a **modal** editor: different modes for inserting text vs manipulating text
-- Vim is programmable (with Vimscript and also other languages like Python)
-- Vim's interface itself is like a programming language
-    - Keystrokes (with mneumonic names) are commands
-    - Commands are composable
-- Don't use the mouse: too slow
-- Editor should work at the speed you think
+Keystrokes have different meanings in different operating modes. For example,
+the letter `x` in insert mode will just insert a literal character 'x', but in
+normal mode, it will delete the character under the cursor, and in visual mode,
+it will delete the selection.
 
-## Introductory Vim
-
-### Modes
-
-Vim shows the current mode in the bottom left.
-
-- Normal mode: for moving around a file and making edits
-    - Spend most of your time here
-- Insert mode: for inserting text
-- Visual (visual, line, or block) mode: for selecting blocks of text
+In its default configuration, Vim shows the current mode in the bottom left.
+The initial/default mode is normal mode. You'll generally spend most of your
+time switching between normal mode and insert mode.
 
 You change modes by pressing `<ESC>` to switch from any mode back to normal
-mode. From normal mode, enter insert mode with `i`, visual mode with `v`,
-visual line mode with `V`, and visual block mode with `<C-v>`.
+mode. From normal mode, enter insert mode with `i`, replace mode with `R`,
+visual mode with `v`, visual line mode with `V`, visual block mode with
+`<C-v>`, and command-line mode with `:`.
 
 You use the `<ESC>` key a lot when using Vim: consider remapping Caps Lock to
-Escape.
+Escape ([macOS
+instructions](https://vim.fandom.com/wiki/Map_caps_lock_to_escape_in_macOS)).
 
-### Basics
+# Basics
 
-Vim ex commands are issued through `:{command}` in normal mode.
+## Buffers, tabs, and windows
+
+Vim maintains a set of open files, called "buffers". A Vim session has a number
+of tabs, each of which has a number of windows (split panes). Each window shows
+a single buffer. Unlike other programs you are familiar with, like web
+browsers, there is not a 1-to-1 correspondence between buffers and windows;
+windows are merely views. A given buffer may be open in _multiple_ windows,
+even within the same tab. This can be quite handy, for example, to view two
+different parts of a file at the same time.
+
+By default, Vim opens with a single tab, which contains a single window.
+
+## Command-line
+
+Command mode can be entered by typing `:` in normal mode. Your cursor will jump
+to the command line at the bottom of the screen upon pressing `:`. This mode
+has many functionalities, including opening, saving, and closing files, and
+[quitting Vim](https://twitter.com/iamdevloper/status/435555976687923200).
 
 - `:q` quit (close window)
-- `:w` save
+- `:w` save ("write")
 - `:wq` save and quit
 - `:e {name of file}` open file for editing
 - `:ls` show open buffers
 - `:help {topic}` open help
-    - `:help :w` opens help for the `:w` ex command
+    - `:help :w` opens help for the `:w` command
     - `:help w` opens help for the `w` movement
 
-### Movement
+## Inserting text
 
-Vim is all about efficient movement. Navigate the file in Normal mode.
+From normal mode, press `i` to enter insert mode. Now, Vim behaves like any
+other text editor, until you press `<ESC>` to return to normal mode. This,
+along with the basics explained above, are all you need to start editing files
+using Vim (though not particularly efficiently, if you're spending all your
+time editing from insert mode).
 
-- Disable arrow keys to avoid bad habits
-```vim
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
-```
+# Vim's interface is a programming language
+
+The most important idea in Vim is that Vim's interface itself is a programming
+language. Keystrokes (with mneumonic names) are commands, and these commands
+_compose_. This enables efficient movement and edits, especially once the
+commands become muscle memory.
+
+## Movement
+
+You should spend most of your time in normal mode, using movement commands to
+navigate the buffer. Movements in Vim are also called "nouns", because they
+refer to chunks of text.
+
 - Basic movement: `hjkl` (left, down, up, right)
 - Words: `w` (next word), `b` (beginning of word), `e` (end of word)
 - Lines: `0` (beginning of line), `^` (first non-blank character), `$` (end of line)
@@ -125,10 +162,9 @@ nnoremap <Down> :echoe "Use j"<CR>
 - Misc: `%` (corresponding item)
 - Find: `f{character}`, `t{character}`, `F{character}`, `T{character}`
     - find/to forward/backward {character} on the current line
-- Repeating N times: `{number}{movement}`, e.g. `10j` moves down 10 lines
 - Search: `/{regex}`, `n` / `N` for navigating matches
 
-### Selection
+## Selection
 
 Visual modes:
 
@@ -138,10 +174,12 @@ Visual modes:
 
 Can use movement keys to make selection.
 
-### Manipulating text
+## Edits
 
-Everything that you used to do with the mouse, you now do with keyboards (and
-powerful, composable commands).
+Everything that you used to do with the mouse, you now do with the keyboard
+using editing commands that compose with movement commands. Here's where Vim's
+interface starts to look like a programming language. Vim's editing commands
+are also called "verbs", because verbs act on nouns.
 
 - `i` enter insert mode
     - but for manipulating/deleting text, want to use something more than
@@ -160,36 +198,170 @@ powerful, composable commands).
 - `u` to undo, `<C-r` to redo
 - Lots more to learn: e.g. `~` flips the case of a character
 
-### Resources
+## Counts
 
-- `vimtutor` command-line program to teach you vim
-- [Vim Adventures](https://vim-adventures.com/) game to learn Vim
+You can combine nouns and verbs with a count, which will perform a given action
+a number of times.
 
-## Customizing Vim
+- `3w` move 3 words forward
+- `5j` move 5 lines down
+- `7dw` delete 7 words
+
+## Modifiers
+
+You can use modifiers to change the meaning of a noun. Some modifiers are `i`,
+which means "inner" or "inside", and `a`, which means "around".
+
+- `ci(` change the contents inside the current pair of parentheses
+- `ci[` change the contents inside the current pair of square brackets
+- `da'` delete a single-quoted string, including the surrounding single quotes
+
+# Demo
+
+Here is a broken [fizz buzz](https://en.wikipedia.org/wiki/Fizz_buzz)
+implementation:
+
+```python
+def fizz_buzz(limit):
+    for i in range(limit):
+        if i % 3 == 0:
+            print('fizz')
+        if i % 5 == 0:
+            print('fizz')
+        if i % 3 and i % 5:
+            print(i)
+
+def main():
+    fizz_buzz(10)
+```
+
+We will fix the following issues:
+
+- Main is never called
+- Starts at 0 instead of 1
+- Prints "fizz" and "buzz" on separate lines for multiples of 15
+- Prints "fizz" for multiples of 5
+- Uses a hard-coded argument of 10 instead of taking a command-line argument
+
+{% comment %}
+- main is never called
+  - `G` end of file
+  - `o` open new line below
+  - type in "if __name__ ..." thing
+- starts at 0 instead of 1
+  - search for `/range`
+  - `ww` to move forward 2 words
+  - `i` to insert text, "1, "
+  - `ea` to insert after limit, "+1"
+- newline for "fizzbuzz"
+  - `jj$i` to insert text at end of line
+  - add ", end=''"
+  - `jj.` to repeat for second print
+  - `jjo` to open line below if
+  - add "else: print()"
+- fizz fizz
+  - `ci'` to change fizz
+- command-line argument
+  - `ggO` to open above
+  - "import sys"
+  - `/10`
+  - `ci(` to "int(sys.argv[1])"
+{% endcomment %}
+
+See the lecture video for the demonstration. Compare how the above changes are
+made using Vim to how you might make the same edits using another program.
+Notice how very few keystrokes are required in Vim, allowing you to edit at the
+speed you think.
+
+# Customizing Vim
 
 Vim is customized through a plain-text configuration file in `~/.vimrc`
 (containing Vimscript commands). There are probably lots of basic settings that
 you want to turn on.
 
-Look at people's dotfiles on GitHub for inspiration, but try not to
-copy-and-paste people's full configuration. Read it, understand it, and take
-what you need.
+We are providing a well-documented basic config that you can use as a starting
+point. We recommend using this because it fixes some of Vim's quirky default
+behavior. **Download our config [here](/files/vimrc) and save it to
+`~/.vimrc`.**
 
-Some customizations to consider:
+Vim is heavily customizable, and it's worth spending time exploring
+customization options. You can look at people's dotfiles on GitHub for
+inspiration, for example, your instructors' Vim configs
+([Anish](https://github.com/anishathalye/dotfiles/blob/master/vimrc),
+[Jon](https://github.com/jonhoo/configs/blob/master/editor/.config/nvim/init.vim),
+[Jose](https://github.com/JJGO/dotfiles/blob/master/vim/.vimrc)). There are
+lots of good blog posts on this topic too. Try not to copy-and-paste people's
+full configuration, but read it, understand it, and take what you need.
 
-- Syntax highlighting: `syntax on`
-- Color schemes
-- Line numbers: `set nu` / `set rnu`
-- Backspacing through everything: `set backspace=indent,eol,start`
+# Extending Vim
 
-## Advanced Vim
+There are tons of plugins for extending Vim. Contrary to outdated advice that
+you might find on the internet, you do _not_ need to use a plugin manager for
+Vim (since Vim 8.0). Instead, you can use the built-in package management
+system. Simply create the directory `~/.vim/pack/vendor/start/`, and put
+plugins in there (e.g. via `git clone`).
+
+Here are some of our favorite plugins:
+
+- [ctrlp.vim](https://github.com/kien/ctrlp.vim): fuzzy file finder
+- [ack.vim](https://github.com/mileszs/ack.vim): code search
+- [nerdtree](https://github.com/scrooloose/nerdtree): file explorer
+- [vim-easymotion](https://github.com/easymotion/vim-easymotion): magic motions
+
+We're trying to avoid giving an overwhelmingly long list of plugins here. You
+can check out the instructors' dotfiles
+([Anish](https://github.com/anishathalye/dotfiles),
+[Jon](https://github.com/jonhoo/configs),
+[Jose](https://github.com/JJGO/dotfiles)) to see what other plugins we use.
+Check out [Vim Awesome](https://vimawesome.com/) for more awesome Vim plugins.
+There are also tons of blog posts on this topic: just search for "best Vim
+plugins".
+
+# Vim-mode in other programs
+
+Many tools support Vim emulation. The quality varies from good to great;
+depending on the tool, it may not support the fancier Vim features, but most
+cover the basics pretty well.
+
+## Shell
+
+If you're a Bash user, use `set -o vi`. If you use Zsh, `bindkey -v`. For Fish,
+`fish_vi_key_bindings`. Additionally, no matter what shell you use, you can
+`export EDITOR=vim`. This is the environment variable used to decide which
+editor is launched when a program wants to start an editor. For example, `git`
+will use this editor for commit messages.
+
+## Readline
+
+Many programs use the [GNU
+Readline](https://tiswww.case.edu/php/chet/readline/rltop.html) library for
+their command-line interface. Readline supports (basic) Vim emulation too,
+which can be enabled by adding the following line to the `~/.inputrc` file:
+
+```
+set editing-mode vi
+```
+
+With this setting, for example, the Python REPL will support Vim bindings.
+
+## Others
+
+There are even vim keybinding extensions for web
+[browsers](http://vim.wikia.com/wiki/Vim_key_bindings_for_web_browsers), some
+popular ones are
+[Vimium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en)
+for Google Chrome and [Tridactyl](https://github.com/tridactyl/tridactyl) for
+Firefox. You can even get Vim bindings in [Jupyter
+notebooks](https://github.com/lambdalisue/jupyter-vim-binding).
+
+# Advanced Vim
 
 Here are a few examples to show you the power of the editor. We can't teach you
 all of these kinds of things, but you'll learn them as you go. A good
 heuristic: whenever you're using your editor and you think "there must be a
 better way of doing this", there probably is: look it up online.
 
-### Search and replace
+## Search and replace
 
 `:s` (substitute) command ([documentation](http://vim.wikia.com/wiki/Search_and_replace)).
 
@@ -198,17 +370,12 @@ better way of doing this", there probably is: look it up online.
 - `%s/\[.*\](\(.*\))/\1/g`
     - replace named Markdown links with plain URLs
 
-### Multiple windows
+## Multiple windows
 
 - `sp` / `vsp` to split windows
 - Can have multiple views of the same buffer.
 
-### Mouse support
-
-- `set mouse+=a`
-    - can click, scroll select
-
-### Macros
+## Macros
 
 - `q{character}` to start recording a macro in register `{character}`
 - `q` to stop recording
@@ -219,7 +386,7 @@ better way of doing this", there probably is: look it up online.
     - first clear the macro with `q{character}q`
     - record the macro, with `@{character}` to invoke the macro recursively
     (will be a no-op until recording is complete)
-- Example: convert xml to json ([file](/static/media/example-data.xml))
+- Example: convert xml to json ([file](/files/example-data.xml))
     - Array of objects with keys "name" / "email"
     - Use a Python program?
     - Use sed / regexes
@@ -242,73 +409,25 @@ better way of doing this", there probably is: look it up online.
             - `999@q`
         - Manually remove last `,` and add `[` and `]` delimiters
 
-## Extending Vim
-
-There are tons of plugins for extending vim.
-
-First, get set up with a plugin manager like
-[vim-plug](https://github.com/junegunn/vim-plug),
-[Vundle](https://github.com/VundleVim/Vundle.vim), or
-[pathogen.vim](https://github.com/tpope/vim-pathogen).
-
-Some plugins to consider:
-
-- [ctrlp.vim](https://github.com/kien/ctrlp.vim): fuzzy file finder
-- [vim-fugitive](https://github.com/tpope/vim-fugitive): git integration
-- [vim-surround](https://github.com/tpope/vim-surround): manipulating "surroundings"
-- [gundo.vim](https://github.com/sjl/gundo.vim): navigate undo tree
-- [nerdtree](https://github.com/scrooloose/nerdtree): file explorer
-- [syntastic](https://github.com/vim-syntastic/syntastic): syntax checking
-- [vim-easymotion](https://github.com/easymotion/vim-easymotion): magic motions
-- [vim-over](https://github.com/osyo-manga/vim-over): substitute preview
-
-Lists of plugins:
-
-- [Vim Awesome](https://vimawesome.com/)
-
-## Vim-mode in Other Programs
-
-For many popular editors (e.g. vim and emacs), many other tools support editor
-emulation.
-
-- Shell
-    - bash: `set -o vi`
-    - zsh: `bindkey -v`
-    - `export EDITOR=vim` (environment variable used by programs like `git`)
-- `~/.inputrc`
-    - `set editing-mode vi`
-
-There are even vim keybinding extensions for web [browsers](http://vim.wikia.com/wiki/Vim_key_bindings_for_web_browsers), some popular ones are [Vimium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en) for Google Chrome and [Tridactyl](https://github.com/tridactyl/tridactyl) for Firefox.
-
-
-## Resources
-
-- [Vim Tips Wiki](http://vim.wikia.com/wiki/Vim_Tips_Wiki)
-- [Vim Advent Calendar](https://vimways.org/2018/): various Vim tips
-- [Neovim](https://neovim.io/) is a modern vim reimplementation with more active development.
-- [Vim Golf](http://www.vimgolf.com/): Various Vim challenges
-
-{% comment %}
 # Resources
 
-TODO resources for other editors?
-{% endcomment %}
+- `vimtutor` is a tutorial that comes installed with Vim
+- [Vim Adventures](https://vim-adventures.com/) is a game to learn Vim
+- [Vim Tips Wiki](http://vim.wikia.com/wiki/Vim_Tips_Wiki)
+- [Vim Advent Calendar](https://vimways.org/2019/) has various Vim tips
+- [Vim Golf](http://www.vimgolf.com/) is [code golf](https://en.wikipedia.org/wiki/Code_golf), but where the programming language is Vim's UI
+- [Vi/Vim Stack Exchange](https://vi.stackexchange.com/)
 
 # Exercises
 
-1. Experiment with some editors. Try at least one command-line editor (e.g.
-   Vim) and at least one GUI editor (e.g. Atom). Learn through tutorials like
-   `vimtutor` (or the equivalents for other editors). To get a real feel for a
-   new editor, commit to using it exclusively for a couple days while going
-   about your work.
-
-1. Customize your editor. Look through tips and tricks online, and look through
-   other people's configurations (often, they are well-documented).
-
-1. Experiment with plugins for your editor.
-
-1. Commit to using a powerful editor for at least a couple weeks: you should
-   start seeing the benefits by then. At some point, you should be able to get
-   your editor to work as fast as you think.
-
-1. Install a linter (e.g. pyflakes for python) link it to your editor and test it is working.
+1. Complete `vimtutor`. Note: it looks best in a
+   [80x24](https://en.wikipedia.org/wiki/VT100) (80 columns by 24 lines)
+   terminal window.
+1. Customize your Vim. You can start from our [basic vimrc](/files/vimrc) and
+   then look online for inspiration.
+1. Install and configure a plugin.
+1. Use vim for _all_ your text editing for the next month. Whenever something
+   seems inefficient, or when you think "there must be a better way", try
+   Googling it, there probably is. If you get stuck, come to office hours or
+   send us an email.
+1. Configure your other tools to use Vim bindings.
