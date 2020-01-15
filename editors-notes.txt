@@ -54,6 +54,8 @@ modal editing (modal ~ "modes")
 - remapping caps lock to escape
 
 basics
+- switching between normal mode and insert mode
+- that's all you need to know to get started. insert mode works as you expect.
 - buffers vs tabs vs windows
     - buffers ~ open files
     - every tab has one or more windows
@@ -62,8 +64,6 @@ basics
 - command line
     - `:` in normal mode
     - :q, :w, :wq, :e {name of file}, :ls, :help {topic} (:help :w, :help w)
-- switching between normal mode and insert mode
-- that's all you need to know to get started. insert mode works as you expect.
 
 vim normal mode is a programming language (most important idea in vim)
 - once you learn the primitives, you can combine them in interesting ways

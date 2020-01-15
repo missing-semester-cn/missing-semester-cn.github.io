@@ -66,7 +66,7 @@ When programming, you spend most of your time reading/editing, not writing. For
 this reason, Vim is a _modal_ editor: it has different modes for inserting text
 vs manipulating text. Vim is programmable (with Vimscript and also other
 languages like Python), and Vim's interface itself is a programming language:
-keystrokes (with mneumonic names) are commands, and these commands are
+keystrokes (with mnemonic names) are commands, and these commands are
 composable. Vim avoids the use of the mouse, because it's too slow; Vim even
 avoids using the arrow keys because it requires too much movement.
 
@@ -105,6 +105,14 @@ instructions](https://vim.fandom.com/wiki/Map_caps_lock_to_escape_in_macOS)).
 
 # Basics
 
+## Inserting text
+
+From normal mode, press `i` to enter insert mode. Now, Vim behaves like any
+other text editor, until you press `<ESC>` to return to normal mode. This,
+along with the basics explained above, are all you need to start editing files
+using Vim (though not particularly efficiently, if you're spending all your
+time editing from insert mode).
+
 ## Buffers, tabs, and windows
 
 Vim maintains a set of open files, called "buffers". A Vim session has a number
@@ -133,18 +141,10 @@ has many functionalities, including opening, saving, and closing files, and
     - `:help :w` opens help for the `:w` command
     - `:help w` opens help for the `w` movement
 
-## Inserting text
-
-From normal mode, press `i` to enter insert mode. Now, Vim behaves like any
-other text editor, until you press `<ESC>` to return to normal mode. This,
-along with the basics explained above, are all you need to start editing files
-using Vim (though not particularly efficiently, if you're spending all your
-time editing from insert mode).
-
 # Vim's interface is a programming language
 
 The most important idea in Vim is that Vim's interface itself is a programming
-language. Keystrokes (with mneumonic names) are commands, and these commands
+language. Keystrokes (with mnemonic names) are commands, and these commands
 _compose_. This enables efficient movement and edits, especially once the
 commands become muscle memory.
 
@@ -158,11 +158,13 @@ refer to chunks of text.
 - Words: `w` (next word), `b` (beginning of word), `e` (end of word)
 - Lines: `0` (beginning of line), `^` (first non-blank character), `$` (end of line)
 - Screen: `H` (top of screen), `M` (middle of screen), `L` (bottom of screen)
+- Scroll: `Ctrl-u` (up), `Ctrl-d` (down)
 - File: `gg` (beginning of file), `G` (end of file)
 - Line numbers: `:{number}<CR>` or `{number}G` (line {number})
 - Misc: `%` (corresponding item)
 - Find: `f{character}`, `t{character}`, `F{character}`, `T{character}`
     - find/to forward/backward {character} on the current line
+    - `,` / `;` for navigating matches
 - Search: `/{regex}`, `n` / `N` for navigating matches
 
 ## Selection
@@ -197,6 +199,8 @@ are also called "verbs", because verbs act on nouns.
 - visual mode + manipulation
     - select text, `d` to delete it or `c` to change it
 - `u` to undo, `<C-r>` to redo
+- `y` to copy / "yank" (some other commands like `d` also copy)
+- `p` to paste
 - Lots more to learn: e.g. `~` flips the case of a character
 
 ## Counts
@@ -418,6 +422,8 @@ better way of doing this", there probably is: look it up online.
 - [Vim Advent Calendar](https://vimways.org/2019/) has various Vim tips
 - [Vim Golf](http://www.vimgolf.com/) is [code golf](https://en.wikipedia.org/wiki/Code_golf), but where the programming language is Vim's UI
 - [Vi/Vim Stack Exchange](https://vi.stackexchange.com/)
+- [Vim Screencasts](http://vimcasts.org/)
+- [Practical Vim](https://pragprog.com/book/dnvim2/practical-vim-second-edition) (book)
 
 # Exercises
 
@@ -448,3 +454,6 @@ better way of doing this", there probably is: look it up online.
    send us an email.
 1. Configure your other tools to use Vim bindings (see instructions above).
 1. Further customize your `~/.vimrc` and install more plugins.
+1. (Advanced) Convert XML to JSON ([example file](/files/example-data.xml))
+   using Vim macros. Try to do this on your own, but you can look at the
+   [macros](#macros) section above if you get stuck.
