@@ -9,6 +9,8 @@ title: "Lectures"
   <li>
   {% if lecture.url %}
     <strong>{{ lecture.date }}</strong>: <a href="{{ lecture.url }}">{{ lecture.name }}</a>
+  {% elsif lecture.name contains "MLK" %}
+    <strong>{{ lecture.date }}</strong>: {{ lecture.name }}
   {% else %}
     <strong>{{ lecture.date }}</strong>: {{ lecture.name }} [coming soon]
   {% endif %}
