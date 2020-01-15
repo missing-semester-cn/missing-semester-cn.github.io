@@ -2,28 +2,34 @@
 layout: lecture
 title: "Data Wrangling"
 presenter: Jon
-video:
-  aspect: 56.25
-  id: VW2jn9Okjhw
+# video:
+#   aspect: 56.25
+#   id: VW2jn9Okjhw
 ---
 
+{% comment %}
 [Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anicor/data_wrangling_iap_2019/)
+{% endcomment %}
 
-Have you ever had a bunch of text and wanted to do something with it?
-Good. That's what data wrangling is all about!
-Specifically, adapting data from one format to another, until you end up
-with exactly what you wanted.
+Have you ever wanted to take data in one format and turn it into a
+different format? Of course you have! That, in very general terms, is
+what this lecture is all about. Specifically, massaging data, whether in
+text or binary format, until you end up with exactly what you wanted.
 
-We've already seen basic data wrangling: `journalctl | grep -i intel`.
- - find all system log entries that mention Intel (case insensitive)
- - really, most of data wrangling is about knowing what tools you have,
-   and how to combine them.
+We've already seen some basic data wrangling in past lectures. Pretty
+much any time you use the `|` operator, you are performing some kind of
+data wrangling. Consider a command like `journalctl | grep -i intel`. It
+finds all system log entries that mention Intel (case insensitive). You
+may not think of it as wrangling data, but it is going from one format
+(your entire system log) to a format that is more useful to you (just
+the intel log entries). Most data wrangling is about knowing what tools
+you have at your disposal, and how to combine them.
 
-Let's start from the beginning: we need a data source, and something to
-do with it. Logs often make for a good use-case, because you often want
-to investigate things about them, and reading the whole thing isn't
-feasible. Let's figure out who's trying to log into my server by looking
-at my server's log:
+Let's start from the beginning. To wrangle data, we need two things:
+data to wrangle, and something to do with it. Logs often make for a good
+use-case, because you often want to investigate things about them, and
+reading the whole thing isn't feasible. Let's figure out who's trying to
+log into my server by looking at my server's log:
 
 ```bash
 ssh myserver journalctl
@@ -36,11 +42,25 @@ ssh myserver journalctl | grep sshd
 ```
 
 Notice that we're using a pipe to stream a _remote_ file through `grep`
-on our local computer! `ssh` is magical. This is still way more stuff
-than we wanted though. And pretty hard to read. Let's do better:
+on our local computer! `ssh` is magical, and we will talk more about it
+in the next lecture on the command-line environment. This is still way
+more stuff than we wanted though. And pretty hard to read. Let's do
+better:
 
 ```bash
-ssh myserver journalctl | grep sshd | grep "Disconnected from"
+ssh myserver 'journalctl | grep sshd | grep "Disconnected from"'
+```
+
+Why the additional quoting? Well, our logs may be quite large, and it's
+wasteful to do stream it all to our computer and then do the filtering.
+Instead, we can do the filtering on the remote server, and then massage
+the data locally. To save some additional traffic while we debug our
+command-line, we can even stick the current filtered logs into a file so
+that we don't have to access the network while developing:
+
+```console
+$ ssh myserver 'journalctl | grep sshd | grep "Disconnected from"' > ssh.log
+$ cat ssh.log
 ```
 
 There's still a lot of noise here. There are _a lot_ of ways to get rid
@@ -116,9 +136,9 @@ perl's command-line mode though, which _does_ support that construct:
 perl -pe 's/.*?Disconnected from //'
 ```
 
-We'll stick to `sed` for the rest of this though, because it's by far
-the more common tool for these kinds of jobs. `sed` can also do other
-handy things like print lines following a given match, do multiple
+We'll stick to `sed` for the rest of this, because it's by far the more
+common tool for these kinds of jobs. `sed` can also do other handy
+things like print lines following a given match, do multiple
 substitutions per invocation, search for things, etc. But we won't cover
 that too much here. `sed` is basically an entire topic in and of itself,
 but there are often better tools.
@@ -181,18 +201,10 @@ ssh myserver journalctl
  | sed -E 's/.*Disconnected from (invalid |authenticating )?user (.*) [^ ]+ port [0-9]+( \[preauth\])?$/\2/'
 ```
 
-We could do it just with `sed`, but why would we? For fun is why.
-
-```bash
-ssh myserver journalctl
- | sed -E
-   -e '/Disconnected from/!d'
-   -e 's/.*Disconnected from (invalid |authenticating )?user (.*) [^ ]+ port [0-9]+( \[preauth\])?$/\2/'
-```
-
-This shows off some of `sed`'s capabilities. `sed` can also inject text
-(with the `i` command), explicitly print lines (with the `p` command),
-select lines by index, and lots of other things. Check `man sed`!
+`sed` can do all sorts of other interesting things, like injecting text
+(with the `i` command), explicitly printing lines (with the `p`
+command), selecting lines by index, and lots of other things. Check `man
+sed`!
 
 Anyway. What we have now gives us a list of all the usernames that have
 attempted to log in. But this is pretty unhelpful. Let's look for common
@@ -344,8 +356,25 @@ so far + `xargs` can be a powerful combo:
 rustup toolchain list | grep nightly | grep -vE "nightly-x86|01-17" | sed 's/-x86.*//' | xargs rustup toolchain uninstall
 ```
 
+## Wrangling binary data
+
+So far, we have mostly talked about wrangling textual data, but pipes
+are just as useful for binary data. For example, we can use ffmpeg to
+capture an image from our camera, convert it to grayscale, compress it,
+send it to a remote machine over SSH, decompress it there, make a copy,
+and then display it.
+
+```console
+$ ffmpeg -loglevel panic -i /dev/video0 -frames 1 -f image2 -
+  | convert - -colorspace gray -
+  | gzip
+  | ssh mymachine 'gzip -d | tee copy.jpg | env DISPLAY=:0 feh -'
+$ ssh mymachine jp2a --width=80 copy.jpg
+```
+
 # Exercises
 
+{% comment %}
 1. If you are not familiar with Regular Expressions
    [here](https://regexone.com/) is a short interactive tutorial that
    covers most of the basics
@@ -386,3 +415,4 @@ rustup toolchain list | grep nightly | grep -vE "nightly-x86|01-17" | sed 's/-x8
    data, try [`jq`](https://stedolan.github.io/jq/). Find the min and
    max of one column in a single command, and the sum of the difference
    between the two columns in another.
+{% endcomment %}
