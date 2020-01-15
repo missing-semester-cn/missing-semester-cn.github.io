@@ -48,19 +48,21 @@ more stuff than we wanted though. And pretty hard to read. Let's do
 better:
 
 ```bash
-ssh myserver 'journalctl | grep sshd | grep "Disconnected from"'
+ssh myserver 'journalctl | grep sshd | grep "Disconnected from"' | less
 ```
 
 Why the additional quoting? Well, our logs may be quite large, and it's
 wasteful to do stream it all to our computer and then do the filtering.
 Instead, we can do the filtering on the remote server, and then massage
-the data locally. To save some additional traffic while we debug our
-command-line, we can even stick the current filtered logs into a file so
-that we don't have to access the network while developing:
+the data locally. `less` gives us a "pager" that allows us to scroll up
+and down through the long output. To save some additional traffic while
+we debug our command-line, we can even stick the current filtered logs
+into a file so that we don't have to access the network while
+developing:
 
 ```console
 $ ssh myserver 'journalctl | grep sshd | grep "Disconnected from"' > ssh.log
-$ cat ssh.log
+$ less ssh.log
 ```
 
 There's still a lot of noise here. There are _a lot_ of ways to get rid
@@ -159,7 +161,7 @@ two prefixes in the logs). Then we're matching on any string of
 characters where the username is. Then we're matching on any single word
 (`[^ ]+`; any non-empty sequence of non-space characters). Then the word
 "port" followed by a sequence of digits. Then possibly the suffix
-` [preauth]`, and then the end of the line.
+`[preauth]`, and then the end of the line.
 
 Notice that with this technique, as username of "Disconnected from"
 won't confuse us any more. Can you see why?
@@ -183,7 +185,7 @@ easy](https://emailregex.com/). And there's [lots of
 discussion](https://stackoverflow.com/questions/201323/how-to-validate-an-email-address-using-a-regular-expression/1917982).
 And people have [written
 tests](https://fightingforalostcause.net/content/misc/2006/compare-email-regex.php).
-And [test matrixes](https://mathiasbynens.be/demo/url-regex). You can
+And [test matrices](https://mathiasbynens.be/demo/url-regex). You can
 even write a regex for determining if a given number [is a prime
 number](https://www.noulakaz.net/2007/03/18/a-regular-expression-to-check-for-prime-numbers/).
 
@@ -232,7 +234,7 @@ ssh myserver journalctl
  | sort -nk1,1 | tail -n10
 ```
 
-`sort -n` will sort in numeric (instead of lexiographic) order. `-k1,1`
+`sort -n` will sort in numeric (instead of lexicographic) order. `-k1,1`
 means "sort by only the first whitespace-separated column". The `,n`
 part says "sort until the `n`th field, where the default is the end of
 the line. In this _particular_ example, sorting by the whole line
@@ -305,11 +307,13 @@ leave that as an exercise to the reader.
 
 ## Analyzing data
 
-You can do math!
+You can do math! For example, add the numbers on each line together:
 
 ```bash
  | paste -sd+ | bc -l
 ```
+
+Or produce more elaborate expressions:
 
 ```bash
 echo "2*($(data | paste -sd+))" | bc -l
