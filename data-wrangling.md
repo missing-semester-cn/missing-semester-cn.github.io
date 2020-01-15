@@ -353,7 +353,7 @@ remove based on some longer list. The data wrangling we've talked about
 so far + `xargs` can be a powerful combo:
 
 ```bash
-rustup toolchain list | grep nightly | grep -vE "nightly-x86|01-17" | sed 's/-x86.*//' | xargs rustup toolchain uninstall
+rustup toolchain list | grep nightly | grep -vE "nightly-x86" | sed 's/-x86.*//' | xargs rustup toolchain uninstall
 ```
 
 ## Wrangling binary data
@@ -364,32 +364,17 @@ capture an image from our camera, convert it to grayscale, compress it,
 send it to a remote machine over SSH, decompress it there, make a copy,
 and then display it.
 
-```console
-$ ffmpeg -loglevel panic -i /dev/video0 -frames 1 -f image2 -
-  | convert - -colorspace gray -
-  | gzip
-  | ssh mymachine 'gzip -d | tee copy.jpg | env DISPLAY=:0 feh -'
-$ ssh mymachine jp2a --width=80 copy.jpg
+```bash
+ffmpeg -loglevel panic -i /dev/video0 -frames 1 -f image2 -
+ | convert - -colorspace gray -
+ | gzip
+ | ssh mymachine 'gzip -d | tee copy.jpg | env DISPLAY=:0 feh -'
 ```
 
 # Exercises
 
-{% comment %}
-1. If you are not familiar with Regular Expressions
-   [here](https://regexone.com/) is a short interactive tutorial that
-   covers most of the basics
-1. How is `sed s/REGEX/SUBSTITUTION/g` different from the regular sed?
-   What about `/I` or `/m`?
-1. To do in-place substitution it is quite tempting to do something like
-   `sed s/REGEX/SUBSTITUTION/ input.txt > input.txt`. However this is a
-   bad idea, why? Is this particular to `sed`?
-1. Implement a simple grep equivalent tool in a language you are familiar with using regex. If you want the output to be color highlighted like grep is, search for ANSI color escape sequences.
-1. Sometimes some operations like renaming files can be tricky with raw commands like `mv` . `rename` is a nifty tool to achieve this and has a sed-like syntax. Try creating a bunch of files with spaces in their names and use `rename` to replace them with underscores.
-1. Look for boot messages that are _not_ shared between your past three
-   reboots (see `journalctl`'s `-b` flag). You may want to just mash all
-   the boot logs together in a single file, as that may make things
-   easier.
-1. Produce some statistics of your system boot time over the last ten
+1. Take this [short interactive regex tutorial](https://regexone.com/).
+2. Produce some statistics of your system boot time over the last ten
    boots using the log timestamp of the messages
    ```
    Logs begin at ...
@@ -398,16 +383,20 @@ $ ssh mymachine jp2a --width=80 copy.jpg
    ```
    systemd[577]: Startup finished in ...
    ```
-1. Find the number of words (in `/usr/share/dict/words`) that contain at
+3. Look for boot messages that are _not_ shared between your past three
+   reboots (see `journalctl`'s `-b` flag). You may want to just mash all
+   the boot logs together in a single file, as that may make things
+   easier.
+4. Find the number of words (in `/usr/share/dict/words`) that contain at
    least three `a`s and don't have a `'s` ending. What are the three
    most common last two letters of those words? `sed`'s `y` command, or
    the `tr` program, may help you with case insensitivity. How many
    of those two-letter combinations are there? And for a challenge:
    which combinations do not occur?
-1. Find an online data set like [this
-   one](https://stats.wikimedia.org/EN/TablesWikipediaZZ.htm) or [this
+5. Find an online data set like [this
+   one](https://stats.wikimedia.org/EN/TablesWikipediaZZ.htm), [this
    one](https://ucr.fbi.gov/crime-in-the-u.s/2016/crime-in-the-u.s.-2016/topic-pages/tables/table-1).
-   Maybe another one [from
+   or maybe one [from
    here](https://www.springboard.com/blog/free-public-data-sets-data-science-project/).
    Fetch it using `curl` and extract out just two columns of numerical
    data. If you're fetching HTML data,
@@ -415,4 +404,7 @@ $ ssh mymachine jp2a --width=80 copy.jpg
    data, try [`jq`](https://stedolan.github.io/jq/). Find the min and
    max of one column in a single command, and the sum of the difference
    between the two columns in another.
-{% endcomment %}
+6. To do in-place substitution it is quite tempting to do something like
+   `sed s/REGEX/SUBSTITUTION/ input.txt > input.txt`. However this is a
+   bad idea, why? Is this particular to `sed`? Use `man sed` to find out
+   how to accomplish this.
