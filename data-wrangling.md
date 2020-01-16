@@ -378,7 +378,17 @@ ffmpeg -loglevel panic -i /dev/video0 -frames 1 -f image2 -
 # Exercises
 
 1. Take this [short interactive regex tutorial](https://regexone.com/).
-2. Produce some statistics of your system boot time over the last ten
+2. Find the number of words (in `/usr/share/dict/words`) that contain at
+   least three `a`s and don't have a `'s` ending. What are the three
+   most common last two letters of those words? `sed`'s `y` command, or
+   the `tr` program, may help you with case insensitivity. How many
+   of those two-letter combinations are there? And for a challenge:
+   which combinations do not occur?
+3. To do in-place substitution it is quite tempting to do something like
+   `sed s/REGEX/SUBSTITUTION/ input.txt > input.txt`. However this is a
+   bad idea, why? Is this particular to `sed`? Use `man sed` to find out
+   how to accomplish this.
+4. Find your average, median, and max system boot time over the last ten
    boots. Use `journalctl` on Linux and `log show` on macOS, and look
    for log timestamps near the beginning and end of each boot. On Linux,
    they may look something like:
@@ -398,7 +408,7 @@ ffmpeg -loglevel panic -i /dev/video0 -frames 1 -f image2 -
    ```
    Previous shutdown cause: 5
    ```
-3. Look for boot messages that are _not_ shared between your past three
+5. Look for boot messages that are _not_ shared between your past three
    reboots (see `journalctl`'s `-b` flag). Break this task down into
    multiple steps. First, find a way to get just the logs from the past
    three boots. There may be an applicable flag on the tool you use to
@@ -408,13 +418,7 @@ ffmpeg -loglevel panic -i /dev/video0 -frames 1 -f image2 -
    de-duplicate the input lines and keep a count of each one (`uniq` is
    your friend). And finally, eliminate any line whose count is 3 (since
    it _was_ shared among all the boots).
-4. Find the number of words (in `/usr/share/dict/words`) that contain at
-   least three `a`s and don't have a `'s` ending. What are the three
-   most common last two letters of those words? `sed`'s `y` command, or
-   the `tr` program, may help you with case insensitivity. How many
-   of those two-letter combinations are there? And for a challenge:
-   which combinations do not occur?
-5. Find an online data set like [this
+6. Find an online data set like [this
    one](https://stats.wikimedia.org/EN/TablesWikipediaZZ.htm), [this
    one](https://ucr.fbi.gov/crime-in-the-u.s/2016/crime-in-the-u.s.-2016/topic-pages/tables/table-1).
    or maybe one [from
@@ -425,7 +429,3 @@ ffmpeg -loglevel panic -i /dev/video0 -frames 1 -f image2 -
    data, try [`jq`](https://stedolan.github.io/jq/). Find the min and
    max of one column in a single command, and the sum of the difference
    between the two columns in another.
-6. To do in-place substitution it is quite tempting to do something like
-   `sed s/REGEX/SUBSTITUTION/ input.txt > input.txt`. However this is a
-   bad idea, why? Is this particular to `sed`? Use `man sed` to find out
-   how to accomplish this.
