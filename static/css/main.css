@@ -348,4 +348,7 @@ input[type=checkbox]:checked ~ .menu-label:after {
       color: #202020;
     }
 
+    a:hover > code  {
+        background-color: #66D9EF;
+    }
 }
