@@ -379,7 +379,9 @@ ffmpeg -loglevel panic -i /dev/video0 -frames 1 -f image2 -
 
 1. Take this [short interactive regex tutorial](https://regexone.com/).
 2. Produce some statistics of your system boot time over the last ten
-   boots using the log timestamp of the messages
+   boots. Use `journalctl` on Linux and `log show` on macOS, and look
+   for log timestamps near the beginning and end of each boot. On Linux,
+   they may look something like:
    ```
    Logs begin at ...
    ```
@@ -387,10 +389,25 @@ ffmpeg -loglevel panic -i /dev/video0 -frames 1 -f image2 -
    ```
    systemd[577]: Startup finished in ...
    ```
+   On macOS, [look
+   for](https://eclecticlight.co/2018/03/21/macos-unified-log-3-finding-your-way/):
+   ```
+   === system boot:
+   ```
+   and
+   ```
+   Previous shutdown cause: 5
+   ```
 3. Look for boot messages that are _not_ shared between your past three
-   reboots (see `journalctl`'s `-b` flag). You may want to just mash all
-   the boot logs together in a single file, as that may make things
-   easier.
+   reboots (see `journalctl`'s `-b` flag). Break this task down into
+   multiple steps. First, find a way to get just the logs from the past
+   three boots. There may be an applicable flag on the tool you use to
+   extract the boot logs, or you can use `sed '0,/STRING/d'` to remove
+   all lines previous to one that matches `STRING`. Next, remove any
+   parts of the line that _always_ varies (like the timestamp). Then,
+   de-duplicate the input lines and keep a count of each one (`uniq` is
+   your friend). And finally, eliminate any line whose count is 3 (since
+   it _was_ shared among all the boots).
 4. Find the number of words (in `/usr/share/dict/words`) that contain at
    least three `a`s and don't have a `'s` ending. What are the three
    most common last two letters of those words? `sed`'s `y` command, or
