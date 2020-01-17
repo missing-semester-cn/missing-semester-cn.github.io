@@ -1,7 +1,8 @@
 ---
 layout: lecture
-title: "Editors"
-presenter: Anish
+title: "Editors (Vim)"
+date: 2019-1-15
+ready: true
 #video:
 #  aspect: 62.5
 #  id: 1vLcusYSrI4

@@ -28,14 +28,18 @@ Sign up for the IAP 2020 class by filling out this [registration form](https://f
 **Office hours**: 32-G9 lounge, 3pm--4pm (every day, right after lecture)
 
 <ul>
-{% for lecture in site.data.lectures %}
-  <li>
-  {% if lecture.url %}
-    <strong>{{ lecture.date }}</strong>: <a href="{{ lecture.url }}">{{ lecture.name }}</a>
-  {% else %}
-    <strong>{{ lecture.date }}</strong>: {{ lecture.name }}
-  {% endif %}
-  </li>
+{% assign lectures = site['2020'] | sort: 'date' %}
+{% for lecture in lectures %}
+    {% if lecture.phony != true %}
+        <li>
+        <strong>{{ lecture.date | date: '%-m/%d' }}</strong>:
+        {% if lecture.ready %}
+            <a href="{{ lecture.url }}">{{ lecture.title }}</a>
+        {% else %}
+            {{ lecture.title }} {% if lecture.noclass %}[no class]{% endif %}
+        {% endif %}
+        </li>
+    {% endif %}
 {% endfor %}
 </ul>
 

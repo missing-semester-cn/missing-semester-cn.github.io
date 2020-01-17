@@ -15,6 +15,12 @@ timezone: America/New_York
 analytics:
   tracking_id: UA-53167467-11
 
+collections:
+  '2019':
+    output: true
+  '2020':
+    output: true
+
 # Excludes
 exclude:
   - README.md

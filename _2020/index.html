@@ -1,0 +1,33 @@
+---
+layout: page
+title: "2020 Lectures"
+permalink: /2020/
+phony: true
+excerpt: '' # work around a bug
+---
+
+<ul class="double-spaced">
+  {% assign lectures = site['2020'] | sort: 'date' %}
+  {% for lecture in lectures %}
+    {% if lecture.phony != true %}
+      <li>
+        <strong>{{ lecture.date | date: '%-m/%d' }}</strong>:
+        {% if lecture.ready %}
+          <a href="{{ lecture.url }}">{{ lecture.title }}</a>
+        {% elsif lecture.noclass %}
+          {{ lecture.title }} [no class]
+        {% else %}
+          {{ lecture.title }} [coming soon]
+        {% endif %}
+        {% if lecture.details %}
+          <br>
+          ({{ lecture.details }})
+        {% endif %}
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
+
+<h2>Previous year's lectures</h2>
+
+<p>You can find lecture notes and videos from <a href="/2019/">last year's version of this class</a>.</p>
