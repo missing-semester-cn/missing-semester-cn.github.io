@@ -3,9 +3,9 @@ layout: lecture
 title: "Data Wrangling"
 date: 2019-1-16
 ready: true
-# video:
-#   aspect: 56.25
-#   id: VW2jn9Okjhw
+video:
+  aspect: 56.25
+  id: QQiUPFvIMt8
 ---
 
 {% comment %}

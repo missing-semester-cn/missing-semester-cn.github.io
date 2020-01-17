@@ -3,9 +3,9 @@ layout: lecture
 title: "Editors (Vim)"
 date: 2019-1-15
 ready: true
-#video:
-#  aspect: 62.5
-#  id: 1vLcusYSrI4
+video:
+  aspect: 62.5
+  id: BE-xaxvDEpo
 ---
 
 Writing English words and writing code are very different activities. When
