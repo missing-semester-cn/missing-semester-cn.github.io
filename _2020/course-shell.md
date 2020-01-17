@@ -3,9 +3,9 @@ layout: lecture
 title: "Course overview + the shell"
 date: 2019-1-13
 ready: true
-# video:
-#   aspect: 56.25
-#   id: qw2c6ffSVOM
+video:
+  aspect: 56.25
+  id: Yh-iV6Vn5W4
 ---
 
 {% comment %}
