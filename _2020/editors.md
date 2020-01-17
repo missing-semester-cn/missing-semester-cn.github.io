@@ -4,7 +4,7 @@ title: "Editors (Vim)"
 date: 2019-1-15
 ready: true
 video:
-  aspect: 62.5
+  aspect: 56.25
   id: BE-xaxvDEpo
 ---
 
