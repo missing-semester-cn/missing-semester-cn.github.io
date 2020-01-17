@@ -29,7 +29,7 @@ lessons in the context of Vim, but most ideas will translate to any other
 powerful editor you use (and if they don't, then you probably shouldn't use
 that editor!).
 
-![Editor Learning Curves](/static/media/editor-learning-curves.jpg)
+![Editor Learning Curves](/2019/files/editor-learning-curves.jpg)
 
 <!-- source: https://blogs.msdn.microsoft.com/steverowe/2004/11/17/code-editor-learning-curves/ -->
 
@@ -219,7 +219,7 @@ better way of doing this", there probably is: look it up online.
     - first clear the macro with `q{character}q`
     - record the macro, with `@{character}` to invoke the macro recursively
     (will be a no-op until recording is complete)
-- Example: convert xml to json ([file](/static/media/example-data.xml))
+- Example: convert xml to json ([file](/2019/files/example-data.xml))
     - Array of objects with keys "name" / "email"
     - Use a Python program?
     - Use sed / regexes

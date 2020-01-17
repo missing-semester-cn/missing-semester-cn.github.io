@@ -26,7 +26,7 @@ things like:
 [GDB](https://www.gnu.org/software/gdb/) and [LLDB](https://lldb.llvm.org/).
 Supports many C-like languages.
 
-Let's look at [example.c](/static/media/example.c). Compile with debug flags:
+Let's look at [example.c](/2019/files/example.c). Compile with debug flags:
 `gcc -g -o example example.c`.
 
 Open GDB:
