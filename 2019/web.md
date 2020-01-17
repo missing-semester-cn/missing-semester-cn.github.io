@@ -101,7 +101,7 @@ For example the following script enables vim-like navigation using the J and K k
 // @version      0.1
 // @description  Vim JK for our website
 // @author       You
-// @match        https://missing.csail.mit.edu/*
+// @match        https://hacker-tools.github.io/*
 // @grant        none
 // ==/UserScript==
 
@@ -169,7 +169,7 @@ def snapshot_wayback(driver, url):
 
 
 driver = Firefox()
-url = 'https://missing.csail.mit.edu'
+url = 'https://hacker-tools.github.io'
 snapshot_wayback(driver, url)
 ```
 

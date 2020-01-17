@@ -286,7 +286,7 @@ you want to turn on.
 
 We are providing a well-documented basic config that you can use as a starting
 point. We recommend using this because it fixes some of Vim's quirky default
-behavior. **Download our config [here](/files/vimrc) and save it to
+behavior. **Download our config [here](/2020/files/vimrc) and save it to
 `~/.vimrc`.**
 
 Vim is heavily customizable, and it's worth spending time exploring
@@ -391,7 +391,7 @@ better way of doing this", there probably is: look it up online.
     - first clear the macro with `q{character}q`
     - record the macro, with `@{character}` to invoke the macro recursively
     (will be a no-op until recording is complete)
-- Example: convert xml to json ([file](/files/example-data.xml))
+- Example: convert xml to json ([file](/2020/files/example-data.xml))
     - Array of objects with keys "name" / "email"
     - Use a Python program?
     - Use sed / regexes
@@ -430,7 +430,7 @@ better way of doing this", there probably is: look it up online.
 1. Complete `vimtutor`. Note: it looks best in a
    [80x24](https://en.wikipedia.org/wiki/VT100) (80 columns by 24 lines)
    terminal window.
-1. Download our [basic vimrc](/files/vimrc) and save it to `~/.vimrc`. Read
+1. Download our [basic vimrc](/2020/files/vimrc) and save it to `~/.vimrc`. Read
    through the well-commented file (using Vim!), and observe how Vim looks and
    behaves slightly differently with the new config.
 1. Install and configure a plugin:
@@ -454,6 +454,6 @@ better way of doing this", there probably is: look it up online.
    send us an email.
 1. Configure your other tools to use Vim bindings (see instructions above).
 1. Further customize your `~/.vimrc` and install more plugins.
-1. (Advanced) Convert XML to JSON ([example file](/files/example-data.xml))
+1. (Advanced) Convert XML to JSON ([example file](/2020/files/example-data.xml))
    using Vim macros. Try to do this on your own, but you can look at the
    [macros](#macros) section above if you get stuck.
