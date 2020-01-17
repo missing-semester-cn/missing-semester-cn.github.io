@@ -43,10 +43,10 @@ Sign up for the IAP 2020 class by filling out this [registration form](https://f
 {% endfor %}
 </ul>
 
-See [here](/lectures/) for more on this year's topics, including links to
+See [here](/2020/) for more on this year's topics, including links to
 lecture notes and videos. If you want to get a sense of what the class was like
 last year, check out [last year's
-lectures](https://hacker-tools.github.io/lectures/).
+lectures](/2019/).
 
 # About the class
 
