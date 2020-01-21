@@ -5,6 +5,9 @@ date: 2019-1-21
 ready: true
 ---
 
+In this lecture we will go through several ways in which you can improve your workflow when using the shell. We have been working with the shell for a while now, but we have mainly focused on executing different commands. We will now see how to run several processes at the same time while keeping track of them, how to stop or pause a specific process and how to make a process run in the background.
+
+We will also learn about different ways to improve your shell and other tools, by defining aliases and configuring them using dotfiles. Both of these can help you save time, e.g. by using the same configurations in all your machines without having to type long commands. We will look at how to work with remote machines using SSH.
 
 
 # Job Control
@@ -305,6 +308,14 @@ fi
 
 It has become more and more common for programmers to use remote servers in their everyday work. If you need to use remote servers in order to deploy backend software or you need a server with higher computational capabilities, you will end up using a Secure Shell (SSH). As with most tools covered, SSH is highly configurable so it is worth learning about it.
 
+To `ssh` into a server you execute a command as follows
+
+```bash
+ssh foo@bar.mit.edu
+```
+
+Here we are trying to ssh as user `foo` in server `bar.mit.edu`.
+The server can be specified with a URL (like `bar.mit.edu`) or an IP (something like `foobar@192.168.1.42`). Later we will shee that if we modify ssh config file you can access just using something like `ssh bar`.
 
 ## Executing commands
 
@@ -332,13 +343,13 @@ If you have ever configured pushing to GitHub using SSH keys, then you have prob
 `ssh` will look into `.ssh/authorized_keys` to determine which clients it should let in. To copy a public key over you can use:
 
 ```bash
-cat .ssh/id_dsa.pub | ssh foobar@remote 'cat >> ~/.ssh/authorized_keys'
+cat .ssh/id_ed25519.pub | ssh foobar@remote 'cat >> ~/.ssh/authorized_keys'
 ```
 
 A simpler solution can be achieved with `ssh-copy-id` where available:
 
 ```bash
-ssh-copy-id -i .ssh/id_dsa.pub foobar@remote
+ssh-copy-id -i .ssh/id_ed25519.pub foobar@remote
 ```
 
 ## Copying files over SSH
@@ -351,7 +362,7 @@ There are many ways to copy files over ssh:
 
 ## Port Forwarding
 
-In many scenarios you will run into software that listens to soecific ports in the machine. When this happens in your local machine you can type `localhost:PORT` or `127.0.0.1:PORT`, but what do you do with a remote server that does not have its ports directly available through the network/internet?.
+In many scenarios you will run into software that listens to specific ports in the machine. When this happens in your local machine you can type `localhost:PORT` or `127.0.0.1:PORT`, but what do you do with a remote server that does not have its ports directly available through the network/internet?.
 
 This is called _port forwarding_ and it
 comes in two flavors: Local Port Forwarding and Remote Port Forwarding (see the pictures for more details, credit of the pictures from [this StackOverflow post](https://unix.stackexchange.com/questions/115897/whats-ssh-port-forwarding-and-whats-the-difference-between-ssh-local-and-remot)).
@@ -440,6 +451,8 @@ Since you might be spending hundreds to thousands of hours in your terminal it p
 
 # Exercises
 
+## Job control
+
 1. From what we have seen, we can use some `ps aux | grep` commands to get our jobs' pids and then kill them, but there are better ways to do it. Start a `sleep 10000` job in a terminal, background it with `Ctrl-Z` and continue its execution with `bg`. Now use [`pgrep`](http://man7.org/linux/man-pages/man1/pgrep.1.html) to find its pid and [`pkill`](http://man7.org/linux/man-pages/man1/pgrep.1.html) to kill it without ever typing the pid itself. (Hint: use the `-af` flags).
 
 1. Say you don't want to start a process until another completes, how you would go about it? In this exercise our limiting process will always be `sleep 60 &`.
@@ -448,36 +461,46 @@ One way to achieve this is to use the [`wait`](http://man7.org/linux/man-pages/m
     However, this strategy will fail if we start in a different bash session, since `wait` only works for child processes. One feature we did not discuss in the notes is that the `kill` command's exit status will be zero on success and nonzero otherwise. `kill -0` does not send a signal but will give a nonzero exit status if the process does not exist.
     Write a bash function called `pidwait` that takes a pid and waits until said process completes. You should use `sleep` to avoid wasting CPU unnecessarily.
 
-1.  Run `history 1 |awk '{$1="";print substr($0,2)}' |sort | uniq -c | sort -n | tail -n10`)  to get your top 10 most used commands and consider writing shorter aliases for them.
+## Terminal multiplexer
 
 1. Follow this `tmux` [tutorial](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/) and then learn how to do some basic customizations following [these steps](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/).
 
-1. Let's get you up to speed with dotfiles.
-    - Create a folder for your dotfiles and set up version
-       control.
-    - Add a configuration for at least one program, e.g. your shell, with some
-       customization (to start off, it can be something as simple as customizing your shell prompt by setting `$PS1`).
-    - Set up a method to install your dotfiles quickly (and without manual effort) on a new machine. This can be as simple as a shell script that calls `ln -s` for each file, or you could use a [specialized
-       utility](https://dotfiles.github.io/utilities/).
-    - Test your installation script on a fresh virtual machine.
-    - Migrate all of your current tool configurations to your dotfiles repository.
-    - Publish your dotfiles on GitHub.
+## Aliases
+
+1. Create an alias `dc` that resolves to `cd` for when you type it wrongly.
+
+1.  Run `history 1 |awk '{$1="";print substr($0,2)}' |sort | uniq -c | sort -n | tail -n10`)  to get your top 10 most used commands and consider writing shorter aliases for them.
 
 
-1. Install a Linux virtual machine (or use an already existing one) for this exercise. If you are not familiar with virtual machines check out [this](https://hibbard.eu/install-ubuntu-virtual-box/) tutorial for installing one.
+## Dotfiles
 
-    - Go to `~/.ssh/` and check if you have a pair of SSH keys there. If not, generate them with `ssh-keygen -o -a 100 -t ed25519`. It is recommended that you use a password and use `ssh-agent` , more info [here](https://www.ssh.com/ssh/agents).
-    - Edit `.ssh/config` to have an entry as follows
+Let's get you up to speed with dotfiles.
+1. Create a folder for your dotfiles and set up version
+   control.
+1. Add a configuration for at least one program, e.g. your shell, with some
+   customization (to start off, it can be something as simple as customizing your shell prompt by setting `$PS1`).
+1. Set up a method to install your dotfiles quickly (and without manual effort) on a new machine. This can be as simple as a shell script that calls `ln -s` for each file, or you could use a [specialized
+   utility](https://dotfiles.github.io/utilities/).
+1. Test your installation script on a fresh virtual machine.
+1. Migrate all of your current tool configurations to your dotfiles repository.
+1. Publish your dotfiles on GitHub.
 
-    ```bash
-    Host vm
-        User username_goes_here
-        HostName ip_goes_here
-        IdentityFile ~/.ssh/id_ed25519
-        RemoteForward 9999 localhost:8888
-    ```
-    - Use `ssh-copy-id vm` to copy your ssh key to the server.
-    - Start a webserver in your VM by executing `python -m http.server 8888`. Access the VM webserver by navigating to `http://localhost:9999` in your machine.
-    - Edit your /etc/ssh/sshd_config to disable password authentication by editing the value of `PasswordAuthentication`. Disable root login by editing the value of `PermitRootLogin`. Restart the `ssh` service with `sudo service sshd restart`. Try sshing in again.
-    - (Challenge) Install [`mosh`](https://mosh.org/) in the VM and establish a connection. Then disconnect the network adapter of the server/VM. Can mosh properly recover from it?
-    - (Challenge) Look into what the `-N` and `-f` flags do in `ssh` and figure out what a command to achieve background port forwarding.
+## Remote Machines
+
+Install a Linux virtual machine (or use an already existing one) for this exercise. If you are not familiar with virtual machines check out [this](https://hibbard.eu/install-ubuntu-virtual-box/) tutorial for installing one.
+
+1. Go to `~/.ssh/` and check if you have a pair of SSH keys there. If not, generate them with `ssh-keygen -o -a 100 -t ed25519`. It is recommended that you use a password and use `ssh-agent` , more info [here](https://www.ssh.com/ssh/agents).
+1. Edit `.ssh/config` to have an entry as follows
+
+```bash
+Host vm
+    User username_goes_here
+    HostName ip_goes_here
+    IdentityFile ~/.ssh/id_ed25519
+    RemoteForward 9999 localhost:8888
+```
+1. Use `ssh-copy-id vm` to copy your ssh key to the server.
+1. Start a webserver in your VM by executing `python -m http.server 8888`. Access the VM webserver by navigating to `http://localhost:9999` in your machine.
+1. Edit your SSH server config by doing  `sudo vim /etc/ssh/sshd_config` and disable password authentication by editing the value of `PasswordAuthentication`. Disable root login by editing the value of `PermitRootLogin`. Restart the `ssh` service with `sudo service sshd restart`. Try sshing in again.
+1. (Challenge) Install [`mosh`](https://mosh.org/) in the VM and establish a connection. Then disconnect the network adapter of the server/VM. Can mosh properly recover from it?
+1. (Challenge) Look into what the `-N` and `-f` flags do in `ssh` and figure out what a command to achieve background port forwarding.
