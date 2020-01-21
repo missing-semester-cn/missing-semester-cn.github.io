@@ -125,17 +125,38 @@ When using the command line interface you will often want to run more than one t
 For instance, you might want to run your editor and your program side by side.
 Although this can be achieved opening new terminal windows, using a terminal multiplexer is a more versatile solution.
 
-Terminal multiplexers like [`tmux`](http://man7.org/linux/man-pages/man1/tmux.1.html) or its predecessor [`screen`](http://man7.org/linux/man-pages/man1/screen.1.html) allow to multiplex terminal windows using panes and tabs so you can interact multiple shell sessions.
+Terminal multiplexers like [`tmux`](http://man7.org/linux/man-pages/man1/tmux.1.html) allow to multiplex terminal windows using panes and tabs so you can interact multiple shell sessions.
 Moreover, terminal multiplexers let you detach a current terminal session and reattach at some point later in time.
 This can make your workflow much better when working with remote machines since it voids the need to use `nohup` and similar tricks.
 
 The most popular terminal multiplexer these days is [`tmux`](http://man7.org/linux/man-pages/man1/tmux.1.html). `tmux` is highly configurable and using the associated keybindings you can create multiple tabs and panes and quickly navigate through them.
-You might also want to familiarize yourself with [`screen`](http://man7.org/linux/man-pages/man1/screen.1.html), since it comes installed in most UNIX systems.
 
-![Example Tmux session](https://upload.wikimedia.org/wikipedia/commons/5/50/Tmux.png)
+`tmux` expects you to know its keybindings, and they all have the form `<C-b> x` where that means press `Ctrl+b` release, and the press `x`. `tmux` has the following hierarchy of objects:
+- **Sessions** - a session is an independent workspace with one or more windows
+    + `tmux` starts a new session.
+    + `tmux -t NAME` starts it with that name.
+    + `tmux ls` lists the current sessions
+    + Within `tmux` typing `<C-b> d`  dettaches the current session
+    + `tmux a` attaches the last session. You can use `-t` flag to specify which
+
+- **Windows** - Equivalent to tabs in editors or browsers, they are visually separate parts of the same session
+    + `<C-b> c` Creates a new window. To close it you can just terminate the shells doing `<C-d>`
+    + `<C-b> N` Go to the _N_ th window. Note they are numbered
+    + `<C-b> p` Goes to the previous window
+    + `<C-b> n` Goes to the next window
+    + `<C-b> ,` Rename the current window
+    + `<C-b> w` List current windows
+
+- **Panes** - Like vim splits, pane let you have multiple shells in the same visual display.
+    + `<C-b> "` Split the current pane horizontally
+    + `<C-b> %` Split the current pane vertically
+    + `<C-b> <direction>` Move to the pane in the specified _direction_. Direction here means arrow keys.
+    + `<C-b> z` Toggle zoom for the current pane
+    + `<C-b> [` Start scrollback. You can then press `<space>` to start a selection and `<enter>` to copy that selection.
+    + `<C-b> <space>` Cycle through pane arrangements.
 
 For further reading,
-[here](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/) is a quick tutorial on `tmux` and [this](http://linuxcommand.org/lc3_adv_termmux.php) has a more detailed explanation that covers the original `screen` command.
+[here](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/) is a quick tutorial on `tmux` and [this](http://linuxcommand.org/lc3_adv_termmux.php) has a more detailed explanation that covers the original `screen` command. You might also want to familiarize yourself with [`screen`](http://man7.org/linux/man-pages/man1/screen.1.html), since it comes installed in most UNIX systems.
 
 # Aliases
 
@@ -280,42 +301,6 @@ if [ -f ~/.aliases ]; then
 fi
 ```
 
-# Shells & Frameworks
-
-During shell tool and scripting we covered the `bash` shell because it is by far the most ubiquitous shell and most systems have it as the default option. Nevertheless, it is not the only option.
-
-For example, the `zsh` shell is a superset of `bash` and provides many convenient features out of the box such as:
-
-- Smarter globbing, `**`
-- Inline globbing/wildcard expansion
-- Spelling correction
-- Better tab completion/selection
-- Path expansion (`cd /u/lo/b` will expand as `/usr/local/bin`)
-
-**Frameworks** can improve your shell as well. Some popular general frameworks are [prezto](https://github.com/sorin-ionescu/prezto) or [oh-my-zsh](https://github.com/robbyrussll/oh-my-zsh), and smaller ones that focus on specific features such as [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) or [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search). Shells like [fish](https://fishshell.com/) include many of these user-friendly features by default. Some of these features include:
-
-- Right prompt
-- Command syntax highlighting
-- History substring search
-- manpage based flag completions
-- Smarter autocompletion
-- Prompt themes
-
-One thing to note when using these frameworks is that they may slow down your shell, especially if the code they run is not properly optimized or it is too much code. You can always profile it and disable the features that you do not use often or value over speed.
-
-# Terminal Emulators
-
-Along with customizing your shell, it is worth spending some time figuring out your choice of **terminal emulator** and its settings. There are many many terminal emulators out there (here is a [comparison](https://anarc.at/blog/2018-04-12-terminal-emulators-1/)).
-
-Since you might be spending hundreds to thousands of hours in your terminal it pays off to look into its settings. Some of the aspects that you may want to modify in your terminal include:
-
-- Font choice
-- Color Scheme
-- Keyboard shortcuts
-- Tab/Pane support
-- Scrollback configuration
-- Performance (some newer terminals like [Alacritty](https://github.com/jwilm/alacritty) or [kitty](https://sw.kovidgoyal.net/kitty/) offer GPU acceleration).
-
 # Remote Machines
 
 It has become more and more common for programmers to use remote servers in their everyday work. If you need to use remote servers in order to deploy backend software or you need a server with higher computational capabilities, you will end up using a Secure Shell (SSH). As with most tools covered, SSH is highly configurable so it is worth learning about it.
@@ -411,11 +396,47 @@ Server side configuration is usually specified in `/etc/ssh/sshd_config`. Here y
 
 ## Miscellaneous
 
-**Roaming** - A common pain when connecting to a remote server are disconnections due to shutting down/sleeping your computer or changing a network. Moreover if one has a connection with significant lag using ssh can become quite frustrating. [Mosh](https://mosh.org/), the mobile shell, improves upon ssh, allowing roaming connections, intermittent connectivity and providing intelligent local echo.
+A common pain when connecting to a remote server are disconnections due to shutting down/sleeping your computer or changing a network. Moreover if one has a connection with significant lag using ssh can become quite frustrating. [Mosh](https://mosh.org/), the mobile shell, improves upon ssh, allowing roaming connections, intermittent connectivity and providing intelligent local echo.
 
 Sometimes it is convenient to mount a remote folder. [sshfs](https://github.com/libfuse/sshfs) can mount a folder on a remote server
 locally, and then you can use a local editor.
 
+
+# Shells & Frameworks
+
+During shell tool and scripting we covered the `bash` shell because it is by far the most ubiquitous shell and most systems have it as the default option. Nevertheless, it is not the only option.
+
+For example, the `zsh` shell is a superset of `bash` and provides many convenient features out of the box such as:
+
+- Smarter globbing, `**`
+- Inline globbing/wildcard expansion
+- Spelling correction
+- Better tab completion/selection
+- Path expansion (`cd /u/lo/b` will expand as `/usr/local/bin`)
+
+**Frameworks** can improve your shell as well. Some popular general frameworks are [prezto](https://github.com/sorin-ionescu/prezto) or [oh-my-zsh](https://github.com/robbyrussll/oh-my-zsh), and smaller ones that focus on specific features such as [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) or [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search). Shells like [fish](https://fishshell.com/) include many of these user-friendly features by default. Some of these features include:
+
+- Right prompt
+- Command syntax highlighting
+- History substring search
+- manpage based flag completions
+- Smarter autocompletion
+- Prompt themes
+
+One thing to note when using these frameworks is that they may slow down your shell, especially if the code they run is not properly optimized or it is too much code. You can always profile it and disable the features that you do not use often or value over speed.
+
+# Terminal Emulators
+
+Along with customizing your shell, it is worth spending some time figuring out your choice of **terminal emulator** and its settings. There are many many terminal emulators out there (here is a [comparison](https://anarc.at/blog/2018-04-12-terminal-emulators-1/)).
+
+Since you might be spending hundreds to thousands of hours in your terminal it pays off to look into its settings. Some of the aspects that you may want to modify in your terminal include:
+
+- Font choice
+- Color Scheme
+- Keyboard shortcuts
+- Tab/Pane support
+- Scrollback configuration
+- Performance (some newer terminals like [Alacritty](https://github.com/jwilm/alacritty) or [kitty](https://sw.kovidgoyal.net/kitty/) offer GPU acceleration).
 
 # Exercises
 
