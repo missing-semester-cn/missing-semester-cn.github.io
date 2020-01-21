@@ -267,13 +267,14 @@ If we want to search there we can pipe that output to `grep` and search for patt
 In most shells you can make use of `Ctrl+R` to perform backwards search through your history.
 After pressing `Ctrl+R` you can type a substring you want to match for commands in your history.
 As you keep pressing it you will cycle through the matches in your history.
+This can also be enabled with the UP/DOWN arrows in [zsh](https://github.com/zsh-users/zsh-history-substring-search).
 A nice addition on top of `Ctrl+R` comes with using [fzf](https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings#ctrl-r) bindings.
 `fzf` is a general purpose fuzzy finder that can used with many commands.
 Here is used to fuzzily match through your history and present results in a convenient and visually pleasing manner.
 
-Another cool history related trick I really enjoy is **history substring search**.
+Another cool history-related trick I really enjoy is **history-based autosuggestions**.
 First introduced by the [fish](https://fishshell.com/) shell, this feature dynamically autocompletes your current shell command with the most recent command that you typed that shares a common prefix with it.
-It can be enabled in [zsh](https://github.com/zsh-users/zsh-history-substring-search) and it is a great quality of life trick for your shell.
+It can be enabled in [zsh](https://github.com/zsh-users/zsh-autosuggestions) and it is a great quality of life trick for your shell.
 
 Lastly, a thing to have in mind is that if you start a command with a leading space it won't be added to you shell history.
 This comes in handy when you are typing commands with passwords or other bits of sensitive information.
