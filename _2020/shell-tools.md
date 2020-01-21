@@ -179,6 +179,7 @@ Short for manual, [`man`](http://man7.org/linux/man-pages/man1/man.1.html) provi
 For example, `man rm` will output the behavior of the `rm` command along with the flags that it takes including the `-i` flag we showed earlier.
 In fact, what I have been linking so far for every command are the online version of Linux manpages for the commands.
 Even non native commands that you install will have manpage entries if the developer wrote them and included them as part of the installation process.
+For interactive tools such as the ones based on ncurses, help for the comands can often be accessed within the program using the `:help` command or typing `?`.
 
 Sometimes manpages can be overly detailed descriptions of the commands and it can become hard to decipher what flags/syntax to use for common use cases.
 [TLDR pages](https://tldr.sh/) are a nifty complementary solution that focuses on giving example use cases of a command so you can quickly figure out which options to use.
@@ -288,7 +289,7 @@ Finding frequent and/or recent files and directories can be done through tools l
 Fasd ranks files and directories by [_frecency_](https://developer.mozilla.org/en/The_Places_frecency_algorithm), that is, by both _frequency_ and _recency_.
 The most straightforward use is _autojump_ which adds a `z` command that you can use to quickly `cd` using a substring of a _frecent_ directory. E.g. if you often go to `/home/user/files/cool_project` you can simply `z cool` to jump there.
 
-More complex tools exists to quickly get an overview of a directory structure [`tree`](https://linux.die.net/man/1/tree), [`broot`](https://github.com/Canop/broot) or even full fledged file managers like [nnn](https://github.com/jarun/nnn) or [ranger](https://github.com/ranger/ranger)
+More complex tools exist to quickly get an overview of a directory structure [`tree`](https://linux.die.net/man/1/tree), [`broot`](https://github.com/Canop/broot) or even full fledged file managers like [`nnn`](https://github.com/jarun/nnn) or [`ranger`](https://github.com/ranger/ranger)
 
 # Exercises
 
@@ -327,7 +328,7 @@ polo() {
 }
 {% endcomment %}
 
-1. Say you have a command that fails rarely. In order to debug it you need to capture its output but it can be time consuming to get it.
+1. Say you have a command that fails rarely. In order to debug it you need to capture its output but it can be time consuming to get a failure run.
 Write a bash script that runs the following script until it fails and captures its standard output and error streams to files and prints everything at the end.
 Bonus points if you can also report how many runs it took for the script to fail.
 
@@ -345,7 +346,6 @@ fi
 echo "Everything went according to plan"
 
 ```
-
 {% comment %}
 #!/usr/bin/env bash
 
@@ -368,9 +368,8 @@ To bridge this disconnect there's the [`xargs`](http://man7.org/linux/man-pages/
 For example `ls | xargs rm` will delete the files in the current directory.
 
     Your task is to write a command that recursively finds all HTML files in the folder and makes a zip with them. Note that your command should work even if the files have spaces (hint: check `-d` flag for `xargs`)
-
-{% comment %}
-find . -type f -name "*.html" | xargs -d '\n'  tar -cvzf archive.tar.gz
-{% endcomment %}
+    {% comment %}
+    find . -type f -name "*.html" | xargs -d '\n'  tar -cvzf archive.tar.gz
+    {% endcomment %}
 
 1. (Advanced) Write a command or script to recursively find the most recently modified file in a directory. More generally, can you list all files by recency?
