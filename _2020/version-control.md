@@ -491,7 +491,7 @@ game that teaches you Git.
 # Exercises
 
 1. Clone the [repository for the
-class](https://github.com/missing-semester/missing-semester).
+class website](https://github.com/missing-semester/missing-semester).
     1. Explore the version history by visualizing it as a graph.
     1. Who was the last person to modify `README.md`? (Hint: use `git log` with
        an argument)
