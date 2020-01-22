@@ -239,12 +239,12 @@ area".
 
 # Git command-line interface
 
-The `git init` command initializes a new Git repository, with repository
-metadata being stored in the `.git` directory:
-
 ## Basics
 
 {% comment %}
+
+The `git init` command initializes a new Git repository, with repository
+metadata being stored in the `.git` directory:
 
 ```console
 $ mkdir myproject
