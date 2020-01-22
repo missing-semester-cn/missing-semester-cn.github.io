@@ -13,13 +13,20 @@ each snapshot encapsulates the entire state of files/folders within a top-level
 directory. VCSs also maintain metadata like who created each snapshot, messages
 associated with each snapshot, and so on.
 
-Why is version control useful? Beyond letting you look at old snapshots of the
-project, modern VCSs let you easily (and automatically) answer questions like:
+Why is version control useful? Even when you're working by yourself, it can let
+you look at old snapshots of a project, keep a log of why certain changes were
+made, work on parallel branches of development, and much more. When working
+with others, it's an invaluable tool for seeing what other people have changed,
+as well as resolving conflicts in concurrent development.
+
+Modern VCSs also let you easily (and often automatically) answer questions
+like:
 
 - Who wrote this module?
 - When was this particular line of this particular file edited? By whom? Why
   was it edited?
-- Over the last 1000 revisions, when was this regression introduced?
+- Over the last 1000 revisions, when/why did a particular unit test stop
+working?
 
 While other VCSs exist, **Git** is the de facto standard for version control.
 This [XKCD comic](https://xkcd.com/1597/) captures Git's reputation:
@@ -36,8 +43,14 @@ While Git admittedly has an ugly interface, its underlying design and ideas are
 beautiful. While an ugly interface has to be _memorized_, a beautiful design
 can be _understood_. For this reason, we give a bottom-up explanation of Git,
 starting with its data model and later covering the command-line interface.
+Once the data model is understood, the commands can be better understood, in
+terms of how they manipulate the underlying data model.
 
 # Git's data model
+
+There are many ad-hoc approaches you could take to version control. Git has a
+well thought-out model that enables all the nice features of version control,
+like maintaining history, supporting branches, and enabling collaboration.
 
 ## Snapshots
 
@@ -99,6 +112,11 @@ o <-- o <-- o <-- o <---- <strong>o</strong>
              \          v
               --- o <-- o
 </pre>
+
+Commits in Git are immutable. This doesn't mean that mistakes can't be
+corrected, however; it's just that "edits" to the commit history are actually
+creating entirely new commits, and references (see below) are updated to point
+to the new ones.
 
 ## Data model, as pseudocode
 
@@ -186,7 +204,7 @@ def update_reference(name, id):
 def read_reference(name):
     return references[name]
 
-def load(name_or_id):
+def load_reference(name_or_id):
     if name_or_id in references:
         return load(references[name_or_id])
     else:
@@ -213,7 +231,7 @@ adding objects and adding/updating references.
 Whenever you're typing in any command, think about what manipulation the
 command is making to the underlying graph data structure. Conversely, if you're
 trying to make a particular kind of change to the commit DAG, e.g. "discard
-uncommitted changes and make the 'master' ref point to commit 5d83f9e", there's
+uncommitted changes and make the 'master' ref point to commit `5d83f9e`", there's
 probably a command to do it (e.g. in this case, `git checkout master; git reset
 --hard 5d83f9e`).
 
@@ -394,17 +412,20 @@ index 94bab17..f0013b2 100644
 
 {% endcomment %}
 
-Watch the lecture video or see the [Git documentation](https://git-scm.com/doc)
-for detailed information on the commands below.
+To avoid duplicating information, we're not going to explain the commands below
+in detail. See the highly recommended [Pro Git](https://git-scm.com/book/en/v2)
+for more information, or watch the lecture video.
 
-- `git init`: creates a new git repo
+- `git help <command>`: get help for a git command
+- `git init`: creates a new git repo, with data stored in the `.git` directory
 - `git status`: tells you what's going on
-- `git add <filename>`: stages files for commit
+- `git add <filename>`: adds files to staging area
 - `git commit`: creates a new commit
     - Write [good commit messages](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)!
 - `git commit --amend`: edit a commit's contents/message
 - `git log`: shows a flattened log of history
 - `git log --all --graph --decorate`: visualizes history as a DAG
+- `git diff <filename>`: show differences since the last commit
 - `git diff <revision> <filename>`: shows differences in a file between snapshots
 - `git checkout <revision>`: updates HEAD and current branch
 
@@ -428,6 +449,7 @@ command is used for merging.
 - `git checkout -b <name>`: creates a branch and switches to it
     - same as `git branch <name>; git checkout <name>`
 - `git merge <revision>`: merges into current branch
+- `git mergetool`: use a fancy tool to help resolve merge conflicts
 - `git rebase`: rebase set of patches onto a new base
 
 ## Remotes
@@ -437,7 +459,7 @@ command is used for merging.
 - `git push <remote> <local branch>:<remote branch>`: send objects to remote, and update remote reference
 - `git branch --set-upstream-to=<remote>/<remote branch>`: set up correspondence between local and remote branch
 - `git fetch`: retrieve objects/references from a remote
-- `git pull`: same as `git fetch`, except updates local branch
+- `git pull`: same as `git fetch; git merge`
 - `git clone`: download repository from remote
 
 # Advanced Git
@@ -471,6 +493,9 @@ there are [many](https://nvie.com/posts/a-successful-git-branching-model/)
 - **GitHub**: Git is not GitHub. GitHub has a specific way of contributing code
 to other projects, called [pull
 requests](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests).
+- **Other Git providers**: GitHub is not special: there are many Git repository
+hosts, like [GitLab](https://about.gitlab.com/) and
+[BitBucket](https://bitbucket.org/).
 
 # Resources
 
@@ -494,6 +519,10 @@ game that teaches you Git.
 
 # Exercises
 
+1. If you don't have any past experience with Git, either try reading the first
+   couple chapters of [Pro Git](https://git-scm.com/book/en/v2) or go through a
+   tutorial like [Learn Git Branching](https://learngitbranching.js.org/). As
+   you're working through it, relate Git commands to the data model.
 1. Clone the [repository for the
 class website](https://github.com/missing-semester/missing-semester).
     1. Explore the version history by visualizing it as a graph.
