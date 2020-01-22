@@ -78,25 +78,26 @@ Git calls these snapshots "commit"s. Visualizing a commit history might look
 something like this:
 
 ```
-o --> o --> o --> o
-             \ 
-              \
-               --> o --> o
+o <-- o <-- o <-- o
+            ^  
+             \
+              --- o <-- o
 ```
 
 In the ASCII art above, the `o`s correspond to individual commits (snapshots).
-After the third commit, the history branches into two separate branches. This
-might correspond to, for example, two separate features being developed in
-parallel, independently from each other. In the future, these branches may be
-merged to create a new snapshot that incorporates both of the features,
-producing a new history that looks like this, with the newly created merge
-commit shown in bold:
+The arrows point to the parent of each commit (it's a "comes before" relation,
+not "comes after"). After the third commit, the history branches into two
+separate branches. This might correspond to, for example, two separate features
+being developed in parallel, independently from each other. In the future,
+these branches may be merged to create a new snapshot that incorporates both of
+the features, producing a new history that looks like this, with the newly
+created merge commit shown in bold:
 
 <pre>
-o --> o --> o --> o -----> <strong>o</strong>
-             \             ^
-              \           /
-               --> o --> o
+o <-- o <-- o <-- o <---- <strong>o</strong>
+            ^            /
+             \          v
+              --- o <-- o
 </pre>
 
 ## Data model, as pseudocode
