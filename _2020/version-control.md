@@ -172,12 +172,15 @@ Now, all snapshots can be identified by their SHA-1 hash. That's inconvenient,
 because humans aren't good at remembering strings of 40 hexadecimal characters.
 
 Git's solution to this problem is human-readable names for SHA-1 hashes, called
-"references". References are pointers to commits.
+"references". References are pointers to commits. Unlike objects, which are
+immutable, references are mutable (can be updated to point to a new commit).
+For example, the `master` reference usually points to the latest commit in the
+main branch of development.
 
 ```
 references = map<string, string>
 
-def create_reference(name, id):
+def update_reference(name, id):
     references[name] = id
 
 def read_reference(name):
