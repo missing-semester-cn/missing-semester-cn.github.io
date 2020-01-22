@@ -257,6 +257,10 @@ area".
 
 # Git command-line interface
 
+To avoid duplicating information, we're not going to explain the commands below
+in detail. See the highly recommended [Pro Git](https://git-scm.com/book/en/v2)
+for more information, or watch the lecture video.
+
 ## Basics
 
 {% comment %}
@@ -411,10 +415,6 @@ index 94bab17..f0013b2 100644
 ```
 
 {% endcomment %}
-
-To avoid duplicating information, we're not going to explain the commands below
-in detail. See the highly recommended [Pro Git](https://git-scm.com/book/en/v2)
-for more information, or watch the lecture video.
 
 - `git help <command>`: get help for a git command
 - `git init`: creates a new git repo, with data stored in the `.git` directory
