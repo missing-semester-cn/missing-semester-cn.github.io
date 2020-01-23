@@ -81,16 +81,26 @@ Here is a brief description of some of the commands `pdb` supports:
 - **r**(eturn) - Continue execution until the current function returns.
 - **q**(uit) - Quit the debugger.
 
-Let's go through an example of using `pdb` to fix the following buggy python code.
+Let's go through an example of using `pdb` to fix the following buggy python code. (See the lecture video).
 
-```bash
-TODO TODO
+```python
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(n):
+            if arr[j] > arr[j+1]:
+                arr[j] = arr[j+1]
+                arr[j+1] = arr[j]
+    return arr
+
+print(bubble_sort([4, 2, 1, 8, 7, 6]))
 ```
 
-Note that since Python is an interpreted language, we can use the `pdb` shell to execute commands and execute instructions.
-[`ipdb`](https://pypi.org/project/ipdb/) is an improved `pdb` that uses the [`IPython`](https://ipython.org) REPL, thus enabling tab completion, syntax highlighting, better tracebacks and better introspection, while retaining the same interface as the `pdb` module.
 
-For more low level programming you can look into [`gdb`](https://www.gnu.org/software/gdb/) (and its quality of life modification [`pwndbg`](https://github.com/pwndbg/pwndbg)) and [`lldb`](https://lldb.llvm.org/).
+Note that since Python is an interpreted language we can use the `pdb` shell to execute commands and to execute instructions.
+[`ipdb`](https://pypi.org/project/ipdb/) is an improved `pdb` that uses the [`IPython`](https://ipython.org) REPL enabling tab completion, syntax highlighting, better tracebacks, and better introspection while retaining the same interface as the `pdb` module.
+
+For more low level programming you will probably want to look into [`gdb`](https://www.gnu.org/software/gdb/) (and its quality of life modification [`pwndbg`](https://github.com/pwndbg/pwndbg)) and [`lldb`](https://lldb.llvm.org/).
 They are optimized for C-like language debugging but will let you probe pretty much any process and get its current machine state: registers, stack, program counter, &c.
 
 
@@ -364,11 +374,8 @@ TODO `perf` command
 
 - `perf list` - List the events that can be traced with perf
 - `perf stat COMMAND ARG1 ARG2` - Gets counts of different events related a process or command
-- `perf record` -
-- `perf report` -
-- Basic performance stats: `perf stat {command}`
-- Run a program with the profiler: `perf record {command}`
-- Analyze profile: `perf report`
+- `perf record COMMAND ARG1 ARG2` - Records the run of a command and saves the statistical data into a file called `perf.data`
+- `perf report` - Formats and prints the data collected in `perf.data`
 
 
 ### Visualization
