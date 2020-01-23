@@ -1,7 +1,7 @@
 ---
 layout: lecture
 title: "Version Control (Git)"
-date: 2019-1-22
+date: 2019-01-22
 ready: true
 ---
 

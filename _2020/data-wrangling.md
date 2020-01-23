@@ -1,7 +1,7 @@
 ---
 layout: lecture
 title: "Data Wrangling"
-date: 2019-1-16
+date: 2019-01-16
 ready: true
 video:
   aspect: 56.25

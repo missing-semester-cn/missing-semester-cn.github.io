@@ -1,5 +1,5 @@
 ---
 layout: lecture
 title: "Potpourri"
-date: 2019-1-29
+date: 2019-01-29
 ---
