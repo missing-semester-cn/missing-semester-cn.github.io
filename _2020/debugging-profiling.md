@@ -2,6 +2,7 @@
 layout: lecture
 title: "Debugging and Profiling"
 date: 2019-01-23
+ready: true
 ---
 
 A golden rule in programming is that code does not do what you expect it to do, but what you tell it to do.
