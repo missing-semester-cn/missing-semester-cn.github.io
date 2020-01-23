@@ -232,8 +232,50 @@ They then present aggregate statistics of what your program spent the most time 
 Most programming languages will have some form a command line profiler that you can use to analyze your code.
 Often those integrate with full fledged IDEs but for this lecture we are going to focus on the command line tools themselves.
 
-In Python
-TODO cProfile
+In Python we can use the `cProfile` module to profile time per function call. Here is a simple example that implements a rudimentary grep in Python.
+
+```python
+#!/usr/bin/env python
+
+import sys, re
+
+def grep(pattern, file):
+    with open(file, 'r') as f:
+        print(file)
+        for i, line in enumerate(f.readlines()):
+            pattern = re.compile(pattern)
+            match = pattern.search(line)
+            if match is not None:
+                print("{}: {}".format(i, line), end="")
+
+if __name__ == '__main__':
+    times = int(sys.argv[1])
+    pattern = sys.argv[2]
+    for i in range(times):
+        for file in sys.argv[3:]:
+            grep(pattern, file)
+```
+
+We can profile this code using the following command. Analyzing the output we can see that IO is taking most of the time but compiling the regex also takes a fair amount of time. Since the regex need to be compiled just once we can move factor it out of the for.
+
+```
+$ python -m cProfile -s tottime grep.py 1000 '^(import|\s*def)[^,]*$' *.py
+
+[omitted program output]
+
+ ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+     8000    0.266    0.000    0.292    0.000 {built-in method io.open}
+     8000    0.153    0.000    0.894    0.000 grep.py:5(grep)
+    17000    0.101    0.000    0.101    0.000 {built-in method builtins.print}
+     8000    0.100    0.000    0.129    0.000 {method 'readlines' of '_io._IOBase' objects}
+    93000    0.097    0.000    0.111    0.000 re.py:286(_compile)
+    93000    0.069    0.000    0.069    0.000 {method 'search' of '_sre.SRE_Pattern' objects}
+    93000    0.030    0.000    0.141    0.000 re.py:231(compile)
+    17000    0.019    0.000    0.029    0.000 codecs.py:318(decode)
+        1    0.017    0.017    0.911    0.911 grep.py:3(<module>)
+
+[omitted lines]
+```
 
 
 A caveat of Python's `cProfile` profiler (and many profilers for that matter) is that they will display time per function call. That can become intuitive really fast specially if you are using third party libraries in your code since internal function calls will also be accounted for.
@@ -412,7 +454,7 @@ do
 done
 ```
 
-1. [Here](/static/files/sorts.py) are some sorting algorithm implementations. Use [`cProfile`](https://docs.python.org/2/library/profile.html) and [`line_profiler`](https://github.com/rkern/line_profiler) to compare the runtime of insertion sort and quicksort. What is the bottleneck of each algorithm? Use then `memory_profiler` to check the memory consumption, why is insertion sort better? Check now the inplace version of quicksort. Challenge: Use `perf` to look at the cache locality of each algorithm.
+1. [Here](/static/files/sorts.py) are some sorting algorithm implementations. Use [`cProfile`](https://docs.python.org/2/library/profile.html) and [`line_profiler`](https://github.com/rkern/line_profiler) to compare the runtime of insertion sort and quicksort. What is the bottleneck of each algorithm? Use then `memory_profiler` to check the memory consumption, why is insertion sort better? Check now the inplace version of quicksort. Challenge: Use `perf` to look at the cycle counts and cache hits and misses of each algorithm.
 
 1. Here's some (arguably convoluted) Python code for computing Fibonacci numbers using a function for each number.
 
