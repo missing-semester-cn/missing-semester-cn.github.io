@@ -3,6 +3,9 @@ layout: lecture
 title: "Command-line Environment"
 date: 2019-1-21
 ready: true
+video:
+  aspect: 56.25
+  id: MpJPHy4kUEs
 ---
 
 In this lecture we will go through several ways in which you can improve your workflow when using the shell. We have been working with the shell for a while now, but we have mainly focused on executing different commands. We will now see how to run several processes at the same time while keeping track of them, how to stop or pause a specific process and how to make a process run in the background.
