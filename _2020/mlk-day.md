@@ -1,6 +1,6 @@
 ---
 layout: null
 title: "MLK day"
-date: 2019-1-20
+date: 2019-01-20
 noclass: true
 ---

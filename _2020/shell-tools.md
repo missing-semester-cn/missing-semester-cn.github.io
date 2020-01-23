@@ -1,7 +1,7 @@
 ---
 layout: lecture
 title: "Shell Tools and Scripting"
-date: 2019-1-14
+date: 2019-01-14
 ready: true
 video:
   aspect: 56.25

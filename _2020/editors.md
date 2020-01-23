@@ -1,7 +1,7 @@
 ---
 layout: lecture
 title: "Editors (Vim)"
-date: 2019-1-15
+date: 2019-01-15
 ready: true
 video:
   aspect: 56.25
