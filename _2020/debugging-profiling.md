@@ -15,7 +15,7 @@ In this lecture we are going to cover useful techniques for dealing with buggy a
 
 "The most effective debugging tool is still careful thought, coupled with judiciously placed print statements" — Brian Kernighan, _Unix for Beginners_.
 
-A fist approach to debug a program is to add print statements around where you have detected the problem, and keep iterating until you have extracted enough information to understand what is responsible for the issue.
+A first approach to debug a program is to add print statements around where you have detected the problem, and keep iterating until you have extracted enough information to understand what is responsible for the issue.
 
 A second approach is to use logging in your program, instead of ad hoc print statements. Logging is better than regular print statements for several reasons:
 
@@ -23,9 +23,33 @@ A second approach is to use logging in your program, instead of ad hoc print sta
 - Logging supports severity levels (such as INFO, DEBUG, WARN, ERROR, &c), that allow you to filter the output accordingly.
 - For new issues, there's a fair chance that your logs will contain enough information to detect what is going wrong.
 
+[Here](/static/files/logger.py) is an example code that logs messages:
+
+```bash
+$ python logger.py
+# Raw output as with just prints
+$ python logger.py log
+# Log formatted output
+$ python logger.py log ERROR
+# Print only ERROR levels and above
+$ python logger.py color
+# Color formatted output
+```
+
 One of my favorite tips for making logs more readable is to color code them.
 By now you probably have realized that your terminal uses colors to make things more readable. But how does it do it?
-Programs like `ls` or `grep` are using [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code), which are special sequences of characters to indicate your shell to change the color of the output. For example, executing `echo -e "\e[38;2;255;0;0mThis is red\e[0m"` prints the message `This is red` in red on your terminal.
+Programs like `ls` or `grep` are using [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code), which are special sequences of characters to indicate your shell to change the color of the output. For example, executing `echo -e "\e[38;2;255;0;0mThis is red\e[0m"` prints the message `This is red` in red on your terminal. The following script shows how to print many RGB colors into your terminal.
+
+```bash
+#!/usr/bin/env bash
+for R in $(seq 0 20 255); do
+    for G in $(seq 0 20 255); do
+        for B in $(seq 0 20 255); do
+            printf "\e[38;2;${R};${G};${B}m█\e[0m";
+        done
+    done
+done
+```
 
 ## Third party logs
 
@@ -36,15 +60,15 @@ When interacting with these systems it is often necessary to read their logs, si
 Luckily, most programs write their own logs somewhere in your system.
 In UNIX systems, it is commonplace for programs to write their logs under `/var/log`.
 For instance, the [NGINX](https://www.nginx.com/) webserver places its logs under `/var/log/nginx`.
-More recently, systems have started using a **system log** ”, which is increasingly where all of your log messages go.
+More recently, systems have started using a **system log**, which is increasingly where all of your log messages go.
 Most (but not all) Linux systems use `systemd`, a system daemon that controls many things in your system such as which services are enabled and running.
 `systemd` places the logs under `/var/log/journal` in a specialized format and you can use the [`journalctl`](http://man7.org/linux/man-pages/man1/journalctl.1.html) command to display the messages.
 Similarly, on macOS there is still `/var/log/system.log` but an increasing number of tools use the system log, that can be displayed with [`log show`](https://www.manpagez.com/man/1/log/).
 On most UNIX systems you can also use the [`dmesg`](http://man7.org/linux/man-pages/man1/dmesg.1.html) command to access the kernel log.
 
-For logging under the system logs you can use the [`logger`](http://man7.org/linux/man-pages/man1/logger.1.html) tool.
-Many programming languages have bindings for doing so.
+For logging under the system logs you can use the [`logger`](http://man7.org/linux/man-pages/man1/logger.1.html) shell program.
 Here's an example of using `logger` and how to check that the entry made it to the system logs.
+Moreover, most programming languages have bindings logging to the system log.
 
 ```bash
 logger "Hello Logs"
@@ -116,7 +140,7 @@ Below are some examples of using `strace` or `dtruss` to show [`stat`](http://ma
 ```bash
 # On Linux
 sudo strace -e lstat ls -l > /dev/null
-
+4
 # On macOS
 sudo dtruss -t lstat64_extended ls -l > /dev/null
 ```
@@ -315,7 +339,7 @@ If we used Python's `cProfile` profiler we'd get over 2500 lines of output, and 
 
 ```bash
 $ kernprof -l -v a.py
-Wrote profile results to a.py.lprof
+Wrote profile results to urls.py.lprof
 Timer unit: 1e-06 s
 
 Total time: 0.636188 s
@@ -400,7 +424,7 @@ Programs often run slowly when they are resource constrained, e.g. without enoug
 There are a myriad of command line tools for probing and displaying different system resources like CPU usage, memory usage, network, disk usage and so on.
 
 - **General Monitoring** - Probably the most popular is [`htop`](https://hisham.hm/htop/index.php), which is an improved version of [`top`](http://man7.org/linux/man-pages/man1/top.1.html).
-`htop` presents various statistics for the currently running processes on the system.
+`htop` presents various statistics for the currently running processes on the system. `htop` has a myriad of options and keybinds, some useful ones  are: `<F6>` to sort processes, `t` to show tree hierarchy and `h` to toggle threads. 
 See also [`glances`](https://nicolargo.github.io/glances/) for similar implementation with a great UI. For getting aggregate measures across all processes, [`dstat`](http://dag.wiee.rs/home-made/dstat/) is another nifty tool that computes real-time resource metrics for lots of different subsystems like I/O, networking, CPU utilization, context switches, &c.
 - **I/O operations** - [`iotop`](http://man7.org/linux/man-pages/man8/iotop.8.html) displays live I/O usage information and is handy to check if a process is doing heavy I/O disk operations
 - **Disk Usage** - [`df`](http://man7.org/linux/man-pages/man1/df.1.html) displays metrics per partitions and [`du`](http://man7.org/linux/man-pages/man1/du.1.html) displays **d**isk **u**sage per file for the current directory. In these tools the `-h` flag tells the program to print with **h**uman readable format.
@@ -440,12 +464,13 @@ More info for [Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Perform
 
 # Exercises
 
-1. Do [this](https://github.com/spiside/pdb-tutorial) hands on `pdb` tutorial to familiarize yourself with the commands. For a more in depth tutorial read [this](https://realpython.com/python-debugging-pdb).
-
+## Debugging
 1. Use `journalctl` on Linux or `log show` on macOS to get the super user accesses and commands in the last day.
 If there aren't any you can execute some harmless commands such as `sudo ls` and check again.
 
-1. Install [`shellchek`](https://www.shellcheck.net/) and try checking following script. What is wrong with the code? Fix it. Install a linter plugin in your editor so you can get your warnings automatically.
+1. Do [this](https://github.com/spiside/pdb-tutorial) hands on `pdb` tutorial to familiarize yourself with the commands. For a more in depth tutorial read [this](https://realpython.com/python-debugging-pdb).
+
+1. Install [`shellcheck`](https://www.shellcheck.net/) and try checking the following script. What is wrong with the code? Fix it. Install a linter plugin in your editor so you can get your warnings automatically.
 
 
 ```bash
@@ -457,6 +482,9 @@ do
     && echo -e 'Playlist $f contains a HQ file in mp3 format'
 done
 ```
+
+1. (Advanced) Read about [reversible debugging](https://undo.io/resources/reverse-debugging-whitepaper/) and get a simple example working using [`rr`](https://rr-project.org/) or [`RevPDB`](https://morepypy.blogspot.com/2016/07/reverse-debugging-for-python.html).
+## Profiling
 
 1. [Here](/static/files/sorts.py) are some sorting algorithm implementations. Use [`cProfile`](https://docs.python.org/2/library/profile.html) and [`line_profiler`](https://github.com/rkern/line_profiler) to compare the runtime of insertion sort and quicksort. What is the bottleneck of each algorithm? Use then `memory_profiler` to check the memory consumption, why is insertion sort better? Check now the inplace version of quicksort. Challenge: Use `perf` to look at the cycle counts and cache hits and misses of each algorithm.
 
@@ -490,4 +518,3 @@ Challenge: achieve the same using [`cgroups`](http://man7.org/linux/man-pages/ma
 
 1. (Advanced) The command `curl ipinfo.io` performs a HTTP request an fetches information about your public IP. Open [Wireshark](https://www.wireshark.org/) and try to sniff the request and reply packets that `curl` sent and received. (Hint: Use the `http` filter to just watch HTTP packets).
 
-1. (Advanced) Read about [reversible debugging](https://undo.io/resources/reverse-debugging-whitepaper/) and get a simple example working using [`rr`](https://rr-project.org/) or [`RevPDB`](https://morepypy.blogspot.com/2016/07/reverse-debugging-for-python.html).
