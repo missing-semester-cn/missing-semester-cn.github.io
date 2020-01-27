@@ -199,9 +199,9 @@ does _not_ change the public interface of my library (its "API"), and
 which any project that depended on the old version should immediately
 start using? This is where the different groups of numbers in a version
 come in. The exact meaning of each one varies between projects, but one
-relatively common standard is _semantic versioning_. With semantic
-versioning, every version number is of the form: major.minor.patch. The
-rules are:
+relatively common standard is [_semantic
+versioning_](https://semver.org/). With semantic versioning, every
+version number is of the form: major.minor.patch. The rules are:
 
  - If a new release does not change the API, increase the patch version.
  - If you _add_ to your API in a backwards-compatible way, increase the
@@ -216,7 +216,11 @@ long as its minor version is at least what it was back then. In other
 words, if I depend on your library at version `1.3.7`, then it _should_
 be fine to build it with `1.3.8`, `1.6.1`, or even `1.3.0`. Version
 `2.2.4` would probably not be okay, because the major version was
-increased.
+increased. We can see an example of semantic versioning in Python's
+version numbers. Many of you are probably aware that Python 2 and Python
+3 code do not mix very well, which is why that was a _major_ version
+bump. Similarly, code written for Python 3.5 might run fine on Python
+3.7, but possibly not on 3.4.
 
 When working with dependency management systems, you may also come
 across the notion of _lock files_. A lock file is simply a file that
@@ -264,6 +268,59 @@ GitHub domain. This makes it trivial for us to update the website! We
 just make our changes locally, commit them with git, and then push. CI
 takes care of the rest.
 
+## A brief aside on testing
+
+Most large software projects come with a "test suite". You may already
+be familiar with the general concept of testing, but we thought we'd
+quickly mention some approaches to testing and testing terminology that
+you may encounter in the wild:
+
+ - Test suite: a collective term for all the tests
+ - Unit test: a "micro-test" that tests a specific feature in isolation
+ - Integration test: a "macro-test" that runs a larger part of the
+   system to check that different feature or components work _together_.
+ - Regression test: a test that implements a particular pattern that
+   _previously_ caused a bug to ensure that the bug does not resurface.
+ - Mocking: the replace a function, module, or type with a fake
+   implementation to avoid testing unrelated functionality. For example,
+   you might "mock the network" or "mock the disk".
+
 # Exercises
 
- 1. `make clean`
+ 1. Most makefiles provide a target called `clean`. This isn't intended
+    to produce a file called `clean`, but instead to clean up any files
+    that can be re-built by make. Think of it as a way to "undo" all of
+    the build steps. Implement a `clean` target for the `paper.pdf`
+    `Makefile` above. You will have to make the target
+    [phony](https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html).
+    You may find the [`git
+    ls-files`](https://git-scm.com/docs/git-ls-files) subcommand useful.
+    A number of other very common make targets are listed
+    [here](https://www.gnu.org/software/make/manual/html_node/Standard-Targets.html#Standard-Targets).
+ 2. Take a look at the various ways to specify version requirements for
+    dependencies in [Rust's build
+    system](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html).
+    Most package repositories support similar syntax. For each one
+    (caret, tilde, wildcard, comparison, and multiple), try to come up
+    with a use-case in which that particular kind of requirement makes
+    sense.
+ 3. Git can act as a simple CI system all by itself. In `.git/hooks`
+    inside any git repository, you will find (currently inactive) files
+    that are run as scripts when a particular action happens. Write a
+    [`pre-commit`](https://git-scm.com/docs/githooks#_pre_commit) hook
+    that runs `make paper.pdf` and refuses the commit if the `make`
+    command fails. This should prevent any commit from having an
+    unbuildable version of the paper.
+ 4. Set up a simple auto-published page using [GitHub
+    Pages](https://help.github.com/en/actions/automating-your-workflow-with-github-actions).
+    Add a [GitHub Action](https://github.com/features/actions) to the
+    repository to run `shellcheck` on any shell files in that
+    repository (here is [one way to do
+    it](https://github.com/marketplace/actions/shellcheck)). Check that
+    it works!
+ 5. [Build your
+    own](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/building-actions)
+    GitHub action to run [`proselint`](http://proselint.com/) or
+    [`write-good`](https://github.com/btford/write-good) on all the
+    `.md` files in the repository. Enable it in your repository, and
+    check that it works by filing a pull request with a typo in it.
