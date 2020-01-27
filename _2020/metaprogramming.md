@@ -3,7 +3,7 @@ layout: lecture
 title: "Metaprogramming"
 details: build systems, sermver, makefiles, CI
 date: 2019-01-27
-# ready: true
+ready: true
 # video:
 #   aspect: 56.25
 #   id: QQiUPFvIMt8
