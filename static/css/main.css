@@ -356,3 +356,15 @@ input[type=checkbox]:checked ~ .menu-label:after {
         color: #F92672;
     }
 }
+
+@media print {
+  #nav-bg, #logo, #top-nav { display: none; }
+  h1.title ~ p.center.gap.accent { display: none; }
+  .youtube-wrapper { display: none; }
+  html { font-size: 1em; font-family: sans-serif; }
+  body { background: none; }
+  #content { max-width: none; }
+  h1.title { text-align: center; }
+  #content hr:last-of-type { display: none; }
+  #content div.small:last-of-type { display: none; }
+}
