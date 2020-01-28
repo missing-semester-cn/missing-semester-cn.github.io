@@ -212,7 +212,49 @@ proof](https://keybase.io/blog/chat-apps-softer-than-tofu) (along with other
 neat ideas). Each model has its merits; we (the instructors) like Keybase's
 model.
 
-# Case study: SSH
+# Case studies
+
+## Password managers
+
+This is an essential tool that everyone should try to use (e.g.
+[KeePassXC](https://keepassxc.org/)). Password managers let you use unique,
+randomly generated high-entropy passwords for all your websites, and they save
+all your passwords in one place, encrypted with a symmetric cipher with a key
+produced from a passphrase using a KDF.
+
+Using a password manager lets you avoid password reuse (so you're less impacted
+when websites get compromised), use high-entropy passwords (so you're less likely to
+get compromised), and only need to remember a single high-entropy password.
+
+## Two-factor authentication
+
+[Two-factor
+authentication](https://en.wikipedia.org/wiki/Multi-factor_authentication)
+(2FA) requires you to use a passphrase ("something you know") along with a 2FA
+authenticator (like a [YubiKey](https://www.yubico.com/), "something you have")
+in order to protect against stolen passwords and
+[phishing](https://en.wikipedia.org/wiki/Phishing) attacks.
+
+## Full disk encryption
+
+Keeping your laptop's entire disk encrypted is an easy way to protect your data
+in the case that your laptop is stolen. You can use [cryptsetup +
+LUKS](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_a_non-root_file_system)
+on Linux,
+[BitLocker](https://fossbytes.com/enable-full-disk-encryption-windows-10/) on
+Windows, or [FileVault](https://support.apple.com/en-us/HT204837) on macOS.
+This encrypts the entire disk with a symmetric cipher, with a key protected by
+a passphrase.
+
+## Private messaging
+
+Use [Signal](https://signal.org/) or [Keybase](https://keybase.io/). End-to-end
+security is bootstrapped from asymmetric-key encryption. Obtaining your
+contacts' public keys is the critical step here. If you want good security, you
+need to authenticate public keys out-of-band (with Signal or Keybase), or trust
+social proofs (with Keybase).
+
+## SSH
 
 We've covered the use of SSH and SSH keys in an [earlier
 lecture](/2020/command-line/#remote-machines). Let's look at the cryptography
@@ -242,11 +284,7 @@ can allow the client to log in.
 extra topics, if there's time
 
 security concepts, tips
-- password managers
-- 2FA
-- full disk encryption
 - biometrics
-- private messaging
 - HTTPS
 {% endcomment %}
 
