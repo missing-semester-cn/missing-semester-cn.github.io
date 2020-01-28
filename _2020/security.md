@@ -73,10 +73,10 @@ $ printf 'hello' | sha1sum
 aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d
 ```
 
-At a high level, a hash function can be thought of as a hard-to-invert random
-function (and this is the [ideal model of a hash
-function](https://en.wikipedia.org/wiki/Random_oracle)). A hash function has
-the following properties:
+At a high level, a hash function can be thought of as a hard-to-invert
+random-looking (but deterministic) function (and this is the [ideal model of a
+hash function](https://en.wikipedia.org/wiki/Random_oracle)). A hash function
+has the following properties:
 
 - Non-invertible: it is hard to find an input `m` such that `hash(m) = h` for
 some desired output `h`.
