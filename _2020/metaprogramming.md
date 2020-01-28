@@ -4,9 +4,9 @@ title: "Metaprogramming"
 details: build systems, sermver, makefiles, CI
 date: 2019-01-27
 ready: true
-# video:
-#   aspect: 56.25
-#   id: QQiUPFvIMt8
+video:
+  aspect: 56.25
+  id: kderh1XA30Q
 ---
 
 {% comment %}
