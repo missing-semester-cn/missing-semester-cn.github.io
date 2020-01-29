@@ -2,14 +2,113 @@
 layout: lecture
 title: "Potpourri"
 date: 2019-01-29
+ready: true
 ---
 
-## Backups
-## Systemd
-## FUSE
+
 ## Keyboard remapping
 
+As a programmer, your keyboard is your main input method. As with pretty much anything in your computer, it is configurable (and worth configuring).
 
+The most basic change is to remap keys.
+This usually involves some software that is listening and, whenever a certain key is pressed, it intercepts that event and replaces it with another event corresponding to a different key. Some examples:
+- Remap Caps Lock to Ctrl or Escape. We (the instructors) highly encourage this setting since Caps Lock has a very convenient location but is rarely used.
+- Remapping PrtSc to Play/Pause music. Most OSes have a play/pause key.
+- Swapping Ctrl and the Meta (Windows or Command) key.
+
+You can also map keys to arbitrary commands of your choosing. This is useful for common tasks that you perform. Here, some software listens for a specific key combination and executes some script whenever that event is detected.
+- Open a new terminal or browser window.
+- Inserting some specific text, e.g. your long email address or your MIT ID number.
+- Sleeping the computer or the displays.
+
+There are even more complex modifications you can configure:
+- Remapping sequences of keys, e.g. pressing shift five times toggles Caps Lock.
+- Remapping on tap vs on hold, e.g. Caps Lock key is remapped to Esc if you quickly tap it, but is remapped to Ctrl if you hold it and use it as a modifier.
+- Having remaps being keyboard or software specific.
+
+Some software resources to get started on the topic:
+- macOS - [karabiner-elements](https://pqrs.org/osx/karabiner/), [skhd](https://github.com/koekeishiya/skhd) or [BetterTouchTool](https://folivora.ai/)
+- Linux - [xmodmap](https://wiki.archlinux.org/index.php/Xmodmap) or [Autokey](https://github.com/autokey/autokey)
+- Windows - Builtin in Control Panel, [AutoHotkey](https://www.autohotkey.com/) or [SharpKeys](https://www.randyrants.com/category/sharpkeys/)
+- QMK - If your keyboard supports custom firmware you can use [QMK](https://docs.qmk.fm/) to configure the hardware device itself so the remaps works for any machine you use the keyboard with.
+
+## Daemons
+
+You are probably already familiar with the notion of daemons, even if the word seems new.
+Most computers have a series of processes that are always running in the background rather than waiting for an user to launch them and interact with them.
+These processes are called daemons and the programs that run as daemons often end with a `d` to indicate so.
+For example `sshd`, the SSH daemon, is the program responsible for listening to incoming SSH requests and checking that the remote user has the necessary credentials to log in.
+
+In Linux, `systemd` (the system daemon) is the most common solution for running and setting up daemon processes.
+You can run `systemctl status` to list the current running daemons. Most of them might sound unfamiliar but are responsible for core parts of the system such as managing the network, solving DNS queries or displaying the graphical interface for the system.
+Systemd can be interacted with the `systemctl` command in order to `enable`, `disable`, `start`, `stop`, `restart` or check the `status` of services (those are the `systemctl` commands).
+
+More interestingly, `systemd` has a fairly accessible interface for configuring and enabling new daemons (or services).
+Below is an example of a daemon for running a simple Python app.
+We won't go in the details but as you can see most of the fields are pretty self explanatory.
+
+```ini
+# /etc/systemd/system/myapp.service
+[Unit]
+Description=My Custom App
+After=network.target
+
+[Service]
+User=foo
+Group=foo
+WorkingDirectory=/home/foo/projects/mydaemon
+ExecStart=/usr/bin/local/python3.7 app.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Also, if you just want to run some program with a given frequency there is no need to build a custom daemon, you can use [`cron`](http://man7.org/linux/man-pages/man8/cron.8.html), a daemon you system already runs to perform scheduled tasks.
+
+## FUSE
+
+Modern software systems are usually composed of smaller building blocks that are composed together.
+Your operating system supports using different filesystem backends because there is a common language of what operations a filesystem supports.
+For instance, when you run `touch` to create a file, `touch` performs a system call to the kernel to create the file and the kernel performs the appropriate filesystem call to create the given file.
+A caveat is that UNIX filesystems are traditionally implemented as kernel modules and only the kernel is allowed to perform filesystem calls.
+
+[FUSE](https://en.wikipedia.org/wiki/Filesystem_in_Userspace) (Filesystem in User Space) allows filesystems to be implemented by a user program. FUSE lets users run user space code for filesystem calls and then bridges the necessary calls to the kernel interfaces.
+In practice, this means that users can implement arbitrary functionality for filesystem calls.
+
+For example, FUSE can be used so whenever you perform an operation in a virtual filesystem, that operation is forwarded through SSH to a remote machine, performed there, and the output is returned back to you.
+This way, local programs can see the file as if it was in your computer while in reality it's in a remote server.
+This is effectively what `sshfs` does.
+
+Some interesting examples of FUSE filesystems are:
+- [sshfs](https://github.com/libfuse/sshfs) - Open locally remote files/folder thorugh an SSH connection.
+- [rclone](https://rclone.org/commands/rclone_mount/) - Mount cloud storage services like Dropbox, GDrive, Amazon S3 or Google Cloud Storage and open data locally.
+- [gocryptfs](https://nuetzlich.net/gocryptfs/) - Encrypted overlay system. Files are stored encrypted but once the FS is mounted they appear as plaintext in the mountpoint.
+- [kbfs](https://keybase.io/docs/kbfs) - Distributed filesystem with end-to-end encryption. You can have private, shared and public folders.
+- [borgbackup](https://borgbackup.readthedocs.io/en/stable/usage/mount.html) - Mount your deduplicated, compressed and encrypted backups for ease of browsing.
+
+## Backups
+
+Any data that you haven’t backed up is data that could be gone at any moment, forever.
+It's easy to copy data around, it's hard to reliable backup data.
+Here are some good backup basics and the pitfalls of some approaches.
+
+First, a copy of the data in the same disk is not a backup, because the disk is the single point of failure for all the data. Similarly, an external drive in your home is also a weak backup solution since it could be lost in a fire/robbery/&c. Instead, having an off-site backup is a recommended practice.
+
+Synchronization solutions are not backups. For instance, Dropbox/GDrive are convenient solutions, but when data is erased or corrupted they propagate the change. For the same reason, disk mirroring solutions like RAID are not backups. They don't help if data gets deleted, corrupted or encrypted by ransomware.
+
+Some core features of good backups solutions are versioning, deduplication and security.
+Versioning backups ensure that you can access your history of changes and efficiently recover files.
+Efficient backup solutions use data deduplication to only store incremental changes and reduce the storage overhead.
+Regarding security, you should ask yourself what someone would need to know/have in order to read your data and, more importantly, to delete all your data and associated backups.
+Lastly, blindly trusting backups is a terrible idea and you should verify regularly that you can use them to recover data.
+
+Backups go beyond local files in your computer.
+Given the significant growth of web applications, large amounts of your data are only stored in the cloud.
+For instance, your webmail, social media photos, music playlists in streaming services or online docs are gone if you lose access to the corresponding accounts.
+Having an offline copy of this information is the way to go, and you can find online tools that people have built to fetch the data and save it.
+
+For a more detailed explanation, see 2019's lecture notes on [Backups](/2019/backups).
 
 
 ## APIs
