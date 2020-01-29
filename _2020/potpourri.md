@@ -166,8 +166,122 @@ others, are written in Markdown, and you can see the raw Markdown
 
 
 
-## Hammerspoon (Anish)
+## Hammerspoon (desktop automation on macOS) (Anish)
+
+[Hammerspoon](https://www.hammerspoon.org/) is a desktop automation framework
+for macOS. It lets you write Lua scripts that hook into operating system
+functionality, allowing you to interact with the keyboard/mouse, windows,
+displays, filesystem, and much more.
+
+Some examples of things you can do with Hammerspoon:
+
+- Bind hotkeys to move windows to specific locations
+- Create a menu bar button that automatically lays out windows in a specific layout
+- Mute your speaker when you arrive in lab (by detecting the WiFi network)
+- Show you a warning if you've accidentally taken your friend's power supply
+
+At a high level, Hammerspoon lets you run arbitrary Lua code, bound to menu
+buttons, key presses, or events, and Hammerspoon provides an extensive library
+for interacting with the system, so there's basically no limit to what you can
+do with it. Many people have made their Hammerspoon configurations public, so
+you can generally find what you need by searching the internet, but you can
+always write your own code from scratch.
+
+### Resources
+
+- [Getting Started with Hammerspoon](https://www.hammerspoon.org/go/)
+- [Sample configurations](https://github.com/Hammerspoon/hammerspoon/wiki/Sample-Configurations)
+- [Anish's Hammerspoon config](https://github.com/anishathalye/dotfiles-local/tree/mac/hammerspoon)
+
 ## Booting + Live USBs (Anish)
+
+When your machine boots up, before the operating system is loaded, the
+[BIOS](https://en.wikipedia.org/wiki/BIOS)/[UEFI](https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface)
+initializes the system. During this process, you can press a specific key
+combination to configure this layer of software. For example, your computer may
+say something like "Press F9 to configure BIOS. Press F12 to enter boot menu."
+during the boot process. You can configure all sorts of hardware-related
+settings in the BIOS menu. You can also enter the boot menu to boot from an
+alternate device instead of your hard drive.
+
+[Live USBs](https://en.wikipedia.org/wiki/Live_USB) are USB flash drives
+containing an operating system. You can create one of these by downloading an
+operating system (e.g. a Linux distribution) and burning it to the flash drive.
+This process is a little bit more complicated than simply copying a `.iso` file
+to the disk. There are tools like [UNetbootin](https://unetbootin.github.io/)
+to help you create live USBs.
+
+Live USBs are useful for all sorts of purposes. Among other things, if you
+break your existing operating system installation so that it no longer boots,
+you can use a live USB to recover data or fix the operating system.
+
 ## Docker, Vagrant, VMs, Cloud, OpenStack (Anish)
+
+[Virtual machines](https://en.wikipedia.org/wiki/Virtual_machine) and similar
+tools like containers let you emulate a whole computer system, including the
+operating system. This can be useful for creating an isolated environment for
+testing, development, or exploration (e.g. running potentially malicious code).
+
+[Vagrant](https://www.vagrantup.com/) is a tool that lets you describe machine
+configurations (operating system, services, packages, etc.) in code, and then
+instantiate VMs with a simple `vagrant up`. [Docker](https://www.docker.com/)
+is conceptually similar but it uses containers instead.
+
+You can rent virtual machines on the cloud, and it's a nice way to get instant
+access to:
+
+- A cheap always-on machine that has a public IP address, used to host services
+- A machine with a lot of CPU, disk, RAM, and/or GPU
+- Many more machines than you physically have access to (billing is often by
+the second, so if you want a lot of compute for a short amount of time, it's
+feasible to rent 1000 computers for a couple minutes)
+
+Popular services include [Amazon AWS](https://aws.amazon.com/), [Google
+Cloud](https://cloud.google.com/), and
+[DigitalOcean](https://www.digitalocean.com/).
+
+If you're a member of MIT CSAIL, you can get free VMs for research purposes
+through the [CSAIL OpenStack
+instance](https://tig.csail.mit.edu/shared-computing/open-stack/).
+
 ## Notebook programming (Anish)
+
+[Notebook programming
+environments](https://en.wikipedia.org/wiki/Notebook_interface) can be really
+handy for doing certain types of interactive or exploratory development.
+Perhaps the most popular notebook programming environment today is
+[Jupyter](https://jupyter.org/), for Python (and several other languages).
+[Wolfram Mathematica](https://www.wolfram.com/mathematica/) is another notebook
+programming environment that's great for doing math-oriented programming.
+
 ## GitHub (Anish)
+
+[GitHub](https://github.com/) is one of the most popular platforms for
+open-source software development. Many of the tools we've talked about in this
+class, from [vim](https://github.com/vim/vim) to
+[Hammerspoon](https://github.com/Hammerspoon/hammerspoon), are hosted on
+GitHub. It's easy to get started contributing to open-source to help improve
+the tools that you use every day.
+
+There are two primary ways in which people contribute to projects on GitHub:
+
+- Creating an
+[issue](https://help.github.com/en/github/managing-your-work-on-github/creating-an-issue).
+This can be used to report bugs or request a new feature. Neither of these
+involves reading or writing code, so it can be pretty lightweight to do.
+High-quality bug reports can be extremely valuable to developers. Commenting on
+existing discussions can be helpful too.
+- Contribute code through a [pull
+request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests).
+This is generally more involved than creating an issue. You can
+[fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo)
+a repository on GitHub, clone your fork, create a new branch, make some changes
+(e.g. fix a bug or implement a feature), push the branch, and then [create a
+pull
+request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
+After this, there will generally be some back-and-forth with the project
+maintainers, who will give you feedback on your patch. Finally, if all goes
+well, your patch will be merged into the upstream repository. Often times,
+larger projects will have a contributing guide, tag beginner-friendly issues,
+and some even have mentorship programs to help first-time contributors become
+familiar with the project.
