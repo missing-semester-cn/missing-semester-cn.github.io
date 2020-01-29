@@ -70,12 +70,14 @@ features though that can be good to be aware of:
    "standard output", depending on the argument.
  - Possibly destructive tools are generally not recursive by default,
    but support a "recursive" flag (often `-r`) to make them recurse.
- - If you want to run one program "through" another, like `ssh machine
-   foo`, it can sometimes be awkward to pass arguments to the
-   "inner" program (`foo`), as they will be interpreted as arguments to the
-   "outer" program (`ssh`). The argument `--` makes a program _stop_
-   processing flags and options (things starting with `-`) in what
-   follows: `ssh machine --for-ssh -- foo --for-foo`.
+ - Sometimes, you want to pass something that _looks_ like a flag as a
+   normal argument. For example, imagine you wanted to remove a file
+   called `-r`. Or you want to run one program "through" another, like
+   `ssh machine foo`, and you want to pass a flag to the "inner" program
+   (`foo`). The special argument `--` makes a program _stop_ processing
+   flags and options (things starting with `-`) in what follows, letting
+   you pass things that look like flags without them being interpreted
+   as such: `rm -- -r` or `ssh machine --for-ssh -- foo --for-foo`.
 
 ## Window managers
 
@@ -96,6 +98,7 @@ third, the other windows will again shrink to accommodate the new
 window. Just like with tmux panes, you can navigate around these tiled
 windows with your keyboard, and you can resize them and move them
 around, all without touching the mouse. They are worth looking into!
+
 
 ## VPNs
 
@@ -130,6 +133,10 @@ malicious (or at the very least opportunist), and will log all your
 traffic, and possibly sell information about it to third parties.
 Choosing a bad VPN provider is often worse than not using one in the
 first place.
+
+In a pinch, MIT [runs a VPN](https://ist.mit.edu/vpn) for its students,
+so that may be worth taking a look at. Also, if you're going to roll
+your own, give [WireGuard](https://www.wireguard.com/) a look.
 
 ## Markdown
 
