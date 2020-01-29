@@ -4,15 +4,15 @@ title: "Potpourri"
 date: 2019-01-29
 ---
 
-## Backups (Jose)
-## Systemd (Jose)
-## FUSE (Jose)
-## Keyboard remapping (Jose)
+## Backups
+## Systemd
+## FUSE
+## Keyboard remapping
 
 
 
 
-## APIs (Jon)
+## APIs
 
 We've talked a lot in this class about using your computer more
 efficiently to accomplish _local_ tasks, but you will find that many of
@@ -47,7 +47,7 @@ token allows under _your_ account!
 idea of APIs — it provides integrations with tons of services, and lets
 you chain events from them in nearly arbitrary ways. Give it a look!
 
-## Common command-line flags/patterns (Jon)
+## Common command-line flags/patterns
 
 Command-line tools vary a lot, and you will often want to check out
 their `man` pages before using them. They often share some common
@@ -77,7 +77,7 @@ features though that can be good to be aware of:
    processing flags and options (things starting with `-`) in what
    follows: `ssh machine --for-ssh -- foo --for-foo`.
 
-## Window managers (Jon)
+## Window managers
 
 Most of you are used to using a "drag and drop" window manager, like
 what comes with Windows, macOS, and Ubuntu by default. There are windows
@@ -97,7 +97,7 @@ window. Just like with tmux panes, you can navigate around these tiled
 windows with your keyboard, and you can resize them and move them
 around, all without touching the mouse. They are worth looking into!
 
-## VPNs (Jon)
+## VPNs
 
 VPNs are all the rage these days, but it's not clear that's for [any
 good reason](https://gist.github.com/joepie91/5a9909939e6ce7d09e29). You
@@ -131,7 +131,7 @@ traffic, and possibly sell information about it to third parties.
 Choosing a bad VPN provider is often worse than not using one in the
 first place.
 
-## Markdown (Jon)
+## Markdown
 
 There is a high chance that you will write some text over the course of
 your career. And often, you will want to mark up that text in simple
@@ -166,7 +166,7 @@ others, are written in Markdown, and you can see the raw Markdown
 
 
 
-## Hammerspoon (desktop automation on macOS) (Anish)
+## Hammerspoon (desktop automation on macOS)
 
 [Hammerspoon](https://www.hammerspoon.org/) is a desktop automation framework
 for macOS. It lets you write Lua scripts that hook into operating system
@@ -193,7 +193,7 @@ always write your own code from scratch.
 - [Sample configurations](https://github.com/Hammerspoon/hammerspoon/wiki/Sample-Configurations)
 - [Anish's Hammerspoon config](https://github.com/anishathalye/dotfiles-local/tree/mac/hammerspoon)
 
-## Booting + Live USBs (Anish)
+## Booting + Live USBs
 
 When your machine boots up, before the operating system is loaded, the
 [BIOS](https://en.wikipedia.org/wiki/BIOS)/[UEFI](https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface)
@@ -215,7 +215,7 @@ Live USBs are useful for all sorts of purposes. Among other things, if you
 break your existing operating system installation so that it no longer boots,
 you can use a live USB to recover data or fix the operating system.
 
-## Docker, Vagrant, VMs, Cloud, OpenStack (Anish)
+## Docker, Vagrant, VMs, Cloud, OpenStack
 
 [Virtual machines](https://en.wikipedia.org/wiki/Virtual_machine) and similar
 tools like containers let you emulate a whole computer system, including the
@@ -244,7 +244,7 @@ If you're a member of MIT CSAIL, you can get free VMs for research purposes
 through the [CSAIL OpenStack
 instance](https://tig.csail.mit.edu/shared-computing/open-stack/).
 
-## Notebook programming (Anish)
+## Notebook programming
 
 [Notebook programming
 environments](https://en.wikipedia.org/wiki/Notebook_interface) can be really
@@ -254,7 +254,7 @@ Perhaps the most popular notebook programming environment today is
 [Wolfram Mathematica](https://www.wolfram.com/mathematica/) is another notebook
 programming environment that's great for doing math-oriented programming.
 
-## GitHub (Anish)
+## GitHub
 
 [GitHub](https://github.com/) is one of the most popular platforms for
 open-source software development. Many of the tools we've talked about in this
