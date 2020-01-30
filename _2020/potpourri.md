@@ -58,7 +58,7 @@ For example `sshd`, the SSH daemon, is the program responsible for listening to 
 In Linux, `systemd` (the system daemon) is the most common solution for running and setting up daemon processes.
 You can run `systemctl status` to list the current running daemons. Most of them might sound unfamiliar but are responsible for core parts of the system such as managing the network, solving DNS queries or displaying the graphical interface for the system.
 Systemd can be interacted with the `systemctl` command in order to `enable`, `disable`, `start`, `stop`, `restart` or check the `status` of services (those are the `systemctl` commands).
-1
+
 More interestingly, `systemd` has a fairly accessible interface for configuring and enabling new daemons (or services).
 Below is an example of a daemon for running a simple Python app.
 We won't go in the details but as you can see most of the fields are pretty self explanatory.
