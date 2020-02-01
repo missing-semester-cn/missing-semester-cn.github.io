@@ -80,7 +80,7 @@ Restart=on-failure
 WantedBy=multi-user.target
 ```
 
-Also, if you just want to run some program with a given frequency there is no need to build a custom daemon, you can use [`cron`](http://man7.org/linux/man-pages/man8/cron.8.html), a daemon you system already runs to perform scheduled tasks.
+Also, if you just want to run some program with a given frequency there is no need to build a custom daemon, you can use [`cron`](http://man7.org/linux/man-pages/man8/cron.8.html), a daemon your system already runs to perform scheduled tasks.
 
 ## FUSE
 
