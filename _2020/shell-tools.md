@@ -5,7 +5,7 @@ date: 2019-01-14
 ready: true
 video:
   aspect: 56.25
-  id: 2APJRjhBiYc
+  id: kgII-YWo3Zw
 ---
 
 In this lecture we will present some of the basics of using bash as a scripting language along with a number of shell tools that cover several of the most common tasks that you will be constantly performing in the command line.
