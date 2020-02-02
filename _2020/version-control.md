@@ -3,6 +3,9 @@ layout: lecture
 title: "Version Control (Git)"
 date: 2019-01-22
 ready: true
+video:
+  aspect: 56.25
+  id: 2sjqTHE0zok
 ---
 
 Version control systems (VCSs) are tools used to track changes to source code

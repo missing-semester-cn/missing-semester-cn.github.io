@@ -3,6 +3,9 @@ layout: lecture
 title: "Security and Cryptography"
 date: 2019-01-28
 ready: true
+video:
+  aspect: 56.25
+  id: tjwobAmnKTo
 ---
 
 Last year's [security and privacy lecture](/2019/security/) focused on how you
