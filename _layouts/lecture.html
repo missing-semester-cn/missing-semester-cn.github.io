@@ -4,11 +4,11 @@ layout: default
 
 <h1 class="title">{{ page.title }}{% if page.subtitle %} <span class="subtitle">{{ page.subtitle }}</span>{% endif %}</h1>
 
-{% if page.video %}
+{% if page.video.id %}
   <div class="youtube-wrapper" style="padding-bottom: {{ page.video.aspect }}%;">
     <iframe src="https://www.youtube.com/embed/{{ page.video.id }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
-{% else %}
+{% elsif page.video %}
   <p class="center gap accent"><strong>Lecture video coming soon!</strong></p>
 {% endif %}
 
