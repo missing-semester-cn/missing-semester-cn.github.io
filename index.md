@@ -18,14 +18,18 @@ impossibly complex.
 
 Read about the [motivation behind this class](/about/).
 
+{% comment %}
 # Registration
 
 Sign up for the IAP 2020 class by filling out this [registration form](https://forms.gle/TD1KnwCSV52qexVt9).
+{% endcomment %}
 
 # Schedule
 
+{% comment %}
 **Lecture**: 35-225, 2pm--3pm<br>
 **Office hours**: 32-G9 lounge, 3pm--4pm (every day, right after lecture)
+{% endcomment %}
 
 <ul>
 {% assign lectures = site['2020'] | sort: 'date' %}
