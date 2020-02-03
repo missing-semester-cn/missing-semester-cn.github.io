@@ -1,0 +1,2573 @@
+0:00:00.000,0:00:04.200
+So welcome back. Today we are gonna
+cover debugging and profiling.
+
+0:00:04.720,0:00:09.340
+Before I get into it we're gonna make another
+reminder to fill in the survey.
+
+0:00:09.520,0:00:14.580
+Just one of the main things we want to get
+from you is questions, because the last day
+
+0:00:14.820,0:00:18.080
+is gonna be questions from
+you guys: about things that
+
+0:00:18.080,0:00:22.020
+we haven't covered, or like you want
+us to kind of talk more in depth.
+
+0:00:23.350,0:00:26.969
+The more questions we get, the more interesting
+we can make that section,
+
+0:00:26.970,0:00:28.900
+so please go on and fill in the survey.
+
+0:00:28.900,0:00:35.660
+So today's lecture is gonna be a lot of topics.
+All the topics revolve around the concept of
+
+0:00:35.820,0:00:39.920
+what do you do when you have
+a program that has some bugs.
+
+0:00:39.920,0:00:42.520
+Which is most of the time, like when you
+are programming, you're kind of thinking
+
+0:00:42.720,0:00:47.400
+about how you implement something and there's
+like a half life of fixing all the issues that
+
+0:00:47.620,0:00:52.140
+that program has. And even if your program behaves
+like you want, it might be that it's
+
+0:00:52.390,0:00:55.680
+really slow, or it's taking a lot
+of resources in the process.
+
+0:00:55.680,0:01:00.569
+So today we're gonna see a lot of different
+approaches of dealing with these problems.
+
+0:01:01.300,0:01:05.099
+So first, the first section is on debugging.
+
+0:01:06.159,0:01:08.279
+Debugging can be done in many different ways,
+
+0:01:08.380,0:01:10.119
+there are all kinds of...
+
+0:01:10.120,0:01:13.640
+The most simple approach that, pretty much, all
+
+0:01:13.640,0:01:17.140
+CS students will go through, will be just:
+you have some code, and it's not behaving
+
+0:01:17.160,0:01:20.280
+like you want, so you probe the code by adding
+
+0:01:20.280,0:01:23.420
+print statements. This is called
+"printf debugging" and
+
+0:01:23.440,0:01:24.450
+it works pretty well.
+
+0:01:24.450,0:01:26.680
+Like, I have to be honest,
+
+0:01:26.820,0:01:33.120
+I use it a lot of the time because of how simple
+to set up and how quick the feedback can be.
+
+0:01:34.360,0:01:39.320
+One of the issues with printf debugging
+is that you can get a lot of output
+
+0:01:39.320,0:01:40.740
+and maybe you don't want
+
+0:01:40.800,0:01:43.240
+to get as much output as you're getting.
+
+0:01:43.780,0:01:49.349
+There has... people have thought of slightly more
+complex ways of doing printf debugging and
+
+0:01:53.920,0:01:58.320
+one of these ways is what is usually
+referred to as "logging".
+
+0:01:58.420,0:02:04.530
+So the advantage of doing logging versus doing printf
+debugging is that, when you're creating logs,
+
+0:02:05.080,0:02:09.780
+you're not necessarily creating the logs because
+there's a specific issue you want to fix;
+
+0:02:09.780,0:02:12.460
+it's mostly because you have built a
+
+0:02:12.480,0:02:16.840
+more complex software system and you
+want to log when some events happen.
+
+0:02:17.360,0:02:21.560
+One of the core advantages of using
+a logging library is that
+
+0:02:22.180,0:02:27.040
+you can can define severity levels,
+and you can filter based on those.
+
+0:02:27.400,0:02:31.620
+Let's see an example of how we
+can do something like that.
+
+0:02:32.320,0:02:35.840
+Yeah, everything fits here. This
+is a really silly example:
+
+0:02:36.340,0:02:37.520
+We're just gonna
+
+0:02:37.520,0:02:40.980
+sample random numbers and, depending
+on the value of the number,
+
+0:02:41.120,0:02:44.720
+that we can interpret as a kind
+of "how wrong things are going".
+
+0:02:44.740,0:02:48.760
+We're going to log the value
+of the number and then
+
+0:02:49.340,0:02:51.640
+we can see what is going on.
+
+0:02:52.580,0:02:59.280
+I need to disable these formatters...
+
+0:02:59.620,0:03:03.720
+And if we were just to execute the code as it is,
+
+0:03:04.160,0:03:07.420
+we just get the output and we just
+keep getting more and more output.
+
+0:03:07.420,0:03:13.599
+But you have to kind of stare at it and make
+sense of what is going on, and we don't know
+
+0:03:13.600,0:03:19.629
+what is the relative timing between printfs, we don't really
+know whether this is just an information message
+
+0:03:19.630,0:03:22.960
+or a message of whether something went wrong.
+
+0:03:23.810,0:03:25.810
+If we just go in,
+
+0:03:27.320,0:03:29.780
+and undo, not that one...
+
+0:03:34.220,0:03:37.140
+That one, we can set that formatter.
+
+0:03:38.620,0:03:41.600
+Now the output looks something more like this
+
+0:03:41.620,0:03:44.840
+So for example, if you have several different
+modules that you are programming with,
+
+0:03:44.840,0:03:46.940
+you can identify them with like different levels.
+
+0:03:46.940,0:03:49.800
+Here, we have, we have debug levels,
+
+0:03:50.330,0:03:51.890
+we have critical
+
+0:03:51.890,0:03:57.540
+info, different levels. And it might be handy because
+here we might only care about the error messages.
+
+0:03:57.740,0:04:00.640
+Like those are like, the... We have been
+
+0:04:00.700,0:04:03.960
+working on our code, so far so good,
+and suddenly we get some error.
+
+0:04:03.960,0:04:06.540
+We can log that to identify where it's happening.
+
+0:04:06.580,0:04:11.640
+But maybe there's a lot of information
+messages, but we can deal with that
+
+0:04:12.709,0:04:16.809
+by just changing the level to error level.
+
+0:04:17.400,0:04:17.900
+And
+
+0:04:18.890,0:04:22.960
+now if we were to run this again,
+we are only going to get those
+
+0:04:23.620,0:04:28.160
+errors in the output, and we can just look through
+those to make sense of what is going on.
+
+0:04:28.920,0:04:33.320
+Another really useful tool when
+you're dealing with logs is
+
+0:04:34.130,0:04:36.670
+As you kind of look at this,
+
+0:04:36.670,0:04:42.580
+it has become easier because now we have this critical
+and error levels that we can quickly identify.
+
+0:04:43.310,0:04:46.750
+But since humans are fairly visual creatures,
+
+0:04:48.680,0:04:53.109
+one thing that you can do is use
+colors from your terminal to
+
+0:04:53.630,0:04:57.369
+identify these things. So now,
+changing the formatter,
+
+0:04:57.369,0:05:03.320
+what I've done is slightly change
+how the output is formatted.
+
+0:05:03.580,0:05:09.340
+When I do that, now whenever I get a warning
+message, it's color coded by yellow;
+
+0:05:09.340,0:05:10.880
+whenever I get like an error,
+
+0:05:10.960,0:05:16.140
+faded red; and when it's critical, I have a
+bold red indicating something went wrong.
+
+0:05:16.280,0:05:22.620
+And here it's a really short output, but when you start
+having thousands and thousands of lines of log,
+
+0:05:22.620,0:05:26.380
+which is not unrealistic and happens
+every single day in a lot of apps,
+
+0:05:27.140,0:05:32.500
+quickly browsing through them and identifying
+where the error or the red patches are
+
+0:05:32.600,0:05:35.320
+can be really useful.
+
+0:05:35.600,0:05:41.400
+A quick aside is, you might be curious about
+how the terminal is displaying these colors.
+
+0:05:41.580,0:05:45.320
+At the end of the day, the terminal
+is only outputting characters.
+
+0:05:47.160,0:05:49.480
+Like, how is this program or how
+are other programs, like LS,
+
+0:05:50.060,0:05:56.050
+that has all these fancy colors. How are they telling the
+terminal that it should use these different colors?
+
+0:05:56.360,0:05:58.779
+This is nothing extremely fancy,
+
+0:05:59.440,0:06:03.440
+what these tools are doing, is
+something along these lines.
+
+0:06:03.740,0:06:04.540
+Here we have...
+
+0:06:05.420,0:06:08.340
+I can clear the rest of the output,
+so we can focus on this.
+
+0:06:08.660,0:06:14.000
+There's some special characters,
+some escape characters here,
+
+0:06:14.260,0:06:19.740
+then we have some text and then we have some other
+special characters. And if we execute this line
+
+0:06:19.940,0:06:22.360
+we get a red "This is red".
+
+0:06:22.480,0:06:26.640
+And you might have picked up on the
+fact that we have a "255;0;0" here,
+
+0:06:26.720,0:06:31.400
+this is just telling the RGB values of
+the color we want in the terminal.
+
+0:06:31.400,0:06:38.100
+And you pretty much can do this in any piece of code that
+you have, and like that you can color code the output.
+
+0:06:38.100,0:06:42.540
+Your terminal is fairly fancy and supports
+a lot of different colors in the output.
+
+0:06:42.550,0:06:45.400
+This is not even all of them, this
+is like a sixteenth of them.
+
+0:06:46.100,0:06:49.119
+I think it can be fairly useful
+to know about that.
+
+0:06:52.100,0:06:55.960
+Another thing is maybe you don't
+enjoy or you don't think
+
+0:06:56.200,0:06:58.620
+logs are really fit for you.
+
+0:06:58.620,0:07:02.480
+The thing is a lot of other systems that
+you might start using will use logs.
+
+0:07:02.840,0:07:05.360
+As you start building larger and larger systems,
+
+0:07:05.360,0:07:10.140
+you might rely on other dependencies. Common
+dependencies might be web servers or
+
+0:07:10.220,0:07:12.320
+databases, it's a really common one.
+
+0:07:12.440,0:07:17.740
+And those will be logging their errors
+or exceptions in their own logs.
+
+0:07:17.740,0:07:20.540
+Of course, you will get some client-side error,
+
+0:07:20.620,0:07:25.140
+but those sometimes are not informative enough
+for you to figure out what is going on.
+
+0:07:25.900,0:07:33.940
+In most UNIX systems, the logs are usually
+placed under a folder called "/var/log"
+
+0:07:33.940,0:07:37.980
+and if we list it, we can see there's
+a bunch of logs in here.
+
+0:07:42.680,0:07:48.040
+So we have like the shutdown monitor
+log, or some weekly logs.
+
+0:07:49.669,0:07:56.199
+Things related to the Wi-Fi, for
+example. And if we output the
+
+0:07:57.560,0:08:00.840
+System log, which contains a lot
+of information about the system,
+
+0:08:00.840,0:08:03.940
+we can get information about what's going on.
+
+0:08:04.120,0:08:06.780
+Similarly, there are tools that will let you
+
+0:08:07.460,0:08:13.090
+more sanely go through this output.
+But here, looking at the system log,
+
+0:08:13.090,0:08:15.520
+I can look at this, and say:
+
+0:08:15.760,0:08:20.040
+oh there's some service that is
+exiting with some abnormal code
+
+0:08:20.420,0:08:25.460
+and based on that information, I can go
+and try to figure out what's going on,
+
+0:08:25.510,0:08:27.500
+like what's going wrong.
+
+0:08:29.020,0:08:32.000
+One thing to know when you're
+working with logs is that
+
+0:08:32.000,0:08:35.900
+more traditionally, every software had their own
+
+0:08:35.920,0:08:42.540
+log, but it has been increasingly more popular to have
+a unified system log where everything is placed.
+
+0:08:43.010,0:08:49.299
+Pretty much any application can log into the system
+log, but instead of being in a plain text format,
+
+0:08:49.300,0:08:52.380
+it will be compressed in some special format.
+
+0:08:52.380,0:08:56.460
+An example of this, it was what we covered
+in the data wrangling lecture.
+
+0:08:56.520,0:08:59.900
+In the data wrangling lecture we
+were using the "journalctl",
+
+0:09:00.200,0:09:04.280
+which is accessing the log and
+outputting all that output.
+
+0:09:04.340,0:09:07.380
+Here in Mac, now the command is "log show",
+
+0:09:07.380,0:09:10.020
+which will display a lot of information.
+
+0:09:10.100,0:09:15.760
+I'm gonna just display the last ten seconds,
+because logs are really, really verbose and
+
+0:09:17.060,0:09:23.720
+just displaying the last 10 seconds is still
+gonna output a fairly large amount of lines.
+
+0:09:23.900,0:09:28.240
+So if we go back through what's going on,
+
+0:09:28.240,0:09:33.460
+we here see that a lot of Apple things
+are going on, since this is a macbook.
+
+0:09:33.500,0:09:38.460
+Maybe we could find errors about
+like some system issue here.
+
+0:09:39.280,0:09:46.920
+Again they're fairly verbose, so you might want
+to practice your data wrangling techniques here,
+
+0:09:46.920,0:09:50.440
+like 10 seconds equal to like 500
+lines of logs, so you can kind of
+
+0:09:50.960,0:09:54.960
+get an idea of how many lines
+per second you're getting.
+
+0:09:56.360,0:10:01.060
+They're not only useful for figuring
+out some other programs' output,
+
+0:10:01.060,0:10:05.619
+they're also useful for you, if you want to
+log there instead of into your own file.
+
+0:10:05.779,0:10:11.319
+So using the "logger" command,
+in both linux and mac,
+
+0:10:11.839,0:10:13.480
+You can say okay
+
+0:10:13.480,0:10:18.880
+I'm gonna log this "Hello Logs"
+into this system log.
+
+0:10:18.880,0:10:21.939
+We execute the command and then
+
+0:10:22.760,0:10:27.640
+we can check by going through
+the last minute of logs,
+
+0:10:27.640,0:10:31.760
+since it's gonna be fairly recent,
+and grepping for that "Hello"
+
+0:10:31.760,0:10:38.260
+we find our entry. Fairly recent entry, that
+we just created that said "Hello Logs".
+
+0:10:39.220,0:10:46.840
+As you become more and more familiar with
+these tools, you will find yourself using
+
+0:10:48.800,0:10:51.279
+the logs more and more often, since
+
+0:10:51.529,0:10:56.349
+even if you have some bug that you haven't detected,
+and the program has been running for a while,
+
+0:10:56.349,0:11:02.240
+maybe the information is already in the log and can
+tell you enough to figure out what is going on.
+
+0:11:02.800,0:11:08.260
+However, printf debugging is not everything.
+So now I'm going to be covering debuggers.
+
+0:11:08.260,0:11:10.380
+But first any questions on logs so far?
+
+0:11:11.720,0:11:15.040
+So what kind of things can you
+figure out from the logs?
+
+0:11:15.040,0:11:18.800
+like this Hello Logs says that you did
+something with Hello at that time?
+
+0:11:18.940,0:11:25.040
+Yeah, like say, for example, I can
+write a bash script that detects...
+
+0:11:25.060,0:11:29.480
+Well, that checks every time what
+Wi-Fi network I'm connected to.
+
+0:11:29.480,0:11:34.150
+And every time it detects that it has changed,
+it makes an entry in the logs and says
+
+0:11:34.150,0:11:37.440
+Oh now it looks like we have
+changed Wi-Fi networks.
+
+0:11:37.440,0:11:41.400
+and then you might go back and parse
+through the logs and take like, okay
+
+0:11:41.510,0:11:47.559
+When did my computer change from one Wi-Fi network to
+another. And this is just kind of a simple example
+
+0:11:47.560,0:11:50.260
+But there are many, many ways,
+
+0:11:50.660,0:11:54.020
+many types of information that
+you could be logging here.
+
+0:11:54.020,0:11:59.040
+More commonly, you will probably want to
+check if your computer, for example, is
+
+0:11:59.100,0:12:02.540
+entering sleep, for example,
+for some unknown reason.
+
+0:12:02.680,0:12:04.660
+Like it's on hibernation mode.
+
+0:12:04.820,0:12:09.100
+There's probably some information in the
+logs about who asked that to happen,
+
+0:12:09.100,0:12:10.240
+or why it's that happening.
+
+0:12:11.720,0:12:14.880
+Any other questions? Okay.
+
+0:12:14.880,0:12:17.380
+So when printf debugging is not enough,
+
+0:12:18.320,0:12:22.360
+the best alternative after that is using...
+
+0:12:23.360,0:12:25.360
+[Exit that]
+
+0:12:28.480,0:12:30.260
+So, it's using a debugger.
+
+0:12:30.580,0:12:37.620
+So a debugger is a tool that will wrap around
+your code and will let you run your code,
+
+0:12:38.120,0:12:40.480
+but it will kind of keep control over it.
+
+0:12:40.480,0:12:42.500
+So it will let you step
+
+0:12:42.500,0:12:47.080
+through the code and execute
+it and set breakpoints.
+
+0:12:47.080,0:12:50.020
+You probably have seen debuggers
+in some way, if you have
+
+0:12:50.020,0:12:55.800
+ever used something like an IDE, because IDEs have this
+kind of fancy: set a breakpoint here, execute, ...
+
+0:12:56.080,0:12:59.040
+But at the end of the day what
+these tools are using is just
+
+0:12:59.040,0:13:04.740
+these command line debuggers and they're just
+presenting them in a really fancy format.
+
+0:13:04.850,0:13:09.969
+Here we have a completely broken bubble
+sort, a simple sorting algorithm.
+
+0:13:10.000,0:13:11.560
+Don't worry about the details,
+
+0:13:11.560,0:13:14.980
+but we just want to sort this
+array that we have here.
+
+0:13:17.360,0:13:19.460
+We can try doing that by just doing
+
+0:13:21.340,0:13:23.340
+Python bubble.py
+
+0:13:23.500,0:13:28.360
+And when we do that... Oh there's some
+index error, list index out of range.
+
+0:13:28.480,0:13:31.200
+We could start adding prints
+
+0:13:31.200,0:13:33.740
+but if have a really long string,
+we can get a lot of information.
+
+0:13:33.820,0:13:37.820
+So how about we go up to the
+moment that we crashed?
+
+0:13:37.900,0:13:41.020
+We can go to that moment and examine what the
+
+0:13:41.020,0:13:43.360
+current state of the program was.
+
+0:13:43.520,0:13:49.080
+So for doing that I'm gonna run the
+program using the Python debugger.
+
+0:13:49.080,0:13:53.820
+Here I'm using technically the ipython debugger,
+just because it has nice coloring syntax
+
+0:13:54.060,0:13:59.140
+so it's probably easier for
+both of us to understand
+
+0:13:59.300,0:14:01.300
+what's going on in the output.
+
+0:14:01.310,0:14:04.929
+But they're pretty much identical anyway.
+
+0:14:05.140,0:14:09.400
+So we execute this, and now we are given a prompt
+
+0:14:09.400,0:14:13.080
+where we're being told that we are here,
+at the very first line of our program.
+
+0:14:13.100,0:14:15.440
+And we can...
+
+0:14:15.980,0:14:20.380
+"L" stands for "List", so as
+with many of these tools
+
+0:14:21.140,0:14:24.400
+there's kind of like a language
+of operations that you can do,
+
+0:14:24.400,0:14:28.220
+and they are often mnemonic, as it
+was the case with VIM or TMUX.
+
+0:14:28.860,0:14:32.940
+So here, "L" is for "Listing" the code,
+and we can see the entire code.
+
+0:14:34.540,0:14:38.880
+"S" is for "Step" and will let us kind of one
+
+0:14:38.880,0:14:42.180
+line at a time, go through the execution.
+
+0:14:42.300,0:14:47.360
+The thing is we're only triggering
+the error some time later.
+
+0:14:47.360,0:14:48.710
+So
+
+0:14:48.710,0:14:55.150
+we can restart the program and instead of
+trying to step until we get to the issue,
+
+0:14:55.150,0:15:00.820
+we can just ask for the program to continue
+which is the "C" command and
+
+0:15:01.480,0:15:04.160
+hey, we reached the issue.
+
+0:15:04.640,0:15:08.080
+We got to this line where everything crashed,
+
+0:15:08.080,0:15:11.020
+we're getting this list index out of range.
+
+0:15:11.020,0:15:13.560
+And now that we are here we can say, huh?
+
+0:15:14.120,0:15:17.520
+Okay, first, let's print the value of the array.
+
+0:15:18.080,0:15:21.520
+This is the value of the current array
+
+0:15:23.120,0:15:26.840
+So we have six items. Okay. What
+is the value of "J" here?
+
+0:15:27.200,0:15:31.929
+So we look at the value of "J". "J" is 5
+here, which will be the last element, but
+
+0:15:32.480,0:15:37.119
+"J" plus 1 is going to be 6, so that's
+triggering the out of bounds error.
+
+0:15:37.970,0:15:40.389
+So what we have to do is
+
+0:15:40.660,0:15:47.660
+this "N", instead of "N" has to be "N minus one".
+We have identified that the error lies there.
+
+0:15:47.660,0:15:50.800
+So we can quit, which is "Q".
+
+0:15:52.010,0:15:54.729
+Again, because it's a post-mortem debugger.
+
+0:15:56.090,0:16:00.219
+We go back to the code and say okay,
+
+0:16:02.860,0:16:06.180
+we need to append this "N minus one".
+
+0:16:06.760,0:16:11.140
+That will prevent the list index out of range and
+
+0:16:11.480,0:16:14.260
+if we run this again without the debugger,
+
+0:16:15.020,0:16:18.729
+okay, no errors now. But this
+is not our sorted list.
+
+0:16:18.729,0:16:21.200
+This is sorted, but it's not our list.
+
+0:16:21.300,0:16:23.000
+We are missing entries from our list,
+
+0:16:23.160,0:16:27.420
+so there is some behavioral issue
+that we're reaching here.
+
+0:16:27.920,0:16:32.409
+Again, we could start using printf
+debugging but kind of a hunch now
+
+0:16:32.409,0:16:37.940
+is that probably the way we're swapping entries
+in the bubble sort program is wrong.
+
+0:16:38.480,0:16:45.920
+We can use the debugger for this. We can go through
+them to the moment we're doing a swap and
+
+0:16:46.120,0:16:48.320
+check how the swap is being performed.
+
+0:16:48.540,0:16:50.600
+So a quick overview,
+
+0:16:50.600,0:16:56.590
+we have two for loops and
+in the most nested loop,
+
+0:16:56.720,0:17:03.220
+we are checking if the array is larger than the other array.
+The thing is if we just try to execute until this line,
+
+0:17:03.589,0:17:06.609
+it's only going to trigger
+whenever we make a swap.
+
+0:17:06.700,0:17:11.640
+So what we can do is we can set
+a breakpoint in the sixth line.
+
+0:17:11.820,0:17:15.520
+We can create a breakpoint in this line and then
+
+0:17:15.580,0:17:20.820
+the program will execute and the moment we try to swap
+variables is when the program is going to stop.
+
+0:17:21.080,0:17:22.940
+So we create a breakpoint there
+
+0:17:22.940,0:17:27.000
+and then we continue the execution
+of the program. The program halts
+
+0:17:27.000,0:17:30.520
+and says hey, I have executed
+and I have reached this line.
+
+0:17:30.820,0:17:31.860
+Now
+
+0:17:31.920,0:17:39.120
+I can use "locals()", which is a Python function
+that returns a dictionary with all the values
+
+0:17:39.120,0:17:41.220
+to quickly see the entire context.
+
+0:17:43.100,0:17:48.140
+The string, the array is fine and is
+six, again, just the beginning and
+
+0:17:48.680,0:17:51.100
+I step, go to the next line.
+
+0:17:51.780,0:17:52.620
+Oh,
+
+0:17:52.620,0:17:57.000
+and I identify the issue: I'm swapping one
+item at a time, instead of simultaneously,
+
+0:17:57.020,0:18:01.840
+so that's what's triggering the fact that
+we're losing variables as we go through.
+
+0:18:03.200,0:18:06.729
+That's kind of a very simple example, but
+
+0:18:07.490,0:18:09.050
+debuggers are really powerful.
+
+0:18:09.050,0:18:13.320
+Most programming languages will
+give you some sort of debugger,
+
+0:18:13.540,0:18:19.920
+and when you go to more low level debugging
+you might run into tools like...
+
+0:18:19.920,0:18:21.920
+You might want to use something like
+
+0:18:25.340,0:18:27.340
+GDB.
+
+0:18:31.580,0:18:34.360
+And GDB has one nice property:
+
+0:18:34.460,0:18:37.740
+GDB works really well with C/C++
+and all these C-like languages.
+
+0:18:37.780,0:18:42.720
+But GDB actually lets you work with pretty
+much any binary that you can execute.
+
+0:18:42.720,0:18:47.800
+So for example here we have sleep, which is just
+a program that's going to sleep for 20 seconds.
+
+0:18:48.520,0:18:55.340
+It's loaded and then we can do run, and then we
+can interrupt this sending an interrupt signal.
+
+0:18:55.340,0:19:02.020
+And GDB is displaying for us, here, very low-level
+information about what's going on in the program.
+
+0:19:02.030,0:19:06.820
+So we're getting the stack trace, we're seeing
+we are in this nanosleep function,
+
+0:19:07.060,0:19:11.660
+we can see the values of all the hardware
+registers in your machine. So
+
+0:19:12.300,0:19:17.160
+you can get a lot of low-level
+detail using these tools.
+
+0:19:18.560,0:19:22.520
+I think that's all I want to cover for debuggers.
+
+0:19:22.520,0:19:25.540
+Any questions related to that?
+
+0:19:33.520,0:19:39.040
+Another interesting tool when you're trying to
+debug is that sometimes you want to debug as if
+
+0:19:39.480,0:19:42.220
+your program is a black box.
+
+0:19:42.220,0:19:46.059
+So you, maybe, know what the internals
+of the program but at the same time
+
+0:19:46.430,0:19:52.119
+your computer knows whenever your program
+is trying to do some operations.
+
+0:19:52.280,0:19:54.729
+So this is in UNIX systems,
+
+0:19:54.760,0:19:58.060
+there's this notion of like user
+level code and kernel level code.
+
+0:19:58.060,0:20:03.180
+And when you try to do some operations like reading
+a file or like reading the network connection
+
+0:20:03.340,0:20:06.020
+you will have to do something
+called system calls.
+
+0:20:06.180,0:20:12.560
+You can get a program and go through
+those operations and ask
+
+0:20:14.000,0:20:18.300
+what operations did this software do?
+
+0:20:18.300,0:20:20.920
+So for example, if you have
+like a Python function
+
+0:20:20.980,0:20:26.660
+that is only supposed to do a mathematical operation
+and you run it through this program,
+
+0:20:26.660,0:20:28.460
+and it's actually reading files,
+
+0:20:28.460,0:20:31.940
+Why is it reading files? It shouldn't
+be reading files. So, let's see.
+
+0:20:34.520,0:20:37.200
+This is "strace".
+
+0:20:37.200,0:20:38.740
+So for example, we can do it something like this.
+
+0:20:38.740,0:20:41.260
+So here we're gonna run the "LS - L"
+
+0:20:42.220,0:20:47.900
+And then we're ignoring the output of LS, but
+we are not ignoring the output of STRACE.
+
+0:20:47.900,0:20:49.740
+So if we execute that...
+
+0:20:52.300,0:20:54.720
+We're gonna get a lot of output.
+
+0:20:54.920,0:20:58.740
+This is all the different system calls
+
+0:21:00.520,0:21:02.080
+That this
+
+0:21:02.090,0:21:07.510
+LS has executed. You will see a bunch
+of OPEN, you will see FSTAT.
+
+0:21:08.150,0:21:14.170
+And for example, since it has to list all the properties
+of the files that are in this folder, we can
+
+0:21:15.110,0:21:20.410
+check for the LSTAT call. So the LSTAT call will
+check for the properties of the files and
+
+0:21:21.020,0:21:27.420
+we can see that, effectively, all the files
+and folders that are in this directory
+
+0:21:27.700,0:21:31.540
+have been accessed through
+a system call, through LS.
+
+0:21:34.120,0:21:43.400
+Interestingly, sometimes you actually
+don't need to run your code to
+
+0:21:44.360,0:21:47.000
+figure out that there is something
+wrong with your code.
+
+0:21:47.960,0:21:52.449
+So far we have seen enough ways of identifying
+issues by running the code,
+
+0:21:52.450,0:21:54.410
+but what if you...
+
+0:21:54.410,0:21:58.980
+you can look at a piece of code like this, like
+the one I have shown right now in this screen,
+
+0:21:58.980,0:22:00.560
+and identify an issue.
+
+0:22:00.560,0:22:02.030
+So for example here,
+
+0:22:02.030,0:22:06.670
+we have some really silly piece of code. It
+defines a function, prints a few variables,
+
+0:22:07.720,0:22:11.780
+multiplies some variables, it sleeps for
+a while and then we try to print BAZ.
+
+0:22:12.020,0:22:14.840
+And you could try to look at
+this and say, hey, BAZ has
+
+0:22:15.500,0:22:20.650
+never been defined anywhere. This is a new
+variable. You probably meant to say BAR
+
+0:22:20.650,0:22:22.540
+but you just mistyped it.
+
+0:22:22.540,0:22:26.480
+Thing is, if we try to run this program,
+
+0:22:28.820,0:22:36.820
+it's gonna take 60 seconds, because like we have to wait until
+this time.sleep function finishes. Here, sleep is just for
+
+0:22:37.790,0:22:42.070
+motivating the example but in general you may
+be loading a data set that takes really long
+
+0:22:42.140,0:22:44.740
+because you have to copy everything into memory.
+
+0:22:44.740,0:22:48.780
+And the thing is, there are programs
+that will take source code as input,
+
+0:22:49.340,0:22:54.940
+will process it and will say, oh probably this is
+wrong about this piece of code. So in Python,
+
+0:22:55.760,0:23:00.600
+or in general, these are called
+static analysis tools.
+
+0:23:00.780,0:23:02.860
+In Python we have for example pyflakes.
+
+0:23:02.860,0:23:06.640
+If we get this piece of code
+and run it through pyflakes,
+
+0:23:06.860,0:23:09.820
+pyflakes is gonna give us a couple of issues.
+
+0:23:10.040,0:23:15.700
+First one is the one.... The second one is the one
+we identified: here's an undefined name called BAZ.
+
+0:23:15.700,0:23:17.760
+You probably should be doing
+something about that.
+
+0:23:17.760,0:23:22.720
+And the other one is like
+oh, you're redefining the
+
+0:23:23.060,0:23:27.240
+the FOO variable name in that line.
+
+0:23:27.540,0:23:31.400
+So here we have a FOO function
+and then we are kind of
+
+0:23:31.400,0:23:34.620
+shadowing that function by
+using a loop variable here.
+
+0:23:34.760,0:23:38.460
+So now that FOO function that we
+defined is not accessible anymore
+
+0:23:38.470,0:23:41.650
+and then if we try to call it afterwards,
+we will get into errors.
+
+0:23:43.520,0:23:45.520
+There are other types of
+
+0:23:46.250,0:23:53.170
+Static Analysis tools. MYPY is a different one. MYPY
+is gonna report the same two errors, but it's also
+
+0:23:53.840,0:24:00.160
+going to complain about type checking. So it's gonna
+say, oh here you're multiplying an int by a float and
+
+0:24:00.680,0:24:06.320
+if you care about the type checking of your
+code, you should not be mixing those up.
+
+0:24:07.490,0:24:12.219
+it can be kind of inconvenient, having to run
+this, look at the line, going back to your
+
+0:24:12.800,0:24:17.409
+VIM or like your editor, and figuring
+out what the error matches to.
+
+0:24:18.380,0:24:21.190
+There are already solutions for that. One
+
+0:24:22.340,0:24:27.069
+way is that you can integrate most
+editors with these tools and here..
+
+0:24:28.279,0:24:34.059
+You can see there is like some red highlighting on
+the bash, and it will read the last line here.
+
+0:24:34.059,0:24:36.059
+So, undefined named 'baz'.
+
+0:24:36.160,0:24:39.080
+So as I'm editing this piece of Python code,
+
+0:24:39.080,0:24:43.360
+my editor is gonna give me feedback
+about what's going wrong with this.
+
+0:24:43.560,0:24:48.480
+Or like here have another one saying
+the redefinition of unused foo.
+
+0:24:49.849,0:24:51.849
+And
+
+0:24:53.080,0:24:56.060
+even, there are some stylistic complaints.
+
+0:24:56.060,0:24:58.060
+So, oh, I will expect two empty lines.
+
+0:24:58.120,0:25:03.660
+So like in Python, you should be having two
+empty lines between a function definition.
+
+0:25:05.779,0:25:07.009
+There are...
+
+0:25:07.009,0:25:09.280
+there is a resource on the lecture notes
+
+0:25:09.280,0:25:13.160
+about pretty much static analyzers for a
+lot of different programming languages.
+
+0:25:13.700,0:25:18.460
+There are even static analyzers for English.
+
+0:25:18.840,0:25:24.260
+So I have my notes
+
+0:25:24.580,0:25:30.280
+for the class here, and if I run it through this
+static analyzer for English, that is "writegood".
+
+0:25:30.409,0:25:33.008
+It's going to complain about
+some stylistic properties.
+
+0:25:33.009,0:25:33.489
+So like, oh,
+
+0:25:33.489,0:25:37.460
+I'm using "very", which is a weasel
+word and I shouldn't be using it.
+
+0:25:37.480,0:25:43.080
+Or "quickly" can weaken meaning, and you can have
+this for spell checking, or for a lot of different
+
+0:25:43.600,0:25:48.000
+types of stylistic analysis.
+
+0:25:48.760,0:25:52.020
+Any questions so far?
+
+0:25:57.500,0:25:59.490
+Oh,
+
+0:25:59.490,0:26:01.490
+I forgot to mention...
+
+0:26:01.640,0:26:07.320
+Depending on the task that you're performing,
+there will be different types of debuggers.
+
+0:26:07.320,0:26:09.740
+For example, if you're doing web development,
+
+0:26:09.860,0:26:13.520
+both Firefox and Chrome
+
+0:26:13.740,0:26:20.600
+have a really really good set of tools
+for doing debugging for websites.
+
+0:26:20.600,0:26:23.880
+So here we go and say inspect element,
+
+0:26:23.880,0:26:25.880
+we can get the... do you know?
+how to make this larger...
+
+0:26:27.660,0:26:29.220
+We're getting
+
+0:26:29.220,0:26:33.380
+the entire source code for
+the web page for the class.
+
+0:26:35.549,0:26:37.549
+Oh, yeah, here we go.
+
+0:26:38.640,0:26:40.640
+Is that better?
+
+0:26:40.799,0:26:47.149
+And we can actually go and change properties about
+the course. So we can say... we can edit the title.
+
+0:26:47.400,0:26:51.280
+Say, this is not a class on
+debugging and profiling.
+
+0:26:51.620,0:26:53.940
+And now the code for the website has changed.
+
+0:26:54.120,0:26:56.000
+This is one of the reasons
+why you should never trust
+
+0:26:56.200,0:27:00.560
+any screenshots of websites, because
+they can be completely modified.
+
+0:27:01.320,0:27:05.030
+And you can also modify this style.
+Like, here I have things
+
+0:27:06.120,0:27:07.559
+using the
+
+0:27:07.560,0:27:09.500
+the dark mode preference,
+
+0:27:09.680,0:27:11.900
+but we can alter that.
+
+0:27:11.900,0:27:16.560
+Because at the end of the day, the
+browser is rendering this for us.
+
+0:27:17.840,0:27:21.780
+We can check the cookies, but there's
+like a lot of different operations.
+
+0:27:21.799,0:27:27.619
+There's also a built-in debugger for JavaScript,
+so you can step through JavaScript code.
+
+0:27:27.620,0:27:34.020
+So kind of the takeaway is, depending on what you are
+doing, you will probably want to search for what tools
+
+0:27:34.320,0:27:36.820
+programmers have built for them.
+
+0:27:44.880,0:27:47.630
+Now I'm gonna switch gears and
+
+0:27:48.200,0:27:51.800
+stop talking about debugging, which is kind
+of finding issues with the code, right?
+
+0:27:51.800,0:27:54.200
+kind of more about the behavior,
+and then start talking
+
+0:27:54.200,0:27:56.860
+about like how you can use profiling.
+
+0:27:56.860,0:27:59.240
+And profiling is how to optimize the code.
+
+0:28:01.100,0:28:05.940
+It might be because you want to optimize
+the CPU, the memory, the network, ...
+
+0:28:06.330,0:28:09.889
+There are many different reasons that
+you want to be optimizing it.
+
+0:28:10.440,0:28:14.000
+As it was the case with debugging,
+the kind of first-order approach
+
+0:28:14.000,0:28:16.680
+that a lot of people have
+experience with already is
+
+0:28:16.880,0:28:21.880
+oh, let's use just printf profiling,
+so to say, like we can just take...
+
+0:28:22.770,0:28:25.610
+Let me make this larger. We can
+
+0:28:26.130,0:28:28.110
+take the current time here,
+
+0:28:28.110,0:28:34.610
+then we can check, we can do some execution
+and then we can take the time again and
+
+0:28:35.060,0:28:37.320
+subtract it from the original time.
+
+0:28:37.320,0:28:39.320
+And by doing this you can kind of narrow down
+
+0:28:39.540,0:28:46.040
+and fence some different parts of your code and try to figure
+out what is the time taken between those two parts.
+
+0:28:47.040,0:28:52.639
+And that's good. But sometimes it can be interesting,
+the results. So here, we're sleeping for
+
+0:28:53.730,0:28:59.809
+0.5 seconds and the output is saying,
+oh it's 0.5 plus some extra time,
+
+0:28:59.810,0:29:05.929
+which is kind of interesting. And if we keep running it,
+we see there's like some small error and the thing is
+
+0:29:06.240,0:29:11.680
+here, what we're actually measuring is what
+is usually referred to as the "real time".
+
+0:29:12.060,0:29:14.340
+Real time is as if you get
+
+0:29:14.340,0:29:15.930
+like a
+
+0:29:15.930,0:29:19.249
+clock, and you start it when your program starts,
+and you stop it when your program ends.
+
+0:29:19.500,0:29:23.060
+But the thing is, in your computer it is
+not only your program that is running.
+
+0:29:23.060,0:29:27.460
+There are many other programs running
+at the same time and those might
+
+0:29:27.760,0:29:34.640
+be the ones that are taking the CPU.
+So, to try to make sense of that,
+
+0:29:35.790,0:29:39.259
+A lot of... you'll see a lot of programs
+
+0:29:40.620,0:29:43.250
+using the terminology that is
+
+0:29:44.100,0:29:46.760
+real time, user time and system time.
+
+0:29:46.760,0:29:51.460
+Real time is what I explained, which is kind of
+the entire length of time from start to finish.
+
+0:29:51.840,0:29:59.780
+Then there is the user time, which is the amount of time
+your program spent on the CPU doing user level cycles.
+
+0:29:59.780,0:30:06.100
+So as I was mentioning, in UNIX, you can be running
+user level code or kernel level code.
+
+0:30:06.920,0:30:12.940
+System is kind of the opposite, it's the amount of CPU, like
+the amount of time that your program spent on the CPU
+
+0:30:13.500,0:30:18.480
+executing kernel mode instructions.
+So let's show this with an example.
+
+0:30:18.620,0:30:22.180
+Here I'm going to "time", which is a command,
+
+0:30:22.460,0:30:27.840
+a shell command that's gonna get these three metrics
+for the following command, and then I'm just
+
+0:30:28.100,0:30:30.560
+grabbing a URL from
+
+0:30:31.160,0:30:36.760
+a website that is hosted in Spain. So that's gonna take
+some extra time to go over there and then go back.
+
+0:30:37.410,0:30:39.499
+If we see, here, if we were to just...
+
+0:30:39.780,0:30:43.670
+We have two prints, between the beginning
+and the end of the program.
+
+0:30:43.670,0:30:49.039
+We could think that this program is taking like
+600 milliseconds to execute, but actually
+
+0:30:49.500,0:30:56.930
+most of that time was spent just waiting for the
+response on the other side of the network and
+
+0:30:57.330,0:31:04.880
+we actually only spent 16 milliseconds at the user level
+and like 9 seconds, in total 25 milliseconds, actually
+
+0:31:05.280,0:31:08.149
+executing CURL code. Everything
+else was just waiting.
+
+0:31:12.090,0:31:14.480
+Any questions related to timing?
+
+0:31:19.860,0:31:21.860
+Ok, so
+
+0:31:21.990,0:31:23.580
+timing can be
+
+0:31:23.580,0:31:29.480
+can become tricky, it's also kind of a black box solution.
+Or if you start adding print statements,
+
+0:31:29.660,0:31:35.860
+it's kind of hard to add print statements, with time everywhere.
+So programmers have figured out better tools.
+
+0:31:36.140,0:31:38.700
+These are usually referred to as "profilers".
+
+0:31:39.980,0:31:44.260
+One quick note that I'm gonna make, is that
+
+0:31:44.720,0:31:46.720
+profilers, like usually when people
+
+0:31:46.800,0:31:48.800
+refer to profilers they usually talk about
+
+0:31:49.050,0:31:55.190
+CPU profilers because they are the most common, at identifying
+where like time is being spent on the CPU.
+
+0:31:56.790,0:31:59.180
+Profilers usually come in kind of two flavors:
+
+0:31:59.180,0:32:02.140
+there's tracing profilers and sampling profilers.
+
+0:32:02.140,0:32:06.380
+and it's kind of good to know the difference
+because the output might be different.
+
+0:32:07.640,0:32:10.300
+Tracing profilers kind of instrument your code.
+
+0:32:10.680,0:32:15.799
+So they kind of execute with your code and every
+time your code enters a function call,
+
+0:32:15.800,0:32:20.479
+they kind of take a note of it. It's like, oh we're entering
+this function call at this moment in time and
+
+0:32:21.860,0:32:24.860
+they keep going and, once they
+finish, they can report
+
+0:32:24.860,0:32:28.300
+oh, you spent this much time executing
+in this function and
+
+0:32:28.580,0:32:33.760
+this much time in this other function. So on, so forth,
+which is the example that we're gonna see now.
+
+0:32:34.590,0:32:38.329
+Another type of tools are tracing,
+sorry, sampling profilers.
+
+0:32:38.430,0:32:44.840
+The issue with tracing profilers is they add a lot of overhead.
+Like you might be running your code and having these kind of
+
+0:32:46.280,0:32:49.400
+profiling next to you making all these counts,
+
+0:32:49.400,0:32:54.340
+will hinder the performance of your program, so
+you might get counts that are slightly off.
+
+0:32:55.380,0:32:59.450
+A sampling profiler, what it's gonna do
+is gonna execute your program and every
+
+0:32:59.940,0:33:05.239
+100 milliseconds, 10 milliseconds, like some defined period,
+it's gonna stop your program. It's gonna halt it,
+
+0:33:05.580,0:33:12.379
+it's gonna look at the stack trace and say, oh, you're
+right now in this point in the hierarchy, and
+
+0:33:12.630,0:33:15.530
+identify which function is gonna
+be executing at that point.
+
+0:33:16.260,0:33:19.760
+The idea is that as long as you
+execute this for long enough,
+
+0:33:19.760,0:33:24.290
+you're gonna get enough statistics to know
+where most of the time is being spent.
+
+0:33:25.800,0:33:28.800
+So, let's see an example of a tracing profiling.
+
+0:33:28.800,0:33:32.340
+So here we have a piece of
+code that is just like a
+
+0:33:33.480,0:33:35.540
+really simple re-implementation of grep
+
+0:33:36.330,0:33:38.330
+done in Python.
+
+0:33:38.400,0:33:44.030
+What we want to check is what is the bottleneck of this
+program? Like we're just opening a bunch of files,
+
+0:33:44.900,0:33:49.620
+trying to match this pattern, and then
+printing whenever we find a match.
+
+0:33:49.620,0:33:52.340
+And maybe it's the regex, maybe it's the print...
+
+0:33:52.460,0:33:53.940
+We don't really know.
+
+0:33:53.940,0:33:59.040
+So to do this in Python, we have the "cProfile".
+
+0:33:59.040,0:34:00.080
+And
+
+0:34:00.990,0:34:06.620
+here I'm just calling this module and saying I want
+to sort this by the total amount of time, that
+
+0:34:06.780,0:34:13.429
+we're gonna see briefly. I'm calling the
+program we just saw in the editor.
+
+0:34:13.429,0:34:18.679
+I'm gonna execute this a thousand times
+and then I want to match (the grep
+
+0:34:18.960,0:34:21.770
+Arguments here) is I want to match these regex
+
+0:34:22.919,0:34:27.469
+to all the Python files in here.
+And this is gonna output some...
+
+0:34:30.780,0:34:34.369
+This is gonna produce some output,
+then we're gonna look at it. First,
+
+0:34:34.369,0:34:38.539
+is all the output from the greps,
+but at the very end, we're getting
+
+0:34:39.119,0:34:42.979
+output from the profiler itself. If we go up
+
+0:34:44.129,0:34:46.939
+we can see that, hey,
+
+0:34:47.730,0:34:55.250
+by sorting we can see that the total number of calls. So we
+did 8000 calls, because we executed this 1000 times and
+
+0:34:57.360,0:35:03.440
+this is the total amount of time we spent in this function
+(cumulative time). And here we can start to identify
+
+0:35:03.920,0:35:06.040
+where the bottleneck is.
+
+0:35:06.050,0:35:11.449
+So here, this built-in method IO open, is saying that
+we're spending a lot of the time just waiting for
+
+0:35:12.080,0:35:14.340
+reading from the disk or...
+
+0:35:14.340,0:35:15.680
+There, we can check, hey,
+
+0:35:15.680,0:35:19.840
+a lot of time is also being spent
+trying to match the regex.
+
+0:35:19.840,0:35:22.640
+Which is something that you will expect.
+
+0:35:22.640,0:35:26.220
+One of the caveats of using this
+
+0:35:26.480,0:35:29.540
+tracing profiler is that, as you can see, here
+
+0:35:29.540,0:35:35.239
+we're seeing our function but we're also seeing
+a lot of functions that correspond to built-ins.
+
+0:35:35.240,0:35:35.910
+So like,
+
+0:35:35.910,0:35:41.899
+functions that are third party functions from the libraries.
+And as you start building more and more complex code,
+
+0:35:41.900,0:35:43.560
+This is gonna be much harder.
+
+0:35:44.200,0:35:44.760
+So
+
+0:35:46.080,0:35:49.720
+here is another piece of Python code that,
+
+0:35:51.540,0:35:53.779
+don't read through it, what it's doing is just
+
+0:35:54.420,0:35:57.589
+grabbing the course website and
+then it's printing all the...
+
+0:35:58.440,0:36:01.960
+It's parsing it, and then it's printing
+all the hyperlinks that it has found.
+
+0:36:01.960,0:36:03.520
+So there are like these two operations:
+
+0:36:03.520,0:36:07.800
+going there, grabbing a website, and
+then parsing it, printing the links.
+
+0:36:07.800,0:36:09.740
+And we might want to get a sense of
+
+0:36:09.740,0:36:16.180
+how those two operations compare to each
+other. If we just try to execute the
+
+0:36:16.680,0:36:18.680
+cProfiler here and
+
+0:36:19.260,0:36:24.949
+we're gonna do the same, this is not gonna print anything.
+I'm using a tool we haven't seen so far,
+
+0:36:24.950,0:36:25.700
+but I think it's pretty nice.
+
+0:36:25.700,0:36:32.810
+It's "TAC", which is the opposite of "CAT", and it is going
+to reverse the output so I don't have to go up and look.
+
+0:36:33.430,0:36:35.430
+So we do this and...
+
+0:36:36.250,0:36:39.179
+Hey, we get some interesting output.
+
+0:36:39.880,0:36:46.200
+we're spending a bunch of time in this built-in method
+socket_getaddr_info and like in _imp_create_dynamic and
+
+0:36:46.510,0:36:48.540
+method_connect and posix_stat...
+
+0:36:49.210,0:36:55.740
+nothing in my code is directly calling these functions so I
+don't really know what is the split between the operation of
+
+0:36:56.349,0:37:03.929
+making a web request and parsing the output of
+that web request. So, for that, we can use
+
+0:37:04.900,0:37:07.920
+a different type of profiler which is
+
+0:37:09.819,0:37:14.309
+a line profiler. And the line profiler is
+just going to present the same results
+
+0:37:14.310,0:37:20.879
+but in a more human-readable way, which is just, for this
+line of code, this is the amount of time things took.
+
+0:37:24.819,0:37:31.079
+So it knows it has to do that, we have to add a
+decorator to the Python function, we do that.
+
+0:37:34.869,0:37:36.869
+And as we do that,
+
+0:37:37.119,0:37:39.749
+we now get slightly cropped output,
+
+0:37:39.750,0:37:46.169
+but the main idea, we can look at the percentage of time and
+we can see that making this request, get operation, took
+
+0:37:46.450,0:37:52.829
+88% of the time, whereas parsing the
+response took only 10.9% of the time.
+
+0:37:54.069,0:38:00.869
+This can be really informative and a lot of different programming
+languages will support this type of a line profiling.
+
+0:38:04.569,0:38:07.439
+Sometimes, you might not care about CPU.
+
+0:38:07.440,0:38:15.000
+Maybe you care about the memory or like some other resource.
+Similarly, there are memory profilers: in Python
+
+0:38:15.000,0:38:21.599
+there is "memory_profiler", for C you will have
+"Valgrind". So here is a fairly simple example,
+
+0:38:21.760,0:38:28.530
+we just create this list with a million elements. That's
+going to consume like megabytes of space and
+
+0:38:29.200,0:38:33.920
+we do the same, creating another
+one with 20 million elements.
+
+0:38:34.860,0:38:38.180
+To check, what was the memory allocation?
+
+0:38:38.980,0:38:44.369
+How it's gonna happen, what's the consumption?
+We can go through one memory profiler and
+
+0:38:44.950,0:38:46.619
+we execute it,
+
+0:38:46.620,0:38:51.380
+and it's telling us the total memory
+usage and the increments.
+
+0:38:51.380,0:38:57.980
+And we can see that we have some overhead, because
+this is an interpreted language and when we create
+
+0:38:58.450,0:39:00.599
+this million,
+
+0:39:03.520,0:39:07.340
+this list with a million entries, we're gonna
+need this many megabytes of information.
+
+0:39:07.660,0:39:15.299
+Then we were getting another 150 megabytes. Then, we're freeing
+this entry and that's decreasing the total amount.
+
+0:39:15.299,0:39:19.169
+We are not getting a negative increment because
+of a bug, probably in the profiler.
+
+0:39:19.509,0:39:26.549
+But if you know that your program is taking a huge amount of
+memory and you don't know why, maybe because you're copying
+
+0:39:26.920,0:39:30.269
+objects where you should be
+doing things in place, then
+
+0:39:31.140,0:39:33.320
+using a memory profiler can be really useful.
+
+0:39:33.320,0:39:37.780
+And in fact there's an exercise that will
+kind of work you through that, comparing
+
+0:39:37.980,0:39:39.980
+an in-place version of quicksort with like a
+
+0:39:40.059,0:39:44.008
+non-inplace, that keeps making new and new copies.
+And if you using the memory profiler
+
+0:39:44.009,0:39:47.909
+you can get a really good comparison
+between the two of them
+
+0:39:51.069,0:39:53.459
+Any questions so far, with profiling?
+
+0:39:53.460,0:39:57.940
+Is the memory profiler running the
+program in order to get that?
+
+0:39:58.140,0:40:03.180
+Yeah... you might be able to figure
+out like just looking at the code.
+
+0:40:03.180,0:40:05.759
+But as you get more and more complex
+(for this code at least)
+
+0:40:06.009,0:40:10.738
+But you get more and more complex programs what
+this is doing is running through the program
+
+0:40:10.739,0:40:16.739
+and for every line, at the very beginning,
+it's looking at the heap and saying
+
+0:40:16.739,0:40:19.319
+"What are the objects that I have allocated now?"
+
+0:40:19.319,0:40:22.979
+"I have seven megabytes of objects",
+and then goes to the next line,
+
+0:40:23.190,0:40:27.869
+looks again, "Oh now I have 50,
+so I have now added 43 there".
+
+0:40:28.839,0:40:34.709
+Again, you could do this yourself by asking for those
+operations in your code, every single line.
+
+0:40:34.920,0:40:39.899
+But that's not how you should be doing things since people
+have already written these tools for you to use.
+
+0:40:43.089,0:40:46.078
+As it was the case with...
+
+0:40:51.480,0:40:58.220
+So as in the case with strace, you can
+do something similar in profiling.
+
+0:40:58.340,0:41:03.380
+You might not care about the specific
+lines of code that you have,
+
+0:41:03.440,0:41:08.200
+but maybe you want to check for outside events.
+Like, you maybe want to check how many
+
+0:41:09.410,0:41:14.469
+CPU cycles your computer program is using,
+or how many page faults it's creating.
+
+0:41:14.469,0:41:19.239
+Maybe you have like bad cache locality
+and that's being manifested somehow.
+
+0:41:19.340,0:41:22.960
+So for that, there is the "perf" command.
+
+0:41:22.960,0:41:27.220
+The perf command is gonna do this, where it
+is gonna run your program and it's gonna
+
+0:41:28.720,0:41:33.360
+keep track of all these statistics and report them back
+to you. And this can be really helpful if you are
+
+0:41:33.680,0:41:36.060
+working at a lower level. So
+
+0:41:37.300,0:41:42.840
+we execute this command, I'm gonna
+explain briefly what it's doing.
+
+0:41:48.650,0:41:51.639
+And this stress program is just
+
+0:41:52.219,0:41:54.698
+running in the CPU, and it's
+just a program to just
+
+0:41:54.829,0:41:59.528
+hog one CPU and like test that you can
+hog the CPU. And now if we Ctrl-C,
+
+0:42:00.619,0:42:02.708
+we can go back and
+
+0:42:03.410,0:42:08.559
+we get some information about the number of
+page faults that we have or the number of
+
+0:42:09.769,0:42:11.769
+CPU cycles that we utilize, and other
+
+0:42:12.469,0:42:14.329
+useful
+
+0:42:14.329,0:42:18.968
+metrics from our code. For some programs you can
+
+0:42:21.469,0:42:25.089
+look at what the functions
+that were being used were.
+
+0:42:26.120,0:42:30.140
+So we can record what this program is doing,
+
+0:42:30.940,0:42:34.920
+which we don't know about because it's
+a program someone else has written.
+
+0:42:35.240,0:42:37.240
+And
+
+0:42:38.180,0:42:42.279
+we can report what it was doing by looking
+at the stack trace and we can say oh,
+
+0:42:42.279,0:42:44.279
+It's spending a bunch of time in this
+
+0:42:44.660,0:42:46.640
+__random_r
+
+0:42:46.640,0:42:53.229
+standard library function. And it's mainly because the way of hogging
+a CPU is by just creating more and more pseudo-random numbers.
+
+0:42:53.779,0:42:55.779
+There are some other
+
+0:42:55.819,0:42:58.149
+functions that have not been mapped, because they
+
+0:42:58.369,0:43:01.448
+belong to the program, but if
+you know about your program
+
+0:43:01.448,0:43:05.140
+you can display this information
+using more flags, about perf.
+
+0:43:05.140,0:43:10.220
+There are really good tutorials online
+about how to use this tool.
+
+0:43:12.010,0:43:14.010
+Oh
+
+0:43:14.119,0:43:17.349
+One one more thing regarding
+profilers is, so far,
+
+0:43:17.350,0:43:20.109
+we have seen that these profilers
+are really good at
+
+0:43:20.510,0:43:25.419
+aggregating all this information and giving
+you a lot of these numbers so you can
+
+0:43:25.790,0:43:29.739
+optimize your code or you can reason
+about what is happening, but
+
+0:43:30.560,0:43:31.550
+the thing is
+
+0:43:31.550,0:43:35.949
+humans are not really good at making
+sense of lots of numbers and since
+
+0:43:36.080,0:43:39.249
+humans are more visual creatures, it's much
+
+0:43:39.920,0:43:42.980
+easier to kind of have some
+sort of visualization.
+
+0:43:42.980,0:43:48.700
+Again, programmers have already thought about
+this and have come up with solutions.
+
+0:43:49.480,0:43:56.160
+A couple of popular ones, is a
+FlameGraph. A FlameGraph is a
+
+0:43:56.780,0:44:00.160
+sampling profiler. So this is just running
+your code and taking samples
+
+0:44:00.160,0:44:03.280
+And then on the y-axis here
+
+0:44:03.280,0:44:10.980
+we have the depth of the stack so we know that the bash function
+called this other function, and this called this other function,
+
+0:44:11.260,0:44:14.480
+so on, so forth. And on the x-axis it's
+
+0:44:14.630,0:44:17.500
+not time, it's not the timestamps.
+
+0:44:17.500,0:44:23.290
+Like it's not this function run before, but it's just time
+taken. Because, again, this is a sampling profiler:
+
+0:44:23.290,0:44:28.540
+we're just getting small glimpses of what was it going
+on in the program. But we know that, for example,
+
+0:44:29.119,0:44:32.949
+this main program took the most time because the
+
+0:44:33.530,0:44:35.530
+x-axis is proportional to that.
+
+0:44:36.020,0:44:43.090
+They are interactive and they can be really useful
+to identify the hot spots in your program.
+
+0:44:44.720,0:44:50.540
+Another way of displaying information, and there is also
+an exercise on how to do this, is using a call graph.
+
+0:44:50.720,0:44:58.320
+So a call graph is going to be displaying information, and it's gonna
+create a graph of which function called which other function.
+
+0:44:58.620,0:45:00.940
+And then you get information about, like,
+
+0:45:00.940,0:45:05.770
+oh, we know that "__main__" called this
+"Person" function ten times and
+
+0:45:06.050,0:45:08.919
+it took this much time. And as you have
+
+0:45:09.080,0:45:13.029
+larger and larger programs, looking at one of
+these call graphs can be useful to identify
+
+0:45:14.270,0:45:19.689
+what piece of your code is calling this really
+expensive IO operation, for example.
+
+0:45:24.560,0:45:30.360
+With that I'm gonna cover the last
+part of the lecture, which is that
+
+0:45:30.360,0:45:36.600
+sometimes, you might not even know what exact
+resource is constrained in your program.
+
+0:45:36.619,0:45:39.019
+Like how do I know how much CPU
+
+0:45:39.380,0:45:44.060
+my program is using, and I can quickly
+look in there, or how much memory.
+
+0:45:44.060,0:45:46.680
+So there are a bunch of really
+
+0:45:46.700,0:45:49.760
+nifty tools for doing that one of them is
+
+0:45:50.400,0:45:53.270
+HTOP. so HTOP is an
+
+0:45:54.000,0:45:59.810
+interactive command-line tool and here it's
+displaying all the CPUs this machine has,
+
+0:46:00.160,0:46:07.740
+which is 12. It's displaying the amount of memory, it says I'm
+consuming almost a gigabyte of the 32 gigabytes my machine has.
+
+0:46:07.740,0:46:11.660
+And then I'm getting all the different processes.
+
+0:46:11.730,0:46:13.290
+So for example we have
+
+0:46:13.290,0:46:20.300
+zsh, mysql and other processes that are running in this
+machine, and I can sort through the amount of CPU
+
+0:46:20.300,0:46:24.379
+they're consuming or through the
+priority they're running at.
+
+0:46:25.980,0:46:28.129
+We can check this, for example. Here
+
+0:46:28.130,0:46:30.230
+we have the stress command again
+
+0:46:30.230,0:46:31.470
+and we're going to
+
+0:46:31.470,0:46:37.040
+run it to take over four CPUs and check
+that we can see that in HTOP.
+
+0:46:37.040,0:46:42.880
+So we did spot those four CPU
+jobs, and now I have seen that
+
+0:46:43.710,0:46:46.429
+besides the ones we had before,
+now I have this...
+
+0:46:50.310,0:46:56.119
+Like this "stress -c" command running
+and taking a bunch of our CPU.
+
+0:46:56.849,0:47:03.169
+Even though you could use a profiler to get similar information to
+this, the way HTOP displays this kind of in a live interactive
+
+0:47:03.329,0:47:07.099
+fashion can be much quicker
+and much easier to parse.
+
+0:47:07.890,0:47:09.890
+In the notes, there's a
+
+0:47:10.160,0:47:15.180
+really long list of different tools for evaluating
+different parts of your system.
+
+0:47:15.180,0:47:17.180
+So that might be tools for analyzing the
+
+0:47:17.180,0:47:19.720
+network performance, about looking the
+
+0:47:20.430,0:47:24.530
+number of IO operations, so you know
+whether you're saturating the
+
+0:47:26.040,0:47:28.040
+the reads from your disks,
+
+0:47:28.829,0:47:31.429
+you can also look at what is the space usage.
+
+0:47:32.069,0:47:34.369
+Which, I think, here...
+
+0:47:38.690,0:47:44.829
+So NCDU... There's a tool called "du"
+which stands for "disk usage" and
+
+0:47:45.440,0:47:49.480
+we have the "-h" flag for
+"human readable output".
+
+0:47:51.740,0:47:58.959
+We can do videos and we can get output about
+the size of all the files in this folder.
+
+0:48:08.059,0:48:10.059
+Yeah, there we go.
+
+0:48:10.400,0:48:15.040
+There are also interactive versions,
+like HTOP was an interactive version.
+
+0:48:15.280,0:48:21.200
+So NCDU is an interactive version that will let me navigate
+through the folders and I can see quickly that
+
+0:48:21.200,0:48:25.740
+oh, we have... This is one of the
+folders for the video lectures,
+
+0:48:26.329,0:48:29.049
+and we can see there are these four files
+
+0:48:29.690,0:48:36.579
+that have like almost 9 GB each and I could
+quickly delete them through this interface.
+
+0:48:37.760,0:48:43.839
+Another neat tool is "LSOF" which
+stands for "LIST OF OPEN FILES".
+
+0:48:44.240,0:48:47.500
+Another pattern that you
+may encounter is you know
+
+0:48:47.780,0:48:54.609
+some process is using a file, but you don't know exactly which process
+is using that file. Or, similarly, some process is listening in
+
+0:48:55.400,0:48:59.020
+a port, but again, how do you
+find out which one it is?
+
+0:48:59.020,0:49:00.820
+So to set an example.
+
+0:49:00.820,0:49:04.280
+We just run a Python HTTP server on port
+
+0:49:05.210,0:49:06.559
+444
+
+0:49:06.559,0:49:10.899
+Running there. Maybe we don't know that
+that's running, but then we can
+
+0:49:13.130,0:49:15.130
+use...
+
+0:49:17.089,0:49:19.089
+we can use LSOF.
+
+0:49:22.660,0:49:29.200
+Yeah, we can use LSOF, and the thing is LSOF
+is gonna print a lot of information.
+
+0:49:30.440,0:49:32.740
+You need SUDO permissions because
+
+0:49:34.069,0:49:39.219
+this is gonna ask for who has all these items.
+
+0:49:39.829,0:49:43.929
+Since we only care about the one
+who is listening in this 444 port
+
+0:49:44.630,0:49:46.369
+we can ask
+
+0:49:46.369,0:49:47.960
+grep for that.
+
+0:49:47.960,0:49:55.750
+And we can see, oh, there's like this Python process, with
+this identifier, that is using the port and then we can
+
+0:49:56.660,0:49:58.009
+kill it,
+
+0:49:58.009,0:50:00.969
+and that terminates that process.
+
+0:50:02.299,0:50:06.669
+Again, there's a lot of different
+tools. There's even tools for
+
+0:50:08.450,0:50:10.569
+doing what is called benchmarking.
+
+0:50:11.660,0:50:18.789
+So in the shell tools and scripting lecture, I said
+like for some tasks "fd" is much faster than "find"
+
+0:50:18.950,0:50:21.519
+But like how will you check that?
+
+0:50:22.059,0:50:30.038
+I can test that with "hyperfine" and I have here
+two commands: one with "fd" that is just
+
+0:50:30.500,0:50:34.029
+searching for JPEG files and
+the same one with "find".
+
+0:50:34.579,0:50:41.079
+If I execute them, it's gonna benchmark these
+scripts and give me some output about
+
+0:50:41.869,0:50:44.108
+how much faster "fd" is
+
+0:50:45.380,0:50:47.380
+compared to "find".
+
+0:50:47.660,0:50:52.269
+So I think that kind of concludes...
+yeah, like 23 times for this task.
+
+0:50:52.940,0:50:55.990
+So that kind of concludes the whole overview.
+
+0:50:56.539,0:51:00.309
+I know that there's like a lot of different
+topics and there's like a lot of
+
+0:51:00.650,0:51:04.539
+perspectives on doing these things, but
+again I want to reinforce the idea
+
+0:51:04.539,0:51:08.499
+that you don't need to be a master
+of all these topics but more...
+
+0:51:08.750,0:51:11.229
+To be aware that all these things exist.
+
+0:51:11.230,0:51:17.559
+So if you run into these issues you don't reinvent the wheel,
+and you reuse all that other programmers have done.
+
+0:51:18.280,0:51:23.700
+Given that, I'm happy to take any questions related
+to this last section or anything in the lecture.
+
+0:51:25.900,0:51:30.060
+Is there any way to sort of think about
+how long a program should take?
+
+0:51:30.060,0:51:33.160
+You know, if it's taking a while to run
+
+0:51:33.160,0:51:42.840
+you know, should you be worried? Or depending on your process, let me wait
+another ten minutes before I start looking at why it's taking so long.
+
+0:51:43.220,0:51:45.220
+Okay, so the...
+
+0:51:46.070,0:51:49.089
+The task of knowing how long a program
+
+0:51:49.090,0:51:53.920
+should run is pretty infeasible to figure out.
+It will depend on the type of program.
+
+0:51:54.290,0:52:01.899
+It depends on whether you're making HTTP requests or you're
+reading data... one thing that you can do is if you have
+
+0:52:02.390,0:52:02.980
+for example,
+
+0:52:02.980,0:52:10.689
+if you know you have to read two gigabytes from memory,
+like from disk, and load that into memory, you can make
+
+0:52:11.510,0:52:16.719
+back-of-the-envelope calculation. So like that shouldn't
+take longer than like X seconds because this is
+
+0:52:16.940,0:52:20.050
+how things are set up. Or if you are
+
+0:52:20.840,0:52:27.460
+reading some files from the network and you know kind of what the
+network link is and they are taking say five times longer than
+
+0:52:27.460,0:52:29.460
+what you would expect then you could
+
+0:52:29.990,0:52:31.190
+try to do that.
+
+0:52:31.190,0:52:37.839
+Otherwise, if you don't really know. Say you're trying to do some
+mathematical operation in your code and you're not really sure
+
+0:52:37.840,0:52:44.050
+about how long that will take you can use something
+like logging and try to kind of print intermediate
+
+0:52:44.570,0:52:50.469
+stages to get a sense of like, oh I need
+to do a thousand operations of this and
+
+0:52:51.800,0:52:53.600
+three iterations
+
+0:52:53.600,0:53:00.700
+took ten seconds. Then this is gonna take
+much longer than I can handle in my case.
+
+0:53:00.920,0:53:04.599
+So I think there are there are ways, it
+will again like depend on the task,
+
+0:53:04.600,0:53:08.800
+but definitely, given all the tools we've
+seen really, we probably have like
+
+0:53:09.620,0:53:13.150
+a couple of really good ways
+to start tackling that.
+
+0:53:14.750,0:53:16.750
+Any other questions?
+
+0:53:16.750,0:53:18.750
+You can also do things like
+
+0:53:18.750,0:53:21.060
+run HTOP and see if anything is running.
+
+0:53:22.380,0:53:25.500
+Like if your CPU is at 0%, something
+is probably wrong.
+
+0:53:31.140,0:53:32.579
+Okay.
+
+0:53:32.579,0:53:38.268
+There's a lot of exercises for all the topics
+that we have covered in today's class,
+
+0:53:38.269,0:53:41.419
+so feel free to do the ones
+that are more interesting.
+
+0:53:42.180,0:53:44.539
+We're gonna be holding office hours again today.
+
+0:53:45.059,0:53:48.979
+Just a reminder, office hours. You can come
+and ask questions about any lecture.
+
+0:53:48.980,0:53:53.510
+Like we're not gonna expect you to kind of
+do the exercises in a couple of minutes.
+
+0:53:53.510,0:53:57.979
+They take a really long while to get through
+them, but we're gonna be there
+
+0:53:58.529,0:54:04.339
+to answer any questions from previous classes, or even not related
+to exercises. Like if you want to know more about how you
+
+0:54:04.619,0:54:09.889
+would use TMUX in a way to kind of quickly switch
+between panes, anything that comes to your mind.
+
