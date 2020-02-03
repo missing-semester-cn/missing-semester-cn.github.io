@@ -1,0 +1,2874 @@
+0:00:00.000,0:00:06.540
+I guess we should do an intro to to this as well,
+
+0:00:06.540,0:00:09.580
+so this is a just sort of a
+
+0:00:09.581,0:00:14.740
+free-form Q&A lecture where you, as in
+the two people sitting here, but also
+
+0:00:14.740,0:00:19.841
+everyone at home who did not come here
+in person get to ask questions and we
+
+0:00:19.841,0:00:22.961
+have a bunch of questions people asked
+in advance but you can also ask
+
+0:00:22.961,0:00:27.371
+additional questions during, for the two
+of you who are here, you can do it either
+
+0:00:27.371,0:00:33.611
+by raising your hand or you can submit it on
+the forum and be anonymous, it's up to you
+
+0:00:33.611,0:00:35.671
+regardless though, what we're gonna
+do is just go through some of the
+
+0:00:35.681,0:00:40.241
+questions have been asked and try to
+give as helpful answers as we can
+
+0:00:40.241,0:00:43.691
+although they are unprepared on our side and
+
+0:00:43.791,0:00:45.611
+yeah that's the plan I guess we go
+
+0:00:45.611,0:00:48.911
+from popular to least popular
+
+0:00:48.911,0:00:49.991
+fire away
+
+0:00:49.991,0:00:52.091
+all right so for our first question any
+
+0:00:52.091,0:00:55.961
+recommendations on learning operating
+system related topics like processes,
+
+0:00:55.961,0:00:59.861
+virtual memory, interrupts,
+memory management, etc
+
+0:00:59.861,0:01:01.811
+so I think this is a
+
+0:01:01.811,0:01:07.181
+is an interesting question because these
+are really low level concepts that often
+
+0:01:07.181,0:01:11.391
+do not matter, unless you have to
+deal with this in some capacity,
+
+0:01:11.391,0:01:12.771
+right so
+
+0:01:12.891,0:01:17.671
+one instance where this matters is you're
+writing really low level code like
+
+0:01:17.681,0:01:20.500
+you're implementing a kernel or something
+like that, or you want to
+
+0:01:20.500,0:01:22.811
+just hack on the Linux kernel.
+
+0:01:22.811,0:01:24.751
+It's rare otherwise that you need to work with
+
+0:01:24.751,0:01:27.711
+especially like virtual memory and
+interrupts and stuff yourself
+
+0:01:27.851,0:01:32.071
+processes, I think are a more general concept
+that we've talked a little bit about in
+
+0:01:32.071,0:01:36.611
+this class as well and tools like
+htop, pgrep, kill, and signals and
+
+0:01:36.761,0:01:37.711
+that sort of stuff
+
+0:01:37.711,0:01:39.311
+in terms of learning it
+
+0:01:39.311,0:01:45.371
+maybe one of the best ways, is to try to
+take either an introductory class on the
+
+0:01:45.371,0:01:51.401
+topic, so for example MIT has a class
+called 6.828, which is where
+
+0:01:51.401,0:01:55.091
+you essentially build and develop your
+own operating system based on some code
+
+0:01:55.091,0:01:58.631
+that you're given, and all of those labs
+are publicly available and all the
+
+0:01:58.631,0:02:01.601
+resources for the class are publicly available,
+and so that is a good way to
+
+0:02:01.601,0:02:04.001
+really learn them is by doing them yourself.
+
+0:02:04.001,0:02:05.201
+There are also various
+
+0:02:05.201,0:02:11.201
+tutorials online that basically guide
+you through how do you write a kernel
+
+0:02:11.201,0:02:15.431
+from scratch. Not necessarily a very
+elaborate one, not one you would want
+
+0:02:15.431,0:02:20.561
+to run any real software on, but just to
+teach you the basics and so that would
+
+0:02:20.561,0:02:21.930
+be another thing to look up.
+
+0:02:21.930,0:02:24.131
+Like how do I write a kernel in and then your
+
+0:02:24.131,0:02:27.611
+language of choice. You will probably not
+find one that lets you do it in Python
+
+0:02:27.611,0:02:33.612
+but in like C, C++, Rust, there
+are a bunch of topics like this
+
+0:02:33.612,0:02:36.951
+one other note on operating systems
+
+0:02:36.951,0:02:39.931
+so like Jon mentioned MIT has a 6.828 class but
+
+0:02:39.941,0:02:43.391
+if you're looking for a more high-level
+overview, not necessarily programming or
+
+0:02:43.391,0:02:46.001
+an operating system, but just learning about
+the concepts another good resource
+
+0:02:46.001,0:02:51.331
+is a book called "Modern Operating
+Systems" by Andy Tannenbaum
+
+0:02:51.331,0:02:58.371
+there's also actually a book called the "The FreeBSD
+Operating System" which is really good,
+
+0:02:58.371,0:03:03.031
+It doesn't go through Linux, but it goes
+through FreeBSD and the BSD kernel is
+
+0:03:03.031,0:03:07.181
+arguably better organized than the Linux
+one and better documented and so it
+
+0:03:07.181,0:03:11.591
+might be a gentler introduction to some of those
+topics than trying to understand Linux
+
+0:03:11.591,0:03:14.951
+You want to check it as answered?
+
+0:03:14.951,0:03:16.511
+- Yes + Nice
+
+0:03:16.511,0:03:17.451
+Answered
+
+0:03:17.451,0:03:19.371
+For our next question
+
+0:03:19.371,0:03:23.951
+What are some of the tools you'd
+prioritize learning first?
+
+0:03:23.951,0:03:29.551
+- Maybe we can all go through and
+give our opinion on this? + Yeah
+
+0:03:29.551,0:03:31.713
+Tools to prioritize learning first?
+
+0:03:31.713,0:03:36.451
+I think learning your editor well,
+just serves you in all capacities
+
+0:03:36.511,0:03:40.511
+like being efficient at editing files,
+is just like a majority of
+
+0:03:40.511,0:03:45.041
+what you're going to spend your time doing.
+And in general, just using your
+
+0:03:45.041,0:03:49.211
+keyboard more in your mouse less. It means
+that you get to spend more of your
+
+0:03:49.311,0:03:53.751
+time doing useful things and
+less of your time moving
+
+0:03:53.751,0:03:56.251
+I think that would be my top priority,
+
+0:04:04.511,0:04:06.751
+so I would say that for what
+
+0:04:06.760,0:04:09.671
+tool to prioritize will depend
+on what exactly you're doing
+
+0:04:09.671,0:04:16.150
+I think the core idea is you should try
+to find the types of tasks that you are
+
+0:04:16.151,0:04:18.371
+doing repetitively and so
+
+0:04:18.371,0:04:23.791
+if you are doing some sort of like
+machine learning workload and
+
+0:04:24.011,0:04:27.130
+you find yourself using jupyter notebooks,
+like the one we presented
+
+0:04:27.130,0:04:32.560
+yesterday, a lot. Then again, using
+a mouse for that might not be
+
+0:04:32.560,0:04:35.830
+the best idea and you want to familiarize
+with the keyboard shortcuts
+
+0:04:35.830,0:04:40.750
+and pretty much with anything you will
+end up figuring out that there are some
+
+0:04:40.751,0:04:45.611
+repetitive tasks, and you're running a
+computer, and just trying to figure out
+
+0:04:45.611,0:04:48.311
+oh there's probably a better way to do this
+
+0:04:48.431,0:04:50.871
+be it a terminal, be it an editor
+
+0:04:51.111,0:04:55.891
+And it might be really interesting to
+learn to use some of the topics that
+
+0:04:55.900,0:05:01.121
+we have covered, but if they're not
+extremely useful in a everyday
+
+0:05:01.121,0:05:05.431
+basis then it might not worth prioritizing them
+
+0:05:06.591,0:05:07.451
+out of the topics
+
+0:05:07.531,0:05:11.611
+covered in this class in my opinion two
+of the most useful things are version
+
+0:05:11.621,0:05:15.220
+control and text editors, and I think they're
+a little bit different from each
+
+0:05:15.220,0:05:18.880
+other, in the sense that text editors I
+think are really useful to learn well
+
+0:05:18.880,0:05:21.970
+but it was probably the case that before
+we started using vim and all its fancy
+
+0:05:21.970,0:05:25.390
+keyboard shortcuts you had some other
+text editor you were using before and
+
+0:05:25.390,0:05:29.890
+you could edit text just fine maybe a little
+bit inefficiently whereas I think
+
+0:05:29.890,0:05:33.100
+version control is another really useful
+skill and that's one where if you don't
+
+0:05:33.100,0:05:36.580
+really know the tool properly, it can actually
+lead to some problems like loss
+
+0:05:36.580,0:05:39.490
+of data or just inability to collaborate
+properly with people so I
+
+0:05:39.490,0:05:42.730
+think version control is one of the first
+things that's worth learning well
+
+0:05:42.730,0:05:46.871
+yeah, I agree with that, I think
+learning a tool like Git is just
+
+0:05:46.871,0:05:49.691
+gonna save you so much heartache down the line
+
+0:05:49.691,0:05:51.431
+it also, to add on to that
+
+0:05:51.571,0:05:57.310
+It really helps you collaborate with others
+and Anish touched a little bit on GitHub
+
+0:05:57.310,0:06:01.300
+in the last lecture, and just learning
+to use that tool well in order
+
+0:06:01.300,0:06:05.321
+to work on larger software projects
+that other people are working on is
+
+0:06:05.321,0:06:06.431
+an invaluable skill
+
+0:06:10.071,0:06:11.391
+For our next question
+
+0:06:11.391,0:06:12.871
+when do I use Python versus a
+
+0:06:12.881,0:06:16.051
+bash script, versus some other language
+
+0:06:16.051,0:06:19.661
+This is tough, because I think this comes
+
+0:06:19.661,0:06:21.631
+down to what Jose was saying earlier too
+
+0:06:21.771,0:06:23.731
+that it really depends on
+what you're trying to do
+
+0:06:23.731,0:06:27.155
+For me, I think for bash scripts in particular
+
+0:06:27.155,0:06:28.791
+bash scripts are for
+
+0:06:28.891,0:06:33.430
+automating running a bunch of commands,
+you don't want to write any
+
+0:06:33.430,0:06:35.411
+other like business logic in bash
+
+0:06:35.411,0:06:39.011
+it is just for I want to run these
+
+0:06:39.011,0:06:44.110
+commands, in this order. Maybe with
+arguments, but like even that
+
+0:06:44.110,0:06:47.581
+it's unclear do you want to bash script
+once you start taking arguments
+
+0:06:47.581,0:06:52.691
+Similarly, once you start doing any
+kind of like text processing or
+
+0:06:52.691,0:06:55.131
+configuration, all that
+
+0:06:55.131,0:06:59.111
+reach for a language that is a more serious
+
+0:06:59.111,0:07:01.031
+programming language than bash is
+
+0:07:01.091,0:07:03.451
+bash is really for sort of short one-off
+
+0:07:03.461,0:07:10.211
+scripts or ones that have a very well-defined
+use case on the terminal in
+
+0:07:10.211,0:07:12.851
+the shell, probably
+
+0:07:12.851,0:07:15.941
+For a slightly more concrete guideline,
+you might say write a
+
+0:07:15.941,0:07:19.211
+bash script if it's less than a hundred
+lines of code or so, but once it gets
+
+0:07:19.211,0:07:21.611
+beyond that point bash is kind of
+unwieldy and it's probably worth
+
+0:07:21.611,0:07:25.091
+switching to a more serious programming
+language like Python
+
+0:07:25.091,0:07:26.511
+and to add to that
+
+0:07:26.511,0:07:32.211
+I would say that I found myself writing
+sometimes scripts in Python because
+
+0:07:32.211,0:07:36.911
+If I have already solved some subproblem
+that covers part of the problem in Python
+
+0:07:36.911,0:07:40.631
+I find it much easier to compose the
+previous solution that I found out in
+
+0:07:40.631,0:07:45.731
+Python and just try to reuse bash code,
+that I don't find as reusable as Python
+
+0:07:45.731,0:07:49.600
+And in the same way it's kind of nice that
+a lot of people have written something
+
+0:07:49.600,0:07:52.631
+like Python libraries or like Ruby libraries
+to do a lot of these things
+
+0:07:52.631,0:07:58.451
+whereas in bash is kind of hard
+to have like code reuse
+
+0:07:58.451,0:08:01.720
+And in fact,
+
+0:08:01.720,0:08:07.631
+I think to add to that. Usually, if you
+find a library in some language that
+
+0:08:07.631,0:08:12.091
+helps with the task you're trying to
+do, use that language for the job
+
+0:08:12.091,0:08:15.671
+And in bash there are no libraries, there
+are only the programs on your computer
+
+0:08:15.771,0:08:18.931
+So you probably don't want to use
+it unless like there's a program
+
+0:08:18.941,0:08:23.741
+you can just invoke I do think another
+thing worth remembering about bash
+
+0:08:23.741,0:08:26.451
+bash is really hard to get right.
+
+0:08:26.451,0:08:30.531
+It's very easy to get it right for the particular
+use case you're trying to solve right now
+
+0:08:30.531,0:08:32.471
+but things like
+
+0:08:32.471,0:08:35.891
+What if one of the filenames has a space in it?
+
+0:08:35.891,0:08:38.891
+It has caused so many bugs and so
+
+0:08:38.891,0:08:43.151
+many problems in bash scripts and if you
+use a real programming language then
+
+0:08:43.151,0:08:46.642
+those problems just go away
+
+0:08:46.651,0:08:50.491
+Checked it
+
+0:08:50.571,0:08:51.571
+For our next question
+
+0:08:51.571,0:08:56.211
+What is the difference between sourcing
+a script and executing that script ?
+
+0:08:57.071,0:09:02.711
+So this actually, we got in office
+hours a while back as well which is
+
+0:09:02.871,0:09:06.991
+Aren't they the same? like aren't they
+both just running the bash script?
+
+0:09:06.991,0:09:08.051
+and it is true
+
+0:09:08.051,0:09:12.191
+both of these will end up executing the
+lines of code that are in the script
+
+0:09:12.191,0:09:16.571
+the ways in which they differ is that
+sourcing a script is telling your
+
+0:09:16.571,0:09:22.991
+current bash script, your current bash
+session to execute that program
+
+0:09:23.131,0:09:28.911
+whereas the other one is, start up a new instance
+of bash and run the program there instead
+
+0:09:29.291,0:09:34.931
+And this matters for things like imagine that
+"script.sh" tries to change directories
+
+0:09:34.931,0:09:37.841
+If you are running the script
+as in the second invocation
+
+0:09:37.841,0:09:42.761
+"./script.sh", then the new
+process is going to change
+
+0:09:42.761,0:09:46.891
+directories but by the time that script
+exits and returns to your shell
+
+0:09:46.891,0:09:51.831
+your shell still remains in the same place. However,
+if you do CD in a script and you source it
+
+0:09:51.831,0:09:55.241
+Your current instance of bash is the
+one that ends up running it and
+
+0:09:55.241,0:09:57.951
+so it ends up CDing where you are
+
+0:09:57.951,0:10:01.171
+This is also why if you define functions
+
+0:10:01.171,0:10:04.751
+For example, that you may want to
+execute in your shell session
+
+0:10:04.751,0:10:07.011
+You need to source the script, not run it
+
+0:10:07.011,0:10:10.261
+Because if you run it, that function
+will be defined in the
+
+0:10:10.261,0:10:11.931
+instance of bash
+
+0:10:11.931,0:10:16.831
+In the bash process that gets launched but it
+will not be defined in your current shell
+
+0:10:16.831,0:10:22.871
+I think those are two of the biggest
+differences between the two
+
+0:10:29.211,0:10:29.711
+Next question,
+
+0:10:29.873,0:10:35.131
+What are the places where various packages and tools
+are stored and how does referencing them work?
+
+0:10:35.131,0:10:39.171
+What even is /bin or /lib?
+
+0:10:39.171,0:10:45.091
+So as we covered in the first lecture,
+there is this PATH environment variable
+
+0:10:45.091,0:10:49.551
+which is a semicolon separated
+string of all the places
+
+0:10:49.551,0:10:55.111
+where your shell is gonna look for binaries
+and if you just do something
+
+0:10:55.111,0:10:58.171
+like "echo $PATH", you're gonna get this list
+
+0:10:58.171,0:11:02.251
+and all these places are gonna
+be consulted in order.
+
+0:11:02.251,0:11:03.601
+It's gonna go through all of them and in fact
+
+0:11:03.601,0:11:07.011
+- There is already... Did we cover which? + Yeah
+
+0:11:07.211,0:11:10.011
+So if you run "which" and a specific command
+
+0:11:10.021,0:11:14.071
+the shell is actually is gonna tell
+you where it's finding this
+
+0:11:14.071,0:11:15.391
+Beyond that,
+
+0:11:15.391,0:11:20.431
+there is like some conventions where a lot
+of programs will install their binaries
+
+0:11:20.431,0:11:24.071
+and they're like /usr/bin (or at
+least they will include symlinks)
+
+0:11:24.071,0:11:26.051
+in /usr/bin so you can find them
+
+0:11:26.191,0:11:28.211
+There's also a /usr/local/bin
+
+0:11:28.211,0:11:33.951
+There are special directories. For example,
+/usr/sbin it's only for sudo user and
+
+0:11:33.951,0:11:38.491
+some of these conventions are slightly
+different between different distros so
+
+0:11:38.491,0:11:47.571
+I know like some distros for example install
+the user libraries under /opt for example
+
+0:11:51.191,0:11:55.491
+Yeah I think one thing just
+to talk a little bit of more
+
+0:11:55.651,0:12:00.631
+about /bin and then Anish maybe you can
+do the other folders so when it comes to
+
+0:12:00.631,0:12:02.791
+/bin the convention
+
+0:12:02.791,0:12:10.051
+There are conventions, and the conventions are
+usually /bin are for essential system utilities
+
+0:12:10.051,0:12:12.531
+/usr/bin are for user programs and
+
+0:12:12.531,0:12:17.431
+/usr/local/bin are for user
+compiled programs, sort of
+
+0:12:17.431,0:12:21.691
+so things that you installed that you intend
+the user to run, are in /usr/bin
+
+0:12:21.691,0:12:26.711
+things that a user has compiled themselves and stuck
+on your system, probably goes in /usr/local/bin
+
+0:12:26.711,0:12:29.991
+but again, this varies a lot from machine
+to machine, and distro to distro
+
+0:12:29.991,0:12:33.971
+On Arch Linux, for example, /bin
+is a symlink to /usr/bin
+
+0:12:33.971,0:12:40.261
+They're the same and as Jose mentioned, there's
+also /sbin which is for programs that are
+
+0:12:40.261,0:12:43.801
+intended to only be run as root, that
+also varies from distro to distro
+
+0:12:43.801,0:12:47.251
+whether you even have that directory, and
+on many systems like /usr/local/bin
+
+0:12:47.251,0:12:51.151
+might not even be in your PATH, or
+might not even exist on your system
+
+0:12:51.151,0:12:55.831
+On BSD on the other hand /usr/local/bin
+is often used a lot more heavily
+
+0:12:56.731,0:12:57.231
+yeah so
+
+0:12:57.231,0:13:01.111
+What we were talking about so far, these
+are all ways that files and folders are
+
+0:13:01.111,0:13:05.071
+organized on Linux things or Linux or
+BSD things vary a little bit between
+
+0:13:05.071,0:13:07.151
+that and macOS or other platforms
+
+0:13:07.151,0:13:09.301
+I think for the specific locations,
+
+0:13:09.301,0:13:11.471
+if you to know exactly what it's
+used for, you can look it up
+
+0:13:11.471,0:13:17.291
+But some general patterns to keep in mind or anything
+with /bin in it has binary executable programs in it,
+
+0:13:17.291,0:13:19.891
+anything with \lib in it, has
+libraries in it so things that
+
+0:13:19.891,0:13:25.081
+programs can link against, and then some
+other things that are useful to know are
+
+0:13:25.081,0:13:29.431
+there's a /etc on many systems, which
+has configuration files in it and
+
+0:13:29.431,0:13:34.311
+then there's /home, which underneath that directory
+contains each user's home directory
+
+0:13:34.311,0:13:38.521
+so like on a linux box my username
+or if it's Anish will
+
+0:13:38.651,0:13:41.351
+correspond to a home directory /home/anish
+
+0:13:42.071,0:13:43.351
+Yeah I guess there are
+
+0:13:43.351,0:13:47.671
+a couple of others like /tmp is usually
+a temporary directory that gets
+
+0:13:47.671,0:13:51.351
+erased when you reboot not always but sometimes,
+you should check on your system
+
+0:13:51.731,0:13:59.211
+There's a /var which often holds like
+files the change over time so
+
+0:13:59.211,0:14:06.151
+these these are usually going to be things
+like lock files for package managers
+
+0:14:06.151,0:14:12.431
+they're gonna be things like log files
+files to keep track of process IDs
+
+0:14:12.431,0:14:16.471
+then there's /dev which shows devices so
+
+0:14:16.471,0:14:20.551
+usually so these are special files that
+correspond to devices on your system we
+
+0:14:20.551,0:14:27.391
+talked about /sys, Anish mentioned /etc
+
+0:14:29.051,0:14:36.031
+/opt is a common one for just like third-party
+software that basically it's usually for
+
+0:14:36.031,0:14:40.951
+companies ported their software to Linux
+but they don't actually understand what
+
+0:14:40.951,0:14:45.391
+running software on Linux is like, and
+so they just have a directory with all
+
+0:14:45.391,0:14:51.411
+their stuff in it and when those get installed
+they usually get installed into /opt
+
+0:14:51.411,0:14:55.651
+I think those are the ones off the top of my head
+
+0:14:55.651,0:14:57.771
+yeah
+
+0:14:57.771,0:15:02.271
+And we will list these in our lecture notes
+which will produce after this lecture
+
+0:15:02.271,0:15:04.431
+Next question
+
+0:15:04.431,0:15:07.080
+Should I apt-get install a Python whatever
+
+0:15:07.080,0:15:10.691
+package or pip install that package
+
+0:15:10.691,0:15:13.890
+so this is a good question that I think at
+
+0:15:13.890,0:15:17.310
+a higher level this question is asking
+should I use my systems package manager
+
+0:15:17.310,0:15:20.850
+to install things or should I use some other
+package manager. Like in this case
+
+0:15:20.850,0:15:25.021
+one that's more specific to a particular
+language. And the answer here is also
+
+0:15:25.021,0:15:28.590
+kind of it depends, sometimes it's nice
+to manage things using a system package
+
+0:15:28.590,0:15:31.950
+manager so everything can be installed
+and upgraded in a single place but
+
+0:15:31.950,0:15:35.160
+I think oftentimes whatever is available
+in the system repositories the things
+
+0:15:35.160,0:15:37.800
+you can get via a tool like
+apt-get or something similar
+
+0:15:37.800,0:15:41.040
+might be slightly out of date compared to
+the more language specific repository
+
+0:15:41.040,0:15:45.060
+so for example a lot of the Python packages
+I use I really want the most
+
+0:15:45.060,0:15:47.771
+up-to-date version and so
+I use pip to install them
+
+0:15:48.551,0:15:51.091
+Then, to extend on that is
+
+0:15:51.091,0:15:57.751
+sometimes the case the system packages
+might require some other
+
+0:15:57.751,0:16:02.461
+dependencies that you might not have realized
+about, and it's also might be
+
+0:16:02.461,0:16:07.201
+the case or like for some systems,
+at least for like alpine Linux they
+
+0:16:07.201,0:16:11.221
+don't have wheels for like a lot of the
+Python packages so it will just take
+
+0:16:11.221,0:16:15.331
+longer to compile them, it will take more
+space because they have to compile them
+
+0:16:15.331,0:16:20.761
+from scratch. Whereas if you just go
+to pip, pip has binaries for a lot of
+
+0:16:20.761,0:16:23.471
+different platforms and that will probably work
+
+0:16:23.471,0:16:29.191
+You also should be aware that pip might not do
+the exact same thing in different computers
+
+0:16:29.191,0:16:33.601
+So, for example, if you are in a kind of laptop
+or like a desktop that is running like
+
+0:16:33.601,0:16:38.971
+a x86 or x86_64 you probably have binaries,
+but if you're running something
+
+0:16:38.971,0:16:43.471
+like Raspberry Pi or some other kind of
+embedded device. These are running on a
+
+0:16:43.471,0:16:47.611
+different kind of hardware architecture
+and you might not have binaries
+
+0:16:47.611,0:16:51.841
+I think that's also good to take into account,
+in that case in might be worthwhile to
+
+0:16:51.841,0:16:58.551
+use the system packages just because they
+will take much shorter to get them
+
+0:16:58.551,0:17:01.691
+than to just to compile from scratch
+the entire Python installation
+
+0:17:01.691,0:17:06.741
+Apart from that, I don't think I can think of any exceptions
+where I would actually use the system packages
+
+0:17:06.741,0:17:09.251
+instead of the Python provided ones
+
+0:17:19.011,0:17:20.851
+So, one other thing to keep in mind is that
+
+0:17:20.861,0:17:26.180
+sometimes you will have more than one
+program on your computer and you might
+
+0:17:26.180,0:17:29.961
+be developing more than one program on
+your computer and for some reason not
+
+0:17:29.961,0:17:33.861
+all programs are always built with the latest
+version of things, sometimes they
+
+0:17:33.861,0:17:39.351
+are a little bit behind, and when you
+install something system-wide you can
+
+0:17:39.351,0:17:44.691
+only... depends on your exact system,
+but often you just have one version
+
+0:17:44.691,0:17:49.711
+what pip lets you do, especially combined
+with something like python's virtualenv,
+
+0:17:49.711,0:17:54.531
+and similar concepts exist for other
+languages, where you can sort of say
+
+0:17:54.531,0:17:59.660
+I want to (NPM does the same thing as well
+with its node modules, for example) where
+
+0:17:59.660,0:18:05.991
+I'm gonna compile the dependencies of
+this package in sort of a subdirectory
+
+0:18:05.991,0:18:10.431
+of its own, and all of the versions that it
+requires are going to be built in there
+
+0:18:10.431,0:18:13.910
+and you can do this separately for separate
+projects so there they have
+
+0:18:13.910,0:18:16.910
+different dependencies or the same dependencies
+with different versions
+
+0:18:16.910,0:18:20.930
+they still sort of kept separate. And that
+is one thing that's hard to achieve
+
+0:18:20.931,0:18:22.651
+with system packages
+
+0:18:27.131,0:18:27.851
+Next question
+
+0:18:27.911,0:18:32.771
+What's the easiest and best profiling tools
+to use to improve performance of my code?
+
+0:18:34.351,0:18:39.231
+This is a topic we could talk
+about for a very long time
+
+0:18:39.231,0:18:42.881
+The easiest and best is to print stuff using time
+
+0:18:42.881,0:18:48.431
+Like, I'm not joking, very often
+the easiest thing is in your code
+
+0:18:48.971,0:18:53.751
+At the top you figure out what the current
+time is, and then you do sort of
+
+0:18:53.751,0:18:57.920
+a binary search over your program of add
+a print statement that prints how much
+
+0:18:57.920,0:19:02.511
+time has elapsed since the start of your
+program and then you do that until you
+
+0:19:02.511,0:19:06.320
+find the segment of code that took the
+longest. And then you go into that
+
+0:19:06.320,0:19:09.531
+function and then you do the same thing
+again and you keep doing this until you
+
+0:19:09.531,0:19:14.031
+find roughly where the time was spent. It's
+not foolproof, but it is really easy
+
+0:19:14.031,0:19:16.721
+and it gives you good information quickly
+
+0:19:16.721,0:19:25.361
+if you do need more advanced information
+Valgrind has a tool called cache-grind?
+
+0:19:25.361,0:19:29.431
+call grind? Cache grind? One of the two.
+
+0:19:29.431,0:19:33.310
+and this tool lets you run your program and
+
+0:19:33.310,0:19:38.741
+measure how long everything takes and
+all of the call stacks, like which
+
+0:19:38.741,0:19:42.521
+function called which function, and what
+you end up with is a really neat
+
+0:19:42.521,0:19:47.081
+annotation of your entire program source
+with the heat of every line basically
+
+0:19:47.081,0:19:51.761
+how much time was spent there. It does
+slow down your program by like an order
+
+0:19:51.761,0:19:56.021
+of magnitude or more, and it doesn't really
+support threads but it is really
+
+0:19:56.021,0:20:01.121
+useful if you can use it. If you can't,
+then tools like perf or similar tools
+
+0:20:01.121,0:20:05.201
+for other languages that do usually some
+kind of sampling profiling like we
+
+0:20:05.201,0:20:09.811
+talked about in the profiler lecture, can
+give you pretty useful data quickly,
+
+0:20:09.811,0:20:15.160
+but it's a lot of data around
+this, but they're a little bit
+
+0:20:15.160,0:20:18.971
+biased and what kind of things they usually
+highlight as a problem and it
+
+0:20:18.971,0:20:22.961
+can sometimes be hard to extract meaningful
+information about what should
+
+0:20:22.961,0:20:27.701
+I change in response to them. Whereas the
+sort of print approach very quickly
+
+0:20:27.701,0:20:32.171
+gives you like this section
+of code is bad or slow
+
+0:20:32.171,0:20:34.871
+I think would be my answer
+
+0:20:34.871,0:20:40.431
+Flamegraphs are great, they're a good way
+to visualize some of this information
+
+0:20:41.491,0:20:45.550
+Yeah I just have one thing to add,
+oftentimes programming languages
+
+0:20:45.550,0:20:48.910
+have language specific tools for profiling
+so to figure out what's the
+
+0:20:48.910,0:20:52.191
+right tool to use for your language like if
+you're doing JavaScript in the web browser
+
+0:20:52.191,0:20:55.411
+the web browser has a really nice tool for
+doing profiling you should just use that
+
+0:20:55.411,0:21:00.471
+or if you are using go, for example, go has a built-in
+profiler is really good you should just use that
+
+0:21:01.711,0:21:04.251
+A last thing to add to that
+
+0:21:04.251,0:21:09.951
+Sometimes you might find that doing this binary
+search over time that you're kind of
+
+0:21:09.961,0:21:14.351
+finding where the time is going, but this
+time is sometimes happening because
+
+0:21:14.351,0:21:18.461
+you're waiting on the network, or you're
+waiting for some file, and in that case
+
+0:21:18.461,0:21:23.440
+you want to make sure that the time
+that is, if I want to write
+
+0:21:23.440,0:21:27.310
+like 1 gigabyte file or like read 1
+gigabyte file and put it into memory
+
+0:21:27.310,0:21:32.260
+you want to check that the actual time
+there, is the minimum amount of time
+
+0:21:32.260,0:21:36.221
+you actually have to wait. If it's ten times
+longer, you should try to use some
+
+0:21:36.221,0:21:39.371
+other tools that we covered in the debugging
+and profiling section to see
+
+0:21:39.371,0:21:45.671
+why you're not utilizing all your
+resources because that might...
+
+0:21:50.511,0:21:56.071
+Because that might be a lot of what's happening
+thing, like for example, in my research
+
+0:21:56.081,0:21:59.410
+in machine learning workloads, a lot of
+time is loading data and you have to
+
+0:21:59.410,0:22:02.981
+make sure well like the time it takes to
+load data is actually the minimum amount
+
+0:22:02.981,0:22:07.500
+of time you want to have that happening
+
+0:22:08.040,0:22:13.481
+And to build on that, there are actually
+specialized tools for doing things like
+
+0:22:13.481,0:22:17.351
+analyzing wait times. Very often when
+you're waiting for something what's
+
+0:22:17.351,0:22:20.591
+really happening is you're issuing your
+system call, and that system call takes
+
+0:22:20.591,0:22:24.191
+some amount of time to respond. Like you do
+a really large write, or a really large read
+
+0:22:24.191,0:22:28.361
+or you do many of them, and one thing
+that can be really handy here is
+
+0:22:28.361,0:22:31.841
+to try to get information out of the
+kernel about where your program is
+
+0:22:31.841,0:22:37.000
+spending its time. And so there's (it's
+not new), but there's a relatively
+
+0:22:37.000,0:22:42.820
+newly available thing called BPF or eBPF.
+Which is essentially kernel tracing
+
+0:22:42.820,0:22:48.531
+and you can do some really cool things with
+it, and that includes tracing user programs.
+
+0:22:48.531,0:22:51.760
+It can be a little bit awkward to
+get started with, there's a tool
+
+0:22:51.760,0:22:56.201
+called BPF trace that i would recommend
+you looking to, if you need to do like
+
+0:22:56.201,0:23:00.040
+this kind of low-level performance debugging.
+But it is really good for this
+
+0:23:00.040,0:23:04.601
+kind of stuff. You can get things like
+histograms over how much time was spent
+
+0:23:04.601,0:23:06.671
+in particular system calls
+
+0:23:06.671,0:23:09.721
+It's a great tool
+
+0:23:12.251,0:23:15.351
+What browser plugins do you use?
+
+0:23:16.731,0:23:19.731
+I try to use as few as I can get away with using
+
+0:23:19.731,0:23:25.991
+because I don't like things being in
+my browser, but there are a couple of
+
+0:23:25.991,0:23:30.311
+ones that are sort of staples.
+The first one is uBlock Origin.
+
+0:23:30.311,0:23:36.611
+So uBlock Origin is one of many ad blockers but
+it's a little bit more than an ad blocker.
+
+0:23:36.611,0:23:42.530
+It is (a what do they call it?) a
+network filtering tool so it lets
+
+0:23:42.530,0:23:47.331
+you do more things than just block ads.
+It also lets you like block connections
+
+0:23:47.331,0:23:51.351
+to certain domains, block connections
+for certain types of resources
+
+0:23:51.351,0:23:56.031
+So I have mine set up in what they call
+the Advanced Mode, where basically
+
+0:23:56.031,0:24:02.451
+you can disable basically all network requests.
+But it's not just Network requests,
+
+0:24:02.451,0:24:07.430
+It's also like I have disabled all inline
+scripts on every page and all
+
+0:24:07.430,0:24:11.540
+third-party images and resources, and then
+you can sort of create a whitelist
+
+0:24:11.540,0:24:16.351
+for every page so it gives you really
+low-level tools around how to
+
+0:24:16.351,0:24:20.331
+how to improve the security of your browsing.
+But you can also set it in not the
+
+0:24:20.331,0:24:23.991
+advanced mode, and then it does much of
+the same as a regular ad blocker would
+
+0:24:23.991,0:24:28.101
+do, although in a fairly efficient way
+if you're looking at an ad blocker it's
+
+0:24:28.101,0:24:31.510
+probably the one to use and it
+works on like every browser
+
+0:24:31.511,0:24:34.451
+That would be my top pick I think,
+
+0:24:39.111,0:24:44.391
+I think probably the one I
+use like the most actively
+
+0:24:44.391,0:24:50.391
+is one called Stylus. It lets you modify
+the CSS or like the stylesheets
+
+0:24:50.391,0:24:54.560
+that webpages have. And it's pretty
+neat, because sometimes you're
+
+0:24:54.560,0:24:58.550
+looking at a website and you want
+to hide some part of the website
+
+0:24:58.550,0:25:04.211
+you don't care about. Like maybe a ad, maybe
+some sidebar you're not finding useful
+
+0:25:04.211,0:25:06.290
+The thing is, at the end of
+the day these things are
+
+0:25:06.290,0:25:09.591
+displaying in your browser, and you
+have control of what code is
+
+0:25:09.591,0:25:13.131
+executing and similar to what Jon was
+saying, like you can customize this
+
+0:25:13.131,0:25:18.491
+to no end, and what I have for a lot of
+web pages like hide this this part, or
+
+0:25:18.491,0:25:23.390
+also trying to make like dark modes for
+them like you can change pretty much the
+
+0:25:23.390,0:25:26.810
+color for every single website. And what
+is actually pretty neat is that there's
+
+0:25:26.810,0:25:31.461
+like a repository online of people that
+have contributed this is stylesheets
+
+0:25:31.461,0:25:35.031
+for the websites. So someone probably
+has (done) one for GitHub
+
+0:25:35.031,0:25:38.780
+Like I want dark GitHub and someone has
+already contributed one that makes
+
+0:25:38.780,0:25:44.631
+that much more pleasing to browse. Apart
+from that, one that it's not really
+
+0:25:44.631,0:25:49.491
+fancy, but I have found incredibly helpful
+is one that just takes a screenshot an
+
+0:25:49.491,0:25:53.121
+entire website. And It will
+scroll for you and make
+
+0:25:53.121,0:25:57.711
+compound image of the entire website and that's
+really great for when you're trying to
+
+0:25:57.711,0:26:00.111
+print a website and is just terrible.
+
+0:26:00.111,0:26:00.611
+(It's built into Firefox)
+
+0:26:00.611,0:26:02.671
+oh interesting
+
+0:26:02.671,0:26:05.751
+oh now that you mention builtin to Firefox,
+another one that I really like about
+
+0:26:05.751,0:26:09.071
+Firefox is the multi account containers
+
+0:26:09.071,0:26:10.831
+(Oh yeah, it's fantastic)
+
+0:26:10.831,0:26:12.291
+Which kind of lets you
+
+0:26:12.291,0:26:16.670
+By default a lot of web browsers, like
+for example Chrome, have this
+
+0:26:16.670,0:26:20.601
+notion of like there's session that you
+have, where you have all your cookies
+
+0:26:20.601,0:26:24.560
+and they are kind of all shared from the
+different websites in the sense of
+
+0:26:24.560,0:26:30.811
+you keep opening new tabs and unless you go into
+incognito you kind of have the same profile
+
+0:26:30.811,0:26:34.190
+And that profile is the same for
+all websites, there is this
+
+0:26:34.191,0:26:35.851
+Is it an extension or is it built in?
+
+0:26:35.851,0:26:40.571
+(it's a mix, it's complicated)
+
+0:26:41.091,0:26:46.211
+So I think you actually have to say you want
+to install it or enable it and again
+
+0:26:46.221,0:26:49.881
+the name is Multi Account Containers and
+these let you tell Firefox to have
+
+0:26:49.881,0:26:53.961
+separate isolated sessions. So
+for example, you want to say
+
+0:26:53.961,0:26:58.851
+I have a separate sessions for whenever I
+visit to Google or whenever I visit Amazon
+
+0:26:58.851,0:27:01.791
+and that can be pretty neat, because then you can
+
+0:27:01.791,0:27:08.171
+At a browser level it's ensuring that no information
+sharing is happening between the two of them
+
+0:27:08.171,0:27:11.961
+And it's much more convenient than
+having to open a incognito window
+
+0:27:11.961,0:27:14.471
+where it's gonna clean all the time the stuff
+
+0:27:14.471,0:27:17.311
+(One thing to mention is Stylus vs Stylish)
+
+0:27:17.531,0:27:19.651
+Oh yeah, I forgot about that
+
+0:27:19.651,0:27:24.931
+One important thing is the browser extension
+for side loading CSS Stylesheets
+
+0:27:24.931,0:27:31.851
+it's called a Stylus and that's different
+from the older one that was
+
+0:27:31.851,0:27:37.400
+called Stylish, because that one got
+bought at some point by some shady
+
+0:27:37.400,0:27:40.711
+company, that started abusing it not only to have
+
+0:27:40.711,0:27:45.780
+that functionality, but also to read your
+entire browser history and send that
+
+0:27:45.780,0:27:48.491
+back to their servers so they could data mine it.
+
+0:27:48.491,0:27:53.731
+So, then people just built this open-source alternative
+that is called Stylus, and that's the one
+
+0:27:53.731,0:27:58.951
+we recommend. Said that, I think the repository
+for styles is the same for the
+
+0:27:58.951,0:28:03.611
+two of them, but I would have
+to double check that.
+
+0:28:03.611,0:28:05.951
+Do you have any browser plugins Anish?
+
+0:28:06.071,0:28:09.311
+Yes, so I also have some recommendations
+for browser plugins
+
+0:28:09.311,0:28:13.991
+I also use uBlock Origin and I also use Stylus,
+
+0:28:13.991,0:28:18.511
+but one other one that I'd recommend is
+integration with a password manager
+
+0:28:18.511,0:28:21.631
+So this is a topic that we have in
+the lecture notes for the security
+
+0:28:21.631,0:28:24.841
+lecture, but we didn't really get to talk
+about in detail. But basically password
+
+0:28:24.841,0:28:27.810
+managers do a really good job of increasing
+your security when working
+
+0:28:27.810,0:28:31.831
+with online accounts, and having browser
+integration with your password manager
+
+0:28:31.831,0:28:34.410
+can save you a lot of time like you
+can open up a website then it can
+
+0:28:34.410,0:28:37.381
+autofill your login information for you
+sir and you go and copy and paste it
+
+0:28:37.381,0:28:40.320
+back and forth between a separate program
+if it's not integrated with your
+
+0:28:40.320,0:28:43.410
+web browser, and it can also, this integration,
+can save you from certain
+
+0:28:43.410,0:28:47.651
+attacks that would otherwise be possible if
+you were doing this manual copy pasting.
+
+0:28:47.651,0:28:50.790
+For example, phishing attacks. So
+you find a website that looks very
+
+0:28:50.790,0:28:54.211
+similar to Facebook and you go to log in
+with your facebook login credentials and
+
+0:28:54.211,0:28:56.851
+you go to your password manager and copy
+paste the correct credentials into this
+
+0:28:56.851,0:29:00.060
+funny web site and now all of a sudden
+it has your password but if you have
+
+0:29:00.060,0:29:03.091
+browser integration then the extension
+can automatically check
+
+0:29:03.091,0:29:06.951
+like. Am I on F A C E B O O K.com,or
+is it some other domain
+
+0:29:06.951,0:29:10.671
+that maybe look similar and it will not enter
+the login information if it's the wrong domain
+
+0:29:10.671,0:29:15.791
+so browser extension for
+password managing is good
+
+0:29:15.791,0:29:17.930
+Yeah I agree
+
+0:29:19.491,0:29:20.711
+Next question
+
+0:29:20.711,0:29:23.991
+What are other useful data wrangling tools?
+
+0:29:23.991,0:29:32.421
+So in yesterday's lecture, I mentioned curl, so
+curl is a fantastic tool for just making web
+
+0:29:32.421,0:29:35.811
+requests and dumping them to your terminal.
+You can also use it for things
+
+0:29:35.811,0:29:41.191
+like uploading files which is really handy.
+
+0:29:41.191,0:29:48.431
+In the exercises of that lecture we also talked about
+JQ and pup which are command line tools that let you
+
+0:29:48.431,0:29:52.991
+basically write queries over JSON
+and HTML documents respectively
+
+0:29:52.991,0:30:00.391
+that can be really handy. Other
+data wrangling tools?
+
+0:30:00.391,0:30:03.821
+Ah Perl, the Perl programming language is
+
+0:30:03.821,0:30:08.061
+often referred to as a write only
+programming language because it's
+
+0:30:08.061,0:30:13.431
+impossible to read even if you wrote it.
+But it is fantastic at doing just like
+
+0:30:13.431,0:30:21.561
+straight up text processing, like nothing
+beats it there, so maybe worth learning
+
+0:30:21.561,0:30:24.331
+some very rudimentary Perl just
+to write some of those scripts
+
+0:30:24.331,0:30:29.371
+It's easier often than writing some like hacked-up
+combination of grep and awk and sed,
+
+0:30:29.371,0:30:36.311
+and it will be much faster to just tack something
+up than writing it up in Python, for example
+
+0:30:36.311,0:30:44.031
+but apart from that, other data wrangling
+
+0:30:44.031,0:30:47.071
+No, not off the top of my head really
+
+0:30:47.071,0:30:53.661
+column -t, if you pipe any white space separated
+
+0:30:53.661,0:30:58.821
+input into column -t it will align all
+the white space of the columns so that
+
+0:30:58.821,0:31:05.771
+you get nicely aligned columns that's, and
+head and tail but we talked about those
+
+0:31:09.011,0:31:13.791
+I think a couple of additions to that,
+that I find myself using commonly
+
+0:31:13.791,0:31:19.881
+one is vim. Vim can be pretty useful
+for like data wrangling on itself
+
+0:31:19.881,0:31:22.461
+Sometimes you might find that the operation
+that you're trying to do is
+
+0:31:22.461,0:31:27.711
+hard to put down in terms of piping
+different operators but if you
+
+0:31:27.711,0:31:32.531
+can just open the file and just record
+
+0:31:32.531,0:31:37.301
+a couple of quick vim macros to do what you
+want it to do, it might be like much,
+
+0:31:37.301,0:31:42.311
+much easier. That's one, and then the other
+one, if you're dealing with tabular
+
+0:31:42.311,0:31:46.091
+data and you want to do more complex operations
+like sorting by one column,
+
+0:31:46.091,0:31:51.161
+then grouping and then computing some sort
+of statistic, I think a lot of that
+
+0:31:51.161,0:31:55.951
+workload I ended up just using Python
+and pandas because it's built for that
+
+0:31:55.951,0:32:00.190
+And one of the pretty neat features that
+I find myself also using is that it
+
+0:32:00.190,0:32:03.931
+will export to many different formats.
+So this intermediate state
+
+0:32:03.931,0:32:09.221
+has its own kind of pandas dataframe
+object but it can
+
+0:32:09.221,0:32:14.171
+export to HTM, LaTeX, a lot of different
+like table formats so if your end
+
+0:32:14.171,0:32:19.531
+product is some sort of summary table, then pandas
+I think it's a fantastic choice for that
+
+0:32:21.111,0:32:24.791
+I would second the vim and also
+Python I think those are
+
+0:32:24.791,0:32:29.051
+two of my most used data wrangling tools.
+For the vim one, last year we had a demo
+
+0:32:29.051,0:32:31.841
+in the series in the lecture notes, but
+we didn't cover it in class we had a
+
+0:32:31.841,0:32:38.051
+demo of turning an XML file into a JSON version
+of that same data using only vim macros
+
+0:32:38.051,0:32:40.331
+And I think that's actually the
+way I would do it in practice
+
+0:32:40.331,0:32:43.241
+I don't want to go find a tool that does
+this conversion it is actually simple
+
+0:32:43.241,0:32:45.431
+to encode as a vim macro,
+then I just do it that way
+
+0:32:45.431,0:32:48.991
+And then also Python especially in an interactive
+tool like a Jupyter notebook
+
+0:32:48.991,0:32:51.171
+is a really great way of doing data wrangling
+
+0:32:51.171,0:32:52.951
+A third tool I'd mention which
+I don't remember if we
+
+0:32:52.961,0:32:55.361
+covered in the data wrangling
+lecture or elsewhere
+
+0:32:55.361,0:32:58.751
+is a tool called pandoc which can do transformations
+between different text
+
+0:32:58.751,0:33:02.981
+document formats so you can convert from
+plaintext to HTML or HTML to markdown
+
+0:33:02.981,0:33:07.361
+or LaTeX to HTML or many other formats
+it actually it supports a large
+
+0:33:07.361,0:33:10.471
+list of input formats and a
+large list of output formats
+
+0:33:10.471,0:33:16.361
+I think there's one last one which I mentioned briefly
+in the lecture on data wrangling which is
+
+0:33:16.361,0:33:20.441
+the R programming language, it's
+an awful (I think it's an awful)
+
+0:33:20.441,0:33:25.120
+language to program in. And i would never
+use it in the middle of a data wrangling
+
+0:33:25.120,0:33:30.951
+pipeline, but at the end, in order to like produce
+pretty plots and statistics R is great
+
+0:33:30.951,0:33:35.581
+Because R is built for doing
+statistics and plotting
+
+0:33:35.581,0:33:40.591
+there's a library for are called
+ggplot which is just amazing
+
+0:33:40.591,0:33:46.551
+ggplot2 i guess technically It's
+great, it produces very
+
+0:33:46.551,0:33:51.431
+nice visualizations and it lets you do,
+it does very easily do things like
+
+0:33:51.431,0:33:57.561
+If you have a data set that has like multiple
+facets like it's not just X and Y
+
+0:33:57.561,0:34:03.111
+it's like X Y Z and some other variable,
+and then you want to plot like the
+
+0:34:03.111,0:34:07.581
+throughput grouped by all of those parameters
+at the same time and produce
+
+0:34:07.581,0:34:11.991
+a visualization. R very easily let's you
+do this and I haven't seen anywhere
+
+0:34:11.991,0:34:14.891
+that lets you do that as easily
+
+0:34:16.971,0:34:17.951
+Next question,
+
+0:34:17.951,0:34:20.511
+What's the difference between
+Docker and a virtual machine
+
+0:34:23.271,0:34:27.731
+What's the easiest way to explain this? So docker
+
+0:34:27.741,0:34:31.221
+starts something called containers and
+docker is not the only program that
+
+0:34:31.221,0:34:36.561
+starts containers. There are many others
+and usually they rely on some feature of
+
+0:34:36.561,0:34:40.401
+the underlying kernel in the case of
+docker they use something called LXC
+
+0:34:40.401,0:34:47.571
+which are Linux containers and the basic
+premise there is if you want to start
+
+0:34:47.571,0:34:53.181
+what looks like a virtual machine that
+is running roughly the same operating
+
+0:34:53.181,0:34:57.411
+system as you are already running on your
+computer then you don't really need
+
+0:34:57.411,0:35:04.701
+to run another instance of the kernel
+really that other virtual machine can
+
+0:35:04.701,0:35:09.951
+share a kernel. And you can just use the
+kernels built in isolation mechanisms to
+
+0:35:09.951,0:35:13.791
+spin up a program that thinks it's
+running on its own hardware but in
+
+0:35:13.791,0:35:18.501
+reality it's sharing the kernel and so this
+means that containers can often run
+
+0:35:18.501,0:35:22.611
+with much lower overhead than a full virtual
+machine will do but you should
+
+0:35:22.611,0:35:26.391
+keep in mind that it also has somewhat weaker
+isolation because you are sharing
+
+0:35:26.391,0:35:30.831
+a kernel between the two if you spin up
+a virtual machine the only thing that's
+
+0:35:30.831,0:35:35.931
+shared is sort of the hardware and to
+some extent the hypervisor, whereas
+
+0:35:35.931,0:35:40.791
+with a docker container you're sharing
+the full kernel and the that is a
+
+0:35:40.791,0:35:44.921
+different threat model that you
+might have to keep in mind
+
+0:35:47.341,0:35:52.361
+One another small note there as Jon pointed
+out, to use containers something
+
+0:35:52.361,0:35:55.631
+like Docker you need the underlying operating
+system to be roughly the same
+
+0:35:55.631,0:36:00.071
+as whatever the program that's running
+on top of the container expects and so
+
+0:36:00.071,0:36:03.791
+if you're using macOS for example, the
+way you use docker is you run Linux
+
+0:36:03.791,0:36:08.261
+inside a virtual machine and then you can
+run Docker on top of Linux so maybe
+
+0:36:08.261,0:36:11.741
+if you're going for containers in order
+to get better performance your trading
+
+0:36:11.741,0:36:15.131
+isolation for performance if you're running
+on Mac OS that may not work out
+
+0:36:15.131,0:36:17.451
+exactly as expected
+
+0:36:17.451,0:36:21.221
+And one last note is that there
+is a slight difference, so
+
+0:36:21.221,0:36:25.721
+with Docker and containers,
+one of the gotchas you have
+
+0:36:25.721,0:36:29.411
+to be familiar with is that containers
+are more similar to virtual
+
+0:36:29.411,0:36:33.071
+machines in the sense of that they will
+persist all the storage that you
+
+0:36:33.071,0:36:35.971
+have where Docker by default won't have that.
+
+0:36:35.971,0:36:37.791
+Like Docker is supposed to be running
+
+0:36:37.791,0:36:41.771
+So the main idea is like I want
+to run some software and
+
+0:36:41.771,0:36:45.671
+I get the image and it runs and if you
+want to have any kind of persistent
+
+0:36:45.671,0:36:50.081
+storage that links to the host system
+you have to kind of manually specify
+
+0:36:50.081,0:36:56.051
+that, whereas a virtual machine is using
+some virtual disk that is being provided
+
+0:36:56.051,0:37:02.671
+Next question
+
+0:37:02.671,0:37:05.111
+What are the advantages of each operating system
+
+0:37:05.111,0:37:08.531
+and how can we choose between them?
+For example, choosing the best Linux
+
+0:37:08.531,0:37:10.551
+distribution for our purposes
+
+0:37:14.251,0:37:16.811
+I will say that for many, many tasks the
+
+0:37:16.811,0:37:20.171
+specific Linux distribution that you're
+running is not that important
+
+0:37:20.171,0:37:23.731
+the thing is, it's just what kind of
+
+0:37:23.731,0:37:27.651
+knowing that there are different types
+or like groups of distributions,
+
+0:37:27.651,0:37:32.251
+So for example, there are some distributions
+that have really frequent updates
+
+0:37:32.251,0:37:38.971
+but they kind of break more easily. So for
+example Arch Linux has a rolling update
+
+0:37:38.971,0:37:43.511
+way of pushing updates, where things might
+break but they're fine with the things
+
+0:37:43.511,0:37:47.891
+being that way. Where maybe where you
+have some really important web server
+
+0:37:47.891,0:37:51.401
+that is hosting all your business
+analytics you want that thing
+
+0:37:51.401,0:37:55.961
+to have like a much more steady way of
+updates. So that's for example why you
+
+0:37:55.961,0:37:58.121
+will see distributions like Debian being
+
+0:37:58.121,0:38:02.951
+much more conservative about what they push, or
+even for example Ubuntu makes a difference
+
+0:38:02.951,0:38:07.001
+between the Long Term Releases
+that they are only update every
+
+0:38:07.001,0:38:12.281
+two years and the more periodic
+releases of one there is a
+
+0:38:12.281,0:38:16.661
+it's like two a year that they make.
+So, kind of knowing that there's the
+
+0:38:16.661,0:38:21.341
+difference apart from that some distributions
+have different ways
+
+0:38:21.341,0:38:27.191
+of providing the binaries
+to you and the way they
+
+0:38:27.191,0:38:33.791
+have the repositories so I think a lot of Red
+Hat Linux don't want non free drivers in
+
+0:38:33.791,0:38:37.361
+their official repositories where I
+think Ubuntu is fine with some of
+
+0:38:37.361,0:38:42.491
+them, apart from that I think like just
+a lot of what is core to most Linux
+
+0:38:42.491,0:38:47.411
+distros is kind of shared between them
+and there's a lot of learning in the
+
+0:38:47.411,0:38:51.431
+common ground. So you don't have
+to worry about the specifics
+
+0:38:52.391,0:38:56.351
+Keeping with the theme of this class being somewhat
+opinionated, I'm gonna go ahead and say
+
+0:38:56.351,0:39:00.041
+that if you're using Linux especially for
+the first time choose something like
+
+0:39:00.041,0:39:03.851
+Ubuntu or Debian. So you Ubuntu to is a
+Debian based distribution but maybe is a
+
+0:39:03.851,0:39:07.421
+little bit more friendly, Debian is a little
+bit more minimalist. I use Debian
+
+0:39:07.421,0:39:10.451
+and all my servers, for example. And I use
+Debian desktop on my desktop computers
+
+0:39:10.451,0:39:15.431
+that run Linux if you're going for maybe
+trying to learn more things and you want
+
+0:39:15.431,0:39:19.391
+a distribution that trades stability for
+having more up-to-date software maybe
+
+0:39:19.391,0:39:21.911
+at the expense of you having to fix a
+broken distribution every once in a
+
+0:39:21.911,0:39:26.911
+while then maybe you can consider something
+like Arch Linux or Gentoo
+
+0:39:26.911,0:39:32.681
+or Slackware. Oh man, I'd say that like
+if you're installing Linux and just like
+
+0:39:32.681,0:39:34.891
+want to get work done Debian is a great choice
+
+0:39:35.911,0:39:38.271
+Yeah I think I agree with that.
+
+0:39:38.271,0:39:40.971
+The other observation is like
+you couldn't install BSD
+
+0:39:40.971,0:39:46.691
+BSD has gotten, has come a long way from
+where it was. There's still a bunch of
+
+0:39:46.691,0:39:50.921
+software you can't really get for BSD but
+it gives you a very well-documented
+
+0:39:50.921,0:39:55.841
+experience and and one thing that's different
+about BSD compared to Linux is
+
+0:39:55.841,0:40:02.531
+that in an BSD when you install BSD you
+get a full operating system, mostly
+
+0:40:02.651,0:40:07.531
+So many of the programs are maintained by
+the same team that maintains the kernel
+
+0:40:07.541,0:40:11.351
+and everything is sort of upgraded together,
+which is a little different
+
+0:40:11.351,0:40:13.271
+than how thanks work in the Linux world it does
+
+0:40:13.271,0:40:16.751
+mean that things often move a little bit
+slower. I would not use it for things
+
+0:40:16.751,0:40:21.791
+like gaming either, because drivers support
+is meh. But it is an interesting
+
+0:40:21.791,0:40:30.661
+environment to look at. And then for things
+like Mac OS and Windows I think
+
+0:40:30.661,0:40:36.041
+If you are a programmer, I don't know why
+you are using Windows unless you are
+
+0:40:36.041,0:40:42.401
+building things for Windows; or you want
+to be able to do gaming and stuff
+
+0:40:42.401,0:40:46.891
+but in that case, maybe try dual booting,
+even though that's a pain too
+
+0:40:46.891,0:40:52.031
+Mac OS is a is a good sort of middle point
+between the two where you get a system
+
+0:40:52.031,0:40:57.851
+that is like relatively nicely polished
+for you. But you still have access to
+
+0:40:57.851,0:41:01.191
+some of the lower-level bits
+at least to a certain extent.
+
+0:41:01.191,0:41:07.451
+it's also really easy to dual boot Mac OS and Windows
+it is not quite the case with like Mac OS and
+
+0:41:07.451,0:41:09.651
+Linux or Linux and Windows
+
+0:41:13.911,0:41:15.751
+Alright, for the rest of the
+questions so these are
+
+0:41:15.761,0:41:18.761
+all 0 upvote questions so maybe we can go
+through them quickly in the last five
+
+0:41:18.761,0:41:23.471
+or so minutes of class. So the next
+one is Vim versus Emacs? Vim!
+
+0:41:23.471,0:41:30.911
+Easy answer, but a more serious answer is like I think
+all three of us use vim as our primary editor
+
+0:41:30.911,0:41:34.931
+I use Emacs for some research specific
+stuff which requires Emacs but
+
+0:41:34.931,0:41:38.681
+at a higher level both editors have interesting
+ideas behind them and if you
+
+0:41:38.681,0:41:43.061
+have the time is worth exploring both
+to see which fits you better and also
+
+0:41:43.061,0:41:46.811
+you can use Emacs and run it in a vim
+emulation mode. I actually know a
+
+0:41:46.811,0:41:49.091
+good number of people who do that so
+they get access to some of the cool
+
+0:41:49.091,0:41:52.631
+Emacs functionality and some of the cool
+philosophy behind that like Emacs is
+
+0:41:52.631,0:41:55.391
+programmable through Lisp which is kind of cool.
+
+0:41:55.391,0:41:59.411
+Much better than vimscript, but people like
+vim's modal editing, so there's an
+
+0:41:59.411,0:42:04.481
+emacs plugin called evil mode which gives
+you vim modal editing within Emacs so
+
+0:42:04.481,0:42:08.081
+it's not necessarily a binary choice you
+can kind of combine both tools if you
+
+0:42:08.081,0:42:11.151
+want to. And it's worth exploring
+both if you have the time.
+
+0:42:11.151,0:42:12.731
+Next question
+
+0:42:12.731,0:42:15.671
+Any tips or tricks for machine
+learning applications?
+
+0:42:19.271,0:42:22.351
+I think, like knowing how
+
+0:42:22.361,0:42:24.791
+a lot of these tools, mainly the data wrangling
+
+0:42:24.791,0:42:30.041
+a lot of the shell tools, it's really
+important because it seems a lot
+
+0:42:30.041,0:42:33.851
+of what you're doing as machine learning
+researcher is trying different things
+
+0:42:33.851,0:42:39.491
+but I think one core aspect of doing that,
+and like a lot of scientific work is being
+
+0:42:39.491,0:42:44.501
+able to have reproducible results
+and logging them in a sensible way
+
+0:42:44.501,0:42:47.711
+So for example, instead of trying to come
+up with really hacky solutions of how
+
+0:42:47.711,0:42:51.151
+you name your folders to make
+sense of the experiments
+
+0:42:51.151,0:42:53.251
+Maybe it's just worth having for example
+
+0:42:53.251,0:42:55.931
+what I do is have like a JSON
+file that describes the
+
+0:42:55.931,0:43:00.371
+entire experiment I know like all the parameters
+that are within and then I can
+
+0:43:00.371,0:43:05.111
+really quickly, using the tools that
+we have covered, query for all the
+
+0:43:05.111,0:43:09.701
+experiments that have some specific
+purpose or use some data set
+
+0:43:09.701,0:43:15.071
+Things like that. Apart from that, the other
+side of this is, if you are running
+
+0:43:15.071,0:43:19.871
+kind of things for training machine
+learning applications and you
+
+0:43:19.871,0:43:23.981
+are not already using some sort of
+cluster, like university or your
+
+0:43:23.981,0:43:28.301
+company is providing and you're just kind
+of manually sshing, like a lot of
+
+0:43:28.301,0:43:31.231
+labs do, because that's kind of the easy way
+
+0:43:31.231,0:43:36.671
+It's worth automating a lot of that job
+because it might not seem like it but
+
+0:43:36.671,0:43:40.601
+manually doing a lot of these operations
+takes away a lot of your time and also
+
+0:43:40.601,0:43:45.031
+kind of your mental energy
+for running these things
+
+0:43:48.551,0:43:51.691
+Anymore vim tips?
+
+0:43:51.691,0:43:56.771
+I have one. So in the vim lecture we tried
+not to link you to too many different
+
+0:43:56.771,0:44:00.131
+vim plugins because we didn't want that
+lecture to be overwhelming but I think
+
+0:44:00.131,0:44:02.921
+it's actually worth exploring vim plugins
+because there are lots and lots
+
+0:44:02.921,0:44:07.091
+of really cool ones out there.
+One resource you can use is the
+
+0:44:07.091,0:44:10.571
+different instructors dotfiles like a lot
+of us, I think I use like two dozen
+
+0:44:10.571,0:44:14.321
+vim plugins and I find a lot of them quite
+helpful and I use them every day
+
+0:44:14.321,0:44:18.311
+we all use slightly different subsets of
+them. So go look at what we use or look
+
+0:44:18.311,0:44:22.131
+at some of the other resources we've linked
+to and you might find some stuff useful
+
+0:44:22.791,0:44:26.951
+A thing to add to that is, I don't think
+we went into a lot detail in the
+
+0:44:27.041,0:44:31.571
+lecture, correct me if I'm wrong. It's
+getting familiar with the leader key
+
+0:44:31.571,0:44:35.021
+Which is kind of a special key
+that a lot of programs will
+
+0:44:35.021,0:44:39.081
+especially plugins, that will link to
+and for a lot of the common operations
+
+0:44:39.081,0:44:44.661
+vim has short ways of doing it, but you
+can just figure out like quicker
+
+0:44:44.661,0:44:50.031
+versions for doing them. So for example, like
+I know that you can do like semicolon WQ
+
+0:44:50.031,0:44:55.521
+to save and exit or that you
+can do like capital ZZ but I
+
+0:44:55.521,0:44:59.241
+just actually just do leader (which for
+me is the space) and then W. And I have
+
+0:44:59.241,0:45:04.131
+done that for a lot of a lot of kind of
+common operations that I keep doing all
+
+0:45:04.131,0:45:08.091
+the time. Because just saving one keystroke
+for an extremely common operation
+
+0:45:08.091,0:45:11.371
+is just saving thousands a month
+
+0:45:11.371,0:45:12.951
+Yeah just to expand a little bit
+
+0:45:12.951,0:45:17.031
+on what the leader key is so in vim you
+can bind some keys I can do like ctrl J
+
+0:45:17.031,0:45:20.481
+does something like holding one key and
+then pressing another I can bind that to
+
+0:45:20.481,0:45:23.781
+something or I can bind a single keystroke
+to something. What the leader
+
+0:45:23.781,0:45:26.031
+key lets you do, is bind
+
+0:45:26.031,0:45:28.311
+So you can assign any key
+to be the leader key and
+
+0:45:28.311,0:45:32.841
+then you can assign leader followed by
+some other key to some action so for
+
+0:45:32.841,0:45:36.831
+example like Jose's leader key is space
+and they can combine space and then
+
+0:45:36.831,0:45:41.601
+releasing space followed by some other
+key to an arbitrary vim command so it
+
+0:45:41.601,0:45:45.631
+just gives you yet another way of binding
+like a whole set of key combinations.
+
+0:45:45.631,0:45:49.751
+Leader key plus kind of any key on
+the keyboard to some functionality
+
+0:45:49.751,0:45:53.751
+I think I've I forget whether
+we covered macros in the vim
+
+0:45:53.751,0:45:58.581
+uh sure but like vim macros are worth
+learning they're not that complicated
+
+0:45:58.581,0:46:03.141
+but knowing that they're there and knowing
+how to use them is going to save
+
+0:46:03.141,0:46:09.501
+you so much time. The other one is something
+called marks. So in vim you can
+
+0:46:09.501,0:46:13.491
+press m and then any letter on your keyboard
+to make a mark in that file and
+
+0:46:13.491,0:46:18.021
+then you can press apostrophe on the
+same letter to jump back to the same
+
+0:46:18.021,0:46:21.801
+place. This is really useful if you're
+like moving back and forth
+
+0:46:21.801,0:46:25.491
+between two different parts of your code
+for example. You can mark one as A and
+
+0:46:25.491,0:46:29.611
+one as B and you can then jump between
+them with tick A and tick B.
+
+0:46:29.611,0:46:34.851
+There's also Ctrl+O which jumps to the previous
+place you were in the file no matter
+
+0:46:34.851,0:46:40.611
+what caused you to move. So for example
+if I am in a some line and then I jump
+
+0:46:40.611,0:46:45.201
+to B and then I jump to A, Ctrl+O will
+take me back to B and then back to the
+
+0:46:45.201,0:46:48.831
+place I originally was. This can also be
+handy for things like if you're doing a
+
+0:46:48.831,0:46:52.671
+search then the place that you
+started the search is a part of
+
+0:46:52.671,0:46:56.211
+that stack. So I can do a search I can
+then like step through the results
+
+0:46:56.211,0:47:00.801
+and like change them and then Ctrl+O
+all the way back up to the search
+
+0:47:00.801,0:47:06.201
+Ctrl+O also lets you move across files so
+if I go from one file to somewhere else in
+
+0:47:06.201,0:47:09.681
+different file and somewhere else in the
+first file Ctrl+O will move me back
+
+0:47:09.681,0:47:15.261
+through that stack and then there's
+Ctrl+I to move forward in that
+
+0:47:15.261,0:47:20.841
+stack and so it's not as though you
+pop it and it goes away forever
+
+0:47:20.841,0:47:26.541
+The command colon earlier is really handy.
+So, colon earlier gives you an earlier
+
+0:47:26.541,0:47:32.870
+version of the same file and it it does
+this based on time not based on actions
+
+0:47:32.870,0:47:36.651
+so for example if you press a bunch of like
+undo and redo and make some changes
+
+0:47:36.651,0:47:42.561
+and stuff, earlier will take a literally
+earlier as in time version of your file
+
+0:47:42.561,0:47:46.971
+and restore it to your buffer. This can
+sometimes be good if you like undid and
+
+0:47:46.971,0:47:50.841
+then rewrote something and then realize
+you actually wanted the version that was
+
+0:47:50.841,0:47:55.100
+there before you started undoing earlier
+let's you do this. And there's a plug-in
+
+0:47:55.100,0:48:01.971
+called undo tree or something like
+that There are several of these,
+
+0:48:01.971,0:48:05.781
+that let you actually explore the full
+tree of undo history the vim keeps
+
+0:48:05.781,0:48:09.201
+because it doesn't just keep a linear history
+it actually keeps the full tree
+
+0:48:09.201,0:48:12.771
+and letting you explore that might in
+some cases save you from having to
+
+0:48:12.771,0:48:16.461
+re-type stuff you typed in the past or
+stuff you just forgot exactly what you
+
+0:48:16.461,0:48:21.081
+had there that used to work and no longer
+works. And this is one final one I
+
+0:48:21.081,0:48:26.751
+want to mention which is, we mentioned
+how in vim you have verbs and nouns
+
+0:48:26.751,0:48:33.201
+right to your verbs like delete or yank
+and then you have nouns like next of
+
+0:48:33.201,0:48:37.401
+this character or percent to swap brackets
+and that sort of stuff the
+
+0:48:37.401,0:48:44.571
+search command is a noun so you can do
+things like D slash and then a string
+
+0:48:44.571,0:48:50.261
+and it will delete up to the next match
+of that pattern this is extremely useful
+
+0:48:50.261,0:48:54.251
+and I use it all the time
+
+0:48:58.500,0:49:03.520
+One another neat addition on the undo stuff
+that I find incredibly valuable in
+
+0:49:03.520,0:49:08.201
+an everyday basis is that like one of
+the built-in functionalities of vim
+
+0:49:08.201,0:49:13.510
+is that you can specify an undo directory
+and if you have a specified an
+
+0:49:13.510,0:49:17.620
+undo directory by default vim, if you
+don't have this enabled, whenever you
+
+0:49:17.620,0:49:23.091
+enter a file your undo history is
+clean, there's nothing in there
+
+0:49:23.091,0:49:26.371
+and as you make changes and then
+undo them you kind of create this
+
+0:49:26.380,0:49:32.800
+history but as soon as you exit the
+file that's lost. Sorry, as soon
+
+0:49:32.800,0:49:37.181
+as you exit vim, that's lost. However
+if you have an undodir, vim is
+
+0:49:37.181,0:49:41.651
+gonna persist all those changes into
+this directory so no matter how many
+
+0:49:41.651,0:49:45.580
+times you enter and leave that history
+is persisted and it's incredibly
+
+0:49:45.580,0:49:48.191
+helpful because even like
+
+0:49:48.191,0:49:50.290
+it can be very helpful for
+some files that you modify
+
+0:49:50.290,0:49:54.760
+often because then you can kind of keep
+the flow. But it's also sometimes really
+
+0:49:54.760,0:50:00.010
+helpful if you modify your bashrc see and
+something broke like five days later and
+
+0:50:00.010,0:50:03.070
+then you've vim again. Like what actually
+did I change ,if you don't
+
+0:50:03.070,0:50:06.760
+have say like version control, then
+you can just check the undos and
+
+0:50:06.760,0:50:10.661
+that's actually what happened. And
+the last one, it's also really
+
+0:50:10.661,0:50:14.891
+worth familiarizing yourself with registers
+and what different special
+
+0:50:14.891,0:50:20.380
+registers vim uses. So for example if
+you want to copy/paste really that's
+
+0:50:20.380,0:50:26.201
+gone into in a specific register and if you
+want to for example use the a OS a copy
+
+0:50:26.201,0:50:30.040
+like the OS clipboard, you should
+be copying or yanking
+
+0:50:30.040,0:50:36.250
+copying and pasting from a different register
+and there's a lot of them and yeah
+
+0:50:36.251,0:50:41.310
+I think that you should explore, there's
+a lot of things to know about registers
+
+0:50:42.271,0:50:45.070
+The next question is asking about two-factor
+authentication and I'll just give
+
+0:50:45.070,0:50:48.490
+a very quick answer to this one in the interest
+of time. So it's worth using two
+
+0:50:48.490,0:50:52.480
+factor auth for anything security sensitive
+so I use it for my GitHub
+
+0:50:52.480,0:50:56.710
+account and for my email and stuff like
+that. And there's a bunch of different
+
+0:50:56.710,0:51:01.360
+types of two-factor auth. From SMS based
+to factor auth where you get special
+
+0:51:01.360,0:51:04.630
+like a number texted to you when you try
+to log in you have to type that number
+
+0:51:04.630,0:51:08.710
+and to other tools like universal to
+factor this is like those Yubikeys
+
+0:51:08.710,0:51:11.350
+that you plug into your you have
+to tap it every time you login
+
+0:51:11.350,0:51:18.130
+so not all, (yeah Jon is holding a
+Yubikey), not all two-factor auth is
+
+0:51:18.130,0:51:22.240
+created equal and you really want to be
+using something like U2F rather than SMS
+
+0:51:22.240,0:51:25.300
+based to factor auth. There something
+based on one-time pass codes that you
+
+0:51:25.300,0:51:28.810
+have to type in we don't have time to get
+into the details of why some methods
+
+0:51:28.810,0:51:32.020
+are better than others but at a high
+level use U2F and the Internet has
+
+0:51:32.020,0:51:37.560
+plenty of explanations for why other
+methods are not a great idea
+
+0:51:37.711,0:51:41.851
+Last question, any comments on differences
+between web browsers?
+
+0:51:48.171,0:51:50.171
+Yes
+
+0:51:54.711,0:52:00.451
+Differences between web browsers, there
+are fewer and fewer differences between
+
+0:52:00.461,0:52:06.000
+web browsers these day. At this point
+almost all web browsers are chrome
+
+0:52:06.000,0:52:09.580
+Either because you're using Chrome or
+because you're using a browser that's
+
+0:52:09.580,0:52:15.550
+using the same browser engine as Chrome.
+It's a little bit sad, one might say, but
+
+0:52:15.550,0:52:20.511
+I think these days whether you choose
+
+0:52:20.511,0:52:24.451
+Chrome is a great browser for security reasons
+
+0:52:24.451,0:52:28.471
+if you want to have something
+that's more customizable or
+
+0:52:28.471,0:52:39.490
+you don't want to be tied to Google then
+use Firefox, don't use Safari it's a
+
+0:52:39.490,0:52:45.701
+worse version of Chrome. The new Internet
+Explorer edge is pretty decent and also
+
+0:52:45.701,0:52:50.820
+uses the same browser engine as
+Chrome and that's probably fine
+
+0:52:50.820,0:52:54.641
+although avoid it if you can because it
+has some like legacy modes you don't
+
+0:52:54.641,0:52:58.064
+want to deal with. I think that's
+
+0:52:58.064,0:53:03.091
+Oh, there's a cool new browser called flow
+
+0:53:03.091,0:53:05.500
+that you can't use for anything useful
+yet but they're actually writing
+
+0:53:05.500,0:53:08.693
+their own browser engine and that's really neat
+
+0:53:08.693,0:53:14.951
+Firefox also has this project called servo which is
+they're really implementing their browser engine
+
+0:53:14.951,0:53:19.570
+in Rust in order to write it to be like
+super concurrent and what they've done
+
+0:53:19.570,0:53:24.961
+is they've started to take modules
+from that version and port them
+
+0:53:24.961,0:53:29.041
+over to gecko or integrate them with gecko
+which is the main browser engine
+
+0:53:29.041,0:53:32.221
+for Firefox just to get those
+speed ups there as well
+
+0:53:32.221,0:53:37.031
+and that's a neat neat thing
+you can be watching out for
+
+0:53:39.231,0:53:41.851
+That is all the questions, hey we did it. Nice
+
+0:53:41.851,0:53:50.751
+I guess thanks for taking the missing semester
+class and let's do it again next year
