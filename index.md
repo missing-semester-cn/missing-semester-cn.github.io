@@ -60,12 +60,12 @@ YouTube](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57
 We've also shared this class beyond MIT in the hopes that others may
 benefit from these resources. You can find posts and discussion on
 
- - [Hacker News](https://news.ycombinator.com/item?id=19078281)
- - [Lobsters](https://lobste.rs/s/h6157x/mit_hacker_tools_lecture_series_on)
- - [/r/learnprogramming](https://www.reddit.com/r/learnprogramming/comments/an42uu/mit_hacker_tools_a_lecture_series_on_programmer/)
- - [/r/programming](https://www.reddit.com/r/programming/comments/an3xki/mit_hacker_tools_a_lecture_series_on_programmer/)
- - [Twitter](https://twitter.com/Jonhoo/status/1091896192332693504)
- - [YouTube](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuiujH1lpn8cA9dsyulbYRv)
+ - [Hacker News](https://news.ycombinator.com/item?id=22226380)
+ - [Lobsters](https://lobste.rs/s/ti1k98/missing_semester_your_cs_education_mit)
+ - [/r/learnprogramming](https://www.reddit.com/r/learnprogramming/comments/eyagda/the_missing_semester_of_your_cs_education_mit/)
+ - [/r/programming](https://www.reddit.com/r/programming/comments/eyagcd/the_missing_semester_of_your_cs_education_mit/)
+ - [Twitter](https://twitter.com/jonhoo/status/1224383452591509507)
+ - [YouTube](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57J)
 
 ## Acknowledgements
 
