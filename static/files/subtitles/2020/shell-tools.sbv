@@ -1,0 +1,2625 @@
+0:00:00.400,0:00:02.860
+Okay, welcome back.
+
+0:00:02.860,0:00:05.920
+Today we're gonna cover a couple separate
+
+0:00:05.920,0:00:07.620
+two main topics related to the shell.
+
+0:00:07.620,0:00:11.240
+First, we're gonna do some kind of shell
+scripting, mainly related to bash,
+
+0:00:11.240,0:00:14.160
+which is the shell that most of you will start
+
+0:00:14.160,0:00:18.520
+in Mac, or like in most Linux systems,
+that's the default shell.
+
+0:00:18.520,0:00:22.720
+And it's also kind of backward compatible through
+other shells like zsh, it's pretty nice.
+
+0:00:22.740,0:00:25.940
+And then we're gonna cover some other shell
+tools that are really convenient,
+
+0:00:26.060,0:00:29.320
+so you avoid doing really repetitive tasks,
+
+0:00:29.320,0:00:31.580
+like looking for some piece of code
+
+0:00:31.580,0:00:33.420
+or for some elusive file.
+
+0:00:33.420,0:00:36.160
+And there are already really
+nice built-in commands
+
+0:00:36.160,0:00:40.960
+that will really help you to do those things.
+
+0:00:40.960,0:00:43.260
+So yesterday we already kind of introduced
+
+0:00:43.260,0:00:46.160
+you to the shell and some of it's quirks,
+
+0:00:46.160,0:00:48.720
+and like how you start executing commands,
+
+0:00:48.720,0:00:50.600
+redirecting them.
+
+0:00:50.600,0:00:52.400
+Today, we're going to kind of cover more about
+
+0:00:52.460,0:00:56.120
+the syntax of the variables, the control flow,
+
+0:00:56.120,0:00:57.720
+functions of the shell.
+
+0:00:57.720,0:01:02.700
+So for example, once you drop
+into a shell, say you want to
+
+0:01:02.760,0:01:06.360
+define a variable, which is
+one of the first things you
+
+0:01:06.360,0:01:09.340
+learn to do in a programming language.
+
+0:01:09.340,0:01:12.740
+Here you could do something like foo equals bar.
+
+0:01:12.860,0:01:18.400
+And now we can access the value
+of foo by doing "$foo".
+
+0:01:18.460,0:01:21.400
+And that's bar, perfect.
+
+0:01:21.400,0:01:24.480
+One quirk that you need to be aware of is that
+
+0:01:24.480,0:01:27.900
+spaces are really critical when
+you're dealing with bash.
+
+0:01:27.900,0:01:33.380
+Mainly because spaces are reserved, and
+that will be for separating arguments.
+
+0:01:33.380,0:01:36.700
+So, for example, something like foo equals bar
+
+0:01:36.700,0:01:42.000
+won't work, and the shell is gonna
+tell you why it's not working.
+
+0:01:42.000,0:01:46.280
+It's because the foo command is not
+working, like foo is non-existent.
+
+0:01:46.280,0:01:47.780
+And here what is actually happening,
+we're not assigning foo to bar,
+
+0:01:47.780,0:01:52.260
+what is happening is we're
+calling the foo program
+
+0:01:52.260,0:01:57.520
+with the first argument "=" and
+the second argument "bar".
+
+0:01:57.520,0:02:03.880
+And in general, whenever you are having
+some issues, like some files with spaces
+
+0:02:03.880,0:02:06.160
+you will need to be careful about that.
+
+0:02:06.160,0:02:10.620
+You need to be careful about quoting strings.
+
+0:02:10.640,0:02:16.480
+So, going into that, how you do strings in bash.
+There are two ways that you can define a string:
+
+0:02:16.540,0:02:24.720
+You can define strings using double quotes
+and you can define strings using single,
+
+0:02:24.720,0:02:26.540
+sorry,
+
+0:02:26.540,0:02:28.880
+using single quotes.
+
+0:02:29.140,0:02:32.760
+However, for literal strings they are equivalent,
+
+0:02:32.760,0:02:35.460
+but for the rest they are not equivalent.
+
+0:02:35.460,0:02:42.980
+So, for example, if we do value is $foo,
+
+0:02:43.440,0:02:48.480
+the $foo has been expanded like
+a string, substituted to the
+
+0:02:48.480,0:02:50.820
+value of the foo variable in the shell.
+
+0:02:50.960,0:02:58.940
+Whereas if we do this with a simple quote,
+we are just getting the $foo as it is
+
+0:02:58.940,0:03:02.280
+and single quotes won't be replacing. Again,
+
+0:03:02.280,0:03:07.290
+it's really easy to write a script, assume that
+this is kind of like Python, that you might be
+
+0:03:07.290,0:03:10.860
+more familiar with, and not realize all that.
+
+0:03:10.860,0:03:14.180
+And this is the way you will assign variables.
+
+0:03:14.180,0:03:17.849
+Then bash also has control flow
+techniques that we'll see later,
+
+0:03:17.849,0:03:24.440
+like for loops, while loops, and one main
+thing is you can define functions.
+
+0:03:24.440,0:03:27.820
+We can access a function I have defined here.
+
+0:03:28.220,0:03:34.220
+Here we have the MCD function, that
+has been defined, and the thing is
+
+0:03:34.220,0:03:38.400
+so far, we have just kind of seen how
+to execute several commands by piping
+
+0:03:38.400,0:03:40.720
+into them, kind of saw that briefly yesterday.
+
+0:03:40.940,0:03:44.980
+But a lot of times you want to do first
+one thing and then another thing.
+
+0:03:44.980,0:03:47.580
+And that's kind of like the
+
+0:03:47.740,0:03:50.880
+sequential execution that we get here.
+
+0:03:50.880,0:03:54.260
+Here, for example, we're
+calling the MCD function.
+
+0:03:56.860,0:03:57.800
+We, first,
+
+0:03:57.800,0:04:02.960
+are calling the makedir command,
+which is creating this directory.
+
+0:04:02.960,0:04:05.600
+Here, $1 is like a special variable.
+
+0:04:05.600,0:04:07.440
+This is the way that bash works,
+
+0:04:07.440,0:04:12.160
+whereas in other scripting languages
+there will be like argv,
+
+0:04:12.160,0:04:16.620
+the first item of the array argv
+will contain the argument.
+
+0:04:16.620,0:04:19.160
+In bash it's $1. And in general, a lot
+
+0:04:19.160,0:04:21.640
+of things in bash will be dollar something
+
+0:04:21.640,0:04:26.680
+and will be reserved, we will
+be seeing more examples later.
+
+0:04:26.680,0:04:30.290
+And once we have created the folder,
+we CD into that folder,
+
+0:04:30.290,0:04:34.687
+which is kind of a fairly common
+pattern that you will see.
+
+0:04:34.687,0:04:39.060
+We will actually type this directly
+into our shell, and it will work and
+
+0:04:39.120,0:04:45.260
+it will define this function. But sometimes
+it's nicer to write things in a file.
+
+0:04:45.260,0:04:50.040
+What we can do is we can source
+this. And that will
+
+0:04:50.080,0:04:53.960
+execute this script in our shell and load it.
+
+0:04:53.960,0:04:59.340
+So now it looks like nothing happened,
+but now the MCD function has
+
+0:04:59.340,0:05:03.460
+been defined in our shell. So
+we can now for example do
+
+0:05:03.463,0:05:09.150
+MCD test, and now we move from
+the tools directory to the test
+
+0:05:09.160,0:05:14.200
+directory. We both created the
+folder and we moved into it.
+
+0:05:15.760,0:05:18.820
+What else. So a result is...
+
+0:05:18.820,0:05:22.160
+We can access the first argument with $1.
+
+0:05:22.160,0:05:26.100
+There's a lot more reserved commands,
+
+0:05:26.100,0:05:30.020
+for example $0 will be the name of the script,
+
+0:05:30.020,0:05:35.260
+$2 through $9 will be the second
+through the ninth arguments
+
+0:05:35.260,0:05:38.070
+that the bash script takes.
+Some of these reserved
+
+0:05:38.070,0:05:43.080
+keywords can be directly used
+in the shell, so for example
+
+0:05:43.420,0:05:50.300
+$? will get you the error code
+from the previous command,
+
+0:05:50.300,0:05:53.580
+which I'll also explain briefly.
+
+0:05:53.580,0:05:58.320
+But for example, $_ will get
+you the last argument of the
+
+0:05:58.320,0:06:03.460
+previous command. So another way
+we could have done this is
+
+0:06:03.460,0:06:07.380
+we could have said like "mkdir test"
+
+0:06:07.380,0:06:12.020
+and instead of rewriting test, we
+can access that last argument
+
+0:06:12.020,0:06:18.400
+as part of the (previous command), using $_
+
+0:06:18.400,0:06:23.160
+like, that will be replaced with
+test and now we go into test.
+
+0:06:25.040,0:06:27.480
+There are a lot of them, you
+should familiarize with them.
+
+0:06:27.480,0:06:32.900
+Another one I often use is called "bang
+bang" ("!!"), you will run into this
+
+0:06:32.910,0:06:37.300
+whenever you, for example, are trying
+to create something and you don't have
+
+0:06:37.320,0:06:41.000
+enough permissions. Then, you can do "sudo !!"
+
+0:06:41.010,0:06:43.400
+and then that will replace the command in
+
+0:06:43.470,0:06:46.400
+there and now you can just try doing
+
+0:06:46.440,0:06:48.380
+that. And now it will prompt you for a password,
+
+0:06:48.380,0:06:50.080
+because you have sudo permissions.
+
+0:06:53.800,0:06:57.180
+Before, I mentioned the, kind
+of the error command.
+
+0:06:57.180,0:06:59.400
+Yesterday we saw that, in general, there are
+
+0:06:59.400,0:07:02.400
+different ways a process can communicate
+
+0:07:02.400,0:07:05.091
+with other processes or commands.
+
+0:07:05.100,0:07:08.420
+We mentioned the standard
+input, which also was like
+
+0:07:09.160,0:07:11.380
+getting stuff through the standard input,
+
+0:07:11.640,0:07:13.840
+putting stuff into the standard output.
+
+0:07:13.840,0:07:16.830
+There are a couple more interesting
+things, there's also like a
+
+0:07:16.830,0:07:19.837
+standard error, a stream where you write errors
+
+0:07:19.837,0:07:23.900
+that happen with your program and you don't
+want to pollute the standard output.
+
+0:07:23.900,0:07:27.420
+There's also the error code,
+which is like a general
+
+0:07:27.420,0:07:29.520
+thing in a lot of programming languages,
+
+0:07:29.520,0:07:34.460
+some way of reporting how the
+entire run of something went.
+
+0:07:34.460,0:07:36.060
+So if we do
+
+0:07:36.060,0:07:41.020
+something like echo hello and we
+
+0:07:41.580,0:07:43.920
+query for the value, it's zero. And it's zero
+
+0:07:43.920,0:07:45.840
+because everything went okay and there
+
+0:07:45.840,0:07:49.170
+weren't any issues. And a zero exit code is
+
+0:07:49.170,0:07:50.940
+the same as you will get in a language
+
+0:07:50.940,0:07:54.980
+like C, like 0 means everything
+went fine, there were no errors.
+
+0:07:54.980,0:07:57.600
+However, sometimes things won't work.
+
+0:07:57.600,0:08:04.600
+Sometimes, like if we try to grep
+for foobar in our MCD script,
+
+0:08:04.600,0:08:08.130
+and now we check for that
+value, it's 1. And that's
+
+0:08:08.130,0:08:10.770
+because we tried to search for the foobar
+
+0:08:10.770,0:08:13.620
+string in the MCD script and it wasn't there.
+
+0:08:13.620,0:08:17.190
+So grep doesn't print anything, but
+
+0:08:17.190,0:08:19.950
+let us know that things didn't work by
+
+0:08:19.950,0:08:22.260
+giving us a 1 error code.
+
+0:08:22.260,0:08:24.420
+There are some interesting commands like
+
+0:08:24.420,0:08:29.160
+"true", for example, will always have a zero
+
+0:08:29.160,0:08:35.060
+error code, and false will always
+have a one error code.
+
+0:08:35.060,0:08:37.919
+Then there are like
+
+0:08:37.919,0:08:40.080
+these logical operators that you can use
+
+0:08:40.080,0:08:43.808
+to do some sort of conditionals.
+For example, one way...
+
+0:08:43.808,0:08:47.160
+you also have IF's and ELSE's, that
+we will see later, but you can do
+
+0:08:47.160,0:08:51.920
+something like "false", and echo "Oops fail".
+
+0:08:51.920,0:08:56.300
+So here we have two commands connected
+by this OR operator.
+
+0:08:56.300,0:09:00.250
+What bash is gonna do here, it's
+gonna execute the first one
+
+0:09:00.250,0:09:04.450
+and if the first one didn't work, then it's
+
+0:09:04.450,0:09:07.380
+gonna execute the second one. So here we get it,
+
+0:09:07.380,0:09:12.000
+because it's gonna try to do a logical
+OR. If the first one didn't have
+
+0:09:12.000,0:09:15.960
+a zero error code, it's gonna try to
+do the second one. Similarly, if we
+
+0:09:15.960,0:09:19.580
+instead of use "false", we
+use something like "true",
+
+0:09:19.580,0:09:22.180
+since true will have a zero error code, then the
+
+0:09:22.180,0:09:24.700
+second one will be short-circuited and
+
+0:09:24.700,0:09:27.500
+it won't be printed.
+
+0:09:32.560,0:09:36.970
+Similarly, we have an AND
+operator which will only
+
+0:09:36.970,0:09:39.430
+execute the second part if the first one
+
+0:09:39.430,0:09:41.440
+ran without errors.
+
+0:09:41.440,0:09:44.820
+And the same thing will happen.
+
+0:09:44.820,0:09:50.340
+If the first one fails, then the second
+part of this thing won't be executed.
+
+0:09:50.340,0:09:57.280
+Kind of not exactly related to that, but
+another thing that you will see is
+
+0:10:00.020,0:10:04.120
+that no matter what you execute,
+then you can concatenate
+
+0:10:04.120,0:10:07.120
+commands using a semicolon in the same line,
+
+0:10:07.120,0:10:10.300
+and that will always print.
+
+0:10:10.300,0:10:13.630
+Beyond that, what we haven't
+seen, for example, is how
+
+0:10:13.630,0:10:19.460
+you go about getting the output
+of a command into a variable.
+
+0:10:19.630,0:10:24.120
+And the way we can do that is
+doing something like this.
+
+0:10:24.120,0:10:29.480
+What we're doing here is we're getting
+the output of the PWD command,
+
+0:10:29.480,0:10:32.720
+which is just printing the
+present working directory
+
+0:10:32.720,0:10:33.740
+where we are right now.
+
+0:10:33.740,0:10:37.220
+And then we're storing that
+into the foo variable.
+
+0:10:37.220,0:10:42.279
+So we do that and then we ask
+for foo, we view our string.
+
+0:10:42.280,0:10:48.460
+More generally, we can do this thing
+called command substitution
+
+0:10:50.110,0:10:51.500
+by putting it into any string.
+
+0:10:51.500,0:10:55.162
+And since we're using double quotes
+instead of single quotes
+
+0:10:55.162,0:10:57.440
+that thing will be expanded and
+
+0:10:57.440,0:11:02.740
+it will tell us that we are
+in this working folder.
+
+0:11:02.740,0:11:09.240
+Another interesting thing is, right now,
+what this is expanding to is a string
+
+0:11:09.400,0:11:10.300
+instead of
+
+0:11:11.920,0:11:13.320
+It's just expanding as a string.
+
+0:11:13.460,0:11:17.640
+Another nifty and lesser known tool
+is called process substitution,
+
+0:11:17.640,0:11:20.540
+which is kind of similar. What it will do...
+
+0:11:24.360,0:11:30.041
+it will, here for example, the "<(",
+some command and another parenthesis,
+
+0:11:30.041,0:11:34.840
+what that will do is: that will execute,
+that will get the output to
+
+0:11:34.840,0:11:39.120
+kind of like a temporary file and it will
+give the file handle to the command.
+
+0:11:39.120,0:11:42.020
+So here what we're doing is we're getting...
+
+0:11:42.020,0:11:45.760
+we're LS'ing the directory, putting
+it into a temporary file,
+
+0:11:45.760,0:11:48.040
+doing the same thing for the
+parent folder and then
+
+0:11:48.040,0:11:51.310
+we're concatenating both files. And this
+
+0:11:51.310,0:11:55.520
+will, may be really handy, because
+some commands instead of expecting
+
+0:11:55.520,0:11:59.500
+the input coming from the stdin,
+they are expecting things to
+
+0:11:59.500,0:12:03.560
+come from some file that is giving
+some of the arguments.
+
+0:12:04.700,0:12:07.620
+So we get both things concatenated.
+
+0:12:12.880,0:12:17.040
+I think so far there's been a lot of
+information, let's see a simple,
+
+0:12:17.040,0:12:22.920
+an example script where we
+see a few of these things.
+
+0:12:23.200,0:12:27.220
+So for example here we have a string and we
+
+0:12:27.220,0:12:30.327
+have this $date. So $date is a program.
+
+0:12:30.327,0:12:34.540
+Again there's a lot of programs
+in UNIX you will kind of slowly
+
+0:12:34.540,0:12:36.120
+familiarize with a lot of them.
+
+0:12:36.120,0:12:42.820
+Date just prints what the current date is
+and you can specify different formats.
+
+0:12:43.800,0:12:48.700
+Then, we have these $0 here. $0 is the name
+
+0:12:48.700,0:12:50.540
+of the script that we're running.
+
+0:12:50.550,0:12:56.590
+Then we have $#, that's the number
+of arguments that we are giving
+
+0:12:56.590,0:13:01.920
+to the command, and then $$ is the process
+ID of this command that is running.
+
+0:13:01.920,0:13:06.160
+Again, there's a lot of these dollar
+things, they're not intuitive
+
+0:13:06.160,0:13:07.690
+because they don't have like a mnemonic
+
+0:13:07.690,0:13:10.450
+way of remembering, maybe, $#. But
+
+0:13:10.450,0:13:12.880
+it can be... you will just be
+
+0:13:12.880,0:13:14.660
+seeing them and getting familiar with them.
+
+0:13:14.660,0:13:19.200
+Here we have this $@, and that will
+expand to all the arguments.
+
+0:13:19.200,0:13:21.480
+So, instead of having to assume that,
+
+0:13:21.490,0:13:25.840
+maybe say, we have three arguments
+and writing $1, $2, $3,
+
+0:13:25.840,0:13:29.760
+if we don't know how many arguments we
+can put all those arguments there.
+
+0:13:29.760,0:13:33.670
+And that has been given to a
+for loop. And the for loop
+
+0:13:33.670,0:13:39.020
+will, in time, get the file variable
+
+0:13:39.020,0:13:43.880
+and it will be giving each one of the arguments.
+
+0:13:43.880,0:13:47.529
+So what we're doing is, for every
+one of the arguments we're giving.
+
+0:13:47.529,0:13:51.699
+Then, in the next line we're running the
+
+0:13:51.699,0:13:56.920
+grep command which is just search for
+a substring in some file and we're
+
+0:13:56.920,0:14:01.380
+searching for the string foobar in the file.
+
+0:14:01.380,0:14:06.490
+Here, we have put the variable
+that the file took, to expand.
+
+0:14:06.490,0:14:11.559
+And yesterday we saw that if we care
+about the output of a program, we can
+
+0:14:11.560,0:14:15.680
+redirect it to somewhere, to save it
+or to connect it to some other file.
+
+0:14:15.680,0:14:18.939
+But sometimes you want the opposite.
+
+0:14:18.939,0:14:21.260
+Sometimes, here for example, we care...
+
+0:14:21.260,0:14:25.119
+we're gonna care about the error code. About
+this script, we're gonna care whether the
+
+0:14:25.120,0:14:28.440
+grep ran successfully or it didn't.
+
+0:14:28.440,0:14:33.220
+So we can actually discard
+entirely what the output...
+
+0:14:33.220,0:14:37.480
+like both the standard output and the
+standard error of the grep command.
+
+0:14:37.480,0:14:39.970
+And what we're doing is we're
+
+0:14:39.970,0:14:43.029
+redirecting the output to /dev/null which
+
+0:14:43.029,0:14:46.540
+is kind of like a special device in UNIX
+
+0:14:46.540,0:14:49.119
+systems where you can like write and
+
+0:14:49.119,0:14:51.129
+it will be discarded. Like you can
+
+0:14:51.129,0:14:52.869
+write no matter how much you want,
+
+0:14:52.869,0:14:57.730
+there, and it will be discarded.
+And here's the ">" symbol
+
+0:14:57.730,0:15:02.199
+that we saw yesterday for redirecting
+output. Here you have a "2>"
+
+0:15:02.199,0:15:04.689
+and, as some of you might have
+
+0:15:04.689,0:15:06.519
+guessed by now, this is for redirecting the
+
+0:15:06.519,0:15:08.589
+standard error, because those those two
+
+0:15:08.589,0:15:11.709
+streams are separate, and you kind of have to
+
+0:15:11.709,0:15:14.639
+tell bash what to do with each one of them.
+
+0:15:14.639,0:15:17.529
+So here, we run, we check if the file has
+
+0:15:17.529,0:15:20.649
+foobar, and if the file has foobar then it's
+
+0:15:20.649,0:15:22.959
+going to have a zero code. If it
+
+0:15:22.959,0:15:24.369
+doesn't have foobar, it's gonna have a
+
+0:15:24.369,0:15:26.980
+nonzero error code. So that's exactly what we
+
+0:15:26.980,0:15:31.120
+check. In this if part of the command we
+
+0:15:31.120,0:15:34.840
+say "get me the error code". Again, this $?
+
+0:15:34.840,0:15:37.240
+And then we have a comparison operator
+
+0:15:37.240,0:15:41.590
+which is "-ne", for "non equal". And some
+
+0:15:41.590,0:15:47.650
+other programming languages
+will have "==", "!=", these
+
+0:15:47.650,0:15:51.070
+symbols. In bash there's
+
+0:15:51.070,0:15:53.650
+like a reserved set of comparisons and
+
+0:15:53.650,0:15:54.970
+it's mainly because there's a lot of
+
+0:15:54.970,0:15:57.520
+things you might want to test for when
+
+0:15:57.520,0:15:59.080
+you're in the shell. Here for example
+
+0:15:59.080,0:16:03.970
+we're just checking for two values, two
+integer values, being the same. Or for
+
+0:16:03.970,0:16:08.380
+example here, the "-F" check will let
+
+0:16:08.380,0:16:10.420
+us know if a file exists, which is
+
+0:16:10.420,0:16:12.220
+something that you will run into very,
+
+0:16:12.220,0:16:17.530
+very commonly. I'm going back to the
+
+0:16:17.530,0:16:23.020
+example. Then, what happens when we
+
+0:16:24.400,0:16:28.600
+if the file did not have
+foobar, like there was a
+
+0:16:28.600,0:16:31.990
+nonzero error code, then we print
+
+0:16:31.990,0:16:33.400
+"this file doesn't have any foobar,
+
+0:16:33.400,0:16:36.400
+we're going to add one". And what we do is
+
+0:16:36.400,0:16:40.750
+we echo this "# foobar", hoping this
+
+0:16:40.750,0:16:43.200
+is a comment to the file and then we're
+
+0:16:43.200,0:16:47.620
+using the operator ">>" to append at the end of
+
+0:16:47.620,0:16:50.800
+the file. Here since the file has
+
+0:16:50.800,0:16:54.490
+been fed through the script, and we don't
+know it beforehand, we have to substitute
+
+0:16:54.490,0:17:03.430
+the variable of the filename. We can
+actually run this. We already have
+
+0:17:03.430,0:17:05.260
+correct permissions in this script and
+
+0:17:05.260,0:17:10.540
+we can give a few examples. We have a
+few files in this folder, "mcd" is the
+
+0:17:10.540,0:17:12.760
+one we saw at the beginning for the MCD
+
+0:17:12.760,0:17:15.040
+function, some other "script" function and
+
+0:17:15.040,0:17:21.700
+we can even feed the own script to itself
+to check if it has foobar in it.
+
+0:17:21.700,0:17:26.680
+And we run it and first we can
+see that there's different
+
+0:17:26.680,0:17:29.460
+variables that we saw, that have been
+
+0:17:29.460,0:17:33.400
+successfully expanded. We have the date, that has
+
+0:17:33.400,0:17:36.700
+been replaced to the current time, then
+
+0:17:36.700,0:17:39.100
+we're running this program, with three
+
+0:17:39.100,0:17:44.560
+arguments, this randomized PID, and then
+
+0:17:44.560,0:17:46.510
+it's telling us MCD doesn't have any
+
+0:17:46.510,0:17:48.169
+foobar, so we are adding a new one,
+
+0:17:48.169,0:17:50.450
+and this script file doesn't
+
+0:17:50.450,0:17:52.970
+have one. So now for example let's look at MCD
+
+0:17:52.970,0:17:55.820
+and it has the comment that we were looking for.
+
+0:17:59.000,0:18:05.619
+One other thing to know when you're
+executing scripts is that
+
+0:18:05.619,0:18:07.759
+here we have like three completely
+
+0:18:07.759,0:18:10.279
+different arguments but very commonly
+
+0:18:10.279,0:18:12.889
+you will be giving arguments that
+
+0:18:12.889,0:18:16.100
+can be more succinctly given in some way.
+
+0:18:16.100,0:18:20.179
+So for example here if we wanted to
+
+0:18:20.179,0:18:25.429
+refer to all the ".sh" scripts we
+
+0:18:25.429,0:18:31.120
+could just do something like "ls *.sh"
+
+0:18:31.120,0:18:36.120
+and this is a way of filename expansion
+that most shells have
+
+0:18:36.120,0:18:38.450
+that's called "globbing". Here, as you
+
+0:18:38.450,0:18:39.919
+might expect, this is gonna say
+
+0:18:39.919,0:18:42.559
+anything that has any kind of sort of
+
+0:18:42.559,0:18:45.940
+characters and ends up with "sh".
+
+0:18:45.940,0:18:52.159
+Unsurprisingly, we get "example.sh"
+and "mcd.sh". We also have these
+
+0:18:52.159,0:18:54.769
+"project1" and "project2", and if there
+
+0:18:54.769,0:19:00.100
+were like a... we can do a
+"project42", for example
+
+0:19:00.620,0:19:04.220
+And now if we just want to refer
+to the projects that have
+
+0:19:04.220,0:19:07.279
+a single character, but not two characters
+
+0:19:07.279,0:19:08.720
+afterwards, like any other characters,
+
+0:19:08.720,0:19:13.879
+we can use the question mark. So "?"
+will expand to only a single one.
+
+0:19:13.880,0:19:17.360
+And we get, LS'ing, first
+
+0:19:17.360,0:19:21.049
+"project1" and then "project2".
+
+0:19:21.049,0:19:27.580
+In general, globbing can be very powerful.
+You can also combine it.
+
+0:19:31.880,0:19:35.480
+A common pattern is to use what
+is called curly braces.
+
+0:19:35.480,0:19:39.320
+So let's say we have an image,
+that we have in this folder
+
+0:19:39.320,0:19:43.620
+and we want to convert this image from PNG to JPG
+
+0:19:43.620,0:19:46.320
+or we could maybe copy it, or...
+
+0:19:46.320,0:19:49.609
+it's a really common pattern, to have
+two or more arguments that are
+
+0:19:49.609,0:19:55.240
+fairly similar and you want to do something
+with them as arguments to some command.
+
+0:19:55.240,0:20:01.290
+You could do it this way, or more
+succinctly, you can just do
+
+0:20:01.290,0:20:08.880
+"image.{png,jpg}"
+
+0:20:09.410,0:20:13.590
+And here, I'm getting some color feedback,
+but what this will do, is
+
+0:20:13.590,0:20:17.610
+it'll expand into the line above.
+
+0:20:17.610,0:20:23.990
+Actually, I can ask zsh to do that for
+me. And that what's happening here.
+
+0:20:23.990,0:20:26.550
+This is really powerful. So for example
+
+0:20:26.550,0:20:29.220
+you can do something like... we could do...
+
+0:20:29.220,0:20:34.220
+"touch" on a bunch of foo's, and
+all of this will be expanded.
+
+0:20:35.520,0:20:41.880
+You can also do it at several levels
+and you will do the Cartesian...
+
+0:20:41.880,0:20:49.980
+if we have something like this,
+we have one group here, "{1,2}"
+
+0:20:49.980,0:20:53.310
+and then here there's "{1,2,3}",
+and this is going to do
+
+0:20:53.310,0:20:54.990
+the Cartesian product of these
+
+0:20:54.990,0:20:59.920
+two expansions and it will expand
+into all these things,
+
+0:20:59.960,0:21:03.540
+that we can quickly "touch".
+
+0:21:03.540,0:21:10.520
+You can also combine the asterisk
+glob with the curly braces glob.
+
+0:21:10.520,0:21:16.840
+You can even use kind of ranges.
+Like, we can do "mkdir"
+
+0:21:16.840,0:21:21.420
+and we create the "foo" and the
+"bar" directories, and then we
+
+0:21:21.420,0:21:25.680
+can do something along these lines. This
+
+0:21:25.680,0:21:28.890
+is going to expand to "fooa", "foob"...
+
+0:21:28.890,0:21:31.430
+like all these combinations, through "j", and
+
+0:21:31.430,0:21:35.250
+then the same for "bar". I haven't
+
+0:21:35.250,0:21:38.610
+really tested it... but yeah, we're getting
+all these combinations that we
+
+0:21:38.610,0:21:41.850
+can "touch". And now, if we touch something
+
+0:21:41.850,0:21:47.970
+that is different between these
+two [directories], we
+
+0:21:47.970,0:21:55.890
+can again showcase the process
+substitution that we saw
+
+0:21:55.890,0:21:59.610
+earlier. Say we want to check what
+files are different between these
+
+0:21:59.610,0:22:03.400
+two folders. For us it's obvious,
+we just saw it, it's X and Y,
+
+0:22:03.400,0:22:07.410
+but we can ask the shell to do
+this "diff" for us between the
+
+0:22:07.410,0:22:10.200
+output of one LS and the other LS.
+
+0:22:10.200,0:22:12.810
+Unsurprisingly we're getting: X is
+
+0:22:12.810,0:22:14.700
+only in the first folder and Y is
+
+0:22:14.700,0:22:20.970
+only in the second folder. What is more
+
+0:22:20.970,0:22:26.519
+is, right now, we have only seen
+bash scripts. If you like other
+
+0:22:26.520,0:22:30.260
+scripts, like for some tasks bash
+is probably not the best,
+
+0:22:30.260,0:22:33.119
+it can be tricky. You can actually
+write scripts that
+
+0:22:33.119,0:22:35.700
+interact with the shell implemented in a lot
+
+0:22:35.700,0:22:39.710
+of different languages. So for
+example, let's see here a
+
+0:22:39.710,0:22:43.139
+Python script that has a magic line at the
+
+0:22:43.139,0:22:45.539
+beginning that I'm not explaining for now.
+
+0:22:45.540,0:22:48.330
+Then we have "import sys",
+
+0:22:48.330,0:22:53.629
+it's kind of like... Python is not,
+by default, trying to interact
+
+0:22:53.629,0:22:56.999
+with the shell so you will have to import
+
+0:22:56.999,0:22:58.799
+some library. And then we're doing a
+
+0:22:58.799,0:23:01.529
+really silly thing of just iterating
+
+0:23:01.529,0:23:06.440
+over "sys.argv[1:]".
+
+0:23:06.440,0:23:12.809
+"sys.argv" is kind of similar to what
+in bash we're getting as $0, $1, &c.
+
+0:23:12.809,0:23:16.649
+Like the vector of the arguments, we're
+printing it in the reversed order.
+
+0:23:16.649,0:23:21.179
+And the magic line at the beginning is
+
+0:23:21.179,0:23:23.999
+called a shebang and is the way that the
+
+0:23:23.999,0:23:26.159
+shell will know how to run this program.
+
+0:23:26.159,0:23:30.509
+You can always do something like
+
+0:23:30.509,0:23:34.379
+"python script.py", and then "a b c" and that
+
+0:23:34.379,0:23:36.659
+will work, always, like that. But
+
+0:23:36.659,0:23:39.119
+what if we want to make this to be
+
+0:23:39.119,0:23:41.309
+executable from the shell? The way the
+
+0:23:41.309,0:23:44.190
+shell knows that it has to use python as the
+
+0:23:44.190,0:23:48.450
+interpreter to run this file is using
+
+0:23:48.450,0:23:52.440
+that first line. And that first line is
+
+0:23:52.440,0:23:56.620
+giving it the path to where that thing lives.
+
+0:23:58.500,0:23:59.600
+However, you might not know.
+
+0:23:59.609,0:24:01.830
+Like, different machines will have probably
+
+0:24:01.830,0:24:04.049
+different places where they put python
+
+0:24:04.049,0:24:06.090
+and you might not want to assume where
+
+0:24:06.090,0:24:08.789
+python is installed, or any other interpreter.
+
+0:24:08.789,0:24:16.379
+So one thing that you can do is use the
+
+0:24:16.380,0:24:17.720
+"env" command.
+
+0:24:18.280,0:24:21.560
+You can also give arguments in the shebang, so
+
+0:24:21.570,0:24:23.940
+what we're doing here is specifying
+
+0:24:23.940,0:24:29.720
+run the "env" command, that is for pretty much every
+system, there are some exceptions, but like for
+
+0:24:29.720,0:24:31.550
+pretty much every system it's is in
+
+0:24:31.550,0:24:33.620
+"usr/bin", where a lot of binaries live,
+
+0:24:33.620,0:24:36.200
+and then we're calling it with the
+
+0:24:36.200,0:24:38.570
+argument "python". And then that will make
+
+0:24:38.570,0:24:42.020
+use of the path environment variable
+
+0:24:42.020,0:24:43.580
+that we saw in the first lecture. It's
+
+0:24:43.580,0:24:45.680
+gonna search in that path for the Python
+
+0:24:45.680,0:24:48.620
+binary and then it's gonna use that to
+
+0:24:48.620,0:24:50.480
+interpret this file. And that will make
+
+0:24:50.480,0:24:52.490
+this more portable so it can be run in
+
+0:24:52.490,0:24:57.520
+my machine, and your machine
+and some other machine.
+
+0:25:08.020,0:25:12.140
+Another thing is that the bash is not
+
+0:25:12.140,0:25:14.300
+really like modern, it was
+
+0:25:14.300,0:25:16.340
+developed a while ago. And sometimes
+
+0:25:16.340,0:25:18.890
+it can be tricky to debug. By
+
+0:25:18.890,0:25:21.980
+default, and the ways it will fail
+
+0:25:21.980,0:25:24.020
+sometimes are intuitive like the way we
+
+0:25:24.020,0:25:26.180
+saw before of like foo command not
+
+0:25:26.180,0:25:28.610
+existing, sometimes it's not. So there's
+
+0:25:28.610,0:25:31.280
+like a really nifty tool that we have
+
+0:25:31.280,0:25:34.310
+linked in the lecture notes, which is called
+
+0:25:34.310,0:25:37.580
+"shellcheck", that will kind of give you
+
+0:25:37.580,0:25:40.010
+both warnings and syntactic errors
+
+0:25:40.010,0:25:43.250
+and other things that you might
+not have quoted properly,
+
+0:25:43.250,0:25:46.040
+or you might have misplaced spaces in
+
+0:25:46.040,0:25:50.060
+your files. So for example for
+extremely simple "mcd.sh"
+
+0:25:50.060,0:25:51.980
+file we're getting a couple
+
+0:25:51.980,0:25:54.800
+of errors saying hey, surprisingly,
+
+0:25:54.800,0:25:56.090
+we're missing a shebang, like this
+
+0:25:56.090,0:25:59.060
+might not interpret it correctly if you're
+
+0:25:59.060,0:26:02.000
+it at a different system. Also, this
+
+0:26:02.000,0:26:05.620
+CD is taking a command and it might not
+
+0:26:05.620,0:26:08.960
+expand properly so instead of using CD
+
+0:26:08.960,0:26:11.300
+you might want to use something like CD
+
+0:26:11.300,0:26:14.540
+and then an OR and then an "exit". We go
+
+0:26:14.540,0:26:16.490
+back to what we explained earlier, what
+
+0:26:16.490,0:26:18.920
+this will do is like if the
+
+0:26:18.920,0:26:21.860
+CD doesn't end correctly, you cannot CD
+
+0:26:21.860,0:26:23.720
+into the folder because either you
+
+0:26:23.720,0:26:25.250
+don't have permissions, it doesn't exist...
+
+0:26:25.250,0:26:28.780
+That will give a nonzero error
+
+0:26:28.780,0:26:32.420
+command, so you will execute exit
+
+0:26:32.420,0:26:33.920
+and that will stop the script
+
+0:26:33.920,0:26:35.810
+instead of continue executing as if
+
+0:26:35.810,0:26:37.240
+you were in a place that you are
+
+0:26:37.240,0:26:42.900
+actually not in. And actually
+I haven't tested, but I
+
+0:26:42.920,0:26:47.179
+think we can check for "example.sh"
+
+0:26:47.179,0:26:50.809
+and here we're getting that we should be
+
+0:26:50.809,0:26:55.070
+checking the exit code in a
+different way, because it's
+
+0:26:55.070,0:26:57.710
+probably not the best way, doing it this
+
+0:26:57.710,0:27:01.580
+way. One last remark I want to make
+
+0:27:01.580,0:27:05.090
+is that when you're writing bash scripts
+
+0:27:05.090,0:27:07.159
+or functions for that matter,
+
+0:27:07.159,0:27:09.080
+there's kind of a difference between
+
+0:27:09.080,0:27:12.590
+writing bash scripts in isolation like a
+
+0:27:12.590,0:27:14.149
+thing that you're gonna run, and a thing
+
+0:27:14.149,0:27:16.100
+that you're gonna load into your shell.
+
+0:27:16.100,0:27:19.850
+We will see some of this in the command
+
+0:27:19.850,0:27:23.090
+line environment lecture, where we will kind of
+
+0:27:23.090,0:27:29.059
+be tooling with the bashrc and the
+sshrc. But in general, if you make
+
+0:27:29.059,0:27:31.370
+changes to for example where you are,
+
+0:27:31.370,0:27:34.009
+like if you CD into a bash script and you
+
+0:27:34.009,0:27:36.919
+just execute that bash script, it won't CD
+
+0:27:36.919,0:27:39.980
+into the shell are right now. But if you
+
+0:27:39.980,0:27:42.980
+have loaded the code directly into
+
+0:27:42.980,0:27:45.559
+your shell, for example you load...
+
+0:27:45.559,0:27:48.440
+you source the function and then you execute
+
+0:27:48.440,0:27:50.269
+the function then you will get those
+
+0:27:50.269,0:27:52.000
+side effects. And the same goes for
+
+0:27:52.000,0:27:57.220
+defining variables into the shell.
+
+0:27:57.220,0:28:03.950
+Now I'm going to talk about some
+tools that I think are nifty when
+
+0:28:03.950,0:28:07.580
+working with the shell. The first was
+
+0:28:07.580,0:28:09.799
+also briefly introduced yesterday.
+
+0:28:09.799,0:28:13.309
+How do you know what flags, or like
+
+0:28:13.309,0:28:15.320
+what exact commands are. Like how I am
+
+0:28:15.320,0:28:21.889
+supposed to know that LS minus L will list
+the files in a list format, or that
+
+0:28:21.889,0:28:25.789
+if I do "move - i", it's gonna like prom me
+
+0:28:25.789,0:28:28.639
+for stuff. For that what you have is the "man"
+
+0:28:28.639,0:28:30.730
+command. And the man command will kind of
+
+0:28:30.730,0:28:33.590
+have like a lot of information of how
+
+0:28:33.590,0:28:35.809
+will you go about... so for example here it
+
+0:28:35.809,0:28:40.340
+will explain for the "-i" flag, there are
+
+0:28:40.340,0:28:43.970
+all these options you can do. That's
+
+0:28:43.970,0:28:45.620
+actually pretty useful and it will work
+
+0:28:45.620,0:28:51.540
+not only for really simple commands
+that come packaged with your OS
+
+0:28:51.540,0:28:55.809
+but will also work with some tools
+that you install from the internet
+
+0:28:55.809,0:28:58.240
+for example, if the person that did the
+
+0:28:58.240,0:29:01.390
+installation made it so that the man
+
+0:29:01.390,0:29:03.399
+package were also installed. So for example
+
+0:29:03.399,0:29:06.490
+a tool that we're gonna cover in a bit
+
+0:29:06.490,0:29:12.370
+which is called "ripgrep" and
+is called with RG, this didn't
+
+0:29:12.370,0:29:14.980
+come with my system but it has installed
+
+0:29:14.980,0:29:17.230
+its own man page and I have it here and
+
+0:29:17.230,0:29:21.700
+I can access it. For some commands the
+
+0:29:21.700,0:29:25.029
+man page is useful but sometimes it can be
+
+0:29:25.029,0:29:28.270
+tricky to decipher because it's more
+
+0:29:28.270,0:29:30.399
+kind of a documentation and a
+
+0:29:30.399,0:29:32.679
+description of all the things the tool
+
+0:29:32.679,0:29:35.860
+can do. Sometimes it will have
+
+0:29:35.860,0:29:37.720
+examples but sometimes not, and sometimes
+
+0:29:37.720,0:29:41.620
+the tool can do a lot of things so a
+
+0:29:41.620,0:29:45.250
+couple of good tools that I use commonly
+
+0:29:45.250,0:29:50.289
+are "convert" or "ffmpeg", which deal
+with images and video respectively and
+
+0:29:50.289,0:29:52.419
+the man pages are like enormous. So there's
+
+0:29:52.419,0:29:54.850
+one neat tool called "tldr" that
+
+0:29:54.850,0:29:58.240
+you can install and you will have like
+
+0:29:58.240,0:30:02.710
+some nice kind of explanatory examples
+
+0:30:02.710,0:30:05.470
+of how you want to use this command. And you
+
+0:30:05.470,0:30:07.840
+can always Google for this, but I find
+
+0:30:07.840,0:30:10.120
+myself saving going into the
+
+0:30:10.120,0:30:12.640
+browser, looking about some examples and
+
+0:30:12.640,0:30:14.919
+coming back, whereas "tldr" are
+
+0:30:14.919,0:30:16.870
+community contributed and
+
+0:30:16.870,0:30:19.210
+they're fairly useful. Then,
+
+0:30:19.210,0:30:23.020
+the one for "ffmpeg" has a lot of
+
+0:30:23.020,0:30:24.940
+useful examples that are more nicely
+
+0:30:24.940,0:30:26.799
+formatted (if you don't have a huge
+
+0:30:26.799,0:30:30.820
+font size for recording). Or even
+
+0:30:30.820,0:30:33.250
+simple commands like "tar", that have a lot
+
+0:30:33.250,0:30:35.470
+of options that you are combining. So for
+
+0:30:35.470,0:30:37.840
+example, here you can be combining 2, 3...
+
+0:30:37.840,0:30:41.710
+different flags and it can not be
+
+0:30:41.710,0:30:43.419
+obvious, when you want to combine
+
+0:30:43.419,0:30:48.429
+different ones. That's how you
+
+0:30:48.429,0:30:54.850
+would go about finding more about these tools.
+On the topic of finding, let's try
+
+0:30:54.850,0:30:58.690
+learning how to find files. You can
+
+0:30:58.690,0:31:03.100
+always go "ls", and like you can go like
+
+0:31:03.100,0:31:05.950
+"ls project1", and
+
+0:31:05.950,0:31:08.559
+keep LS'ing all the way through. But
+
+0:31:08.559,0:31:11.740
+maybe, if we already know that we want
+
+0:31:11.740,0:31:15.450
+to look for all the folders called
+
+0:31:15.450,0:31:19.000
+"src", then there's probably a better command
+
+0:31:19.000,0:31:21.400
+for doing that. And that's "find".
+
+0:31:21.460,0:31:26.679
+Find is the tool that, pretty much comes
+with every UNIX system. And find,
+
+0:31:26.679,0:31:35.230
+we're gonna give it... here we're
+saying we want to call find in the
+
+0:31:35.230,0:31:37.510
+current folder, remember that "." stands
+
+0:31:37.510,0:31:40.149
+for the current folder, and we want the
+
+0:31:40.149,0:31:46.539
+name to be "src" and we want the type to
+be a directory. And by typing that it's
+
+0:31:46.539,0:31:49.870
+gonna recursively go through the current
+
+0:31:49.870,0:31:52.330
+directory and look for all these files,
+
+0:31:52.330,0:31:58.659
+or folders in this case, that match this
+pattern. Find has a lot of useful
+
+0:31:58.659,0:32:01.840
+flags. So for example, you can even test
+
+0:32:01.840,0:32:05.440
+for the path to be in a way. Here we're
+
+0:32:05.440,0:32:08.230
+saying we want some number of folders,
+
+0:32:08.230,0:32:09.909
+we don't really care how many folders,
+
+0:32:09.909,0:32:13.179
+and then we care about all the Python
+
+0:32:13.179,0:32:17.830
+scripts, all the things with the extension
+".py", that are within a
+
+0:32:17.830,0:32:19.899
+test folder. And we're also checking, just in
+
+0:32:19.899,0:32:21.519
+cases really but we're checking just
+
+0:32:21.519,0:32:24.460
+that it's also a type F, which stands for
+
+0:32:24.460,0:32:28.710
+file. We're getting all these files.
+
+0:32:28.710,0:32:32.169
+You can also use different flags for things
+
+0:32:32.169,0:32:34.000
+that are not the path or the name.
+
+0:32:34.000,0:32:38.160
+You could check things that have been
+
+0:32:38.160,0:32:42.060
+modified ("-mtime" is for the modification
+time), things that have been
+
+0:32:42.070,0:32:44.540
+modified in the last day, which is gonna
+
+0:32:44.559,0:32:46.659
+be pretty much everything. So this is gonna print
+
+0:32:46.659,0:32:49.029
+a lot of the files we created and files
+
+0:32:49.029,0:32:51.850
+that were already there. You can even
+
+0:32:51.850,0:32:54.960
+use other things like size, the owner,
+
+0:32:54.960,0:32:59.080
+permissions, you name it. What is even more
+
+0:32:59.080,0:33:01.870
+powerful is, "find" can find stuff
+
+0:33:01.870,0:33:04.269
+but it also can do stuff when you
+
+0:33:04.269,0:33:10.690
+find those files. So we could look for all
+
+0:33:10.690,0:33:14.080
+the files that have a TMP
+
+0:33:14.080,0:33:18.160
+extension, which is a temporary extension, and
+
+0:33:18.160,0:33:22.720
+then, we can tell "find" that
+for every one of those files,
+
+0:33:22.720,0:33:26.350
+just execute the "rm" command for them. And
+
+0:33:26.350,0:33:29.050
+that will just be calling "rm" with all
+
+0:33:29.050,0:33:32.350
+these files. So let's first execute it
+
+0:33:32.350,0:33:35.760
+without, and then we execute it with it.
+
+0:33:35.760,0:33:38.950
+Again, as with the command line
+
+0:33:38.950,0:33:41.470
+philosophy, it looks like nothing
+
+0:33:41.470,0:33:48.070
+happened. But since we have
+a zero error code, something
+
+0:33:48.070,0:33:49.540
+happened - just that everything went
+
+0:33:49.540,0:33:51.490
+correct and everything is fine. And now,
+
+0:33:51.490,0:33:57.810
+if we look for these files,
+they aren't there anymore.
+
+0:33:57.810,0:34:02.950
+Another nice thing about the shell
+in general is that there are
+
+0:34:02.950,0:34:05.890
+these tools, but people will keep
+
+0:34:05.890,0:34:08.230
+finding new ways, so alternative
+
+0:34:08.230,0:34:12.220
+ways of writing these tools. It's
+nice to know about it. So, for
+
+0:34:12.220,0:34:20.020
+example find if you just want to match
+the things that end in "tmp"
+
+0:34:20.020,0:34:24.190
+it can be sometimes weird to do this
+thing, it has a long command.
+
+0:34:24.190,0:34:27.760
+There's things like "fd",
+
+0:34:27.760,0:34:32.320
+for example, that is a shorter command
+that by default will use regex
+
+0:34:32.320,0:34:34.899
+and will ignore your gitfiles, so you
+
+0:34:34.899,0:34:38.020
+don't even search for them. It
+
+0:34:38.020,0:34:42.879
+will color-code, it will have better
+Unicode support... It's nice to
+
+0:34:42.879,0:34:45.040
+know about some of these tools. But, again,
+
+0:34:45.040,0:34:52.149
+the main idea is that if you are aware
+that these tools exist, you can
+
+0:34:52.149,0:34:53.740
+save yourself a lot of time from doing
+
+0:34:53.740,0:34:57.660
+kind of menial and repetitive tasks.
+
+0:34:57.660,0:35:00.010
+Another command to bear in mind is like
+
+0:35:00.010,0:35:01.990
+"find". Some of you may be
+
+0:35:01.990,0:35:04.300
+wondering, "find" is probably just
+
+0:35:04.300,0:35:06.520
+actually going through a directory
+
+0:35:06.520,0:35:09.580
+structure and looking for things but
+
+0:35:09.580,0:35:11.260
+what if I'm doing a lot of "finds" a day?
+
+0:35:11.260,0:35:12.850
+Wouldn't it be better, doing kind of
+
+0:35:12.850,0:35:18.790
+a database approach and build an index
+first, and then use that index
+
+0:35:18.790,0:35:21.520
+and update it in some way. Well, actually
+
+0:35:21.520,0:35:23.380
+most Unix systems already do it and
+
+0:35:23.380,0:35:28.170
+this is through the "locate" command and
+
+0:35:28.170,0:35:31.690
+the way that the locate will
+
+0:35:31.690,0:35:35.470
+be used... it will just look for paths in
+
+0:35:35.470,0:35:38.680
+your file system that have the substring
+
+0:35:38.680,0:35:44.710
+that you want. I actually don't know if it
+will work... Okay, it worked. Let me try to
+
+0:35:44.710,0:35:49.840
+do something like "missing-semester".
+
+0:35:51.840,0:35:53.950
+You're gonna take a while but
+
+0:35:53.950,0:35:56.109
+it found all these files that are somewhere
+
+0:35:56.109,0:35:57.730
+in my file system and since it has
+
+0:35:57.730,0:36:01.750
+built an index already on them, it's much
+
+0:36:01.750,0:36:05.680
+faster. And then, to keep it updated,
+
+0:36:05.680,0:36:11.980
+using the "updatedb" command
+that is running through cron,
+
+0:36:13.840,0:36:18.490
+to update this database. Finding files, again, is
+
+0:36:18.490,0:36:23.230
+really useful. Sometimes you're actually concerned
+about, not the files themselves,
+
+0:36:23.230,0:36:26.740
+but the content of the files. For that
+
+0:36:26.740,0:36:31.420
+you can use the grep command that we
+
+0:36:31.420,0:36:33.880
+have seen so far. So you could do
+
+0:36:33.880,0:36:37.740
+something like grep foobar in MCD, it's there.
+
+0:36:37.740,0:36:43.690
+What if you want to, again, recursively
+search through the current
+
+0:36:43.690,0:36:45.760
+structure and look for more files, right?
+
+0:36:45.760,0:36:48.700
+We don't want to do this manually.
+
+0:36:48.700,0:36:51.220
+We could use "find", and the "-exec", but
+
+0:36:51.220,0:36:58.920
+actually "grep" has the "-R" flag
+that will go through the entire
+
+0:36:58.920,0:37:03.609
+directory, here. And it's telling us
+
+0:37:03.609,0:37:06.579
+that oh we have the foobar line in example.sh
+
+0:37:06.579,0:37:09.279
+at these three places and in
+
+0:37:09.279,0:37:14.589
+this other two places in foobar. This can be
+
+0:37:14.589,0:37:16.900
+really convenient. Mainly, the
+
+0:37:16.900,0:37:18.940
+use case for this is you know you have
+
+0:37:18.940,0:37:21.910
+written some code in some programming
+
+0:37:21.910,0:37:23.859
+language, and you know it's somewhere in
+
+0:37:23.859,0:37:26.200
+your file system but you actually don't
+
+0:37:26.200,0:37:28.599
+know. But you can actually quickly search.
+
+0:37:28.600,0:37:32.980
+So for example, I can quickly search
+
+0:37:35.660,0:37:40.320
+for all the Python files that I have in my
+
+0:37:40.329,0:37:45.460
+scratch folder where I used the request library.
+
+0:37:45.460,0:37:47.589
+And if I run this, it's giving me
+
+0:37:47.589,0:37:50.890
+through all these files, exactly in
+
+0:37:50.890,0:37:53.650
+what line it has been found. And here
+
+0:37:53.650,0:37:56.260
+instead of using grep, which is fine,
+
+0:37:56.260,0:37:58.930
+you could also do this, I'm using "ripgrep",
+
+0:37:58.930,0:38:05.260
+which is kind of the same idea but
+again trying to bring some more
+
+0:38:05.260,0:38:09.730
+niceties like color coding or file
+
+0:38:09.730,0:38:16.480
+processing and other things. It think it has,
+also, unicode support. It's also pretty
+
+0:38:16.480,0:38:22.829
+fast so you are not paying like a
+trade-off on this being slower and
+
+0:38:22.829,0:38:25.420
+there's a lot of useful flags. You
+
+0:38:25.420,0:38:27.670
+can say, oh, I actually want to get some
+
+0:38:27.670,0:38:30.460
+context around those results.
+
+0:38:33.040,0:38:36.400
+So I want to get like five
+lines of context around
+
+0:38:36.400,0:38:42.819
+that, so you can see where that import
+lives and see code around it.
+
+0:38:42.819,0:38:44.170
+Here in the import it's not really useful
+
+0:38:44.170,0:38:45.819
+but like if you're looking for where you
+
+0:38:45.819,0:38:49.720
+use the function, for example, it will
+
+0:38:49.720,0:38:54.010
+be very handy. We can also do things like
+
+0:38:54.010,0:38:59.170
+we can search, for example here,.
+
+0:38:59.170,0:39:04.839
+A more advanced use, we can say,
+
+0:39:04.840,0:39:11.580
+"-u" is for don't ignore hidden files, sometimes
+
+0:39:12.520,0:39:16.359
+you want to be ignoring hidden
+files, except if you want to
+
+0:39:16.359,0:39:23.500
+search config files, that are by default
+hidden. Then, instead of printing
+
+0:39:23.500,0:39:28.400
+the matches, we're asking to do something
+that would be kind of hard, I think,
+
+0:39:28.400,0:39:31.380
+to do with grep, out of my head, which is
+
+0:39:31.390,0:39:34.569
+"I want you to print all the files that
+
+0:39:34.569,0:39:37.750
+don't match the pattern I'm giving you", which
+
+0:39:37.750,0:39:40.030
+may be a weird thing to ask here but
+
+0:39:40.030,0:39:42.940
+then we keep going... And this pattern here
+
+0:39:42.940,0:39:45.790
+is a small regex which is saying
+
+0:39:45.790,0:39:48.099
+at the beginning of the line I have a
+
+0:39:48.099,0:39:51.190
+"#" and a "!", and that's a shebang.
+
+0:39:51.190,0:39:53.470
+Like that, we're searching here for all
+
+0:39:53.470,0:39:56.650
+the files that don't have a shebang
+
+0:39:56.650,0:39:59.369
+and then we're giving it, here,
+
+0:39:59.369,0:40:02.470
+a "-t sh" to only look for "sh"
+
+0:40:02.470,0:40:07.660
+files, because maybe all your
+Python or text files are fine
+
+0:40:07.660,0:40:10.000
+without a shebang. And here it's telling us
+
+0:40:10.000,0:40:13.020
+"oh, MCD is obviously missing a shebang"
+
+0:40:14.760,0:40:16.660
+We can even... It has like some
+
+0:40:16.660,0:40:19.119
+nice flags, so for example if we
+
+0:40:19.120,0:40:21.360
+include the "stats" flag
+
+0:40:28.700,0:40:34.119
+it will get all these results but it will
+also tell us information about all
+
+0:40:34.119,0:40:35.410
+the things that it searched. For example,
+
+0:40:35.410,0:40:40.390
+the number of matches that it found,
+the lines, the file searched,
+
+0:40:40.390,0:40:44.040
+the bytes that it printed, &c.
+
+0:40:44.040,0:40:47.160
+Similar as with "fd", sometimes
+it's not as useful
+
+0:40:48.400,0:40:50.619
+using one specific tool or another and
+
+0:40:50.620,0:40:55.780
+in fact, as ripgrep, there are several
+other tools. Like "ack",
+
+0:40:55.780,0:40:57.700
+is the original grep alternative that was
+
+0:40:57.700,0:41:00.670
+written. Then the silver searcher,
+
+0:41:00.670,0:41:04.089
+"ag", was another one... and they're all
+
+0:41:04.089,0:41:05.589
+pretty much interchangeable so
+
+0:41:05.589,0:41:07.630
+maybe you're at a system that has one and
+
+0:41:07.630,0:41:09.670
+not the other, just knowing that you can
+
+0:41:09.670,0:41:12.040
+use these things with these tools can be
+
+0:41:12.040,0:41:15.549
+fairly useful. Lastly, I want to cover
+
+0:41:15.549,0:41:19.780
+how you go about, not finding files
+or code, but how you go about
+
+0:41:19.780,0:41:22.540
+finding commands that you already
+
+0:41:22.540,0:41:30.160
+some time figured out. The first, obvious
+way is just using the up arrow,
+
+0:41:30.160,0:41:34.540
+and slowly going through all your history,
+looking for these matches.
+
+0:41:34.540,0:41:36.490
+This is actually not very efficient, as
+
+0:41:36.490,0:41:42.579
+you probably guessed. So the bash
+has ways to do this more easily.
+
+0:41:42.579,0:41:44.619
+There is the "history" command, that will
+
+0:41:44.619,0:41:49.180
+print your history. Here I'm in zsh and
+it only prints some of my history, but
+
+0:41:49.180,0:41:54.069
+if I say, I want you to print everything
+from the beginning of time, it will print
+
+0:41:54.069,0:41:58.220
+everything from the beginning
+of whatever this history is.
+
+0:41:58.220,0:42:00.700
+And since this is a lot of results,
+
+0:42:00.700,0:42:02.589
+maybe we care about the ones where we
+
+0:42:02.589,0:42:08.490
+use the "convert" command to go from some
+type of file to some other type of file.
+
+0:42:08.490,0:42:12.940
+Some image, sorry. Then, we're getting all
+
+0:42:12.940,0:42:15.849
+these results here, about all the ones
+
+0:42:15.849,0:42:18.120
+that match this substring.
+
+0:42:21.280,0:42:24.609
+Even more, pretty much all shells by default will
+
+0:42:24.609,0:42:27.130
+link "Ctrl+R", the keybinding,
+
+0:42:27.130,0:42:29.680
+to do backward search. Here we
+
+0:42:29.680,0:42:31.569
+have backward search, where we can
+
+0:42:31.569,0:42:34.750
+type "convert" and it's finding the
+
+0:42:34.750,0:42:36.609
+command that we just typed. And if we just
+
+0:42:36.609,0:42:38.619
+keep hitting "Ctrl+R", it will
+
+0:42:38.619,0:42:41.740
+kind of go through these matches and
+
+0:42:41.740,0:42:44.260
+it will let re-execute it
+
+0:42:44.260,0:42:49.240
+in place. Another thing that you can do,
+
+0:42:49.240,0:42:51.069
+related to that, is you can use this
+
+0:42:51.069,0:42:53.829
+really nifty tool called "fzf", which is
+
+0:42:53.829,0:42:56.280
+like a fuzzy finder, like it will...
+
+0:42:57.100,0:42:58.480
+It will let you do kind of
+
+0:42:58.480,0:43:02.200
+like an interactive grep. We could do
+
+0:43:02.200,0:43:06.369
+for example this, where we can cat our
+
+0:43:06.369,0:43:10.030
+example.sh command, that will print
+
+0:43:10.030,0:43:11.680
+print to the standard output, and then we
+
+0:43:11.680,0:43:14.290
+can pipe it through fzf. It's just getting
+
+0:43:14.290,0:43:18.490
+all the lines and then we can
+interactively look for the
+
+0:43:18.490,0:43:21.849
+string that we care about. And the nice
+
+0:43:21.849,0:43:26.349
+thing about fzf is that, if you enable
+the default bindings, it will bind to
+
+0:43:26.349,0:43:33.670
+your "Ctrl+R" shell execution and now
+
+0:43:33.670,0:43:36.490
+you can quickly and dynamically like
+
+0:43:36.490,0:43:41.700
+look for all the times you try to
+convert a favicon in your history.
+
+0:43:42.020,0:43:46.375
+And it's also like fuzzy matching,
+whereas like by default in grep
+
+0:43:46.375,0:43:49.420
+or these things you have to write a regex or some
+
+0:43:49.420,0:43:52.360
+expression that will match within here.
+
+0:43:52.360,0:43:54.609
+Here I'm just typing "convert" and "favicon" and
+
+0:43:54.609,0:43:57.369
+it's just trying to do the best scan,
+
+0:43:57.369,0:44:01.349
+doing the match in the lines it has.
+
+0:44:01.349,0:44:06.190
+Lastly, a tool that probably you have
+already seen, that I've been using
+
+0:44:06.190,0:44:08.410
+for not retyping these extremely long
+
+0:44:08.410,0:44:13.080
+commands is this "history
+substring search", where
+
+0:44:13.940,0:44:15.660
+as I type in my shell,
+
+0:44:15.670,0:44:19.630
+and both F fail to mention but both face
+
+0:44:19.630,0:44:22.760
+which I think was originally introduced,
+this concept, and then
+
+0:44:22.760,0:44:25.760
+zsh has a really nice implementation)
+
+0:44:25.760,0:44:26.800
+what it'll let you do is
+
+0:44:26.800,0:44:31.300
+as you type the command, it will
+dynamically search back in your
+
+0:44:31.300,0:44:34.420
+history to the same command
+that has a common prefix,
+
+0:44:34.980,0:44:36.900
+and then, if you...
+
+0:44:39.100,0:44:42.100
+it will change as the match list stops
+
+0:44:42.100,0:44:44.110
+working and then as you do the
+
+0:44:44.120,0:44:49.760
+right arrow you can select that
+command and then re-execute it.
+
+0:45:05.800,0:45:09.920
+We've seen a bunch of stuff... I think I have
+
+0:45:09.940,0:45:16.180
+a few minutes left so I'm going
+to cover a couple of tools to do
+
+0:45:16.180,0:45:20.060
+really quick directory listing
+and directory navigation.
+
+0:45:20.060,0:45:30.020
+So you can always use the "-R" to recursively
+list some directory structure,
+
+0:45:30.020,0:45:35.160
+but that can be suboptimal, I cannot
+really make sense of this easily.
+
+0:45:36.340,0:45:44.460
+There's tool called "tree" that will
+be the much more friendly form of
+
+0:45:44.460,0:45:47.500
+printing all the stuff, it will
+also color code based on...
+
+0:45:47.500,0:45:50.680
+here for example "foo" is blue
+because it's a directory and
+
+0:45:50.680,0:45:55.100
+this is red because it has execute permissions.
+
+0:45:55.100,0:46:00.220
+But we can go even further than
+that. There's really nice tools
+
+0:46:00.220,0:46:04.580
+like a recent one called "broot" that
+will do the same thing but here
+
+0:46:04.580,0:46:07.300
+for example instead of doing
+this thing of listing
+
+0:46:07.300,0:46:09.160
+every single file, for example in bar
+
+0:46:09.160,0:46:11.400
+we have these "a" through "j" files,
+
+0:46:11.400,0:46:14.260
+it will say "oh there are more, unlisted here".
+
+0:46:15.080,0:46:18.200
+I can actually start typing and it will again
+
+0:46:18.200,0:46:21.540
+again facily match to the files that are there
+
+0:46:21.540,0:46:24.800
+and I can quickly select them
+and navigate through them.
+
+0:46:24.800,0:46:28.380
+So, again, it's good to know that
+
+0:46:28.380,0:46:33.340
+these things exist so you don't
+lose a large amount of time
+
+0:46:34.240,0:46:36.180
+going for these files.
+
+0:46:37.880,0:46:40.500
+There are also, I think I have it installed
+
+0:46:40.500,0:46:44.829
+also something more similar to what
+you would expect your OS to have,
+
+0:46:44.829,0:46:49.960
+like Nautilus or one of the Mac
+finders that have like an
+
+0:46:49.960,0:46:59.260
+interactive input where you can just use your
+navigation arrows and quickly explore.
+
+0:46:59.260,0:47:03.849
+It might be overkill but you'll
+be surprised how quickly you can
+
+0:47:03.849,0:47:07.839
+make sense of some directory structure
+by just navigating through it.
+
+0:47:07.840,0:47:12.780
+And pretty much all of these tools
+will let you edit, copy files...
+
+0:47:12.780,0:47:16.880
+if you just look for the options for them.
+
+0:47:17.600,0:47:20.100
+The last addendum is kind of going places.
+
+0:47:20.100,0:47:24.480
+We have "cd", and "cd" is nice, it will get you
+
+0:47:26.120,0:47:30.060
+to a lot of places. But it's pretty handy if
+
+0:47:30.069,0:47:33.190
+you can like quickly go places,
+
+0:47:33.190,0:47:36.730
+either you have been to recently or that
+
+0:47:36.730,0:47:40.599
+you go frequently. And you can do this in
+
+0:47:40.599,0:47:42.520
+many ways there's probably... you can start
+
+0:47:42.520,0:47:44.319
+thinking, oh I can make bookmarks, I can
+
+0:47:44.319,0:47:46.660
+make... I can make aliases in the shell,
+
+0:47:46.660,0:47:49.020
+that we will cover at some point,
+
+0:47:49.020,0:47:53.020
+symlinks... But at this point,
+
+0:47:53.020,0:47:54.910
+programmers have like built all these
+
+0:47:54.910,0:47:56.799
+tools, so programmers have already figured
+
+0:47:56.799,0:47:59.520
+out a really nice way of doing this.
+
+0:47:59.520,0:48:01.930
+One way of doing this is using what is
+
+0:48:01.930,0:48:05.760
+called "auto jump", which I
+think is not loaded here...
+
+0:48:14.140,0:48:20.100
+Okay, don't worry. I will cover it
+in the command line environment.
+
+0:48:21.960,0:48:25.579
+I think it's because I disabled
+the "Ctrl+R" and that also
+
+0:48:25.579,0:48:31.309
+affected other parts of the script.
+I think at this point if anyone has
+
+0:48:31.309,0:48:35.480
+any questions that are related to this,
+I'll be more than happy to answer
+
+0:48:35.480,0:48:37.509
+them, if anything was left unclear.
+
+0:48:37.509,0:48:42.859
+Otherwise, a there's a bunch of
+exercises that we wrote, kind of
+
+0:48:42.859,0:48:46.549
+touching on these topics and we
+encourage you to try them and
+
+0:48:46.549,0:48:48.559
+come to office hours, where we can help
+
+0:48:48.559,0:48:54.569
+you figure out how to do them, or some
+bash quirks that are not clear.
+
