@@ -20,7 +20,11 @@ In this lecture, we will look at systems for building and testing your
 code, and for managing dependencies. These may seem like they are of
 limited importance in your day-to-day as a student, but the moment you
 interact with a larger code base through an internship or once you enter
-the "real world", you will see this everywhere.
+the "real world", you will see this everywhere. We should note that
+"metaprogramming" can also mean "[programs that operate on
+programs](https://en.wikipedia.org/wiki/Metaprogramming)", whereas that
+is not quite the definition we are using for the purposes of this
+lecture.
 
 # Build systems
 
