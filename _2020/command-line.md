@@ -472,7 +472,7 @@ One way to achieve this is to use the [`wait`](http://man7.org/linux/man-pages/m
 
 1. Create an alias `dc` that resolves to `cd` for when you type it wrongly.
 
-1.  Run `history 1 |awk '{$1="";print substr($0,2)}' |sort | uniq -c | sort -n | tail -n10`)  to get your top 10 most used commands and consider writing shorter aliases for them.
+1.  Run `history | awk '{$1="";print substr($0,2)}' | sort | uniq -c | sort -n | tail -n 10`  to get your top 10 most used commands and consider writing shorter aliases for them.
 
 
 ## Dotfiles
