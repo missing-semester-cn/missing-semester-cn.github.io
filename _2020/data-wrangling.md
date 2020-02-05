@@ -53,7 +53,7 @@ ssh myserver 'journalctl | grep sshd | grep "Disconnected from"' | less
 ```
 
 Why the additional quoting? Well, our logs may be quite large, and it's
-wasteful to do stream it all to our computer and then do the filtering.
+wasteful to stream it all to our computer and then do the filtering.
 Instead, we can do the filtering on the remote server, and then massage
 the data locally. `less` gives us a "pager" that allows us to scroll up
 and down through the long output. To save some additional traffic while
