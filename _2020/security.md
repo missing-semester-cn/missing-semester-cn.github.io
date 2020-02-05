@@ -269,7 +269,7 @@ operating system (collected from hardware events, etc.). The public key is
 stored as-is (it's public, so keeping it a secret is not important), but at
 rest, the private key should be encrypted on disk. The `ssh-keygen` program
 prompts the user for a passphrase, and this is fed through a key derivation
-function to produce a key, which is then used to encrypt the public key with a
+function to produce a key, which is then used to encrypt the private key with a
 symmetric cipher.
 
 In use, once the server knows the client's public key (stored in the
