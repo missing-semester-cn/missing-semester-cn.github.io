@@ -74,6 +74,10 @@ on an input using the `sha1sum` command:
 ```console
 $ printf 'hello' | sha1sum
 aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d
+$ printf 'hello' | sha1sum
+aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d
+$ printf 'Hello' | sha1sum 
+f7ff9e8b7bb2e09b70935a5d785e0cc5d9d0abf0
 ```
 
 At a high level, a hash function can be thought of as a hard-to-invert
@@ -81,6 +85,7 @@ random-looking (but deterministic) function (and this is the [ideal model of a
 hash function](https://en.wikipedia.org/wiki/Random_oracle)). A hash function
 has the following properties:
 
+- Deterministic: the same input always generates the same output.
 - Non-invertible: it is hard to find an input `m` such that `hash(m) = h` for
 some desired output `h`.
 - Target collision resistant: given an input `m_1`, it's hard to find a
