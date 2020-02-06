@@ -140,7 +140,7 @@ The most popular terminal multiplexer these days is [`tmux`](http://man7.org/lin
 `tmux` expects you to know its keybindings, and they all have the form `<C-b> x` where that means press `Ctrl+b` release, and the press `x`. `tmux` has the following hierarchy of objects:
 - **Sessions** - a session is an independent workspace with one or more windows
     + `tmux` starts a new session.
-    + `tmux -t NAME` starts it with that name.
+    + `tmux new -s NAME` starts it with that name.
     + `tmux ls` lists the current sessions
     + Within `tmux` typing `<C-b> d`  dettaches the current session
     + `tmux a` attaches the last session. You can use `-t` flag to specify which
