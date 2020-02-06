@@ -197,10 +197,10 @@ To see what lives in a given directory, we use the `ls` command:
 ```console
 missing:~$ ls
 missing:~$ cd ..
-missing:~$ ls
+missing:/home$ ls
 missing
-missing:~$ cd ..
-missing:~$ ls
+missing:/home$ cd ..
+missing:/$ ls
 bin
 boot
 dev
