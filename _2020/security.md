@@ -94,6 +94,14 @@ different input `m_2` such that `hash(m_1) = hash(m_2)`.
 `hash(m_1) = hash(m_2)` (note that this is a strictly stronger property than
 target collision resistance).
 
+Note: while it may work for certain purposes, SHA-1 is [no
+longer](https://shattered.io/) considered a strong cryptographic hash function.
+You might find this table of [lifetimes of cryptographic hash
+functions](https://valerieaurora.org/hash.html) interesting. However, note that
+recommending specific hash functions is beyond the scope of this lecture. If you
+are doing work where this matters, you need formal training in
+security/cryptography.
+
 ## Applications
 
 - Git, for content-addressed storage. The idea of a [hash
