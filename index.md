@@ -52,7 +52,7 @@ YouTube](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57
 
 # About the class
 
-**Staff**: This class is co-taught by [Anish](https://www.anishathalye.com/), [Jon](https://thesquareplanet.com/), and [Jose](http://josejg.com/).  
+**Staff**: This class is co-taught by [Anish](https://www.anishathalye.com/), [Jon](https://thesquareplanet.com/), and [Jose](http://josejg.com/).
 **Questions**: Email us at [missing-semester@mit.edu](mailto:missing-semester@mit.edu).
 
 # Beyond MIT
@@ -78,5 +78,6 @@ AeroAstro](https://aeroastro.mit.edu/) for A/V equipment; and Brandi Adams and
 ---
 
 <div class="small center">
-<p><a href="https://github.com/missing-semester/missing-semester">Source code</a>.</p>
+<p>This content is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA</a>.</p>
+<p>See <a href="/license">here</a> for contribution &amp; translation guidelines.</p>
 </div>
