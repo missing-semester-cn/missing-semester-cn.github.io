@@ -194,7 +194,7 @@ alias sl=ls
 # Overwrite existing commands for better defaults
 alias mv="mv -i"           # -i prompts before overwrite
 alias mkdir="mkdir -p"     # -p make parent dirs as needed
-alias df="df -p"           # -h prints human readable format
+alias df="df -h"           # -h prints human readable format
 
 # Alias can be composed
 alias la="ls -A"
