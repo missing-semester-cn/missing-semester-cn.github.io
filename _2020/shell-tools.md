@@ -36,7 +36,7 @@ echo '$foo'
 # prints $foo
 ```
 
-As most programming languages bash supports control flow techniques including `if`, `case`, `while` and `for`.
+As with most programming languages, bash supports control flow techniques including `if`, `case`, `while` and `for`.
 Similarly, `bash` has functions that take arguments and can operate with them. Here is an example of a function that creates a directory and `cd`s into it.
 
 
