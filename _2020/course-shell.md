@@ -385,7 +385,10 @@ there.
     this work, while `./semester` didn't?
  1. Look up the `chmod` program (e.g. use `man chmod`).
  1. Use `chmod` to make it possible to run the command `./semester` rather than
-    having to type `sh semester`.
+    having to type `sh semester`. How does your shell know that the file is
+    supposed to be interpreted using `sh`? See this page on the
+    [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) line for more
+    information.
  1. Use `|` and `>` to write the "last modified" date output by
     `semester` into a file called `last-modified.txt` in your home
     directory.
