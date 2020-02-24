@@ -304,11 +304,13 @@ When you get permission denied errors, it is usually because you need to
 do something as root. Though make sure you first double-check that you
 really wanted to do it that way!
 
-One thing you need to be root in order to do is writing to the `sysfs`
-file system mounted under `/sys`. `sysfs` exposes a number of kernel
-parameters as files, so that you can easily reconfigure the kernel on
-the fly without specialized tools. For example, the brightness of your
-laptop's screen is exposed through a file called `brightness` under
+One thing you need to be root in order to do is writing to the `sysfs` file
+system mounted under `/sys`. `sysfs` exposes a number of kernel parameters as
+files, so that you can easily reconfigure the kernel on the fly without
+specialized tools. **Note that sysfs does not exist on Windows or macOS.**
+
+For example, the brightness of your laptop's screen is exposed through a file
+called `brightness` under
 
 ```
 /sys/class/backlight
