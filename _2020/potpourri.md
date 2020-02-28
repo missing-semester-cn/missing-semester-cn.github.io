@@ -100,7 +100,7 @@ This way, local programs can see the file as if it was in your computer while in
 This is effectively what `sshfs` does.
 
 Some interesting examples of FUSE filesystems are:
-- [sshfs](https://github.com/libfuse/sshfs) - Open locally remote files/folder thorugh an SSH connection.
+- [sshfs](https://github.com/libfuse/sshfs) - Open locally remote files/folder through an SSH connection.
 - [rclone](https://rclone.org/commands/rclone_mount/) - Mount cloud storage services like Dropbox, GDrive, Amazon S3 or Google Cloud Storage and open data locally.
 - [gocryptfs](https://nuetzlich.net/gocryptfs/) - Encrypted overlay system. Files are stored encrypted but once the FS is mounted they appear as plaintext in the mountpoint.
 - [kbfs](https://keybase.io/docs/kbfs) - Distributed filesystem with end-to-end encryption. You can have private, shared and public folders.
