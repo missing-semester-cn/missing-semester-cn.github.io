@@ -466,7 +466,7 @@ One way to achieve this is to use the [`wait`](http://man7.org/linux/man-pages/m
 
 ## Terminal multiplexer
 
-1. Follow this `tmux` [tutorial](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/) and then learn how to do some basic customizations following [these steps](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/).
+1. Follow this `tmux` [tutorial](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/) and then learn how to do some basic customizations following [these steps](https://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/).
 
 ## Aliases
 
