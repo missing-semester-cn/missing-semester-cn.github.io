@@ -106,7 +106,7 @@ security/cryptography.
 
 - Git, for content-addressed storage. The idea of a [hash
 function](https://en.wikipedia.org/wiki/Hash_function) is a more general
-concept (there are non-cryptographic has functions). Why does Git use a
+concept (there are non-cryptographic hash functions). Why does Git use a
 cryptographic hash function?
 - A short summary of the contents of a file. Software can often be downloaded
 from (potentially less trustworthy) mirrors, e.g. Linux ISOs, and it would be
