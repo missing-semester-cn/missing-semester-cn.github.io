@@ -133,7 +133,7 @@ mv *{.py,.sh} folder
 
 mkdir foo bar
 # This creates files foo/a, foo/b, ... foo/h, bar/a, bar/b, ... bar/h
-touch {foo,bar}/{a..j}
+touch {foo,bar}/{a..h}
 touch foo/x bar/y
 # Show differences between files in foo and bar
 diff <(ls foo) <(ls bar)
