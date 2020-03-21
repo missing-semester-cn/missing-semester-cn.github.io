@@ -314,7 +314,7 @@ $ python -m cProfile -s tottime grep.py 1000 '^(import|\s*def)[^,]*$' *.py
 ```
 
 
-A caveat of Python's `cProfile` profiler (and many profilers for that matter) is that they display time per function call. That can become intuitive really fast, specially if you are using third party libraries in your code since internal function calls are also accounted for.
+A caveat of Python's `cProfile` profiler (and many profilers for that matter) is that they display time per function call. That can become unintuitive really fast, specially if you are using third party libraries in your code since internal function calls are also accounted for.
 A more intuitive way of displaying profiling information is to include the time taken per line of code, which is what _line profilers_ do.
 
 For instance, the following piece of Python code performs a request to the class website and parses the response to get all URLs in the page:
