@@ -383,7 +383,7 @@ The most common scenario is local port forwarding, where a service in the remote
 
 We have covered many many arguments that we can pass. A tempting alternative is to create shell aliases that look like
 ```bash
-alias my_server="ssh -i ~/.id_ed25519 --port 2222 - L 9999:localhost:8888 foobar@remote_server
+alias my_server="ssh -i ~/.id_ed25519 --port 2222 -L 9999:localhost:8888 foobar@remote_server
 ```
 
 However, there is a better alternative using `~/.ssh/config`.
@@ -394,7 +394,7 @@ Host vm
     HostName 172.16.174.141
     Port 2222
     IdentityFile ~/.ssh/id_ed25519
-    RemoteForward 9999 localhost:8888
+    LocalForward 9999 localhost:8888
 
 # Configs can also take wildcards
 Host *.mit.edu
@@ -500,7 +500,7 @@ Host vm
     User username_goes_here
     HostName ip_goes_here
     IdentityFile ~/.ssh/id_ed25519
-    RemoteForward 9999 localhost:8888
+    LocalForward 9999 localhost:8888
 ```
 1. Use `ssh-copy-id vm` to copy your ssh key to the server.
 1. Start a webserver in your VM by executing `python -m http.server 8888`. Access the VM webserver by navigating to `http://localhost:9999` in your machine.
