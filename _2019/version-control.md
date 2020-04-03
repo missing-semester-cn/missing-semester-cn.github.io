@@ -350,7 +350,7 @@ if your push is rejected, what do you do?
 
 1. Once you start to get more familiar with `git`, you will find yourself running into common tasks, such as editing your `.gitignore`. [git extras](https://github.com/tj/git-extras/blob/master/Commands.md) provides a bunch of little utilities that integrate with `git`. For example `git ignore PATTERN` will add the specified pattern to the `.gitignore` file in your repo and `git ignore-io LANGUAGE` will fetch the common ignore patterns for that language from [gitignore.io](https://www.gitignore.io). Install `git extras` and try using some tools like `git alias` or `git ignore`.
 
-1. Git GUI programs can be a great resource sometimes. Try running [gitk](https://git-scm.com/docs/gitk) in a git repo an explore the differents parts of the interface. Then run `gitk --all` what are the differences?
+1. Git GUI programs can be a great resource sometimes. Try running [gitk](https://git-scm.com/docs/gitk) in a git repo an explore the different parts of the interface. Then run `gitk --all` what are the differences?
 
 1. Once you get used to command line applications GUI tools can feel cumbersome/bloated. A nice compromise between the two are ncurses based tools which can be navigated from the command line and still provide an interactive interface. Git has [tig](https://github.com/jonas/tig), try installing it and running it in a repo. You can find some usage examples [here](https://www.atlassian.com/blog/git/git-tig).
 

@@ -23,7 +23,7 @@ An often overlooked feature of `ssh` is the ability to run commands directly.
 
 Key-based authentication exploits public-key cryptography to prove to the server that the client owns the secret private key without revealing the key. This way you do not need to reenter your password every time. Nevertheless the private key (e.g. `~/.ssh/id_rsa`) is effectively your password so treat it like so.
 
-- Key generation. To generate a pair you can simply run `ssh-keygen -t rsa -b 4096`. If you do not choose a passphrase anyone that gets ahold of your private key will be able to access authorized servers so it is recommended to choose  one and use `ssh-agent` to manage shell sessions.
+- Key generation. To generate a pair you can simply run `ssh-keygen -t rsa -b 4096`. If you do not choose a passphrase anyone that gets hold of your private key will be able to access authorized servers so it is recommended to choose  one and use `ssh-agent` to manage shell sessions.
 
 If you have configured pushing to Github using SSH keys you have probably done the steps outlined [here](https://help.github.com/articles/connecting-to-github-with-ssh/) and have a valid pair already. To check if you have a passphrase and validate it you can run `ssh-keygen -y -f /path/to/key`.
 
