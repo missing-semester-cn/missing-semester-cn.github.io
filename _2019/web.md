@@ -178,7 +178,7 @@ snapshot_wayback(driver, url)
 
 1. Edit a keyword search engine that you use often in your web browser
 1. Install the mentioned extensions. Look into how uBlock Origin/Privacy Badger can be disabled for a website. What differences do you see? Try doing it in a website with plenty of ads like YouTube.
-1. Install Stylus and write a custom style for the class website using the CSS provided. Here are some commmon programming characters `=   ==   ===   >=   =>   ++   /=   ~=`. What happens to them when changing the font to Fira Code? If you want to know more search for programming font ligatures.
+1. Install Stylus and write a custom style for the class website using the CSS provided. Here are some common programming characters `=   ==   ===   >=   =>   ++   /=   ~=`. What happens to them when changing the font to Fira Code? If you want to know more search for programming font ligatures.
 1. Find a web api to get the weather in your city/area.
 1. Use a WebDriver software like [Selenium](https://docs.seleniumhq.org/) to automate some repetitive manual task that you perform often with your browser.
 

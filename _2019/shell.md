@@ -253,7 +253,7 @@ Also, a double dash `--` is used in built-in commands and many other commands to
 
 ## Exercises
 
-1. If you are completely new to the shell you may want to read a more comprehensive guide about it such as [BashGuide](http://mywiki.wooledge.org/BashGuide). If you want a more indepth introduction [The Linux Command Line](http://linuxcommand.org/tlcl.php) is a good resource.
+1. If you are completely new to the shell you may want to read a more comprehensive guide about it such as [BashGuide](http://mywiki.wooledge.org/BashGuide). If you want a more in-depth introduction [The Linux Command Line](http://linuxcommand.org/tlcl.php) is a good resource.
 
 1. **PATH, which, type**
 
@@ -287,7 +287,7 @@ Also, a double dash `--` is used in built-in commands and many other commands to
       print("Hello World!")
     ```
 
-    You will often see programs that have a shebang that looks like `#! usr/bin/env bash`. This is a more portable solution with it own set of [advantages and disadvantages](https://unix.stackexchange.com/questions/29608/why-is-it-better-to-use-usr-bin-env-name-instead-of-path-to-name-as-my). How is `env` different from `which`? What environment vairable does `env` use to decide what program to run?
+    You will often see programs that have a shebang that looks like `#! usr/bin/env bash`. This is a more portable solution with it own set of [advantages and disadvantages](https://unix.stackexchange.com/questions/29608/why-is-it-better-to-use-usr-bin-env-name-instead-of-path-to-name-as-my). How is `env` different from `which`? What environment variable does `env` use to decide what program to run?
 
 
 1. **Pipes, process substitution, subshell**

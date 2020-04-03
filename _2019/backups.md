@@ -50,7 +50,7 @@ However, making several copies of your data might be extremely costly in terms o
 
 Since we might be backing up to untrusted third parties like cloud providers it is worth considering that if you backup your data is copied *as is* then it could potentially be looked by unwanted agents. Documents like your taxes are sensitive information that should not be backed up in plain format. To prevent this, many backup solutions offer **client side encryption** where data is encrypted before being sent to the server. That way the server cannot read the data it is storing but you can decrypt it with your secret key.
 
-As a side note, if your disk (or home partition) is not encrypted, then anyone that get ahold of your computer can manage to override the user access controls and read your data. Modern hardware supports fast and efficient read and writes of encrypted data so you might want to consider enabling **full disk encryption**.
+As a side note, if your disk (or home partition) is not encrypted, then anyone that get hold of your computer can manage to override the user access controls and read your data. Modern hardware supports fast and efficient read and writes of encrypted data so you might want to consider enabling **full disk encryption**.
 
 
 ## Append only
@@ -67,7 +67,7 @@ Some other things you may want to look into are:
 - **Periodic backups**: outdated backups can become pretty useless. Making backups regularly should be a consideration for your system
 - **Bootable backups**: some programs allow you to clone your entire disk. That way you have an image that contains an entire copy of your system you can boot directly from.
 - **Differential backup strategies**, you may not necessarily care the same about all your data. You can define different backup policies for different types of data.
-- **Append only backups** an additional consideration is to enforce append only operations to your backup repositories in order to prevent malicious agents to delete them if they get ahold of your machine.
+- **Append only backups** an additional consideration is to enforce append only operations to your backup repositories in order to prevent malicious agents to delete them if they get hold of your machine.
 
 
 ## Webservices

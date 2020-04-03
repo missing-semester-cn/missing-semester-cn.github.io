@@ -110,7 +110,7 @@ done
 ```
 
 In the comparison we tested whether `$?` was not equal to 0.
-Bash implements many comparsions of this sort, you can find a detailed list in the manpage for [`test`](http://man7.org/linux/man-pages/man1/test.1.html).
+Bash implements many comparisons of this sort, you can find a detailed list in the manpage for [`test`](http://man7.org/linux/man-pages/man1/test.1.html).
 When performing comparisons in bash try to use double brackets `[[ ]]` in favor of simple brackets `[ ]`. Chances of making mistakes are lower although it won't be portable to `sh`. A more detailed explanation can be found [here](http://mywiki.wooledge.org/BashFAQ/031).
 
 When launching scripts, you will often want to provide arguments that are similar. Bash has ways of making this easier, expanding expressions by carrying out filename expansion. These techniques are often referred to as shell _globbing_.
@@ -179,7 +179,7 @@ Short for manual, [`man`](http://man7.org/linux/man-pages/man1/man.1.html) provi
 For example, `man rm` will output the behavior of the `rm` command along with the flags that it takes including the `-i` flag we showed earlier.
 In fact, what I have been linking so far for every command are the online version of Linux manpages for the commands.
 Even non native commands that you install will have manpage entries if the developer wrote them and included them as part of the installation process.
-For interactive tools such as the ones based on ncurses, help for the comands can often be accessed within the program using the `:help` command or typing `?`.
+For interactive tools such as the ones based on ncurses, help for the commands can often be accessed within the program using the `:help` command or typing `?`.
 
 Sometimes manpages can be overly detailed descriptions of the commands and it can become hard to decipher what flags/syntax to use for common use cases.
 [TLDR pages](https://tldr.sh/) are a nifty complementary solution that focuses on giving example use cases of a command so you can quickly figure out which options to use.
