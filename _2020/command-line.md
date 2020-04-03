@@ -142,7 +142,7 @@ The most popular terminal multiplexer these days is [`tmux`](http://man7.org/lin
     + `tmux` starts a new session.
     + `tmux new -s NAME` starts it with that name.
     + `tmux ls` lists the current sessions
-    + Within `tmux` typing `<C-b> d`  dettaches the current session
+    + Within `tmux` typing `<C-b> d`  detaches the current session
     + `tmux a` attaches the last session. You can use `-t` flag to specify which
 
 - **Windows** - Equivalent to tabs in editors or browsers, they are visually separate parts of the same session
@@ -337,7 +337,7 @@ To generate a pair you can run [`ssh-keygen`](http://man7.org/linux/man-pages/ma
 ```bash
 ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519
 ```
-You should choose a passphrase, to avoid someone who gets ahold of your private key to access authorized servers. Use [`ssh-agent`](http://man7.org/linux/man-pages/man1/ssh-agent.1.html) or [`gpg-agent`](https://linux.die.net/man/1/gpg-agent) so you do not have to type your passphrase every time.
+You should choose a passphrase, to avoid someone who gets hold of your private key to access authorized servers. Use [`ssh-agent`](http://man7.org/linux/man-pages/man1/ssh-agent.1.html) or [`gpg-agent`](https://linux.die.net/man/1/gpg-agent) so you do not have to type your passphrase every time.
 
 If you have ever configured pushing to GitHub using SSH keys, then you have probably done the steps outlined [here](https://help.github.com/articles/connecting-to-github-with-ssh/) and have a valid key pair already. To check if you have a passphrase and validate it you can run `ssh-keygen -y -f /path/to/key`.
 

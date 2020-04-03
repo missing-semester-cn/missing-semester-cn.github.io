@@ -163,7 +163,7 @@ easy](https://emailregex.com/). And there's [lots of
 discussion](https://stackoverflow.com/questions/201323/how-to-validate-an-email-address-using-a-regular-expression/1917982).
 And people have [written
 tests](https://fightingforalostcause.net/content/misc/2006/compare-email-regex.php).
-And [test matrixes](https://mathiasbynens.be/demo/url-regex). You can
+And [test matrices](https://mathiasbynens.be/demo/url-regex). You can
 even write a regex for determining if a given number [is a prime
 number](https://www.noulakaz.net/2007/03/18/a-regular-expression-to-check-for-prime-numbers/).
 
@@ -220,7 +220,7 @@ ssh myserver journalctl
  | sort -nk1,1 | tail -n10
 ```
 
-`sort -n` will sort in numeric (instead of lexiographic) order. `-k1,1`
+`sort -n` will sort in numeric (instead of lexicographic) order. `-k1,1`
 means "sort by only the first whitespace-separated column". The `,n`
 part says "sort until the `n`th field, where the default is the end of
 the line. In this _particular_ example, sorting by the whole line
