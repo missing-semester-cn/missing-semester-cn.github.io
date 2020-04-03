@@ -69,7 +69,7 @@ features such as 24-bit color, menus, and popups.
     - Vim is a **modal** editor: different modes for inserting text vs manipulating text
 - Vim is programmable (with Vimscript and also other languages like Python)
 - Vim's interface itself is like a programming language
-    - Keystrokes (with mneumonic names) are commands
+    - Keystrokes (with mnemonic names) are commands
     - Commands are composable
 - Don't use the mouse: too slow
 - Editor should work at the speed you think
