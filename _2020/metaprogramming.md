@@ -39,7 +39,7 @@ inputs to your outputs. Often, that process might have many steps, and
 many branches. Run this to generate this plot, that to generate those
 results, and something else to produce the final paper. As with so many
 of the things we have seen in this class, you are not the first to
-encounter this annoyance, and luckily there exists many tools to help
+encounter this annoyance, and luckily there exist many tools to help
 you!
 
 These are usually called "build systems", and there are _many_ of them.

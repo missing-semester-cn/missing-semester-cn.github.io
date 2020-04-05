@@ -289,7 +289,7 @@ In use, once the server knows the client's public key (stored in the
 `.ssh/authorized_keys` file), a connecting client can prove its identity using
 asymmetric signatures. This is done through
 [challenge-response](https://en.wikipedia.org/wiki/Challenge%E2%80%93response_authentication).
-At a high level, the server picks a random number and send it to the client.
+At a high level, the server picks a random number and sends it to the client.
 The client then signs this message and sends the signature back to the server,
 which checks the signature against the public key on record. This effectively
 proves that the client is in possession of the private key corresponding to the

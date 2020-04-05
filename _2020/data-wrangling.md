@@ -308,7 +308,7 @@ leave that as an exercise to the reader.
 
 ## Analyzing data
 
-You can do math! For example, add the numbers on each line together:
+You can do the math! For example, add the numbers on each line together:
 
 ```bash
  | paste -sd+ | bc -l

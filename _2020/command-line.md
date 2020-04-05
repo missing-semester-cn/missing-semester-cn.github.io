@@ -129,9 +129,9 @@ You can learn more about these and other signals [here](https://en.wikipedia.org
 
 When using the command line interface you will often want to run more than one thing at once.
 For instance, you might want to run your editor and your program side by side.
-Although this can be achieved opening new terminal windows, using a terminal multiplexer is a more versatile solution.
+Although this can be achieved by opening new terminal windows, using a terminal multiplexer is a more versatile solution.
 
-Terminal multiplexers like [`tmux`](http://man7.org/linux/man-pages/man1/tmux.1.html) allow to multiplex terminal windows using panes and tabs so you can interact multiple shell sessions.
+Terminal multiplexers like [`tmux`](http://man7.org/linux/man-pages/man1/tmux.1.html) allow to multiplex terminal windows using panes and tabs so you can interact with multiple shell sessions.
 Moreover, terminal multiplexers let you detach a current terminal session and reattach at some point later in time.
 This can make your workflow much better when working with remote machines since it voids the need to use `nohup` and similar tricks.
 
@@ -153,7 +153,7 @@ The most popular terminal multiplexer these days is [`tmux`](http://man7.org/lin
     + `<C-b> ,` Rename the current window
     + `<C-b> w` List current windows
 
-- **Panes** - Like vim splits, pane let you have multiple shells in the same visual display.
+- **Panes** - Like vim splits, pane lets you have multiple shells in the same visual display.
     + `<C-b> "` Split the current pane horizontally
     + `<C-b> %` Split the current pane vertically
     + `<C-b> <direction>` Move to the pane in the specified _direction_. Direction here means arrow keys.
@@ -221,7 +221,7 @@ Many programs are configured using plain-text files known as _dotfiles_
 hidden in the directory listing `ls` by default).
 
 Shells are one example of programs configured with such files. On startup, your shell will read many files to load its configuration.
-Depending of the shell, whether you are starting a login and/or interactive the entire process can be quite complex.
+Depending on the shell, whether you are starting a login and/or interactive the entire process can be quite complex.
 [Here](https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html) is an excellent resource on the topic.
 
 For `bash`, editing your `.bashrc` or `.bash_profile` will work in most systems.
@@ -406,7 +406,7 @@ An additional advantage of using the `~/.ssh/config` file over aliases  is that 
 
 Note that the `~/.ssh/config` file can be considered a dotfile, and in general it is fine for it to be included with the rest of your dotfiles. However, if you make it public, think about the information that you are potentially providing strangers on the internet: addresses of your servers, users, open ports, &c. This may facilitate some types of attacks so be thoughtful about sharing your SSH configuration.
 
-Server side configuration is usually specified in `/etc/ssh/sshd_config`. Here you can make  changes like disabling password authentication, changing ssh ports, enabling X11 forwarding, &c. You can specify config settings in a per user basis.
+Server side configuration is usually specified in `/etc/ssh/sshd_config`. Here you can make changes like disabling password authentication, changing ssh ports, enabling X11 forwarding, &c. You can specify config settings in a per user basis.
 
 ## Miscellaneous
 
