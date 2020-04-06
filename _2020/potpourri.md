@@ -54,7 +54,7 @@ Some software resources to get started on the topic:
 ## Daemons
 
 You are probably already familiar with the notion of daemons, even if the word seems new.
-Most computers have a series of processes that are always running in the background rather than waiting for an user to launch them and interact with them.
+Most computers have a series of processes that are always running in the background rather than waiting for a user to launch them and interact with them.
 These processes are called daemons and the programs that run as daemons often end with a `d` to indicate so.
 For example `sshd`, the SSH daemon, is the program responsible for listening to incoming SSH requests and checking that the remote user has the necessary credentials to log in.
 
@@ -358,8 +358,8 @@ access to:
 - A cheap always-on machine that has a public IP address, used to host services
 - A machine with a lot of CPU, disk, RAM, and/or GPU
 - Many more machines than you physically have access to (billing is often by
-the second, so if you want a lot of compute for a short amount of time, it's
-feasible to rent 1000 computers for a couple minutes)
+the second, so if you want a lot of computing for a short amount of time, it's
+feasible to rent 1000 computers for a couple of minutes)
 
 Popular services include [Amazon AWS](https://aws.amazon.com/), [Google
 Cloud](https://cloud.google.com/), and

@@ -227,7 +227,7 @@ currently are" is a special reference called "HEAD".
 Finally, we can define what (roughly) is a Git _repository_: it is the data
 `objects` and `references`.
 
-On disk, all Git stores is objects and references: that's all there is to Git's
+On disk, all Git stores are objects and references: that's all there is to Git's
 data model. All `git` commands map to some manipulation of the commit DAG by
 adding objects and adding/updating references.
 
@@ -243,7 +243,7 @@ probably a command to do it (e.g. in this case, `git checkout master; git reset
 This is another concept that's orthogonal to the data model, but it's a part of
 the interface to create commits.
 
-One way you might imagine implementing snapshotting as described above is have
+One way you might imagine implementing snapshotting as described above is to have
 a "create snapshot" command that creates a new snapshot based on the _current
 state_ of the working directory. Some version control tools work like this, but
 not Git. We want clean snapshots, and it might not always be ideal to make a
