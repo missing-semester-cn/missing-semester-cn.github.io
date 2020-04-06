@@ -19,7 +19,7 @@ Shell scripts are the next step in complexity.
 Most shells have their own scripting language with variables, control flow and its own syntax.
 What makes shell scripting different from other scripting programming language is that is optimized for performing shell related tasks.
 Thus, creating command pipelines, saving results into files or reading from standard input are primitives in shell scripting which makes it easier to use than general purpose scripting languages.
-For this section we will focus in bash scripting since it is the most common.
+For this section we will focus on bash scripting since it is the most common.
 
 To assign variables in bash use the syntax `foo=bar` and access the value of the variable with `$foo`.
 Note that `foo = bar` will not work since it is interpreted as calling the `foo` program with arguments `=` and `bar`.
@@ -145,7 +145,7 @@ diff <(ls foo) <(ls bar)
 
 <!-- Lastly, pipes `|` are a core feature of scripting. Pipes connect one program's output to the next program's input. We will cover them more in detail in the data wrangling lecture. -->
 
-Writing `bash` scripts can be tricky and unintutive. There are tools like [shellcheck](https://github.com/koalaman/shellcheck) that will help you find out errors in your sh/bash scripts.
+Writing `bash` scripts can be tricky and unintuitive. There are tools like [shellcheck](https://github.com/koalaman/shellcheck) that will help you find out errors in your sh/bash scripts.
 
 Note that scripts need not necessarily be written in bash to be called from the terminal. For instance, here's a simple Python script that outputs its arguments in reversed order
 
@@ -177,7 +177,7 @@ You could always start googling, but since UNIX predates StackOverflow there are
 As we saw in the shell lecture, the first order approach is to call said command with the `-h` or `--help` flags. A more detailed approach is to use the `man` command.
 Short for manual, [`man`](http://man7.org/linux/man-pages/man1/man.1.html) provides a manual page (called manpage) for a command you specify.
 For example, `man rm` will output the behavior of the `rm` command along with the flags that it takes including the `-i` flag we showed earlier.
-In fact, what I have been linking so far for every command are the online version of Linux manpages for the commands.
+In fact, what I have been linking so far for every command is the online version of Linux manpages for the commands.
 Even non native commands that you install will have manpage entries if the developer wrote them and included them as part of the installation process.
 For interactive tools such as the ones based on ncurses, help for the commands can often be accessed within the program using the `:help` command or typing `?`.
 
@@ -230,8 +230,8 @@ A more in depth comparison can be found [here](https://unix.stackexchange.com/qu
 
 Finding files is useful but quite often you are after what is in the file.
 A common scenario is wanting to search for all files that contain some pattern, along with where in those files said pattern occurs.
-To achieve this, most UNIX-like systems provide [`grep`](http://man7.org/linux/man-pages/man1/grep.1.html), a generic tool for matching patterns from input text.
-It is an incredibly value shell tool and we will cover it more in detail during the data wrangling lecture.
+To achieve this, most UNIX-like systems provide [`grep`](http://man7.org/linux/man-pages/man1/grep.1.html), a generic tool for matching patterns from the input text.
+It is an incredibly valuable shell tool and we will cover it more in detail during the data wrangling lecture.
 
 `grep` has many flags that make it a very versatile tool.
 Some I frequently use are `-C` for getting **C**ontext around the matching line and `-v` for in**v**erting the match, i.e. print all lines that do **not** match the pattern. For example, `grep -C 5` will print 5 lines before and after the match.
@@ -269,14 +269,14 @@ After pressing `Ctrl+R` you can type a substring you want to match for commands 
 As you keep pressing it you will cycle through the matches in your history.
 This can also be enabled with the UP/DOWN arrows in [zsh](https://github.com/zsh-users/zsh-history-substring-search).
 A nice addition on top of `Ctrl+R` comes with using [fzf](https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings#ctrl-r) bindings.
-`fzf` is a general purpose fuzzy finder that can used with many commands.
+`fzf` is a general purpose fuzzy finder that can be used with many commands.
 Here is used to fuzzily match through your history and present results in a convenient and visually pleasing manner.
 
 Another cool history-related trick I really enjoy is **history-based autosuggestions**.
 First introduced by the [fish](https://fishshell.com/) shell, this feature dynamically autocompletes your current shell command with the most recent command that you typed that shares a common prefix with it.
 It can be enabled in [zsh](https://github.com/zsh-users/zsh-autosuggestions) and it is a great quality of life trick for your shell.
 
-Lastly, a thing to have in mind is that if you start a command with a leading space it won't be added to you shell history.
+Lastly, a thing to have in mind is that if you start a command with a leading space it won't be added to your shell history.
 This comes in handy when you are typing commands with passwords or other bits of sensitive information.
 If you make the mistake of not adding the leading space you can always manually remove the entry by editing your `.bash_history` or `.zhistory`.
 
@@ -361,7 +361,7 @@ echo "found error after $count runs"
 cat out.txt
 {% endcomment %}
 
-1. As we covered in lecture `find`'s `-exec` can be very powerful for performing operations over the files we are searching for.
+1. As we covered in the lecture `find`'s `-exec` can be very powerful for performing operations over the files we are searching for.
 However, what if we want to do something with **all** the files, like creating a zip file?
 As you have seen so far commands will take input from both arguments and STDIN.
 When piping commands, we are connecting STDOUT to STDIN, but some commands like `tar` take inputs from arguments.
