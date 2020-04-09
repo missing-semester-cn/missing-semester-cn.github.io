@@ -27,7 +27,7 @@ ecosystem that could make students' lives significantly easier.
 
 To help remedy this, we are running a class that covers all the topics we
 consider crucial to be an effective computer scientist and programmer. The
-class is pragmatic and practical, and it provides hands-on introductions to
+class is pragmatic and practical, and it provides hands-on introduction to
 tools and techniques that you can immediately apply in a wide variety of
 situations you will encounter. The class is being run during MIT's "Independent
 Activities Period" in January 2020 — a one-month semester that features shorter
