@@ -30,7 +30,7 @@ For the last lecture, we answered questions that the students submitted:
 ## Any recommendations on learning Operating Systems related topics like processes, virtual memory, interrupts, memory management, etc 
 
 First, it is unclear whether you actually need to be very familiar with all of these topics since they are very low level topics.
-They will matter as you start writing more low level code like implementing or modifying a kernel. Otherwise, most topics will relevant, with the exception of processes and signals that were briefly covered in other lectures. 
+They will matter as you start writing more low level code like implementing or modifying a kernel. Otherwise, most topics will not be relevant, with the exception of processes and signals that were briefly covered in other lectures. 
 
 Some good resources to learn about this topic:
 
