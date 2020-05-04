@@ -240,7 +240,7 @@ When it comes to quickly parsing through many files, you want to use `-R` since 
 But `grep -R` can be improved in many ways, such as ignoring `.git` folders, using multi CPU support, &c.
 So there has been no shortage of alternatives developed, including [ack](https://beyondgrep.com/), [ag](https://github.com/ggreer/the_silver_searcher) and [rg](https://github.com/BurntSushi/ripgrep).
 All of them are fantastic but pretty much cover the same need.
-For now I am sticking with ripgrep (`rg`) given how fast and intuitive is. Some examples:
+For now I am sticking with ripgrep (`rg`) given how fast and intuitive it is. Some examples:
 ```bash
 # Find all python files where I used the requests library
 rg -t py 'import requests'
