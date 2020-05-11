@@ -131,13 +131,13 @@ When using the command line interface you will often want to run more than one t
 For instance, you might want to run your editor and your program side by side.
 Although this can be achieved by opening new terminal windows, using a terminal multiplexer is a more versatile solution.
 
-Terminal multiplexers like [`tmux`](http://man7.org/linux/man-pages/man1/tmux.1.html) allow to multiplex terminal windows using panes and tabs so you can interact with multiple shell sessions.
+Terminal multiplexers like [`tmux`](http://man7.org/linux/man-pages/man1/tmux.1.html) allow you to multiplex terminal windows using panes and tabs so you can interact with multiple shell sessions.
 Moreover, terminal multiplexers let you detach a current terminal session and reattach at some point later in time.
 This can make your workflow much better when working with remote machines since it voids the need to use `nohup` and similar tricks.
 
-The most popular terminal multiplexer these days is [`tmux`](http://man7.org/linux/man-pages/man1/tmux.1.html). `tmux` is highly configurable and using the associated keybindings you can create multiple tabs and panes and quickly navigate through them.
+The most popular terminal multiplexer these days is [`tmux`](http://man7.org/linux/man-pages/man1/tmux.1.html). `tmux` is highly configurable and by using the associated keybindings you can create multiple tabs and panes and quickly navigate through them.
 
-`tmux` expects you to know its keybindings, and they all have the form `<C-b> x` where that means press `Ctrl+b` release, and the press `x`. `tmux` has the following hierarchy of objects:
+`tmux` expects you to know its keybindings, and they all have the form `<C-b> x` where that means (1) press `Ctrl+b`, (2) release `Ctrl+b`, and then (3) press `x`. `tmux` has the following hierarchy of objects:
 - **Sessions** - a session is an independent workspace with one or more windows
     + `tmux` starts a new session.
     + `tmux new -s NAME` starts it with that name.
@@ -153,7 +153,7 @@ The most popular terminal multiplexer these days is [`tmux`](http://man7.org/lin
     + `<C-b> ,` Rename the current window
     + `<C-b> w` List current windows
 
-- **Panes** - Like vim splits, pane lets you have multiple shells in the same visual display.
+- **Panes** - Like vim splits, panes let you have multiple shells in the same visual display.
     + `<C-b> "` Split the current pane horizontally
     + `<C-b> %` Split the current pane vertically
     + `<C-b> <direction>` Move to the pane in the specified _direction_. Direction here means arrow keys.
@@ -257,7 +257,7 @@ tell you about their preferred customizations. Yet another way to learn about
 customizations is to look through other people's dotfiles: you can find tons of
 [dotfiles
 repositories](https://github.com/search?o=desc&q=dotfiles&s=stars&type=Repositories)
-on --- see the most popular one
+on Github --- see the most popular one
 [here](https://github.com/mathiasbynens/dotfiles) (we advise you not to blindly
 copy configurations though).
 [Here](https://dotfiles.github.io/) is another good resource on the topic.
