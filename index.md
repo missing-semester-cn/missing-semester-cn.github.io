@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 计算机科学教育中缺失的一课（The Missing Semester of Your CS Education）
+title: 计算机科学教育中缺失的一课
 ---
 
 Classes teach you all about advanced topics within CS, from operating systems
@@ -16,7 +16,7 @@ only enables you to spend less time on figuring out how to bend your tools to
 your will, but it also lets you solve problems that would previously seem
 impossibly complex.
 
-阅读[开设此课程的动机](/about/).
+关于[开设此课程的动机](/about/).
 
 {% comment %}
 # Registration
@@ -69,7 +69,7 @@ YouTube](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57
 
 ## 致谢
 
-感谢 Elaine Mello, Jim Cain, 以及 [MIT Open
+感谢 Elaine Mello, Jim Cain 以及 [MIT Open
 Learning](https://openlearning.mit.edu/) 帮助我们录制讲座视频。
 
 感谢 Anthony Zolnik 和 [MIT
