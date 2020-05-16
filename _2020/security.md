@@ -1,6 +1,6 @@
 ---
 layout: lecture
-title: "Security and Cryptography"
+title: "安全和密码学"
 date: 2019-01-28
 ready: true
 video:

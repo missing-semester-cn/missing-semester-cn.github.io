@@ -1,6 +1,6 @@
 ---
 layout: lecture
-title: "Data Wrangling"
+title: "数据清理"
 date: 2019-01-16
 ready: true
 video:

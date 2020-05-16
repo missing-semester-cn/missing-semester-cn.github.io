@@ -1,6 +1,6 @@
 ---
 layout: lecture
-title: "Potpourri"
+title: "大杂烩"
 date: 2019-01-29
 ready: true
 video:
@@ -10,6 +10,7 @@ video:
 
 ## Table of Contents
 
+- [Table of Contents](#table-of-contents)
 - [Keyboard remapping](#keyboard-remapping)
 - [Daemons](#daemons)
 - [FUSE](#fuse)
@@ -19,7 +20,8 @@ video:
 - [Window managers](#window-managers)
 - [VPNs](#vpns)
 - [Markdown](#markdown)
-- [Hammerspoon(desktop-automation-on-macOS)](#hammerspoon-desktop-automation-on-macos)
+- [Hammerspoon (desktop automation on macOS)](#hammerspoon-desktop-automation-on-macos)
+  - [Resources](#resources)
 - [Booting + Live USBs](#booting--live-usbs)
 - [Docker, Vagrant, VMs, Cloud, OpenStack](#docker-vagrant-vms-cloud-openstack)
 - [Notebook programming](#notebook-programming)

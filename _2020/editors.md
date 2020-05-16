@@ -1,6 +1,6 @@
 ---
 layout: lecture
-title: "Editors (Vim)"
+title: "编辑器 (Vim)"
 date: 2019-01-15
 ready: true
 video:
