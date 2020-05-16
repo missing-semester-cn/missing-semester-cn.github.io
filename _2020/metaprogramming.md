@@ -1,7 +1,7 @@
 ---
 layout: lecture
 title: "元编程"
-details: build systems, dependency management, testing, CI
+details: 构建系统、依赖管理、测试、持续集成
 date: 2019-01-27
 ready: true
 video:

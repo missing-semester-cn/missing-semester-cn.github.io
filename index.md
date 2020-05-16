@@ -71,7 +71,8 @@ YouTube](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57
 感谢 Elaine Mello, Jim Cain, 以及 [MIT Open
 Learning](https://openlearning.mit.edu/) 帮助我们录制讲座视频。
 感谢 Anthony Zolnik 和 [MIT
-AeroAstro](https://aeroastro.mit.edu/) 提供 A/V 设备。感谢 Brandi Adams 和
+AeroAstro](https://aeroastro.mit.edu/) 提供 A/V 设备。
+感谢 Brandi Adams 和
 [MIT EECS](https://www.eecs.mit.edu/) 对本课程的支持。
 
 
