@@ -69,9 +69,7 @@ Fri 10 Jan 2020 11:49:31 AM EST
 missing:~$ 
 ```
 
-Here, we executed the `date` program, which (perhaps unsurprisingly)
-prints the current date and time. The shell then asks us for another
-command to execute. We can also execute a command with _arguments_:
+这里，我们执行了 `date` 找个程序，不出意料地，它打印出了当前的日前和时间。然后，shell等待我们输入其他命令。我们可以在执行命令的同时向程序传递 _参数_ ：
 
 ```console
 missing:~$ echo hello
@@ -317,12 +315,8 @@ $ echo 1 | sudo tee /sys/class/leds/input6::scrolllock/brightness
 
 # 下一步
 
-At this point you know your way around a shell enough to accomplish
-basic tasks. You should be able to navigate around to find files of
-interest and use the basic functionality of most programs. In the next
-lecture, we will talk about how to perform and automate more complex
-tasks using the shell and the many handy command-line programs out
-there.
+学到这里，您掌握对shell知识已经可以完成一些基础对任务了。您应该已经可以查找感兴趣对文件并使用大多数程序对基本功能了。
+在下一场讲座中，我们会探讨如何利用shell及其他工具执行并自动化更复杂的任务。
 
 # 课后练习
 
