@@ -44,27 +44,14 @@ s课后我们会安排答疑的时间来回答您的问题。如果您参加的�
 
 ##  shell 是什么？
 
-Computers these days have a variety of interfaces for giving them
-commands; fancyful graphical user interfaces, voice interfaces, and
-even AR/VR are everywhere. These are great for 80% of use-cases, but
-they are often fundamentally restricted in what they allow you to do —
-you cannot press a button that isn't there or give a voice command that
-hasn't been programmed. To take full advantage of the tools your
-computer provides, we have to go old-school and drop down to a textual
-interface: The Shell.
+如今的计算机有着多种多样的交互接口让我们可以进行指令的的输入，从炫酷的图像用户界面（GUI），语音输入甚至是AR/VR都已经无处不在。
+这些交互接口可以覆盖80%的使用场景，但是它们也从根本上限制了您的操作方式——你不能点击一个不存在的按钮或者是用语音输入一个还没有被录入的指令。
+为了充分利用计算机的能力，我们不得不回到最根本的方式，使用文字接口：Shell
 
-Nearly all platforms you can get your hand on has a shell in one form or
-another, and many of them have several shells for you to choose from.
-While they may vary in the details, at their core they are all roughly
-the same: they allow you to run programs, give them input, and inspect
-their output in a semi-structured way.
+几乎所有您能够接触到的平台都支持某种形式都shell，有些甚至还提供了多种shell供您选择。虽然它们之间有些细节上都差异，但是其核心功能都是一样都：它允许你执行程序，输入并获取某种半结构化都输出。
 
-In this lecture, we will focus on the Bourne Again SHell, or "bash" for
-short. This is one of the most widely used shells, and its syntax is
-similar to what you will see in many other shells. To open a shell
-_prompt_ (where you can type commands), you first need a _terminal_.
-Your device probably shipped with one installed, or you can install one
-fairly easily.
+本节课我们会使用Bourne Again SHell, 简称 "bash" 。
+这是被最广泛使用都一种shell，它都语法和其他都shell都是类似的。打开shell _提示符_（您输入指令的地方），您首先需要打开 _终端_ 。您的设备通常都已经内置了终端，或者您也可以安装一个，非常简单。
 
 ## 使用 shell
 
