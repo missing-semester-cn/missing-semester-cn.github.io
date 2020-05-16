@@ -149,20 +149,11 @@ missing:~$ ls -l /home
 drwxr-xr-x 1 missing  users  4096 Jun 15  2019 missing
 ```
 
-This gives us a bunch more information about each file or directory
-present. First, the `d` at the beginning of the line tells us that
-`missing` is a directory. Then follow three groups of three characters
-(`rwx`). These indicate what permissions the owner of the file
-(`missing`), the owning group (`users`), and everyone else respectively
-have on the relevant item. A `-` indicates that the given principal does
-not have the given permission. Above, only the owner is allowed to
-modify (`w`) the `missing` directory (i.e., add/remove files in it). To
-enter a directory, a user must have "search" (represented by "execute":
-`x`) permissions on that directory (and its parents). To list its
-contents, a user must have read (`r`) permissions on that directory. For
-files, the permissions are as you would expect. Notice that nearly all
-the files in `/bin` have the `x` permission set for the last group,
-"everyone else", so that anyone can execute those programs.
+这个参数可以打印出更加详细地列出目录下文件或文件夹的信息。首先，本行第一个字符`d` 表示
+`missing` 是一个目录。然后接下来的九个字符，每三个字符构成一组。
+(`rwx`). 它们分别代表了文件所有者(`missing`)，用户组 (`users`) 以及其他所有人具有的权限。其中 `-`表示该用户不具备相应的权限。从上面的信息来看，只有文件所有者可以修改(`w`) ， `missing` 文件夹 （例如，添加或删除文件夹中的文件）。为了进入某个文件夹，用户需要具备该文件夹以及其父文件夹的“搜索”权限（以“可执行”：`x`）权限表示。为了列出它的包含的内容，用户必须对该文件夹具备读权限（`r`）。对于文件来说，权限的意义也是类似的。注意，`/bin`目录下的程序在最后一组，即表示所有人的用户组中，均包含`x`权限，也就是说任何人都可以执行这些程序。
+
+
 
 Some other handy programs to know about at this point are `mv` (to
 rename/move a file), `cp` (to copy a file), and `mkdir` (to make a new
