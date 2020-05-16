@@ -1,6 +1,6 @@
 ---
 layout: page
-title: The Missing Semester of Your CS Education
+title: 计算机科学教育中缺失的一课（The Missing Semester of Your CS Education）
 ---
 
 Classes teach you all about advanced topics within CS, from operating systems
@@ -47,12 +47,13 @@ Sign up for the IAP 2020 class by filling out this [registration form](https://f
 {% endfor %}
 </ul>
 
-Video recordings of the lectures are available [on
-YouTube](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57J).
+讲座视频可以在 [
+YouTube](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57J)上找到
 
 # 关于本课程
 
 **教员**: 本课程由 [Anish](https://www.anishathalye.com/)、 [Jon](https://thesquareplanet.com/) 和 [Jose](http://josejg.com/)教授。
+
 **问题**: 请通过 [missing-semester@mit.edu](mailto:missing-semester@mit.edu)联系我们
 
 # 在 MIT 之外
@@ -70,8 +71,10 @@ YouTube](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57
 
 感谢 Elaine Mello, Jim Cain, 以及 [MIT Open
 Learning](https://openlearning.mit.edu/) 帮助我们录制讲座视频。
+
 感谢 Anthony Zolnik 和 [MIT
 AeroAstro](https://aeroastro.mit.edu/) 提供 A/V 设备。
+
 感谢 Brandi Adams 和
 [MIT EECS](https://www.eecs.mit.edu/) 对本课程的支持。
 
