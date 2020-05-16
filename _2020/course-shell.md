@@ -75,26 +75,10 @@ missing:~$
 missing:~$ echo hello
 hello
 ```
+上例中，我们让shell执行 `echo` ，同时指定参数`hello`。`echo` 程序将该参数打印出来。
+shell基于空格分割命令并进行解析，然后执行第一个单词代表的程序，并将后续的单词作为程序可以访问的参数。如果您希望传递的参数中包含空格（例如一个名为 My Photos 的文件夹），您要么用使用单引号，双引号将其包裹起来，要么使用转义符号`\`进行处理(`My\ Photos`)。
 
-In this case, we told the shell to execute the program `echo` with the
-argument `hello`. The `echo` program simply prints out its arguments.
-The shell parses the command by splitting it by whitespace, and then
-runs the program indicated by the first word, supplying each subsequent
-word as an argument that the program can access. If you want to provide
-an argument that contains spaces or other special characters (e.g., a
-directory named "My Photos"), you can either quote the argument with `'`
-or `"` (`"My Photos"`), or escape just the relevant characters with `\`
-(`My\ Photos`).
-
-But how does the shell know how to find the `date` or `echo` programs?
-Well, the shell is a programming environment, just like Python or Ruby,
-and so it has variables, conditionals, loops, and functions (next
-lecture!). When you run commands in your shell, you are really writing a
-small bit of code that your shell interprets. If the shell is asked to
-execute a command that doesn't match one of its programming keywords, it
-consults an _environment variable_ called `$PATH` that lists which
-directories the shell should search for programs when it is given a
-command:
+但是，shell是如何知道去哪里寻找 `date` 或 `echo` 的呢？其实，类似于Python or Ruby，shell是一个编程环境，所以它具备变量、条件、循环和函数（下一课进行讲解）。当你在shell中执行命令时，您实际上是在执行一段shell可以解释执行的简短代码。如果你要求shell执行某个指令，但是该指令并不是shell所了解的编程关键字，那么它会去咨询 _环境变量_  `$PATH`，它会列出当shell接到某条指令时，进行程序搜索的路径：
 
 
 ```console
