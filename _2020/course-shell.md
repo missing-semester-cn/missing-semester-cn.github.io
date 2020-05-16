@@ -1,6 +1,6 @@
 ---
 layout: lecture
-title: "Course overview + the shell"
+title: "课程概览与shell"
 date: 2019-01-13
 ready: true
 video:
@@ -12,46 +12,31 @@ video:
 [Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anic30/course_overview_iap_2019/)
 {% endcomment %}
 
-# Motivation
+# 动机
 
-As computer scientists, we know that computers are great at aiding in
-repetitive tasks. However, far too often, we forget that this applies
-just as much to our _use_ of the computer as it does to the computations
-we want our programs to perform. We have a vast range of tools
-available at our fingertips that enable us to be more productive and
-solve more complex problems when working on any computer-related
-problem. Yet many of us utilize only a small fraction of those tools; we
-only know enough magical incantations by rote to get by, and blindly
-copy-paste commands from the internet when we get stuck.
+作为计算机科学家，我们都知道计算机最擅长帮助我们完成重复性的工作。
+但是我们却常常忘记这一点也适用于我们使用计算机的方式，而不仅仅是利用计算机程序去帮我们求解问题。
+在从事与计算机相关的工作时，我们有很多触手可及的工具可以帮助我们更高效的解决问题。
+但是我们中的大多数人实际上只利用了这些工具中的很少一部分，我们常常只是死记硬背地掌握了一些对我们来说如咒语一般的命令，
+或是当我们卡住的时候，盲目地从网上复制粘贴一些命令。
 
-This class is an attempt to address this.
+本课程意在帮你解决这一问题。
 
-We want to teach you how to make the most of the tools you know, show
-you new tools to add to your toolbox, and hopefully instill in you some
-excitement for exploring (and perhaps building) more tools on your own.
-This is what we believe to be the missing semester from most Computer
-Science curriculum.
+我们希望教会您如何挖掘现有工具的潜力，并向您介绍一些新的工具。也许我们还可以促使您想要去探索（甚至是去开发）更多的工具。
+我们认为这是大多数计算机科学相关课程中缺少的重要一环。
 
-# Class structure
+# 课程结构
 
-The class consists of 11 1-hour lectures, each one centering on a
-[particular topic](/2020/). The lectures are largely independent,
-though as the semester goes on we will presume that you are familiar
-with the content from the earlier lectures. We have lecture notes
-online, but there will be a lot of content covered in class (e.g. in the
-form of demos) that may not be in the notes. We will be recording
-lectures and posting the recordings online.
+本课程包含11个时常在一小时左右的讲座，每一个讲座都会关注一个
+[特定的主题](/missing-semester/2020/)。尽管这些讲座之间基本上是各自独立的，但随着课程的进行，我们会假定您已经掌握了之前的内容。
+每个讲座都有在线笔记供查阅，但是课上的很多内容并不会包含在笔记中。因此我们也会把课程录制下来发布到互联网上供大家观看学习。
 
-We are trying to cover a lot of ground over the course of just 11 1-hour
-lectures, so the lectures are fairly dense. To allow you some time to
-get familiar with the content at your own pace, each lecture includes a
-set of exercises that guide you through the lecture's key points. After
-each lecture, we are hosting office hours where we will be present to
-help answer any questions you might have. If you are attending the class
-online, you can send us questions at
-[missing-semester@mit.edu](mailto:missing-semester@mit.edu).
+我们希望能在这11个一小时讲座中涵盖大部分必须的内容，因此课程地节奏会比较紧凑。
+为了能帮助您以自己的节奏来掌握讲座内容，每次课程都包含来一组练习来帮助您掌握本节课的重点。
+s课后我们会安排答疑的时间来回答您的问题。如果您参加的是在线课程，可以发送邮件到
+[missing-semester@mit.edu](mailto:missing-semester@mit.edu)来联系我们。
 
-Due to the limited time we have, we won't be able to cover all the tools
+由于时长的限制，我们不可能达到那些专门课程一样的细致程度，我们会适时地将您引向一些优秀地资源Due to the limited time we have, we won't be able to cover all the tools
 in the same level of detail a full-scale class might. Where possible, we
 will try to point you towards resources for digging further into a tool
 or topic, but if something particularly strikes your fancy, don't
