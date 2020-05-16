@@ -100,16 +100,8 @@ _path_ to the file we want to execute.
 
 ## 在shell中导航
 
-A path on the shell is a delimited list of directories; separated by `/`
-on Linux and macOS and `\` on Windows. On Linux and macOS, the path `/`
-is the "root" of the file system, under which all directories and files
-lie, whereas on Windows there is one root for each disk partition (e.g.,
-`C:\`). We will generally assume that you are using a Linux filesystem
-in this class. A path that starts with `/` is called an _absolute_ path.
-Any other path is a _relative_ path. Relative paths are relative to the
-current working directory, which we can see with the `pwd` command and
-change with the `cd` command. In a path, `.` refers to the current
-directory, and `..` to its parent directory:
+shell中的路径是一组被分割的目录，在 Linux 和 macOS 上使用 `/` 分割，而在Windows上是`\`。路径 `/`代表的是系统的根目录，所有的文件夹都包括在找个路径之下，在Windows上每个盘都有一个根目录（例如：
+`C:\`）。 我们假设您在学习本课程时使用的是Linux文件系统。如果某个路径以`/` 开头，那么它是一个 _绝对路径_，其他的都术语 _相对路径_ 。相对路径是指相对于当前工作目录的路径，当前工作目录可以使用 `pwd` 命令来获取。此外，切换目录需要使用 `cd` 命令。在路径中，`.` 表示的是当前目录，而 `..` 表示上级目录：
 
 ```console
 missing:~$ pwd
@@ -130,15 +122,11 @@ missing:~$ ../../bin/echo hello
 hello
 ```
 
-Notice that our shell prompt kept us informed about what our current
-working directory was. You can configure your prompt to show you all
-sorts of useful information, which we will cover in a later lecture.
+注意，shell会实时显示当前的路径信息。您可以通过配置shell提示符来显示各种有用的信息，这一内容我们会在后面的课程中进行讨论。
 
-In general, when we run a program, it will operate in the current
-directory unless we tell it otherwise. For example, it will usually
-search for files there, and create new files there if it needs to.
+一般来说，当我们运行一个程序时，如果我们没有指定路径，则该程序会在当前目录下执行。例如，我们常常会搜索文件，并在需要时创建文件。
 
-To see what lives in a given directory, we use the `ls` command:
+为了查看指定目录下包含哪些文件，我们使用`ls` 命令：
 
 ```console
 missing:~$ ls
@@ -155,12 +143,7 @@ home
 ...
 ```
 
-Unless a directory is given as its first argument, `ls` will print the
-contents of the current directory. Most commands accept flags and
-options (flags with values) that start with `-` to modify their
-behavior. Usually, running a program with the `-h` or `--help` flag
-(`/?` on Windows) will print some help text that tells you what flags
-and options are available. For example, `ls --help` tells us:
+除非我们利用第一个参数指定目录，否则 `ls` 会打印当前目录下的文件。大多数的命令接受标记和选项（带有值的标记），它们以`-` 开头，并可以改变程序的行为。通常，在执行程序时使用`-h` 或 `--help` 标记可以打印帮助信息，以便了解有哪些可用的标记或选项。例如，`ls --help` 的输出如下：
 
 ```
   -l                         use a long listing format
