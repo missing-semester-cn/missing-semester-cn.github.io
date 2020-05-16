@@ -36,15 +36,13 @@ video:
 s课后我们会安排答疑的时间来回答您的问题。如果您参加的是在线课程，可以发送邮件到
 [missing-semester@mit.edu](mailto:missing-semester@mit.edu)来联系我们。
 
-由于时长的限制，我们不可能达到那些专门课程一样的细致程度，我们会适时地将您引向一些优秀地资源Due to the limited time we have, we won't be able to cover all the tools
-in the same level of detail a full-scale class might. Where possible, we
-will try to point you towards resources for digging further into a tool
-or topic, but if something particularly strikes your fancy, don't
-hesitate to reach out to us and ask for pointers!
+由于时长的限制，我们不可能达到那些专门课程一样的细致程度，我们会适时地将您介绍一些优秀的资源，帮助您深入的理解相关的工具或主题。
+但是如果您还有一些特别关注的话题，也请联系我们。
 
-# Topic 1: The Shell
 
-## What is the shell?
+# 主题 1: The Shell
+
+##  shell 是什么？
 
 Computers these days have a variety of interfaces for giving them
 commands; fancyful graphical user interfaces, voice interfaces, and
@@ -68,7 +66,7 @@ _prompt_ (where you can type commands), you first need a _terminal_.
 Your device probably shipped with one installed, or you can install one
 fairly easily.
 
-## Using the shell
+## 使用 shell
 
 When you launch your terminal, you will see a _prompt_ that often looks
 a little like this:
@@ -137,7 +135,7 @@ find out which file is executed for a given program name using the
 `which` program. We can also bypass `$PATH` entirely by giving the
 _path_ to the file we want to execute.
 
-## Navigating in the shell
+## 在shell中导航
 
 A path on the shell is a delimited list of directories; separated by `/`
 on Linux and macOS and `\` on Windows. On Linux and macOS, the path `/`
@@ -238,7 +236,7 @@ page_. Press `q` to exit.
 missing:~$ man ls
 ```
 
-## Connecting programs
+## 在程序间创建连接
 
 In the shell, programs have two primary "streams" associated with them:
 their input stream and their output stream. When the program tries to
@@ -276,7 +274,7 @@ missing:~$ curl --head --silent google.com | grep --ignore-case content-length |
 We will go into a lot more detail about how to take advantage of pipes
 in the lecture on data wrangling.
 
-## A versatile and powerful tool
+## 一个功能全面又强大的工具
 
 On most Unix-like systems, one user is special: the "root" user. You may
 have seen it in the file listings above. The root user is above (almost)
@@ -336,7 +334,7 @@ state of various system LEDs (your path might be different):
 $ echo 1 | sudo tee /sys/class/leds/input6::scrolllock/brightness
 ```
 
-# Next steps
+# 下一步
 
 At this point you know your way around a shell enough to accomplish
 basic tasks. You should be able to navigate around to find files of
@@ -345,7 +343,7 @@ lecture, we will talk about how to perform and automate more complex
 tasks using the shell and the many handy command-line programs out
 there.
 
-# Exercises
+# 课后练习
 
  1. Create a new directory called `missing` under `/tmp`.
  1. Look up the `touch` program. The `man` program is your friend.
