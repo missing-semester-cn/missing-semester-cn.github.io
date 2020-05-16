@@ -55,19 +55,13 @@ s课后我们会安排答疑的时间来回答您的问题。如果您参加的�
 
 ## 使用 shell
 
-When you launch your terminal, you will see a _prompt_ that often looks
-a little like this:
+当您打开终端时，您会看到一个提示符，它看起来一般是这个样子的：
 
 ```console
 missing:~$ 
 ```
 
-This is the main textual interface to the shell. It tells you that you
-are on the machine `missing` and that your "current working directory",
-or where you currently are, is `~` (short for "home"). The `$` tells you
-that you are not the root user (more on that later). At this prompt you
-can type a _command_, which will then be interpreted by the shell. The
-most basic command is to execute a program:
+这是shell最主要的文本接口。它告诉你，你的主机名是 `missing` 并且您当前的工作目录（"current working directory"）或者说您当前所在的位置是`~` (表示 "home")。 `$`符号表示您现在的身份不是root用户（稍后会介绍）。在找个提示符中，您可以输入 _命令_ ，命令最终会被shell解析。最简单的命令是执行一个程序：
 
 ```console
 missing:~$ date
