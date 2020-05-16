@@ -90,13 +90,8 @@ missing:~$ /bin/echo $PATH
 /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ```
 
-When we run the `echo` command, the shell sees that it should execute
-the program `echo`, and then searches through the `:`-separated list of
-directories in `$PATH` for a file by that name. When it finds it, it
-runs it (assuming the file is _executable_; more on that later). We can
-find out which file is executed for a given program name using the
-`which` program. We can also bypass `$PATH` entirely by giving the
-_path_ to the file we want to execute.
+当我们执行 `echo` 命令时，shell了解到需要执行 `echo` 这个程序，随后它便会在`$PATH`中搜索由`:`所分割的一系列目录，基于名字搜索该程序。当找到该程序时便执行（假定该文件是 _可执行程序_，后续课程将详细讲解）。确定某个程序名代表的是哪个具体的程序，可以使用
+`which` 程序。我们也可以绕过 `$PATH` ，通过直接指定需要执行的程序的路径来执行该程序
 
 ## 在shell中导航
 
