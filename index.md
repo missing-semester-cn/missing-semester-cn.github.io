@@ -16,7 +16,7 @@ only enables you to spend less time on figuring out how to bend your tools to
 your will, but it also lets you solve problems that would previously seem
 impossibly complex.
 
-Read about the [motivation behind this class](/about/).
+阅读[开设此课程的动机](/about/).
 
 {% comment %}
 # Registration
@@ -24,7 +24,7 @@ Read about the [motivation behind this class](/about/).
 Sign up for the IAP 2020 class by filling out this [registration form](https://forms.gle/TD1KnwCSV52qexVt9).
 {% endcomment %}
 
-# Schedule
+# 日程
 
 {% comment %}
 **Lecture**: 35-225, 2pm--3pm<br>
@@ -50,15 +50,14 @@ Sign up for the IAP 2020 class by filling out this [registration form](https://f
 Video recordings of the lectures are available [on
 YouTube](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57J).
 
-# About the class
+# 关于本课程
 
-**Staff**: This class is co-taught by [Anish](https://www.anishathalye.com/), [Jon](https://thesquareplanet.com/), and [Jose](http://josejg.com/).
-**Questions**: Email us at [missing-semester@mit.edu](mailto:missing-semester@mit.edu).
+**教员**: 本课程由 [Anish](https://www.anishathalye.com/)、 [Jon](https://thesquareplanet.com/) 和 [Jose](http://josejg.com/)教授。
+**问题**: 请通过 [missing-semester@mit.edu](mailto:missing-semester@mit.edu)联系我们
 
-# Beyond MIT
+# 在 MIT 之外
 
-We've also shared this class beyond MIT in the hopes that others may
-benefit from these resources. You can find posts and discussion on
+我们将本课程分享到了MIT之外，希望其他人也能受益于这些资源。你可以在下面这些地方找到相关文章和讨论。
 
  - [Hacker News](https://news.ycombinator.com/item?id=22226380)
  - [Lobsters](https://lobste.rs/s/ti1k98/missing_semester_your_cs_education_mit)
@@ -67,18 +66,21 @@ benefit from these resources. You can find posts and discussion on
  - [Twitter](https://twitter.com/jonhoo/status/1224383452591509507)
  - [YouTube](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57J)
 
-## Acknowledgements
+## 致谢
 
-We thank Elaine Mello, Jim Cain, and [MIT Open
-Learning](https://openlearning.mit.edu/) for making it possible for us to
-record lecture videos; Anthony Zolnik and [MIT
-AeroAstro](https://aeroastro.mit.edu/) for A/V equipment; and Brandi Adams and
-[MIT EECS](https://www.eecs.mit.edu/) for supporting this class.
+感谢 Elaine Mello, Jim Cain, 以及 [MIT Open
+Learning](https://openlearning.mit.edu/) 帮助我们录制讲座视频。
+感谢 Anthony Zolnik 和 [MIT
+AeroAstro](https://aeroastro.mit.edu/) 提供 A/V 设备。感谢 Brandi Adams 和
+[MIT EECS](https://www.eecs.mit.edu/) 对本课程的支持。
+
+
 
 ---
 
 <div class="small center">
-<p><a href="https://github.com/missing-semester/missing-semester">Source code</a>.</p>
+<p><a href="https://github.com/missing-semester-cn/missing-semester-cn">Source code</a>.</p>
 <p>Licensed under CC BY-NC-SA.</p>
+<p>Translator: Lingfeng Ai (hanxiaomax@qq.com)</p>
 <p>See <a href="/license">here</a> for contribution &amp; translation guidelines.</p>
 </div>
