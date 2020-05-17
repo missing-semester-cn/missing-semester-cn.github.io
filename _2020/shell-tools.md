@@ -2,7 +2,7 @@
 layout: lecture
 title: "Shell 工具和脚本"
 date: 2019-01-14
-ready: false
+ready: true
 video:
   aspect: 56.25
   id: kgII-YWo3Zw
@@ -256,32 +256,30 @@ rg --stats PATTERN
 
 对于大多数的shell来说，您可以使用 `Ctrl+R` 对命令历史记录进行回溯搜索。敲 `Ctrl+R` 后您可以输入子串来进行匹配，查找历史命令行。
 
+反复按下就会在所有搜索结果中循环。在 [zsh](https://github.com/zsh-users/zsh-history-substring-search)中，使用方向键上或下也可以完成这项工作。
 
-As you keep pressing it you will cycle through the matches in your history.
-This can also be enabled with the UP/DOWN arrows in [zsh](https://github.com/zsh-users/zsh-history-substring-search).
-A nice addition on top of `Ctrl+R` comes with using [fzf](https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings#ctrl-r) bindings.
-`fzf` is a general purpose fuzzy finder that can be used with many commands.
-Here is used to fuzzily match through your history and present results in a convenient and visually pleasing manner.
 
-Another cool history-related trick I really enjoy is **history-based autosuggestions**.
-First introduced by the [fish](https://fishshell.com/) shell, this feature dynamically autocompletes your current shell command with the most recent command that you typed that shares a common prefix with it.
-It can be enabled in [zsh](https://github.com/zsh-users/zsh-autosuggestions) and it is a great quality of life trick for your shell.
+`Ctrl+R` 可以配合 [fzf](https://github.com/junegunn/fzf/wiki/Configuring-shell-key-bindings#ctrl-r) 使用。`fzf` 是一个通用对模糊查找工具，它可以和很多命令一起使用。这里我们可以对历史命令进行模糊查找并将结果以赏心悦目的格式输出。
 
-Lastly, a thing to have in mind is that if you start a command with a leading space it won't be added to your shell history.
-This comes in handy when you are typing commands with passwords or other bits of sensitive information.
-If you make the mistake of not adding the leading space you can always manually remove the entry by editing your `.bash_history` or `.zhistory`.
+另外一个和历史命令相关的技巧我喜欢称之为**基于历史的自动补全**。
+这一特性最初是由 [fish](https://fishshell.com/) shell 创建的，它可以根据您最近使用过的开头相同的命令，动态地对当前对shell命令进行补全。这一功能在 [zsh](https://github.com/zsh-users/zsh-autosuggestions) 中也可以使用，它可以极大对提高用户体验。
+
+最后，有一点值得注意，输入命令时，如果您在命令的开头加上一个空格，它就不会被加进shell记录中。当你输入包含密码或是其他敏感信息的命令时会用到这一特性。如果你不小心忘了在前面加空格，可以通过编辑。`bash_history`或 `.zhistory` 来手动地从历史记录中移除那一项。
+
+
 
 ## 文件夹导航 
 
-So far we have assumed that you already are where you need to be to perform these actions, but how do you go about quickly navigating directories?
-There are many simple ways that you could do this, such as writing shell aliases, creating symlinks with [ln -s](http://man7.org/linux/man-pages/man1/ln.1.html) but the truth is that developers have figured out quite clever and sophisticated solutions by now.
+之前对所有操作我们都默认一个前提，即您已经位于想要执行命令的目录下，但是如何才能高效地在目录
+间随意切换呢？有很多简便的方法可以做到，比如设置alias，使用 [ln -s](http://man7.org/linux/man-pages/man1/ln.1.html)创建符号连接等。而开发者们已经想到了很多更为精妙的解决方案。
 
-As with the theme of this course, you often want to optimize for the common case.
-Finding frequent and/or recent files and directories can be done through tools like [`fasd`](https://github.com/clvv/fasd)
-Fasd ranks files and directories by [_frecency_](https://developer.mozilla.org/en/The_Places_frecency_algorithm), that is, by both _frequency_ and _recency_.
-The most straightforward use is _autojump_ which adds a `z` command that you can use to quickly `cd` using a substring of a _frecent_ directory. E.g. if you often go to `/home/user/files/cool_project` you can simply `z cool` to jump there.
+对于本课程的主题来说，我们希望对常用的情况进行优化。使用[`fasd`](https://github.com/clvv/fasd)可以查找最常用和/或最近使用的文件和目录。
 
-More complex tools exist to quickly get an overview of a directory structure [`tree`](https://linux.die.net/man/1/tree), [`broot`](https://github.com/Canop/broot) or even full fledged file managers like [`nnn`](https://github.com/jarun/nnn) or [`ranger`](https://github.com/ranger/ranger)
+Fasd 基于 [_frecency_](https://developer.mozilla.org/en/The_Places_frecency_algorithm)对文件和文件排序，也就是说它会同时针对频率（_frequency_ ）和时效（ _recency_）进行排序。
+
+最直接对用法是自动跳转 （_autojump_），对于经常访问的目录，在目录名子串前加入一个命令 `z` 就可以快速切换命令到该目录。例如， 如果您经常访问`/home/user/files/cool_project` 目录，那么可以直接使用 `z cool` 跳转到该目录。
+
+还有一些更复杂的工具可以用来概览目录结构，例如 [`tree`](https://linux.die.net/man/1/tree), [`broot`](https://github.com/Canop/broot) 或更加完整对文件管理器，例如 [`nnn`](https://github.com/jarun/nnn) 或 [`ranger`](https://github.com/ranger/ranger)。
 
 # 课后练习
 
