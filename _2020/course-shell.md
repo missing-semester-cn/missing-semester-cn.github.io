@@ -154,15 +154,9 @@ drwxr-xr-x 1 missing  users  4096 Jun 15  2019 missing
 (`rwx`). 它们分别代表了文件所有者(`missing`)，用户组 (`users`) 以及其他所有人具有的权限。其中 `-`表示该用户不具备相应的权限。从上面的信息来看，只有文件所有者可以修改(`w`) ， `missing` 文件夹 （例如，添加或删除文件夹中的文件）。为了进入某个文件夹，用户需要具备该文件夹以及其父文件夹的“搜索”权限（以“可执行”：`x`）权限表示。为了列出它的包含的内容，用户必须对该文件夹具备读权限（`r`）。对于文件来说，权限的意义也是类似的。注意，`/bin`目录下的程序在最后一组，即表示所有人的用户组中，均包含`x`权限，也就是说任何人都可以执行这些程序。
 
 
+在这个阶段，还有几个趁手的命令是您需要掌握的，例如 `mv` （用于重命名或移动文件）、 `cp` (拷贝文件)以及 `mkdir` (新建文件夹)。
 
-Some other handy programs to know about at this point are `mv` (to
-rename/move a file), `cp` (to copy a file), and `mkdir` (to make a new
-directory).
-
-If you ever want _more_ information about a program's arguments, inputs,
-outputs, or how it works in general, give the `man` program a try. It
-takes as an argument the name of a program, and shows you its _manual
-page_. Press `q` to exit.
+如果您想要知道关于程序参数、输入输出的信息，亦或是想要了解它们的工作方式，请试试 `man` 这个程序。它会接受一个程序名作为参数，然后将它的文档（用户手册）展现给您。注意，使用`q` 可以退出该程序。
 
 ```console
 missing:~$ man ls
@@ -170,15 +164,12 @@ missing:~$ man ls
 
 ## 在程序间创建连接
 
-In the shell, programs have two primary "streams" associated with them:
-their input stream and their output stream. When the program tries to
-read input, it reads from the input stream, and when it prints
-something, it prints to its output stream. Normally, a program's input
-and output are both your terminal. That is, your keyboard as input and
-your screen as output. However, we can also rewire those streams!
+在shell中，程序有两个主要的“流”：他们的输入流和输出流。
+当程序尝试读取信息时，它们会从输入流中进行读取，当程序打印信息时，它们会将信息输出到输出流中。
+通常，一个程序的输入输出流都是您的终端。也就是，您的键盘作为输入，显示器作为输出。
+但是，我们也可以重定向这些流！
 
-The simplest form of redirection is `< file` and `> file`. These let you
-rewire the input and output streams of a program to a file respectively:
+最简单的重定向是 `< file` 和 `> file`。这两个命令可以将程序的输入输出流分别重定向到文件：
 
 ```console
 missing:~$ echo hello > hello.txt
@@ -191,10 +182,8 @@ missing:~$ cat hello2.txt
 hello
 ```
 
-You can also use `>>` to append to a file. Where this kind of
-input/output redirection really shines is in the use of _pipes_. The `|`
-operator lets you "chain" programs such that the output of one is the
-input of another:
+您还可以使用 `>>` 来向一个文件追加内容。使用管道（ _pipes_），我们能够更好的利用文件重定向。
+`|`操作符允许我们将一个程序的输出和另外一个程序的输入连接起来： 
 
 ```console
 missing:~$ ls -l / | tail -n1
@@ -203,36 +192,26 @@ missing:~$ curl --head --silent google.com | grep --ignore-case content-length |
 219
 ```
 
-We will go into a lot more detail about how to take advantage of pipes
-in the lecture on data wrangling.
+我们会在数据清理一章中更加详细的探讨如何更好的利用管道。
 
 ## 一个功能全面又强大的工具
 
-On most Unix-like systems, one user is special: the "root" user. You may
-have seen it in the file listings above. The root user is above (almost)
-all access restrictions, and can create, read, update, and delete any
-file in the system. You will not usually log into your system as the
-root user though, since it's too easy to accidentally break something.
-Instead, you will be using the `sudo` command. As its name implies, it
-lets you "do" something "as su" (short for "super user", or "root").
-When you get permission denied errors, it is usually because you need to
-do something as root. Though make sure you first double-check that you
-really wanted to do it that way!
+对于大多数的类Unix系统，有一类用户是非常特殊的，那就是：根用户（root用户）。
+您应该已经注意到来，在上面的输出结果中，根用户几乎不受任何限制，他可以创建、读取、更新和删除系统中的任何文件。
+通常在我们并不会以根用户的身份直接登陆系统，因为这样可能会因为某些错误的操作而破坏系统。
+取而代之的是我们会在需要的时候使用 `sudo` 命令。顾名思义，它的作用是让您可以以su（super user 或 root的简写）的身份do一些事情。
+当您遇到拒绝访问（permission denied）的错误时，通常是因为此时您必须是根用户才能操作。此时也请再次确认您是真的要执行此操作。
 
-One thing you need to be root in order to do is writing to the `sysfs` file
-system mounted under `/sys`. `sysfs` exposes a number of kernel parameters as
-files, so that you can easily reconfigure the kernel on the fly without
-specialized tools. **Note that sysfs does not exist on Windows or macOS.**
+有一件事情是您必须作为根用户才能做的，那就是向`sysfs` 文件写入内容。系统被挂在在`/sys`下， `sysfs` 文件则暴露了一些内核（kernel）参数。
+因此，您不需要借助任何专用的工具，就可以轻松地在运行期间配置系统内核。**注意 Windows or macOS没有这个文件**
 
-For example, the brightness of your laptop's screen is exposed through a file
-called `brightness` under
+例如，您笔记本电脑的屏幕亮度写在 `brightness` 文件中，它位于
 
 ```
 /sys/class/backlight
 ```
+通过将数值写入该文件，我们可以改变屏幕的亮度。现在，蹦到您脑袋里的第一个想法可能是：
 
-By writing a value into that file, we can change the screen brightness.
-Your first instinct might be to do something like:
 
 ```console
 $ sudo find -L /sys/class/backlight -maxdepth 2 -name '*brightness*'
@@ -242,67 +221,47 @@ $ sudo echo 3 > brightness
 An error occurred while redirecting file 'brightness'
 open: Permission denied
 ```
+出乎意料的是，我们还是得到了一个错误信息。毕竟，我们已经使用了
+`sudo` 命令！关于shell，有件事我们必须要知道。`|`、`>`、和 `<` 是通过shell执行的，而不是被各个程序单独执行。
+`echo` 等程序并不知道`|`的存在，它们只知道从自己的输入输出流中进行读写。
+对于上面这种情况， _shell_ (权限为您的当前用户) 在设置 `sudo echo` 前尝试打开 brightness 文件并写入，但是系统拒绝了shell的操作因为此时shell不是根用户。
 
-This error may come as a surprise. After all, we ran the command with
-`sudo`! This is an important thing to know about the shell. Operations
-like `|`, `>`, and `<` are done _by the shell_, not by the individual
-program. `echo` and friends do not "know" about `|`. They just read from
-their input and write to their output, whatever it may be. In the case
-above, the _shell_ (which is authenticated just as your user) tries to
-open the brightness file for writing, before setting that as `sudo
-echo`'s output, but is prevented from doing so since the shell does not
-run as root. Using this knowledge, we can work around this:
+明白这一点后，我们可以这样操作：
 
 ```console
 $ echo 3 | sudo tee brightness
 ```
-
-Since the `tee` program is the one to open the `/sys` file for writing,
-and _it_ is running as `root`, the permissions all work out. You can
-control all sorts of fun and useful things through `/sys`, such as the
-state of various system LEDs (your path might be different):
+因为打开`/sys` 文件的是`tee`这个程序，并且该程序以`root`权限在运行，因此操作可以进行。
+这样您就可以在`/sys`中愉快地玩耍了，例如修改系统中各种LED的状态（路径可能会有所不同）：
 
 ```console
 $ echo 1 | sudo tee /sys/class/leds/input6::scrolllock/brightness
 ```
 
-# 下一步
+# 接下来.....
 
 学到这里，您掌握对shell知识已经可以完成一些基础对任务了。您应该已经可以查找感兴趣对文件并使用大多数程序对基本功能了。
 在下一场讲座中，我们会探讨如何利用shell及其他工具执行并自动化更复杂的任务。
 
 # 课后练习
 
- 1. Create a new directory called `missing` under `/tmp`.
- 1. Look up the `touch` program. The `man` program is your friend.
- 1. Use `touch` to create a new file called `semester` in `missing`.
- 1. Write the following into that file, one line at a time:
+1. 在 `/tmp` 下新建一个名为 `missing` 的文件夹。
+2. 用 `man` 查看程序 `touch` 的使用手册。
+3. 用 `touch` 在 `missing` 文件夹中新建一个叫 `semester` 的文件。
+4. 将以下内容一行一行地写入 `semester` 文件：
     ```
     #!/bin/sh
     curl --head --silent https://missing.csail.mit.edu
     ```
-    The first line might be tricky to get working. It's helpful to know that
-    `#` starts a comment in Bash, and `!` has a special meaning even within
-    double-quoted (`"`) strings. Bash treats single-quoted strings (`'`)
-    differently: they will do the trick in this case. See the Bash
-    [quoting](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
-    manual page for more information.
- 1. Try to execute the file, i.e. type the path to the script (`./semester`)
-    into your shell and press enter. Understand why it doesn't work by
-    consulting the output of `ls` (hint: look at the permission bits of the
-    file).
- 1. Run the command by explicitly starting the `sh` interpreter, and giving it
-    the file `semester` as the first argument, i.e. `sh semester`. Why does
-    this work, while `./semester` didn't?
- 1. Look up the `chmod` program (e.g. use `man chmod`).
- 1. Use `chmod` to make it possible to run the command `./semester` rather than
-    having to type `sh semester`. How does your shell know that the file is
-    supposed to be interpreted using `sh`? See this page on the
-    [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) line for more
-    information.
- 1. Use `|` and `>` to write the "last modified" date output by
-    `semester` into a file called `last-modified.txt` in your home
-    directory.
- 1. Write a command that reads out your laptop battery's power level or your
-    desktop machine's CPU temperature from `/sys`. Note: if you're a macOS
-    user, your OS doesn't have sysfs, so you can skip this exercise.
+    第一行可能有点棘手， `#` 在Bash中表示注释，而 `!` 即使被双引号（`"`）包裹也具有特殊的含义。
+    单引号（`'`）则不一样，此处利用这一点解决输入问题。更多信息请参考  [Bash quoting手册](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
+
+1. 尝试执行这个文件。例如，将该脚本的路径（`./semester`）输入到您的shell中并回车。如果程序无法执行，请使用 `ls`命令来获取信息并理解其不能执行的原因。
+2. 查看 `chmod` 的手册(例如，使用`man chmod`命令)
+
+3. 使用 `chmod` 命令改变权限，使 `./semester` 能够成功执行，不要使用`sh semester`来执行该程序。您的shell是如何知晓，这个文件需要使用`sh`来解析呢？更多信息请参考：[shebang](https://en.wikipedia.org/wiki/Shebang_(Unix))
+
+4. 使用 `|` 和 `>` ，将 `semester` 文件输出的最后更改日期信息，写入根目录下的 `last-modified.txt` 的文件中
+
+5. 写一段命令来从 `/sys` 中获取笔记本的电量信息，或者台式机CPU的温度。注意：macOS并没有sysfs，所以mac用户可以跳过这一题。
+

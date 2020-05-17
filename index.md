@@ -3,18 +3,14 @@ layout: page
 title: 计算机科学教育中缺失的一课
 ---
 
-Classes teach you all about advanced topics within CS, from operating systems
-to machine learning, but there’s one critical subject that’s rarely covered,
-and is instead left to students to figure out on their own: proficiency with
-their tools. We’ll teach you how to master the command-line, use a powerful
-text editor, use fancy features of version control systems, and much more!
+学校里有很多向您介绍从操作系统到机器学习等计算机科学进阶主题的课程，然而
+有一个至关重要的主题却很少被包括在这些课程之内，反而留给学生们自己去探索。
+这部分内容就是：精通工具。在这个系列课程中，我们会帮助您精通命令行，使用强大对文本编辑器，使用版本控制系统提供的多种特性等等。
 
-Students spend hundreds of hours using these tools over the course of their
-education (and thousands over their career), so it makes sense to make the
-experience as fluid and frictionless as possible. Mastering these tools not
-only enables you to spend less time on figuring out how to bend your tools to
-your will, but it also lets you solve problems that would previously seem
-impossibly complex.
+学生在他们受教育阶段就会和这些工具朝夕相处（在他们的职业生涯中更是这样）。
+因此，花时间打磨使用这些工具的能力并能够最终熟练、流畅地使用它们是非常有必要的。
+精通这些工具不仅可以帮助您更快的使用工具完成任务，并且可以帮助您解决在之前看来似乎无比复杂的问题。
+
 
 关于[开设此课程的动机](/about/).
 
