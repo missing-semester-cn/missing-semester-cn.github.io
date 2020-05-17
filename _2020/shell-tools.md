@@ -13,8 +13,7 @@ video:
 
 # Shell 脚本
 
-So far we have seen how to execute commands in the shell and pipe them together.
-However, in many scenarios you will want to perform a series of commands and make use of control flow expressions like conditionals or loops.
+到目前为止，我们已经学习来如何在shell中执行命令，并使用管道将命令组合使用。但是，很多情况下我们需要执行一系列到操作并使用条件或循环这样的控制流。
 
 Shell scripts are the next step in complexity.
 Most shells have their own scripting language with variables, control flow and its own syntax.
@@ -48,24 +47,20 @@ mcd () {
 }
 ```
 
-Here `$1` is the first argument to the script/function.
-Unlike other scripting languages, bash uses a variety of special variables to refer to arguments, error codes and other relevant variables. Below is a list of some of them. A more comprehensive list can be found [here](https://www.tldp.org/LDP/abs/html/special-chars.html).
-- `$0` - Name of the script
-- `$1` to `$9` - Arguments to the script. `$1` is the first argument and so on.
-- `$@` - All the arguments
-- `$#` - Number of arguments
-- `$?` - Return code of the previous command
-- `$$` - Process Identification number for the current script
-- `!!` - Entire last command, including arguments. A common pattern is to execute a command only for it to fail due to missing permissions, then you can quickly execute it with sudo by doing `sudo !!`
-- `$_` - Last argument from the last command. If you are in an interactive shell, you can also quickly get this value by typing `Esc` followed by `.`
+这里 `$1` 是脚本到第一个参数。与其他脚本语言不同到是，bash使用了很多特殊到变量来表示参数、错误代码和相关变量。下面是列举来其中一些变量，更完整到列表可以参考 [这里](https://www.tldp.org/LDP/abs/html/special-chars.html)。
+- `$0` - 脚本名
+- `$1` 到 `$9` - 脚本到参数。 `$1` 是第一个参数，依此类推。
+- `$@` - 所有参数
+- `$#` - 参数个数
+- `$?` - 前一个命令到返回值
+- `$$` - 当前脚本到进程识别码
+- `!!` - 完整到上一条命令，包括参数。常见应用：当你因为权限不足执行命令失败时，可以使用 `sudo !!`再尝试一次。
+- `$_` - 上一条命令的最后一个参数。如果你正在使用的是交互式shell，你可以通过按下 `Esc` 之后键入 . 来获取这个值。
 
-Commands will often return output using `STDOUT`, errors through `STDERR` and a Return Code to report errors in a more script friendly manner.
-Return code or exit status is the way scripts/commands have to communicate how execution went.
-A value of 0 usually means everything went OK, anything different from 0 means an error occurred.
+命令通常使用 `STDOUT`来返回输出值，使用`STDERR` 来返回错误及错误码，便于脚本以更加友好到方式报告错误。
+返回码或退出状态是脚本/命令之间交流执行状态到方式。返回值0表示正常执行，其他所有非0的返回值都表示有错误发生。
 
-Exit codes can be used to conditionally execute commands using `&&` (and operator) and `||` (or operator). Commands can also be separated within the same line using a semicolon `;`.
-The `true` program will always have a 0 return code and the `false` command will always have a 1 return code.
-Let's see some examples
+退出码可以搭配`&&` (与操作符) 和 `||` (或操作符)使用，用来进行条件判断，决定是否执行其他程序。同一行的多个命令可以用` ; `分隔。程序 `true` 的返回码永远是`0`，`false` 的返回码永远是`1`。让我们看几个例子
 
 ```bash
 false || echo "Oops, fail"
