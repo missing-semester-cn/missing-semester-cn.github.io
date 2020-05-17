@@ -81,6 +81,6 @@ AeroAstro](https://aeroastro.mit.edu/) 提供 A/V 设备。
 <div class="small center">
 <p><a href="https://github.com/missing-semester-cn/missing-semester-cn">Source code</a>.</p>
 <p>Licensed under CC BY-NC-SA.</p>
-<p>Translator: Lingfeng Ai (hanxiaomax@qq.com)</p>
+<p>Translator: <a href="https://github.com/hanxiaomax">Lingfeng Ai </a></p>
 <p>See <a href="/license">here</a> for contribution &amp; translation guidelines.</p>
 </div>
