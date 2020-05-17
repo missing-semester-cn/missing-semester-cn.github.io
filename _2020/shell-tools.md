@@ -152,39 +152,40 @@ for arg in reversed(sys.argv[1:]):
 
 shell知道去用python解释器而不是shell命令来运行这段脚本，是因为脚本的开头第一行的[shebang](https://en.wikipedia.org/wiki/Shebang_(Unix))。
 
-It is good practice to write shebang lines using the [`env`](http://man7.org/linux/man-pages/man1/env.1.html) command that will resolve to wherever the command lives in the system, increasing the portability of your scripts. To resolve the location, `env` will make use of the `PATH` environment variable we introduced in the first lecture.
-For this example the shebang line would look like `#!/usr/bin/env python`.
+在shebang行中使用 [`env`](http://man7.org/linux/man-pages/man1/env.1.html) 命令是一种好的实践，它会利用环境变量中的程序来解析该脚本，这样就提高来您的脚本的可移植性。`env` 会利用我们第一节讲座中介绍过的`PATH` 环境变量来进行定位。
+例如，使用了`env`的shebang看上去时这样的`#!/usr/bin/env python`。
 
-Some differences between shell functions and scripts that you should keep in mind are:
-- Functions have to be in the same language as the shell, while scripts can be written in any language. This is why including a shebang for scripts is important.
-- Functions are loaded once when their definition is read. Scripts are loaded every time they are executed. This makes functions slightly faster to load but whenever you change them you will have to reload their definition.
-- Functions are executed in the current shell environment whereas scripts execute in their own process. Thus, functions can modify environment variables, e.g. change your current directory, whereas scripts can't. Scripts will be passed by value environment variables that have been exported using [`export`](http://man7.org/linux/man-pages/man1/export.1p.html)
-- As with any programming language functions are a powerful construct to achieve modularity, code reuse and clarity of shell code. Often shell scripts will include their own function definitions.
+
+shell函数和脚本有如下一些不同点：
+
+- 函数只能用与shell使用相同的语言，脚本可以使用任意语言。因此在脚本中包含 `shebang` 是很重要的。
+- 函数仅在定义时被加载，脚本会在每次被执行时加载。这让函数的加载比脚本略快一些，但每次修改函数定义，都要重新加载一次。
+- 函数会在当前的shell环境中执行，脚本会在单独的进程中执行。因此，函数可以对环境变量进行更改，比如改变当前工作目录，脚本则不行。脚本需要使用 [`export`](http://man7.org/linux/man-pages/man1/export.1p.html) 将环境变量导出，并将值传递给环境变量。
+- 与其他程序语言一样，函数可以提高代码模块性、代码复用性并创建清晰性的结构。shell脚本中往往也会包含它们自己的函数定义。
+
+
 
 # Shell 工具
 
 ## 查看命令如何使用
 
-At this point you might be wondering how to find the flags for the commands in the aliasing section such as `ls -l`, `mv -i` and `mkdir -p`.
-More generally, given a command how do you go about finding out what it does and its different options?
-You could always start googling, but since UNIX predates StackOverflow there are builtin ways of getting this information.
+看到这里，您可能会有疑问，我们应该如何为特定的命令找到合适的标记呢？例如 `ls -l`, `mv -i` 和 `mkdir -p`。更一般的庆幸是，给您一个命令行，您应该怎样了解如何使用这个命令行并找出它的不同的选项呢？
+一般来说，您可能会先去网上搜索答案，但是，UNIX 可比 StackOverflow 出现的早，因此我们的系统里其实早就包含了可以获取相关信息的方法。
 
-As we saw in the shell lecture, the first order approach is to call said command with the `-h` or `--help` flags. A more detailed approach is to use the `man` command.
-Short for manual, [`man`](http://man7.org/linux/man-pages/man1/man.1.html) provides a manual page (called manpage) for a command you specify.
-For example, `man rm` will output the behavior of the `rm` command along with the flags that it takes including the `-i` flag we showed earlier.
-In fact, what I have been linking so far for every command is the online version of Linux manpages for the commands.
-Even non native commands that you install will have manpage entries if the developer wrote them and included them as part of the installation process.
-For interactive tools such as the ones based on ncurses, help for the commands can often be accessed within the program using the `:help` command or typing `?`.
+在上一节中我们介绍过，最常用的方法是为对应的命令行添加`-h` 或 `--help` 标记。另外一个更详细的方法则是使用`man` 命令。[`man`](http://man7.org/linux/man-pages/man1/man.1.html) 命令是手册（manual）的缩写，它提供了命令的用户手册。
 
-Sometimes manpages can be overly detailed descriptions of the commands and it can become hard to decipher what flags/syntax to use for common use cases.
-[TLDR pages](https://tldr.sh/) are a nifty complementary solution that focuses on giving example use cases of a command so you can quickly figure out which options to use.
-For instance, I find myself referring back to the tldr pages for [`tar`](https://tldr.ostera.io/tar) and [`ffmpeg`](https://tldr.ostera.io/ffmpeg) way more often than the manpages.
+例如，`man rm` 会输出命令 `rm` 的说明，同时还有其标记列表，包括之前我们介绍过的`-i`。
+事实上，目前我们给出的所有命令的说明链接，都是网页版的Linux命令手册。即使是您安装的第三方命令，前提是开发者编写了手册并将其包含在了安装包中。在交互式的、基于字符处理的终端窗口中，一般也可以通过 `:help` 命令或键入 `?`来获取帮助。
+
+有时候手册内容太过详实，让我们难以在其中查找哪些最常用的标记和语法。
+[TLDR pages](https://tldr.sh/) 是一个很不错的替代品，它提供了一些案例，可以帮助您快速找到正确的选项。
+
+例如，自己就常常在tldr上搜索[`tar`](https://tldr.ostera.io/tar) 和 [`ffmpeg`](https://tldr.ostera.io/ffmpeg) 的用法。
 
 
 ## 查找文件
 
-One of the most common repetitive tasks that every programmer faces is finding files or directories.
-All UNIX-like systems come packaged with [`find`](http://man7.org/linux/man-pages/man1/find.1.html), a great shell tool to find files. `find` will recursively search for files matching some criteria. Some examples:
+程序员们面对的最常见的重复任务就是查找文件或目录。所有的类UNIX系统都包含一个名为 [`find`](http://man7.org/linux/man-pages/man1/find.1.html)的工具，它是shell上用于查找文件的绝佳工具。`find`命令会递归地搜索符合条件的文件，例如：
 
 ```bash
 # Find all directories named src
@@ -196,8 +197,9 @@ find . -mtime -1
 # Find all zip files with size in range 500k to 10M
 find . -size +500k -size -10M -name '*.tar.gz'
 ```
-Beyond listing files, find can also perform actions over files that match your query.
-This property can be incredibly helpful to simplify what could be fairly monotonous tasks.
+除了列出所寻找的文件之外，find还能对所有查找到的文件进行操作。这能极大地简化一些单调的任务。
+
+
 ```bash
 # Delete all files with .tmp extension
 find . -name '*.tmp' -exec rm {} \;
@@ -205,7 +207,7 @@ find . -name '*.tmp' -exec rm {} \;
 find . -name '*.png' -exec convert {} {.}.jpg \;
 ```
 
-Despite `find`'s ubiquitousness, its syntax can sometimes be tricky to remember.
+尽管 `find` 用途广泛，它的语法却比较难以记忆。例如，
 For instance, to simply find files that match some pattern `PATTERN` you have to execute `find -name '*PATTERN*'` (or `-iname` if you want the pattern matching to be case insensitive).
 You could start building aliases for those scenarios but as part of the shell philosophy is good to explore using alternatives.
 Remember, one of the best properties of the shell is that you are just calling programs so you can find (or even write yourself) replacements for some.
