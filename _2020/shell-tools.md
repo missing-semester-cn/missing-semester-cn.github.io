@@ -2,7 +2,7 @@
 layout: lecture
 title: "Shell 工具和脚本"
 date: 2019-01-14
-ready: true
+ready: false
 video:
   aspect: 56.25
   id: kgII-YWo3Zw

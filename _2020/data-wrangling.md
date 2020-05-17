@@ -2,7 +2,7 @@
 layout: lecture
 title: "数据清理"
 date: 2019-01-16
-ready: true
+ready: false
 video:
   aspect: 56.25
   id: sz_dsktIjt4

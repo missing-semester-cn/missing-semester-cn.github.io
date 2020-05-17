@@ -2,15 +2,15 @@
 layout: lecture
 title: "大杂烩"
 date: 2019-01-29
-ready: true
+ready: false
 video:
   aspect: 56.25
   id: JZDt-PRq0uo
 ---
 
-## Table of Contents
+## 目录
 
-- [Table of Contents](#table-of-contents)
+- [目录](#%e7%9b%ae%e5%bd%95)
 - [Keyboard remapping](#keyboard-remapping)
 - [Daemons](#daemons)
 - [FUSE](#fuse)
