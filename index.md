@@ -1,6 +1,6 @@
 ---
 layout: page
-title: The Missing Semester of Your CS Education
+title: The Missing Semester of Your CS Education 中文版
 ---
 
 学校里有很多向您介绍从操作系统到机器学习等计算机科学进阶主题的课程，然而有一个至关重要的主题却很少被包括在这些课程之内，反而留给学生们自己去探索。
