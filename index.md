@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 计算机科学教育中缺失的一课
+title: The Missing Semester of Your CS Education
 ---
 
 学校里有很多向您介绍从操作系统到机器学习等计算机科学进阶主题的课程，然而
@@ -44,13 +44,13 @@ Sign up for the IAP 2020 class by filling out this [registration form](https://f
 </ul>
 
 讲座视频可以在 [
-YouTube](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57J)上找到
+YouTube](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57J)上找到。
 
 # 关于本课程
 
-**教员**: 本课程由 [Anish](https://www.anishathalye.com/)、 [Jon](https://thesquareplanet.com/) 和 [Jose](http://josejg.com/)教授。
+**教员**: 本课程由 [Anish](https://www.anishathalye.com/)、 [Jon](https://thesquareplanet.com/) 和 [Jose](http://josejg.com/) 讲授。
 
-**问题**: 请通过 [missing-semester@mit.edu](mailto:missing-semester@mit.edu)联系我们
+**问题**: 请通过 [missing-semester@mit.edu](mailto:missing-semester@mit.edu)联系我们。
 
 # 在 MIT 之外
 
