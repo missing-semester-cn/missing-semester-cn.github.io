@@ -8,43 +8,22 @@ video:
   id: a6Q8Na575qc
 ---
 
-Writing English words and writing code are very different activities. When
-programming, you spend more time switching files, reading, navigating, and
-editing code compared to writing a long stream. It makes sense that there are
-different types of programs for writing English words versus code (e.g.
-Microsoft Word versus Visual Studio Code).
+写作和写代码其实是两项非常不同的活动。当我们编程的时候，会经常在文件间进行切换、阅读、浏览和修改代码，而不是连续编写一大段的文字。因此代码编辑器和文本编辑器种是很不同的两种工具（例如 微软的 Word 与 Visual Studio Code）
 
-As programmers, we spend most of our time editing code, so it's worth investing
-time mastering an editor that fits your needs. Here's how you learn a new
-editor:
+作为程序员，我们大部分时间都花在代码编辑上，所以花点时间掌握某个适合自己的编辑器是非常值得的。通常学习使用一个新的编辑器包含以下步骤：
 
-- Start with a tutorial (i.e. this lecture, plus resources that we point out)
-- Stick with using the editor for all your text editing needs (even if it slows
-you down initially)
-- Look things up as you go: if it seems like there should be a better way to do
-something, there probably is
+- 阅读教程（比如这节课以及我们为您提供的资源）
+- 坚持使用它来完成你所有的编辑工作（即使一开始这会让你的工作效率降低）
+- 随时查阅：如果某个操作看起来像是有更方便的实现方法，一般情况下真的会有。
 
-If you follow the above method, fully committing to using the new program for
-all text editing purposes, the timeline for learning a sophisticated text
-editor looks like this. In an hour or two, you'll learn basic editor functions
-such as opening and editing files, save/quit, and navigating buffers. Once
-you're 20 hours in, you should be as fast as you were with your old editor.
-After that, the benefits start: you will have enough knowledge and muscle
-memory that using the new editor saves you time. Modern text editors are fancy
-and powerful tools, so the learning never stops: you'll get even faster as you
-learn more.
+如果您能够遵循上述步骤，并且坚持使用新的编辑器完成您所有的文本编辑任务，那么学习一个复杂的代码编辑器的过程一般是这样的：头两个小时，您会学习到编辑器的基本操作，例如打开和编辑文件、保存与退出、浏览缓冲区。当学习时间累计达到20个小时之后，您使用新编辑器时当效率应该已经和使用老编辑器一样来。再次之后，其益处开始显现：有了足够的知识和肌肉记忆后，使用新编辑器将大大节省你的时间。而现代文本编辑器都是些复杂且强大的工具，永远有新东西可学：学的越多，效率越高。
 
-# Which editor to learn?
+# 该学哪个编辑器？
 
-Programmers have [strong opinions](https://en.wikipedia.org/wiki/Editor_war)
-about their text editors.
+程序员们对自己正在使用的文本编辑器通常有着 [非常强的执念](https://en.wikipedia.org/wiki/Editor_war)。
 
-Which editors are popular today? See this [Stack Overflow
-survey](https://insights.stackoverflow.com/survey/2019/#development-environments-and-tools)
-(there may be some bias because Stack Overflow users may not be representative
-of programmers as a whole). [Visual Studio
-Code](https://code.visualstudio.com/) is the most popular editor.
-[Vim](https://www.vim.org/) is the most popular command-line-based editor.
+
+现在最流行的编辑器是什么？ [Stack Overflow的调查](https://insights.stackoverflow.com/survey/2019/#development-environments-and-tools)(这个调查可能并不如我们想象的那样客观，因为Stack Overflow 的用户并不能代表所有程序员 )显示， [Visual Studio Code](https://code.visualstudio.com/)是目前最流行的代码编辑器。而[Vim](https://www.vim.org/) 则是最流行的基于命令行的编辑器。
 
 ## Vim
 
@@ -61,7 +40,7 @@ going to focus on explaining the philosophy of Vim, teaching you the basics,
 showing you some of the more advanced functionality, and giving you the
 resources to master the tool.
 
-# Philosophy of Vim
+# Vim的哲学
 
 When programming, you spend most of your time reading/editing, not writing. For
 this reason, Vim is a _modal_ editor: it has different modes for inserting text
@@ -73,17 +52,17 @@ avoids using the arrow keys because it requires too much movement.
 
 The end result is an editor that can match the speed at which you think.
 
-# Modal editing
+# 编辑模式
 
-Vim's design is based on the idea that a lot of programmer time is spent
-reading, navigating, and making small edits, as opposed to writing long streams
-of text. For this reason, Vim has multiple operating modes.
 
-- **Normal**: for moving around a file and making edits
-- **Insert**: for inserting text
-- **Replace**: for replacing text
-- **Visual** (plain, line, or block) mode: for selecting blocks of text
-- **Command-line**: for running a command
+Vim的设计以大多数时间都花在阅读、浏览和进行少量编辑改动为基础，因此它具有多种操作模式：
+
+- *正常模式*：在文件中四处移动光标进行修改
+- *插入模式*：插入文本
+- *替换模式*：替换文本
+- *可视（一般，行，块）模式*：选中文本块
+- *命令模式*：用于执行命令
+
 
 Keystrokes have different meanings in different operating modes. For example,
 the letter `x` in insert mode will just insert a literal character 'x', but in
@@ -104,9 +83,9 @@ You use the `<ESC>` key a lot when using Vim: consider remapping Caps Lock to
 Escape ([macOS
 instructions](https://vim.fandom.com/wiki/Map_caps_lock_to_escape_in_macOS)).
 
-# Basics
+# 基本操作
 
-## Inserting text
+## 插入文本
 
 From normal mode, press `i` to enter insert mode. Now, Vim behaves like any
 other text editor, until you press `<ESC>` to return to normal mode. This,
@@ -126,7 +105,7 @@ different parts of a file at the same time.
 
 By default, Vim opens with a single tab, which contains a single window.
 
-## Command-line
+## 命令行
 
 Command mode can be entered by typing `:` in normal mode. Your cursor will jump
 to the command line at the bottom of the screen upon pressing `:`. This mode
@@ -142,14 +121,14 @@ has many functionalities, including opening, saving, and closing files, and
     - `:help :w` opens help for the `:w` command
     - `:help w` opens help for the `w` movement
 
-# Vim's interface is a programming language
+# Vim 的接口其实是一种编程语言
 
 The most important idea in Vim is that Vim's interface itself is a programming
 language. Keystrokes (with mnemonic names) are commands, and these commands
 _compose_. This enables efficient movement and edits, especially once the
 commands become muscle memory.
 
-## Movement
+## 移动
 
 You should spend most of your time in normal mode, using movement commands to
 navigate the buffer. Movements in Vim are also called "nouns", because they
@@ -168,7 +147,7 @@ refer to chunks of text.
     - `,` / `;` for navigating matches
 - Search: `/{regex}`, `n` / `N` for navigating matches
 
-## Selection
+## 选择
 
 Visual modes:
 
@@ -178,7 +157,7 @@ Visual modes:
 
 Can use movement keys to make selection.
 
-## Edits
+## 编辑
 
 Everything that you used to do with the mouse, you now do with the keyboard
 using editing commands that compose with movement commands. Here's where Vim's
@@ -204,7 +183,7 @@ are also called "verbs", because verbs act on nouns.
 - `p` to paste
 - Lots more to learn: e.g. `~` flips the case of a character
 
-## Counts
+## 计数
 
 You can combine nouns and verbs with a count, which will perform a given action
 a number of times.
@@ -213,7 +192,7 @@ a number of times.
 - `5j` move 5 lines down
 - `7dw` delete 7 words
 
-## Modifiers
+## 修饰语
 
 You can use modifiers to change the meaning of a noun. Some modifiers are `i`,
 which means "inner" or "inside", and `a`, which means "around".
@@ -279,7 +258,7 @@ made using Vim to how you might make the same edits using another program.
 Notice how very few keystrokes are required in Vim, allowing you to edit at the
 speed you think.
 
-# Customizing Vim
+# 自定义 Vim
 
 Vim is customized through a plain-text configuration file in `~/.vimrc`
 (containing Vimscript commands). There are probably lots of basic settings that
@@ -299,7 +278,7 @@ inspiration, for example, your instructors' Vim configs
 lots of good blog posts on this topic too. Try not to copy-and-paste people's
 full configuration, but read it, understand it, and take what you need.
 
-# Extending Vim
+# 扩展 Vim
 
 There are tons of plugins for extending Vim. Contrary to outdated advice that
 you might find on the internet, you do _not_ need to use a plugin manager for
@@ -323,7 +302,7 @@ Check out [Vim Awesome](https://vimawesome.com/) for more awesome Vim plugins.
 There are also tons of blog posts on this topic: just search for "best Vim
 plugins".
 
-# Vim-mode in other programs
+# 其他程序的 Vim 模式
 
 Many tools support Vim emulation. The quality varies from good to great;
 depending on the tool, it may not support the fancier Vim features, but most
@@ -350,7 +329,7 @@ set editing-mode vi
 
 With this setting, for example, the Python REPL will support Vim bindings.
 
-## Others
+## 其他
 
 There are even vim keybinding extensions for web
 [browsers](http://vim.wikia.com/wiki/Vim_key_bindings_for_web_browsers), some
@@ -360,14 +339,14 @@ for Google Chrome and [Tridactyl](https://github.com/tridactyl/tridactyl) for
 Firefox. You can even get Vim bindings in [Jupyter
 notebooks](https://github.com/lambdalisue/jupyter-vim-binding).
 
-# Advanced Vim
+# Vim 进阶
 
 Here are a few examples to show you the power of the editor. We can't teach you
 all of these kinds of things, but you'll learn them as you go. A good
 heuristic: whenever you're using your editor and you think "there must be a
 better way of doing this", there probably is: look it up online.
 
-## Search and replace
+## 搜索和替换
 
 `:s` (substitute) command ([documentation](http://vim.wikia.com/wiki/Search_and_replace)).
 
@@ -376,12 +355,12 @@ better way of doing this", there probably is: look it up online.
 - `%s/\[.*\](\(.*\))/\1/g`
     - replace named Markdown links with plain URLs
 
-## Multiple windows
+## 多窗口
 
 - `:sp` / `:vsp` to split windows
 - Can have multiple views of the same buffer.
 
-## Macros
+## 宏
 
 - `q{character}` to start recording a macro in register `{character}`
 - `q` to stop recording
@@ -415,7 +394,7 @@ better way of doing this", there probably is: look it up online.
             - `999@q`
         - Manually remove last `,` and add `[` and `]` delimiters
 
-# Resources
+# 扩展资料
 
 - `vimtutor` is a tutorial that comes installed with Vim
 - [Vim Adventures](https://vim-adventures.com/) is a game to learn Vim
@@ -426,7 +405,7 @@ better way of doing this", there probably is: look it up online.
 - [Vim Screencasts](http://vimcasts.org/)
 - [Practical Vim](https://pragprog.com/book/dnvim2/practical-vim-second-edition) (book)
 
-# Exercises
+# 课后练习
 
 1. Complete `vimtutor`. Note: it looks best in a
    [80x24](https://en.wikipedia.org/wiki/VT100) (80 columns by 24 lines)
