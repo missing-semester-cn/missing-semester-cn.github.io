@@ -8,9 +8,10 @@ video:
   id: kgII-YWo3Zw
 ---
 
-In this lecture we will present some of the basics of using bash as a scripting language along with a number of shell tools that cover several of the most common tasks that you will be constantly performing in the command line.
+在这节课中，我们将会展示bash作为脚本语言的一些基础操作，以及几种最常用的shell工具。
 
-# Shell Scripting
+
+# Shell 脚本
 
 So far we have seen how to execute commands in the shell and pipe them together.
 However, in many scenarios you will want to perform a series of commands and make use of control flow expressions like conditionals or loops.
@@ -166,9 +167,9 @@ Some differences between shell functions and scripts that you should keep in min
 - Functions are executed in the current shell environment whereas scripts execute in their own process. Thus, functions can modify environment variables, e.g. change your current directory, whereas scripts can't. Scripts will be passed by value environment variables that have been exported using [`export`](http://man7.org/linux/man-pages/man1/export.1p.html)
 - As with any programming language functions are a powerful construct to achieve modularity, code reuse and clarity of shell code. Often shell scripts will include their own function definitions.
 
-# Shell Tools
+# Shell 工具
 
-## Finding how to use commands
+## 查看命令如何使用
 
 At this point you might be wondering how to find the flags for the commands in the aliasing section such as `ls -l`, `mv -i` and `mkdir -p`.
 More generally, given a command how do you go about finding out what it does and its different options?
@@ -186,7 +187,7 @@ Sometimes manpages can be overly detailed descriptions of the commands and it ca
 For instance, I find myself referring back to the tldr pages for [`tar`](https://tldr.ostera.io/tar) and [`ffmpeg`](https://tldr.ostera.io/ffmpeg) way more often than the manpages.
 
 
-## Finding files
+## 查找文件
 
 One of the most common repetitive tasks that every programmer faces is finding files or directories.
 All UNIX-like systems come packaged with [`find`](http://man7.org/linux/man-pages/man1/find.1.html), a great shell tool to find files. `find` will recursively search for files matching some criteria. Some examples:
@@ -226,7 +227,7 @@ Therefore one trade-off between the two is speed vs freshness.
 Moreover `find` and similar tools can also find files using attributes such as file size, modification time or file permissions while `locate` just uses the name.
 A more in depth comparison can be found [here](https://unix.stackexchange.com/questions/60205/locate-vs-find-usage-pros-and-cons-of-each-other).
 
-## Finding code
+## 查找代码
 
 Finding files is useful but quite often you are after what is in the file.
 A common scenario is wanting to search for all files that contain some pattern, along with where in those files said pattern occurs.
@@ -254,7 +255,7 @@ rg --stats PATTERN
 
 Note that as with `find`/`fd`, it is important that you know that these problems can be quickly solved using one of these tools, while the specific tools you use are not as important.
 
-## Finding shell commands
+## 查找 shell 命令
 
 So far we have seen how to find files and code, but as you start spending more time in the shell you may want to find specific commands you typed at some point.
 The first thing to know is that the typing up arrow will give you back your last command and if you keep pressing it you will slowly go through your shell history.
@@ -280,7 +281,7 @@ Lastly, a thing to have in mind is that if you start a command with a leading sp
 This comes in handy when you are typing commands with passwords or other bits of sensitive information.
 If you make the mistake of not adding the leading space you can always manually remove the entry by editing your `.bash_history` or `.zhistory`.
 
-## Directory Navigation
+## 文件夹导航 
 
 So far we have assumed that you already are where you need to be to perform these actions, but how do you go about quickly navigating directories?
 There are many simple ways that you could do this, such as writing shell aliases, creating symlinks with [ln -s](http://man7.org/linux/man-pages/man1/ln.1.html) but the truth is that developers have figured out quite clever and sophisticated solutions by now.
@@ -292,16 +293,16 @@ The most straightforward use is _autojump_ which adds a `z` command that you can
 
 More complex tools exist to quickly get an overview of a directory structure [`tree`](https://linux.die.net/man/1/tree), [`broot`](https://github.com/Canop/broot) or even full fledged file managers like [`nnn`](https://github.com/jarun/nnn) or [`ranger`](https://github.com/ranger/ranger)
 
-# Exercises
+# 课后练习
 
-1. Read [`man ls`](http://man7.org/linux/man-pages/man1/ls.1.html) and write an `ls` command that lists files in the following manner
+1. 阅读 [`man ls`](http://man7.org/linux/man-pages/man1/ls.1.html) ，然后使用`ls` 命令进行如下操作：
 
-    - Includes all files, including hidden files
-    - Sizes are listed in human readable format (e.g. 454M instead of 454279954)
-    - Files are ordered by recency
-    - Output is colorized
+    - 所有文件（包括隐藏文件）
+    - 文件打印以人类可以理解的格式输出 (例如，使用454M 而不是 454279954)
+    - 文件以最近访问顺序排序
+    - 以彩色文本显示输出结果
 
-    A sample output would look like this
+    典型输出如下：
 
     ```
     -rw-r--r--   1 user group 1.1M Jan 14 09:53 baz
@@ -310,28 +311,24 @@ More complex tools exist to quickly get an overview of a directory structure [`t
     -rw-r--r--   1 user group 106M Jan 13 12:12 foo
     drwx------+ 47 user group 1.5K Jan 12 18:08 ..
     ```
-
 {% comment %}
 ls -lath --color=auto
 {% endcomment %}
+2. 编写两个bash函数  `marco` 和 `polo` 执行下面的操作。
+   每当你执行 `marco` 时，当前的工作目录应当以某种形式保存，当执行 `polo` 时，无论现在处在什么目录下，都应当 `cd` 回到当时执行 `marco` 的目录。
+   为了方便debug，你可以把代码写在单独的文件 `marco.sh` 中，并通过 `source marco.sh`命令，（重新）加载函数。
+    {% comment %}
+    marco() {
+        export MARCO=$(pwd)
+    }
+    polo() {
+        cd "$MARCO"
+    }
+    {% endcomment %}
 
-1. Write bash functions  `marco` and `polo` that do the following.
-Whenever you execute `marco` the current working directory should be saved in some manner, then when you execute `polo`, no matter what directory you are in, `polo` should `cd` you back to the directory where you executed `marco`.
-For ease of debugging you can write the code in a file `marco.sh` and (re)load the definitions to your shell by executing `source marco.sh`.
-
-{% comment %}
-marco() {
-    export MARCO=$(pwd)
-}
-
-polo() {
-    cd "$MARCO"
-}
-{% endcomment %}
-
-1. Say you have a command that fails rarely. In order to debug it you need to capture its output but it can be time consuming to get a failure run.
-Write a bash script that runs the following script until it fails and captures its standard output and error streams to files and prints everything at the end.
-Bonus points if you can also report how many runs it took for the script to fail.
+3. 假设您有一个命令，它很少出错。因此为了在出错时能够对其进行调试，需要花费大量的时间重现错误并捕获输出。
+   编写一段bash脚本，运行如下的脚本直到它出错，将它的标准输出和标准错误流记录到文件，并在最后输出所有内容。
+   加分项：报告脚本在失败前共运行了多少次。
 
     ```bash
     #!/usr/bin/env bash
@@ -347,30 +344,27 @@ Bonus points if you can also report how many runs it took for the script to fail
     echo "Everything went according to plan"
     ```
 
-{% comment %}
-#!/usr/bin/env bash
+    {% comment %}
+    #!/usr/bin/env bash
 
-count=0
-until [[ "$?" -ne 0 ]];
-do
-  count=$((count+1))
-  ./random.sh &> out.txt
-done
+    count=0
+    until [[ "$?" -ne 0 ]];
+    do
+    count=$((count+1))
+    ./random.sh &> out.txt
+    done
 
-echo "found error after $count runs"
-cat out.txt
-{% endcomment %}
+    echo "found error after $count runs"
+    cat out.txt
+    {% endcomment %}
 
-1. As we covered in the lecture `find`'s `-exec` can be very powerful for performing operations over the files we are searching for.
-However, what if we want to do something with **all** the files, like creating a zip file?
-As you have seen so far commands will take input from both arguments and STDIN.
-When piping commands, we are connecting STDOUT to STDIN, but some commands like `tar` take inputs from arguments.
-To bridge this disconnect there's the [`xargs`](http://man7.org/linux/man-pages/man1/xargs.1.html) command which will execute a command using STDIN as arguments.
-For example `ls | xargs rm` will delete the files in the current directory.
+4. 本节课我们讲解了 `find` 命令的 `-exec` 参数非常强大，它可以对我们查找对文件进行操作。但是，如果我们要对所有文件进行操作呢？例如创建一个zip压缩文件？我们已经知道，命令行可以从参数或标准输入接受输入。在用管道连接命令时，我们将标准输出和标准输入连接起来，但是有些命令，例如`tar` 则需要从参数接受输入。这里我们可以使用[`xargs`](http://man7.org/linux/man-pages/man1/xargs.1.html) 命令，它可以使用标准输入中的内容作为参数。
+   例如 `ls | xargs rm` 会删除当前目录中的所有文件。
 
-    Your task is to write a command that recursively finds all HTML files in the folder and makes a zip with them. Note that your command should work even if the files have spaces (hint: check `-d` flag for `xargs`)
+    您的任务是编写一个命令，它可以递归地查找文件夹中所有的HTML文件，并将它们压缩成zip文件。注意，即使文件名中包含空格，您的命令也应该能够正确执行（提示：查看 `xargs`的参数`-d`） 
+
     {% comment %}
     find . -type f -name "*.html" | xargs -d '\n'  tar -cvzf archive.tar.gz
     {% endcomment %}
 
-1. (Advanced) Write a command or script to recursively find the most recently modified file in a directory. More generally, can you list all files by recency?
+5. (进阶) 编写一个命令或脚本递归的查找文件夹中最近使用的文件。更通用的做法，你可以按照最近的使用时间列出文件吗？
