@@ -2,7 +2,7 @@
 layout: lecture
 title: "编辑器 (Vim)"
 date: 2019-01-15
-ready: true
+ready: false
 video:
   aspect: 56.25
   id: a6Q8Na575qc

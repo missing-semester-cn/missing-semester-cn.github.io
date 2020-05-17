@@ -2,7 +2,7 @@
 layout: lecture
 title: "版本控制(Git)"
 date: 2019-01-22
-ready: true
+ready: false
 video:
   aspect: 56.25
   id: 2sjqTHE0zok

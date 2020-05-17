@@ -2,7 +2,7 @@
 layout: lecture
 title: "Q&A"
 date: 2019-01-30
-ready: true
+ready: false
 video:
   aspect: 56.25
   id: Wz50FvGG6xU
@@ -10,7 +10,7 @@ video:
 
 For the last lecture, we answered questions that the students submitted:
 
-- [Any recommendations on learning Operating Systems related topics like processes, virtual memory, interrupts, memory management, etc ](#any-recommendations-on-learning-operating-systems-related-topics-like-processes-virtual-memory-interrupts-memory-management-etc)
+- [Any recommendations on learning Operating Systems related topics like processes, virtual memory, interrupts, memory management, etc](#any-recommendations-on-learning-operating-systems-related-topics-like-processes-virtual-memory-interrupts-memory-management-etc)
 - [What are some of the tools you'd prioritize learning first?](#what-are-some-of-the-tools-youd-prioritize-learning-first)
 - [When do I use Python versus a Bash scripts versus some other language?](#when-do-i-use-python-versus-a-bash-scripts-versus-some-other-language)
 - [What is the difference between `source script.sh` and `./script.sh`](#what-is-the-difference-between-source-scriptsh-and-scriptsh)

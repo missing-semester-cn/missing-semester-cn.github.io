@@ -3,8 +3,7 @@ layout: page
 title: The Missing Semester of Your CS Education
 ---
 
-学校里有很多向您介绍从操作系统到机器学习等计算机科学进阶主题的课程，然而
-有一个至关重要的主题却很少被包括在这些课程之内，反而留给学生们自己去探索。
+学校里有很多向您介绍从操作系统到机器学习等计算机科学进阶主题的课程，然而有一个至关重要的主题却很少被包括在这些课程之内，反而留给学生们自己去探索。
 这部分内容就是：精通工具。在这个系列课程中，我们会帮助您精通命令行，使用强大对文本编辑器，使用版本控制系统提供的多种特性等等。
 
 学生在他们受教育阶段就会和这些工具朝夕相处（在他们的职业生涯中更是这样）。
@@ -34,9 +33,9 @@ Sign up for the IAP 2020 class by filling out this [registration form](https://f
         <li>
         <strong>{{ lecture.date | date: '%-m/%d' }}</strong>:
         {% if lecture.ready %}
-            <a href="{{ lecture.url }}">{{ lecture.title }}</a>
+            <a href="{{ lecture.url }}">{{ lecture.title }}</a><span style="float:right"><img src = "https://img.shields.io/badge/Chinese-✔-green"></span>
         {% else %}
-            {{ lecture.title }} {% if lecture.noclass %}[no class]{% endif %}
+             <a href="{{ lecture.url }}">{{ lecture.title }}  {% if lecture.noclass %}[no class]{% endif %}</a><span style="float:right"><img src = "https://img.shields.io/badge/Chinese-✘-orange"></span>
         {% endif %}
         </li>
     {% endif %}

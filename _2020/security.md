@@ -2,7 +2,7 @@
 layout: lecture
 title: "安全和密码学"
 date: 2019-01-28
-ready: true
+ready: false
 video:
   aspect: 56.25
   id: tjwobAmnKTo
