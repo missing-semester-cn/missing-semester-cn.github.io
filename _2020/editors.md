@@ -27,18 +27,13 @@ video:
 
 ## Vim
 
-All the instructors of this class use Vim as their editor. Vim has a rich
-history; it originated from the Vi editor (1976), and it's still being
-developed today. Vim has some really neat ideas behind it, and for this reason,
-lots of tools support a Vim emulation mode (for example, 1.4 million people
-have installed [Vim emulation for VS code](https://github.com/VSCodeVim/Vim)).
-Vim is probably worth learning even if you finally end up switching to some
-other text editor.
+这门课的所有教员都使用Vim作为编辑器。Vim有着悠久历史；它始于1976年的Vi编辑器，到现在还在
+不断开发中。Vim有很多聪明的设计思想，所以很多其他工具也支持Vim模式（比如，140万人安装了
+[Vim emulation for VS code](https://github.com/VSCodeVim/Vim)）。即使你最后使用
+其他编辑器，Vim也值得学习。
 
-It's not possible to teach all of Vim's functionality in 50 minutes, so we're
-going to focus on explaining the philosophy of Vim, teaching you the basics,
-showing you some of the more advanced functionality, and giving you the
-resources to master the tool.
+由于不可能在50分钟内教授Vim的所有功能， 我们会专注于解释Vim的设计哲学，教你基础知识，
+展示一部分高级功能，然后给你掌握这个工具所需要的资源。
 
 # Vim的哲学
 
