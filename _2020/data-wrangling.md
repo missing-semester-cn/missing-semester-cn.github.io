@@ -1,6 +1,6 @@
 ---
 layout: lecture
-title: "数据清理"
+title: "数据整理"
 date: 2019-01-16
 ready: false
 video:
