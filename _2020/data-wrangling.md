@@ -20,27 +20,20 @@ video:
 例如这样一条命令 `journalctl | grep -i intel`，它会找到所有包含intel(区分大小写)的系统日志。您可能并不认为是数据整理，但是它确实将某种形式的数据（全部系统日志）转换成了另外一种形式的数据（仅包含intel的日志）。大多数情况下，数据整理需要您能够明确哪些工具可以被用来达成特定数据整理的目的，并且明白如何组合使用这些工具。
 
 
-Let's start from the beginning. To wrangle data, we need two things:
-data to wrangle, and something to do with it. Logs often make for a good
-use-case, because you often want to investigate things about them, and
-reading the whole thing isn't feasible. Let's figure out who's trying to
-log into my server by looking at my server's log:
+让我们从头讲起。既然需恶习数据整理，那有两样东西自然是必不可少的：用来整理的数据以及相关的应用场景。日志处理通常是一个比较典型的使用场景，因为我们经常需要在日志中查找某些信息。这种情况下通读日志是不现实的。现在，让我们研究一下系统日志，看看哪些用户曾经尝试过登录我们的服务器：
 
 ```bash
 ssh myserver journalctl
 ```
 
-That's far too much stuff. Let's limit it to ssh stuff:
+内容太多了。现在让我们把涉及sshd的信息过滤出来：
 
 ```bash
 ssh myserver journalctl | grep sshd
 ```
 
-Notice that we're using a pipe to stream a _remote_ file through `grep`
-on our local computer! `ssh` is magical, and we will talk more about it
-in the next lecture on the command-line environment. This is still way
-more stuff than we wanted though. And pretty hard to read. Let's do
-better:
+注意，这里我们使用管道将一个远程服务器上的文件传递给本机的 `grep` 程序！
+`ssh` 太牛了，下一节课我们会讲授命令行环境，届时我们会详细讨论ssh的相关内容。此时我们打印出的内容，仍然比我们需要的要多得多，读起来也非常费劲。我们来改进一下：
 
 ```bash
 ssh myserver 'journalctl | grep sshd | grep "Disconnected from"' | less
