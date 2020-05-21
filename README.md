@@ -21,7 +21,7 @@ All the content in this course, including the website source code, lecture notes
 
 ## Project Status
 
-To contribute to this tanslation project, please book your topic in this table and create a issue accordingly.
+To contribute to this tanslation project, please book your topic by creating an issue and I will update this table accordingly to avoid rework.
 
 |  lectures   | translator  | status |
 |  ----  | ----  |----  |
