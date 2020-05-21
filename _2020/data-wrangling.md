@@ -12,19 +12,13 @@ video:
 [Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anicor/data_wrangling_iap_2019/)
 {% endcomment %}
 
-Have you ever wanted to take data in one format and turn it into a
-different format? Of course you have! That, in very general terms, is
-what this lecture is all about. Specifically, massaging data, whether in
-text or binary format, until you end up with exactly what you wanted.
 
-We've already seen some basic data wrangling in past lectures. Pretty
-much any time you use the `|` operator, you are performing some kind of
-data wrangling. Consider a command like `journalctl | grep -i intel`. It
-finds all system log entries that mention Intel (case insensitive). You
-may not think of it as wrangling data, but it is going from one format
-(your entire system log) to a format that is more useful to you (just
-the intel log entries). Most data wrangling is about knowing what tools
-you have at your disposal, and how to combine them.
+您是否曾经有过这样的需求，将某种格式存储的数据转换成另外一种格式? 肯定有过，对吧！
+一般来讲，这正是我们这节课所要讲授的主要内容。具体来讲，我们需要不断地对数据进行处理，直到得到我们想要的最终结果。
+
+在之前的课程中，其实我们已经接触到了一些数据整理的基本技术。可以这么说，每当您使用管道运算符的时候，其实就是在进行某种形式的数据整理。
+例如这样一条命令 `journalctl | grep -i intel`，它会找到所有包含intel(区分大小写)的系统日志。您可能并不认为是数据整理，但是它确实将某种形式的数据（全部系统日志）转换成了另外一种形式的数据（仅包含intel的日志）。大多数情况下，数据整理需要您能够明确哪些工具可以被用来达成特定数据整理的目的，并且明白如何组合使用这些工具。
+
 
 Let's start from the beginning. To wrangle data, we need two things:
 data to wrangle, and something to do with it. Logs often make for a good
