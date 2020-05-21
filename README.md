@@ -25,15 +25,15 @@ To contribute to this tanslation project, please book your topic by creating an 
 
 |  lectures   | translator  | status |
 |  ----  | ----  |----  |
-| 课程概览与shell  | [@Lingfeng AI](https://github.com/hanxiaomax) | Done |
-| Shell 工具和脚本  | [@Lingfeng AI](https://github.com/hanxiaomax) | Done |
-| 编辑器 (Vim)  |  [@stechu](https://github.com/stechu) | In-progress |
-| 数据清理  | [@Lingfeng AI](https://github.com/hanxiaomax) | In-progress |
-| 命令行环境  | [@Lingfeng AI](https://github.com/hanxiaomax) | In-progress |
-| 版本控制(Git)  |  | TO-DO |
-| 调试及性能分析  |  | TO-DO |
-| 元编程  |  | TO-DO |
-| 安全和密码学  |  | TO-DO |
-| 大杂烩  |  | TO-DO |
-| Q&A  |  | TO-DO |
-| About  | [@Binlogo](https://github.com/Binlogo)  | In-progress |
+| [course-shell.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/course-shell.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | Done |
+| [shell-tools.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/shell-tools.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | Done |
+| [editors.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/editors.md)  |  [@stechu](https://github.com/stechu) | In-progress |
+| [data-wrangling.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/data-wrangling.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | In-progress |
+| [command-line.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/command-line.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | In-progress |
+| [version-control.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/version-control.md)  |  | TO-DO |
+| [debugging-profiling.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/debugging-profiling.md)  |  | TO-DO |
+| [metaprogramming.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/metaprogramming.md)  |  | TO-DO |
+| [security.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/security.md)  |  | TO-DO |
+| [potpourri.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/potpourri.md) |  | TO-DO |
+| [qa.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/qa.md) |  | TO-DO |
+| [about.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/about.md)  | [@Binlogo](https://github.com/Binlogo)  | In-progress |
