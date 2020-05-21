@@ -58,15 +58,11 @@ Vim的设计以大多数时间都花在阅读、浏览和进行少量编辑改�
 - *可视（一般，行，块）模式*：选中文本块
 - *命令模式*：用于执行命令
 
+在不同的操作模式， 键盘敲击的含义也不同。比如，`x` 在插入模式会插入字母`x`，但是在正常模式
+会删除当前光标所在下的字母，在可视模式下则会删除选中文块。
 
-Keystrokes have different meanings in different operating modes. For example,
-the letter `x` in insert mode will just insert a literal character 'x', but in
-normal mode, it will delete the character under the cursor, and in visual mode,
-it will delete the selection.
-
-In its default configuration, Vim shows the current mode in the bottom left.
-The initial/default mode is normal mode. You'll generally spend most of your
-time between normal mode and insert mode.
+在默认设置下，Vim会在左下角显示当前的模式。 Vim启动时的默认模式是正常模式。通常你会把大部分
+时间花在正常模式和插入模式。
 
 You change modes by pressing `<ESC>` (the escape key) to switch from any mode
 back to normal mode. From normal mode, enter insert mode with `i`, replace mode
