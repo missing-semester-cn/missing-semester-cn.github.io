@@ -8,54 +8,32 @@ video:
   id: 2sjqTHE0zok
 ---
 
-Version control systems (VCSs) are tools used to track changes to source code
-(or other collections of files and folders). As the name implies, these tools
-help maintain a history of changes; furthermore, they facilitate collaboration.
-VCSs track changes to a folder and its contents in a series of snapshots, where
-each snapshot encapsulates the entire state of files/folders within a top-level
-directory. VCSs also maintain metadata like who created each snapshot, messages
-associated with each snapshot, and so on.
+版本控制系统 (VCSs) 是一类用于追踪源代码（或其他文件、文件夹）改动的工具。顾名思义，这些工具可以帮助我们管理修改历史；不仅如此，它还可以让协作编码更方便。VCS通过一系列的快照将某个文件夹及其内容保存了起来，每个快照都包含了文件或文件夹的完整状态。同时它还维护了快照创建者的信息以及每个快照的管相关信息等等。
 
-Why is version control useful? Even when you're working by yourself, it can let
-you look at old snapshots of a project, keep a log of why certain changes were
-made, work on parallel branches of development, and much more. When working
-with others, it's an invaluable tool for seeing what other people have changed,
-as well as resolving conflicts in concurrent development.
+为什么说版本控制系统非常有用？即使您只是一个人进行编程工作，它也可以帮您创建项目的快照，记录每个改动的目的、基于多分支并行开发等等。和别人协作开发时，它更是一个无价之宝，您可以看到别人对代码进行的修改，同时解决由于并行开发引起的冲突。
 
-Modern VCSs also let you easily (and often automatically) answer questions
-like:
 
-- Who wrote this module?
-- When was this particular line of this particular file edited? By whom? Why
-  was it edited?
-- Over the last 1000 revisions, when/why did a particular unit test stop
-working?
+现代的版本控制系统可以帮助您轻松地（甚至自动地）回答以下问题：
 
-While other VCSs exist, **Git** is the de facto standard for version control.
-This [XKCD comic](https://xkcd.com/1597/) captures Git's reputation:
+- 当前模块是谁编写的？
+- 这个文件的这一行是什么时候被编辑的？是谁作出的修改？修改原因是什么呢？
+- 最近的1000个版本中，何时/为什么导致了单元测试失败？
+
+尽管版本控制系统有很多， 其事实上的标准则是 **Git** 。这篇 [XKCD 漫画](https://xkcd.com/1597/) 则反映出了人们对 Git 的评价：
 
 ![xkcd 1597](https://imgs.xkcd.com/comics/git.png)
 
-Because Git's interface is a leaky abstraction, learning Git top-down (starting
-with its interface / command-line interface) can lead to a lot of confusion.
-It's possible to memorize a handful of commands and think of them as magic
-incantations, and follow the approach in the comic above whenever anything goes
-wrong.
+因为 Git 接口的抽象有些问题，通过自顶向下的方式（从接口、命令行接口开始）学习 Git 可能会让人感到非常困惑。很多时候您只能死记硬背一些命令行，然后像使用魔法一样使用它们，一旦出现问题，就只能像上面那幅漫画里说的那样去处理了。
 
-While Git admittedly has an ugly interface, its underlying design and ideas are
-beautiful. While an ugly interface has to be _memorized_, a beautiful design
-can be _understood_. For this reason, we give a bottom-up explanation of Git,
-starting with its data model and later covering the command-line interface.
-Once the data model is understood, the commands can be better understood, in
-terms of how they manipulate the underlying data model.
+尽管 Git 的接口有些粗糙，但是它的底层设计和思想却是非常优雅的。丑陋的接口只能靠死记硬背，而优雅的底层设计则非常容易被人理解。因此，我们将通过一种自底向上的方式像您介绍 Git。我们会从数据模型开始，最后再学习它的接口。一旦您搞懂了 Git 的数据模型，再学习其接口并理解这些接口是如何操作数据模型的，就非常容易了。
 
-# Git's data model
+# Git 的数据模型
 
 There are many ad-hoc approaches you could take to version control. Git has a
 well thought-out model that enables all the nice features of version control,
 like maintaining history, supporting branches, and enabling collaboration.
 
-## Snapshots
+## 快照
 
 Git models the history of a collection of files and folders within some
 top-level directory as a series of snapshots. In Git terminology, a file is
@@ -77,7 +55,7 @@ example, we might have a tree as follows:
 The top-level tree contains two elements, a tree "foo" (that itself contains
 one element, a blob "bar.txt"), and a blob "baz.txt".
 
-## Modeling history: relating snapshots
+## 历史记录建模：关联快照
 
 How should a version control system relate snapshots? One simple model would be
 to have a linear history. A history would be a list of snapshots in time-order.
@@ -121,7 +99,7 @@ corrected, however; it's just that "edits" to the commit history are actually
 creating entirely new commits, and references (see below) are updated to point
 to the new ones.
 
-## Data model, as pseudocode
+## 数据模型及其伪代码表示
 
 It may be instructive to see Git's data model written down in pseudocode:
 
@@ -143,7 +121,7 @@ type commit = struct {
 
 It's a clean, simple model of history.
 
-## Objects and content-addressing
+## 对象和内存寻址
 
 An "object" is a blob, tree, or commit:
 
@@ -187,7 +165,7 @@ the following:
 git is wonderful
 ```
 
-## References
+## 引用
 
 Now, all snapshots can be identified by their SHA-1 hash. That's inconvenient,
 because humans aren't good at remembering strings of 40 hexadecimal characters.
@@ -222,7 +200,7 @@ history, so that when we take a new snapshot, we know what it is relative to
 (how we set the `parents` field of the commit). In Git, that "where we
 currently are" is a special reference called "HEAD".
 
-## Repositories
+## 仓库
 
 Finally, we can define what (roughly) is a Git _repository_: it is the data
 `objects` and `references`.
@@ -238,7 +216,7 @@ uncommitted changes and make the 'master' ref point to commit `5d83f9e`", there'
 probably a command to do it (e.g. in this case, `git checkout master; git reset
 --hard 5d83f9e`).
 
-# Staging area
+# 暂存区
 
 This is another concept that's orthogonal to the data model, but it's a part of
 the interface to create commits.
@@ -258,13 +236,13 @@ Git accommodates such scenarios by allowing you to specify which modifications
 should be included in the next snapshot through a mechanism called the "staging
 area".
 
-# Git command-line interface
+# Git 的命令行接口
 
 To avoid duplicating information, we're not going to explain the commands below
 in detail. See the highly recommended [Pro Git](https://git-scm.com/book/en/v2)
 for more information, or watch the lecture video.
 
-## Basics
+## 基础
 
 {% comment %}
 
@@ -431,7 +409,7 @@ index 94bab17..f0013b2 100644
 - `git diff <revision> <filename>`: shows differences in a file between snapshots
 - `git checkout <revision>`: updates HEAD and current branch
 
-## Branching and merging
+## 分支和合并
 
 {% comment %}
 
@@ -481,7 +459,7 @@ command is used for merging.
 - `git bisect`: binary search history (e.g. for regressions)
 - `.gitignore`: [specify](https://git-scm.com/docs/gitignore) intentionally untracked files to ignore
 
-# Miscellaneous
+# 杂项
 
 - **GUIs**: There are many [GUI clients](https://git-scm.com/downloads/guis)
 out there for Git. We personally don't use them and use the command-line
@@ -505,7 +483,7 @@ requests](https://help.github.com/en/github/collaborating-with-issues-and-pull-r
 hosts, like [GitLab](https://about.gitlab.com/) and
 [BitBucket](https://bitbucket.org/).
 
-# Resources
+# 资源
 
 - [Pro Git](https://git-scm.com/book/en/v2) is **highly recommended reading**.
 Going through Chapters 1--5 should teach you most of what you need to use Git
@@ -525,7 +503,7 @@ words](https://smusamashah.github.io/blog/2017/10/14/explain-git-in-simple-words
 - [Learn Git Branching](https://learngitbranching.js.org/) is a browser-based
 game that teaches you Git.
 
-# Exercises
+# 课后练习
 
 1. If you don't have any past experience with Git, either try reading the first
    couple chapters of [Pro Git](https://git-scm.com/book/en/v2) or go through a
