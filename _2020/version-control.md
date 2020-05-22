@@ -137,14 +137,9 @@ git is wonderful
 
 ## 引用
 
-Now, all snapshots can be identified by their SHA-1 hash. That's inconvenient,
-because humans aren't good at remembering strings of 40 hexadecimal characters.
+现在，所有的快照都可以通过它们的SHA-1哈希值来标记了。但这也太不方便来，谁也记不住一串 40 位的十六进制字符。
 
-Git's solution to this problem is human-readable names for SHA-1 hashes, called
-"references". References are pointers to commits. Unlike objects, which are
-immutable, references are mutable (can be updated to point to a new commit).
-For example, the `master` reference usually points to the latest commit in the
-main branch of development.
+针对这一问题，Git 的解决方法是给这些哈希值赋予人类可读的名字，也就是引用（references）。引用是指向提交的指针。与对象不同的是，它是可变的（引用可以被更新，指向新的提交）。例如，`master` 引用通常会指向主分支的最新一次提交。
 
 ```
 references = map<string, string>
@@ -162,18 +157,13 @@ def load_reference(name_or_id):
         return load(name_or_id)
 ```
 
-With this, Git can use human-readable names like "master" to refer to a
-particular snapshot in the history, instead of a long hexadecimal string.
+这样，Git 就可以使用诸如 "master" 这样人类刻度的名称来表示历史记录中某个特定的提交，而不需要在使用一长串十六进制字符了。
 
-One detail is that we often want a notion of "where we currently are" in the
-history, so that when we take a new snapshot, we know what it is relative to
-(how we set the `parents` field of the commit). In Git, that "where we
-currently are" is a special reference called "HEAD".
+有一个细节需要我们注意， 通常情况下，我们会想要知道“我们当前所在位置”，并将其标记下来。这样当我们创建新的快照的时候，我们就可以知道它的相对位置（如何设置它的“父辈”）。在 Git 中，我们当前的位置有一个特殊的索引，它就是"HEAD"。
 
 ## 仓库
 
-Finally, we can define what (roughly) is a Git _repository_: it is the data
-`objects` and `references`.
+最后，我们可以粗略地给出 Git 仓库的定义了：`对象` 和 `引用`。
 
 On disk, all Git stores are objects and references: that's all there is to Git's
 data model. All `git` commands map to some manipulation of the commit DAG by
@@ -367,17 +357,17 @@ index 94bab17..f0013b2 100644
 
 {% endcomment %}
 
-- `git help <command>`: get help for a git command
-- `git init`: creates a new git repo, with data stored in the `.git` directory
-- `git status`: tells you what's going on
-- `git add <filename>`: adds files to staging area
-- `git commit`: creates a new commit
-    - Write [good commit messages](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)!
-- `git log`: shows a flattened log of history
-- `git log --all --graph --decorate`: visualizes history as a DAG
-- `git diff <filename>`: show differences since the last commit
-- `git diff <revision> <filename>`: shows differences in a file between snapshots
-- `git checkout <revision>`: updates HEAD and current branch
+- `git help <command>`: 获取 git 命令的帮助信息
+- `git init`: 创建一个新的 git 仓库，其数据会存放在一个名为 `.git` 的目录下
+- `git status`: 显示当前的仓库状态
+- `git add <filename>`: 添加文件到暂存区
+- `git commit`: 创建一个新的提交
+    - 如何编写 [良好的提交信息](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)!
+- `git log`: 显示历史日志
+- `git log --all --graph --decorate`: 可视化历史记录（有向无环图）
+- `git diff <filename>`: 显示与上一次提交间的不同
+- `git diff <revision> <filename>`: 显示某个文件两个版本之间的不同
+- `git checkout <revision>`: 更新HEAD和目前的分支
 
 ## 分支和合并
 
@@ -394,84 +384,66 @@ command is used for merging.
 
 {% endcomment %}
 
-- `git branch`: shows branches
-- `git branch <name>`: creates a branch
-- `git checkout -b <name>`: creates a branch and switches to it
-    - same as `git branch <name>; git checkout <name>`
-- `git merge <revision>`: merges into current branch
-- `git mergetool`: use a fancy tool to help resolve merge conflicts
-- `git rebase`: rebase set of patches onto a new base
+- `git branch`: 显示分支
+- `git branch <name>`: 创建分支
+- `git checkout -b <name>`: 创建分支并切换到该分支
+    - 相当于 `git branch <name>; git checkout <name>`
+- `git merge <revision>`: 合并到当前分支
+- `git mergetool`: 使用工具来处理合并冲突
+- `git rebase`: 将一系列补丁变基（rebase）为新的基线
 
-## Remotes
+## 远端操作
 
-- `git remote`: list remotes
-- `git remote add <name> <url>`: add a remote
-- `git push <remote> <local branch>:<remote branch>`: send objects to remote, and update remote reference
-- `git branch --set-upstream-to=<remote>/<remote branch>`: set up correspondence between local and remote branch
-- `git fetch`: retrieve objects/references from a remote
-- `git pull`: same as `git fetch; git merge`
-- `git clone`: download repository from remote
+- `git remote`: 列出远端
+- `git remote add <name> <url>`: 添加一个远端
+- `git push <remote> <local branch>:<remote branch>`: 将对象传送至远端并更新远端引用
+- `git branch --set-upstream-to=<remote>/<remote branch>`: 创建本地和远端分支的关联关系
+- `git fetch`: 从远端获取对象/索引
+- `git pull`: 相当于  `git fetch; git merge`
+- `git clone`: 从远端下载仓库
 
-## Undo
+## 撤销
 
-- `git commit --amend`: edit a commit's contents/message
-- `git reset HEAD <file>`: unstage a file
-- `git checkout -- <file>`: discard changes
+- `git commit --amend`: 编辑提交的内容或信息
+- `git reset HEAD <file>`: 恢复暂存的文件
+- `git checkout -- <file>`: 丢弃修改
 
-# Advanced Git
+# Git 高级操作
 
-- `git config`: Git is [highly customizable](https://git-scm.com/docs/git-config)
-- `git clone --shallow`: clone without entire version history
-- `git add -p`: interactive staging
-- `git rebase -i`: interactive rebasing
-- `git blame`: show who last edited which line
-- `git stash`: temporarily remove modifications to working directory
-- `git bisect`: binary search history (e.g. for regressions)
-- `.gitignore`: [specify](https://git-scm.com/docs/gitignore) intentionally untracked files to ignore
+- `git config`: Git 是一个 [高度可定制的](https://git-scm.com/docs/git-config) 工具
+- `git clone --shallow`: 克隆仓库，但是不包括版本历史信息
+- `git add -p`: 交互式暂存
+- `git rebase -i`: 交互式变基
+- `git blame`: 查看最后修改某行的人
+- `git stash`: 暂时移除工作目录下的修改内容
+- `git bisect`: 通过二分查找搜索历史记录
+- `.gitignore`: [指定](https://git-scm.com/docs/gitignore) 故意不追踪的文件
 
 # 杂项
 
-- **GUIs**: There are many [GUI clients](https://git-scm.com/downloads/guis)
-out there for Git. We personally don't use them and use the command-line
-interface instead.
-- **Shell integration**: It's super handy to have a Git status as part of your
-shell prompt ([zsh](https://github.com/olivierverdier/zsh-git-prompt),
-[bash](https://github.com/magicmonty/bash-git-prompt)). Often included in
-frameworks like [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh).
-- **Editor integration**: Similarly to the above, handy integrations with many
-features. [fugitive.vim](https://github.com/tpope/vim-fugitive) is the standard
-one for Vim.
-- **Workflows**: we taught you the data model, plus some basic commands; we
-didn't tell you what practices to follow when working on big projects (and
-there are [many](https://nvie.com/posts/a-successful-git-branching-model/)
-[different](https://www.endoflineblog.com/gitflow-considered-harmful)
-[approaches](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)).
-- **GitHub**: Git is not GitHub. GitHub has a specific way of contributing code
-to other projects, called [pull
-requests](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests).
-- **Other Git providers**: GitHub is not special: there are many Git repository
-hosts, like [GitLab](https://about.gitlab.com/) and
-[BitBucket](https://bitbucket.org/).
+- **图形用户界面**: Git 的 [图形用户界面客户端](https://git-scm.com/downloads/guis) 有很多，但是我们自己并不使用这些图形用户界面的客户端，我们选择使用命令行接口
+- **Shell 集成**: 将 Git 状态集成到您的shell中会非常方便。([zsh](https://github.com/olivierverdier/zsh-git-prompt),[bash](https://github.com/magicmonty/bash-git-prompt))。[Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)这样的框架中一般以及集成了这一功能
+- **编辑器集成**: 和上面一条类似，将 Git 集成到编辑器中好处多多。[fugitive.vim](https://github.com/tpope/vim-fugitive) 是 Vim 中集成 GIt 的常用插件
+- **工作流**:我们已经讲解了数据模型与一些基础命令，但还没讨论到进行大型项目时的一些惯例 (
+有[很多](https://nvie.com/posts/a-successful-git-branching-model/)
+[不同的](https://www.endoflineblog.com/gitflow-considered-harmful)
+[处理方法](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow))
+- **GitHub**: Git 并不等同于 GitHub。 在 GitHub 中您需要使用一个被称作[拉取请求（pull request）](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)的方法来像其他项目贡献代码
+- **Other Git 提供商**: GitHub 并不是唯一的。还有像[GitLab](https://about.gitlab.com/) 和
+[BitBucket](https://bitbucket.org/)这样的平台。
 
 # 资源
 
-- [Pro Git](https://git-scm.com/book/en/v2) is **highly recommended reading**.
-Going through Chapters 1--5 should teach you most of what you need to use Git
-proficiently, now that you understand the data model. The later chapters have
-some interesting, advanced material.
-- [Oh Shit, Git!?!](https://ohshitgit.com/) is a short guide on how to recover
-from some common Git mistakes.
-- [Git for Computer
-Scientists](https://eagain.net/articles/git-for-computer-scientists/) is a
-short explanation of Git's data model, with less pseudocode and more fancy
-diagrams than these lecture notes.
+- [Pro Git](https://git-scm.com/book/en/v2) ，**强烈推荐**！
+学习前五章的内容可以教会您流畅使用 Git 的绝大多数技巧，因为您已经理解了 Git 的数据模型。后面的章节提供了很多有趣的高级主题。（[Pro Git 中文版](https://git-scm.com/book/zh/v2)）
+- [Oh Shit, Git!?!](https://ohshitgit.com/) ，简短的介绍了如何从 Git 错误中恢复
+- [Git for Computer Scientists](https://eagain.net/articles/git-for-computer-scientists/) is a
+简短的介绍了 Git 的数据模型，与本文相比包含少量的伪代码以及大量的精美图片。
 - [Git from the Bottom Up](https://jwiegley.github.io/git-from-the-bottom-up/)
-is a detailed explanation of Git's implementation details beyond just the data
-model, for the curious.
-- [How to explain git in simple
-words](https://smusamashah.github.io/blog/2017/10/14/explain-git-in-simple-words)
-- [Learn Git Branching](https://learngitbranching.js.org/) is a browser-based
-game that teaches you Git.
+详细的介绍了 Git 的实现细节，而不仅仅局限于数据模型。好奇的同学可以看看。
+- [How to explain git in simple words](https://smusamashah.github.io/blog/2017/10/14/explain-git-in-simple-words)
+- [Learn Git Branching](https://learngitbranching.js.org/) 通过基于浏览器的游戏来学习 Git 
+
 
 # 课后练习
 
@@ -479,8 +451,7 @@ game that teaches you Git.
    couple chapters of [Pro Git](https://git-scm.com/book/en/v2) or go through a
    tutorial like [Learn Git Branching](https://learngitbranching.js.org/). As
    you're working through it, relate Git commands to the data model.
-1. Clone the [repository for the
-class website](https://github.com/missing-semester/missing-semester).
+1. Clone the [repository for the class website](https://github.com/missing-semester/missing-semester).
     1. Explore the version history by visualizing it as a graph.
     1. Who was the last person to modify `README.md`? (Hint: use `git log` with
        an argument)
