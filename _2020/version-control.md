@@ -29,18 +29,11 @@ video:
 
 # Git 的数据模型
 
-There are many ad-hoc approaches you could take to version control. Git has a
-well thought-out model that enables all the nice features of version control,
-like maintaining history, supporting branches, and enabling collaboration.
+进行版本控制的方法很多。Git 拥有一个经过精心设计的模型，这使其能够支持版本控制所需的所有特性，例如维护历史记录、支持分支和促进协作。
 
 ## 快照
 
-Git models the history of a collection of files and folders within some
-top-level directory as a series of snapshots. In Git terminology, a file is
-called a "blob", and it's just a bunch of bytes. A directory is called a
-"tree", and it maps names to blobs or trees (so directories can contain other
-directories). A snapshot is the top-level tree that is being tracked. For
-example, we might have a tree as follows:
+Git 将顶级目录中的文件和文件夹作为集合，并通过一系列快照来管理其历史记录。在Git的术语里，文件被称作Blob对象（数据对象），也就是一组数据。目录则被称之为“树”，它将名字与Blob对象或树对象进行映射（使得目录中可以包含其他目录）。快照则是被追踪的最顶层的树。例如，一个树看起来可能是这样的：
 
 ```
 <root> (tree)
@@ -52,24 +45,15 @@ example, we might have a tree as follows:
 +- baz.txt (blob, contents = "git is wonderful")
 ```
 
-The top-level tree contains two elements, a tree "foo" (that itself contains
-one element, a blob "bar.txt"), and a blob "baz.txt".
+这个顶层的树包含了两个元素，一个名为 "foo" 的树(它本身包含了一个blob对象 "bar.txt")，以及一个对blob对象 "baz.txt"。
 
 ## 历史记录建模：关联快照
 
-How should a version control system relate snapshots? One simple model would be
-to have a linear history. A history would be a list of snapshots in time-order.
-For many reasons, Git doesn't use a simple model like this.
+版本控制系统和快照有什么关系呢？线性历史记录是一种最简单的模型，它包含了一组按照时间顺序线性排列的快照。不过处于种种原因，Git并没有采用这样的模型。
 
-In Git, a history is a directed acyclic graph (DAG) of snapshots. That may
-sound like a fancy math word, but don't be intimidated. All this means is that
-each snapshot in Git refers to a set of "parents", the snapshots that preceded
-it. It's a set of parents rather than a single parent (as would be the case in
-a linear history) because a snapshot might descend from multiple parents, for
-example due to combining (merging) two parallel branches of development.
+在 Git 中，历史记录是一个由快照组成的有向无环图。有向无环图，听上去似乎是什么高大上的数学名词，不过不要怕。您只需要知道这代表 Git 中的每个快照都有一系列的“父辈”，也就是其之前的一系列快照。注意，快照具有多个“父辈”而非一个，因为某个快照可能由多个父辈而来。例如，经过合并后的两条分支。
 
-Git calls these snapshots "commit"s. Visualizing a commit history might look
-something like this:
+在 Git 中，这些快照被称为“提交”。通过可视化的方式来表示这些历史提交记录时，看起来差不多是这样的：
 
 ```
 o <-- o <-- o <-- o
@@ -78,7 +62,8 @@ o <-- o <-- o <-- o
               --- o <-- o
 ```
 
-In the ASCII art above, the `o`s correspond to individual commits (snapshots).
+上面是一个 ASCII 码构成的简图，其中的 `o` 表示一次提交（快照）。
+
 The arrows point to the parent of each commit (it's a "comes before" relation,
 not "comes after"). After the third commit, the history branches into two
 separate branches. This might correspond to, for example, two separate features
