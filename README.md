@@ -35,5 +35,5 @@ To contribute to this tanslation project, please book your topic by creating an 
 | [metaprogramming.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/metaprogramming.md)  |  | TO-DO |
 | [security.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/security.md)  |  | TO-DO |
 | [potpourri.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/potpourri.md) |  | TO-DO |
-| [qa.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/qa.md) | [@AA1HSHH](https://github.com/AA1HSHH) | TO-DO |
+| [qa.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/qa.md) | [@AA1HSHH](https://github.com/AA1HSHH) | In-progress |
 | [about.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/about.md)  | [@Binlogo](https://github.com/Binlogo)  | In-progress |
