@@ -30,7 +30,7 @@ To contribute to this tanslation project, please book your topic by creating an 
 | [editors.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/editors.md)  |  [@stechu](https://github.com/stechu) | In-progress |
 | [data-wrangling.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/data-wrangling.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | Done |
 | [command-line.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/command-line.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | In-progress |
-| [version-control.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/version-control.md)  |  | TO-DO |
+| [version-control.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/version-control.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | In-progress |
 | [debugging-profiling.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/debugging-profiling.md)  |  | TO-DO |
 | [metaprogramming.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/metaprogramming.md)  |  | TO-DO |
 | [security.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/security.md)  |  | TO-DO |
