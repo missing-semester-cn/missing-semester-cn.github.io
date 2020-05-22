@@ -64,13 +64,7 @@ o <-- o <-- o <-- o
 
 上面是一个 ASCII 码构成的简图，其中的 `o` 表示一次提交（快照）。
 
-The arrows point to the parent of each commit (it's a "comes before" relation,
-not "comes after"). After the third commit, the history branches into two
-separate branches. This might correspond to, for example, two separate features
-being developed in parallel, independently from each other. In the future,
-these branches may be merged to create a new snapshot that incorporates both of
-the features, producing a new history that looks like this, with the newly
-created merge commit shown in bold:
+箭头指向了当前提交的父辈（这是一种“在。。。之前”，而不是“在。。。之后”的关系）。在第三次提交之后，历史记录分岔成了两条独立的分支。这可能因为此时需要同时开发两个不同的特性，它们之间是相互独立的。开发完成后，这些分支可能会被合并并创建一个新的提交，这个新的提交会同时包含这些特性。新的提交会创建一个新的历史记录，看上去像这样（最新的合并提交用粗体标记）：
 
 <pre>
 o <-- o <-- o <-- o <---- <strong>o</strong>
@@ -79,23 +73,20 @@ o <-- o <-- o <-- o <---- <strong>o</strong>
               --- o <-- o
 </pre>
 
-Commits in Git are immutable. This doesn't mean that mistakes can't be
-corrected, however; it's just that "edits" to the commit history are actually
-creating entirely new commits, and references (see below) are updated to point
-to the new ones.
+Git 中的提交是不可改变的。但这并不代表错误不能被修改，只不过这种“修改”实际上是创建了一个全新的提交记录。而引用（参见下文）则被更新为指向这些新的提交。
 
 ## 数据模型及其伪代码表示
 
-It may be instructive to see Git's data model written down in pseudocode:
+以伪代码的形式来学习 Git 的数据模型，可能更加清晰：
 
 ```
-// a file is a bunch of bytes
+// 文件就是一组数据
 type blob = array<byte>
 
-// a directory contains named files and directories
+// 一个包含文件和目录的目录
 type tree = map<string, tree | file>
 
-// a commit has parents, metadata, and the top-level tree
+// 每个提交都包含一个父辈，元数据和顶层树
 type commit = struct {
     parent: array<commit>
     author: string
@@ -104,18 +95,18 @@ type commit = struct {
 }
 ```
 
-It's a clean, simple model of history.
+这是一种简洁的历史模型。
+
 
 ## 对象和内存寻址
 
-An "object" is a blob, tree, or commit:
+Git 中的对象可以是 blob、树或提交：
 
 ```
 type object = blob | tree | commit
 ```
 
-In Git data store, all objects are content-addressed by their [SHA-1
-hash](https://en.wikipedia.org/wiki/SHA-1).
+Git 在储存数据时，所有的对象都会基于它们的[SHA-1 hash](https://en.wikipedia.org/wiki/SHA-1)进行寻址。
 
 ```
 objects = map<string, object>
@@ -128,23 +119,17 @@ def load(id):
     return objects[id]
 ```
 
-Blobs, trees, and commits are unified in this way: they are all objects. When
-they reference other objects, they don't actually _contain_ them in their
-on-disk representation, but have a reference to them by their hash.
+Blobs、树和提交都一样，它们都是对象。当它们引用其他对象时，它们并没有真正的在硬盘上保存这些对象，而是仅仅保存了它们的哈希值作为引用。
 
-For example, the tree for the example directory structure [above](#snapshots)
-(visualized using `git cat-file -p 698281bc680d1995c5f4caaf3359721a5a58d48d`),
-looks like this:
+例如，上面例子中的树，For example, the tree for the example directory structure [above](#snapshots)（可以通过`git cat-file -p 698281bc680d1995c5f4caaf3359721a5a58d48d` 来进行可视化），看上去是这样的：
 
 ```
 100644 blob 4448adbf7ecd394f42ae135bbeed9676e894af85    baz.txt
 040000 tree c68d233a33c5c06e0340e4c224f0afca87c8ce87    foo
 ```
 
-The tree itself contains pointers to its contents, `baz.txt` (a blob) and `foo`
-(a tree). If we look at the contents addressed by the hash corresponding to
-baz.txt with `git cat-file -p 4448adbf7ecd394f42ae135bbeed9676e894af85`, we get
-the following:
+树本身会包含一些指向其他内容的指针，例如`baz.txt` (blob) 和 `foo`
+(树)。如果我们用`git cat-file -p 4448adbf7ecd394f42ae135bbeed9676e894af85`，即通过哈希值查看 baz.txte 的内容，会得到以下信息：
 
 ```
 git is wonderful
