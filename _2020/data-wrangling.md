@@ -79,7 +79,7 @@ ssh myserver journalctl
 ```
 Jan 17 03:13:00 thesquareplanet.com sshd[2631]: Disconnected from invalid user Disconnected from 46.97.239.16 port 55920 [preauth]
 ```
-我们的正则表达式匹配结果是怎样的呢？`*` 和 `+` 在默认情况下是贪婪模式，也就是说，它们会尽可能多的匹配文本。因此对上述字符串的匹配结果如下：
+正则表达式会如何匹配？`*` 和 `+` 在默认情况下是贪婪模式，也就是说，它们会尽可能多的匹配文本。因此对上述字符串的匹配结果如下：
 
 ```
 46.97.239.16 port 55920 [preauth]
@@ -91,63 +91,36 @@ perl 的命令行模式，该模式支持编写这样的正则表达式：
 perl -pe 's/.*?Disconnected from //'
 ```
 
-We'll stick to `sed` for the rest of this, because it's by far the more
-common tool for these kinds of jobs. `sed` can also do other handy
-things like print lines following a given match, do multiple
-substitutions per invocation, search for things, etc. But we won't cover
-that too much here. `sed` is basically an entire topic in and of itself,
-but there are often better tools.
+让我们回到 `sed` 命令并使用它完成后续的任务，毕竟对于这一类任务，`sed`是最常见的工具。`sed` 还可以非常方便的做一些事情，例如打印匹配后的内容，一次调用中进行多次替换搜索等。但是这些内容我们并不会在此进行介绍。`sed` 本身是一个非常全能的工具，但是在具体功能上往往能找到更好的工作作为替代品。
 
-Okay, so we also have a suffix we'd like to get rid of. How might we do
-that? It's a little tricky to match just the text that follows the
-username, especially if the username can have spaces and such! What we
-need to do is match the _whole_ line:
+好的，我们还需要去掉用户名后面的后缀，应该如何操作呢？
+想要匹配用户名后面的文本，尤其是当这里的用户名可以包含空格时，这个问题变得非常棘手！这里我们需要做的是匹配*一整行*：
 
 ```bash
  | sed -E 's/.*Disconnected from (invalid |authenticating )?user .* [^ ]+ port [0-9]+( \[preauth\])?$//'
 ```
+让我们借助正则表达式在线调试工具[regex
+debugger](https://regex101.com/r/qqbZqh/2)来理解这段表达式。OK，开始的部分和以前是一样的。随后，我们匹配两种类型的“user”（在日志中基于两种前缀区分）。再然后我们匹配属于用户名的所有字符。接着，再匹配任意一个单词（`[^ ]+` 会匹配任意非空切不包含空格的序列）。紧接着后面匹配单词“port”和它后面的遗传数字，以及可能存在的后缀
+`[preauth]`，最后再匹配行尾。
 
-Let's look at what's going on with a [regex
-debugger](https://regex101.com/r/qqbZqh/2). Okay, so the start is still
-as before. Then, we're matching any of the "user" variants (there are
-two prefixes in the logs). Then we're matching on any string of
-characters where the username is. Then we're matching on any single word
-(`[^ ]+`; any non-empty sequence of non-space characters). Then the word
-"port" followed by a sequence of digits. Then possibly the suffix
-`[preauth]`, and then the end of the line.
 
-Notice that with this technique, as username of "Disconnected from"
-won't confuse us any more. Can you see why?
+注意，这样做的话，即使用户名是“Disconnected from”，对匹配结果也不会有任何影响，您知道这是为什么吗？。你能发现是为什么吗？
 
-There is one problem with this though, and that is that the entire log
-becomes empty. We want to _keep_ the username after all. For this, we
-can use "capture groups". Any text matched by a regex surrounded by
-parentheses is stored in a numbered capture group. These are available
-in the substitution (and in some engines, even in the pattern itself!)
-as `\1`, `\2`, `\3`, etc. So:
+问题还没有完全解决，日志的内容全部被替换成了空字符串，整个日志的内容因此都被删除了。我们实际上希望能够将用户名*保留*下来。对此，我们可以使用“捕获组（capture groups）”来完成。被圆括号内的正则表达式匹配到的文本，都会被存入一系列以编号区分的捕获组中。捕获组的内容可以在替换字符串时使用（有些正则表达式的引擎甚至支持替换表达式本身），例如`\1`、 `\2`、`\3`等等，因此可以使用如下命令：
 
 ```bash
  | sed -E 's/.*Disconnected from (invalid |authenticating )?user (.*) [^ ]+ port [0-9]+( \[preauth\])?$/\2/'
 ```
 
-As you can probably imagine, you can come up with _really_ complicated
-regular expressions. For example, here's an article on how you might
-match an [e-mail
-address](https://www.regular-expressions.info/email.html). It's [not
-easy](https://emailregex.com/). And there's [lots of
-discussion](https://stackoverflow.com/questions/201323/how-to-validate-an-email-address-using-a-regular-expression/1917982).
-And people have [written
-tests](https://fightingforalostcause.net/content/misc/2006/compare-email-regex.php).
-And [test matrices](https://mathiasbynens.be/demo/url-regex). You can
-even write a regex for determining if a given number [is a prime
-number](https://www.noulakaz.net/2007/03/18/a-regular-expression-to-check-for-prime-numbers/).
+想必您已经意识到了，为了完成某种匹配，我们最终可能会写出非常复杂的正则表达式。例如，这里有一篇关于如何匹配电子邮箱地址的文章[e-mail address](https://www.regular-expressions.info/email.html)，匹配电子邮箱可一点[也不简单](https://emailregex.com/)。网络上还有很多关于如何匹配电子邮箱地址的[讨论](https://stackoverflow.com/questions/201323/how-to-validate-an-email-address-using-a-regular-expression/1917982)。人们还为其编写了[测试用例](https://fightingforalostcause.net/content/misc/2006/compare-email-regex.php).
+及 [测试矩阵](https://mathiasbynens.be/demo/url-regex)。您甚至可以编写一个用于判断一个数[是否为质数](https://www.noulakaz.net/2007/03/18/a-regular-expression-to-check-for-prime-numbers/)的正则表达式。
 
-Regular expressions are notoriously hard to get right, but they are also
-very handy to have in your toolbox!
 
-## Back to data wrangling
+正则表达式是出了名的难以写对，但是它仍然会是您强大的常备工具之一。
 
-Okay, so we now have
+## 回到数据整理
+
+OK，现在我们有如下表达式：
 
 ```bash
 ssh myserver journalctl
@@ -156,14 +129,11 @@ ssh myserver journalctl
  | sed -E 's/.*Disconnected from (invalid |authenticating )?user (.*) [^ ]+ port [0-9]+( \[preauth\])?$/\2/'
 ```
 
-`sed` can do all sorts of other interesting things, like injecting text
-(with the `i` command), explicitly printing lines (with the `p`
-command), selecting lines by index, and lots of other things. Check `man
-sed`!
+`sed` 还可以做很多各种各样有趣的事情，例如文本注入：
+(使用 `i` 命令)，打印特定的行 (使用 `p`
+命令)，基于索引选择特定行等等。详情请见`man sed`!
 
-Anyway. What we have now gives us a list of all the usernames that have
-attempted to log in. But this is pretty unhelpful. Let's look for common
-ones:
+现在，我们已经得到了一个包含用户名的列表，列表中的用户都曾经尝试过登陆我们的系统。但这还不够，让我们过滤出那些最常出现的用户：
 
 ```bash
 ssh myserver journalctl
@@ -173,10 +143,7 @@ ssh myserver journalctl
  | sort | uniq -c
 ```
 
-`sort` will, well, sort its input. `uniq -c` will collapse consecutive
-lines that are the same into a single line, prefixed with a count of the
-number of occurrences. We probably want to sort that too and only keep
-the most common logins:
+`sort` 会对其输入数据进行排序。`uniq -c` 会把连续出现的行折叠为一行并使用出现次数作为前缀。我们希望按照出现次数排序，过滤出最常登陆的用户：
 
 ```bash
 ssh myserver journalctl
@@ -187,17 +154,17 @@ ssh myserver journalctl
  | sort -nk1,1 | tail -n10
 ```
 
-`sort -n` will sort in numeric (instead of lexicographic) order. `-k1,1`
-means "sort by only the first whitespace-separated column". The `,n`
-part says "sort until the `n`th field, where the default is the end of
-the line. In this _particular_ example, sorting by the whole line
-wouldn't matter, but we're here to learn!
+`sort -n` 会按照数字顺序对输入进行排序（默认情况下是按照字典序排序
+`-k1,1` 则表示“仅基于以空格分割的第一列进行排序”。`,n` 部分表示“仅排序到第n个部分”，默认情况是到行尾。就本例来说，针对整个行进行排序也没有任何问题，我们这里主要是为了学习这一用法！
 
-If we wanted the _least_ common ones, we could use `head` instead of
-`tail`. There's also `sort -r`, which sorts in reverse order.
+如果我们希望得到登陆次数最少的用户，我们可以使用 `head` 来代替
+`tail`。或者使用`sort -r`来进行倒序排序。
 
 Okay, so that's pretty cool, but we'd sort of like to only give the
 usernames, and maybe not one per line?
+
+好，相当不错，但我们有点想只取用户名，而且不要一行一个地显示。
+
 
 ```bash
 ssh myserver journalctl
@@ -209,17 +176,13 @@ ssh myserver journalctl
  | awk '{print $2}' | paste -sd,
 ```
 
-Let's start with `paste`: it lets you combine lines (`-s`) by a given
-single-character delimiter (`-d`). But what's this `awk` business?
+我们可以利用 `paste`命令来合并行(`-s`)，并指定一个分隔符进行分割 (`-d`)，那么`awk`的作用又是什么呢？
 
-## awk -- another editor
+## awk -- 另外一种编辑器
 
-`awk` is a programming language that just happens to be really good at
-processing text streams. There is _a lot_ to say about `awk` if you were
-to learn it properly, but as with many other things here, we'll just go
-through the basics.
+`awk` 其实是一种编程语言，只不过它碰巧非常善于处理文本。关于 `awk` 可以介绍的内容太多了，限于篇幅，这里我们仅介绍一些基础知识。
 
-First, what does `{print $2}` do? Well, `awk` programs take the form of
+首先， `{print $2}` 的作用是什么？ `awk` 程序 take the form of
 an optional pattern plus a block saying what to do if the pattern
 matches a given line. The default pattern (which we used above) matches
 all lines. Inside the block, `$0` is set to the entire line's contents,
