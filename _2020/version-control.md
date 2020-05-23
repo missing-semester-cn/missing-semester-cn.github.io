@@ -165,42 +165,23 @@ def load_reference(name_or_id):
 
 最后，我们可以粗略地给出 Git 仓库的定义了：`对象` 和 `引用`。
 
-On disk, all Git stores are objects and references: that's all there is to Git's
-data model. All `git` commands map to some manipulation of the commit DAG by
-adding objects and adding/updating references.
+在硬盘上，Git 仅存储对象和引用：因为其数据模型仅包含这些东西。所有的 `git` 命令都对应着对提交树的操作，例如增加对象，增加或删除引用。
 
-Whenever you're typing in any command, think about what manipulation the
-command is making to the underlying graph data structure. Conversely, if you're
-trying to make a particular kind of change to the commit DAG, e.g. "discard
-uncommitted changes and make the 'master' ref point to commit `5d83f9e`", there's
-probably a command to do it (e.g. in this case, `git checkout master; git reset
---hard 5d83f9e`).
+当您输入某个指令时，请思考一些这条命令是如何对底层的图数据结构进行操作的。另一方面，如果您希望修改提交树，例如“丢弃未提交的修改和将 ‘master’ 引用指向提交`5d83f9e`” 时，有什么命令可以完成该操作（针对这个具体问题，您可以使用`git checkout master; git reset --hard 5d83f9e`）
 
 # 暂存区
 
-This is another concept that's orthogonal to the data model, but it's a part of
-the interface to create commits.
+Git 中还包括一个和数据模型完全不相关的概念，但它确是创建提交的接口的一部分。
 
-One way you might imagine implementing snapshotting as described above is to have
-a "create snapshot" command that creates a new snapshot based on the _current
-state_ of the working directory. Some version control tools work like this, but
-not Git. We want clean snapshots, and it might not always be ideal to make a
-snapshot from the current state. For example, imagine a scenario where you've
-implemented two separate features, and you want to create two separate commits,
-where the first introduces the first feature, and the next introduces the
-second feature. Or imagine a scenario where you have debugging print statements
-added all over your code, along with a bugfix; you want to commit the bugfix
-while discarding all the print statements.
+就上面介绍的快照系统来说，您也许会期望它的实现里包括一个 “创建快照”的命令，该命令能够基于当前工作目录的当前状态，创建一个全新的快照。有些版本控制系统确实是这样工作的，但 Git 不是。我们希望简洁的快照，而且每次从当前状态创建快照可能效果并不理想。例如，考虑如下常见，您开发了两个独立的特性，然后您希望创建两个独立的提交，其中第一个提交仅包含第一个特性，而第二个提交仅包含第二个特性。或者，假设您在调试代码时添加了很多打印语句，然后您仅仅希望提交和修复 bug 相关的代码而丢弃所有的打印语句。
 
-Git accommodates such scenarios by allowing you to specify which modifications
-should be included in the next snapshot through a mechanism called the "staging
-area".
+
+Git 处理这些场景的方法是使用一种叫做 “暂存区（staging area）”的机制，它允许您指定下次快照中要包括那些改动。
 
 # Git 的命令行接口
 
-To avoid duplicating information, we're not going to explain the commands below
-in detail. See the highly recommended [Pro Git](https://git-scm.com/book/en/v2)
-for more information, or watch the lecture video.
+为了避免重复信息，我们将不会详细解释以下命令行。强烈推荐您阅读[Pro Git 中文版](https://git-scm.com/book/zh/v2)或可以观看本讲座的视频来学习。
+
 
 ## 基础
 
@@ -447,34 +428,15 @@ command is used for merging.
 
 # 课后练习
 
-1. If you don't have any past experience with Git, either try reading the first
-   couple chapters of [Pro Git](https://git-scm.com/book/en/v2) or go through a
-   tutorial like [Learn Git Branching](https://learngitbranching.js.org/). As
-   you're working through it, relate Git commands to the data model.
-1. Clone the [repository for the class website](https://github.com/missing-semester/missing-semester).
-    1. Explore the version history by visualizing it as a graph.
-    1. Who was the last person to modify `README.md`? (Hint: use `git log` with
-       an argument)
-    1. What was the commit message associated with the last modification to the
-       `collections:` line of `_config.yml`? (Hint: use `git blame` and `git
-       show`)
-1. One common mistake when learning Git is to commit large files that should
-   not be managed by Git or adding sensitive information. Try adding a file to
-   a repository, making some commits and then deleting that file from history
-   (you may want to look at
-   [this](https://help.github.com/articles/removing-sensitive-data-from-a-repository/)).
-1. Clone some repository from GitHub, and modify one of its existing files.
-   What happens when you do `git stash`? What do you see when running `git log
-   --all --oneline`? Run `git stash pop` to undo what you did with `git stash`.
-   In what scenario might this be useful?
-1. Like many command line tools, Git provides a configuration file (or dotfile)
-   called `~/.gitconfig`. Create an alias in `~/.gitconfig` so that when you
-   run `git graph`, you get the output of `git log --all --graph --decorate
-   --oneline`.
-1. You can define global ignore patterns in `~/.gitignore_global` after running
-   `git config --global core.excludesfile ~/.gitignore_global`. Do this, and
-   set up your global gitignore file to ignore OS-specific or editor-specific
-   temporary files, like `.DS_Store`.
-1. Clone the [repository for the class
-   website](https://github.com/missing-semester/missing-semester), find a typo
-   or some other improvement you can make, and submit a pull request on GitHub.
+1. 如果您之前从来没有用过 Git，请阅读 [Pro Git](https://git-scm.com/book/en/v2) 的前几章，或者完成像[Learn Git Branching](https://learngitbranching.js.org/)这样的教程。尤其要注意学习 Git 的命令和数据模型相关内容
+
+2. 克隆 [本课程网站的仓库](https://github.com/missing-semester/missing-semester)
+    1. 将版本历史可视化并进行探索
+    2. 是谁最后修改来 `README.md`文件？（提示：使用 `git log` 命令并添加合适的参数）
+    3. 最好一次修改What was the commit message associated with the last modification to the
+       `_config.yml` 文件中 `collections:` 行时的提交信息是什么？（提示：使用`git blame` 和 `git show`）
+3. 使用 Git 时的一个常见错误时提交本不应该由 Git 管理的大文件，或是将含有敏感信息的文件提交给 Git 。尝试像仓库中添加一个文件并添加提交信息，然后将其从历史中删除 ( [这篇文章也许会有帮助](https://help.github.com/articles/removing-sensitive-data-from-a-repository/))
+4. 从 GitHub 上克隆某个仓库，修改一些文件。当您使用 `git stash` 会发生什么？当您执行 `git log --all --oneline` 时会显示什么？通过 `git stash pop` 命令来撤销 `git stash`操作，什么时候会用到这一技巧？
+5. 与其他的命令行工具一样，Git 也提供了一个名为 `~/.gitconfig` 配置文件 (或 dotfile)。请在 `~/.gitconfig` 中创建一个别名，使您在运行 `git graph` 时，您可以得到 `git log --all --graph --decorate --oneline`的输出结果
+6. 您可以通过执行`git config --global core.excludesfile ~/.gitignore_global` 在 `~/.gitignore_global` 中创建全局忽略规则。配置您的全局 gitignore 文件来字典忽略系统或编辑器的临时文件，例如 `.DS_Store`
+7. 克隆 [本课程网站的仓库](https://github.com/missing-semester/missing-semester)，找找有没有错别字或其他可以改进的地方，在 GitHub 上发起拉取请求（ Pull Request）
