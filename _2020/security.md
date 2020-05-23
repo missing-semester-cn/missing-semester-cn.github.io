@@ -8,68 +8,49 @@ video:
   id: tjwobAmnKTo
 ---
 
-Last year's [security and privacy lecture](/2019/security/) focused on how you
-can be more secure as a computer _user_. This year, we will focus on security
-and cryptography concepts that are relevant in understanding tools covered
-earlier in this class, such as the use of hash functions in Git or key
-derivation functions and symmetric/asymmetric cryptosystems in SSH.
+去年的[这节课](/2019/security/)我们从计算机 _用户_ 的角度探讨了增强隐私保护和安全的方法。
+今年我们将关注比如散列函数、密钥生成函数、对称/非对称密码体系这些安全和密码学的概念是如何应用于前几节课所学到的工具（Git和SSH）中的。
 
-This lecture is not a substitute for a more rigorous and complete course on
-computer systems security ([6.858](https://css.csail.mit.edu/6.858/)) or
-cryptography ([6.857](https://courses.csail.mit.edu/6.857/) and 6.875). Don't
-do security work without formal training in security. Unless you're an expert,
-don't [roll your own
-crypto](https://www.schneier.com/blog/archives/2015/05/amateurs_produc.html).
-The same principle applies to systems security.
+本课程不能作为计算机系统安全 ([6.858](https://css.csail.mit.edu/6.858/)) 或者
+密码学 ([6.857](https://courses.csail.mit.edu/6.857/)以及6.875)的替代。
+如果你不是密码学的专家，请不要[试图创造或者修改加密算法](https://www.schneier.com/blog/archives/2015/05/amateurs_produc.html)。从事和计算机系统安全相关的工作同理。
 
-This lecture has a very informal (but we think practical) treatment of basic
-cryptography concepts. This lecture won't be enough to teach you how to
-_design_ secure systems or cryptographic protocols, but we hope it will be
-enough to give you a general understanding of the programs and protocols you
-already use.
+这节课将对一些基本的概念进行简单（但实用）的说明。
+虽然这些说明不足以让你学会如何 _设计_ 安全系统或者加密协议，但我们希望你可以对现在使用的程序和协议有一个大概了解。
 
-# Entropy
+# 熵
 
-[Entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory)) is a
-measure of randomness. This is useful, for example, when determining the
-strength of a password.
+[熵](https://en.wikipedia.org/wiki/Entropy_(information_theory))(Entropy) 是对不确定性的量度。
+它的一个应用是决定密码的强度。
 
 ![XKCD 936: Password Strength](https://imgs.xkcd.com/comics/password_strength.png)
 
-As the above [XKCD comic](https://xkcd.com/936/) illustrates, a password like
-"correcthorsebatterystaple" is more secure than one like "Tr0ub4dor&3". But how
-do you quantify something like this?
+正如上面的 [XKCD 漫画](https://xkcd.com/936/) 所描述的，
+"correcthorsebatterystaple" 这个密码比 "Tr0ub4dor&3" 更安全——可是熵是如何量化安全性的呢？
 
-Entropy is measured in _bits_, and when selecting uniformly at random from a
-set of possible outcomes, the entropy is equal to `log_2(# of possibilities)`.
-A fair coin flip gives 1 bit of entropy. A dice roll (of a 6-sided die) has
-\~2.58 bits of entropy.
+熵的单位是 _比特_。对于一个均匀分布的随机离散变量，熵等于`log_2(所有可能的个数，即n)`。
+扔一次硬币的熵是1比特。掷一次（六面）骰子的熵大约为2.58比特。
 
-You should consider that the attacker knows the _model_ of the password, but
-not the randomness (e.g. from [dice
-rolls](https://en.wikipedia.org/wiki/Diceware)) used to select a particular
-password.
+一般我们认为攻击者了解密码的模型（最小长度，最大长度，可能包含的字符种类等），但是不了解某个密码是如何随机选择的——
+比如[掷骰子](https://en.wikipedia.org/wiki/Diceware)。
 
-How many bits of entropy is enough? It depends on your threat model. For online
-guessing, as the XKCD comic points out, \~40 bits of entropy is pretty good. To
-be resistant to offline guessing, a stronger password would be necessary (e.g.
-80 bits, or more).
+使用多少比特的熵取决于应用的威胁模型。 
+上面的XKCD漫画告诉我们，大约40比特的熵足以对抗在线穷举攻击（受限于网络速度和应用认证机制）。
+而对于离线穷举攻击（主要受限于计算速度）, 一般需要更强的密码 (比如80比特或更多)。
 
-# Hash functions
+# 散列函数
 
-A [cryptographic hash
-function](https://en.wikipedia.org/wiki/Cryptographic_hash_function) maps data
-of arbitrary size to a fixed size, and has some special properties. A rough
-specification of a hash function is as follows:
+[密码散列函数](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
+(Cryptographic hash function) 可以将任意大小的数据映射为一个固定大小的输出。除此之外，还有一些其他特性。 
+一个散列函数的大概规范如下：
 
 ```
-hash(value: array<byte>) -> vector<byte, N>  (for some fixed N)
+hash(value: array<byte>) -> vector<byte, N>  (N对于该函数固定)
 ```
 
-An example of a hash function is [SHA1](https://en.wikipedia.org/wiki/SHA-1),
-which is used in Git. It maps arbitrary-sized inputs to 160-bit outputs (which
-can be represented as 40 hexadecimal characters). We can try out the SHA1 hash
-on an input using the `sha1sum` command:
+[SHA-1](https://en.wikipedia.org/wiki/SHA-1)是Git中使用的一种散列函数，
+它可以将任意大小的输入映射为一个160比特（可被40位十六进制数表示）的输出。
+下面我们用`sha1sum`命令来测试SHA1对几个字符串的输出：
 
 ```console
 $ printf 'hello' | sha1sum
@@ -80,39 +61,27 @@ $ printf 'Hello' | sha1sum
 f7ff9e8b7bb2e09b70935a5d785e0cc5d9d0abf0
 ```
 
-At a high level, a hash function can be thought of as a hard-to-invert
-random-looking (but deterministic) function (and this is the [ideal model of a
-hash function](https://en.wikipedia.org/wiki/Random_oracle)). A hash function
-has the following properties:
+抽象地讲，散列函数可以被认为是一个难以取反，且看上去随机（但具确定性）的函数
+（这就是[散列函数的理想模型](https://en.wikipedia.org/wiki/Random_oracle)）。
+一个散列函数拥有以下特性：
 
-- Deterministic: the same input always generates the same output.
-- Non-invertible: it is hard to find an input `m` such that `hash(m) = h` for
-some desired output `h`.
-- Target collision resistant: given an input `m_1`, it's hard to find a
-different input `m_2` such that `hash(m_1) = hash(m_2)`.
-- Collision resistant: it's hard to find two inputs `m_1` and `m_2` such that
-`hash(m_1) = hash(m_2)` (note that this is a strictly stronger property than
-target collision resistance).
+- 确定性：对于不变的输入永远有相同的输出。
+- 不可逆性：对于`hash(m) = h`，难以通过已知的输出`h`来计算出原始输入`m`。
+- 目标碰撞抵抗性/弱无碰撞：对于一个给定输入`m_1`，难以找到`m_2 != m_1`且`hash(m_1) = hash(m_2)`。
+- 碰撞抵抗性/强无碰撞：难以找到一组满足`hash(m_1) = hash(m_2)`的输入`m_1, m_2`（该性质严格强于目标碰撞抵抗性）。
 
-Note: while it may work for certain purposes, SHA-1 is [no
-longer](https://shattered.io/) considered a strong cryptographic hash function.
-You might find this table of [lifetimes of cryptographic hash
-functions](https://valerieaurora.org/hash.html) interesting. However, note that
-recommending specific hash functions is beyond the scope of this lecture. If you
-are doing work where this matters, you need formal training in
-security/cryptography.
+注：虽然SHA-1还可以用于特定用途，它已经[不再被认为](https://shattered.io/)是一个强密码散列函数。
+你可参照[密码散列函数的生命周期](https://valerieaurora.org/hash.html)这个表格了解一些散列函数是何时被发现弱点及破解的。 
+请注意，针对应用推荐特定的散列函数超出了本课程内容的范畴。
+如果选择散列函数对于你的工作非常重要，请先系统学习信息安全及密码学。
 
-## Applications
 
-- Git, for content-addressed storage. The idea of a [hash
-function](https://en.wikipedia.org/wiki/Hash_function) is a more general
-concept (there are non-cryptographic hash functions). Why does Git use a
-cryptographic hash function?
-- A short summary of the contents of a file. Software can often be downloaded
-from (potentially less trustworthy) mirrors, e.g. Linux ISOs, and it would be
-nice to not have to trust them. The official sites usually post hashes
-alongside the download links (that point to third-party mirrors), so that the
-hash can be checked after downloading a file.
+## 密码散列函数的应用
+
+- Git中的内容寻址存储(Content addressed storage)：[散列函数](https://en.wikipedia.org/wiki/Hash_function) 是一个宽泛的概念（存在非密码学的散列函数），那么Git为什么要特意使用密码散列函数？
+- 文件的信息摘要(Message digest)：像Linux ISO这样的软件可以从非官方的（有时不太可信的）镜像站下载，所以需要设法确认下载的软件和官方一致。
+官方网站一般会在（指向镜像站的）下载链接旁边备注安装文件的哈希值。
+用户从镜像站下载安装文件后可以对照公布的哈希值来确定安装文件没有被篡改。
 - [Commitment schemes](https://en.wikipedia.org/wiki/Commitment_scheme).
 Suppose you want to commit to a particular value, but reveal the value itself
 later. For example, I want to do a fair coin toss "in my head", without a
@@ -122,15 +91,12 @@ random()`, and then share `h = sha256(r)`. Then, you could call heads or tails
 call, I can reveal my value `r`, and you can confirm that I haven't cheated by
 checking `sha256(r)` matches the hash I shared earlier.
 
-# Key derivation functions
+# 密钥生成函数
 
-A related concept to cryptographic hashes, [key derivation
-functions](https://en.wikipedia.org/wiki/Key_derivation_function) (KDFs) are
-used for a number of applications, including producing fixed-length output for
-use as keys in other cryptographic algorithms. Usually, KDFs are deliberately
-slow, in order to slow down offline brute-force attacks.
+[密钥生成函数](https://en.wikipedia.org/wiki/Key_derivation_function) (Key Derivation Functions) 作为密码散列函数的相关概念，被应用于包括生成固定长度，可以使用在其他密码算法中的密钥等方面。
+为了对抗穷举法攻击，密钥生成函数通常较慢。
 
-## Applications
+## 密钥生成函数的应用
 
 - Producing keys from passphrases for use in other cryptographic algorithms
 (e.g. symmetric cryptography, see below).
@@ -140,7 +106,7 @@ approach is to generate and store a random
 each user, store `KDF(password + salt)`, and verify login attempts by
 re-computing the KDF given the entered password and the stored salt.
 
-# Symmetric cryptography
+# 对称加密
 
 Hiding message contents is probably the first concept you think about when you
 think about cryptography. Symmetric cryptography accomplishes this with the
@@ -160,13 +126,13 @@ has the obvious correctness property, that `decrypt(encrypt(m, k), k) = m`.
 An example of a symmetric cryptosystem in wide use today is
 [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).
 
-## Applications
+## 对称加密的应用
 
 - Encrypting files for storage in an untrusted cloud service. This can be
 combined with KDFs, so you can encrypt a file with a passphrase. Generate `key
 = KDF(passphrase)`, and then store `encrypt(file, key)`.
 
-# Asymmetric cryptography
+# 非对称加密
 
 The term "asymmetric" refers to there being two keys, with two different roles.
 A private key, as its name implies, is meant to be kept private, while the
@@ -204,7 +170,7 @@ message, without the _private_ key, it's hard to produce a signature such that
 verify function has the obvious correctness property that `verify(message,
 sign(message, private key), public key) = true`.
 
-## Applications
+## 非对称加密的应用
 
 - [PGP email encryption](https://en.wikipedia.org/wiki/Pretty_Good_Privacy).
 People can have their public keys posted online (e.g. in a PGP keyserver, or on
@@ -215,7 +181,7 @@ communication channels.
 - Signing software. Git can have GPG-signed commits and tags. With a posted
 public key, anyone can verify the authenticity of downloaded software.
 
-## Key distribution
+## 密钥分发
 
 Asymmetric-key cryptography is wonderful, but it has a big challenge of
 distributing public keys / mapping public keys to real-world identities. There
@@ -228,9 +194,9 @@ proof](https://keybase.io/blog/chat-apps-softer-than-tofu) (along with other
 neat ideas). Each model has its merits; we (the instructors) like Keybase's
 model.
 
-# Case studies
+# 案例分析
 
-## Password managers
+## 密码管理器
 
 This is an essential tool that everyone should try to use (e.g.
 [KeePassXC](https://keepassxc.org/)). Password managers let you use unique,
@@ -242,16 +208,15 @@ Using a password manager lets you avoid password reuse (so you're less impacted
 when websites get compromised), use high-entropy passwords (so you're less likely to
 get compromised), and only need to remember a single high-entropy password.
 
-## Two-factor authentication
+## 两步验证
 
-[Two-factor
-authentication](https://en.wikipedia.org/wiki/Multi-factor_authentication)
+[Two-factor authentication](https://en.wikipedia.org/wiki/Multi-factor_authentication)
 (2FA) requires you to use a passphrase ("something you know") along with a 2FA
 authenticator (like a [YubiKey](https://www.yubico.com/), "something you have")
 in order to protect against stolen passwords and
 [phishing](https://en.wikipedia.org/wiki/Phishing) attacks.
 
-## Full disk encryption
+## 全盘加密
 
 Keeping your laptop's entire disk encrypted is an easy way to protect your data
 in the case that your laptop is stolen. You can use [cryptsetup +
@@ -262,7 +227,7 @@ Windows, or [FileVault](https://support.apple.com/en-us/HT204837) on macOS.
 This encrypts the entire disk with a symmetric cipher, with a key protected by
 a passphrase.
 
-## Private messaging
+## 聊天加密
 
 Use [Signal](https://signal.org/) or [Keybase](https://keybase.io/). End-to-end
 security is bootstrapped from asymmetric-key encryption. Obtaining your
@@ -304,12 +269,12 @@ security concepts, tips
 - HTTPS
 {% endcomment %}
 
-# Resources
+# 资源
 
 - [Last year's notes](/2019/security/): from when this lecture was more focused on security and privacy as a computer user
 - [Cryptographic Right Answers](https://latacora.micro.blog/2018/04/03/cryptographic-right-answers.html): answers "what crypto should I use for X?" for many common X.
 
-# Exercises
+# 练习
 
 1. **Entropy.**
     1. Suppose a password is chosen as a concatenation of five lower-case
