@@ -153,7 +153,7 @@ $ jobs
 - **面板** - 像vim中的分屏一样，面板使我们可以在一个屏幕里显示多个shell
     + `<C-b> "` 水平分割
     + `<C-b> %` 垂直分割
-    + `<C-b> <方向>` 切换到指定方向的面板，*<方向>* 指的是键盘上的方向键
+    + `<C-b> <方向>` 切换到指定方向的面板，<方向> 指的是键盘上的方向键
     + `<C-b> z` 切换当前面板的缩放
     + `<C-b> [` 开始往回卷动屏幕。你可以按下空格键来开始选择，回车键复制选中的部分
     + `<C-b> <空格>` 在不同的面板排布间切换
@@ -171,9 +171,9 @@ $ jobs
 alias alias_name="command_to_alias arg1 arg2"
 ```
 
-Note that there is no space around the equal sign `=`, because [`alias`](http://man7.org/linux/man-pages/man1/alias.1p.html) is a shell command that takes a single argument.
+注意， `=`两边是没有空格的，因为 [`alias`](http://man7.org/linux/man-pages/man1/alias.1p.html) 是一个 shell 命令，它只接受一个参数。
 
-Aliases have many convenient features:
+别名有许多很方便的特性:
 
 ```bash
 # Make shorthands for common flags
@@ -206,8 +206,7 @@ alias ll
 # Will print ll='ls -lh'
 ```
 
-Note that aliases do not persist shell sessions by default.
-To make an alias persistent you need to include it in shell startup files, like `.bashrc` or `.zshrc`, which we are going to introduce in the next section.
+值得注意的是，在默认情况下，shell 并不会保存别名。为了让别名持续生效，你需要将配置放进 shell 的启动文件里，像是`.bashrc` 或 `.zshrc`，下一节我们就会讲到。
 
 
 # 配置文件（Dotfiles）
@@ -228,37 +227,21 @@ Some other examples of tools that can be configured through dotfiles are:
 
 - `bash` - `~/.bashrc`, `~/.bash_profile`
 - `git` - `~/.gitconfig`
-- `vim` - `~/.vimrc` and the `~/.vim` folder
+- `vim` - `~/.vimrc` 和  `~/.vim` folder
 - `ssh` - `~/.ssh/config`
 - `tmux` - `~/.tmux.conf`
 
-How should you organize your dotfiles? They should be in their own folder,
-under version control, and **symlinked** into place using a script. This has
-the benefits of:
+我们应该如何管理这些配置文件呢，它们应该在它们的文件夹下，并使用版本控制系统进行管理，然后通过脚本将其 **符号链接** 到需要的地方。这么做有如下好处：
 
-- **Easy installation**: if you log in to a new machine, applying your
-customizations will only take a minute.
-- **Portability**: your tools will work the same way everywhere.
-- **Synchronization**: you can update your dotfiles anywhere and keep them all
-in sync.
-- **Change tracking**: you're probably going to be maintaining your dotfiles
-for your entire programming career, and version history is nice to have for
-long-lived projects.
+- **安装简单**: 如果您登陆了一台新的设备，在这台设备上应用您的配置只需要几分钟的时间；
+- **可以执行**: 你的工具在任何地方都以相同的配置工作
+- **同步**: 在一处更新配置文件，可以同步到其他所有地方
+- **变更追踪**: 你可能要在整个程序员生涯中持续维护这些配置文件，而对于长期项目而言，版本历史是非常重要的
 
-What should you put in your dotfiles?
-You can learn about your tool's settings by reading online documentation or
-[man pages](https://en.wikipedia.org/wiki/Man_page). Another great way is to
-search the internet for blog posts about specific programs, where authors will
-tell you about their preferred customizations. Yet another way to learn about
-customizations is to look through other people's dotfiles: you can find tons of
-[dotfiles
-repositories](https://github.com/search?o=desc&q=dotfiles&s=stars&type=Repositories)
-on Github --- see the most popular one
-[here](https://github.com/mathiasbynens/dotfiles) (we advise you not to blindly
-copy configurations though).
-[Here](https://dotfiles.github.io/) is another good resource on the topic.
+配置文件中需要放些什么？你可以通过在线文档和[man pages](https://en.wikipedia.org/wiki/Man_page)了解所使用工具的设置项。另一个方法是在网上搜索有关特定程序的文章，作者们在文章中会分享他们的配置。还有一种方法就是直接浏览其他人的配置文件：您可以在这里找到无数的[dotfiles repositories](https://github.com/search?o=desc&q=dotfiles&s=stars&type=Repositories) —— 其中最受欢迎的那些可以在[这里](https://github.com/mathiasbynens/dotfiles)找到（我们建议你不要直接复制别人的配置）。[这里](https://dotfiles.github.io/) 也有一些非常有用的资源。
 
-All of the class instructors have their dotfiles publicly accessible on GitHub: [Anish](https://github.com/anishathalye/dotfiles),
+本节课的老师们的配置文件都已经在 GitHub 上开源： 
+[Anish](https://github.com/anishathalye/dotfiles),
 [Jon](https://github.com/jonhoo/configs),
 [Jose](https://github.com/jjgo/dotfiles).
 
