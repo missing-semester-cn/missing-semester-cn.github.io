@@ -122,49 +122,50 @@ $ jobs
 
 # 终端多路复用
 
-When using the command line interface you will often want to run more than one thing at once.
-For instance, you might want to run your editor and your program side by side.
-Although this can be achieved by opening new terminal windows, using a terminal multiplexer is a more versatile solution.
+当您在使用命令行接口时，您通常会希望同时执行多个任务。距离来说，您可以想要同时运行您的编辑器，并在终端的另外一侧执行程序。尽管再打开一个新的终端窗口也能达到目的，使用终端多路复用器则是一种更好的办法。
 
-Terminal multiplexers like [`tmux`](http://man7.org/linux/man-pages/man1/tmux.1.html) allow you to multiplex terminal windows using panes and tabs so you can interact with multiple shell sessions.
-Moreover, terminal multiplexers let you detach a current terminal session and reattach at some point later in time.
-This can make your workflow much better when working with remote machines since it voids the need to use `nohup` and similar tricks.
+像 [`tmux`](http://man7.org/linux/man-pages/man1/tmux.1.html) 这类的终端多路复用器可以允许我们基于面板和标签分割出多个终端窗口，这样您便可以同时与多个 shell 会话进行交互。
 
-The most popular terminal multiplexer these days is [`tmux`](http://man7.org/linux/man-pages/man1/tmux.1.html). `tmux` is highly configurable and by using the associated keybindings you can create multiple tabs and panes and quickly navigate through them.
+不仅如此，终端多路复用使我们可以分离当前终端会话并在将来重新连接。
 
-`tmux` expects you to know its keybindings, and they all have the form `<C-b> x` where that means (1) press `Ctrl+b`, (2) release `Ctrl+b`, and then (3) press `x`. `tmux` has the following hierarchy of objects:
-- **Sessions** - a session is an independent workspace with one or more windows
-    + `tmux` starts a new session.
-    + `tmux new -s NAME` starts it with that name.
-    + `tmux ls` lists the current sessions
-    + Within `tmux` typing `<C-b> d`  detaches the current session
-    + `tmux a` attaches the last session. You can use `-t` flag to specify which
+这让你操作远端设备时的工作流大大改善，避免了 `nohup` 和其他类似技巧的使用。
 
-- **Windows** - Equivalent to tabs in editors or browsers, they are visually separate parts of the same session
-    + `<C-b> c` Creates a new window. To close it you can just terminate the shells doing `<C-d>`
-    + `<C-b> N` Go to the _N_ th window. Note they are numbered
-    + `<C-b> p` Goes to the previous window
-    + `<C-b> n` Goes to the next window
-    + `<C-b> ,` Rename the current window
-    + `<C-b> w` List current windows
 
-- **Panes** - Like vim splits, panes let you have multiple shells in the same visual display.
-    + `<C-b> "` Split the current pane horizontally
-    + `<C-b> %` Split the current pane vertically
-    + `<C-b> <direction>` Move to the pane in the specified _direction_. Direction here means arrow keys.
-    + `<C-b> z` Toggle zoom for the current pane
-    + `<C-b> [` Start scrollback. You can then press `<space>` to start a selection and `<enter>` to copy that selection.
-    + `<C-b> <space>` Cycle through pane arrangements.
+现在最流行的终端多路器是 [`tmux`](http://man7.org/linux/man-pages/man1/tmux.1.html)。`tmux` 是一个高度可定制的工具，您可以使用相关快捷键创建多个标签页并在它们间导航。
 
-For further reading,
-[here](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/) is a quick tutorial on `tmux` and [this](http://linuxcommand.org/lc3_adv_termmux.php) has a more detailed explanation that covers the original `screen` command. You might also want to familiarize yourself with [`screen`](http://man7.org/linux/man-pages/man1/screen.1.html), since it comes installed in most UNIX systems.
+`tmux` 的快捷键需要我们掌握，它们都是类似 `<C-b> x` 这样的组合，即需要先按下`Ctrl+b`，松开后再按下 `x`。`tmux` 中对象的继承结构如下：
+- **会话** - 每个会话都是一个独立的工作区，其中包含一个或多个窗口
+    + `tmux` 开始一个新的会话
+    + `tmux new -s NAME` 以指定名称开始一个新的会话
+    + `tmux ls` 列出当前所有会话
+    + 在 `tmux` 中输入 `<C-b> d`  ，将当前会话分离
+    + `tmux a` 重新连接最后一个会话。您也可以通过 `-t` 来指定具体的会话
+
+
+- **窗口** - 相当于编辑器或是浏览器中的标签页，从视觉上将一个会话分割为多个部分
+    + `<C-b> c` 创建一个新的窗口，使用 `<C-d>`关闭
+    + `<C-b> N` 跳转到第  _N_ 个窗口，注意每个窗口都是有编号的
+    + `<C-b> p` 切换到前一个窗口
+    + `<C-b> n` 切换到下一个窗口
+    + `<C-b> ,`  重命名当前窗口
+    + `<C-b> w` 列出当前所有窗口
+
+- **面板** - 像vim中的分屏一样，面板使我们可以在一个屏幕里显示多个shell
+    + `<C-b> "` 水平分割
+    + `<C-b> %` 垂直分割
+    + `<C-b> <方向>` 切换到指定方向的面板，*<方向>* 指的是键盘上的方向键
+    + `<C-b> z` 切换当前面板的缩放
+    + `<C-b> [` 开始往回卷动屏幕。你可以按下空格键来开始选择，回车键复制选中的部分
+    + `<C-b> <空格>` 在不同的面板排布间切换
+
+扩展阅读：
+[这里](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/) 是一份快速入门 `tmux` 的教程， [而这一篇](http://linuxcommand.org/lc3_adv_termmux.php) 文章则更加详细。它包含来原本的 `screen` 命令。您也许想要掌握 [`screen`](http://man7.org/linux/man-pages/man1/screen.1.html) 命令，因为在大多数 UNIX 系统中都默认安装有该程序。
+
 
 # 别名
 
-It can become tiresome typing long commands that involve many flags or verbose options.
-For this reason, most shells support _aliasing_.
-A shell alias is a short form for another command that your shell will replace automatically for you.
-For instance, an alias in bash has the following structure:
+输入一长串包含许多选项的命令会非常麻烦。因此，大多数 shell 都支持设置别名。shell 的别名相当于一个长命令的缩写，shell 会自动将其替换成原本的命令。例如，bash 中的别名语法如下：
+
 
 ```bash
 alias alias_name="command_to_alias arg1 arg2"
