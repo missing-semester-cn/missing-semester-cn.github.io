@@ -237,7 +237,7 @@ shell 的配置也是通过这类文件完成的。在启动时，您的 shell �
 
 配置文件中需要放些什么？你可以通过在线文档和[man pages](https://en.wikipedia.org/wiki/Man_page)了解所使用工具的设置项。另一个方法是在网上搜索有关特定程序的文章，作者们在文章中会分享他们的配置。还有一种方法就是直接浏览其他人的配置文件：您可以在这里找到无数的[dotfiles repositories](https://github.com/search?o=desc&q=dotfiles&s=stars&type=Repositories) —— 其中最受欢迎的那些可以在[这里](https://github.com/mathiasbynens/dotfiles)找到（我们建议你不要直接复制别人的配置）。[这里](https://dotfiles.github.io/) 也有一些非常有用的资源。
 
-本节课的老师们的配置文件都已经在 GitHub 上开源： 
+本课程的老师们也在 GitHub 上开源了他们的配置文件： 
 [Anish](https://github.com/anishathalye/dotfiles),
 [Jon](https://github.com/jonhoo/configs),
 [Jose](https://github.com/jjgo/dotfiles).
@@ -245,36 +245,35 @@ shell 的配置也是通过这类文件完成的。在启动时，您的 shell �
 
 ## 可移植性
 
-A common pain with dotfiles is that the configurations might not work when working with several machines, e.g. if they have different operating systems or shells. Sometimes you also want some configuration to be applied only in a given machine.
+配置文件的一个常见的痛点是它可能并不能在多种设备上生效。例如，如果您在不同设备上使用的操作系统或者 shell 是不同的，则配置文件是无法生效的。或者，有时您仅希望特定的配置只在某些设备上生效。
 
-There are some tricks for making this easier.
-If the configuration file supports it, use the equivalent of if-statements to
-apply machine specific customizations. For example, your shell could have something
-like:
+有一些技巧可以轻松达成这些目的。如果配置文件 if 语句，则您可以借助它针对不同的设备编写不同的配置。例如，您的 shell 可以这样做：
+
 
 ```bash
 if [[ "$(uname)" == "Linux" ]]; then {do_something}; fi
 
-# Check before using shell-specific features
+# 使用和 shell 相关的配置时先检查当前 shell 类型
 if [[ "$SHELL" == "zsh" ]]; then {do_something}; fi
 
-# You can also make it machine-specific
+# 您也可以针对特定的设备进行配置
 if [[ "$(hostname)" == "myServer" ]]; then {do_something}; fi
 ```
 
-If the configuration file supports it, make use of includes. For example,
-a `~/.gitconfig` can have a setting:
+如果配置文件支持 include 功能，您也可以多加利用。例如：`~/.gitconfig` 可以这样编写：
 
 ```
 [include]
     path = ~/.gitconfig_local
 ```
 
-And then on each machine, `~/.gitconfig_local` can contain machine-specific
-settings. You could even track these in a separate repository for
-machine-specific settings.
+然后我们可以在每天设备上创建配置文件 `~/.gitconfig_local` 来包含与该设备相关的特定配置。您甚至应该创建一个单独的代码仓库来管理这些与设备相关的配置。
 
 This idea is also useful if you want different programs to share some configurations. For instance, if you want both `bash` and `zsh` to share the same set of aliases you can write them under `.aliases` and have the following block in both:
+
+
+如果您希望在不同的程序之间共享某些配置，该方法也适用。例如，如果你想要在 `bash` 和 `zsh` 中同时启用一些别名，你可以把它们写在 `.aliases` 里，然后在这两个 shell 里应用：
+
 
 ```bash
 # Test if ~/.aliases exists and source it
@@ -285,47 +284,49 @@ fi
 
 # 远端设备
 
-It has become more and more common for programmers to use remote servers in their everyday work. If you need to use remote servers in order to deploy backend software or you need a server with higher computational capabilities, you will end up using a Secure Shell (SSH). As with most tools covered, SSH is highly configurable so it is worth learning about it.
+对于程序员来说，在他们的日常工作中使用远程服务器已经非常普遍来。如果您需要使用远程服务器来部署后端软件或您需要一些计算能力强大的服务器，您就会用到安全 shell（SSH）。和其他工具一样，SSH 也是可以高度定制的，也值得我们花时间学习它。
 
-To `ssh` into a server you execute a command as follows
+通过如下命令，您可以使用 `ssh` 连接到其他服务器：
 
 ```bash
 ssh foo@bar.mit.edu
 ```
 
-Here we are trying to ssh as user `foo` in server `bar.mit.edu`.
-The server can be specified with a URL (like `bar.mit.edu`) or an IP (something like `foobar@192.168.1.42`). Later we will see that if we modify ssh config file you can access just using something like `ssh bar`.
+这里我们尝试以用户名 `foo` 登陆服务器 `bar.mit.edu`。服务器可以通过 URL 指定（例如`bar.mit.edu`），也可以使用 IP 指定（例如`foobar@192.168.1.42`）。后面我们会介绍如何修改 ssh 配置文件使我们可以用类似 `ssh bar` 这样的命令来登陆服务器。
 
 ## 执行命令
 
-An often overlooked feature of `ssh` is the ability to run commands directly.
-`ssh foobar@server ls` will execute `ls` in the home folder of foobar.
-It works with pipes, so `ssh foobar@server ls | grep PATTERN` will grep locally the remote output of `ls` and `ls | ssh foobar@server grep PATTERN` will grep remotely the local output of `ls`.
+ `ssh` 的一个经常被忽视的特性是它可以直接远程执行命令。
+`ssh foobar@server ls` 可以直接在用foobar的命令下执行 `ls` 命令。
+想要配合管道来使用也可以， `ssh foobar@server ls | grep PATTERN` 会在本地查询远端 `ls` 的输出而 `ls | ssh foobar@server grep PATTERN` 会在远端对本地 `ls` 输出的结果进行查询。
 
 
 ## SSH 密钥
 
-Key-based authentication exploits public-key cryptography to prove to the server that the client owns the secret private key without revealing the key. This way you do not need to reenter your password every time. Nevertheless, the private key (often `~/.ssh/id_rsa` and more recently `~/.ssh/id_ed25519`) is effectively your password, so treat it like so.
+基于密钥的验证机制利用了密码学中的公钥，我们只需要向服务器证明客户端持有对应的私钥，而不需要公开其私钥。这样您就可以避免每次登陆都输入密码的麻烦了秘密就可以登陆。不过，私钥(通常是 `~/.ssh/id_rsa` 或者 `~/.ssh/id_ed25519`) 等效于您的密码，所以一定要好好保存它。
 
 ### 密钥生成
 
-To generate a pair you can run [`ssh-keygen`](http://man7.org/linux/man-pages/man1/ssh-keygen.1.html).
+使用 [`ssh-keygen`](http://man7.org/linux/man-pages/man1/ssh-keygen.1.html) 命令可以生成一对密钥：
+
 ```bash
 ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519
 ```
-You should choose a passphrase, to avoid someone who gets hold of your private key to access authorized servers. Use [`ssh-agent`](http://man7.org/linux/man-pages/man1/ssh-agent.1.html) or [`gpg-agent`](https://linux.die.net/man/1/gpg-agent) so you do not have to type your passphrase every time.
 
-If you have ever configured pushing to GitHub using SSH keys, then you have probably done the steps outlined [here](https://help.github.com/articles/connecting-to-github-with-ssh/) and have a valid key pair already. To check if you have a passphrase and validate it you can run `ssh-keygen -y -f /path/to/key`.
+您可以为密钥设置密码，防止有人持有您的私钥并使用它访问您的服务器。您可以使用 [`ssh-agent`](http://man7.org/linux/man-pages/man1/ssh-agent.1.html) 或 [`gpg-agent`](https://linux.die.net/man/1/gpg-agent) ，这样就不需要每次都输入该密码了。
+
+
+如果你曾经配置过使用 SSH 密钥推送到 GitHub，那么可能你已经完成了[这里](https://help.github.com/articles/connecting-to-github-with-ssh/) 介绍的这些步骤，并且已经有了一个可用的密钥对。要检查你是否持有密码并验证它，你可以运行 `ssh-keygen -y -f /path/to/key`.
 
 ### 基于密钥的认证机制
 
-`ssh` will look into `.ssh/authorized_keys` to determine which clients it should let in. To copy a public key over you can use:
+`ssh` 会查询 `.ssh/authorized_keys` 来确认那些用户可以被允许登陆。您可以通过下面的命令将一个公钥拷贝到这里：
 
 ```bash
 cat .ssh/id_ed25519.pub | ssh foobar@remote 'cat >> ~/.ssh/authorized_keys'
 ```
 
-A simpler solution can be achieved with `ssh-copy-id` where available:
+如果支持 `ssh-copy-id` 的话，可以使用下面这种更简单的解决方案：
 
 ```bash
 ssh-copy-id -i .ssh/id_ed25519.pub foobar@remote
@@ -333,7 +334,7 @@ ssh-copy-id -i .ssh/id_ed25519.pub foobar@remote
 
 ## 通过 SSH 复制文件
 
-There are many ways to copy files over ssh:
+使用 ssh 复制文件有很多方法：
 
 - `ssh+tee`, the simplest is to use `ssh` command execution and STDIN input by doing `cat localfile | ssh remote_server tee serverfile`. Recall that [`tee`](http://man7.org/linux/man-pages/man1/tee.1.html) writes the output from STDIN into a file.
 - [`scp`](http://man7.org/linux/man-pages/man1/scp.1.html) when copying large amounts of files/directories, the secure copy `scp` command is more convenient since it can easily recurse over paths. The syntax is `scp path/to/local_file remote_host:path/to/remote_file`
@@ -406,12 +407,13 @@ For example, the `zsh` shell is a superset of `bash` and provides many convenien
 
 **Frameworks** can improve your shell as well. Some popular general frameworks are [prezto](https://github.com/sorin-ionescu/prezto) or [oh-my-zsh](https://github.com/robbyrussll/oh-my-zsh), and smaller ones that focus on specific features such as [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) or [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search). Shells like [fish](https://fishshell.com/) include many of these user-friendly features by default. Some of these features include:
 
-- Right prompt
-- Command syntax highlighting
-- History substring search
-- manpage based flag completions
-- Smarter autocompletion
-- Prompt themes
+- 向右对齐
+- 命令语法高亮
+- 历史子串查询
+- 基于手册页面的选项补全
+- 更智能的自动补全
+- 提示符主题
+
 
 One thing to note when using these frameworks is that they may slow down your shell, especially if the code they run is not properly optimized or it is too much code. You can always profile it and disable the features that you do not use often or value over speed.
 
