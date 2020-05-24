@@ -9,22 +9,23 @@ video:
 ---
 
 当您使用 shell 进行工作时，可以使用一些方法改善您的工作流，本节课我们就来讨论这些方法。
-我们以及使用 shell 一段时间了，但是到目前为止我们的关注点集中在使用不同的命令行。现在，我们将会学习如何同时执行多个不同的进程并追踪它们的状态、停止或暂停某个进程以及如何使进程在后台运行。
 
-我们还将学习一些能够改善您的 shell 及其他工具的工作流的方法，主要途径是通过定义别名或基于配置文件对其进行配置。这些方法都可以帮您节省大量的时间。例如，仅需要执行一些简单的命令，我们就可以是在所有的主机上使用相同的配置。我们还会学习如何使用 SSH 操作远端机器。
+我们已经使用 shell 一段时间了，但是到目前为止我们的关注点主要集中在使用不同的命令上面。现在，我们将会学习如何同时执行多个不同的进程并追踪它们的状态、如何停止或暂停某个进程以及如何使进程在后台运行。
+
+我们还将学习一些能够改善您的 shell 及其他工具的工作流的方法，这主要是通过定义别名或基于配置文件对其进行配置来实现的。这些方法都可以帮您节省大量的时间。例如，仅需要执行一些简单的命令，我们就可以在所有的主机上使用相同的配置。我们还会学习如何使用 SSH 操作远端机器。
 
 
 # 任务控制
 
-某些情况下我们需要在任务执行时将其中断，例如当一个命令需要执行很长时间才能完成时（比如使用 `find` 搜索一个非常大的目录结构时）。大多数情况下，我们可以使用 `Ctrl-C` 来停止命令的执行。但是它的工作原理是什么呢？为什么有的时候会无法结束进程？
+某些情况下我们需要中断正在执行的任务，比如当一个命令需要执行很长时间才能完成时（假设我们在使用 `find` 搜索一个非常大的目录结构）。大多数情况下，我们可以使用 `Ctrl-C` 来停止命令的执行。但是它的工作原理是什么呢？为什么有的时候会无法结束进程？
 
 ## 结束进程
 
 您的 shell 会使用 UNIX 提供的信号机制执行进程间通信。当一个进程接收到信号时，它会停止执行、处理该信号并基于信号传递的信息来改变其执行。就这一点而言，信号是一种*软件中断*。
 
-就上述例子而言，当我们输入 `Ctrl-C` 时，shell 会发送一个`SIGINT` 信号到进程。
+在上面的例子中，当我们输入 `Ctrl-C` 时，shell 会发送一个`SIGINT` 信号到进程。
 
-下面这个Python程序向您展示了捕获信号`SIGINT` 并忽略它的基本操作，它并不会让程序停止。为了停止这个程序，我们需要使用`SIGQUIT` 信号，通过输入`Ctrl-\`可以发送该信号。
+下面这个 Python 程序向您展示了捕获信号`SIGINT` 并忽略它的基本操作，它并不会让程序停止。为了停止这个程序，我们需要使用`SIGQUIT` 信号，通过输入`Ctrl-\`可以发送该信号。
 
 ```python
 #!/usr/bin/env python
@@ -52,7 +53,7 @@ I got a SIGINT, but I am not stopping
 30^\[1]    39913 quit       python sigint.py
 ```
 
-尽管 `SIGINT` 和 `SIGQUIT` 都常常用来发出和终止程序相关都请求。`SIGTERM` 则是一个更加通用的，让程序优雅地退出的信号。为了发出这个信号我们需要使用[`kill`](http://man7.org/linux/man-pages/man1/kill.1.html) 命令, 它的语法是： `kill -TERM <PID>`.
+尽管 `SIGINT` 和 `SIGQUIT` 都常常用来发出和终止程序相关的请求。`SIGTERM` 则是一个更加通用的、也更加优雅地退出信号。为了发出这个信号我们需要使用 [`kill`](http://man7.org/linux/man-pages/man1/kill.1.html) 命令, 它的语法是： `kill -TERM <PID>`。
 
 ## 暂停和后台执行进程
 
@@ -61,14 +62,13 @@ I got a SIGINT, but I am not stopping
 我们可以使用 [`fg`](http://man7.org/linux/man-pages/man1/fg.1p.html) 或 [`bg`](http://man7.org/linux/man-pages/man1/bg.1p.html) 命令恢复暂停的工作。它们分别表示在前台继续或在后台继续。
 
 
-[`jobs`](http://man7.org/linux/man-pages/man1/jobs.1p.html) 命令会列出当前终端会话中尚未完成的全部任务。您可以使用 pid 引用这些任务（可以用 [`pgrep`](http://man7.org/linux/man-pages/man1/pgrep.1.html) 找出 pid）。更加符合直觉的操作是，您可以使用百分号 + 任务编号（`jobs` 会打印任务编号）来选取该任务。如果要选择最近的一个任务，可以使用 `$!` 这一特别参数。
+[`jobs`](http://man7.org/linux/man-pages/man1/jobs.1p.html) 命令会列出当前终端会话中尚未完成的全部任务。您可以使用 pid 引用这些任务（也可以用 [`pgrep`](http://man7.org/linux/man-pages/man1/pgrep.1.html) 找出 pid）。更加符合直觉的操作是您可以使用百分号 + 任务编号（`jobs` 会打印任务编号）来选取该任务。如果要选择最近的一个任务，可以使用 `$!` 这一特殊参数。
 
-还有一件事情需要掌握，那就是命令中的 `&` 后缀可以让命令在直接在后台运行，这使得您可以直接在 shell 中继续做其他操作，不过它此时还是会使用 shell 的标准输出，这一点有时候会比较恼人（这种情况可以使用 shell 重定向处理）。
+还有一件事情需要掌握，那就是命令中的 `&` 后缀可以让命令在直接在后台运行，这使得您可以直接在 shell 中继续做其他操作，不过它此时还是会使用 shell 的标准输出，这一点有时会比较恼人（这种情况可以使用 shell 重定向处理）。
 
-让已经在运行的进程转到后台运行，您可以键入`Ctrl-Z` ，然后紧接着再输入`bg`。注意，后台的进程仍然是您的终端进程的子进程，一旦您关闭来终端（会发送另外一个信号`SIGHUP`），这些后台的进程也会终止。为了防止这种情况发生，您可以使用 [`nohup`](http://man7.org/linux/man-pages/man1/nohup.1.html) (一个用来忽略 `SIGHUP` 的封装) 来运行程序。针对已经运行的程序，可以使用`disown` 。除此之外，您可以使用终端多路复用器来实现，下一章节我们会进行详细地探讨。
+让已经在运行的进程转到后台运行，您可以键入`Ctrl-Z` ，然后紧接着再输入`bg`。注意，后台的进程仍然是您的终端进程的子进程，一旦您关闭终端（会发送另外一个信号`SIGHUP`），这些后台的进程也会终止。为了防止这种情况发生，您可以使用 [`nohup`](http://man7.org/linux/man-pages/man1/nohup.1.html) (一个用来忽略 `SIGHUP` 的封装) 来运行程序。针对已经运行的程序，可以使用`disown` 。除此之外，您可以使用终端多路复用器来实现，下一章节我们会进行详细地探讨。
 
-我们在下面这个简单的会话中展示来这些概念的应用。
-
+下面这个简单的会话中展示来了些概念的应用。
 
 ```
 $ sleep 1000
@@ -117,7 +117,7 @@ $ jobs
 
 `SIGKILL` 是一个特殊的信号，它不能被进程捕获并且它会马上结束该进程。不过这样做会有一些副作用，例如留下孤儿进程。
 
-你可以在 [here](https://en.wikipedia.org/wiki/Signal_(IPC)) 或输入 [`man signal`](http://man7.org/linux/man-pages/man7/signal.7.html) 或使用 `kill -t` 来获取更多关于信号的信息。
+您可以在 [这里](https://en.wikipedia.org/wiki/Signal_(IPC)) 或输入 [`man signal`](http://man7.org/linux/man-pages/man7/signal.7.html) 或使用 `kill -t` 来获取更多关于信号的信息。
 
 
 # 终端多路复用
@@ -128,8 +128,7 @@ $ jobs
 
 不仅如此，终端多路复用使我们可以分离当前终端会话并在将来重新连接。
 
-这让你操作远端设备时的工作流大大改善，避免了 `nohup` 和其他类似技巧的使用。
-
+这让您操作远端设备时的工作流大大改善，避免了 `nohup` 和其他类似技巧的使用。
 
 现在最流行的终端多路器是 [`tmux`](http://man7.org/linux/man-pages/man1/tmux.1.html)。`tmux` 是一个高度可定制的工具，您可以使用相关快捷键创建多个标签页并在它们间导航。
 
@@ -150,22 +149,21 @@ $ jobs
     + `<C-b> ,`  重命名当前窗口
     + `<C-b> w` 列出当前所有窗口
 
-- **面板** - 像vim中的分屏一样，面板使我们可以在一个屏幕里显示多个shell
+- **面板** - 像 vim 中的分屏一样，面板使我们可以在一个屏幕里显示多个 shell
     + `<C-b> "` 水平分割
     + `<C-b> %` 垂直分割
     + `<C-b> <方向>` 切换到指定方向的面板，<方向> 指的是键盘上的方向键
     + `<C-b> z` 切换当前面板的缩放
-    + `<C-b> [` 开始往回卷动屏幕。你可以按下空格键来开始选择，回车键复制选中的部分
+    + `<C-b> [` 开始往回卷动屏幕。您可以按下空格键来开始选择，回车键复制选中的部分
     + `<C-b> <空格>` 在不同的面板排布间切换
 
 扩展阅读：
-[这里](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/) 是一份快速入门 `tmux` 的教程， [而这一篇](http://linuxcommand.org/lc3_adv_termmux.php) 文章则更加详细。它包含来原本的 `screen` 命令。您也许想要掌握 [`screen`](http://man7.org/linux/man-pages/man1/screen.1.html) 命令，因为在大多数 UNIX 系统中都默认安装有该程序。
+[这里](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/) 是一份 `tmux` 快速入门教程， [而这一篇](http://linuxcommand.org/lc3_adv_termmux.php) 文章则更加详细，它包含了 `screen` 命令。您也许想要掌握 [`screen`](http://man7.org/linux/man-pages/man1/screen.1.html) 命令，因为在大多数 UNIX 系统中都默认安装有该程序。
 
 
 # 别名
 
 输入一长串包含许多选项的命令会非常麻烦。因此，大多数 shell 都支持设置别名。shell 的别名相当于一个长命令的缩写，shell 会自动将其替换成原本的命令。例如，bash 中的别名语法如下：
-
 
 ```bash
 alias alias_name="command_to_alias arg1 arg2"
@@ -176,37 +174,37 @@ alias alias_name="command_to_alias arg1 arg2"
 别名有许多很方便的特性:
 
 ```bash
-# Make shorthands for common flags
+# 创建常用命令的缩写
 alias ll="ls -lh"
 
-# Save a lot of typing for common commands
+# 能够少输入很多
 alias gs="git status"
 alias gc="git commit"
 alias v="vim"
 
-# Save you from mistyping
+# 手误打错命令也没关系
 alias sl=ls
 
-# Overwrite existing commands for better defaults
+# 重新定义一些命令行的默认行为
 alias mv="mv -i"           # -i prompts before overwrite
 alias mkdir="mkdir -p"     # -p make parent dirs as needed
 alias df="df -h"           # -h prints human readable format
 
-# Alias can be composed
+# 别名可以组合使用
 alias la="ls -A"
 alias lla="la -l"
 
-# To ignore an alias run it prepended with \
+# 在忽略某个别名
 \ls
-# Or disable an alias altogether with unalias
+# 或者禁用别名
 unalias la
 
-# To get an alias definition just call it with alias
+# 获取别名的定义
 alias ll
-# Will print ll='ls -lh'
+# 会打印 ll='ls -lh'
 ```
 
-值得注意的是，在默认情况下，shell 并不会保存别名。为了让别名持续生效，你需要将配置放进 shell 的启动文件里，像是`.bashrc` 或 `.zshrc`，下一节我们就会讲到。
+值得注意的是，在默认情况下 shell 并不会保存别名。为了让别名持续生效，您需要将配置放进 shell 的启动文件里，像是`.bashrc` 或 `.zshrc`，下一节我们就会讲到。
 
 
 # 配置文件（Dotfiles）
@@ -224,18 +222,18 @@ shell 的配置也是通过这类文件完成的。在启动时，您的 shell �
 
 - `bash` - `~/.bashrc`, `~/.bash_profile`
 - `git` - `~/.gitconfig`
-- `vim` - `~/.vimrc` 和  `~/.vim` folder
+- `vim` - `~/.vimrc` 和  `~/.vim` 目录
 - `ssh` - `~/.ssh/config`
 - `tmux` - `~/.tmux.conf`
 
 我们应该如何管理这些配置文件呢，它们应该在它们的文件夹下，并使用版本控制系统进行管理，然后通过脚本将其 **符号链接** 到需要的地方。这么做有如下好处：
 
 - **安装简单**: 如果您登陆了一台新的设备，在这台设备上应用您的配置只需要几分钟的时间；
-- **可以执行**: 你的工具在任何地方都以相同的配置工作
+- **可以执行**: 您的工具在任何地方都以相同的配置工作
 - **同步**: 在一处更新配置文件，可以同步到其他所有地方
-- **变更追踪**: 你可能要在整个程序员生涯中持续维护这些配置文件，而对于长期项目而言，版本历史是非常重要的
+- **变更追踪**: 您可能要在整个程序员生涯中持续维护这些配置文件，而对于长期项目而言，版本历史是非常重要的
 
-配置文件中需要放些什么？你可以通过在线文档和[man pages](https://en.wikipedia.org/wiki/Man_page)了解所使用工具的设置项。另一个方法是在网上搜索有关特定程序的文章，作者们在文章中会分享他们的配置。还有一种方法就是直接浏览其他人的配置文件：您可以在这里找到无数的[dotfiles repositories](https://github.com/search?o=desc&q=dotfiles&s=stars&type=Repositories) —— 其中最受欢迎的那些可以在[这里](https://github.com/mathiasbynens/dotfiles)找到（我们建议你不要直接复制别人的配置）。[这里](https://dotfiles.github.io/) 也有一些非常有用的资源。
+配置文件中需要放些什么？您可以通过在线文档和[帮助手册](https://en.wikipedia.org/wiki/Man_page)了解所使用工具的设置项。另一个方法是在网上搜索有关特定程序的文章，作者们在文章中会分享他们的配置。还有一种方法就是直接浏览其他人的配置文件：您可以在这里找到无数的[dotfiles 仓库](https://github.com/search?o=desc&q=dotfiles&s=stars&type=Repositories) —— 其中最受欢迎的那些可以在[这里](https://github.com/mathiasbynens/dotfiles)找到（我们建议您不要直接复制别人的配置）。[这里](https://dotfiles.github.io/) 也有一些非常有用的资源。
 
 本课程的老师们也在 GitHub 上开源了他们的配置文件： 
 [Anish](https://github.com/anishathalye/dotfiles),
@@ -269,7 +267,7 @@ if [[ "$(hostname)" == "myServer" ]]; then {do_something}; fi
 
 然后我们可以在每天设备上创建配置文件 `~/.gitconfig_local` 来包含与该设备相关的特定配置。您甚至应该创建一个单独的代码仓库来管理这些与设备相关的配置。
 
-如果您希望在不同的程序之间共享某些配置，该方法也适用。例如，如果你想要在 `bash` 和 `zsh` 中同时启用一些别名，你可以把它们写在 `.aliases` 里，然后在这两个 shell 里应用：
+如果您希望在不同的程序之间共享某些配置，该方法也适用。例如，如果您想要在 `bash` 和 `zsh` 中同时启用一些别名，您可以把它们写在 `.aliases` 里，然后在这两个 shell 里应用：
 
 ```bash
 # Test if ~/.aliases exists and source it
@@ -299,7 +297,7 @@ ssh foo@bar.mit.edu
 
 ## SSH 密钥
 
-基于密钥的验证机制利用了密码学中的公钥，我们只需要向服务器证明客户端持有对应的私钥，而不需要公开其私钥。这样您就可以避免每次登陆都输入密码的麻烦了秘密就可以登陆。不过，私钥(通常是 `~/.ssh/id_rsa` 或者 `~/.ssh/id_ed25519`) 等效于您的密码，所以一定要好好保存它。
+基于密钥的验证机制使用了密码学中的公钥，我们只需要向服务器证明客户端持有对应的私钥，而不需要公开其私钥。这样您就可以避免每次登陆都输入密码的麻烦了秘密就可以登陆。不过，私钥(通常是 `~/.ssh/id_rsa` 或者 `~/.ssh/id_ed25519`) 等效于您的密码，所以一定要好好保存它。
 
 ### 密钥生成
 
@@ -312,7 +310,7 @@ ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519
 您可以为密钥设置密码，防止有人持有您的私钥并使用它访问您的服务器。您可以使用 [`ssh-agent`](http://man7.org/linux/man-pages/man1/ssh-agent.1.html) 或 [`gpg-agent`](https://linux.die.net/man/1/gpg-agent) ，这样就不需要每次都输入该密码了。
 
 
-如果你曾经配置过使用 SSH 密钥推送到 GitHub，那么可能你已经完成了[这里](https://help.github.com/articles/connecting-to-github-with-ssh/) 介绍的这些步骤，并且已经有了一个可用的密钥对。要检查你是否持有密码并验证它，你可以运行 `ssh-keygen -y -f /path/to/key`.
+如果您曾经配置过使用 SSH 密钥推送到 GitHub，那么可能您已经完成了[这里](https://help.github.com/articles/connecting-to-github-with-ssh/) 介绍的这些步骤，并且已经有了一个可用的密钥对。要检查您是否持有密码并验证它，您可以运行 `ssh-keygen -y -f /path/to/key`.
 
 ### 基于密钥的认证机制
 
@@ -332,9 +330,9 @@ ssh-copy-id -i .ssh/id_ed25519.pub foobar@remote
 
 使用 ssh 复制文件有很多方法：
 
-- `ssh+tee`, 最简单的方法是执行 `ssh` 命令，然后通过这样的方法利用标准输入实现 `cat localfile | ssh remote_server tee serverfile`。回忆一下，[`tee`](http://man7.org/linux/man-pages/man1/tee.1.html) 命令会将标准输出写入到一个文件
-- [`scp`](http://man7.org/linux/man-pages/man1/scp.1.html) ：当需要拷贝大量的文件或目录时，使用`scp` 命令则更加方便，因为它可以方便的遍历相关路径。语法如下：`scp path/to/local_file remote_host:path/to/remote_file`
-- [`rsync`](http://man7.org/linux/man-pages/man1/rsync.1.html) 对 `scp` 进行来改进，它可以检测本地和远端的文件以防止重复拷贝。它还可以提供一些诸如符号连接、权限管理等精心打磨的功能。甚至还可以基于 `--partial`标记实现断点续传。`rsync` 的语法和`scp`类似。
+- `ssh+tee`, 最简单的方法是执行 `ssh` 命令，然后通过这样的方法利用标准输入实现 `cat localfile | ssh remote_server tee serverfile`。回忆一下，[`tee`](http://man7.org/linux/man-pages/man1/tee.1.html) 命令会将标准输出写入到一个文件；
+- [`scp`](http://man7.org/linux/man-pages/man1/scp.1.html) ：当需要拷贝大量的文件或目录时，使用`scp` 命令则更加方便，因为它可以方便的遍历相关路径。语法如下：`scp path/to/local_file remote_host:path/to/remote_file`；
+- [`rsync`](http://man7.org/linux/man-pages/man1/rsync.1.html) 对 `scp` 进行来改进，它可以检测本地和远端的文件以防止重复拷贝。它还可以提供一些诸如符号连接、权限管理等精心打磨的功能。甚至还可以基于 `--partial`标记实现断点续传。`rsync` 的语法和`scp`类似；
 
 ## 端口转发
 
@@ -377,7 +375,7 @@ Host *.mit.edu
     User foobaz
 ```
 
-这么做的好处是，使用 `~/.ssh/config` 文件来创建别名，类似 `scp`, `rsync`, `mosh`的这些命令都可以读取这个配置并将设置转换为对于的命令行选项。
+这么做的好处是，使用 `~/.ssh/config` 文件来创建别名，类似 `scp`、`rsync`和`mosh`的这些命令都可以读取这个配置并将设置转换为对应的命令行选项。
 
 注意，`~/.ssh/config` 文件也可以被当作配置文件，而且一般情况下也是可以被倒入其他配置文件的。不过，如果您将其公开到互联网上，那么其他人都将会看到您的服务器地址、用户名、开放端口等等。这些信息可能会帮助到那些企图攻击您系统的黑客，所以请务必三思。
 
@@ -385,9 +383,9 @@ Host *.mit.edu
 
 ## 杂项
 
-连接远程服务器的一个常见痛点是遇到由关机、休眠或网络环境变化导致的掉线。如果连接的延迟很高也很让人讨厌。[Mosh](https://mosh.org/)，也就是mobile shell 对 ssh 进行了改进，它允许连接漫游、间歇性连接及智能本地回显。
+连接远程服务器的一个常见痛点是遇到由关机、休眠或网络环境变化导致的掉线。如果连接的延迟很高也很让人讨厌。[Mosh](https://mosh.org/)（即 mobile shell ）对 ssh 进行了改进，它允许连接漫游、间歇连接及智能本地回显。
 
-有时将一个远端文件夹挂载到本地会比较方便， [sshfs](https://github.com/libfuse/sshfs) 可以将远端服务器上的一个文件夹挂载到本地，然后你就可以使用本地的编辑器了。
+有时将一个远端文件夹挂载到本地会比较方便， [sshfs](https://github.com/libfuse/sshfs) 可以将远端服务器上的一个文件夹挂载到本地，然后您就可以使用本地的编辑器了。
 
 
 # Shell & 框架
@@ -433,11 +431,11 @@ Host *.mit.edu
 
 ## 任务控制
 
-1. 我们可以使用类似 `ps aux | grep` 这样的命令来获取任务的 pid ，然后您可以基于pid 来结束这些进程。但我们其实有更好的方法来做这件事。在终端中执行 `sleep 10000` 这个任务。然后用 `Ctrl-Z` 将其切换到后台并使用 `bg`来继续允许它。现在，使用 [`pgrep`](http://man7.org/linux/man-pages/man1/pgrep.1.html) 来查找 pid 并使用 [`pkill`](http://man7.org/linux/man-pages/man1/pgrep.1.html) to结束进程而不需要手动输入pid。(提示：: 使用 `-af` 标记)。
+1. 我们可以使用类似 `ps aux | grep` 这样的命令来获取任务的 pid ，然后您可以基于pid 来结束这些进程。但我们其实有更好的方法来做这件事。在终端中执行 `sleep 10000` 这个任务。然后用 `Ctrl-Z` 将其切换到后台并使用 `bg`来继续允许它。现在，使用 [`pgrep`](http://man7.org/linux/man-pages/man1/pgrep.1.html) 来查找 pid 并使用 [`pkill`](http://man7.org/linux/man-pages/man1/pgrep.1.html) 结束进程而不需要手动输入pid。(提示：: 使用 `-af` 标记)。
 
 2. 如果您希望某个进程结束后再开始另外一个进程， 应该如何实现呢？在这个练习中，我们使用 `sleep 60 &` 作为先执行的程序。一种方法是使用 [`wait`](http://man7.org/linux/man-pages/man1/wait.1p.html) 命令。尝试启动这个休眠命令，然后待其结束后再执行 `ls` 命令。
 
-    但是，如果我们在不同的 bash 会话中进行操作，则上述方法就不起作用来。因为 `wait` 只能对子进程起作用。之前我们没有提过的一个特性是，`kill` 命令成功退出时其状态码为 0 ，其他状态则是非0。`kill -0` 则不会发送信号，但是会在进程不存在时返回一个不为0的状态码。请编写一个 bash 函数 `pidwait` ，它接受一个 pid 作为输入参数，然后一直等待直到该进程结束。您需要使用 `sleep` 来避免浪费 CPU 性能。
+    但是，如果我们在不同的 bash 会话中进行操作，则上述方法就不起作用了。因为 `wait` 只能对子进程起作用。之前我们没有提过的一个特性是，`kill` 命令成功退出时其状态码为 0 ，其他状态则是非0。`kill -0` 则不会发送信号，但是会在进程不存在时返回一个不为0的状态码。请编写一个 bash 函数 `pidwait` ，它接受一个 pid 作为输入参数，然后一直等待直到该进程结束。您需要使用 `sleep` 来避免浪费 CPU 性能。
 
 ## 终端多路复用
 
@@ -453,7 +451,7 @@ Host *.mit.edu
 让我们帮助您进一步学习配置文件：
 
 1. 为您的配置文件新建一个文件夹，并设置好版本控制
-2. 在其中添加至少一个配置文件，比如说你的 shell，在其中包含一些自定义设置（可以从设置 `$PS1` 开始）。
+2. 在其中添加至少一个配置文件，比如说您的 shell，在其中包含一些自定义设置（可以从设置 `$PS1` 开始）。
 3. 建立一种在新设备进行快速安装配置的方法（无需手动操作）。最简单的方法是写一个 shell 脚本对每个文件使用 `ln -s`，也可以使用[专用工具](https://dotfiles.github.io/utilities/)
 4. 在新的虚拟机上测试该安装脚本。
 5. 将您现有的所有配置文件移动到项目仓库里。
