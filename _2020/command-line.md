@@ -392,17 +392,17 @@ Host *.mit.edu
 
 # Shell & 框架
 
-During shell tool and scripting we covered the `bash` shell because it is by far the most ubiquitous shell and most systems have it as the default option. Nevertheless, it is not the only option.
+在 shell 工具和脚本那节课中我们已经介绍了 `bash` shell，因为它是目前最通用的 shell，大多数的系统都将其作为默认 shell。但是，它并不是唯一的选项。
 
-For example, the `zsh` shell is a superset of `bash` and provides many convenient features out of the box such as:
+例如，`zsh` shell 是 `bash` 的超集并提供了一些方便的功能：
 
-- Smarter globbing, `**`
-- Inline globbing/wildcard expansion
-- Spelling correction
-- Better tab completion/selection
-- Path expansion (`cd /u/lo/b` will expand as `/usr/local/bin`)
+- 智能替换, `**`
+- 行内替换/通配符扩展
+- 拼写纠错
+- 更好的 tab 补全和选择
+- 路径展开 (`cd /u/lo/b` 会被展开为 `/usr/local/bin`)
 
-**Frameworks** can improve your shell as well. Some popular general frameworks are [prezto](https://github.com/sorin-ionescu/prezto) or [oh-my-zsh](https://github.com/robbyrussll/oh-my-zsh), and smaller ones that focus on specific features such as [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) or [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search). Shells like [fish](https://fishshell.com/) include many of these user-friendly features by default. Some of these features include:
+**框架** 也可以改进您的 shell。比较流行的通用框架包括[prezto](https://github.com/sorin-ionescu/prezto) 或 [oh-my-zsh](https://github.com/robbyrussll/oh-my-zsh)。还有一些更精简的框架，它们往往专注于某一个特定功能，例如[zsh 语法高亮](https://github.com/zsh-users/zsh-syntax-highlighting) 或 [zsh 历史子串查询](https://github.com/zsh-users/zsh-history-substring-search)。 像 [fish](https://fishshell.com/) 这样的 shell 包含了很多用户友好的功能，其中一些特性包括：
 
 - 向右对齐
 - 命令语法高亮
@@ -411,14 +411,14 @@ For example, the `zsh` shell is a superset of `bash` and provides many convenien
 - 更智能的自动补全
 - 提示符主题
 
-
-One thing to note when using these frameworks is that they may slow down your shell, especially if the code they run is not properly optimized or it is too much code. You can always profile it and disable the features that you do not use often or value over speed.
+需要注意的是，使用这些框架可能会降低您 shell 的性能，尤其是如果这些框架的代码没有优化或者代码过多。您随时可以测试其性能或禁用某些不常用的功能来实现速度与功能的平衡。
 
 # 终端模拟器
 
-Along with customizing your shell, it is worth spending some time figuring out your choice of **terminal emulator** and its settings. There are many many terminal emulators out there (here is a [comparison](https://anarc.at/blog/2018-04-12-terminal-emulators-1/)).
+和自定义 shell 一样，花点时间选择适合您的 **终端模拟器**并进行设置是很有必要的。有许多终端模拟器可供您选择（这里有一些关于它们之间[比较](https://anarc.at/blog/2018-04-12-terminal-emulators-1/)的信息）
 
-Since you might be spending hundreds to thousands of hours in your terminal it pays off to look into its settings. Some of the aspects that you may want to modify in your terminal include:
+
+您会花上很多时间在使用终端上，因此研究一下终端的设置是很有必要的，您可以从下面这些方面来配置您的终端：
 
 - 字体选择
 - 彩色主题
