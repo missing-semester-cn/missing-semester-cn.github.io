@@ -118,79 +118,24 @@ pdflatex paper.tex
 
 由于每个仓库、每种工具的运行机制都不太一样，因此我们并不会在本节课深入讲解具体的细节。我们会介绍一些通用的术语，例如*版本控制*。大多数被其他项目所依赖的项目都会在每次发布新版本时创建一个*版本号*。通常看上去像 8.1.3 或 64.1.20192004。版本号一般是数字构成的，但也并不绝对。版本号有很多用途，其中最重要的作用是保证软件能够运行。试想一下，加入我的库要发布一个新版本，在这个版本里面我重命名了某个函数。如果有人在我的库升级版本后，仍希望基于它构建新的软件，那么很可能构建会失败，因为它希望调用的函数已经不复存在了。有了版本控制就可以很好的解决这个问题，我们可以指定当前项目需要基于某个版本，甚至某个范围内的版本，或是某些项目来构建。这么做的话，即使某个被依赖的库发生了变化，依赖它的软件可以基于其之前的版本进行构建。
 
-That also isn't ideal though! What if I issue a security update which
-does _not_ change the public interface of my library (its "API"), and
-which any project that depended on the old version should immediately
-start using? This is where the different groups of numbers in a version
-come in. The exact meaning of each one varies between projects, but one
-relatively common standard is [_semantic
-versioning_](https://semver.org/). With semantic versioning, every
-version number is of the form: major.minor.patch. The rules are:
+这样还并不理想！如果我们发布了一项和安全相关的升级，它*没有*影响到任何公开接口（API），但是处于安全的考虑，依赖它的项目都应该立即升级，那应该怎么做呢？这也是版本号包含多个部分的原因。不同项目所用的版本号其具体含义并不完全相同，但是一个相对比较常用的标准是[语义版本号](https://semver.org/)，这种版本号具有不同的语义，它的格式是这样的：主版本号.次版本号.补丁号。相关规则有：
 
- - If a new release does not change the API, increase the patch version.
- - If you _add_ to your API in a backwards-compatible way, increase the
-   minor version.
- - If you change the API in a non-backwards-compatible way, increase the
-   major version.
+ - 如果新的版本没有改变 API，请将补丁号递增；
+ - 如果您添加了 API 并且该改动是向后兼容的，请将次版本号递增；
+ - 如果您修改了 API 但是它并不向后兼容，请将主版本号递增。
 
-This already provides some major advantages. Now, if my project depends
-on your project, it _should_ be safe to use the latest release with the
-same major version as the one I built against when I developed it, as
-long as its minor version is at least what it was back then. In other
-words, if I depend on your library at version `1.3.7`, then it _should_
-be fine to build it with `1.3.8`, `1.6.1`, or even `1.3.0`. Version
-`2.2.4` would probably not be okay, because the major version was
-increased. We can see an example of semantic versioning in Python's
-version numbers. Many of you are probably aware that Python 2 and Python
-3 code do not mix very well, which is why that was a _major_ version
-bump. Similarly, code written for Python 3.5 might run fine on Python
-3.7, but possibly not on 3.4.
+这么做有很多好处。现在如果我们的项目是基于您的项目构建的，那么只要最新版本的主版本号只要没变就是安全的 ，次版本号不低于之前我们使用的版本即可。换句话说，如果我依赖的版本是`1.3.7`，那么使用`1.3.8`、`1.6.1`，甚至是`1.3.0`都是可以的。如果版本号是 `2.2.4` 就不一定能用了，因为它的主版本号增加了。我们可以将 Python 的版本号作为语义版本号的一个实例。您应该知道，Python 2 和 Python 3 的代码是不兼容的，这也是为什么 Python 的主版本号改变的原因。类似的，使用 Python 3.5 编写的代码在 3.7 上可以运行，但是在 3.4 上可能会不行。
 
-When working with dependency management systems, you may also come
-across the notion of _lock files_. A lock file is simply a file that
-lists the exact version you are _currently_ depending on of each
-dependency. Usually, you need to explicitly run an update program to
-upgrade to newer versions of your dependencies. There are many reasons
-for this, such as avoiding unnecessary recompiles, having reproducible
-builds, or not automatically updating to the latest version (which may
-be broken). And extreme version of this kind of dependency locking is
-_vendoring_, which is where you copy all the code of your dependencies
-into your own project. That gives you total control over any changes to
-it, and lets you introduce your own changes to it, but also means you
-have to explicitly pull in any updates from the upstream maintainers
-over time.
+使用依赖管理系统的时候，您可能会遇到锁文件（_lock files_）这一概念。锁文件列出了您当前每个依赖所对应的具体版本号。通常，您需要执行升级程序才能更新依赖的版本。这么做的原因有很多，例如避免不必要的重新编译、创建可复现的软件版本或禁止自动升级到最新版本（可能会包含 bug）。还有一种极端的依赖锁定叫做
+_vendoring_，它会把您的依赖中的所有代码直接拷贝到您的项目中，这样您就能够完全掌控代码的任何修改，同时您也可以将自己的修改添加进去，不过这也意味着如何该依赖的维护者更新了某些代码，您也必须要自己去拉取这些更新。
 
-# Continuous integration systems
+# 持续集成系统
 
-As you work on larger and larger projects, you'll find that there are
-often additional tasks you have to do whenever you make a change to it.
-You might have to upload a new version of the documentation, upload a
-compiled version somewhere, release the code to pypi, run your test
-suite, and all sort of other things. Maybe every time someone sends you
-a pull request on GitHub, you want their code to be style checked and
-you want some benchmarks to run? When these kinds of needs arise, it's
-time to take a look at continuous integration.
+随着您接触到的项目规模越来越大，您会发现修改代码之后还有很多额外的工作要做。您可能需要上传一份新版本的文档、上传编译后的文件到某处、发布代码到 pypi，执行测试套等等。或许您希望每次有人提交代码到 GitHub 的时候，他们的代码风格被检查过并执行过某些基准测试？如果您有这方面的需求，那么请花些时间了解一下持续集成。
 
-Continuous integration, or CI, is an umbrella term for "stuff that runs
-whenever your code changes", and there are many companies out there that
-provide various types of CI, often for free for open-source projects.
-Some of the big ones are Travis CI, Azure Pipelines, and GitHub Actions.
-They all work in roughly the same way: you add a file to your repository
-that describes what should happen when various things happen to that
-repository. By far the most common one is a rule like "when someone
-pushes code, run the test suite". When the event triggers, the CI
-provider spins up a virtual machines (or more), runs the commands in
-your "recipe", and then usually notes down the results somewhere. You
-might set it up so that you are notified if the test suite stops
-passing, or so that a little badge appears on your repository as long as
-the tests pass.
+持续集成，或者叫做 CI 是一种雨伞术语（umbrella term），它指的是那些“当您的代码变动时，自动运行的那些东西”，市场上有很多提供各式各样 CI 工具的公司，这些工具大部分都是免费或开源的。比较大的有 Travis CI、Azure Pipelines 和 GitHub Actions。它们的工作原理都是类似的：您需要在代码仓库中添加一个文件，描述当前仓库发生任何修改时，应该如何应对。目前为止，最常见的规则是：如果有人提交代码，执行测试套。当这个事件被触发时，CI 提供方会启动一个（或多个）虚拟机，执行您制定的规则，并且通常会记录下相关的执行结果。您可以进行某些设置，这样当测试套失败时您能够收到通知或者当测试全部通过时，您的仓库主页会显示一个徽标。
 
-As an example of a CI system, the class website is set up using GitHub
-Pages. Pages is a CI action that runs the Jekyll blog software on every
-push to `master` and makes the built site available on a particular
-GitHub domain. This makes it trivial for us to update the website! We
-just make our changes locally, commit them with git, and then push. CI
-takes care of the rest.
+本课程的网站基于 GitHub Pages 构建，这就是一个很好的例子。Pages 在每次`master`有代码更新时，会执行 Jekyll 博客软件，然后使您的站点可以通过某个 GitHub 域名来访问。对于我们来说这些事情太琐碎了，我现在我们只需要在本地进行修改，然后使用 git 提交代码，发布到远端。CI 会自动帮我们处理后续的事情。
 
 ## 测试简介
 
@@ -205,40 +150,11 @@ takes care of the rest.
 
 # 课后练习
 
- 1. Most makefiles provide a target called `clean`. This isn't intended
-    to produce a file called `clean`, but instead to clean up any files
-    that can be re-built by make. Think of it as a way to "undo" all of
-    the build steps. Implement a `clean` target for the `paper.pdf`
-    `Makefile` above. You will have to make the target
-    [phony](https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html).
-    You may find the [`git
-    ls-files`](https://git-scm.com/docs/git-ls-files) subcommand useful.
-    A number of other very common make targets are listed
-    [here](https://www.gnu.org/software/make/manual/html_node/Standard-Targets.html#Standard-Targets).
- 2. Take a look at the various ways to specify version requirements for
-    dependencies in [Rust's build
-    system](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html).
-    Most package repositories support similar syntax. For each one
-    (caret, tilde, wildcard, comparison, and multiple), try to come up
-    with a use-case in which that particular kind of requirement makes
-    sense.
- 3. Git can act as a simple CI system all by itself. In `.git/hooks`
-    inside any git repository, you will find (currently inactive) files
-    that are run as scripts when a particular action happens. Write a
-    [`pre-commit`](https://git-scm.com/docs/githooks#_pre_commit) hook
-    that runs `make paper.pdf` and refuses the commit if the `make`
-    command fails. This should prevent any commit from having an
-    unbuildable version of the paper.
- 4. Set up a simple auto-published page using [GitHub
-    Pages](https://help.github.com/en/actions/automating-your-workflow-with-github-actions).
-    Add a [GitHub Action](https://github.com/features/actions) to the
-    repository to run `shellcheck` on any shell files in that
-    repository (here is [one way to do
-    it](https://github.com/marketplace/actions/shellcheck)). Check that
-    it works!
- 5. [Build your
-    own](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/building-actions)
-    GitHub action to run [`proselint`](http://proselint.com/) or
-    [`write-good`](https://github.com/btford/write-good) on all the
-    `.md` files in the repository. Enable it in your repository, and
-    check that it works by filing a pull request with a typo in it.
+ 1. 大多数的 makefiles 都提供了 一个名为 `clean` 的构建目标，这并不是说我们会生成一个名为`clean`的文件，而是我们可以使用它清理文件，让 make 重新构建。您可以理解为它的作用是“撤销”所有构建步骤。在上面的 makefile 中为`paper.pdf`实现一个`clean` 目标。您需要构建[phony](https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html)。您也许会发现 [`git ls-files`](https://git-scm.com/docs/git-ls-files) 子命令很有用。其他一些有用的 make 构建目标可以在[这里](https://www.gnu.org/software/make/manual/html_node/Standard-Targets.html#Standard-Targets)找到；
+   
+ 2. 指定版本要求的方法很多，让我们学习一下 [Rust的构建系统](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html)的依赖管理。大多数的包管理仓库都支持类似的语法。对于每种语法(尖号、波浪号、通配符、比较、乘积)，构建一种场景使其具有实际意义；
+
+ 3. Git 可以作为一个简单的 CI 系统来使用，在任何 git 仓库中的 `.git/hooks` 目录中，您可以找到一些文件（当前处于未激活状态），它们的作用和脚本一样，当某些事件发生时便可以自动执行。请编写一个
+    [`pre-commit`](https://git-scm.com/docs/githooks#_pre_commit) 钩子，当执行`make`命令失败后，它会执行 `make paper.pdf` 并拒绝您的提交。这样做可以避免产生包含不可构建版本的提交信息；
+ 4. 基于 [GitHub Pages](https://help.github.com/en/actions/automating-your-workflow-with-github-actions) 创建任意一个可以自动发布的页面。添加一个[GitHub Action](https://github.com/features/actions) 到该仓库，对仓库中的所有 shell 文件执行  `shellcheck`([方法之一](https://github.com/marketplace/actions/shellcheck))；
+ 5. [构建属于您的](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/building-actions) GitHub action，对仓库中所有的`.md`文件执行[`proselint`](http://proselint.com/) 或 [`write-good`](https://github.com/btford/write-good)，在您的仓库中开启这一功能，提交一个包含错误的文件看看该功能是否生效。
