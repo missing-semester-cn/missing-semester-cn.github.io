@@ -32,7 +32,7 @@ To contribute to this tanslation project, please book your topic by creating an 
 | [data-wrangling.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/data-wrangling.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | Done |
 | [command-line.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/command-line.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | Done |
 | [version-control.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/version-control.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | Done |
-| [debugging-profiling.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/debugging-profiling.md)  |  | TO-DO |
+| [debugging-profiling.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/debugging-profiling.md)  |[@Lingfeng AI](https://github.com/hanxiaomax)  | In-progress  |
 | [metaprogramming.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/metaprogramming.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | Done |
 | [security.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/security.md)  | [@catcarbon](https://github.com/catcarbon) | In-progress |
 | [potpourri.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/potpourri.md) |  | TO-DO |
