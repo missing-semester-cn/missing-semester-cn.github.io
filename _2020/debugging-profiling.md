@@ -8,25 +8,28 @@ video:
   id: l812pUnKxME
 ---
 
-A golden rule in programming is that code does not do what you expect it to do, but what you tell it to do.
-Bridging that gap can sometimes be a quite difficult feat.
-In this lecture we are going to cover useful techniques for dealing with buggy and resource hungry code: debugging and profiling.
 
-# Debugging
+代码不能完全按照您的想法运行，它只能完全按照您的写法运行，这是编程界的一条金科玉律。
 
-## Printf debugging and Logging
+让您的写法符合您的想法是非常困难的。在这节课中，我们会传授给您一些非常有用技术，帮您处理代码中的 bug 和程序性能问题。
 
-"The most effective debugging tool is still careful thought, coupled with judiciously placed print statements" — Brian Kernighan, _Unix for Beginners_.
 
-A first approach to debug a program is to add print statements around where you have detected the problem, and keep iterating until you have extracted enough information to understand what is responsible for the issue.
+# 调试代码
 
-A second approach is to use logging in your program, instead of ad hoc print statements. Logging is better than regular print statements for several reasons:
+## 打印调试法与日志
 
-- You can log to files, sockets or even remote servers instead of standard output.
-- Logging supports severity levels (such as INFO, DEBUG, WARN, ERROR, &c), that allow you to filter the output accordingly.
-- For new issues, there's a fair chance that your logs will contain enough information to detect what is going wrong.
+"最有效的 debug 工具就是细致的分析配合位于恰当位置的打印语句" — Brian Kernighan, _Unix 新手入门_。
 
-[Here](/static/files/logger.py) is an example code that logs messages:
+调试代码的第一种方法往往是在您发现问题的地方添加一些打印语句，然后不断重复此过程直到您获取了足够的信息并可以找到问题的根本原因。
+
+另外一个方法是使用日志，而不是临时添加打印语句。日志较普通的打印语句有如下的一些优势：
+
+- 您可以将日志写入文件、socket 或者甚至是发送到远端服务器而不仅仅是标准输出；
+- 日志可以支持严重等级（例如 INFO, DEBUG, WARN, ERROR等)，这使您可以根据需要过滤日志；
+- 对于新发现的问题，很可能您的日志中已经包含了可以帮助您定位问题的足够的信息。
+
+
+[这里](/static/files/logger.py) 是一个包含日志的例程序：
 
 ```bash
 $ python logger.py
@@ -39,9 +42,9 @@ $ python logger.py color
 # Color formatted output
 ```
 
-One of my favorite tips for making logs more readable is to color code them.
-By now you probably have realized that your terminal uses colors to make things more readable. But how does it do it?
-Programs like `ls` or `grep` are using [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code), which are special sequences of characters to indicate your shell to change the color of the output. For example, executing `echo -e "\e[38;2;255;0;0mThis is red\e[0m"` prints the message `This is red` in red on your terminal. The following script shows how to print many RGB colors into your terminal.
+有很多技巧可以使日志的可读性变得更好，我最喜欢的一个是技巧是对其进行着色。到目前为止，您应该已经知道，以彩色文本显示终端信息时可读性更好。但是应该如何设置呢？
+
+`ls` 和 `grep` 这样的程序会使用 [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code)，它是一系列的特殊字符，可以使您的 shell 改变输出结果的颜色。例如，执行 `echo -e "\e[38;2;255;0;0mThis is red\e[0m"` 会打印红色的字符串：`This is red` 。下面这个脚本向您展示了如何在终端中打印多种颜色。
 
 ```bash
 #!/usr/bin/env bash
@@ -54,24 +57,22 @@ for R in $(seq 0 20 255); do
 done
 ```
 
-## Third party logs
+## 第三方日志系统
 
-As you start building larger software systems you will most probably run into dependencies that run as separate programs.
-Web servers, databases or message brokers are common examples of this kind of dependencies.
-When interacting with these systems it is often necessary to read their logs, since client side error messages might not suffice.
+如果您正在构建大型软件系统，您很可能会使用到一些依赖，有些依赖会作为程序单独运行。如 Web 服务器、数据库或消息代理都是此类常见的第三方依赖。
 
-Luckily, most programs write their own logs somewhere in your system.
-In UNIX systems, it is commonplace for programs to write their logs under `/var/log`.
-For instance, the [NGINX](https://www.nginx.com/) webserver places its logs under `/var/log/nginx`.
-More recently, systems have started using a **system log**, which is increasingly where all of your log messages go.
-Most (but not all) Linux systems use `systemd`, a system daemon that controls many things in your system such as which services are enabled and running.
-`systemd` places the logs under `/var/log/journal` in a specialized format and you can use the [`journalctl`](http://man7.org/linux/man-pages/man1/journalctl.1.html) command to display the messages.
-Similarly, on macOS there is still `/var/log/system.log` but an increasing number of tools use the system log, that can be displayed with [`log show`](https://www.manpagez.com/man/1/log/).
-On most UNIX systems you can also use the [`dmesg`](http://man7.org/linux/man-pages/man1/dmesg.1.html) command to access the kernel log.
+和这些系统交互的时候，阅读它们的日志是非常必要的，因为仅靠客户端侧的错误信息可能并不足以定位问题。
 
-For logging under the system logs you can use the [`logger`](http://man7.org/linux/man-pages/man1/logger.1.html) shell program.
-Here's an example of using `logger` and how to check that the entry made it to the system logs.
-Moreover, most programming languages have bindings logging to the system log.
+幸运的是，大多数的程序都会将日志保存在您的系统中的某个地方。对于 UNIX 系统来说，程序的日志通常存放在 `/var/log`。
+例如， [NGINX](https://www.nginx.com/) web 服务器就将其日志存放于`/var/log/nginx`。
+最近，系统开始使用 **system log**，您所有的日志都会保存在这里。大多数的（但不是全部）Linux 系统都会使用 `systemd`，这是一个系统守护进程，它会控制您系统中的很多东西，例如哪些服务应该启动并运行。`systemd` 会将日志以某种特殊格式存放于`/var/log/journal`，您可以使用 [`journalctl`](http://man7.org/linux/man-pages/man1/journalctl.1.html) 命令显示这些消息。
+类似地，在 macOS there is still `/var/log/system.log` but an increasing number of tools use the system log, that can be displayed with [`log show`](https://www.manpagez.com/man/1/log/).
+
+对于大多数的 UNIX 系统，您也可以使用[`dmesg`](http://man7.org/linux/man-pages/man1/dmesg.1.html) 命令来读取内核的日志。
+
+如果您希望将日志加入到系统日志中，您可以使用 [`logger`](http://man7.org/linux/man-pages/man1/logger.1.html) 这个 shell 程序。下面这个例子显示了如何使用 `logger`并且如何找到能够将其存入系统日志的条目。
+
+不仅如此，大多数的编程语言都支持向系统日志中写日志。
 
 ```bash
 logger "Hello Logs"
@@ -81,33 +82,33 @@ log show --last 1m | grep Hello
 journalctl --since "1m ago" | grep Hello
 ```
 
-As we saw in the data wrangling lecture, logs can be quite verbose and they require some level of processing and filtering to get the information you want.
-If you find yourself heavily filtering through `journalctl` and `log show` you can consider using their flags, which can perform a first pass of filtering of their output.
-There are also some tools like  [`lnav`](http://lnav.org/), that provide an improved presentation and navigation for log files.
+正如我们在数据整理那节课上看到的那样，日志的内容可以非常的多，我们需要对其进行处理和过滤才能得到我们想要的信息。
 
-## Debuggers
+如果您发现您需要对 `journalctl` 和 `log show` 的结果进行大量的过滤，那么此时可以考虑使用它们自带的选项对其结果先过滤一遍再输出。还有一些像 [`lnav`](http://lnav.org/) 这样的工具，它为日志文件提供了更好的展现和浏览方式。
 
-When printf debugging is not enough you should use a debugger.
-Debuggers are programs that let you interact with the execution of a program, allowing the following:
+## 调试器
 
-- Halt execution of the program when it reaches a certain line.
-- Step through the program one instruction at a time.
-- Inspect values of variables after the program crashed.
-- Conditionally halt the execution when a given condition is met.
-- And many more advanced features
+当通过打印已经不能满足您的调试需求时，您应该使用调试器。
 
-Many programming languages come with some form of debugger.
-In Python this is the Python Debugger [`pdb`](https://docs.python.org/3/library/pdb.html).
+调试器是一种可以允许我们和正在执行的程序进行交互的程序，它可以做到：
 
-Here is a brief description of some of the commands `pdb` supports:
+- 当到达某一行时将程序暂停；
+- 一次一条指令地逐步执行程序；
+- 程序崩溃后查看变量的值；
+- 满足特定条件是暂停程序；
+- 其他高级功能。
 
-- **l**(ist) - Displays 11 lines around the current line or continue the previous listing.
-- **s**(tep) - Execute the current line, stop at the first possible occasion.
-- **n**(ext) - Continue execution until the next line in the current function is reached or it returns.
-- **b**(reak) - Set a breakpoint (depending on the argument provided).
-- **p**(rint) - Evaluate the expression in the current context and print its value. There's also **pp** to display using [`pprint`](https://docs.python.org/3/library/pprint.html) instead.
-- **r**(eturn) - Continue execution until the current function returns.
-- **q**(uit) - Quit the debugger.
+很多编程语言都有自己的调试器。Python 的调试器是[`pdb`](https://docs.python.org/3/library/pdb.html).
+
+下面对`pdb` 支持对命令进行简单对介绍：
+
+- **l**(ist) - 显示当前行附近的11行或继续执行之前的显示；
+- **s**(tep) - 执行当前行，并在第一个可能的地方停止
+- **n**(ext) - 继续执行直到当前函数的下一条语句或者 return 语句；
+- **b**(reak) - 设置断点（基于传入对参数）；
+- **p**(rint) - 在当前上下文对表达式求值并打印结果。还有一个命令是**pp** ，它使用 [`pprint`](https://docs.python.org/3/library/pprint.html) 打印；
+- **r**(eturn) - 继续执行知道当前函数返回；
+- **q**(uit) - 退出调试器。
 
 Let's go through an example of using `pdb` to fix the following buggy python code. (See the lecture video).
 
