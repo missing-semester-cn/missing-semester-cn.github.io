@@ -110,7 +110,7 @@ journalctl --since "1m ago" | grep Hello
 - **r**(eturn) - 继续执行知道当前函数返回；
 - **q**(uit) - 退出调试器。
 
-Let's go through an example of using `pdb` to fix the following buggy python code. (See the lecture video).
+让我们使用`pdb` 来修复下面的 Python 代码（参考讲座视频）
 
 ```python
 def bubble_sort(arr):
@@ -126,8 +126,8 @@ print(bubble_sort([4, 2, 1, 8, 7, 6]))
 ```
 
 
-Note that since Python is an interpreted language we can use the `pdb` shell to execute commands and to execute instructions.
-[`ipdb`](https://pypi.org/project/ipdb/) is an improved `pdb` that uses the [`IPython`](https://ipython.org) REPL enabling tab completion, syntax highlighting, better tracebacks, and better introspection while retaining the same interface as the `pdb` module.
+注意，因为 Python 是一种解释型语言，所以我们可以通过 `pdb` shell 执行命令。
+[`ipdb`](https://pypi.org/project/ipdb/) 是一种增强型的 `pdb` ，它使用[`IPython`](https://ipython.org) 作为 REPL并开启了 tab 补全、语法高亮、更好的回溯和更好的内省，同时还保留了`pdb` 模块相同的接口。
 
 For more low level programming you will probably want to look into [`gdb`](https://www.gnu.org/software/gdb/) (and its quality of life modification [`pwndbg`](https://github.com/pwndbg/pwndbg)) and [`lldb`](https://lldb.llvm.org/).
 They are optimized for C-like language debugging but will let you probe pretty much any process and get its current machine state: registers, stack, program counter, &c.
