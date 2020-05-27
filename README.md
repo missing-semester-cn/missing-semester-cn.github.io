@@ -37,4 +37,4 @@ To contribute to this tanslation project, please book your topic by creating an 
 | [security.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/security.md)  | [@catcarbon](https://github.com/catcarbon) | In-progress |
 | [potpourri.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/potpourri.md) |  | TO-DO |
 | [qa.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/qa.md) | [@AA1HSHH](https://github.com/AA1HSHH) | In-progress |
-| [about.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/about.md)  | [@Binlogo](https://github.com/Binlogo)  | In-progress |
+| [about.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/about.md)  | [@Binlogo](https://github.com/Binlogo)  | Done |
