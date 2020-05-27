@@ -1,141 +1,111 @@
 ---
 layout: lecture
-title: "Why we are teaching this class"
+title: "开设此课程的动机"
 ---
 
-During a traditional Computer Science education, chances are you will take
-plenty of classes that teach you advanced topics within CS, everything from
-Operating Systems to Programming Languages to Machine Learning. But at many
-institutions there is one essential topic that is rarely covered and is instead
-left for students to pick up on their own: computing ecosystem literacy.
+在传统的计算机科学课程中，从操作系统、编程语言到机器学习，这些高大上课程和主题已经非常多了。
+然而有一个至关重要的主题却很少被专门讲授，而是留给学生们自己去探索。 这部分内容就是：精通工具。
 
-Over the years, we have helped teach several classes at MIT, and over and over
-we have seen that many students have limited knowledge of the tools available
-to them. Computers were built to automate manual tasks, yet students often
-perform repetitive tasks by hand or fail to take full advantage of powerful
-tools such as version control and text editors. In the best case, this results
-in inefficiencies and wasted time; in the worst case, it results in issues like
-data loss or inability to complete certain tasks.
+这些年，我们在麻省理工学院参与了许多课程的助教活动，过程当中愈发意识到很多学生对于工具的了解知之甚少。
+计算机设计的初衷就是任务自动化，然而学生们却常常陷在大量的重复任务中，或者无法完全发挥出诸如
+版本控制、文本编辑器等工具的强大作用。效率低下和浪费时间还是其次，更糟糕的是，这还可能导致数据丢失或
+无法完成某些特定任务。
 
-These topics are not taught as part of the university curriculum: students are
-never shown how to use these tools, or at least not how to use them
-efficiently, and thus waste time and effort on tasks that _should_ be simple.
-The standard CS curriculum is missing critical topics about the computing
-ecosystem that could make students' lives significantly easier.
+这些主题不是大学课程的一部分：学生一直都不知道如何使用这些工具，或者说，至少是不知道如何高效
+地使用，因此浪费了时间和精力在本来可以更简单的任务上。标准的计算机科学课程缺少了这门能让计算
+变得更简捷的关键课程。
 
 # The missing semester of your CS education
 
-To help remedy this, we are running a class that covers all the topics we
-consider crucial to be an effective computer scientist and programmer. The
-class is pragmatic and practical, and it provides hands-on introduction to
-tools and techniques that you can immediately apply in a wide variety of
-situations you will encounter. The class is being run during MIT's "Independent
-Activities Period" in January 2020 — a one-month semester that features shorter
-student-run classes. While the lectures themselves are only available to MIT
-students, we will provide all lecture materials along with video recordings of
-lectures to the public.
+为了解决这个问题，我们开启了一个课程，涵盖各项对成为高效率计算机科学家或程序员至关重要的
+主题。这个课程实用且具有很强的实践性，提供了各种能够立即广泛应用解决问题的趁手工具指导。
+该课在 2020 年 1 月”独立活动期“开设，为期一个月，是学生开办的短期课程。虽然该课程针对
+麻省理工学院，但我们公开提供了全部课程的录制视频与相关资料。
 
-If this sounds like it might be for you, here are some concrete
-examples of what the class will teach:
+如果该课程适合你，那么以下还有一些具体的课程示例：
 
-## Command shell
+## 命令行与 shell 工具
 
-How to automate common and repetitive tasks with aliases, scripts,
-and build systems. No more copy-pasting commands from a text
-document. No more "run these 15 commands one after the other". No
-more "you forgot to run this thing" or "you forgot to pass this
-argument".
+如何使用别名、脚本和构建系统来自动化执行通用重复的任务。不再总是从文档中拷贝粘贴
+命令。不要再“逐个执行这 15 个命令”，不要再“你忘了执行这个命令”、“你忘了传那个
+参数”，类似的对话不要再有了。
 
-For example, searching through your history quickly can be a huge time saver. In the example below we show several tricks related to navigating your shell history for `convert` commands.
+例如，快速搜索历史记录可以节省大量时间。在下面这个示例中，我们展示了如何通过`convert`命令
+在历史记录中跳转的一些技巧。
 
 <video autoplay="autoplay" loop="loop" controls muted playsinline  oncontextmenu="return false;"  preload="auto"  class="demo">
   <source src="/static/media/demos/history.mp4" type="video/mp4">
 </video>
 
-## Version control
+## 版本控制
 
-How to use version control _properly_, and take advantage of it to
-save you from disaster, collaborate with others, and quickly find and
-isolate problematic changes. No more `rm -rf; git clone`. No more
-merge conflicts (well, fewer of them at least). No more huge blocks
-of commented-out code. No more fretting over how to find what broke
-your code. No more "oh no, did we delete the working code?!". We'll
-even teach you how to contribute to other people's projects with pull
-requests!
+如何**正确地**使用版本控制，利用它避免尴尬的情况发生，与他人协作，并且能够快速定位
+如何**正确地**使用版本控制，利用它避免尴尬的情况发生。与他人协作，并且能够快速定位
+有问题的提交
+不再大量注释代码。不再为解决 bug 而找遍所有代码。不再“我去，刚才是删了有用的代码？！”。
+我们将教你如何通过拉取请求来为他人的项目贡献代码。
 
-In the example below we use `git bisect` to find which commit broke a unit test and then we fix it with `git revert`.
+下面这个示例中，我们使用`git bisect`来定位哪个提交破坏了单元测试，并且通过`git rever`来进行修复。
+
 <video autoplay="autoplay" loop="loop" controls muted playsinline  oncontextmenu="return false;"  preload="auto"  class="demo">
   <source src="/static/media/demos/git.mp4" type="video/mp4">
 </video>
 
-## Text editing
+## 文本编辑
 
-How to efficiently edit files from the command-line, both locally and
-remotely, and take advantage of advanced editor features. No more
-copying files back and forth. No more repetitive file editing.
+不论是本地还是远程，如何通过命令行高效地编辑文件，并且充分利用编辑器特性。不再来回复制
+文件。不再重复编辑文件。
 
-Vim macros are one of its best features, in the example below we quickly convert an html table to csv format using a nested vim macro.
+Vim 的宏是它最好的特性之一，在下面这个示例中，我们使用嵌套的 Vim 宏快速地将 html 表格转换成了 csv 格式。
+
 <video autoplay="autoplay" loop="loop" controls muted playsinline  oncontextmenu="return false;"  preload="auto"  class="demo">
   <source src="/static/media/demos/vim.mp4" type="video/mp4">
 </video>
 
-## Remote machines
+## 远程服务器
 
-How to stay sane when working with remote machines using SSH keys and
-terminal multiplexing. No more keeping many terminals open just to
-run two commands at once. No more typing your password every time you
-connect. No more losing everything just because your Internet
-disconnected or you had to reboot your laptop.
+使用 SSH 密钥在远程机器下工作如何保持清醒，并且终端能够复用。不再为了仅执行个别命令
+总是打开许多命令终端。不再每次连接都总输入密码。不再因为网络断开或必须重启笔记本时
+就丢失全部上下文。
 
-In the example below we use `tmux` to keep sessions alive in remote servers and `mosh` to support network roaming and disconnection.
+以下示例，我们使用`tmux`来保持会话在远程服务器活跃，并使用`mosh`来支持网络漫游和断开连接。
 
 <video autoplay="autoplay" loop="loop" controls muted playsinline  oncontextmenu="return false;"  preload="auto"  class="demo">
   <source src="/static/media/demos/ssh.mp4" type="video/mp4">
 </video>
 
-## Finding files
+## 查找文件
 
-How to quickly find files that you are looking for.  No
-more clicking through files in your project until you find the one
-that has the code you want.
+如何快速查找你需要的文件。不再挨个点击项目中的文件，直到找到你所需的代码。
 
-In the example below we quickly look for files with `fd` and for code snippets with `rg`. We also quickly `cd` and `vim` recent/frequent files/folder using `fasd`.
+以下示例，我们通过`fd`快速查找文件，通过`rg`找代码片段。我们也用到了`fasd`快速`cd`并`vim`最近/常用的文件/文件夹。
 
 <video autoplay="autoplay" loop="loop" controls muted playsinline  oncontextmenu="return false;"  preload="auto"  class="demo">
   <source src="/static/media/demos/find.mp4" type="video/mp4">
 </video>
 
-## Data wrangling
+## 数据处理
 
-How to quickly and easily modify, view, parse, plot, and compute over
-data and files directly from the command-line. No more copy pasting
-from log files. No more manually computing statistics over data. No
-more spreadsheet plotting.
+如何通过命令行直接轻松快速地修改、查看、解析、绘制和计算数据和文件。不再从日志文件拷贝
+粘贴。不再手动统计数据。不再用电子表格画图。
 
-## Virtual machines
+## 虚拟机
 
-How to use virtual machines to try out new operating systems, isolate
-unrelated projects, and keep your main machine clean and tidy. No
-more accidentally corrupting your computer while doing a security
-lab. No more millions of randomly installed packages with differing
-versions.
+如何使用虚拟机尝试新操作系统，隔离无关的项目，并且保持宿主机整洁。不再因为做安全实验而
+意外损坏你的计算机。不再有大量随机安装的不同版本软件包。
 
-## Security
+## 安全
 
-How to be on the Internet without immediately revealing all of your
-secrets to the world. No more coming up with passwords that match the
-insane criteria yourself. No more unsecured, open WiFi networks. No
-more unencrypted messaging.
+如何在不泄露隐私的情况下畅游互联网。不再抓破脑袋想符合自己疯狂规则的密码。不再连接不安全
+的开放 WiFi 网络。不再传输未加密的信息。
 
-# Conclusion
+# 结论
 
-This, and more, will be covered across the 12 class lectures, each including an
-exercise for you to get more familiar with the tools on your own. If you can't
-wait for January, you can also take a look at the lectures from [Hacker
-Tools](https://hacker-tools.github.io/lectures/), which we ran during IAP last
-year. It is the precursor to this class, and covers many of the same topics.
+这 12 节课将包括但不限于以上内容，同时每堂课都提供了能帮助你熟悉这些工具的练手小测验。如果不能
+等到一月，你也可以看下[黑客工具](https://hacker-tools.github.io/lectures/)，这是我们去年的
+试讲。它是本课程的前身，包含许多相同的主题。
 
-We hope to see you in January, whether virtually or in person!
+无论面对面还是远程在线，欢迎你的参与。
 
 Happy hacking,<br>
 Anish, Jose, and Jon
