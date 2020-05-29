@@ -98,9 +98,8 @@ checking `sha256(r)` matches the hash I shared earlier.
 
 ## 密钥生成函数的应用
 
-- Producing keys from passphrases for use in other cryptographic algorithms
-(e.g. symmetric cryptography, see below).
-- Storing login credentials. Storing plaintext passwords is bad; the right
+- 从密码生成可以在其他加密算法中使用的密钥，比如对称加密算法（见下）。
+- 存储登录Storing login credentials. Storing plaintext passwords is bad; the right
 approach is to generate and store a random
 [salt](https://en.wikipedia.org/wiki/Salt_(cryptography)) `salt = random()` for
 each user, store `KDF(password + salt)`, and verify login attempts by
