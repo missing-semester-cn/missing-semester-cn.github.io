@@ -147,25 +147,21 @@ sudo strace -e lstat ls -l > /dev/null
 sudo dtruss -t lstat64_extended ls -l > /dev/null
 ```
 
-Under some circumstances, you may need to look at the network packets to figure out the issue in your program.
-Tools like [`tcpdump`](http://man7.org/linux/man-pages/man1/tcpdump.1.html) and [Wireshark](https://www.wireshark.org/) are network packet analyzers that let you read the contents of network packets and filter them based on different criteria.
+有些情况下，我们需要查看网络数据包才能定位问题。像 [`tcpdump`](http://man7.org/linux/man-pages/man1/tcpdump.1.html) 和 [Wireshark](https://www.wireshark.org/) 这样的网络数据包分析工具可以帮助您获取网络数据包的内容并基于不同的条件进行过滤。 
 
-For web development, the Chrome/Firefox developer tools are quite handy. They feature a large number of tools, including:
-- Source code - Inspect the HTML/CSS/JS source code of any website.
-- Live HTML, CSS, JS modification - Change the website content, styles and behavior to test (you can see for yourself that website screenshots are not valid proofs).
-- Javascript shell - Execute commands in the JS REPL.
-- Network - Analyze the requests timeline.
-- Storage - Look into the Cookies and local application storage.
+对于 web 开发， Chrome/Firefox 的开发者工具非常方便，功能也很强大：
+- 源码 -查看任意站点的 HTML/CSS/JS 源码；
+- 实时地修改 HTML, CSS, JS 代码 - 修改网站的内容、样式和行为用于测试（从这一点您也能看出来，网页截图是不可靠的）；
+- Javascript shell - 在 JS REPL中执行命令；
+- 网络 - 分析请求的时间线；
+- 存储 - 查看 Cookies 和本地应用存储。
 
-## Static Analysis
+## 静态分析
 
-For some issues you do not need to run any code.
-For example, just by carefully looking at a piece of code you could realize that your loop variable is shadowing an already existing variable or function name; or that a program reads a variable before defining it.
-Here is where [static analysis](https://en.wikipedia.org/wiki/Static_program_analysis) tools come into play.
-Static analysis programs take source code as input and analyze it using coding rules to reason about its correctness.
+有些问题是您不需要执行代码就能发现的。例如，仔细观察一段代码，您就能发现某个循环变量覆盖了某个已经存在的变量或函数名；或是有个变量在被读取之前并没有被定义。
+这种情况下 [静态分析](https://en.wikipedia.org/wiki/Static_program_analysis) 工具就可以帮我们找到问题。静态分析会将程序的源码作为输入然后基于编码规则对其进行分析并对代码的正确性进行推理。
 
-In the following Python snippet there are several mistakes.
-First, our loop variable `foo` shadows the previous definition of the function `foo`. We also wrote `baz` instead of `bar` in the last line, so the program will crash after completing the `sleep` call (which will take one minute).
+下面这段 Python 代码中存在几个问题。 首先，我们的循环变量`foo` 覆盖了之前定义的函数`foo`。最后一行，我们还把 `bar` 错写成了`baz`，因此当程序完成`sleep`  (一分钟后)后，执行到这一行的时候便会崩溃。
 
 ```python
 import time
@@ -180,11 +176,9 @@ bar *= 0.2
 time.sleep(60)
 print(baz)
 ```
+静态分析工具可以发现此类的问题。当我们使用[`pyflakes`](https://pypi.org/project/pyflakes) 分析代码的似乎，我们会得到与这两处 bug 相关的错误信息。[`mypy`](http://mypy-lang.org/) 则是另外一个工具，它可以对代码进行类型检查。这里，`mypy` 会经过我们`bar` 起初是一个 `int` ，然后变成了 `float`。这些问题都可以在不允许代码的情况下被发现。
 
-Static analysis tools can identify this kind of issues. When we run [`pyflakes`](https://pypi.org/project/pyflakes) on the code we get the errors related to both bugs. [`mypy`](http://mypy-lang.org/) is another tool that can detect type checking issues. Here, `mypy` will warn us that `bar` is initially an `int` and is then casted to a `float`.
-Again, note that all these issues were detected without having to run the code.
-
-In the shell tools lecture we covered [`shellcheck`](https://www.shellcheck.net/), which is a similar tool for shell scripts.
+在 shell 工具那一节课的时候，我们介绍了 [`shellcheck`](https://www.shellcheck.net/)，这是一个类似的工具，但它是应用于 shell 脚本的。
 
 ```bash
 $ pyflakes foobar.py
@@ -198,18 +192,19 @@ foobar.py:11: error: Name 'baz' is not defined
 Found 3 errors in 1 file (checked 1 source file)
 ```
 
-Most editors and IDEs support displaying the output of these tools within the editor itself, highlighting the locations of warnings and errors.
-This is often called **code linting** and it can also be used to display other types of issues such as stylistic violations or insecure constructs.
+大多数的编辑器和 IDE 都支持在编辑界面显示这些工具的分析结果、高亮有警告和错误的位置。
+这个过程通常成为 **code linting** 。风格检查或安全检查的结果同样也可以进行相应的显示。
 
-In vim, the plugins [`ale`](https://vimawesome.com/plugin/ale) or [`syntastic`](https://vimawesome.com/plugin/syntastic) will let you do that.
-For Python, [`pylint`](https://www.pylint.org) and [`pep8`](https://pypi.org/project/pep8/) are examples of stylistic linters and [`bandit`](https://pypi.org/project/bandit/) is a tool designed to find common security issues.
-For other languages people have compiled comprehensive lists of useful static analysis tools, such as [Awesome Static Analysis](https://github.com/mre/awesome-static-analysis) (you may want to take a look at the _Writing_ section) and for linters there is [Awesome Linters](https://github.com/caramelomartins/awesome-linters).
+在 vim 中，有 [`ale`](https://vimawesome.com/plugin/ale) 或 [`syntastic`](https://vimawesome.com/plugin/syntastic) 可以帮助您做同样的事情。
+在 Python 中， [`pylint`](https://www.pylint.org) 和 [`pep8`](https://pypi.org/project/pep8/) 是两种用于进行风格检查的工具，而 [`bandit`](https://pypi.org/project/bandit/) 工具则用于检查安全相关的问题。
 
-A complementary tool to stylistic linting are code formatters such as [`black`](https://github.com/psf/black) for Python, `gofmt` for Go, `rustfmt` for Rust or [`prettier`](https://prettier.io/) for JavaScript, HTML and CSS.
-These tools autoformat your code so that it's consistent with common stylistic patterns for the given programming language.
-Although you might be unwilling to give stylistic control about your code, standardizing code format will help other people read your code and will make you better at reading other people's (stylistically standardized) code.
+对于其他语言的开发者来说，静态分析工具可以参考这个列表：[Awesome Static Analysis](https://github.com/mre/awesome-static-analysis) (您也许会对  _Writing_ 一节感兴趣) 。对于  linters 则可以参考这个列表： [Awesome Linters](https://github.com/caramelomartins/awesome-linters)。
 
-# Profiling
+对于风格检查和代码格式化，还有以下一些工具可以作为补充：用于 Python 的 [`black`](https://github.com/psf/black)、用于 Go 语言的 `gofmt`、用于 Rust 的 `rustfmt` 或是用于 JavaScript, HTML 和 CSS 的 [`prettier`](https://prettier.io/) 。这些工具可以自动格式化您的代码，这样代码风格就可以与常见的风格保持一致。
+尽管您可能并不想对代码进行风格控制，标准的代码风格有助于方便别人阅读您的代码，也可以方便您阅读它的代码。
+
+s
+# 性能分析
 
 Even if your code functionally behaves as you would expect, that might not be good enough if it takes all your CPU or memory in the process.
 Algorithms classes often teach big _O_ notation but not how to find hot spots in your programs.
