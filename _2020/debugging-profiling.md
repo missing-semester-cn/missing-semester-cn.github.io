@@ -233,11 +233,11 @@ print(time.time() - start)
 
 不过，执行时间（wall clock time）也可能会误导您，因为您的电脑可能也在同时运行其他进程，也可能在此期间发生了等待。 对于工具来说，需要区分真实时间、用户时间和系统时间。通常来说，用户时间+系统时间代表了您的进程所消耗的实际 CPU （更详细的解释可以参照[这篇文章](https://stackoverflow.com/questions/556405/what-do-real-user-and-sys-mean-in-the-output-of-time1)）。
 
-- _Real_ - Wall clock elapsed time from start to finish of the program, including the time taken by other processes and time taken while blocked (e.g. waiting for I/O or network)
-- _User_ - Amount of time spent in the CPU running user code
-- _Sys_ - Amount of time spent in the CPU running kernel code
+- 真实时间 - 从程序开始到结束流失掉到真实时间，包括其他进程到执行时间以及阻塞消耗的时间（例如等待 I/O或网络）；
+- _User_ - CPU 执行用户代码所花费的时间；
+- _Sys_ - CPU 执行系统内核代码所花费的时间。
 
-For example, try running a command that performs an HTTP request and prefixing it with [`time`](http://man7.org/linux/man-pages/man1/time.1.html). Under a slow connection you might get an output like the one below. Here it took over 2 seconds for the request to complete but the process only took 15ms of CPU user time and 12ms of kernel CPU time.
+例如，试着执行一个用于发起 HTTP 请求的命令并在其前面添加 [`time`](http://man7.org/linux/man-pages/man1/time.1.html) 前缀。网络不好的情况下您可能会看到下面的输出结果。请求花费了 2s 才完成，但是进程仅花费了 15ms 的 CPU 用户时间和 12ms 的 CPU 内核时间。
 
 ```bash
 $ time curl https://missing.csail.mit.edu &> /dev/null`
@@ -246,13 +246,13 @@ user    0m0.015s
 sys     0m0.012s
 ```
 
-## 性能分析工具
+## 性能分析工具（profilers）
 
 ### CPU
 
-Most of the time when people refer to _profilers_ they actually mean _CPU profilers_,  which are the most common.
-There are two main types of CPU profilers: _tracing_ and _sampling_ profilers.
-Tracing profilers keep a record of every function call your program makes whereas sampling profilers probe your program periodically (commonly every millisecond) and record the program's stack.
+大多数情况下，当人们提及性能分析工具的时候，通常指的是 CPU 性能分析工具。
+CPU 性能分析工具有两种： 追溯分析器（_tracing_）及采样分析其（_sampling_）。
+追溯分析器 profilers keep a record of every function call your program makes whereas sampling profilers probe your program periodically (commonly every millisecond) and record the program's stack.
 They use these records to present aggregate statistics of what your program spent the most time doing.
 [Here](https://jvns.ca/blog/2017/12/17/how-do-ruby---python-profilers-work-) is a good intro article if you want more detail on this topic.
 
