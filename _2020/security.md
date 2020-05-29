@@ -78,18 +78,16 @@ f7ff9e8b7bb2e09b70935a5d785e0cc5d9d0abf0
 
 ## 密码散列函数的应用
 
-- Git中的内容寻址存储(Content addressed storage)：[散列函数](https://en.wikipedia.org/wiki/Hash_function) 是一个宽泛的概念（存在非密码学的散列函数），那么Git为什么要特意使用密码散列函数？
+- Git中的内容寻址存储(Content addressed storage)：[散列函数](https://en.wikipedia.org/wiki/Hash_function)是一个宽泛的概念（存在非密码学的散列函数），那么Git为什么要特意使用密码散列函数？
 - 文件的信息摘要(Message digest)：像Linux ISO这样的软件可以从非官方的（有时不太可信的）镜像站下载，所以需要设法确认下载的软件和官方一致。
 官方网站一般会在（指向镜像站的）下载链接旁边备注安装文件的哈希值。
 用户从镜像站下载安装文件后可以对照公布的哈希值来确定安装文件没有被篡改。
-- [Commitment schemes](https://en.wikipedia.org/wiki/Commitment_scheme).
-Suppose you want to commit to a particular value, but reveal the value itself
-later. For example, I want to do a fair coin toss "in my head", without a
-trusted shared coin that two parties can see. I could choose a value `r =
-random()`, and then share `h = sha256(r)`. Then, you could call heads or tails
-(we'll agree that even `r` means heads, and odd `r` means tails). After you
-call, I can reveal my value `r`, and you can confirm that I haven't cheated by
-checking `sha256(r)` matches the hash I shared earlier.
+- [承诺机制](https://en.wikipedia.org/wiki/Commitment_scheme)(Commitment scheme)：
+假设我希望承诺一个值，但之后再透露它—— 
+比如在没有一个可信的、双方可见的硬币的情况下在我的脑海中公平的“扔一次硬币”。
+我可以选择一个值`r = random()`，并和你分享它的哈希值`h = sha256(r)`。
+这时你可以开始猜硬币的正反：我们一致同意偶数`r`代表正面，奇数`r`代表反面。
+你猜完了以后，我告诉你值`r`的内容，得出胜负。同时你可以使用`sha256(r)`来检查我分享的哈希值`h`以确认我没有作弊。
 
 # 密钥生成函数
 
@@ -99,37 +97,31 @@ checking `sha256(r)` matches the hash I shared earlier.
 ## 密钥生成函数的应用
 
 - 从密码生成可以在其他加密算法中使用的密钥，比如对称加密算法（见下）。
-- 存储登录Storing login credentials. Storing plaintext passwords is bad; the right
-approach is to generate and store a random
-[salt](https://en.wikipedia.org/wiki/Salt_(cryptography)) `salt = random()` for
-each user, store `KDF(password + salt)`, and verify login attempts by
-re-computing the KDF given the entered password and the stored salt.
+- 存储登录凭证时不可直接存储明文密码。<br>
+正确的方法是针对每个用户随机生成一个[盐](https://en.wikipedia.org/wiki/Salt_(cryptography)) `salt = random()`，
+并存储盐，以及密钥生成函数对连接了盐的明文密码生成的哈希值`KDF(password + salt)`。<br>
+在验证登录请求时，使用输入的密码连接存储的盐重新计算哈希值`KDF(input + salt)`，并与存储的哈希值对比。
 
 # 对称加密
 
-Hiding message contents is probably the first concept you think about when you
-think about cryptography. Symmetric cryptography accomplishes this with the
-following set of functionality:
+说到加密，可能你会首先想到隐藏明文信息。对称加密使用以下几个方法来实现这个功能：
 
 ```
-keygen() -> key  (this function is randomized)
+keygen() -> key  (这是一个随机方法)
 
-encrypt(plaintext: array<byte>, key) -> array<byte>  (the ciphertext)
-decrypt(ciphertext: array<byte>, key) -> array<byte>  (the plaintext)
+encrypt(plaintext: array<byte>, key) -> array<byte>  (输出密文)
+decrypt(ciphertext: array<byte>, key) -> array<byte>  (输出明文)
 ```
 
-The encrypt function has the property that given the output (ciphertext), it's
-hard to determine the input (plaintext) without the key. The decrypt function
-has the obvious correctness property, that `decrypt(encrypt(m, k), k) = m`.
+加密方法`encrypt()`输出的密文`ciphertext`很难在不知道`key`的情况下得出明文`plaintext`。<br>
+解密方法`decrypt()`有明显的正确性。因为功能要求给定密文及其密钥，解密方法必须输出明文：`decrypt(encrypt(m, k), k) = m`。
 
-An example of a symmetric cryptosystem in wide use today is
-[AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).
+[AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 是现在常用的一种对称加密系统。
 
 ## 对称加密的应用
 
-- Encrypting files for storage in an untrusted cloud service. This can be
-combined with KDFs, so you can encrypt a file with a passphrase. Generate `key
-= KDF(passphrase)`, and then store `encrypt(file, key)`.
+- 对在不信任的云服务上存储的文件进行加密。<br>对称加密可以和密钥生成函数配合使用，这样可以使用密码加密文件：
+将密码输入密钥生成函数生成密钥 `key = KDF(passphrase)`，然后存储`encrypt(file, key)`。
 
 # 非对称加密
 
@@ -270,23 +262,18 @@ security concepts, tips
 
 # 资源
 
-- [Last year's notes](/2019/security/): from when this lecture was more focused on security and privacy as a computer user
-- [Cryptographic Right Answers](https://latacora.micro.blog/2018/04/03/cryptographic-right-answers.html): answers "what crypto should I use for X?" for many common X.
+- [去年的讲稿](/2019/security/): 更注重于计算机用户可以如何增强隐私保护和安全
+- [Cryptographic Right Answers](https://latacora.micro.blog/2018/04/03/cryptographic-right-answers.html): 
+解答了在一些应用环境下“应该使用什么加密？”的问题
 
 # 练习
 
-1. **Entropy.**
-    1. Suppose a password is chosen as a concatenation of five lower-case
-       dictionary words, where each word is selected uniformly at random from a
-       dictionary of size 100,000. An example of such a password is
-       `correcthorsebatterystaple`. How many bits of entropy does this have?
-    1. Consider an alternative scheme where a password is chosen as a sequence
-       of 8 random alphanumeric characters (including both lower-case and
-       upper-case letters). An example is `rg8Ql34g`. How many bits of entropy
-       does this have?
-    1. Which is the stronger password?
-    1. Suppose an attacker can try guessing 10,000 passwords per second. On
-       average, how long will it take to break each of the passwords?
+1. **熵**
+    1. 假设一个密码是从五个小写的单词拼接组成，每个单词都是从一个含有10万单词的字典中随机选择，且每个单词选中的概率相同。
+       一个符合这样构造的例子是`correcthorsebatterystaple`。这个密码有多少比特的熵？
+    1. 假设另一个密码是用八个随机的大小写字母或数字组成。一个符合这样构造的例子是`rg8Ql34g`。这个密码又有多少比特的熵？
+    1. 哪一个密码更强？
+    1. 假设一个攻击者每秒可以尝试1万个密码，这个攻击者需要多久可以分别破解上述两个密码？
 1. **Cryptographic hash functions.** Download a Debian image from a
    [mirror](https://www.debian.org/CD/http-ftp/) (e.g. [this
    file](http://debian.xfree.com.ar/debian-cd/10.2.0/amd64/iso-cd/debian-10.2.0-amd64-netinst.iso)
