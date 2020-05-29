@@ -203,14 +203,13 @@ Found 3 errors in 1 file (checked 1 source file)
 对于风格检查和代码格式化，还有以下一些工具可以作为补充：用于 Python 的 [`black`](https://github.com/psf/black)、用于 Go 语言的 `gofmt`、用于 Rust 的 `rustfmt` 或是用于 JavaScript, HTML 和 CSS 的 [`prettier`](https://prettier.io/) 。这些工具可以自动格式化您的代码，这样代码风格就可以与常见的风格保持一致。
 尽管您可能并不想对代码进行风格控制，标准的代码风格有助于方便别人阅读您的代码，也可以方便您阅读它的代码。
 
-s
 # 性能分析
 
 Even if your code functionally behaves as you would expect, that might not be good enough if it takes all your CPU or memory in the process.
 Algorithms classes often teach big _O_ notation but not how to find hot spots in your programs.
 Since [premature optimization is the root of all evil](http://wiki.c2.com/?PrematureOptimization), you should learn about profilers and monitoring tools. They will help you understand which parts of your program are taking most of the time and/or resources so you can focus on optimizing those parts.
 
-## Timing
+## 计时
 
 Similarly to the debugging case, in many scenarios it can be enough to just print the time it took your code between two points.
 Here is an example in Python using the [`time`](https://docs.python.org/3/library/time.html) module.
@@ -249,7 +248,7 @@ user    0m0.015s
 sys     0m0.012s
 ```
 
-## Profilers
+## 性能分析工具
 
 ### CPU
 
@@ -354,7 +353,7 @@ Line #  Hits         Time  Per Hit   % Time  Line Contents
 11        24         33.0      1.4      0.0          urls.append(url['href'])
 ```
 
-### Memory
+### 内存
 
 In languages like C or C++ memory leaks can cause your program to never release memory that it doesn't need anymore.
 To help in the process of memory debugging you can use tools like [Valgrind](https://valgrind.org/) that will help you identify memory leaks.
@@ -398,7 +397,7 @@ For example, `perf` can easily report poor cache locality, high amounts of page 
 - `perf report` - Formats and prints the data collected in `perf.data`
 
 
-### Visualization
+### 可视化
 
 Profiler output for real world programs will contain large amounts of information because of the inherent complexity of software projects.
 Humans are visual creatures and are quite terrible at reading large amounts of numbers and making sense of them.
@@ -414,7 +413,7 @@ In Python you can use the [`pycallgraph`](http://pycallgraph.slowchop.com/en/mas
 ![Call Graph](https://upload.wikimedia.org/wikipedia/commons/2/2f/A_Call_Graph_generated_by_pycallgraph.png)
 
 
-## Resource Monitoring
+## 资源监控
 
 Sometimes, the first step towards analyzing the performance of your program is to understand what its actual resource consumption is.
 Programs often run slowly when they are resource constrained, e.g. without enough memory or on a slow network connection.
@@ -434,7 +433,7 @@ A more interactive version of `du` is [`ncdu`](https://dev.yorhel.nl/ncdu) which
 If you want to test these tools you can also artificially impose loads on the machine using the [`stress`](https://linux.die.net/man/1/stress) command.
 
 
-### Specialized tools
+### 专用工具
 
 Sometimes, black box benchmarking is all you need to determine what software to use.
 Tools like [`hyperfine`](https://github.com/sharkdp/hyperfine) let you quickly benchmark command line programs.
@@ -459,9 +458,9 @@ Summary
 As it was the case for debugging, browsers also come with a fantastic set of tools for profiling webpage loading, letting you figure out where time is being spent (loading, rendering, scripting, &c).
 More info for [Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Performance/Profiling_with_the_Built-in_Profiler) and [Chrome](https://developers.google.com/web/tools/chrome-devtools/rendering-toolss).
 
-# Exercises
+# 课后练习
 
-## Debugging
+## 调试
 1. Use `journalctl` on Linux or `log show` on macOS to get the super user accesses and commands in the last day.
 If there aren't any you can execute some harmless commands such as `sudo ls` and check again.
 
@@ -480,7 +479,8 @@ If there aren't any you can execute some harmless commands such as `sudo ls` and
    ```
 
 1. (Advanced) Read about [reversible debugging](https://undo.io/resources/reverse-debugging-whitepaper/) and get a simple example working using [`rr`](https://rr-project.org/) or [`RevPDB`](https://morepypy.blogspot.com/2016/07/reverse-debugging-for-python.html).
-## Profiling
+
+## 性能分析
 
 1. [Here](/static/files/sorts.py) are some sorting algorithm implementations. Use [`cProfile`](https://docs.python.org/3/library/profile.html) and [`line_profiler`](https://github.com/rkern/line_profiler) to compare the runtime of insertion sort and quicksort. What is the bottleneck of each algorithm? Use then `memory_profiler` to check the memory consumption, why is insertion sort better? Check now the inplace version of quicksort. Challenge: Use `perf` to look at the cycle counts and cache hits and misses of each algorithm.
 
