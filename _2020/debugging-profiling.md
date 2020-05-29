@@ -251,15 +251,13 @@ sys     0m0.012s
 ### CPU
 
 大多数情况下，当人们提及性能分析工具的时候，通常指的是 CPU 性能分析工具。
-CPU 性能分析工具有两种： 追溯分析器（_tracing_）及采样分析其（_sampling_）。
-追溯分析器 profilers keep a record of every function call your program makes whereas sampling profilers probe your program periodically (commonly every millisecond) and record the program's stack.
-They use these records to present aggregate statistics of what your program spent the most time doing.
-[Here](https://jvns.ca/blog/2017/12/17/how-do-ruby---python-profilers-work-) is a good intro article if you want more detail on this topic.
+CPU 性能分析工具有两种： 追溯分析器（_tracing_）及采样分析器（_sampling_）。
+追溯分析器 会记录程序的每一次函数调用，而采样分析器则只会周期性的监测（通常为每毫秒）您的程序并记录程序堆栈。它们使用这些记录来生成统计信息，显示程序在哪些事情上花费了最多的时间。如果您希望了解更多相关信息，可以参考[这篇](https://jvns.ca/blog/2017/12/17/how-do-ruby---python-profilers-work-) 介绍性的文章。
 
-Most programming languages have some sort of command line profiler that you can use to analyze your code.
-They often integrate with full fledged IDEs but for this lecture we are going to focus on the command line tools themselves.
 
-In Python we can use the `cProfile` module to profile time per function call. Here is a simple example that implements a rudimentary grep in Python:
+大多数的编程语言都有一些基于命令行都分析器，我们可以使用它们来分析代码。它们通常可以集成在 IDE 中，但是本节课我们会专注于这些命令行工具本身。
+
+在 Python 中，我们使用 `cProfile` 模块来分析每次函数调用所消耗都时间。 在下面的例子中，我们实现了一个基础的 grep 命令：
 
 ```python
 #!/usr/bin/env python
@@ -283,7 +281,7 @@ if __name__ == '__main__':
             grep(pattern, file)
 ```
 
-We can profile this code using the following command. Analyzing the output we can see that IO is taking most of the time and that compiling the regex takes a fair amount of time as well. Since the regex only needs to be compiled once, we can factor it out of the for.
+我们可以使用下面的命令来对这段代码进行分析。通过它的输出我们可以直到，IO 消耗来大量的时间，编译正则表达式也比较耗费时间。因为正则表达式只需要编译一次，我们可以将其移动到 for 循环外面来改进性能。
 
 ```
 $ python -m cProfile -s tottime grep.py 1000 '^(import|\s*def)[^,]*$' *.py
