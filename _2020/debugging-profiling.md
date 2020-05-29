@@ -205,27 +205,25 @@ Found 3 errors in 1 file (checked 1 source file)
 
 # 性能分析
 
-Even if your code functionally behaves as you would expect, that might not be good enough if it takes all your CPU or memory in the process.
-Algorithms classes often teach big _O_ notation but not how to find hot spots in your programs.
-Since [premature optimization is the root of all evil](http://wiki.c2.com/?PrematureOptimization), you should learn about profilers and monitoring tools. They will help you understand which parts of your program are taking most of the time and/or resources so you can focus on optimizing those parts.
+即使您的代码能够向您期望的一样运行，但是如果它消耗了您全部的 CPU 和内存，那么它显然也不是个好程序。算法课上我们通常会介绍大O标记法，但却没交给我们如何找到程序中的热点。
+因为 [过早的优化是万恶之源](http://wiki.c2.com/?PrematureOptimization)，您需要学习性能分析和监控工具。它们会帮助您找到程序中最耗时、最耗资源的部分，这样您就可以有针对性的进行性能优化。
 
 ## 计时
 
-Similarly to the debugging case, in many scenarios it can be enough to just print the time it took your code between two points.
-Here is an example in Python using the [`time`](https://docs.python.org/3/library/time.html) module.
+和调试代码类似，大多数情况下我们只需要打印两处代码之间的时间即可发现问题。下面这个例子中，我们使用了 Python 的 [`time`](https://docs.python.org/3/library/time.html) 模块。
 
 ```python
 import time, random
 n = random.randint(1, 10) * 100
 
-# Get current time
+# 获取当前时间 
 start = time.time()
 
-# Do some work
+# 执行一些操作
 print("Sleeping for {} ms".format(n))
 time.sleep(n/1000)
 
-# Compute time between start and now
+# 比较当前时间和起始时间
 print(time.time() - start)
 
 # Output
@@ -233,7 +231,7 @@ print(time.time() - start)
 # 0.5713930130004883
 ```
 
-However, wall clock time can be misleading since your computer might be running other processes at the same time or waiting for events to happen. It is common for tools to make a distinction between _Real_, _User_ and _Sys_ time. In general, _User_ + _Sys_ tells you how much time your process actually spent in the CPU (more detailed explanation [here](https://stackoverflow.com/questions/556405/what-do-real-user-and-sys-mean-in-the-output-of-time1)).
+不过，执行时间（wall clock time）也可能会误导您，因为您的电脑可能也在同时运行其他进程，也可能在此期间发生了等待。 对于工具来说，需要区分真实时间、用户时间和系统时间。通常来说，用户时间+系统时间代表了您的进程所消耗的实际 CPU （更详细的解释可以参照[这篇文章](https://stackoverflow.com/questions/556405/what-do-real-user-and-sys-mean-in-the-output-of-time1)）。
 
 - _Real_ - Wall clock elapsed time from start to finish of the program, including the time taken by other processes and time taken while blocked (e.g. waiting for I/O or network)
 - _User_ - Amount of time spent in the CPU running user code
