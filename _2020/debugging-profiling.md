@@ -303,18 +303,19 @@ $ python -m cProfile -s tottime grep.py 1000 '^(import|\s*def)[^,]*$' *.py
 ```
 
 
-A caveat of Python's `cProfile` profiler (and many profilers for that matter) is that they display time per function call. That can become unintuitive really fast, specially if you are using third party libraries in your code since internal function calls are also accounted for.
-A more intuitive way of displaying profiling information is to include the time taken per line of code, which is what _line profilers_ do.
+关于 Python 的 `cProfile` 分析器（以及其他一些类似的一些分析器），需要注意的是它显示的是每次函数调用的时间。看上去可能快到反直觉，尤其是如果您在代码里面使用了第三方的函数库，因为内部函数调用也会被看作函数调用。
 
-For instance, the following piece of Python code performs a request to the class website and parses the response to get all URLs in the page:
+更加符合直觉的显示分析信息的方式是包括每行代码的执行时间，这也是
+*行分析器* 的工作。例如，下面这段 Python 代码会向本课程的网站发起一个请求，然后解析响应返回的页面中的全部 URL：
+
 
 ```python
 #!/usr/bin/env python
 import requests
 from bs4 import BeautifulSoup
 
-# This is a decorator that tells line_profiler
-# that we want to analyze this function
+# 这个装饰器会告诉行分析器 
+# 我们想要分析这个函数
 @profile
 def get_urls():
     response = requests.get('https://missing.csail.mit.edu')
@@ -327,7 +328,7 @@ if __name__ == '__main__':
     get_urls()
 ```
 
-If we used Python's `cProfile` profiler we'd get over 2500 lines of output, and even with sorting it'd be hard to understand where the time is being spent. A quick run with [`line_profiler`](https://github.com/rkern/line_profiler) shows the time taken per line:
+如果我们使用 Python 的 `cProfile` 分析器，我们会得到超过2500行的输出结果，即使对其进行排序，我仍然搞不懂时间到底都花在哪了。如果我们使用 [`line_profiler`](https://github.com/rkern/line_profiler)，它会基于行来显示时间：
 
 ```bash
 $ kernprof -l -v a.py
@@ -351,11 +352,11 @@ Line #  Hits         Time  Per Hit   % Time  Line Contents
 
 ### 内存
 
-In languages like C or C++ memory leaks can cause your program to never release memory that it doesn't need anymore.
-To help in the process of memory debugging you can use tools like [Valgrind](https://valgrind.org/) that will help you identify memory leaks.
+像 C 或者 C++ 这样的语言，内存泄漏会导致您的程序在使用完内存后不去释放它。为了应对内存类的 Bug，我们可以使用类似 [Valgrind](https://valgrind.org/) 这样的工具来检查内存泄漏问题。
 
-In garbage collected languages like Python it is still useful to use a memory profiler because as long as you have pointers to objects in memory they won't be garbage collected.
-Here's an example program and its associated output when running it with [memory-profiler](https://pypi.org/project/memory-profiler/) (note the decorator like in `line-profiler`).
+对于 Python 这类具有垃圾回收机制的语言，内存分析器也是很有用的，因为对于某个对象来说，只要有指针还指向它，那它就不会被回收。
+
+下面这个例子及其输出，展示了 [memory-profiler](https://pypi.org/project/memory-profiler/) 是如何工作的（注意装饰器和 `line-profiler` 类似）。
 
 ```python
 @profile
@@ -381,11 +382,11 @@ Line #    Mem usage  Increment   Line Contents
      8     13.61 MB    0.00 MB       return a
 ```
 
-### Event Profiling
+### 事件分析
 
-As it was the case for `strace` for debugging, you might want to ignore the specifics of the code that you are running and treat it like a black box when profiling.
-The [`perf`](http://man7.org/linux/man-pages/man1/perf.1.html) command abstracts CPU differences away and does not report time or memory, but instead it reports system events related to your programs.
-For example, `perf` can easily report poor cache locality, high amounts of page faults or livelocks. Here is an overview of the command:
+在我们使用`strace`调试代码的时候，您可能会希望忽略一些特殊的代码并希望在分析时将其当作黑盒处理。[`perf`](http://man7.org/linux/man-pages/man1/perf.1.html) 命令将 CPU 的区别进行了抽象，它不会报告时间和内存的消耗，而是报告与您的程序相关的系统事件。
+
+例如，`perf` can easily report poor cache locality, high amounts of page faults or livelocks. Here is an overview of the command:
 
 - `perf list` - List the events that can be traced with perf
 - `perf stat COMMAND ARG1 ARG2` - Gets counts of different events related a process or command
