@@ -18,9 +18,9 @@ video:
 
 ## 打印调试法与日志
 
-"最有效的 debug 工具就是细致的分析配合位于恰当位置的打印语句" — Brian Kernighan, _Unix 新手入门_。
+"最有效的 debug 工具就是细致的分析，配合恰当位置的打印语句" — Brian Kernighan, _Unix 新手入门_。
 
-调试代码的第一种方法往往是在您发现问题的地方添加一些打印语句，然后不断重复此过程直到您获取了足够的信息并可以找到问题的根本原因。
+调试代码的第一种方法往往是在您发现问题的地方添加一些打印语句，然后不断重复此过程直到您获取了足够的信息并找到问题的根本原因。
 
 另外一个方法是使用日志，而不是临时添加打印语句。日志较普通的打印语句有如下的一些优势：
 
@@ -63,10 +63,11 @@ done
 
 和这些系统交互的时候，阅读它们的日志是非常必要的，因为仅靠客户端侧的错误信息可能并不足以定位问题。
 
-幸运的是，大多数的程序都会将日志保存在您的系统中的某个地方。对于 UNIX 系统来说，程序的日志通常存放在 `/var/log`。
-例如， [NGINX](https://www.nginx.com/) web 服务器就将其日志存放于`/var/log/nginx`。
-最近，系统开始使用 **system log**，您所有的日志都会保存在这里。大多数的（但不是全部）Linux 系统都会使用 `systemd`，这是一个系统守护进程，它会控制您系统中的很多东西，例如哪些服务应该启动并运行。`systemd` 会将日志以某种特殊格式存放于`/var/log/journal`，您可以使用 [`journalctl`](http://man7.org/linux/man-pages/man1/journalctl.1.html) 命令显示这些消息。
-类似地，在 macOS 系统中还是 `/var/log/system.log`，但是有更多的工具会使用系统日志，它的内容可以使用 [`log show`](https://www.manpagez.com/man/1/log/) 显示。
+幸运的是，大多数的程序都会将日志保存在您的系统中的某个地方。对于 UNIX 系统来说，程序的日志通常存放在 `/var/log`。例如， [NGINX](https://www.nginx.com/) web 服务器就将其日志存放于`/var/log/nginx`。
+
+目前，系统开始使用 **system log**，您所有的日志都会保存在这里。大多数的（但不是全部）Linux 系统都会使用 `systemd`，这是一个系统守护进程，它会控制您系统中的很多东西，例如哪些服务应该启动并运行。`systemd` 会将日志以某种特殊格式存放于`/var/log/journal`，您可以使用 [`journalctl`](http://man7.org/linux/man-pages/man1/journalctl.1.html) 命令显示这些消息。
+
+类似地，在 macOS 系统中是 `/var/log/system.log`，但是有更多的工具会使用系统日志，它的内容可以使用 [`log show`](https://www.manpagez.com/man/1/log/) 显示。
 
 对于大多数的 UNIX 系统，您也可以使用[`dmesg`](http://man7.org/linux/man-pages/man1/dmesg.1.html) 命令来读取内核的日志。
 
@@ -107,7 +108,7 @@ journalctl --since "1m ago" | grep Hello
 - **n**(ext) - 继续执行直到当前函数的下一条语句或者 return 语句；
 - **b**(reak) - 设置断点（基于传入对参数）；
 - **p**(rint) - 在当前上下文对表达式求值并打印结果。还有一个命令是**pp** ，它使用 [`pprint`](https://docs.python.org/3/library/pprint.html) 打印；
-- **r**(eturn) - 继续执行知道当前函数返回；
+- **r**(eturn) - 继续执行直到当前函数返回；
 - **q**(uit) - 退出调试器。
 
 让我们使用`pdb` 来修复下面的 Python 代码（参考讲座视频）
@@ -206,7 +207,7 @@ Found 3 errors in 1 file (checked 1 source file)
 # 性能分析
 
 即使您的代码能够向您期望的一样运行，但是如果它消耗了您全部的 CPU 和内存，那么它显然也不是个好程序。算法课上我们通常会介绍大O标记法，但却没交给我们如何找到程序中的热点。
-因为 [过早的优化是万恶之源](http://wiki.c2.com/?PrematureOptimization)，您需要学习性能分析和监控工具。它们会帮助您找到程序中最耗时、最耗资源的部分，这样您就可以有针对性的进行性能优化。
+鉴于 [过早的优化是万恶之源](http://wiki.c2.com/?PrematureOptimization)，您需要学习性能分析和监控工具，它们会帮助您找到程序中最耗时、最耗资源的部分，这样您就可以有针对性的进行性能优化。
 
 ## 计时
 
@@ -281,7 +282,7 @@ if __name__ == '__main__':
             grep(pattern, file)
 ```
 
-我们可以使用下面的命令来对这段代码进行分析。通过它的输出我们可以直到，IO 消耗来大量的时间，编译正则表达式也比较耗费时间。因为正则表达式只需要编译一次，我们可以将其移动到 for 循环外面来改进性能。
+我们可以使用下面的命令来对这段代码进行分析。通过它的输出我们可以直到，IO 消耗了大量的时间，编译正则表达式也比较耗费时间。因为正则表达式只需要编译一次，我们可以将其移动到 for 循环外面来改进性能。
 
 ```
 $ python -m cProfile -s tottime grep.py 1000 '^(import|\s*def)[^,]*$' *.py
@@ -305,8 +306,7 @@ $ python -m cProfile -s tottime grep.py 1000 '^(import|\s*def)[^,]*$' *.py
 
 关于 Python 的 `cProfile` 分析器（以及其他一些类似的一些分析器），需要注意的是它显示的是每次函数调用的时间。看上去可能快到反直觉，尤其是如果您在代码里面使用了第三方的函数库，因为内部函数调用也会被看作函数调用。
 
-更加符合直觉的显示分析信息的方式是包括每行代码的执行时间，这也是
-*行分析器* 的工作。例如，下面这段 Python 代码会向本课程的网站发起一个请求，然后解析响应返回的页面中的全部 URL：
+更加符合直觉的显示分析信息的方式是包括每行代码的执行时间，这也是*行分析器*的工作。例如，下面这段 Python 代码会向本课程的网站发起一个请求，然后解析响应返回的页面中的全部 URL：
 
 
 ```python
@@ -389,14 +389,14 @@ Line #    Mem usage  Increment   Line Contents
 例如，`perf` 可以报告不佳的缓存局部性（poor cache locality）、大量的页错误（page faults）或活锁（livelocks）。下面是关于常见命令的简介：
 
 - `perf list` - 列出可以被 pref 追踪的事件；
-- `perf stat COMMAND ARG1 ARG2` - 收集与某个进程或指令相关的不同事件；
+- `perf stat COMMAND ARG1 ARG2` - 收集与某个进程或指令相关的事件；
 - `perf record COMMAND ARG1 ARG2` - 记录命令执行的采样信息并将统计数据储存在`perf.data`中；
 - `perf report` - 格式化并打印 `perf.data` 中的数据。
 
 
 ### 可视化
 
-使用分析器来分析真实的程序时，由于软件的复杂性，其输出结果中包含了大量的信息。人类是一种视觉动物，非常不善于阅读大量的文字。因此很多工具都提供了可视化分析器输出结果的功能。
+使用分析器来分析真实的程序时，由于软件的复杂性，其输出结果中将包含大量的信息。人类是一种视觉动物，非常不善于阅读大量的文字。因此很多工具都提供了可视化分析器输出结果的功能。
 
 对于采样分析器来说，常见的显示 CPU 分析数据的形式是 [火焰图](http://www.brendangregg.com/flamegraphs.html)，火焰图会在 Y 轴显示函数调用关系，并在 X 轴显示其耗时的比例。火焰图同时还是可交互的，您可以深入程序的某一具体部分，并查看其栈追踪（您可以尝试点击下面的图片）。
 
