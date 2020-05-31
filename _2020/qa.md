@@ -13,7 +13,7 @@ video:
 
 - [学习操作系统相关话题的推荐，比如进程，虚拟内存，中断，内存管理等](#学习操作系统相关话题的推荐比如进程虚拟内存中断内存管理等)   
 - [你会优先学习的工具有那些?](#你会优先学习的工具有那些) 
-- [使用Python VS Bash脚本 VS 其他语言?](#使用PythonVSBash脚本VS其他语言)
+- [使用Python VS  Bash脚本 VS 其他语言?](#使用python-vs-bash脚本-vs-其他语言)
 - [`source script.sh` 和`./script.sh`有什么区别？](#source-script.sh和script.sh有什么区别) 
 - [各种软件包和工具存储在哪里？引用过程是怎样的？ `/bin` 或 `/lib` 是什么？](#各种软件包和工具存储在哪里引用过程是怎样的bin或lib是什么)
 - [我应该用`apt-get install`还是`pip install`  去下载软件包呢?](#我应该用apt-get-install还是pip-install--去下载软件包呢) 
@@ -22,7 +22,7 @@ video:
 - [有哪些有用的数据整理工具？](#有哪些有用的数据整理工具)
 - [Docker和虚拟机有什么区别?](#Docker和虚拟机有什么区别) 
 - [每种OS的优缺点是什么，我们如何选择（比如选择最适用于我们需求的Linux发行版）？](#每种OS的优缺点是什么我们如何选择比如选择最适用于我们需求的Linux发行版)
-- [Vim 编辑器vs Emacs编辑器?](#vim-编辑器vs-emacs编辑器)
+- [Vim 编辑器 VS Emacs编辑器?](#vim-编辑器-vs-emacs编辑器)
 - [机器学习应用的提示或技巧?](#机器学习应用的提示或技巧)
 - [还有更多的Vim提示吗？](#还有更多的Vim提示吗)
 - [2FA是什么，为什么我需要使用它?](#2FA是什么为什么我需要使用它)
@@ -148,7 +148,7 @@ Mac OS是介于Windows和Linux之间的一个OS，它有很漂亮的界面。但
 
 对于双启动系统，我们认为最有效的实现是macOS的bootcamp，从长远来看，任何其他组合都可能会出现问题，尤其是当你结合了其他功能比如磁盘加密。
 
-## Vim 编辑器vs Emacs编辑器?
+## Vim 编辑器 VS Emacs编辑器?
 
 我们三个都使用vim作为我们的主要编辑器。但是Emacs也是一个不错的选择，你可以两者都尝试，看看那个更适合你。Emacs不遵循vim的模式编辑，但是这些功能可以通过Emacs插件 像 [Evil](https://github.com/emacs-evil/evil) 或 [Doom Emacs](https://github.com/hlissner/doom-emacs)来实现。
 Emacs的优点是可以用Lisp语言进行扩展（Lisp比vim默认的脚本语言vimscript要更好）。
