@@ -2,7 +2,7 @@
 layout: lecture
 title: "提问&回答"
 date: 2019-01-30
-ready: false
+ready: true
 video:
   aspect: 56.25
   id: Wz50FvGG6xU
@@ -99,7 +99,7 @@ video:
 
 - 常见的软件包都可以通过这两种方法获得，但是小众的软件包或较新的软件包可能不在系统程序包管理器中。在这种情况下，使用特定语言的程序包管理器是更好的选择。
 - 同样，特定语言的程序包管理器相比系统程序包管理器有更多的最新版本的程序包。
-- 当使用系统软件包管理器时，将在系统范围内安装库。如果出于开发目的需要不同版本的库，则系统软件包管理器可能不能满足你的需要。对于这种情况，大多数编程语言都提供了隔离或虚拟环境，因此您可以用特定语言的程序包管理器安装不同版本的库而不会发生冲突。对于Python，有virtualenv，对于Ruby，有RVM。
+- 当使用系统软件包管理器时，将在系统范围内安装库。如果出于开发目的需要不同版本的库，则系统软件包管理器可能不能满足你的需要。对于这种情况，大多数编程语言都提供了隔离或虚拟环境，因此你可以用特定语言的程序包管理器安装不同版本的库而不会发生冲突。对于Python，有virtualenv，对于Ruby，有RVM。
 - 根据操作系统和硬件架构，其中一些软件包可能会附带二进制文件或者软件包需要编译。例如，在树莓派（Raspberry Pi）之类的ARM架构计算机中，在软件附带二进制文件和软件包需要编译的情况下，使用系统包管理器比特定语言包管理器更好。这在很大程度上取决于你的特定设置。
 你应该仅使用一种解决方案，而不同时使用两种方法，因为这可能会导致难以调试的冲突。我们的建议是尽可能使用特定语言的程序包管理器，并使用隔离的环境（例如Python的virtualenv）以避免影响全局环境。
 
@@ -175,7 +175,7 @@ Emacs的优点是可以用Lisp语言进行扩展（Lisp比vim默认的脚本语�
 
 ## 2FA是什么，为什么我需要使用它?
 
-双因子验证（Two Factor Authentication  2FA）在密码之上为帐户增加了一层额外的保护。为了登录，您不仅需要知道密码，还必须以某种方式“证明”可以访问某些硬件设备。最简单的情形是可以通过接收手机的SMS来实现（尽管SMS 2FA 存在 [已知问题](https://www.kaspersky.com/blog/2fa-practical-guide/24219/)）。我们推荐使用[YubiKey](https://www.yubico.com/)之类的[U2F](https://en.wikipedia.org/wiki/Universal_2nd_Factor)方案。
+双因子验证（Two Factor Authentication  2FA）在密码之上为帐户增加了一层额外的保护。为了登录，你不仅需要知道密码，还必须以某种方式“证明”可以访问某些硬件设备。最简单的情形是可以通过接收手机的SMS来实现（尽管SMS 2FA 存在 [已知问题](https://www.kaspersky.com/blog/2fa-practical-guide/24219/)）。我们推荐使用[YubiKey](https://www.yubico.com/)之类的[U2F](https://en.wikipedia.org/wiki/Universal_2nd_Factor)方案。
 
 ## 对于不同的Web浏览器有什么评价?
 
