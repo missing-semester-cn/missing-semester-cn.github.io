@@ -233,7 +233,8 @@ hr {
 }
 
 #top-nav {
-  max-width: 40rem;
+  max-width: 75rem;
+  padding-left:8rem;
   margin: auto;
   text-align: center;
 }
@@ -369,4 +370,37 @@ input[type=checkbox]:checked ~ .menu-label:after {
   #content hr:last-of-type { display: none; }
   #content pre { break-inside: avoid-page; page-break-inside: avoid; }
   #content div.small:last-of-type { display: none; }
+}
+
+.ribbon {
+  background-color: #8cbcea;
+  overflow: hidden;
+  white-space: nowrap;
+  /* top left corner */
+  position: absolute;
+  right: -50px;
+  top: 40px;
+  /* 45 deg ccw rotation */
+  -webkit-transform: rotate(45deg);
+     -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+       -o-transform: rotate(45deg);
+          transform: rotate(45deg);
+  /* shadow */
+  -webkit-box-shadow: 0 0 10px #888;
+     -moz-box-shadow: 0 0 10px #888;
+          /* box-shadow: 0 0 10px #888; */
+          box-shadow: 0px -1px 20px 0px #562c8c6b;
+}
+.ribbon a {
+  border: 1px solid #000;
+  color: #000;
+  display: block;
+  font: bold 81.25% "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 1px 0;
+  padding: 10px 50px;
+  text-align: center;
+  text-decoration: none;
+  /* shadow */
+  /* text-shadow: 0 0 5px #444; */
 }
