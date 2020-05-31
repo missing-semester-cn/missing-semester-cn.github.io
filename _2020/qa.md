@@ -14,9 +14,9 @@ video:
 - [学习操作系统相关话题的推荐，比如进程，虚拟内存，中断，内存管理等](#学习操作系统相关话题的推荐比如进程虚拟内存中断内存管理等)   
 - [你会优先学习的工具有那些?](#你会优先学习的工具有那些) 
 - [使用Python VS  Bash脚本 VS 其他语言?](#使用python-vs-bash脚本-vs-其他语言)
-- [`source script.sh` 和`./script.sh`有什么区别？](#source-script.sh和script.sh有什么区别) 
-- [各种软件包和工具存储在哪里？引用过程是怎样的？ `/bin` 或 `/lib` 是什么？](#各种软件包和工具存储在哪里引用过程是怎样的bin或lib是什么)
-- [我应该用`apt-get install`还是`pip install`  去下载软件包呢?](#我应该用apt-get-install还是pip-install--去下载软件包呢) 
+- [`source script.sh` 和`./script.sh`有什么区别？](#source-scriptsh-和scriptsh有什么区别) 
+- [各种软件包和工具存储在哪里？引用过程是怎样的?`/bin` 或`/lib`是什么？](#各种软件包和工具存储在哪里引用过程是怎样的bin-或lib是什么)
+- [我应该用`apt-get install`还是`pip install`去下载软件包呢?](#我应该用apt-get-install还是pip-install去下载软件包呢) 
 - [用于提高代码性能，简单好用的性能分析工具有哪些?](#用于提高代码性能简单好用的性能分析工具有哪些)
 - [你使用那些浏览器插件?](#你使用那些浏览器插件) 
 - [有哪些有用的数据整理工具？](#有哪些有用的数据整理工具)
@@ -73,7 +73,7 @@ video:
 因此，如果`script.sh`更改目录，新的bash实例会更改目录，但是一旦退出并将控制权返回给父bash会话，父会话仍然留在先前的位置（不会有目录的更改）。
 同样，如果`script.sh`定义了要在终端中访问的函数，需要用`source`命令在当前bash会话中定义这个函数。否则，如果你运行`./script.sh`，只有新的bash进程才能执行定义的函数，而当前的shell不能。
 
-## 各种软件包和工具存储在哪里？ 引用过程是怎样的？ `/bin` 或 `/lib` 是什么？
+## 各种软件包和工具存储在哪里？引用过程是怎样的?`/bin` 或`/lib`是什么？
 
 根据你在命令行中运行的程序，这些包和工具会全部在`PATH`环境变量所列出的目录中查找到， 你可以使用 `which`命令(或是`type`命令)来检查你的shell在哪里发现了特定的程序。
 一般来说，特定种类的文件存储有一定的规范，[文件系统，层次结构标准（Filesystem, Hierarchy Standard）](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)可以查到我们讨论内容的详细列表。
@@ -93,7 +93,7 @@ video:
   + `/usr/local/bin` -  用户编译程序的二进制文件
 - `/var` -变量文件 像日志或缓存
 
-## 我应该用`apt-get install`还是`pip install`  去下载包呢?
+## 我应该用`apt-get install`还是`pip install`去下载软件包呢?
 
 这个问题没有普遍的答案。这与使用系统程序包管理器还是特定语言的程序包管理器来安装软件这一更普遍的问题相关。需要考虑的几件事：
 
