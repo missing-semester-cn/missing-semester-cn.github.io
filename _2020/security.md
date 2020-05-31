@@ -205,29 +205,17 @@ Windows的[BitLocker](https://fossbytes.com/enable-full-disk-encryption-windows-
 
 ## SSH
 
-We've covered the use of SSH and SSH keys in an [earlier
-lecture](/2020/command-line/#remote-machines). Let's look at the cryptography
-aspects of this.
+我们在[之前的一堂课](/2020/command-line/#remote-machines)讨论了SSH和SSH密钥的使用。那么我们今天从密码学的角度来分析一下它们。
 
-When you run `ssh-keygen`, it generates an asymmetric keypair, `public_key,
-private_key`. This is generated randomly, using entropy provided by the
-operating system (collected from hardware events, etc.). The public key is
-stored as-is (it's public, so keeping it a secret is not important), but at
-rest, the private key should be encrypted on disk. The `ssh-keygen` program
-prompts the user for a passphrase, and this is fed through a key derivation
-function to produce a key, which is then used to encrypt the private key with a
-symmetric cipher.
+当你运行`ssh-keygen`命令，它会生成一个非对称密钥对：公钥和私钥`(public_key, private_key)`。 
+生成过程中使用的随机数由系统提供的熵决定。这些熵可以来源于硬件事件(hardware events)等。
+公钥最终会被分发，它可以直接明文存储。
+但是为了防止泄露，私钥必须加密存储。`ssh-keygen`命令会提示用户输入一个密码，并将它输入密钥生成函数
+产生一个密钥。最终，`ssh-keygen`使用对称加密算法和这个密钥加密私钥。
 
-In use, once the server knows the client's public key (stored in the
-`.ssh/authorized_keys` file), a connecting client can prove its identity using
-asymmetric signatures. This is done through
-[challenge-response](https://en.wikipedia.org/wiki/Challenge%E2%80%93response_authentication).
-At a high level, the server picks a random number and sends it to the client.
-The client then signs this message and sends the signature back to the server,
-which checks the signature against the public key on record. This effectively
-proves that the client is in possession of the private key corresponding to the
-public key that's in the server's `.ssh/authorized_keys` file, so the server
-can allow the client to log in.
+在实际运用中，当服务器已知用户的公钥（存储在`.ssh/authorized_keys`文件中，一般在用户HOME目录下），尝试连接的客户端可以使用非对称签名来证明用户的身份——这便是[挑战应答方式](https://en.wikipedia.org/wiki/Challenge%E2%80%93response_authentication)。
+简单来说，服务器选择一个随机数字发送给客户端。客户端使用用户私钥对这个数字信息签名后返回服务器。
+服务器随后使用`.ssh/authorized_keys`文件中存储的用户公钥来验证返回的信息是否由所对应的私钥所签名。这种验证方式可以有效证明试图登录的用户持有所需的私钥。
 
 {% comment %}
 extra topics, if there's time
@@ -251,32 +239,14 @@ security concepts, tips
     1. 假设另一个密码是用八个随机的大小写字母或数字组成。一个符合这样构造的例子是`rg8Ql34g`。这个密码又有多少比特的熵？
     1. 哪一个密码更强？
     1. 假设一个攻击者每秒可以尝试1万个密码，这个攻击者需要多久可以分别破解上述两个密码？
-1. **Cryptographic hash functions.** Download a Debian image from a
-   [mirror](https://www.debian.org/CD/http-ftp/) (e.g. [this
-   file](http://debian.xfree.com.ar/debian-cd/10.2.0/amd64/iso-cd/debian-10.2.0-amd64-netinst.iso)
-   from an Argentinean mirror). Cross-check the hash (e.g. using the
-   `sha256sum` command) with the hash retrieved from the official Debian site
-   (e.g. [this
-   file](https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/SHA256SUMS)
-   hosted at `debian.org`, if you've downloaded the linked file from the
-   Argentinean mirror).
-1. **Symmetric cryptography.** Encrypt a file with AES encryption, using
-   [OpenSSL](https://www.openssl.org/): `openssl aes-256-cbc -salt -in {input
-   filename} -out {output filename}`. Look at the contents using `cat` or
-   `hexdump`. Decrypt it with `openssl aes-256-cbc -d -in {input filename} -out
-   {output filename}` and confirm that the contents match the original using
-   `cmp`.
-1. **Asymmetric cryptography.**
-    1. Set up [SSH
-       keys](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2)
-       on a computer you have access to (not Athena, because Kerberos interacts
-       weirdly with SSH keys). Rather than using RSA keys as in the linked
-       tutorial, use more secure [ED25519
-       keys](https://wiki.archlinux.org/index.php/SSH_keys#Ed25519). Make sure
-       your private key is encrypted with a passphrase, so it is protected at
-       rest.
-    1. [Set up GPG](https://www.digitalocean.com/community/tutorials/how-to-use-gpg-to-encrypt-and-sign-messages)
-    1. Send Anish an encrypted email ([public key](https://keybase.io/anish)).
-    1. Sign a Git commit with `git commit -C` or create a signed Git tag with
-       `git tag -s`. Verify the signature on the commit with `git show
-       --show-signature` or on the tag with `git tag -v`.
+1. **密码散列函数** 从[Debian镜像站](https://www.debian.org/CD/http-ftp/)下载一个光盘映像（比如这个来自阿根廷镜像站的[映像](http://debian.xfree.com.ar/debian-cd/10.2.0/amd64/iso-cd/debian-10.2.0-amd64-netinst.iso)）。使用`sha256sum`命令对比下载映像的哈希值和官方Debian站公布的哈希值。如果你下载了上面的映像，官方公布的哈希值可以参考[这个文件](https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/SHA256SUMS)。
+1. **对称加密** 使用
+   [OpenSSL](https://www.openssl.org/)的AES模式加密一个文件: `openssl aes-256-cbc -salt -in {源文件名} -out {加密文件名}`。
+   使用`cat`或者`hexdump`对比源文件和加密的文件，再用 `openssl aes-256-cbc -d -in {加密文件名} -out
+   {解密文件名}` 命令解密刚刚加密的文件。最后使用`cmp`命令确认源文件和解密后的文件内容相同。
+1. **非对称加密**
+    1. 在你自己的电脑上使用更安全的[ED25519算法](https://wiki.archlinux.org/index.php/SSH_keys#Ed25519)生成一组[SSH
+       密钥对](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2)。为了确保私钥不使用时的安全，一定使用密码加密你的私钥。
+    1. [配置GPG](https://www.digitalocean.com/community/tutorials/how-to-use-gpg-to-encrypt-and-sign-messages)。
+    1. 给Anish发送一封加密的电子邮件（[Anish的公钥](https://keybase.io/anish)）。
+    1. 使用`git commit -C`命令签名一个Git提交，并使用`git show --show-signature`命令验证这个提交的签名。或者，使用`git tag -s`命令签名一个Git标签，并使用`git tag -v`命令验证标签的签名。
