@@ -13,7 +13,7 @@ video:
 
 - [学习操作系统相关话题的推荐，比如进程，虚拟内存，中断，内存管理等](#学习操作系统相关话题的推荐比如进程虚拟内存中断内存管理等)   
 - [你会优先学习的工具有那些?](#你会优先学习的工具有那些) 
-- [使用Python VS Bash脚本 VS 其他语言?](#使用Python VS Bash脚本 VS 其他语言)
+- [使用Python VS Bash脚本 VS 其他语言?](#使用PythonVSBash脚本VS其他语言)
 - [`source script.sh` 和`./script.sh`有什么区别？](#source-script.sh和script.sh有什么区别) 
 - [各种软件包和工具存储在哪里？引用过程是怎样的？ `/bin` 或 `/lib` 是什么？](#各种软件包和工具存储在哪里引用过程是怎样的bin或lib是什么)
 - [我应该用`apt-get install`还是`pip install`  去下载软件包呢?](#我应该用apt-get-install还是pip-install--去下载软件包呢) 
