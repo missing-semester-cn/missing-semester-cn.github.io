@@ -5,7 +5,7 @@ date: 2019-01-14
 ready: true
 video:
   aspect: 56.25
-  id: kgII-YWo3Zw
+  id: 2
 ---
 
 在这节课中，我们将会展示bash作为脚本语言的一些基础操作，以及几种最常用的shell工具。

@@ -6,7 +6,7 @@ layout: default
 
 {% if page.video.id %}
   <div class="youtube-wrapper" style="padding-bottom: {{ page.video.aspect }}%;">
-    <iframe src="https://www.youtube.com/embed/{{ page.video.id }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe src="//player.bilibili.com/player.html?aid=86911412&bvid=BV1x7411H7wa&cid=148439190&page={{ page.video.id }}" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
   </div>
 {% elsif page.video %}
   <p class="center gap accent"><strong>Lecture video coming soon!</strong></p>
