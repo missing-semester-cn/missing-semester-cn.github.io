@@ -2,7 +2,7 @@
 layout: lecture
 title: "安全和密码学"
 date: 2019-01-28
-ready: false
+ready: true
 video:
   aspect: 56.25
   id: tjwobAmnKTo
@@ -213,40 +213,4 @@ Windows的[BitLocker](https://fossbytes.com/enable-full-disk-encryption-windows-
 但是为了防止泄露，私钥必须加密存储。`ssh-keygen`命令会提示用户输入一个密码，并将它输入密钥生成函数
 产生一个密钥。最终，`ssh-keygen`使用对称加密算法和这个密钥加密私钥。
 
-在实际运用中，当服务器已知用户的公钥（存储在`.ssh/authorized_keys`文件中，一般在用户HOME目录下），尝试连接的客户端可以使用非对称签名来证明用户的身份——这便是[挑战应答方式](https://en.wikipedia.org/wiki/Challenge%E2%80%93response_authentication)。
-简单来说，服务器选择一个随机数字发送给客户端。客户端使用用户私钥对这个数字信息签名后返回服务器。
-服务器随后使用`.ssh/authorized_keys`文件中存储的用户公钥来验证返回的信息是否由所对应的私钥所签名。这种验证方式可以有效证明试图登录的用户持有所需的私钥。
-
-{% comment %}
-extra topics, if there's time
-
-security concepts, tips
-- biometrics
-- HTTPS
-{% endcomment %}
-
-# 资源
-
-- [去年的讲稿](/2019/security/): 更注重于计算机用户可以如何增强隐私保护和安全
-- [Cryptographic Right Answers](https://latacora.micro.blog/2018/04/03/cryptographic-right-answers.html): 
-解答了在一些应用环境下“应该使用什么加密？”的问题
-
-# 练习
-
-1. **熵**
-    1. 假设一个密码是从五个小写的单词拼接组成，每个单词都是从一个含有10万单词的字典中随机选择，且每个单词选中的概率相同。
-       一个符合这样构造的例子是`correcthorsebatterystaple`。这个密码有多少比特的熵？
-    1. 假设另一个密码是用八个随机的大小写字母或数字组成。一个符合这样构造的例子是`rg8Ql34g`。这个密码又有多少比特的熵？
-    1. 哪一个密码更强？
-    1. 假设一个攻击者每秒可以尝试1万个密码，这个攻击者需要多久可以分别破解上述两个密码？
-1. **密码散列函数** 从[Debian镜像站](https://www.debian.org/CD/http-ftp/)下载一个光盘映像（比如这个来自阿根廷镜像站的[映像](http://debian.xfree.com.ar/debian-cd/10.2.0/amd64/iso-cd/debian-10.2.0-amd64-netinst.iso)）。使用`sha256sum`命令对比下载映像的哈希值和官方Debian站公布的哈希值。如果你下载了上面的映像，官方公布的哈希值可以参考[这个文件](https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/SHA256SUMS)。
-1. **对称加密** 使用
-   [OpenSSL](https://www.openssl.org/)的AES模式加密一个文件: `openssl aes-256-cbc -salt -in {源文件名} -out {加密文件名}`。
-   使用`cat`或者`hexdump`对比源文件和加密的文件，再用 `openssl aes-256-cbc -d -in {加密文件名} -out
-   {解密文件名}` 命令解密刚刚加密的文件。最后使用`cmp`命令确认源文件和解密后的文件内容相同。
-1. **非对称加密**
-    1. 在你自己的电脑上使用更安全的[ED25519算法](https://wiki.archlinux.org/index.php/SSH_keys#Ed25519)生成一组[SSH
-       密钥对](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2)。为了确保私钥不使用时的安全，一定使用密码加密你的私钥。
-    1. [配置GPG](https://www.digitalocean.com/community/tutorials/how-to-use-gpg-to-encrypt-and-sign-messages)。
-    1. 给Anish发送一封加密的电子邮件（[Anish的公钥](https://keybase.io/anish)）。
-    1. 使用`git commit -C`命令签名一个Git提交，并使用`git show --show-signature`命令验证这个提交的签名。或者，使用`git tag -s`命令签名一个Git标签，并使用`git tag -v`命令验证标签的签名。
+在实际运用中，当服务器已知用户的公钥（存储在`.ssh/authorized_keys`文件中，一般在用户HOME目录下），尝试连接的客户端可以使用非对称签名
