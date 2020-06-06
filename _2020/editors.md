@@ -37,18 +37,15 @@ video:
 
 # Vim的哲学
 
-When programming, you spend most of your time reading/editing, not writing. For
-this reason, Vim is a _modal_ editor: it has different modes for inserting text
-vs manipulating text. Vim is programmable (with Vimscript and also other
-languages like Python), and Vim's interface itself is a programming language:
-keystrokes (with mnemonic names) are commands, and these commands are
-composable. Vim avoids the use of the mouse, because it's too slow; Vim even
-avoids using the arrow keys because it requires too much movement.
+在编程的时候，你会把大量时间花在阅读/编辑而不是在写代码上。所以， Vim 是一个 _多模态_ 编辑
+器： 它对于插入文字和操纵文字有不同的模式。 Vim 既是可编程的 （可以使用 Vimscript 或者像
+Python 一样的其他程序语言）， Vim 的接口本身也是一个程序语言： 键入操作 （以及其助记名）
+是命令， 这些命令也是可组合的。 Vim 避免了使用鼠标，因为那样太慢了； Vim 甚至避免用
+上下左右键因为那样需要太多的手指移动。
 
-The end result is an editor that can match the speed at which you think.
+这样的设计哲学的结果是一个能跟上你思维速度的编辑器。
 
 # 编辑模式
-
 
 Vim的设计以大多数时间都花在阅读、浏览和进行少量编辑改动为基础，因此它具有多种操作模式：
 
@@ -64,60 +61,48 @@ Vim的设计以大多数时间都花在阅读、浏览和进行少量编辑改�
 在默认设置下，Vim会在左下角显示当前的模式。 Vim启动时的默认模式是正常模式。通常你会把大部分
 时间花在正常模式和插入模式。
 
-You change modes by pressing `<ESC>` (the escape key) to switch from any mode
-back to normal mode. From normal mode, enter insert mode with `i`, replace mode
-with `R`, visual mode with `v`, visual line mode with `V`, visual block mode
-with `<C-v>` (Ctrl-V, sometimes also written `^V`), and command-line mode with
-`:`.
+你可以按下 `<ESC>` （逃脱键） 从任何其他模式返回正常模式。 在正常模式，键入 `i` 进入插入
+模式， `R` 进入替换模式， `v` 进入可视（一般）模式， `V` 进入可视（行）模式， `<C-v>`
+（Ctrl-V, 有时也写作 `^V`）， `:` 进入命令模式。
 
-You use the `<ESC>` key a lot when using Vim: consider remapping Caps Lock to
-Escape ([macOS
-instructions](https://vim.fandom.com/wiki/Map_caps_lock_to_escape_in_macOS)).
+因为你会在使用 Vim 时大量使用 `<ESC>` 键，考虑把大小写锁定键重定义成逃脱键 （[MacOS 教程](https://vim.fandom.com/wiki/Map_caps_lock_to_escape_in_macOS) ）。
 
 # 基本操作
 
 ## 插入文本
 
-From normal mode, press `i` to enter insert mode. Now, Vim behaves like any
-other text editor, until you press `<ESC>` to return to normal mode. This,
-along with the basics explained above, are all you need to start editing files
-using Vim (though not particularly efficiently, if you're spending all your
-time editing from insert mode).
+在正常模式， 键入 `i` 进入插入模式。 现在 Vim 跟很多其他的编辑器一样， 直到你键入`<ESC>`
+返回正常模式。 你只需要掌握这一点和上面介绍的所有基知识就可以使用 Vim 来编辑文件了
+（虽然如果你一直停留在插入模式内不一定高效）。
 
-## Buffers, tabs, and windows
+## 缓存， 标签页， 窗口
 
-Vim maintains a set of open files, called "buffers". A Vim session has a number
-of tabs, each of which has a number of windows (split panes). Each window shows
-a single buffer. Unlike other programs you are familiar with, like web
-browsers, there is not a 1-to-1 correspondence between buffers and windows;
-windows are merely views. A given buffer may be open in _multiple_ windows,
-even within the same tab. This can be quite handy, for example, to view two
-different parts of a file at the same time.
+Vim 会维护一系列打开的文件，称为 “缓存”。 一个 Vim 会话包含一系列标签页，每个标签页包含
+一系列窗口 （分隔面板）。每个窗口显示一个缓存。 跟网页浏览器等其他你熟悉的程序不一样的是，
+缓存和窗口不是一一对应的关系； 窗口只是视角。 一个缓存可以在 _多个_ 窗口打开，甚至在同一
+个标签页内的多个窗口打开。这个功能其实很好用， 比如在查看同一个文件的不同部分的时候。
 
-By default, Vim opens with a single tab, which contains a single window.
+Vim 默认打开一个标签页，这个标签也包含一个窗口。
 
 ## 命令行
 
-Command mode can be entered by typing `:` in normal mode. Your cursor will jump
-to the command line at the bottom of the screen upon pressing `:`. This mode
-has many functionalities, including opening, saving, and closing files, and
-[quitting Vim](https://twitter.com/iamdevloper/status/435555976687923200).
+在正常模式下键入 `:` 进入命令行模式。 在键入 `:` 后，你的光标会立即跳到屏幕下方的命令行。
+这个模式有很多功能， 包括打开， 保存， 关闭文件， 以及
+[退出 Vim](https://twitter.com/iamdevloper/status/435555976687923200)。
 
-- `:q` quit (close window)
-- `:w` save ("write")
-- `:wq` save and quit
-- `:e {name of file}` open file for editing
-- `:ls` show open buffers
-- `:help {topic}` open help
-    - `:help :w` opens help for the `:w` command
-    - `:help w` opens help for the `w` movement
+- `:q` 退出 （关闭窗口）
+- `:w` 保存 （写）
+- `:wq` 保存然后退出
+- `:e {文件名}` 打开要编辑的文件
+- `:ls` 显示打开的缓存
+- `:help {标题}` 打开帮助文档
+    - `:help :w` 打开 `:w` 命令的帮助文档
+    - `:help w` 打开 `w` 移动的帮助文档
 
 # Vim 的接口其实是一种编程语言
 
-The most important idea in Vim is that Vim's interface itself is a programming
-language. Keystrokes (with mnemonic names) are commands, and these commands
-_compose_. This enables efficient movement and edits, especially once the
-commands become muscle memory.
+Vim 最重要的设计思想是 Vim 的界面本省是一个程序语言。 键入操作 （以及他们的助记名）
+本身是命令， 这些命令可以组合使用。 这使得移动和编辑更加高效，特别是一旦形成肌肉记忆。
 
 ## 移动
 
