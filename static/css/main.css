@@ -234,7 +234,7 @@ hr {
 
 #top-nav {
   max-width: 75rem;
-  padding-left:8rem;
+  /* padding-left:8rem; */
   margin: auto;
   text-align: center;
 }
