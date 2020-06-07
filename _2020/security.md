@@ -231,7 +231,7 @@ security concepts, tips
 - [Cryptographic Right Answers](https://latacora.micro.blog/2018/04/03/cryptographic-right-answers.html): 
 解答了在一些应用环境下“应该使用什么加密？”的问题
 
-# 练习
+# 课后练习
 
 1. **熵**
     1. 假设一个密码是从五个小写的单词拼接组成，每个单词都是从一个含有10万单词的字典中随机选择，且每个单词选中的概率相同。
