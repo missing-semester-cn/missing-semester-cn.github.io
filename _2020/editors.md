@@ -320,99 +320,93 @@ notebooks](https://github.com/lambdalisue/jupyter-vim-binding) 中用 Vim 绑定
 
 # Vim 进阶
 
-Here are a few examples to show you the power of the editor. We can't teach you
-all of these kinds of things, but you'll learn them as you go. A good
-heuristic: whenever you're using your editor and you think "there must be a
-better way of doing this", there probably is: look it up online.
+这里我们提供了一些展示这个编辑器能力的例子。我们无法把所有的这样的事情都教给你， 但是你
+可以在使用中学习。 一个好的对策是: 当你在使用你的编辑器的时候感觉 “一定有更好的方法来做这个”，
+那么很可能真的有： 上网搜寻一下。
 
 ## 搜索和替换
 
-`:s` (substitute) command ([documentation](http://vim.wikia.com/wiki/Search_and_replace)).
+`:s` （替换） 命令 （[文档](http://vim.wikia.com/wiki/Search_and_replace)）。
 
 - `%s/foo/bar/g`
-    - replace foo with bar globally in file
+    - 在整个文件中将 foo 全局替换成 bar
 - `%s/\[.*\](\(.*\))/\1/g`
-    - replace named Markdown links with plain URLs
+    - 将有命名的 Markdown 链接替换成简单 URLs
 
 ## 多窗口
 
-- `:sp` / `:vsp` to split windows
-- Can have multiple views of the same buffer.
+- 用 `:sp` / `:vsp` 来分割窗口 
+- 能有一个缓存的多个视角。
 
 ## 宏
 
-- `q{character}` to start recording a macro in register `{character}`
-- `q` to stop recording
-- `@{character}` replays the macro
-- Macro execution stops on error
-- `{number}@{character}` executes a macro {number} times
-- Macros can be recursive
-    - first clear the macro with `q{character}q`
-    - record the macro, with `@{character}` to invoke the macro recursively
-    (will be a no-op until recording is complete)
-- Example: convert xml to json ([file](/2020/files/example-data.xml))
-    - Array of objects with keys "name" / "email"
-    - Use a Python program?
-    - Use sed / regexes
+- `q{字符}` 来开始在寄存器 `{字符` 中录制宏
+- `q` 停止录制
+- `@{字符}` 重放宏
+- 宏的执行遇错误会停止
+- `{计数}@{字符}` 执行一个宏 {计数} 次
+- 宏可以递归
+    - 首先用 `q{字符}q` 清除宏
+    - 录制该宏， 用 `@{字符}` 来递归调用该宏
+    （在录制完成之前不会有任何操作）
+- 例子： 将 xml 转成 json ([file](/2020/files/example-data.xml))
+    - 一个有 "name" / "email" 键对象的数组
+    - 用一个 Python 程序？
+    - 用 sed / 正则表达式
         - `g/people/d`
         - `%s/<person>/{/g`
         - `%s/<name>\(.*\)<\/name>/"name": "\1",/g`
         - ...
-    - Vim commands / macros
-        - `Gdd`, `ggdd` delete first and last lines
-        - Macro to format a single element (register `e`)
-            - Go to line with `<name>`
+    - Vim 命令 / 宏
+        - `Gdd`, `ggdd` 删除第一行和最后一行
+        - 格式化最后一个元素的宏 （寄存器 `e`）
+            - 到有 `<name>` 的行
             - `qe^r"f>s": "<ESC>f<C"<ESC>q`
-        - Macro to format a person
-            - Go to line with `<person>`
+        - 格式化一个人的宏
+            - 到有 `<person>` 的行
             - `qpS{<ESC>j@eA,<ESC>j@ejS},<ESC>q`
-        - Macro to format a person and go to the next person
-            - Go to line with `<person>`
+        - 格式化一个人然后转到另外一个人的宏
+            - 到有 `<person>` 的行
             - `qq@pjq`
-        - Execute macro until end of file
+        - 执行宏到文件尾
             - `999@q`
-        - Manually remove last `,` and add `[` and `]` delimiters
+        - 手动移除最后的 `,` 然后加上 `[` 和 `]` 分隔符
 
 # 扩展资料
 
-- `vimtutor` is a tutorial that comes installed with Vim
-- [Vim Adventures](https://vim-adventures.com/) is a game to learn Vim
+- `vimtutor` 是一个 Vim 安装时自带的教程
+- [Vim Adventures](https://vim-adventures.com/) 是一个学习使用 Vim 的游戏
 - [Vim Tips Wiki](http://vim.wikia.com/wiki/Vim_Tips_Wiki)
-- [Vim Advent Calendar](https://vimways.org/2019/) has various Vim tips
-- [Vim Golf](http://www.vimgolf.com/) is [code golf](https://en.wikipedia.org/wiki/Code_golf), but where the programming language is Vim's UI
+- [Vim Advent Calendar](https://vimways.org/2019/) 有很多 Vim 小技巧
+- [Vim Golf](http://www.vimgolf.com/) 是用 Vim 的用户界面作为程序语言的 [code golf](https://en.wikipedia.org/wiki/Code_golf)
 - [Vi/Vim Stack Exchange](https://vi.stackexchange.com/)
 - [Vim Screencasts](http://vimcasts.org/)
-- [Practical Vim](https://pragprog.com/book/dnvim2/practical-vim-second-edition) (book)
+- [Practical Vim](https://pragprog.com/book/dnvim2/practical-vim-second-edition) （书）
 
 # 课后练习
 
-1. Complete `vimtutor`. Note: it looks best in a
-   [80x24](https://en.wikipedia.org/wiki/VT100) (80 columns by 24 lines)
-   terminal window.
-1. Download our [basic vimrc](/2020/files/vimrc) and save it to `~/.vimrc`. Read
-   through the well-commented file (using Vim!), and observe how Vim looks and
-   behaves slightly differently with the new config.
-1. Install and configure a plugin:
+1. 完成 `vimtutor`。 备注： 它在一个
+   [80x24](https://en.wikipedia.org/wiki/VT100) （80 列， 24 行）
+   终端窗口看起来最好。
+1. 下载我们的 [基本 vimrc](/2020/files/vimrc)， 然后把它保存到 `~/.vimrc`。 通读这个注释详细的文件
+   （用 Vim!）， 然后观察 Vim 在这个新的设置下看起来和使用起来有哪些细微的区别。
+1. 安装和配置一个插件：
    [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim).
-   1. Create the plugins directory with `mkdir -p ~/.vim/pack/vendor/start`
-   1. Download the plugin: `cd ~/.vim/pack/vendor/start; git clone
+   1. 用 `mkdir -p ~/.vim/pack/vendor/start` 创建插件文件夹
+   1. 下载这个插件： `cd ~/.vim/pack/vendor/start; git clone
       https://github.com/ctrlpvim/ctrlp.vim`
-   1. Read the
-      [documentation](https://github.com/ctrlpvim/ctrlp.vim/blob/master/readme.md)
-      for the plugin. Try using CtrlP to locate a file by navigating to a
-      project directory, opening Vim, and using the Vim command-line to start
+   1. 读这个插件的
+      [文档](https://github.com/ctrlpvim/ctrlp.vim/blob/master/readme.md)。
+       尝试用 CtrlP 来在一个工程文件夹里定位一个文件， 打开 Vim, 然后用 Vim 命令控制行开始
       `:CtrlP`.
-    1. Customize CtrlP by adding
+    1. 自定义 CtrlP： 添加
        [configuration](https://github.com/ctrlpvim/ctrlp.vim/blob/master/readme.md#basic-options)
-       to your `~/.vimrc` to open CtrlP by pressing Ctrl-P.
-1. To practice using Vim, re-do the [Demo](#demo) from lecture on your own
-   machine.
-1. Use Vim for _all_ your text editing for the next month. Whenever something
-   seems inefficient, or when you think "there must be a better way", try
-   Googling it, there probably is. If you get stuck, come to office hours or
-   send us an email.
-1. Configure your other tools to use Vim bindings (see instructions above).
-1. Further customize your `~/.vimrc` and install more plugins.
-1. (Advanced) Convert XML to JSON ([example file](/2020/files/example-data.xml))
-   using Vim macros. Try to do this on your own, but you can look at the
-   [macros](#macros) section above if you get stuck.
+       到你的 `~/.vimrc` 来用按 Ctrl-P 打开 CtrlP
+1. 练习使用 Vim, 在你自己的机器上重做 [演示](#demo)。
+1. 下个月用 Vim 做你 _所有_ 文件编辑。 每当不够高效的时候, 或者你感觉 “一定有一个更好的方式”，
+   尝试求助搜索引擎， 很有可能有一个更好的方式。 如果你遇到难题， 来我们的答疑时间或者给我们发邮件。
+1. 在你的其他工具中设置 Vim 绑定 （见上面的操作指南）。
+1. 进一步自定义你的 `~/.vimrc` 和安装更多插件。
+1. （高阶） 用 Vim 宏将 XML 转换到 JSON ([例子文件](/2020/files/example-data.xml))。
+   尝试着先完全自己做， 但是在你卡住的时候可以查看上面
+   [宏](#macros) 章节。
