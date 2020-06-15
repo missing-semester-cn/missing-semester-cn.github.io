@@ -11,14 +11,14 @@ video:
 ## 目录
 
 - [目录](#%e7%9b%ae%e5%bd%95)
-- [Keyboard remapping](#keyboard-remapping)
-- [Daemons](#daemons)
+- [修改键位映射](#%E4%BF%AE%E6%94%B9%E9%94%AE%E4%BD%8D%E6%98%A0%E5%B0%84)
+- [守护进程](#%E5%AE%88%E6%8A%A4%E8%BF%9B%E7%A8%8B)
 - [FUSE](#fuse)
-- [Backups](#backups)
+- [备份](#%E5%A4%87%E4%BB%BD)
 - [APIs](#apis)
 - [Common command-line flags/patterns](#common-command-line-flagspatterns)
 - [Window managers](#window-managers)
-- [VPNs](#vpns)
+- [VPN](#vpn)
 - [Markdown](#markdown)
 - [Hammerspoon (desktop automation on macOS)](#hammerspoon-desktop-automation-on-macos)
   - [Resources](#resources)
@@ -27,33 +27,31 @@ video:
 - [Notebook programming](#notebook-programming)
 - [GitHub](#github)
 
-## Keyboard remapping
+## 修改键位映射
+作为一名程序员，键盘是你的主要输入工具。它像电脑里的其他部件一样是可配置的，而且值得你在这上面花时间。
 
-As a programmer, your keyboard is your main input method. As with pretty much anything in your computer, it is configurable (and worth configuring).
+一个很常见的配置是修改键位映射。通常这个功能由在电脑上运行的软件实现。当某一个按键被按下，软件截获键盘发出的按键事件（keypress event）并使用另外一个事件取代。比如：
+- 将Caps Lock映射为Ctrl或者Escape。Caps Lock使用了键盘上一个非常方便的位置而它的功能却很少被用到，所以我们（讲师）非常推荐这个修改。
+- 将PrtSc映射为播放/暂停。大部分操作系统支持播放/暂停键。
+- 交换Ctrl和Meta键（Windows的徽标键或者Mac的Command键）。
 
-The most basic change is to remap keys.
-This usually involves some software that is listening and, whenever a certain key is pressed, it intercepts that event and replaces it with another event corresponding to a different key. Some examples:
-- Remap Caps Lock to Ctrl or Escape. We (the instructors) highly encourage this setting since Caps Lock has a very convenient location but is rarely used.
-- Remapping PrtSc to Play/Pause music. Most OSes have a play/pause key.
-- Swapping Ctrl and the Meta (Windows or Command) key.
+你也可以将键位映射为任意常用的指令。软件监听到特定的按键组合后会运行设定的脚本。
+- 打开一个新的终端或者浏览器窗口。
+- 输出特定的字符串，比如：一个超长邮件地址或者MIT ID。
+- 使电脑或者显示器进入睡眠模式。
 
-You can also map keys to arbitrary commands of your choosing. This is useful for common tasks that you perform. Here, some software listens for a specific key combination and executes some script whenever that event is detected.
-- Open a new terminal or browser window.
-- Inserting some specific text, e.g. your long email address or your MIT ID number.
-- Sleeping the computer or the displays.
+甚至更复杂的修改也可以通过软件实现：
+- 映射按键顺序，比如：按Shift键五下切换大小写锁定。
+- 区别映射单点和长按，比如：单点Caps Lock映射为Escape，而长按Caps Lock映射为Ctrl。
+- 对不同的键盘或软件保存专用的映射配置。
 
-There are even more complex modifications you can configure:
-- Remapping sequences of keys, e.g. pressing shift five times toggles Caps Lock.
-- Remapping on tap vs on hold, e.g. Caps Lock key is remapped to Esc if you quickly tap it, but is remapped to Ctrl if you hold it and use it as a modifier.
-- Having remaps being keyboard or software specific.
+下面是一些修改键位映射的软件：
+- macOS - [karabiner-elements](https://pqrs.org/osx/karabiner/), [skhd](https://github.com/koekeishiya/skhd) 或者 [BetterTouchTool](https://folivora.ai/)
+- Linux - [xmodmap](https://wiki.archlinux.org/index.php/Xmodmap) 或者 [Autokey](https://github.com/autokey/autokey)
+- Windows - 控制面板，[AutoHotkey](https://www.autohotkey.com/) 或者 [SharpKeys](https://www.randyrants.com/category/sharpkeys/)
+- QMK - 如果你的键盘支持定制固件，[QMK](https://docs.qmk.fm/) 可以直接在键盘的硬件上修改键位映射。保留在键盘里的映射免除了在别的机器上的重复配置。
 
-Some software resources to get started on the topic:
-- macOS - [karabiner-elements](https://pqrs.org/osx/karabiner/), [skhd](https://github.com/koekeishiya/skhd) or [BetterTouchTool](https://folivora.ai/)
-- Linux - [xmodmap](https://wiki.archlinux.org/index.php/Xmodmap) or [Autokey](https://github.com/autokey/autokey)
-- Windows - Builtin in Control Panel, [AutoHotkey](https://www.autohotkey.com/) or [SharpKeys](https://www.randyrants.com/category/sharpkeys/)
-- QMK - If your keyboard supports custom firmware you can use [QMK](https://docs.qmk.fm/) to configure the hardware device itself so the remaps works for any machine you use the keyboard with.
-
-## Daemons
+## 守护进程
 
 You are probably already familiar with the notion of daemons, even if the word seems new.
 Most computers have a series of processes that are always running in the background rather than waiting for a user to launch them and interact with them.
@@ -85,7 +83,8 @@ Restart=on-failure
 WantedBy=multi-user.target
 ```
 
-Also, if you just want to run some program with a given frequency there is no need to build a custom daemon, you can use [`cron`](http://man7.org/linux/man-pages/man8/cron.8.html), a daemon your system already runs to perform scheduled tasks.
+如果你只是想定期运行一些程序，可以直接使用[`cron`](http://man7.org/linux/man-pages/man8/cron.8.html)。它是一个系统内置的，用来执行定期任务的守护进程。
+
 
 ## FUSE
 
@@ -108,28 +107,19 @@ Some interesting examples of FUSE filesystems are:
 - [kbfs](https://keybase.io/docs/kbfs) - Distributed filesystem with end-to-end encryption. You can have private, shared and public folders.
 - [borgbackup](https://borgbackup.readthedocs.io/en/stable/usage/mount.html) - Mount your deduplicated, compressed and encrypted backups for ease of browsing.
 
-## Backups
+## 备份
 
-Any data that you haven’t backed up is data that could be gone at any moment, forever.
-It's easy to copy data around, it's hard to reliable backup data.
-Here are some good backup basics and the pitfalls of some approaches.
+任何没有备份的数据都可能在一个瞬间永远消失。复制数据很简单，但是可靠的备份数据很难。下面列举了一些关于备份的基础知识，以及一些备份方法容易掉进的陷阱。
 
-First, a copy of the data in the same disk is not a backup, because the disk is the single point of failure for all the data. Similarly, an external drive in your home is also a weak backup solution since it could be lost in a fire/robbery/&c. Instead, having an off-site backup is a recommended practice.
+首先，复制存储在同一个磁盘上的数据不是备份，因为这个磁盘是一个单点故障（single point of failure）。这个磁盘一旦出现问题，所有的数据都可能丢失。放在家里的外置磁盘因为火灾、抢劫等原因可能会和源数据一起丢失，所以是一个弱备份。推荐的做法是将数据备份到不同的地点存储。
 
-Synchronization solutions are not backups. For instance, Dropbox/GDrive are convenient solutions, but when data is erased or corrupted they propagate the change. For the same reason, disk mirroring solutions like RAID are not backups. They don't help if data gets deleted, corrupted or encrypted by ransomware.
+同步方案也不是备份。即使方便如Dropbox或者Google Drive，当数据在本地被抹除或者损坏，同步方案可能会把这些“更改”同步到云端。同理，像RAID这样的磁盘镜像方案也不是备份。它不能防止文件被意外删除、损坏、或者被勒索软件加密。
 
-Some core features of good backups solutions are versioning, deduplication and security.
-Versioning backups ensure that you can access your history of changes and efficiently recover files.
-Efficient backup solutions use data deduplication to only store incremental changes and reduce the storage overhead.
-Regarding security, you should ask yourself what someone would need to know/have in order to read your data and, more importantly, to delete all your data and associated backups.
-Lastly, blindly trusting backups is a terrible idea and you should verify regularly that you can use them to recover data.
+有效备份方案的几个核心特性是：版本控制，删除重复数据，以及安全性。对备份的数据实施版本控制保证了用户可以从任何记录过的历史版本中恢复数据。在备份中检测并删除重复数据，使其仅备份增量变化可以减少存储开销。在安全性方面，作为用户，你应该考虑别人需要有什么信息或者工具才可以访问或者完全删除你的数据及备份。最后一点，不要盲目信任备份方案。用户应该经常检查备份是否可以用来恢复数据。
 
-Backups go beyond local files in your computer.
-Given the significant growth of web applications, large amounts of your data are only stored in the cloud.
-For instance, your webmail, social media photos, music playlists in streaming services or online docs are gone if you lose access to the corresponding accounts.
-Having an offline copy of this information is the way to go, and you can find online tools that people have built to fetch the data and save it.
+备份不限制于备份在本地计算机上的文件。云端应用的重大发展使得我们很多的数据只存储在云端。当我们无法登录这些应用，在云端存储的网络邮件，社交网络上的照片，流媒体音乐播放列表，以及在线文档等等都会随之丢失。用户应该有这些数据的离线备份，而且已经有项目可以帮助下载并存储它们。
 
-For a more detailed explanation, see 2019's lecture notes on [Backups](/2019/backups).
+如果想要了解更多具体内容，请参考本课程2019年关于备份的[课堂笔记](/2019/backups)。
 
 
 ## APIs
@@ -220,76 +210,36 @@ windows with your keyboard, and you can resize them and move them
 around, all without touching the mouse. They are worth looking into!
 
 
-## VPNs
+## VPN
 
-VPNs are all the rage these days, but it's not clear that's for [any
-good reason](https://gist.github.com/joepie91/5a9909939e6ce7d09e29). You
-should be aware of what a VPN does and does not get you. A VPN, in the
-best case, is _really_ just a way for you to change your internet
-service provider as far as the internet is concerned. All your traffic
-will look like it's coming from the VPN provider instead of your "real"
-location, and the network you are connected to will only see encrypted
-traffic.
+VPN现在非常火，但我们不清楚这是不是因为[一些好的理由](https://gist.github.com/joepie91/5a9909939e6ce7d09e29)。你应该了解VPN能提供的功能和它的限制。使用了VPN的你对于互联网而言，**最好的情况**下也就是换了一个网络供应商（ISP）。所有你发出的流量看上去来源于VPN供应商的网络而不是你的“真实”地址，而你实际接入的网络只能看到加密的流量。
 
-While that may seem attractive, keep in mind that when you use a VPN,
-all you are really doing is shifting your trust from you current ISP to
-the VPN hosting company. Whatever your ISP _could_ see, the VPN provider
-now sees _instead_. If you trust them _more_ than your ISP, that is a
-win, but otherwise, it is not clear that you have gained much. If you
-are sitting on some dodgy unencrypted public Wi-Fi at an airport, then
-maybe you don't trust the connection much, but at home, the trade-off is
-not quite as clear.
+虽然这听上去非常诱人，但是你应该知道使用VPN只是把原本对网络供应商的信任放在了VPN供应商那里——网络供应商 _能看到的_，VPN供应商 _也都能看到_。如果相比网络供应商你更信任VPN供应商，那当然很好。反之，则连接VPN的价值不明确。机场的不加密公共热点确实不可以信任，但是在家庭网络环境里，这个差异就没有那么明显。
 
-You should also know that these days, much of your traffic, at least of
-a sensitive nature, is _already_ encrypted through HTTPS or TLS more
-generally. In that case, it usually matters little whether you are on
-a "bad" network or not -- the network operator will only learn what
-servers you talk to, but not anything about the data that is exchanged.
+你也应该了解现在大部分包含用户敏感信息的流量已经被HTTPS或者TLS加密。这种情况下你所处的网络环境是否“安全”不太重要：供应商只能看到你和哪些服务器在交谈，却不能看到你们交谈的内容。
 
-Notice that I said "in the best case" above. It is not unheard of for
-VPN providers to accidentally misconfigure their software such that the
-encryption is either weak or entirely disabled. Some VPN providers are
-malicious (or at the very least opportunist), and will log all your
-traffic, and possibly sell information about it to third parties.
-Choosing a bad VPN provider is often worse than not using one in the
-first place.
+这一切的大前提都是“最好的情况”。曾经发生过VPN提供商错误使用弱加密或者直接禁用加密的先例。另外，有些恶意的或者带有投机心态的供应商会记录和你有关的所有流量，并很可能会将这些信息卖给第三方。找错一家VPN经常比一开始就不用VPN更危险。
 
-In a pinch, MIT [runs a VPN](https://ist.mit.edu/vpn) for its students,
-so that may be worth taking a look at. Also, if you're going to roll
-your own, give [WireGuard](https://www.wireguard.com/) a look.
+MIT向有访问校内资源需求的成员开放自己运营的[VPN](https://ist.mit.edu/vpn)。如果你也想自己配置一个VPN，可以了解一下 [WireGuard](https://www.wireguard.com/) 以及 [Algo](https://github.com/trailofbits/algo)。
 
 ## Markdown
 
-There is a high chance that you will write some text over the course of
-your career. And often, you will want to mark up that text in simple
-ways. You want some text to be bold or italic, or you want to add
-headers, links, and code fragments. Instead of pulling out a heavy tool
-like Word or LaTeX, you may want to consider using the lightweight
-markup language [Markdown](https://commonmark.org/help/).
+你在职业生涯中大概率会编写各种各样的文档。在很多情况下这些文档需要使用标记来增加可读性，比如：插入粗体或者斜体内容，增加页眉、超链接、以及代码片段。
 
-You have probably seen Markdown already, or at least some variant of it.
-Subsets of it are used and supported almost everywhere, even if it's not
-under the name Markdown. At its core, Markdown is an attempt to codify
-the way that people already often mark up text when they are writing
-plain text documents. Emphasis (*italics*) is added by surrounding a
-word with `*`. Strong emphasis (**bold**) is added using `**`. Lines
-starting with `#` are headings (and the number of `#`s is the subheading
-level). Any line starting with `-` is a bullet list item, and any line
-starting with a number + `.` is a numbered list item. Backtick is used
-to show words in `code font`, and a code block can be entered by
-indenting a line with four spaces or surrounding it with
-triple-backticks:
+在不使用Word或者LaTeX等复杂工具的情况下，你可以考虑使用 [Markdown](https://commonmark.org/help/) 这个轻量化的标记语言（markup language）。你可能已经见过Markdown或者它的一个变种。很多环境都支持并使用Markdown的一些子功能。
+
+Markdown致力于将人们编写纯文本时的一些习惯标准化。比如：
+- 用`*`包围的文字表示强调（*斜体*），或者用`**`表示特别强调（**粗体**）。
+- 以`#`开头的行是标题，`#`的数量表示标题的级别，比如：`##二级标题`。
+- 以`-`开头代表一个无序列表的元素。一个数字加`.`（比如`1.`）代表一个有序列表元素。
+- 反引号`` ` ``（backtick）包围的文字会以`代码字体`显示。如果要显示一段代码，可以在每一行前加四个空格缩进，或者使用三个反引号包围整个代码片段。
 
     ```
-    code goes here
+    就像这样
     ```
+- 如果要添加超链接，将 _需要显示_ 的文字用方括号包围，并在后面紧接着用圆括号包围链接：`[显示文字](指向的链接)`。
 
-To add a link, place the _text_ for the link in square brackets,
-and the URL immediately following that in parentheses: `[name](url)`.
-Markdown is easy to get started with, and you can use it nearly
-everywhere. In fact, the lecture notes for this lecture, and all the
-others, are written in Markdown, and you can see the raw Markdown
-[here](https://raw.githubusercontent.com/missing-semester/missing-semester/master/_2020/potpourri.md).
+Markdown不仅容易上手，而且应用非常广泛。实际上本课程的课堂笔记和其他资料都是使用Markdown编写的。点击[这个链接](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/potpourri.md)可以看到本页面的原始Markdown内容。
 
 
 
@@ -344,32 +294,24 @@ you can use a live USB to recover data or fix the operating system.
 
 ## Docker, Vagrant, VMs, Cloud, OpenStack
 
-[Virtual machines](https://en.wikipedia.org/wiki/Virtual_machine) and similar
-tools like containers let you emulate a whole computer system, including the
-operating system. This can be useful for creating an isolated environment for
-testing, development, or exploration (e.g. running potentially malicious code).
+[虚拟机](https://en.wikipedia.org/wiki/Virtual_machine)（Virtual Machine）以及如容器化（containerization）等工具可以帮助你模拟一个包括操作系统的完整计算机系统。虚拟机可以用于创建独立的测试或者开发环境，以及用作安全测试的沙盒。
 
-[Vagrant](https://www.vagrantup.com/) is a tool that lets you describe machine
-configurations (operating system, services, packages, etc.) in code, and then
-instantiate VMs with a simple `vagrant up`. [Docker](https://www.docker.com/)
-is conceptually similar but it uses containers instead.
+[Vagrant](https://www.vagrantup.com/) 是一个构建和配置虚拟开发环境的工具。它支持用户在配置文件中写入比如操作系统、系统服务、需要安装的软件包等描述，然后使用`vagrant up`命令在各种环境（VirtualBox，KVM，Hyper-V等）中启动一个虚拟机。[Docker](https://www.docker.com/) 是一个使用容器化概念的类似工具。
 
-You can rent virtual machines on the cloud, and it's a nice way to get instant
-access to:
+租用云端虚拟机可以享受以下资源的即时访问：
 
-- A cheap always-on machine that has a public IP address, used to host services
-- A machine with a lot of CPU, disk, RAM, and/or GPU
-- Many more machines than you physically have access to (billing is often by
-the second, so if you want a lot of computing for a short amount of time, it's
-feasible to rent 1000 computers for a couple of minutes)
+- 便宜、常开、且有公共IP地址的虚拟机用来托管网站等服务
+- 有大量CPU、磁盘、内存、以及GPU资源的虚拟机
+- 超出用户可以使用的物理主机数量的虚拟机
+  - 相比物理主机的固定开支，虚拟机的开支一般按运行的时间计算。所以如果用户只需要在短时间内使用大量算力，租用1000台虚拟机运行几分钟明显更加划算。
 
-Popular services include [Amazon AWS](https://aws.amazon.com/), [Google
-Cloud](https://cloud.google.com/), and
-[DigitalOcean](https://www.digitalocean.com/).
+受欢迎的VPS服务商有 [Amazon AWS](https://aws.amazon.com/)，[Google
+Cloud](https://cloud.google.com/)，以及
+[DigitalOcean](https://www.digitalocean.com/)。
 
-If you're a member of MIT CSAIL, you can get free VMs for research purposes
-through the [CSAIL OpenStack
-instance](https://tig.csail.mit.edu/shared-computing/open-stack/).
+MIT CSAIL的成员可以使用 [CSAIL OpenStack
+instance](https://tig.csail.mit.edu/shared-computing/open-stack/)
+申请免费的虚拟机用于研究。
 
 ## Notebook programming
 
@@ -383,32 +325,11 @@ programming environment that's great for doing math-oriented programming.
 
 ## GitHub
 
-[GitHub](https://github.com/) is one of the most popular platforms for
-open-source software development. Many of the tools we've talked about in this
-class, from [vim](https://github.com/vim/vim) to
-[Hammerspoon](https://github.com/Hammerspoon/hammerspoon), are hosted on
-GitHub. It's easy to get started contributing to open-source to help improve
-the tools that you use every day.
+[GitHub](https://github.com/) 是最受欢迎的开源软件开发平台之一。我们课程中提到的很多工具，从[vim](https://github.com/vim/vim) 到
+[Hammerspoon](https://github.com/Hammerspoon/hammerspoon)，都托管在Github上。向你每天使用的开源工具作出贡献其实很简单，下面是两种贡献者们经常使用的方法：
 
-There are two primary ways in which people contribute to projects on GitHub:
+- 创建一个[议题（issue）](https://help.github.com/en/github/managing-your-work-on-github/creating-an-issue)。
+议题可以用来反映软件运行的问题或者请求新的功能。创建议题并不需要创建者阅读或者编写代码，所以它是一个轻量化的贡献方式。高质量的问题报告对于开发者十分重要。在现有的议题发表评论也可以对项目的开发作出贡献。
+- 使用[拉取请求（pull request）](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)提交代码更改。由于涉及到阅读和编写代码，提交拉取请求总的来说比创建议题更加深入。拉取请求是请求别人把你自己的代码拉取（且合并）到他们的仓库里。很多开源项目仅允许认证的管理者管理项目代码，所以一般需要[复刻（fork）](https://help.github.com/en/github/getting-started-with-github/fork-a-repo)这些项目的上游仓库（upstream repository），在你的Github账号下创建一个内容完全相同但是由你控制的复刻仓库。这样你就可以在这个复刻仓库自由创建新的分支并推送修复问题或者实现新功能的代码。完成修改以后再回到开源项目的Github页面[创建一个拉取请求](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)。
 
-- Creating an
-[issue](https://help.github.com/en/github/managing-your-work-on-github/creating-an-issue).
-This can be used to report bugs or request a new feature. Neither of these
-involves reading or writing code, so it can be pretty lightweight to do.
-High-quality bug reports can be extremely valuable to developers. Commenting on
-existing discussions can be helpful too.
-- Contribute code through a [pull
-request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests).
-This is generally more involved than creating an issue. You can
-[fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo)
-a repository on GitHub, clone your fork, create a new branch, make some changes
-(e.g. fix a bug or implement a feature), push the branch, and then [create a
-pull
-request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
-After this, there will generally be some back-and-forth with the project
-maintainers, who will give you feedback on your patch. Finally, if all goes
-well, your patch will be merged into the upstream repository. Often times,
-larger projects will have a contributing guide, tag beginner-friendly issues,
-and some even have mentorship programs to help first-time contributors become
-familiar with the project.
+提交请求后，项目管理者会和你交流拉取请求里的代码并给出反馈。如果没有问题，你的代码会和上游仓库中的代码合并。很多大的开源项目会提供贡献指南，容易上手的议题，甚至专门的指导项目来帮助参与者熟悉这些项目。
