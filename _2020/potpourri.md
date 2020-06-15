@@ -20,8 +20,8 @@ video:
 - [Window managers](#window-managers)
 - [VPN](#vpn)
 - [Markdown](#markdown)
-- [Hammerspoon (desktop automation on macOS)](#hammerspoon-desktop-automation-on-macos)
-  - [Resources](#resources)
+- [Hammerspoon (macOS桌面自动化)](#Hammerspoon%20(macOS%E6%A1%8C%E9%9D%A2%E8%87%AA%E5%8A%A8%E5%8C%96))
+  - [资源](#%E8%B5%84%E6%BA%90)
 - [Booting + Live USBs](#booting--live-usbs)
 - [Docker, Vagrant, VMs, Cloud, OpenStack](#docker-vagrant-vms-cloud-openstack)
 - [Notebook programming](#notebook-programming)
@@ -88,24 +88,18 @@ WantedBy=multi-user.target
 
 ## FUSE
 
-Modern software systems are usually composed of smaller building blocks that are composed together.
-Your operating system supports using different filesystem backends because there is a common language of what operations a filesystem supports.
-For instance, when you run `touch` to create a file, `touch` performs a system call to the kernel to create the file and the kernel performs the appropriate filesystem call to create the given file.
-A caveat is that UNIX filesystems are traditionally implemented as kernel modules and only the kernel is allowed to perform filesystem calls.
+现在的软件系统一般由很多模块化的组件构建而成。你使用的操作系统可以通过一系列共同的方式使用不同的文件系统上的相似功能。比如当你使用`touch`命令创建文件的时候，`touch`使用系统调用（system call）向内核发出请求。内核再根据文件系统，调用特有的方法来创建文件。这里的问题是，UNIX文件系统在传统上是以内核模块的形式实现，导致只有内核可以进行文件系统相关的调用。
 
-[FUSE](https://en.wikipedia.org/wiki/Filesystem_in_Userspace) (Filesystem in User Space) allows filesystems to be implemented by a user program. FUSE lets users run user space code for filesystem calls and then bridges the necessary calls to the kernel interfaces.
-In practice, this means that users can implement arbitrary functionality for filesystem calls.
+[FUSE](https://en.wikipedia.org/wiki/Filesystem_in_Userspace)（Filesystem in User Space）允许运行在用户空间上的程序实现文件系统调用，并将这些调用与内核接口联系起来。在实践中，这意味着用户可以在文件系统调用中实现任意功能。
 
-For example, FUSE can be used so whenever you perform an operation in a virtual filesystem, that operation is forwarded through SSH to a remote machine, performed there, and the output is returned back to you.
-This way, local programs can see the file as if it was in your computer while in reality it's in a remote server.
-This is effectively what `sshfs` does.
+FUSE可以用于实现如：一个将所有文件系统操作都使用SSH转发到远程主机，由远程主机处理后返回结果到本地计算机的虚拟文件系统。这个文件系统里的文件虽然存储在远程主机，对于本地计算机上的软件而言和存储在本地别无二致。`sshfs`就是一个实现了这种功能的FUSE文件系统。
 
-Some interesting examples of FUSE filesystems are:
-- [sshfs](https://github.com/libfuse/sshfs) - Open locally remote files/folder through an SSH connection.
-- [rclone](https://rclone.org/commands/rclone_mount/) - Mount cloud storage services like Dropbox, GDrive, Amazon S3 or Google Cloud Storage and open data locally.
-- [gocryptfs](https://nuetzlich.net/gocryptfs/) - Encrypted overlay system. Files are stored encrypted but once the FS is mounted they appear as plaintext in the mountpoint.
-- [kbfs](https://keybase.io/docs/kbfs) - Distributed filesystem with end-to-end encryption. You can have private, shared and public folders.
-- [borgbackup](https://borgbackup.readthedocs.io/en/stable/usage/mount.html) - Mount your deduplicated, compressed and encrypted backups for ease of browsing.
+一些有趣的FUSE文件系统包括：
+- [sshfs](https://github.com/libfuse/sshfs)：使用SSH连接在本地打开远程主机上的文件。
+- [rclone](https://rclone.org/commands/rclone_mount/)：将Dropbox、Google Drive、Amazon S3、或者Google Cloud Storage一类的云存储服务挂载到本地系统上。
+- [gocryptfs](https://nuetzlich.net/gocryptfs/)：覆盖在加密文件上的文件系统。文件以加密形式保存在磁盘里，但该文件系统挂载后用户可以直接从挂载点访问文件的明文。
+- [kbfs](https://keybase.io/docs/kbfs)：分布式端到端加密文件系统。在这个文件系统里有私密（private），共享（shared），以及公开（public）三种类型的文件夹。
+- [borgbackup](https://borgbackup.readthedocs.io/en/stable/usage/mount.html)：方便用户浏览删除重复数据后压缩过的加密备份。
 
 ## 备份
 
@@ -243,7 +237,7 @@ Markdown不仅容易上手，而且应用非常广泛。实际上本课程的课
 
 
 
-## Hammerspoon (desktop automation on macOS)
+## Hammerspoon (macOS桌面自动化)
 
 [Hammerspoon](https://www.hammerspoon.org/) is a desktop automation framework
 for macOS. It lets you write Lua scripts that hook into operating system
