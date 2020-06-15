@@ -17,7 +17,7 @@ video:
 - [备份](#%E5%A4%87%E4%BB%BD)
 - [APIs](#apis)
 - [Common command-line flags/patterns](#common-command-line-flagspatterns)
-- [Window managers](#window-managers)
+- [窗口管理器](#%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86%E5%99%A8)
 - [VPN](#vpn)
 - [Markdown](#markdown)
 - [Hammerspoon (macOS桌面自动化)](#Hammerspoon%20(macOS%E6%A1%8C%E9%9D%A2%E8%87%AA%E5%8A%A8%E5%8C%96))
@@ -53,34 +53,38 @@ video:
 
 ## 守护进程
 
-You are probably already familiar with the notion of daemons, even if the word seems new.
-Most computers have a series of processes that are always running in the background rather than waiting for a user to launch them and interact with them.
-These processes are called daemons and the programs that run as daemons often end with a `d` to indicate so.
-For example `sshd`, the SSH daemon, is the program responsible for listening to incoming SSH requests and checking that the remote user has the necessary credentials to log in.
+即便守护进程（daemon）这个词看上去有些陌生，你应该已经大约明白它的概念。大部分计算机都有一系列在后台保持运行，不需要用户手动运行或者交互的进程。这些进程就是守护进程。以守护进程运行的程序名一般以`d`结尾，比如SSH服务端`sshd`，用来监听传入的SSH连接请求并对用户进行鉴权。
 
-In Linux, `systemd` (the system daemon) is the most common solution for running and setting up daemon processes.
-You can run `systemctl status` to list the current running daemons. Most of them might sound unfamiliar but are responsible for core parts of the system such as managing the network, solving DNS queries or displaying the graphical interface for the system.
-Systemd can be interacted with the `systemctl` command in order to `enable`, `disable`, `start`, `stop`, `restart` or check the `status` of services (those are the `systemctl` commands).
+Linux中的`systemd`（the system daemon）是最常用的配置和运行守护进程的方法。运行`systemctl status`命令可以看到正在运行的所有守护进程。这里面有很多可能你没有见过，但是掌管了系统的核心部分的进程：管理网络、DNS解析、显示系统的图形界面等等。用户使用`systemctl`命令和`systemd`交互来`enable`（启用）、`disable`（禁用）、`start`（启动）、`stop`（停止）、`restart`（重启）、或者`status`（检查）配置好的守护进程及系统服务。
 
-More interestingly, `systemd` has a fairly accessible interface for configuring and enabling new daemons (or services).
-Below is an example of a daemon for running a simple Python app.
-We won't go in the details but as you can see most of the fields are pretty self explanatory.
+`systemd`提供了一个很方便的界面用于配置和启用新的守护进程或系统服务。下面的配置文件使用了守护进程来运行一个简单的Python程序。文件的内容非常直接所以我们不对它详细阐述。`systemd`配置文件的详细指南可参见[freedesktop.org](https://www.freedesktop.org/software/systemd/man/systemd.service.html)。
 
 ```ini
 # /etc/systemd/system/myapp.service
 [Unit]
+# 配置文件描述
 Description=My Custom App
+# 在网络服务启动后启动该进程
 After=network.target
 
 [Service]
+# 运行该进程的用户
 User=foo
+# 运行该进程的用户组
 Group=foo
+# 运行该进程的根目录
 WorkingDirectory=/home/foo/projects/mydaemon
+# 开始该进程的命令
 ExecStart=/usr/bin/local/python3.7 app.py
+# 在出现错误时重启该进程
 Restart=on-failure
 
 [Install]
+# 相当于Windows的开机启动。即使GUI没有启动，该进程也会加载并运行
 WantedBy=multi-user.target
+# 如果该进程仅需要在GUI活动时运行，这里应写作：
+# WantedBy=graphical.target
+# graphical.target在multi-user.target的基础上运行和GUI相关的服务
 ```
 
 如果你只是想定期运行一些程序，可以直接使用[`cron`](http://man7.org/linux/man-pages/man8/cron.8.html)。它是一个系统内置的，用来执行定期任务的守护进程。
@@ -96,14 +100,14 @@ FUSE可以用于实现如：一个将所有文件系统操作都使用SSH转发�
 
 一些有趣的FUSE文件系统包括：
 - [sshfs](https://github.com/libfuse/sshfs)：使用SSH连接在本地打开远程主机上的文件。
-- [rclone](https://rclone.org/commands/rclone_mount/)：将Dropbox、Google Drive、Amazon S3、或者Google Cloud Storage一类的云存储服务挂载到本地系统上。
+- [rclone](https://rclone.org/commands/rclone_mount/)：将Dropbox、Google Drive、Amazon S3、或者Google Cloud Storage一类的云存储服务挂载为本地文件系统。
 - [gocryptfs](https://nuetzlich.net/gocryptfs/)：覆盖在加密文件上的文件系统。文件以加密形式保存在磁盘里，但该文件系统挂载后用户可以直接从挂载点访问文件的明文。
 - [kbfs](https://keybase.io/docs/kbfs)：分布式端到端加密文件系统。在这个文件系统里有私密（private），共享（shared），以及公开（public）三种类型的文件夹。
-- [borgbackup](https://borgbackup.readthedocs.io/en/stable/usage/mount.html)：方便用户浏览删除重复数据后压缩过的加密备份。
+- [borgbackup](https://borgbackup.readthedocs.io/en/stable/usage/mount.html)：方便用户浏览删除重复数据后的压缩加密备份。
 
 ## 备份
 
-任何没有备份的数据都可能在一个瞬间永远消失。复制数据很简单，但是可靠的备份数据很难。下面列举了一些关于备份的基础知识，以及一些备份方法容易掉进的陷阱。
+任何没有备份的数据都可能在一个瞬间永远消失。复制数据很简单，但是可靠地备份数据很难。下面列举了一些关于备份的基础知识，以及一些常见做法容易掉进的陷阱。
 
 首先，复制存储在同一个磁盘上的数据不是备份，因为这个磁盘是一个单点故障（single point of failure）。这个磁盘一旦出现问题，所有的数据都可能丢失。放在家里的外置磁盘因为火灾、抢劫等原因可能会和源数据一起丢失，所以是一个弱备份。推荐的做法是将数据备份到不同的地点存储。
 
@@ -183,26 +187,13 @@ features though that can be good to be aware of:
    you pass things that look like flags without them being interpreted
    as such: `rm -- -r` or `ssh machine --for-ssh -- foo --for-foo`.
 
-## Window managers
+## 窗口管理器
 
-Most of you are used to using a "drag and drop" window manager, like
-what comes with Windows, macOS, and Ubuntu by default. There are windows
-that just sort of hang there on screen, and you can drag them around,
-resize them, and have them overlap one another. But these are only one
-_type_ of window manager, often referred to as a "floating" window
-manager. There are many others, especially on Linux. A particularly
-common alternative is a "tiling" window manager. In a tiling window
-manager, windows never overlap, and are instead arranged as tiles on
-your screen, sort of like panes in tmux. With a tiling window manager,
-the screen is always filled by whatever windows are open, arranged
-according to some _layout_. If you have just one window, it takes up the
-full screen. If you then open another, the original window shrinks to
-make room for it (often something like 2/3 and 1/3). If you open a
-third, the other windows will again shrink to accommodate the new
-window. Just like with tmux panes, you can navigate around these tiled
-windows with your keyboard, and you can resize them and move them
-around, all without touching the mouse. They are worth looking into!
+大部分人适应了Windows、macOS、以及Ubuntu默认的“拖拽”式窗口管理器。这些窗口管理器的窗口一般就堆在屏幕上，你可以拖拽改变窗口的位置、缩放窗口、以及让窗口堆叠在一起。这种堆叠式（floating/stacking）管理器只是窗口管理器中的一种。特别在Linux中，有很多种其他的管理器。
 
+平铺式（tiling）管理器就是一个常见的替代。顾名思义，平铺式管理器会把不同的窗口像贴瓷砖一样平铺在一起而不和其他窗口重叠。这和 [tmux](https://github.com/tmux/tmux) 管理终端窗口的方式类似。平铺式管理器按照写好的布局显示打开的窗口。如果只打开一个窗口，它会填满整个屏幕。新开一个窗口的时候，原来的窗口会缩小到比如三分之二或者三分之一的大小来腾出空间。打开更多的窗口会让已有的窗口进一步调整。
+
+就像tmux那样，平铺式管理器可以让你在完全不使用鼠标的情况下使用键盘切换、缩放、以及移动窗口。它们值得一试！
 
 ## VPN
 
@@ -239,30 +230,22 @@ Markdown不仅容易上手，而且应用非常广泛。实际上本课程的课
 
 ## Hammerspoon (macOS桌面自动化)
 
-[Hammerspoon](https://www.hammerspoon.org/) is a desktop automation framework
-for macOS. It lets you write Lua scripts that hook into operating system
-functionality, allowing you to interact with the keyboard/mouse, windows,
-displays, filesystem, and much more.
+[Hammerspoon](https://www.hammerspoon.org/)是面向macOS的一个桌面自动化框架。它允许用户编写和操作系统功能挂钩的Lua脚本，从而与键盘、鼠标、窗口、文件系统等交互。
 
-Some examples of things you can do with Hammerspoon:
+下面是Hammerspoon的一些示例应用：
 
-- Bind hotkeys to move windows to specific locations
-- Create a menu bar button that automatically lays out windows in a specific layout
-- Mute your speaker when you arrive in lab (by detecting the WiFi network)
-- Show you a warning if you've accidentally taken your friend's power supply
+- 绑定移动窗口到的特定位置的快捷键
+- 创建可以自动将窗口整理成特定布局的菜单栏按钮
+- 在你到实验室以后，通过检测所连接的WiFi网络自动静音扬声器
+- 在你不小心拿了朋友的充电器时弹出警告
 
-At a high level, Hammerspoon lets you run arbitrary Lua code, bound to menu
-buttons, key presses, or events, and Hammerspoon provides an extensive library
-for interacting with the system, so there's basically no limit to what you can
-do with it. Many people have made their Hammerspoon configurations public, so
-you can generally find what you need by searching the internet, but you can
-always write your own code from scratch.
+从用户的角度，Hammerspoon可以运行任意Lua代码，绑定菜单栏按钮、按键、或者事件。Hammerspoon提供了一个全面的用于和系统交互的库，因此它能没有限制地实现任何功能。你可以从头编写自己的Hammerspoon配置，也可以结合别人公布的配置来满足自己的需求。
 
-### Resources
+### 资源
 
-- [Getting Started with Hammerspoon](https://www.hammerspoon.org/go/)
-- [Sample configurations](https://github.com/Hammerspoon/hammerspoon/wiki/Sample-Configurations)
-- [Anish's Hammerspoon config](https://github.com/anishathalye/dotfiles-local/tree/mac/hammerspoon)
+- [Getting Started with Hammerspoon](https://www.hammerspoon.org/go/)：Hammerspoon官方教程
+- [Sample configurations](https://github.com/Hammerspoon/hammerspoon/wiki/Sample-Configurations)：Hammerspoon官方示例配置
+- [Anish's Hammerspoon config](https://github.com/anishathalye/dotfiles-local/tree/mac/hammerspoon)：Anish的Hammerspoon配置
 
 ## Booting + Live USBs
 
