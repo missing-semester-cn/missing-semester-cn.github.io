@@ -52,10 +52,10 @@ Vim的设计以大多数时间都花在阅读、浏览和进行少量编辑改�
 - *正常模式*：在文件中四处移动光标进行修改
 - *插入模式*：插入文本
 - *替换模式*：替换文本
-- *可视（一般，行，块）模式*：选中文本块
+- *可视化（一般，行，块）模式*：选中文本块
 - *命令模式*：用于执行命令
 
-在不同的操作模式， 键盘敲击的含义也不同。比如，`x` 在插入模式会插入字母`x`，但是在正常模式
+在不同的操作模式下， 键盘敲击的含义也不同。比如，`x` 在插入模式会插入字母`x`，但是在正常模式
 会删除当前光标所在下的字母，在可视模式下则会删除选中文块。
 
 在默认设置下，Vim会在左下角显示当前的模式。 Vim启动时的默认模式是正常模式。通常你会把大部分
@@ -65,7 +65,7 @@ Vim的设计以大多数时间都花在阅读、浏览和进行少量编辑改�
 模式， `R` 进入替换模式， `v` 进入可视（一般）模式， `V` 进入可视（行）模式， `<C-v>`
 （Ctrl-V, 有时也写作 `^V`）， `:` 进入命令模式。
 
-因为你会在使用 Vim 时大量使用 `<ESC>` 键，考虑把大小写锁定键重定义成逃脱键 （[MacOS 教程](https://vim.fandom.com/wiki/Map_caps_lock_to_escape_in_macOS) ）。
+因为你会在使用 Vim 时大量使用 `<ESC>` 键，可以考虑把大小写锁定键重定义成逃脱键 （[MacOS 教程](https://vim.fandom.com/wiki/Map_caps_lock_to_escape_in_macOS) ）。
 
 # 基本操作
 
@@ -106,8 +106,8 @@ Vim 最重要的设计思想是 Vim 的界面本省是一个程序语言。 键�
 
 ## 移动
 
-你应该会大部分时间在正常模式下，使用移动命令在缓存中导航。在 Vim 里面移动也被成为 “名词”，
-因为他们指向文字块。
+多数时候你会在正常模式下，使用移动命令在缓存中导航。在 Vim 里面移动也被成为 “名词”，
+因为它们指向文字块。
 
 - 基本移动: `hjkl` （左， 下， 上， 右）
 - 词： `w` （下一个词）， `b` （词初）， `e` （词尾）
@@ -232,10 +232,6 @@ def main():
 Vim 由一个位于 `~/.vimrc` 的文本配置文件 （包含 Vim 脚本命令）。 你可能会启用很多基本
 设置。
 
-We are providing a well-documented basic config that you can use as a starting
-point. We recommend using this because it fixes some of Vim's quirky default
-behavior.
-
 我们提供一个文档详细的基本设置， 你可以用它当作你的初始设置。 我们推荐使用这个设置因为
 它修复了一些 Vim 默认设置奇怪行为。
 **在 [这儿](/2020/files/vimrc) 下载我们的设置， 然后将它保存成
@@ -262,9 +258,8 @@ Vim 有很多扩展插件。 跟很多互联网上已经过时的建议相反，
 - [nerdtree](https://github.com/scrooloose/nerdtree): 文件浏览器
 - [vim-easymotion](https://github.com/easymotion/vim-easymotion): 魔术操作
 
-We're trying to avoid giving an overwhelmingly long list of plugins here. You
-can check out the instructors' dotfiles
-我们尽量避免在这里提供一长串插件。 你可以查看授课人们的点文件
+
+我们尽量避免在这里提供一份冗长的插件列表。 你可以查看讲师们的开源的配置文件
 ([Anish](https://github.com/anishathalye/dotfiles),
 [Jon](https://github.com/jonhoo/configs),
 [Jose](https://github.com/JJGO/dotfiles)) to see what other plugins we use.
@@ -305,18 +300,18 @@ Readline](https://tiswww.case.edu/php/chet/readline/rltop.html) 库来作为
 set editing-mode vi
 ```
 
-在这个设置下， 比如， Python REPL 会支持 Vim 快捷键。
+比如， 在这个设置下， Python REPL 会支持 Vim 快捷键。
 
 ## 其他
 
 There are even vim keybinding extensions for web
-甚至有 Vim 的网页浏览键盘绑定扩展
+甚至有 Vim 的网页浏览快捷键
 [browsers](http://vim.wikia.com/wiki/Vim_key_bindings_for_web_browsers), 受欢迎的有
 用于 Google Chrome 的
 [Vimium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en)
 和用于 Firefox 的 [Tridactyl](https://github.com/tridactyl/tridactyl)。
 你甚至可以在 [Jupyter
-notebooks](https://github.com/lambdalisue/jupyter-vim-binding) 中用 Vim 绑定。
+notebooks](https://github.com/lambdalisue/jupyter-vim-binding) 中用 Vim 快捷键。
 
 # Vim 进阶
 
@@ -336,11 +331,11 @@ notebooks](https://github.com/lambdalisue/jupyter-vim-binding) 中用 Vim 绑定
 ## 多窗口
 
 - 用 `:sp` / `:vsp` 来分割窗口 
-- 能有一个缓存的多个视角。
+- 同一个缓存可以在多个窗口中显示。
 
 ## 宏
 
-- `q{字符}` 来开始在寄存器 `{字符` 中录制宏
+- `q{字符}` 来开始在寄存器 `{字符}` 中录制宏
 - `q` 停止录制
 - `@{字符}` 重放宏
 - 宏的执行遇错误会停止
@@ -360,13 +355,13 @@ notebooks](https://github.com/lambdalisue/jupyter-vim-binding) 中用 Vim 绑定
     - Vim 命令 / 宏
         - `Gdd`, `ggdd` 删除第一行和最后一行
         - 格式化最后一个元素的宏 （寄存器 `e`）
-            - 到有 `<name>` 的行
+            - 跳转到有 `<name>` 的行
             - `qe^r"f>s": "<ESC>f<C"<ESC>q`
         - 格式化一个人的宏
-            - 到有 `<person>` 的行
+            - 跳转到有 `<person>` 的行
             - `qpS{<ESC>j@eA,<ESC>j@ejS},<ESC>q`
         - 格式化一个人然后转到另外一个人的宏
-            - 到有 `<person>` 的行
+            - 跳转到有 `<person>` 的行
             - `qq@pjq`
         - 执行宏到文件尾
             - `999@q`
@@ -405,7 +400,7 @@ notebooks](https://github.com/lambdalisue/jupyter-vim-binding) 中用 Vim 绑定
 1. 练习使用 Vim, 在你自己的机器上重做 [演示](#demo)。
 1. 下个月用 Vim 做你 _所有_ 文件编辑。 每当不够高效的时候, 或者你感觉 “一定有一个更好的方式”，
    尝试求助搜索引擎， 很有可能有一个更好的方式。 如果你遇到难题， 来我们的答疑时间或者给我们发邮件。
-1. 在你的其他工具中设置 Vim 绑定 （见上面的操作指南）。
+1. 在你的其他工具中设置 Vim 快捷键 （见上面的操作指南）。
 1. 进一步自定义你的 `~/.vimrc` 和安装更多插件。
 1. （高阶） 用 Vim 宏将 XML 转换到 JSON ([例子文件](/2020/files/example-data.xml))。
    尝试着先完全自己做， 但是在你卡住的时候可以查看上面
