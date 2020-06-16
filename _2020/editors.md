@@ -224,7 +224,7 @@ def main():
   - `/10`
   - `ci(` to "int(sys.argv[1])"
 
-{% comment %}
+{% endcomment %}
 
 
 展示详情请观看课程视频。 比较上面用 Vim 的操作和你可能使用其他程序的操作。
