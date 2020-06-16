@@ -27,184 +27,155 @@ video:
 
 ## Vim
 
-All the instructors of this class use Vim as their editor. Vim has a rich
-history; it originated from the Vi editor (1976), and it's still being
-developed today. Vim has some really neat ideas behind it, and for this reason,
-lots of tools support a Vim emulation mode (for example, 1.4 million people
-have installed [Vim emulation for VS code](https://github.com/VSCodeVim/Vim)).
-Vim is probably worth learning even if you finally end up switching to some
-other text editor.
+这门课的所有教员都使用Vim作为编辑器。Vim有着悠久历史；它始于1976年的Vi编辑器，到现在还在
+不断开发中。Vim有很多聪明的设计思想，所以很多其他工具也支持Vim模式（比如，140万人安装了
+[Vim emulation for VS code](https://github.com/VSCodeVim/Vim)）。即使你最后使用
+其他编辑器，Vim也值得学习。
 
-It's not possible to teach all of Vim's functionality in 50 minutes, so we're
-going to focus on explaining the philosophy of Vim, teaching you the basics,
-showing you some of the more advanced functionality, and giving you the
-resources to master the tool.
+由于不可能在50分钟内教授Vim的所有功能， 我们会专注于解释Vim的设计哲学，教你基础知识，
+展示一部分高级功能，然后给你掌握这个工具所需要的资源。
 
 # Vim的哲学
 
-When programming, you spend most of your time reading/editing, not writing. For
-this reason, Vim is a _modal_ editor: it has different modes for inserting text
-vs manipulating text. Vim is programmable (with Vimscript and also other
-languages like Python), and Vim's interface itself is a programming language:
-keystrokes (with mnemonic names) are commands, and these commands are
-composable. Vim avoids the use of the mouse, because it's too slow; Vim even
-avoids using the arrow keys because it requires too much movement.
+在编程的时候，你会把大量时间花在阅读/编辑而不是在写代码上。所以， Vim 是一个 _多模态_ 编辑
+器： 它对于插入文字和操纵文字有不同的模式。 Vim 既是可编程的 （可以使用 Vimscript 或者像
+Python 一样的其他程序语言）， Vim 的接口本身也是一个程序语言： 键入操作 （以及其助记名）
+是命令， 这些命令也是可组合的。 Vim 避免了使用鼠标，因为那样太慢了； Vim 甚至避免用
+上下左右键因为那样需要太多的手指移动。
 
-The end result is an editor that can match the speed at which you think.
+这样的设计哲学的结果是一个能跟上你思维速度的编辑器。
 
 # 编辑模式
-
 
 Vim的设计以大多数时间都花在阅读、浏览和进行少量编辑改动为基础，因此它具有多种操作模式：
 
 - *正常模式*：在文件中四处移动光标进行修改
 - *插入模式*：插入文本
 - *替换模式*：替换文本
-- *可视（一般，行，块）模式*：选中文本块
+- *可视化（一般，行，块）模式*：选中文本块
 - *命令模式*：用于执行命令
 
+在不同的操作模式下， 键盘敲击的含义也不同。比如，`x` 在插入模式会插入字母`x`，但是在正常模式
+会删除当前光标所在下的字母，在可视模式下则会删除选中文块。
 
-Keystrokes have different meanings in different operating modes. For example,
-the letter `x` in insert mode will just insert a literal character 'x', but in
-normal mode, it will delete the character under the cursor, and in visual mode,
-it will delete the selection.
+在默认设置下，Vim会在左下角显示当前的模式。 Vim启动时的默认模式是正常模式。通常你会把大部分
+时间花在正常模式和插入模式。
 
-In its default configuration, Vim shows the current mode in the bottom left.
-The initial/default mode is normal mode. You'll generally spend most of your
-time between normal mode and insert mode.
+你可以按下 `<ESC>` （逃脱键） 从任何其他模式返回正常模式。 在正常模式，键入 `i` 进入插入
+模式， `R` 进入替换模式， `v` 进入可视（一般）模式， `V` 进入可视（行）模式， `<C-v>`
+（Ctrl-V, 有时也写作 `^V`）， `:` 进入命令模式。
 
-You change modes by pressing `<ESC>` (the escape key) to switch from any mode
-back to normal mode. From normal mode, enter insert mode with `i`, replace mode
-with `R`, visual mode with `v`, visual line mode with `V`, visual block mode
-with `<C-v>` (Ctrl-V, sometimes also written `^V`), and command-line mode with
-`:`.
-
-You use the `<ESC>` key a lot when using Vim: consider remapping Caps Lock to
-Escape ([macOS
-instructions](https://vim.fandom.com/wiki/Map_caps_lock_to_escape_in_macOS)).
+因为你会在使用 Vim 时大量使用 `<ESC>` 键，可以考虑把大小写锁定键重定义成逃脱键 （[MacOS 教程](https://vim.fandom.com/wiki/Map_caps_lock_to_escape_in_macOS) ）。
 
 # 基本操作
 
 ## 插入文本
 
-From normal mode, press `i` to enter insert mode. Now, Vim behaves like any
-other text editor, until you press `<ESC>` to return to normal mode. This,
-along with the basics explained above, are all you need to start editing files
-using Vim (though not particularly efficiently, if you're spending all your
-time editing from insert mode).
+在正常模式， 键入 `i` 进入插入模式。 现在 Vim 跟很多其他的编辑器一样， 直到你键入`<ESC>`
+返回正常模式。 你只需要掌握这一点和上面介绍的所有基知识就可以使用 Vim 来编辑文件了
+（虽然如果你一直停留在插入模式内不一定高效）。
 
-## Buffers, tabs, and windows
+## 缓存， 标签页， 窗口
 
-Vim maintains a set of open files, called "buffers". A Vim session has a number
-of tabs, each of which has a number of windows (split panes). Each window shows
-a single buffer. Unlike other programs you are familiar with, like web
-browsers, there is not a 1-to-1 correspondence between buffers and windows;
-windows are merely views. A given buffer may be open in _multiple_ windows,
-even within the same tab. This can be quite handy, for example, to view two
-different parts of a file at the same time.
+Vim 会维护一系列打开的文件，称为 “缓存”。 一个 Vim 会话包含一系列标签页，每个标签页包含
+一系列窗口 （分隔面板）。每个窗口显示一个缓存。 跟网页浏览器等其他你熟悉的程序不一样的是，
+缓存和窗口不是一一对应的关系； 窗口只是视角。 一个缓存可以在 _多个_ 窗口打开，甚至在同一
+个标签页内的多个窗口打开。这个功能其实很好用， 比如在查看同一个文件的不同部分的时候。
 
-By default, Vim opens with a single tab, which contains a single window.
+Vim 默认打开一个标签页，这个标签也包含一个窗口。
 
 ## 命令行
 
-Command mode can be entered by typing `:` in normal mode. Your cursor will jump
-to the command line at the bottom of the screen upon pressing `:`. This mode
-has many functionalities, including opening, saving, and closing files, and
-[quitting Vim](https://twitter.com/iamdevloper/status/435555976687923200).
+在正常模式下键入 `:` 进入命令行模式。 在键入 `:` 后，你的光标会立即跳到屏幕下方的命令行。
+这个模式有很多功能， 包括打开， 保存， 关闭文件， 以及
+[退出 Vim](https://twitter.com/iamdevloper/status/435555976687923200)。
 
-- `:q` quit (close window)
-- `:w` save ("write")
-- `:wq` save and quit
-- `:e {name of file}` open file for editing
-- `:ls` show open buffers
-- `:help {topic}` open help
-    - `:help :w` opens help for the `:w` command
-    - `:help w` opens help for the `w` movement
+- `:q` 退出 （关闭窗口）
+- `:w` 保存 （写）
+- `:wq` 保存然后退出
+- `:e {文件名}` 打开要编辑的文件
+- `:ls` 显示打开的缓存
+- `:help {标题}` 打开帮助文档
+    - `:help :w` 打开 `:w` 命令的帮助文档
+    - `:help w` 打开 `w` 移动的帮助文档
 
 # Vim 的接口其实是一种编程语言
 
-The most important idea in Vim is that Vim's interface itself is a programming
-language. Keystrokes (with mnemonic names) are commands, and these commands
-_compose_. This enables efficient movement and edits, especially once the
-commands become muscle memory.
+Vim 最重要的设计思想是 Vim 的界面本省是一个程序语言。 键入操作 （以及他们的助记名）
+本身是命令， 这些命令可以组合使用。 这使得移动和编辑更加高效，特别是一旦形成肌肉记忆。
 
 ## 移动
 
-You should spend most of your time in normal mode, using movement commands to
-navigate the buffer. Movements in Vim are also called "nouns", because they
-refer to chunks of text.
+多数时候你会在正常模式下，使用移动命令在缓存中导航。在 Vim 里面移动也被成为 “名词”，
+因为它们指向文字块。
 
-- Basic movement: `hjkl` (left, down, up, right)
-- Words: `w` (next word), `b` (beginning of word), `e` (end of word)
-- Lines: `0` (beginning of line), `^` (first non-blank character), `$` (end of line)
-- Screen: `H` (top of screen), `M` (middle of screen), `L` (bottom of screen)
-- Scroll: `Ctrl-u` (up), `Ctrl-d` (down)
-- File: `gg` (beginning of file), `G` (end of file)
-- Line numbers: `:{number}<CR>` or `{number}G` (line {number})
-- Misc: `%` (corresponding item)
-- Find: `f{character}`, `t{character}`, `F{character}`, `T{character}`
-    - find/to forward/backward {character} on the current line
-    - `,` / `;` for navigating matches
-- Search: `/{regex}`, `n` / `N` for navigating matches
+- 基本移动: `hjkl` （左， 下， 上， 右）
+- 词： `w` （下一个词）， `b` （词初）， `e` （词尾）
+- 行： `0` （行初）， `^` （第一个非空格字符）， `$` （行尾）
+- 屏幕： `H` （屏幕首行）， `M` （屏幕中间）， `L` （屏幕底部）
+- 翻页： `Ctrl-u` （上翻）， `Ctrl-d` （下翻）
+- 文件： `gg` （文件头）， `G` （文件尾）
+- 行数： `:{行数}<CR>` 或者 `{行数}G` ({行数}为行数)
+- 杂项： `%` （找到配对，比如括号或者 /* */ 之类的注释对）
+- 查找： `f{字符}`， `t{字符}`， `F{字符}`， `T{字符}`
+    - 查找/到 向前/向后 在本行的{字符}
+    - `,` / `;` 用于导航匹配
+- 搜索: `/{正则表达式}`, `n` / `N` 用于导航匹配
 
 ## 选择
 
-Visual modes:
+可视化模式:
 
-- Visual
-- Visual Line
-- Visual Block
+- 可视化
+- 可视化行
+- 可视化块
 
-Can use movement keys to make selection.
+可以用移动命令来选中。
 
 ## 编辑
 
-Everything that you used to do with the mouse, you now do with the keyboard
-using editing commands that compose with movement commands. Here's where Vim's
-interface starts to look like a programming language. Vim's editing commands
-are also called "verbs", because verbs act on nouns.
+所有你需要用鼠标做的事， 你现在都可以用键盘：采用编辑命令和移动命令的组合来完成。
+这就是 Vim 的界面开始看起来像一个程序语言的时候。Vim 的编辑命令也被称为 “动词”，
+因为动词可以施动于名词。
 
-- `i` enter insert mode
-    - but for manipulating/deleting text, want to use something more than
-    backspace
-- `o` / `O` insert line below / above
-- `d{motion}` delete {motion}
-    - e.g. `dw` is delete word, `d$` is delete to end of line, `d0` is delete
-    to beginning of line
-- `c{motion}` change {motion}
-    - e.g. `cw` is change word
-    - like `d{motion}` followed by `i`
-- `x` delete character (equal do `dl`)
-- `s` substitute character (equal to `xi`)
-- visual mode + manipulation
-    - select text, `d` to delete it or `c` to change it
-- `u` to undo, `<C-r>` to redo
-- `y` to copy / "yank" (some other commands like `d` also copy)
-- `p` to paste
-- Lots more to learn: e.g. `~` flips the case of a character
+- `i` 进入插入模式 
+    - 但是对于操纵/编辑文本，不单想用退格键完成
+- `o` / `O` 在之上/之下插入行
+- `d{移动命令}` 删除 {移动命令}
+    - 例如， `dw` 删除词, `d$` 删除到行尾, `d0` 删除到行头。
+- `c{移动命令}` 改变 {移动命令}
+    - 例如， `cw` 改变词
+    - 比如 `d{移动命令}` 再 `i`
+- `x` 删除字符 （等同于 `dl`）
+- `s` 替换字符 （等同于 `xi`）
+- 可视化模式 + 操作
+    - 选中文字, `d` 删除 或者 `c` 改变
+- `u` 撤销, `<C-r>` 重做
+- `y` 复制 / "yank" （其他一些命令比如 `d` 也会复制）
+- `p` 粘贴
+- 更多值得学习的: 比如 `~` 改变字符的大小写
 
 ## 计数
 
-You can combine nouns and verbs with a count, which will perform a given action
-a number of times.
+你可以用一个计数来结合“名词” 和 “动词”， 这会执行指定操作若干次。
 
-- `3w` move 3 words forward
-- `5j` move 5 lines down
-- `7dw` delete 7 words
+- `3w` 向前移动三个词
+- `5j` 向下移动5行
+- `7dw` 删除7个词
 
 ## 修饰语
 
-You can use modifiers to change the meaning of a noun. Some modifiers are `i`,
-which means "inner" or "inside", and `a`, which means "around".
+你可以用修饰语改变 “名词” 的意义。修饰语有 `i`， 表示 “内部” 或者 “在内“， 和 `i`，
+表示 ”周围“。
 
-- `ci(` change the contents inside the current pair of parentheses
-- `ci[` change the contents inside the current pair of square brackets
-- `da'` delete a single-quoted string, including the surrounding single quotes
+- `ci(` 改变当前括号内的内容
+- `ci[` 改变当前方括号内的内容
+- `da'` 删除一个单引号字符窗， 包括周围的单引号
 
-# Demo
+# 演示
 
-Here is a broken [fizz buzz](https://en.wikipedia.org/wiki/Fizz_buzz)
-implementation:
+这里是一个有问题的 [fizz buzz](https://en.wikipedia.org/wiki/Fizz_buzz)
+实现：
 
 ```python
 def fizz_buzz(limit):
@@ -220,93 +191,90 @@ def main():
     fizz_buzz(10)
 ```
 
-We will fix the following issues:
+我们会修复以下问题：
 
-- Main is never called
-- Starts at 0 instead of 1
-- Prints "fizz" and "buzz" on separate lines for multiples of 15
-- Prints "fizz" for multiples of 5
-- Uses a hard-coded argument of 10 instead of taking a command-line argument
+- 主函数没有被调用
+- 从 0 而不是 1 开始
+- 在 15 的整数倍的时候在不用行打印 "fizz" 和 "buzz"
+- 在 5 的整数倍的时候打印 "fizz"
+- 采用硬编码的参数 10 而不是从命令控制行读取参数
 
-{% comment %}
-- main is never called
-  - `G` end of file
-  - `o` open new line below
-  - type in "if __name__ ..." thing
-- starts at 0 instead of 1
-  - search for `/range`
-  - `ww` to move forward 2 words
-  - `i` to insert text, "1, "
-  - `ea` to insert after limit, "+1"
-- newline for "fizzbuzz"
-  - `jj$i` to insert text at end of line
-  - add ", end=''"
-  - `jj.` to repeat for second print
-  - `jjo` to open line below if
-  - add "else: print()"
+{% 注释 %}
+- 主函数没有被调用
+  - `G` 文件尾
+  - `o` 向下打开一个新行
+  - 输入 "if __name__ ..." 
+- 从 0 而不是 1 开始
+  - 搜索 `/range`
+  - `ww` 向前移动两个词
+  - `i` 插入文字， "1, "
+  - `ea` 在 limit 后插入， "+1"
+- 在新的一行 "fizzbuzz"
+  - `jj$i` 插入文字到行尾
+  - 加入 ", end=''"
+  - `jj.` 重复第二个打印
+  - `jjo` 在 if 打开一行
+  - 加入 "else: print()"
 - fizz fizz
-  - `ci'` to change fizz
-- command-line argument
-  - `ggO` to open above
+  - `ci'` 变到 fizz
+- 命令控制行参数
+  - `ggO` 向上打开
   - "import sys"
   - `/10`
   - `ci(` to "int(sys.argv[1])"
-{% endcomment %}
+{% 注释 %}
 
-See the lecture video for the demonstration. Compare how the above changes are
-made using Vim to how you might make the same edits using another program.
-Notice how very few keystrokes are required in Vim, allowing you to edit at the
-speed you think.
+展示详情请观看课程视频。 比较上面用 Vim 的操作和你可能使用其他程序的操作。
+值得一提的是 Vim 需要很少的键盘操作，允许你编辑的速度跟上你思维的速度。
 
 # 自定义 Vim
 
-Vim is customized through a plain-text configuration file in `~/.vimrc`
-(containing Vimscript commands). There are probably lots of basic settings that
-you want to turn on.
+Vim 由一个位于 `~/.vimrc` 的文本配置文件 （包含 Vim 脚本命令）。 你可能会启用很多基本
+设置。
 
-We are providing a well-documented basic config that you can use as a starting
-point. We recommend using this because it fixes some of Vim's quirky default
-behavior. **Download our config [here](/2020/files/vimrc) and save it to
+我们提供一个文档详细的基本设置， 你可以用它当作你的初始设置。 我们推荐使用这个设置因为
+它修复了一些 Vim 默认设置奇怪行为。
+**在 [这儿](/2020/files/vimrc) 下载我们的设置， 然后将它保存成
 `~/.vimrc`.**
 
-Vim is heavily customizable, and it's worth spending time exploring
-customization options. You can look at people's dotfiles on GitHub for
-inspiration, for example, your instructors' Vim configs
+Vim 能够被重度自定义， 花时间探索自定义选项是值得的。 你可以参考其他人的在 GitHub
+上共享的设置文件， 比如， 你的授课人的 Vim 设置
 ([Anish](https://github.com/anishathalye/dotfiles/blob/master/vimrc),
 [Jon](https://github.com/jonhoo/configs/blob/master/editor/.config/nvim/init.vim) (uses [neovim](https://neovim.io/)),
-[Jose](https://github.com/JJGO/dotfiles/blob/master/vim/.vimrc)). There are
-lots of good blog posts on this topic too. Try not to copy-and-paste people's
-full configuration, but read it, understand it, and take what you need.
+[Jose](https://github.com/JJGO/dotfiles/blob/master/vim/.vimrc))。
+有很多好的博客文章也聊到了这个话题。 尽量不要复制粘贴别人的整个设置文件，
+而是阅读和理解它， 然后采用对你有用的部分。
 
 # 扩展 Vim
 
-There are tons of plugins for extending Vim. Contrary to outdated advice that
-you might find on the internet, you do _not_ need to use a plugin manager for
-Vim (since Vim 8.0). Instead, you can use the built-in package management
-system. Simply create the directory `~/.vim/pack/vendor/start/`, and put
-plugins in there (e.g. via `git clone`).
+Vim 有很多扩展插件。 跟很多互联网上已经过时的建议相反， 你 _不_ 需要在 Vim 使用一个插件
+管理器（从 Vim 8.0 开始）。 你可以使用内置的插件管理系统。 只需要创建一个
+`~/.vim/pack/vendor/start/` 的文件家， 然后把插件放到这里 （比如通过 `git clone`）。
 
-Here are some of our favorite plugins:
+以下是一些我们最爱的插件：
 
-- [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim): fuzzy file finder
-- [ack.vim](https://github.com/mileszs/ack.vim): code search
-- [nerdtree](https://github.com/scrooloose/nerdtree): file explorer
-- [vim-easymotion](https://github.com/easymotion/vim-easymotion): magic motions
+- [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim): 模糊文件查找
+- [ack.vim](https://github.com/mileszs/ack.vim): 代码搜索
+- [nerdtree](https://github.com/scrooloose/nerdtree): 文件浏览器
+- [vim-easymotion](https://github.com/easymotion/vim-easymotion): 魔术操作
 
-We're trying to avoid giving an overwhelmingly long list of plugins here. You
-can check out the instructors' dotfiles
+
+我们尽量避免在这里提供一份冗长的插件列表。 你可以查看讲师们的开源的配置文件
 ([Anish](https://github.com/anishathalye/dotfiles),
 [Jon](https://github.com/jonhoo/configs),
 [Jose](https://github.com/JJGO/dotfiles)) to see what other plugins we use.
-Check out [Vim Awesome](https://vimawesome.com/) for more awesome Vim plugins.
-There are also tons of blog posts on this topic: just search for "best Vim
-plugins".
+Check out [Vim Awesome](https://vimawesome.com/) 来了解一些很棒的插件.
+这个话题也有很多博客文章： 搜索 "best Vim
+plugins"。
 
 # 其他程序的 Vim 模式
 
 Many tools support Vim emulation. The quality varies from good to great;
 depending on the tool, it may not support the fancier Vim features, but most
 cover the basics pretty well.
+
+很多工具提供了 Vim 模式。 这些 Vim 模式的质量参差不齐； 取决于具体工具， 有的提供了
+很多酷炫的 Vim 功能， 但是大多数对基本功能支持的很好。
 
 ## Shell
 
@@ -316,124 +284,124 @@ If you're a Bash user, use `set -o vi`. If you use Zsh, `bindkey -v`. For Fish,
 editor is launched when a program wants to start an editor. For example, `git`
 will use this editor for commit messages.
 
+如果你是一个 Bash 用户， 用 `set -o vi`。 如果你用 Zsh： `bindkey -v`。  Fish 用
+`fish_vi_key_bindings`。 另外， 不管利用什么 shell， 你可以
+`export EDITOR=vim`。 这是一个用来决定当一个程序需要启动编辑时启动哪个的环境变量。
+例如， `git` 会使用这个编辑器来编辑 commit 信息。
+
 ## Readline
 
-Many programs use the [GNU
-Readline](https://tiswww.case.edu/php/chet/readline/rltop.html) library for
-their command-line interface. Readline supports (basic) Vim emulation too,
-which can be enabled by adding the following line to the `~/.inputrc` file:
+很多程序使用 [GNU
+Readline](https://tiswww.case.edu/php/chet/readline/rltop.html) 库来作为
+它们的命令控制行界面。 Readline 也支持基本的 Vim 模式，
+可以通过在 `~/.inputrc` 添加如下行开启：
 
 ```
 set editing-mode vi
 ```
 
-With this setting, for example, the Python REPL will support Vim bindings.
+比如， 在这个设置下， Python REPL 会支持 Vim 快捷键。
 
 ## 其他
 
 There are even vim keybinding extensions for web
-[browsers](http://vim.wikia.com/wiki/Vim_key_bindings_for_web_browsers), some
-popular ones are
+甚至有 Vim 的网页浏览快捷键
+[browsers](http://vim.wikia.com/wiki/Vim_key_bindings_for_web_browsers), 受欢迎的有
+用于 Google Chrome 的
 [Vimium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en)
-for Google Chrome and [Tridactyl](https://github.com/tridactyl/tridactyl) for
-Firefox. You can even get Vim bindings in [Jupyter
-notebooks](https://github.com/lambdalisue/jupyter-vim-binding).
+和用于 Firefox 的 [Tridactyl](https://github.com/tridactyl/tridactyl)。
+你甚至可以在 [Jupyter
+notebooks](https://github.com/lambdalisue/jupyter-vim-binding) 中用 Vim 快捷键。
 
 # Vim 进阶
 
-Here are a few examples to show you the power of the editor. We can't teach you
-all of these kinds of things, but you'll learn them as you go. A good
-heuristic: whenever you're using your editor and you think "there must be a
-better way of doing this", there probably is: look it up online.
+这里我们提供了一些展示这个编辑器能力的例子。我们无法把所有的这样的事情都教给你， 但是你
+可以在使用中学习。 一个好的对策是: 当你在使用你的编辑器的时候感觉 “一定有更好的方法来做这个”，
+那么很可能真的有： 上网搜寻一下。
 
 ## 搜索和替换
 
-`:s` (substitute) command ([documentation](http://vim.wikia.com/wiki/Search_and_replace)).
+`:s` （替换） 命令 （[文档](http://vim.wikia.com/wiki/Search_and_replace)）。
 
 - `%s/foo/bar/g`
-    - replace foo with bar globally in file
+    - 在整个文件中将 foo 全局替换成 bar
 - `%s/\[.*\](\(.*\))/\1/g`
-    - replace named Markdown links with plain URLs
+    - 将有命名的 Markdown 链接替换成简单 URLs
 
 ## 多窗口
 
-- `:sp` / `:vsp` to split windows
-- Can have multiple views of the same buffer.
+- 用 `:sp` / `:vsp` 来分割窗口 
+- 同一个缓存可以在多个窗口中显示。
 
 ## 宏
 
-- `q{character}` to start recording a macro in register `{character}`
-- `q` to stop recording
-- `@{character}` replays the macro
-- Macro execution stops on error
-- `{number}@{character}` executes a macro {number} times
-- Macros can be recursive
-    - first clear the macro with `q{character}q`
-    - record the macro, with `@{character}` to invoke the macro recursively
-    (will be a no-op until recording is complete)
-- Example: convert xml to json ([file](/2020/files/example-data.xml))
-    - Array of objects with keys "name" / "email"
-    - Use a Python program?
-    - Use sed / regexes
+- `q{字符}` 来开始在寄存器 `{字符}` 中录制宏
+- `q` 停止录制
+- `@{字符}` 重放宏
+- 宏的执行遇错误会停止
+- `{计数}@{字符}` 执行一个宏 {计数} 次
+- 宏可以递归
+    - 首先用 `q{字符}q` 清除宏
+    - 录制该宏， 用 `@{字符}` 来递归调用该宏
+    （在录制完成之前不会有任何操作）
+- 例子： 将 xml 转成 json ([file](/2020/files/example-data.xml))
+    - 一个有 "name" / "email" 键对象的数组
+    - 用一个 Python 程序？
+    - 用 sed / 正则表达式
         - `g/people/d`
         - `%s/<person>/{/g`
         - `%s/<name>\(.*\)<\/name>/"name": "\1",/g`
         - ...
-    - Vim commands / macros
-        - `Gdd`, `ggdd` delete first and last lines
-        - Macro to format a single element (register `e`)
-            - Go to line with `<name>`
+    - Vim 命令 / 宏
+        - `Gdd`, `ggdd` 删除第一行和最后一行
+        - 格式化最后一个元素的宏 （寄存器 `e`）
+            - 跳转到有 `<name>` 的行
             - `qe^r"f>s": "<ESC>f<C"<ESC>q`
-        - Macro to format a person
-            - Go to line with `<person>`
+        - 格式化一个人的宏
+            - 跳转到有 `<person>` 的行
             - `qpS{<ESC>j@eA,<ESC>j@ejS},<ESC>q`
-        - Macro to format a person and go to the next person
-            - Go to line with `<person>`
+        - 格式化一个人然后转到另外一个人的宏
+            - 跳转到有 `<person>` 的行
             - `qq@pjq`
-        - Execute macro until end of file
+        - 执行宏到文件尾
             - `999@q`
-        - Manually remove last `,` and add `[` and `]` delimiters
+        - 手动移除最后的 `,` 然后加上 `[` 和 `]` 分隔符
 
 # 扩展资料
 
-- `vimtutor` is a tutorial that comes installed with Vim
-- [Vim Adventures](https://vim-adventures.com/) is a game to learn Vim
+- `vimtutor` 是一个 Vim 安装时自带的教程
+- [Vim Adventures](https://vim-adventures.com/) 是一个学习使用 Vim 的游戏
 - [Vim Tips Wiki](http://vim.wikia.com/wiki/Vim_Tips_Wiki)
-- [Vim Advent Calendar](https://vimways.org/2019/) has various Vim tips
-- [Vim Golf](http://www.vimgolf.com/) is [code golf](https://en.wikipedia.org/wiki/Code_golf), but where the programming language is Vim's UI
+- [Vim Advent Calendar](https://vimways.org/2019/) 有很多 Vim 小技巧
+- [Vim Golf](http://www.vimgolf.com/) 是用 Vim 的用户界面作为程序语言的 [code golf](https://en.wikipedia.org/wiki/Code_golf)
 - [Vi/Vim Stack Exchange](https://vi.stackexchange.com/)
 - [Vim Screencasts](http://vimcasts.org/)
-- [Practical Vim](https://pragprog.com/book/dnvim2/practical-vim-second-edition) (book)
+- [Practical Vim](https://pragprog.com/book/dnvim2/practical-vim-second-edition) （书）
 
 # 课后练习
 
-1. Complete `vimtutor`. Note: it looks best in a
-   [80x24](https://en.wikipedia.org/wiki/VT100) (80 columns by 24 lines)
-   terminal window.
-1. Download our [basic vimrc](/2020/files/vimrc) and save it to `~/.vimrc`. Read
-   through the well-commented file (using Vim!), and observe how Vim looks and
-   behaves slightly differently with the new config.
-1. Install and configure a plugin:
+1. 完成 `vimtutor`。 备注： 它在一个
+   [80x24](https://en.wikipedia.org/wiki/VT100) （80 列， 24 行）
+   终端窗口看起来最好。
+1. 下载我们的 [基本 vimrc](/2020/files/vimrc)， 然后把它保存到 `~/.vimrc`。 通读这个注释详细的文件
+   （用 Vim!）， 然后观察 Vim 在这个新的设置下看起来和使用起来有哪些细微的区别。
+1. 安装和配置一个插件：
    [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim).
-   1. Create the plugins directory with `mkdir -p ~/.vim/pack/vendor/start`
-   1. Download the plugin: `cd ~/.vim/pack/vendor/start; git clone
+   1. 用 `mkdir -p ~/.vim/pack/vendor/start` 创建插件文件夹
+   1. 下载这个插件： `cd ~/.vim/pack/vendor/start; git clone
       https://github.com/ctrlpvim/ctrlp.vim`
-   1. Read the
-      [documentation](https://github.com/ctrlpvim/ctrlp.vim/blob/master/readme.md)
-      for the plugin. Try using CtrlP to locate a file by navigating to a
-      project directory, opening Vim, and using the Vim command-line to start
+   1. 读这个插件的
+      [文档](https://github.com/ctrlpvim/ctrlp.vim/blob/master/readme.md)。
+       尝试用 CtrlP 来在一个工程文件夹里定位一个文件， 打开 Vim, 然后用 Vim 命令控制行开始
       `:CtrlP`.
-    1. Customize CtrlP by adding
+    1. 自定义 CtrlP： 添加
        [configuration](https://github.com/ctrlpvim/ctrlp.vim/blob/master/readme.md#basic-options)
-       to your `~/.vimrc` to open CtrlP by pressing Ctrl-P.
-1. To practice using Vim, re-do the [Demo](#demo) from lecture on your own
-   machine.
-1. Use Vim for _all_ your text editing for the next month. Whenever something
-   seems inefficient, or when you think "there must be a better way", try
-   Googling it, there probably is. If you get stuck, come to office hours or
-   send us an email.
-1. Configure your other tools to use Vim bindings (see instructions above).
-1. Further customize your `~/.vimrc` and install more plugins.
-1. (Advanced) Convert XML to JSON ([example file](/2020/files/example-data.xml))
-   using Vim macros. Try to do this on your own, but you can look at the
-   [macros](#macros) section above if you get stuck.
+       到你的 `~/.vimrc` 来用按 Ctrl-P 打开 CtrlP
+1. 练习使用 Vim, 在你自己的机器上重做 [演示](#demo)。
+1. 下个月用 Vim 做你 _所有_ 文件编辑。 每当不够高效的时候, 或者你感觉 “一定有一个更好的方式”，
+   尝试求助搜索引擎， 很有可能有一个更好的方式。 如果你遇到难题， 来我们的答疑时间或者给我们发邮件。
+1. 在你的其他工具中设置 Vim 快捷键 （见上面的操作指南）。
+1. 进一步自定义你的 `~/.vimrc` 和安装更多插件。
+1. （高阶） 用 Vim 宏将 XML 转换到 JSON ([例子文件](/2020/files/example-data.xml))。
+   尝试着先完全自己做， 但是在你卡住的时候可以查看上面
+   [宏](#macros) 章节。
