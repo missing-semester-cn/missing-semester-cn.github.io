@@ -272,20 +272,12 @@ plugins"。
 
 # 其他程序的 Vim 模式
 
-Many tools support Vim emulation. The quality varies from good to great;
-depending on the tool, it may not support the fancier Vim features, but most
-cover the basics pretty well.
 
 很多工具提供了 Vim 模式。 这些 Vim 模式的质量参差不齐； 取决于具体工具， 有的提供了
 很多酷炫的 Vim 功能， 但是大多数对基本功能支持的很好。
 
 ## Shell
 
-If you're a Bash user, use `set -o vi`. If you use Zsh, `bindkey -v`. For Fish,
-`fish_vi_key_bindings`. Additionally, no matter what shell you use, you can
-`export EDITOR=vim`. This is the environment variable used to decide which
-editor is launched when a program wants to start an editor. For example, `git`
-will use this editor for commit messages.
 
 如果你是一个 Bash 用户， 用 `set -o vi`。 如果你用 Zsh： `bindkey -v`。  Fish 用
 `fish_vi_key_bindings`。 另外， 不管利用什么 shell， 你可以
@@ -307,7 +299,6 @@ set editing-mode vi
 
 ## 其他
 
-There are even vim keybinding extensions for web
 甚至有 Vim 的网页浏览快捷键
 [browsers](http://vim.wikia.com/wiki/Vim_key_bindings_for_web_browsers), 受欢迎的有
 用于 Google Chrome 的
