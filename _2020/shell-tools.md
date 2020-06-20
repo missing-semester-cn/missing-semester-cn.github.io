@@ -235,7 +235,7 @@ find . -name '*.png' -exec convert {} {.}.jpg \;
 ```bash
 # 查找所有使用了 requests 库的文件
 rg -t py 'import requests'
-# 查找所有没有写shebang的文件（包含隐藏文件）
+# 查找所有没有写 shebang 的文件（包含隐藏文件）
 rg -u --files-without-match "^#!"
 # 查找所有包含了foo，并打印其之后的5行
 rg foo -A 5
