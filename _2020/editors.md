@@ -27,8 +27,8 @@ video:
 
 ## Vim
 
-这门课的所有教员都使用Vim作为编辑器。Vim有着悠久历史；它始于1976年的Vi编辑器，到现在还在
-不断开发中。Vim有很多聪明的设计思想，所以很多其他工具也支持Vim模式（比如，140万人安装了
+这门课的所有教员都使用 Vim 作为编辑器。Vim 有着悠久历史；它始于1976年的 Vi 编辑器，到现在还在
+不断开发中。Vim 有很多聪明的设计思想，所以很多其他工具也支持Vim模式（比如，140万人安装了
 [Vim emulation for VS code](https://github.com/VSCodeVim/Vim)）。即使你最后使用
 其他编辑器，Vim也值得学习。
 
@@ -58,7 +58,7 @@ Vim的设计以大多数时间都花在阅读、浏览和进行少量编辑改�
 在不同的操作模式下， 键盘敲击的含义也不同。比如，`x` 在插入模式会插入字母`x`，但是在正常模式
 会删除当前光标所在下的字母，在可视模式下则会删除选中文块。
 
-在默认设置下，Vim会在左下角显示当前的模式。 Vim启动时的默认模式是正常模式。通常你会把大部分
+在默认设置下，Vim 会在左下角显示当前的模式。 Vim 启动时的默认模式是正常模式。通常你会把大部分
 时间花在正常模式和插入模式。
 
 你可以按下 `<ESC>` （逃脱键） 从任何其他模式返回正常模式。 在正常模式，键入 `i` 进入插入
@@ -71,7 +71,7 @@ Vim的设计以大多数时间都花在阅读、浏览和进行少量编辑改�
 
 ## 插入文本
 
-在正常模式， 键入 `i` 进入插入模式。 现在 Vim 跟很多其他的编辑器一样， 直到你键入`<ESC>`
+在正常模式下， 键入 `i` 进入插入模式。 现在 Vim 跟很多其他的编辑器一样， 直到你键入`<ESC>`
 返回正常模式。 你只需要掌握这一点和上面介绍的所有基知识就可以使用 Vim 来编辑文件了
 （虽然如果你一直停留在插入模式内不一定高效）。
 
@@ -101,8 +101,8 @@ Vim 默认打开一个标签页，这个标签也包含一个窗口。
 
 # Vim 的接口其实是一种编程语言
 
-Vim 最重要的设计思想是 Vim 的界面本省是一个程序语言。 键入操作 （以及他们的助记名）
-本身是命令， 这些命令可以组合使用。 这使得移动和编辑更加高效，特别是一旦形成肌肉记忆。
+Vim 最重要的设计思想是 Vim 的界面本身是一个程序语言。 键入操作 （以及它们的助记名）
+本身是命令， 这些命令可以组合使用。 这使得移动和编辑更加高效，尤其是形成肌肉记忆之后。
 
 ## 移动
 
@@ -115,7 +115,7 @@ Vim 最重要的设计思想是 Vim 的界面本省是一个程序语言。 键�
 - 屏幕： `H` （屏幕首行）， `M` （屏幕中间）， `L` （屏幕底部）
 - 翻页： `Ctrl-u` （上翻）， `Ctrl-d` （下翻）
 - 文件： `gg` （文件头）， `G` （文件尾）
-- 行数： `:{行数}<CR>` 或者 `{行数}G` ({行数}为行数)
+- 行数： `:{行数}<CR>` 或者 `{行数}G`
 - 杂项： `%` （找到配对，比如括号或者 /* */ 之类的注释对）
 - 查找： `f{字符}`， `t{字符}`， `F{字符}`， `T{字符}`
     - 查找/到 向前/向后 在本行的{字符}
@@ -134,7 +134,7 @@ Vim 最重要的设计思想是 Vim 的界面本省是一个程序语言。 键�
 
 ## 编辑
 
-所有你需要用鼠标做的事， 你现在都可以用键盘：采用编辑命令和移动命令的组合来完成。
+所有你需要用鼠标做的事， 现在都可以用键盘来完成（采用编辑命令和移动命令的组合来完成）。
 这就是 Vim 的界面开始看起来像一个程序语言的时候。Vim 的编辑命令也被称为 “动词”，
 因为动词可以施动于名词。
 
@@ -193,11 +193,11 @@ def main():
 
 我们会修复以下问题：
 
-- 主函数没有被调用
-- 从 0 而不是 1 开始
-- 在 15 的整数倍的时候在不用行打印 "fizz" 和 "buzz"
-- 在 5 的整数倍的时候打印 "fizz"
-- 采用硬编码的参数 10 而不是从命令控制行读取参数
+- 主函数没有被调用；
+- 从 0 而不是 1 开始；
+- 在 15 的整数倍的时候在不用行打印 "fizz" 和 "buzz"；
+- 在 5 的整数倍的时候打印 "fizz"；
+- 采用硬编码的参数 10 而不是从命令控制行读取参数；
 
 {% comment %}
 
@@ -232,42 +232,39 @@ def main():
 
 # 自定义 Vim
 
-Vim 由一个位于 `~/.vimrc` 的文本配置文件 （包含 Vim 脚本命令）。 你可能会启用很多基本
+Vim 有一个位于 `~/.vimrc` 的文本配置文件 （包含 Vim 脚本命令）， 你可能会启用很多基本
 设置。
 
-我们提供一个文档详细的基本设置， 你可以用它当作你的初始设置。 我们推荐使用这个设置因为
+我们提供了一个基本配置， 你可以用它当作你的初始设置。 我们推荐使用这个设置因为
 它修复了一些 Vim 默认设置奇怪行为。
-**在 [这儿](/2020/files/vimrc) 下载我们的设置， 然后将它保存成
-`~/.vimrc`.**
+**在 [这儿](/2020/files/vimrc) 下载我们的设置， 然后将它保存成 `~/.vimrc`.**
 
-Vim 能够被重度自定义， 花时间探索自定义选项是值得的。 你可以参考其他人的在 GitHub
-上共享的设置文件， 比如， 你的授课人的 Vim 设置
+Vim 能够被高度自定义， 花时间探索自定义选项是值得的。 你可以参考其他人的在 GitHub
+上共享的设置文件， 比如， 本节课的讲师们也将自己的 Vim 设置分享在了 Github 上
 ([Anish](https://github.com/anishathalye/dotfiles/blob/master/vimrc),
-[Jon](https://github.com/jonhoo/configs/blob/master/editor/.config/nvim/init.vim) (uses [neovim](https://neovim.io/)),
+[Jon](https://github.com/jonhoo/configs/blob/master/editor/.config/nvim/init.vim) (使用 [neovim](https://neovim.io/)),
 [Jose](https://github.com/JJGO/dotfiles/blob/master/vim/.vimrc))。
-有很多好的博客文章也聊到了这个话题。 尽量不要复制粘贴别人的整个设置文件，
-而是阅读和理解它， 然后采用对你有用的部分。
+有很多博客文章也聊到了这个话题。 尽量不要复制粘贴别人的整个设置文件，而是阅读和理解它， 然后采用对你有用的部分。
 
 # 扩展 Vim
 
-Vim 有很多扩展插件。 跟很多互联网上已经过时的建议相反， 你 _不_ 需要在 Vim 使用一个插件
-管理器（从 Vim 8.0 开始）。 你可以使用内置的插件管理系统。 只需要创建一个
-`~/.vim/pack/vendor/start/` 的文件家， 然后把插件放到这里 （比如通过 `git clone`）。
+Vim 有很多扩展插件。 跟很多互联网上已经过时的建议相反， 你 _并不_ 需要在 Vim 中使用插件
+管理器（从 Vim 8.0 开始）。 你可以使用内置的插件管理系统。 你只需要创建一个
+`~/.vim/pack/vendor/start/` 的文件夹， 然后把插件放到这里 （比如通过 `git clone`）。
 
 以下是一些我们最爱的插件：
 
-- [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim): 模糊文件查找
-- [ack.vim](https://github.com/mileszs/ack.vim): 代码搜索
-- [nerdtree](https://github.com/scrooloose/nerdtree): 文件浏览器
-- [vim-easymotion](https://github.com/easymotion/vim-easymotion): 魔术操作
+- [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim): 模糊文件查找；
+- [ack.vim](https://github.com/mileszs/ack.vim): 代码搜索；
+- [nerdtree](https://github.com/scrooloose/nerdtree): 文件浏览器；
+- [vim-easymotion](https://github.com/easymotion/vim-easymotion): 魔术操作。
 
 
-我们尽量避免在这里提供一份冗长的插件列表。 你可以查看讲师们的开源的配置文件
+我们尽量避免在这里提供一份冗长的插件列表。 你可以查看讲师们开源的配置文件
 ([Anish](https://github.com/anishathalye/dotfiles),
 [Jon](https://github.com/jonhoo/configs),
-[Jose](https://github.com/JJGO/dotfiles)) to see what other plugins we use.
-Check out [Vim Awesome](https://vimawesome.com/) 来了解一些很棒的插件.
-这个话题也有很多博客文章： 搜索 "best Vim
+[Jose](https://github.com/JJGO/dotfiles)) ，看看我们使用了那些插件。
+你也可以浏览 [Vim Awesome](https://vimawesome.com/) 来了解一些很棒的插件。这个话题也有很多博客文章： 搜索 "best Vim
 plugins"。
 
 # 其他程序的 Vim 模式
@@ -286,10 +283,8 @@ plugins"。
 
 ## Readline
 
-很多程序使用 [GNU
-Readline](https://tiswww.case.edu/php/chet/readline/rltop.html) 库来作为
-它们的命令控制行界面。 Readline 也支持基本的 Vim 模式，
-可以通过在 `~/.inputrc` 添加如下行开启：
+很多程序使用 [GNU Readline](https://tiswww.case.edu/php/chet/readline/rltop.html) 库来作为
+它们的命令控制行界面。 Readline 也支持基本的 Vim 模式，可以通过在 `~/.inputrc` 添加如下行开启 Vim 模式：
 
 ```
 set editing-mode vi
@@ -299,13 +294,10 @@ set editing-mode vi
 
 ## 其他
 
-甚至有 Vim 的网页浏览快捷键
-[browsers](http://vim.wikia.com/wiki/Vim_key_bindings_for_web_browsers), 受欢迎的有
-用于 Google Chrome 的
-[Vimium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en)
+甚至有 Vim 的网页浏览快捷键[browsers](http://vim.wikia.com/wiki/Vim_key_bindings_for_web_browsers), 受欢迎的有
+用于 Google Chrome 的[Vimium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en)
 和用于 Firefox 的 [Tridactyl](https://github.com/tridactyl/tridactyl)。
-你甚至可以在 [Jupyter
-notebooks](https://github.com/lambdalisue/jupyter-vim-binding) 中用 Vim 快捷键。
+你甚至可以在 [Jupyter notebooks](https://github.com/lambdalisue/jupyter-vim-binding) 中用 Vim 快捷键。
 
 # Vim 进阶
 
@@ -345,7 +337,6 @@ notebooks](https://github.com/lambdalisue/jupyter-vim-binding) 中用 Vim 快捷
         - `g/people/d`
         - `%s/<person>/{/g`
         - `%s/<name>\(.*\)<\/name>/"name": "\1",/g`
-        - ...
     - Vim 命令 / 宏
         - `Gdd`, `ggdd` 删除第一行和最后一行
         - 格式化最后一个元素的宏 （寄存器 `e`）
@@ -363,39 +354,28 @@ notebooks](https://github.com/lambdalisue/jupyter-vim-binding) 中用 Vim 快捷
 
 # 扩展资料
 
-- `vimtutor` 是一个 Vim 安装时自带的教程
-- [Vim Adventures](https://vim-adventures.com/) 是一个学习使用 Vim 的游戏
-- [Vim Tips Wiki](http://vim.wikia.com/wiki/Vim_Tips_Wiki)
-- [Vim Advent Calendar](https://vimways.org/2019/) 有很多 Vim 小技巧
-- [Vim Golf](http://www.vimgolf.com/) 是用 Vim 的用户界面作为程序语言的 [code golf](https://en.wikipedia.org/wiki/Code_golf)
-- [Vi/Vim Stack Exchange](https://vi.stackexchange.com/)
-- [Vim Screencasts](http://vimcasts.org/)
-- [Practical Vim](https://pragprog.com/book/dnvim2/practical-vim-second-edition) （书）
+- `vimtutor` 是一个 Vim 安装时自带的教程；
+- [Vim Adventures](https://vim-adventures.com/) 是一个学习使用 Vim 的游戏；
+- [Vim Tips Wiki](http://vim.wikia.com/wiki/Vim_Tips_Wiki)；
+- [Vim Advent Calendar](https://vimways.org/2019/) 有很多 Vim 小技巧；
+- [Vim Golf](http://www.vimgolf.com/) 是用 Vim 的用户界面作为程序语言的 [code golf](https://en.wikipedia.org/wiki/Code_golf)；
+- [Vi/Vim Stack Exchange](https://vi.stackexchange.com/)；
+- [Vim Screencasts](http://vimcasts.org/)；
+- [Practical Vim](https://pragprog.com/book/dnvim2/practical-vim-second-edition) （书）；
 
 # 课后练习
 
-1. 完成 `vimtutor`。 备注： 它在一个
-   [80x24](https://en.wikipedia.org/wiki/VT100) （80 列， 24 行）
-   终端窗口看起来最好。
-1. 下载我们的 [基本 vimrc](/2020/files/vimrc)， 然后把它保存到 `~/.vimrc`。 通读这个注释详细的文件
-   （用 Vim!）， 然后观察 Vim 在这个新的设置下看起来和使用起来有哪些细微的区别。
-1. 安装和配置一个插件：
+1. 完成 `vimtutor`。 备注： 它在一个[80x24](https://en.wikipedia.org/wiki/VT100) 大小的窗口中看起来效果最好；
+1. 下载我们的 [vimrc](/2020/files/vimrc)， 然后把它保存到 `~/.vimrc`。 使用 Vim 来通读这个注释详细的文件，然后观察 Vim 在这个新的设置下看起来和使用起来有哪些细微的区别；
+2. 安装和配置一个插件：
    [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim).
-   1. 用 `mkdir -p ~/.vim/pack/vendor/start` 创建插件文件夹
-   1. 下载这个插件： `cd ~/.vim/pack/vendor/start; git clone
-      https://github.com/ctrlpvim/ctrlp.vim`
-   1. 读这个插件的
-      [文档](https://github.com/ctrlpvim/ctrlp.vim/blob/master/readme.md)。
-       尝试用 CtrlP 来在一个工程文件夹里定位一个文件， 打开 Vim, 然后用 Vim 命令控制行开始
-      `:CtrlP`.
-    1. 自定义 CtrlP： 添加
-       [configuration](https://github.com/ctrlpvim/ctrlp.vim/blob/master/readme.md#basic-options)
-       到你的 `~/.vimrc` 来用按 Ctrl-P 打开 CtrlP
-1. 练习使用 Vim, 在你自己的机器上重做 [演示](#demo)。
-1. 下个月用 Vim 做你 _所有_ 文件编辑。 每当不够高效的时候, 或者你感觉 “一定有一个更好的方式”，
-   尝试求助搜索引擎， 很有可能有一个更好的方式。 如果你遇到难题， 来我们的答疑时间或者给我们发邮件。
-1. 在你的其他工具中设置 Vim 快捷键 （见上面的操作指南）。
-1. 进一步自定义你的 `~/.vimrc` 和安装更多插件。
-1. （高阶） 用 Vim 宏将 XML 转换到 JSON ([例子文件](/2020/files/example-data.xml))。
-   尝试着先完全自己做， 但是在你卡住的时候可以查看上面
-   [宏](#macros) 章节。
+   1. 用 `mkdir -p ~/.vim/pack/vendor/start` 创建插件文件夹；
+   2. 下载这个插件： `cd ~/.vim/pack/vendor/start; git clone https://github.com/ctrlpvim/ctrlp.vim`；
+   3. 读这个插件的[文档](https://github.com/ctrlpvim/ctrlp.vim/blob/master/readme.md)。
+       尝试用 CtrlP 来在一个工程文件夹里定位一个文件， 打开 Vim, 然后用 Vim 命令控制行开始`:CtrlP`；
+    4. 自定义 CtrlP： 添加[configuration](https://github.com/ctrlpvim/ctrlp.vim/blob/master/readme.md#basic-options)到你的 `~/.vimrc` 来用按 Ctrl-P 打开 CtrlP；
+3. 练习使用 Vim, 在你自己的机器上重做 [演示](#demo)；
+4. 下个月用 Vim 做你 _所有_ 文件编辑。 每当不够高效的时候, 或者你感觉 “一定有一个更好的方式”时，尝试求助搜索引擎， 很有可能有一个更好的方式。 如果你遇到难题， 来我们的答疑时间或者给我们发邮件；
+5. 在你的其他工具中设置 Vim 快捷键 （见上面的操作指南）；
+6. 进一步自定义你的 `~/.vimrc` 和安装更多插件；
+7. （高阶） 用 Vim 宏将 XML 转换到 JSON ([例子文件](/2020/files/example-data.xml))。尝试着先完全自己做， 但是在你卡住的时候可以查看上面[宏](#macros) 章节。
