@@ -122,7 +122,7 @@ cp /path/to/project/foo.sh /path/to/project/bar.sh /path/to/project/baz.sh /newp
 
 # 也可以结合通配使用
 mv *{.py,.sh} folder
-# 会删除所有 *.py 和 *.sh 文件
+# 会移动所有 *.py 和 *.sh 文件
 
 mkdir foo bar
 
@@ -188,13 +188,13 @@ shell函数和脚本有如下一些不同点：
 程序员们面对的最常见的重复任务就是查找文件或目录。所有的类UNIX系统都包含一个名为 [`find`](http://man7.org/linux/man-pages/man1/find.1.html)的工具，它是shell上用于查找文件的绝佳工具。`find`命令会递归地搜索符合条件的文件，例如：
 
 ```bash
-# Find all directories named src
+# 查找所有名称为src的文件夹
 find . -name src -type d
-# Find all python files that have a folder named test in their path
+# 查找所有文件夹路径中包含test的python文件
 find . -path '**/test/**/*.py' -type f
-# Find all files modified in the last day
+# 查找前一天修改的所有文件
 find . -mtime -1
-# Find all zip files with size in range 500k to 10M
+# 查找所有大小在500k至10M的tar.gz文件
 find . -size +500k -size -10M -name '*.tar.gz'
 ```
 除了列出所寻找的文件之外，find还能对所有查找到的文件进行操作。这能极大地简化一些单调的任务。
@@ -233,13 +233,13 @@ find . -name '*.png' -exec convert {} {.}.jpg \;
 因此也出现了很多它的替代品，包括 [ack](https://beyondgrep.com/), [ag](https://github.com/ggreer/the_silver_searcher) 和 [rg](https://github.com/BurntSushi/ripgrep)。它们都特别好用，但是功能也都差不多，我比较常用的是 ripgrep (`rg`) ，因为它速度快，而且用法非常符合直觉。例子如下：
 
 ```bash
-# Find all python files where I used the requests library
+# 查找所有使用了 requests 库的文件
 rg -t py 'import requests'
-# Find all files (including hidden files) without a shebang line
+# 查找所有没有写 shebang 的文件（包含隐藏文件）
 rg -u --files-without-match "^#!"
-# Find all matches of foo and print the following 5 lines
+# 查找所有的foo字符串，并打印其之后的5行
 rg foo -A 5
-# Print statistics of matches (# of matched lines and files )
+# 打印匹配的统计信息（匹配的行和文件的数量）
 rg --stats PATTERN
 ```
 
