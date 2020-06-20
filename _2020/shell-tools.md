@@ -237,7 +237,7 @@ find . -name '*.png' -exec convert {} {.}.jpg \;
 rg -t py 'import requests'
 # 查找所有没有写 shebang 的文件（包含隐藏文件）
 rg -u --files-without-match "^#!"
-# 查找所有包含了foo，并打印其之后的5行
+# 查找所有的foo字符串，并打印其之后的5行
 rg foo -A 5
 # 打印匹配的统计信息（匹配的行和文件的数量）
 rg --stats PATTERN
