@@ -233,7 +233,7 @@ find . -name '*.png' -exec convert {} {.}.jpg \;
 因此也出现了很多它的替代品，包括 [ack](https://beyondgrep.com/), [ag](https://github.com/ggreer/the_silver_searcher) 和 [rg](https://github.com/BurntSushi/ripgrep)。它们都特别好用，但是功能也都差不多，我比较常用的是 ripgrep (`rg`) ，因为它速度快，而且用法非常符合直觉。例子如下：
 
 ```bash
-# 查找所有使用了requests库的文件
+# 查找所有使用了 requests 库的文件
 rg -t py 'import requests'
 # 查找所有没有写shebang的文件（包含隐藏文件）
 rg -u --files-without-match "^#!"
