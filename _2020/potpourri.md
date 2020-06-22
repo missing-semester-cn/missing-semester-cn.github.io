@@ -2,7 +2,7 @@
 layout: lecture
 title: "大杂烩"
 date: 2020-06-21
-ready: false
+ready: true
 video:
   aspect: 56.25
   id: JZDt-PRq0uo
@@ -94,12 +94,12 @@ WantedBy=multi-user.target
 
 现在的软件系统一般由很多模块化的组件构建而成。你使用的操作系统可以通过一系列共同的方式使用不同的文件系统上的相似功能。比如当你使用 `touch` 命令创建文件的时候，`touch` 使用系统调用（system call）向内核发出请求。内核再根据文件系统，调用特有的方法来创建文件。这里的问题是，UNIX 文件系统在传统上是以内核模块的形式实现，导致只有内核可以进行文件系统相关的调用。
 
-[FUSE](https://en.wikipedia.org/wiki/Filesystem_in_Userspace)（Filesystem in User Space）允许运行在用户空间上的程序实现文件系统调用，并将这些调用与内核接口联系起来。在实践中，这意味着用户可以在文件系统调用中实现任意功能。
+[FUSE](https://en.wikipedia.org/wiki/Filesystem_in_Userspace)（用户空间文件系统）允许运行在用户空间上的程序实现文件系统调用，并将这些调用与内核接口联系起来。在实践中，这意味着用户可以在文件系统调用中实现任意功能。
 
 FUSE 可以用于实现如：一个将所有文件系统操作都使用 SSH 转发到远程主机，由远程主机处理后返回结果到本地计算机的虚拟文件系统。这个文件系统里的文件虽然存储在远程主机，对于本地计算机上的软件而言和存储在本地别无二致。`sshfs`就是一个实现了这种功能的 FUSE 文件系统。
 
 一些有趣的 FUSE 文件系统包括：
-- [sshfs](https://github.com/libfuse/sshfs)：使用SSH连接在本地打开远程主机上的文件
+- [sshfs](https://github.com/libfuse/sshfs)：使用 SSH 连接在本地打开远程主机上的文件
 - [rclone](https://rclone.org/commands/rclone_mount/)：将 Dropbox、Google Drive、Amazon S3、或者 Google Cloud Storage 一类的云存储服务挂载为本地文件系统
 - [gocryptfs](https://nuetzlich.net/gocryptfs/)：覆盖在加密文件上的文件系统。文件以加密形式保存在磁盘里，但该文件系统挂载后用户可以直接从挂载点访问文件的明文
 - [kbfs](https://keybase.io/docs/kbfs)：分布式端到端加密文件系统。在这个文件系统里有私密（private），共享（shared），以及公开（public）三种类型的文件夹
@@ -130,7 +130,7 @@ FUSE 可以用于实现如：一个将所有文件系统操作都使用 SSH 转�
 
 有些需要认证的 API 通常要求用户在请求中加入某种私密令牌（secret token）来完成认证。请阅读你想访问的 API 所提供的文档来确定它请求的认证方式，但是其实大多数 API 都会使用 [OAuth](https://www.oauth.com/)。OAuth 通过向用户提供一系列仅可用于该 API 特定功能的私密令牌进行校验。因为使用了有效 OAuth 令牌的请求在 API 看来就是用户本人发出的请求，所以请一定保管好这些私密令牌。否则其他人就可以冒用你的身份进行任何你可以在这个 API 上进行的操作。
 
-[IFTTT](https://ifttt.com/) 这个网站可以将很多 API 整合在一起，让某 API 发生的特定事件触发在其他 API 上执行的任务。IFTTT 的全称 If This Then That 足以说明它的用法，比如在检测到用户的新推文后，自动发布在其他平台。但是你可以对它支持的 API 进行任意整合，所以试着来设置一下任何你需要的功能吧！
+[IFTTT](https://ifttt.com/) 这个网站可以将很多 API 整合在一起，让某 API 发生的特定事件触发在其他 API 上执行的任务。IFTTT 的全称If This Then That 足以说明它的用法，比如在检测到用户的新推文后，自动发布在其他平台。但是你可以对它支持的 API 进行任意整合，所以试着来设置一下任何你需要的功能吧！
 
 ## 常见命令行标志参数及模式
 
@@ -174,7 +174,7 @@ MIT 向有访问校内资源需求的成员开放自己运营的 [VPN](https://i
 
 你在职业生涯中大概率会编写各种各样的文档。在很多情况下这些文档需要使用标记来增加可读性，比如：插入粗体或者斜体内容，增加页眉、超链接、以及代码片段。
 
-在不使用 Word 或者 LaTeX 等复杂工具的情况下，你可以考虑使用 [Markdown](https://commonmark.org/help/) 这个轻量化的标记语言（markup language）。你可能已经见过Markdown或者它的一个变种。很多环境都支持并使用 Markdown 的一些子功能。
+在不使用 Word 或者 LaTeX 等复杂工具的情况下，你可以考虑使用 [Markdown](https://commonmark.org/help/) 这个轻量化的标记语言（markup language）。你可能已经见过 Markdown 或者它的一个变种。很多环境都支持并使用 Markdown 的一些子功能。
 
 Markdown 致力于将人们编写纯文本时的一些习惯标准化。比如：
 - 用`*`包围的文字表示强调（*斜体*），或者用`**`表示特别强调（**粗体**）；
@@ -191,9 +191,9 @@ Markdown 不仅容易上手，而且应用非常广泛。实际上本课程的�
 
 
 
-## Hammerspoon (macOS桌面自动化)
+## Hammerspoon (macOS 桌面自动化)
 
-[Hammerspoon](https://www.hammerspoon.org/) 是面向 macOS 的一个桌面自动化框架。它允许用户编写和操作系统功能挂钩的Lua脚本，从而与键盘、鼠标、窗口、文件系统等交互。
+[Hammerspoon](https://www.hammerspoon.org/) 是面向 macOS 的一个桌面自动化框架。它允许用户编写和操作系统功能挂钩的 Lua 脚本，从而与键盘、鼠标、窗口、文件系统等交互。
 
 下面是 Hammerspoon 的一些示例应用：
 
@@ -206,9 +206,9 @@ Markdown 不仅容易上手，而且应用非常广泛。实际上本课程的�
 
 ### 资源
 
-- [Getting Started with Hammerspoon](https://www.hammerspoon.org/go/)：Hammerspoon官方教程
-- [Sample configurations](https://github.com/Hammerspoon/hammerspoon/wiki/Sample-Configurations)：Hammerspoon官方示例配置
-- [Anish's Hammerspoon config](https://github.com/anishathalye/dotfiles-local/tree/mac/hammerspoon)：Anish的Hammerspoon配置
+- [Getting Started with Hammerspoon](https://www.hammerspoon.org/go/)：Hammerspoon 官方教程
+- [Sample configurations](https://github.com/Hammerspoon/hammerspoon/wiki/Sample-Configurations)：Hammerspoon 官方示例配置
+- [Anish's Hammerspoon config](https://github.com/anishathalye/dotfiles-local/tree/mac/hammerspoon)：Anish 的 Hammerspoon 配置
 
 ## 开机引导以及 Live USB
 
@@ -235,12 +235,10 @@ Live USB 通过在闪存盘上 _写入_ 操作系统的镜像制作，而写入�
 - 超出用户可以使用的物理主机数量的虚拟机
   - 相比物理主机的固定开支，虚拟机的开支一般按运行的时间计算。所以如果用户只需要在短时间内使用大量算力，租用1000台虚拟机运行几分钟明显更加划算。
 
-受欢迎的 VPS 服务商有 [Amazon AWS](https://aws.amazon.com/)，[Google
-Cloud](https://cloud.google.com/)，以及
+受欢迎的 VPS 服务商有 [Amazon AWS](https://aws.amazon.com/)，[Google Cloud](https://cloud.google.com/)，以及
 [DigitalOcean](https://www.digitalocean.com/)。
 
-MIT CSAIL 的成员可以使用 [CSAIL OpenStack
-instance](https://tig.csail.mit.edu/shared-computing/open-stack/)
+MIT CSAIL 的成员可以使用 [CSAIL OpenStack instance](https://tig.csail.mit.edu/shared-computing/open-stack/)
 申请免费的虚拟机用于研究。
 
 ## 交互式记事本编程
@@ -250,7 +248,7 @@ instance](https://tig.csail.mit.edu/shared-computing/open-stack/)
 ## GitHub
 
 [GitHub](https://github.com/) 是最受欢迎的开源软件开发平台之一。我们课程中提到的很多工具，从 [vim](https://github.com/vim/vim) 到
-[Hammerspoon](https://github.com/Hammerspoon/hammerspoon)，都托管在Github上。向你每天使用的开源工具作出贡献其实很简单，下面是两种贡献者们经常使用的方法：
+[Hammerspoon](https://github.com/Hammerspoon/hammerspoon)，都托管在 Github 上。向你每天使用的开源工具作出贡献其实很简单，下面是两种贡献者们经常使用的方法：
 
 - 创建一个[议题（issue）](https://help.github.com/en/github/managing-your-work-on-github/creating-an-issue)。
 议题可以用来反映软件运行的问题或者请求新的功能。创建议题并不需要创建者阅读或者编写代码，所以它是一个轻量化的贡献方式。高质量的问题报告对于开发者十分重要。在现有的议题发表评论也可以对项目的开发作出贡献。
