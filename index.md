@@ -62,6 +62,17 @@ YouTube](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57
  - [Twitter](https://twitter.com/jonhoo/status/1224383452591509507)
  - [YouTube](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57J)
 
+
+# 译文
+
+- [繁体中文](https://missing-semester-zh-hant.github.io/)
+- [Korean](https://missing-semester-kr.github.io/)
+- [Spanish](https://missing-semester-esp.github.io/)
+- [Turkish](https://missing-semester-tr.github.io/)
+
+注意: 上述连接为社区翻译，我们并未验证其内容
+
+
 ## 致谢
 
 感谢 Elaine Mello, Jim Cain 以及 [MIT Open Learning](https://openlearning.mit.edu/) 帮助我们录制讲座视频。
