@@ -1,7 +1,7 @@
 ---
 layout: lecture
 title: "大杂烩"
-date: 2020-06-21
+date: 2020-01-29
 ready: true
 video:
   aspect: 56.25
