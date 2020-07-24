@@ -265,8 +265,8 @@ Vim 有很多扩展插件。 跟很多互联网上已经过时的建议相反，
 我们尽量避免在这里提供一份冗长的插件列表。 你可以查看讲师们的开源的配置文件
 ([Anish](https://github.com/anishathalye/dotfiles),
 [Jon](https://github.com/jonhoo/configs),
-[Jose](https://github.com/JJGO/dotfiles)) to see what other plugins we use.
-Check out [Vim Awesome](https://vimawesome.com/) 来了解一些很棒的插件.
+[Jose](https://github.com/JJGO/dotfiles)) 来看看我们使用的是哪些插件.
+浏览 [Vim Awesome](https://vimawesome.com/) 来了解一些很棒的插件.
 这个话题也有很多博客文章： 搜索 "best Vim
 plugins"。
 
