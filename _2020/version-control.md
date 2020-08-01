@@ -427,7 +427,7 @@ command is used for merging.
     1. 将版本历史可视化并进行探索
     2. 是谁最后修改来 `README.md`文件？（提示：使用 `git log` 命令并添加合适的参数）
     3. 最后一次修改`_config.yml` 文件中 `collections:` 行时的提交信息是什么？（提示：使用`git blame` 和 `git show`）
-3. 使用 Git 时的一个常见错误时提交本不应该由 Git 管理的大文件，或是将含有敏感信息的文件提交给 Git 。尝试像仓库中添加一个文件并添加提交信息，然后将其从历史中删除 ( [这篇文章也许会有帮助](https://help.github.com/articles/removing-sensitive-data-from-a-repository/))；
+3. 使用 Git 时的一个常见错误是提交本不应该由 Git 管理的大文件，或是将含有敏感信息的文件提交给 Git 。尝试像仓库中添加一个文件并添加提交信息，然后将其从历史中删除 ( [这篇文章也许会有帮助](https://help.github.com/articles/removing-sensitive-data-from-a-repository/))；
 4. 从 GitHub 上克隆某个仓库，修改一些文件。当您使用 `git stash` 会发生什么？当您执行 `git log --all --oneline` 时会显示什么？通过 `git stash pop` 命令来撤销 `git stash`操作，什么时候会用到这一技巧？
 5. 与其他的命令行工具一样，Git 也提供了一个名为 `~/.gitconfig` 配置文件 (或 dotfile)。请在 `~/.gitconfig` 中创建一个别名，使您在运行 `git graph` 时，您可以得到 `git log --all --graph --decorate --oneline`的输出结果；
 6. 您可以通过执行`git config --global core.excludesfile ~/.gitignore_global` 在 `~/.gitignore_global` 中创建全局忽略规则。配置您的全局 gitignore 文件来字典忽略系统或编辑器的临时文件，例如 `.DS_Store`；
