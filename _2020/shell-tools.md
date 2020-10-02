@@ -23,7 +23,6 @@ shell脚本是一种更加复杂度的工具。
 需要注意的是，`foo = bar` （使用括号隔开）是不能正确工作的，因为解释器会调用程序`foo` 并将 `=` 和 `bar`作为参数。
 总的来说，在shell脚本中使用空格会起到分割参数的作用，有时候可能会造成混淆，请务必多加检查。
 
-Strings in bash can be defined with `'` and `"` delimiters but they are not equivalent.
 Bash中的字符串通过`'` 和 `"`分隔符来定义，但是它们的含义并不相同。以`'`定义的字符串为原义字符串，其中的变量不会被转义，而 `"`定义的字符串会将变量值进行替换。
 
 ```bash
