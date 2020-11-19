@@ -203,7 +203,7 @@ find . -size +500k -size -10M -name '*.tar.gz'
 # Delete all files with .tmp extension
 find . -name '*.tmp' -exec rm {} \;
 # Find all PNG files and convert them to JPG
-find . -name '*.png' -exec convert {} {.}.jpg \;
+find . -name '*.png' -exec convert {} {}.jpg \;
 ```
 
 尽管 `find` 用途广泛，它的语法却比较难以记忆。例如，为了查找满足模式 `PATTERN` 的文件，您需要执行 `find -name '*PATTERN*'` (如果您希望模式匹配时是不区分大小写，可以使用`-iname`选项）
