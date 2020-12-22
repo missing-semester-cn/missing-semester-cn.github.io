@@ -219,7 +219,7 @@ Markdown 不仅容易上手，而且应用非常广泛。实际上本课程的�
  - 对硬盘上的相同操作系统进行修复；
  - 恢复硬盘上的数据。
 
-Live USB 通过在闪存盘上 _写入_ 操作系统的镜像制作，而写入不是单纯的往闪存盘上复制 `.iso` 文件。你可以使用 [UNetbootin](https://unetbootin.github.io/) 、[Rufus](github.com/pbatard/rufus) 等 Live USB 写入工具制作。
+Live USB 通过在闪存盘上 _写入_ 操作系统的镜像制作，而写入不是单纯的往闪存盘上复制 `.iso` 文件。你可以使用 [UNetbootin](https://unetbootin.github.io/) 、[Rufus](https://github.com/pbatard/rufus) 等 Live USB 写入工具制作。
 
 ## Docker, Vagrant, VMs, Cloud, OpenStack
 
