@@ -263,7 +263,7 @@ ffmpeg -loglevel panic -i /dev/video0 -frames 1 -f image2 -
 1. 学习一下这篇简短的 [交互式正则表达式教程](https://regexone.com/).
 2. 统计words文件 (`/usr/share/dict/words`) 中包含至少三个`a` 且不以`'s` 结尾的单词个数。这些单词中，出现频率前三的末尾两个字母是什么？ `sed`的 `y`命令，或者 `tr` 程序也许可以帮你解决大小写的问题。共存在多少种词尾两字母组合？还有一个很 有挑战性的问题：哪个组合从未出现过？
 3. 进行原地替换听上去很有诱惑力，例如：
-   `sed s/REGEX/SUBSTITUTION/ input.txt > input.txt`。但是这并不是一个明知的做法，为什么呢？还是说只有 `sed`是这样的? 查看 `man sed` 来完成这个问题
+   `sed s/REGEX/SUBSTITUTION/ input.txt > input.txt`。但是这并不是一个明智的做法，为什么呢？还是说只有 `sed`是这样的? 查看 `man sed` 来完成这个问题
 
 4. 找出您最近十次开机的开机时间平均数、中位数和最长时间。在Linux上需要用到 `journalctl` ，而在 macOS 上使用 `log show`。找到每次起到开始和结束时的时间戳。在Linux上类似这样操作：
    ```
