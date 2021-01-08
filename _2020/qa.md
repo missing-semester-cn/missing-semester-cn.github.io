@@ -179,5 +179,5 @@ Emacs的优点是可以用Lisp语言进行扩展（Lisp比vim默认的脚本语�
 
 ## 对于不同的 Web 浏览器有什么评价?
 
-2020的浏览器现状是，大部分的浏览器都与 Chrome 类似，因为它们都使用同样的引擎(Blink)。 Microsoft Edge 同样基于 Blink，至于 Safari 基于 WebKit(与Blink类似的引擎)，这些浏览器仅仅是更糟糕的 Chorme 版本。不管是在性能还是可用性上，Chorme 都是一款很不错的浏览器。如果你想要替代品，我们推荐 Firefox。Firefox 与 Chorme 的在各方面不相上下，并且在隐私方面更加出色。
+2020的浏览器现状是，大部分的浏览器都与 Chrome 类似，因为它们都使用同样的引擎(Blink)。 Microsoft Edge 同样基于 Blink，至于 Safari 基于 WebKit(与Blink类似的引擎)，这些浏览器仅仅是更糟糕的 Chrome 版本。不管是在性能还是可用性上，Chrome 都是一款很不错的浏览器。如果你想要替代品，我们推荐 Firefox。Firefox 与 Chrome 的在各方面不相上下，并且在隐私方面更加出色。
 有一款目前还没有完成的叫 Flow 的浏览器，它实现了全新的渲染引擎，有望比现有引擎速度更快。
