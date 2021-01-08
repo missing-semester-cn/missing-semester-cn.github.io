@@ -1,4 +1,4 @@
-# The Missing Semester of Your CS Education [![gitlocalized ](https://gitlocalize.com/repo/5643/zh/badge.svg)](https://gitlocalize.com/repo/5643/zh?utm_source=badge)
+# The Missing Semester of Your CS Education 
 
 Website for the [The Missing Semester of Your CS Education](https://missing.csail.mit.edu/) class!
 [中文站点](https://missing-semester-cn.github.io)
