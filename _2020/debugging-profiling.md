@@ -96,17 +96,17 @@ journalctl --since "1m ago" | grep Hello
 - 当到达某一行时将程序暂停；
 - 一次一条指令地逐步执行程序；
 - 程序崩溃后查看变量的值；
-- 满足特定条件是暂停程序；
+- 满足特定条件时暂停程序；
 - 其他高级功能。
 
 很多编程语言都有自己的调试器。Python 的调试器是[`pdb`](https://docs.python.org/3/library/pdb.html).
 
-下面对`pdb` 支持对命令进行简单对介绍：
+下面对`pdb` 支持的命令进行简单的介绍：
 
 - **l**(ist) - 显示当前行附近的11行或继续执行之前的显示；
-- **s**(tep) - 执行当前行，并在第一个可能的地方停止
+- **s**(tep) - 执行当前行，并在第一个可能的地方停止；
 - **n**(ext) - 继续执行直到当前函数的下一条语句或者 return 语句；
-- **b**(reak) - 设置断点（基于传入对参数）；
+- **b**(reak) - 设置断点（基于传入的参数）；
 - **p**(rint) - 在当前上下文对表达式求值并打印结果。还有一个命令是**pp** ，它使用 [`pprint`](https://docs.python.org/3/library/pprint.html) 打印；
 - **r**(eturn) - 继续执行直到当前函数返回；
 - **q**(uit) - 退出调试器。
@@ -162,7 +162,7 @@ sudo dtruss -t lstat64_extended ls -l > /dev/null
 有些问题是您不需要执行代码就能发现的。例如，仔细观察一段代码，您就能发现某个循环变量覆盖了某个已经存在的变量或函数名；或是有个变量在被读取之前并没有被定义。
 这种情况下 [静态分析](https://en.wikipedia.org/wiki/Static_program_analysis) 工具就可以帮我们找到问题。静态分析会将程序的源码作为输入然后基于编码规则对其进行分析并对代码的正确性进行推理。
 
-下面这段 Python 代码中存在几个问题。 首先，我们的循环变量`foo` 覆盖了之前定义的函数`foo`。最后一行，我们还把 `bar` 错写成了`baz`，因此当程序完成`sleep`  (一分钟后)后，执行到这一行的时候便会崩溃。
+下面这段 Python 代码中存在几个问题。 首先，我们的循环变量`foo` 覆盖了之前定义的函数`foo`。最后一行，我们还把 `bar` 错写成了`baz`，因此当程序完成`sleep`  (一分钟)后，执行到这一行的时候便会崩溃。
 
 ```python
 import time
@@ -206,7 +206,7 @@ Found 3 errors in 1 file (checked 1 source file)
 
 # 性能分析
 
-即使您的代码能够向您期望的一样运行，但是如果它消耗了您全部的 CPU 和内存，那么它显然也不是个好程序。算法课上我们通常会介绍大O标记法，但却没交给我们如何找到程序中的热点。
+即使您的代码能够向您期望的一样运行，但是如果它消耗了您全部的 CPU 和内存，那么它显然也不是个好程序。算法课上我们通常会介绍大O标记法，但却没教给我们如何找到程序中的热点。
 鉴于 [过早的优化是万恶之源](http://wiki.c2.com/?PrematureOptimization)，您需要学习性能分析和监控工具，它们会帮助您找到程序中最耗时、最耗资源的部分，这样您就可以有针对性的进行性能优化。
 
 ## 计时
@@ -234,7 +234,7 @@ print(time.time() - start)
 
 不过，执行时间（wall clock time）也可能会误导您，因为您的电脑可能也在同时运行其他进程，也可能在此期间发生了等待。 对于工具来说，需要区分真实时间、用户时间和系统时间。通常来说，用户时间+系统时间代表了您的进程所消耗的实际 CPU （更详细的解释可以参照[这篇文章](https://stackoverflow.com/questions/556405/what-do-real-user-and-sys-mean-in-the-output-of-time1)）。
 
-- 真实时间 - 从程序开始到结束流失掉到真实时间，包括其他进程到执行时间以及阻塞消耗的时间（例如等待 I/O或网络）；
+- 真实时间 - 从程序开始到结束流失掉的真实时间，包括其他进程的执行时间以及阻塞消耗的时间（例如等待 I/O或网络）；
 - _User_ - CPU 执行用户代码所花费的时间；
 - _Sys_ - CPU 执行系统内核代码所花费的时间。
 
@@ -282,7 +282,7 @@ if __name__ == '__main__':
             grep(pattern, file)
 ```
 
-我们可以使用下面的命令来对这段代码进行分析。通过它的输出我们可以直到，IO 消耗了大量的时间，编译正则表达式也比较耗费时间。因为正则表达式只需要编译一次，我们可以将其移动到 for 循环外面来改进性能。
+我们可以使用下面的命令来对这段代码进行分析。通过它的输出我们可以知道，IO 消耗了大量的时间，编译正则表达式也比较耗费时间。因为正则表达式只需要编译一次，我们可以将其移动到 for 循环外面来改进性能。
 
 ```
 $ python -m cProfile -s tottime grep.py 1000 '^(import|\s*def)[^,]*$' *.py
@@ -290,21 +290,21 @@ $ python -m cProfile -s tottime grep.py 1000 '^(import|\s*def)[^,]*$' *.py
 [omitted program output]
 
  ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     8000    0.266    0.000    0.292    0.000 {built-in method io.open}
-     8000    0.153    0.000    0.894    0.000 grep.py:5(grep)
-    17000    0.101    0.000    0.101    0.000 {built-in method builtins.print}
-     8000    0.100    0.000    0.129    0.000 {method 'readlines' of '_io._IOBase' objects}
-    93000    0.097    0.000    0.111    0.000 re.py:286(_compile)
-    93000    0.069    0.000    0.069    0.000 {method 'search' of '_sre.SRE_Pattern' objects}
-    93000    0.030    0.000    0.141    0.000 re.py:231(compile)
-    17000    0.019    0.000    0.029    0.000 codecs.py:318(decode)
-        1    0.017    0.017    0.911    0.911 grep.py:3(<module>)
+   8000    0.266    0.000    0.292    0.000 {built-in method io.open}
+   8000    0.153    0.000    0.894    0.000 grep.py:5(grep)
+  17000    0.101    0.000    0.101    0.000 {built-in method builtins.print}
+   8000    0.100    0.000    0.129    0.000 {method 'readlines' of '_io._IOBase' objects}
+  93000    0.097    0.000    0.111    0.000 re.py:286(_compile)
+  93000    0.069    0.000    0.069    0.000 {method 'search' of '_sre.SRE_Pattern' objects}
+  93000    0.030    0.000    0.141    0.000 re.py:231(compile)
+  17000    0.019    0.000    0.029    0.000 codecs.py:318(decode)
+      1    0.017    0.017    0.911    0.911 grep.py:3(<module>)
 
 [omitted lines]
 ```
 
 
-关于 Python 的 `cProfile` 分析器（以及其他一些类似的一些分析器），需要注意的是它显示的是每次函数调用的时间。看上去可能快到反直觉，尤其是如果您在代码里面使用了第三方的函数库，因为内部函数调用也会被看作函数调用。
+关于 Python 的 `cProfile` 分析器（以及其他一些类似的分析器），需要注意的是它显示的是每次函数调用的时间。看上去可能快到反直觉，尤其是如果您在代码里面使用了第三方的函数库，因为内部函数调用也会被看作函数调用。
 
 更加符合直觉的显示分析信息的方式是包括每行代码的执行时间，这也是*行分析器*的工作。例如，下面这段 Python 代码会向本课程的网站发起一个请求，然后解析响应返回的页面中的全部 URL：
 
@@ -416,9 +416,9 @@ Line #    Mem usage  Increment   Line Contents
 
 - **通用监控** - 最流行的工具要数 [`htop`](https://hisham.hm/htop/index.php),了，它是 [`top`](http://man7.org/linux/man-pages/man1/top.1.html)的改进版。`htop` 可以显示当前运行进程的多种统计信息。`htop` 有很多选项和快捷键，常见的有：`<F6>` 进程排序、 `t` 显示树状结构和 `h` 打开或折叠线程。 还可以留意一下 [`glances`](https://nicolargo.github.io/glances/) ，它的实现类似但是用户界面更好。如果需要合并测量全部的进程， [`dstat`](http://dag.wiee.rs/home-made/dstat/) 是也是一个非常好用的工具，它可以实时地计算不同子系统资源的度量数据，例如 I/O、网络、 CPU 利用率、上下文切换等等；
 - **I/O 操作** - [`iotop`](http://man7.org/linux/man-pages/man8/iotop.8.html) 可以显示实时 I/O 占用信息而且可以非常方便地检查某个进程是否正在执行大量的磁盘读写操作；
-- **磁盘使用** - [`df`](http://man7.org/linux/man-pages/man1/df.1.html) 可以显示每个分区的信息，而 [`du`](http://man7.org/linux/man-pages/man1/du.1.html) 则可以显示当前目录下每个文件的磁盘使用情况（ **d**isk **u**sage）。`-h` 选项可以使命令使用对人类（*h*uman）更加友好的格式显示数据；[`ncdu`](https://dev.yorhel.nl/ncdu)是一个交互性更好的 `du` ，它可以让您在不同目录下导航、删除文件和文件夹；
+- **磁盘使用** - [`df`](http://man7.org/linux/man-pages/man1/df.1.html) 可以显示每个分区的信息，而 [`du`](http://man7.org/linux/man-pages/man1/du.1.html) 则可以显示当前目录下每个文件的磁盘使用情况（ **d**isk **u**sage）。`-h` 选项可以使命令以对人类（**h**uman）更加友好的格式显示数据；[`ncdu`](https://dev.yorhel.nl/ncdu)是一个交互性更好的 `du` ，它可以让您在不同目录下导航、删除文件和文件夹；
 - **内存使用** - [`free`](http://man7.org/linux/man-pages/man1/free.1.html) 可以显示系统当前空闲的内存。内存也可以使用 `htop` 这样的工具来显示；
-- **打开文件** - [`lsof`](http://man7.org/linux/man-pages/man8/lsof.8.html)  可以列出被进程打开的文件信息。 当我们需要查看某个文件是被哪个进程打开的时候，这个命令非常有用；.
+- **打开文件** - [`lsof`](http://man7.org/linux/man-pages/man8/lsof.8.html)  可以列出被进程打开的文件信息。 当我们需要查看某个文件是被哪个进程打开的时候，这个命令非常有用；
 - **网络连接和配置** - [`ss`](http://man7.org/linux/man-pages/man8/ss.8.html) 能帮助我们监控网络包的收发情况以及网络接口的显示信息。`ss` 常见的一个使用场景是找到端口被进程占用的信息。如果要显示路由、网络设备和接口信息，您可以使用 [`ip`](http://man7.org/linux/man-pages/man8/ip.8.html) 命令。注意，`netstat` 和 `ifconfig` 这两个命令已经被前面那些工具所代替了。
 - **网络使用** -  [`nethogs`](https://github.com/raboof/nethogs) 和 [`iftop`](http://www.ex-parrot.com/pdw/iftop/) 是非常好的用于对网络占用进行监控的交互式命令行工具。
 
@@ -452,7 +452,7 @@ Summary
 # 课后练习
 
 ## 调试
-1. 使用 Linux 上的 `journalctl` 或 macOS 上的 `log show` 命令来获取最近一天中超级用户的登陆信息及其所执行的指令。如果找不到相关信息，您可以执行一些无害的命令，例如`sudo ls` 然后再次查看。
+1. 使用 Linux 上的 `journalctl` 或 macOS 上的 `log show` 命令来获取最近一天中超级用户的登录信息及其所执行的指令。如果找不到相关信息，您可以执行一些无害的命令，例如`sudo ls` 然后再次查看。
 
 2. 学习 [这份](https://github.com/spiside/pdb-tutorial) `pdb` 实践教程并熟悉相关的命令。更深入的信息您可以参考[这份](https://realpython.com/python-debugging-pdb)教程。
 
@@ -491,7 +491,7 @@ Summary
        #     exec("fib{} = lru_cache(1)(fib{})".format(n, n))
        print(eval("fib9()"))
    ```
-   将代码拷贝到文件中使其变为一个可执行的程序。安装 [`pycallgraph`](http://pycallgraph.slowchop.com/en/master/)。并使用 `pycallgraph graphviz -- ./fib.py` 来执行代码并查看`pycallgraph.png` 这个文件。`fib0` 被调用了多少次？我们可以通过？我们可以通过记忆法来对其进行优化。将注释掉的部分放开，然后重新生成图片。这回每个`fibN` 函数被调用了多少次？
+   将代码拷贝到文件中使其变为一个可执行的程序。安装 [`pycallgraph`](http://pycallgraph.slowchop.com/en/master/)。并使用 `pycallgraph graphviz -- ./fib.py` 来执行代码并查看`pycallgraph.png` 这个文件。`fib0` 被调用了多少次？我们可以通过记忆法来对其进行优化。将注释掉的部分放开，然后重新生成图片。这回每个`fibN` 函数被调用了多少次？
 3. 我们经常会遇到的情况是某个我们希望去监听的端口已经被其他进程占用了。让我们通过进程的PID查找相应的进程。首先执行 `python -m http.server 4444` 启动一个最简单的 web 服务器来监听 `4444` 端口。在另外一个终端中，执行 `lsof | grep LISTEN` 打印出所有监听端口的进程及相应的端口。找到对应的 PID 然后使用 `kill <PID>` 停止该进程。
 
 4. 限制进程资源也是一个非常有用的技术。执行 `stress -c 3` 并使用`htop` 对 CPU 消耗进行可视化。现在，执行`taskset --cpu-list 0,2 stress -c 3` 并可视化。`stress` 占用了3个 CPU 吗？为什么没有？阅读[`man taskset`](http://man7.org/linux/man-pages/man1/taskset.1.html)来寻找答案。附加题：使用 [`cgroups`](http://man7.org/linux/man-pages/man7/cgroups.7.html)来实现相同的操作，尝试使用`stress -m`来限制内存使用
