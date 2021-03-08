@@ -42,7 +42,9 @@ Sign up for the IAP 2020 class by filling out this [registration form](https://f
 {% endfor %}
 </ul>
 
-讲座视频可以在 [
+中文字幕的讲座视频可以在[Bilibili](https://space.bilibili.com/1010983811/channel/detail?cid=168348)上找到。
+
+原版讲座视频可以在 [
 YouTube](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57J)上找到。
 
 # 关于本课程

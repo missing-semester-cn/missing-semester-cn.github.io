@@ -8,6 +8,8 @@ video:
   id: Z56Jmr9Z34Q
 ---
 
+<iframe src="//player.bilibili.com/player.html?aid=373983367&bvid=BV1Eo4y1d7KZ&cid=289507330&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
 {% comment %}
 [Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anic30/course_overview_iap_2019/)
 {% endcomment %}

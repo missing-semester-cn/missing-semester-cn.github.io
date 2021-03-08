@@ -8,6 +8,8 @@ video:
   id: a6Q8Na575qc
 ---
 
+<iframe src="//player.bilibili.com/player.html?aid=799506590&bvid=BV1Dy4y1a7BW&cid=307796921&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
 写作和写代码其实是两项非常不同的活动。当我们编程的时候，会经常在文件间进行切换、阅读、浏览和修改代码，而不是连续编写一大段的文字。因此代码编辑器和文本编辑器是很不同的两种工具（例如 微软的 Word 与 Visual Studio Code）
 
 作为程序员，我们大部分时间都花在代码编辑上，所以花点时间掌握某个适合自己的编辑器是非常值得的。通常学习使用一个新的编辑器包含以下步骤：
