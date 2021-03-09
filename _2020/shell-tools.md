@@ -8,7 +8,9 @@ video:
   id: kgII-YWo3Zw
 ---
 
-<iframe src="//player.bilibili.com/player.html?aid=246658466&bvid=BV1Vv411v7FR&cid=298603310&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<div style="position: relative; padding: 30% 45%;">
+<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="//player.bilibili.com/player.html?aid=246658466&bvid=BV1Vv411v7FR&cid=298603310&page=1&as_wide=1&high_quality=1" frameborder="no" scrolling="no"></iframe>
+</div>
 
 在这节课中，我们将会展示bash作为脚本语言的一些基础操作，以及几种最常用的shell工具。
 

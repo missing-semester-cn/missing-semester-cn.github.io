@@ -8,7 +8,9 @@ video:
   id: a6Q8Na575qc
 ---
 
-<iframe src="//player.bilibili.com/player.html?aid=799506590&bvid=BV1Dy4y1a7BW&cid=307796921&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<div style="position: relative; padding: 30% 45%;">
+<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="//player.bilibili.com/player.html?aid=799506590&bvid=BV1Dy4y1a7BW&cid=307796921&page=1&as_wide=1&high_quality=1" frameborder="no" scrolling="no"></iframe>
+</div>
 
 写作和写代码其实是两项非常不同的活动。当我们编程的时候，会经常在文件间进行切换、阅读、浏览和修改代码，而不是连续编写一大段的文字。因此代码编辑器和文本编辑器是很不同的两种工具（例如 微软的 Word 与 Visual Studio Code）
 
