@@ -32,7 +32,7 @@ video:
 
 ## 快照
 
-Git 将顶级目录中的文件和文件夹作为集合，并通过一系列快照来管理其历史记录。在Git的术语里，文件被称作Blob对象（数据对象），也就是一组数据。目录则被称之为“树”，它将名字与Blob对象或树对象进行映射（使得目录中可以包含其他目录）。快照则是被追踪的最顶层的树。例如，一个树看起来可能是这样的：
+Git 将顶级目录中的文件和文件夹作为集合，并通过一系列快照来管理其历史记录。在Git的术语里，文件被称作Blob对象（数据对象），也就是一组数据。目录则被称之为“树”，它将名字与 Blob 对象或树对象进行映射（使得目录中可以包含其他目录）。快照则是被追踪的最顶层的树。例如，一个树看起来可能是这样的：
 
 ```
 <root> (tree)
@@ -44,7 +44,7 @@ Git 将顶级目录中的文件和文件夹作为集合，并通过一系列快�
 +- baz.txt (blob, contents = "git is wonderful")
 ```
 
-这个顶层的树包含了两个元素，一个名为 "foo" 的树(它本身包含了一个blob对象 "bar.txt")，以及一个blob对象 "baz.txt"。
+这个顶层的树包含了两个元素，一个名为 "foo" 的树（它本身包含了一个blob对象 "bar.txt"），以及一个 blob 对象 "baz.txt"。
 
 ## 历史记录建模：关联快照
 
@@ -120,15 +120,15 @@ def load(id):
 
 Blobs、树和提交都一样，它们都是对象。当它们引用其他对象时，它们并没有真正的在硬盘上保存这些对象，而是仅仅保存了它们的哈希值作为引用。
 
-例如，[above](#snapshots)例子中的树（可以通过`git cat-file -p 698281bc680d1995c5f4caaf3359721a5a58d48d` 来进行可视化），看上去是这样的：
+例如，[above](#snapshots)例子中的树（可以通过 `git cat-file -p 698281bc680d1995c5f4caaf3359721a5a58d48d` 来进行可视化），看上去是这样的：
 
 ```
 100644 blob 4448adbf7ecd394f42ae135bbeed9676e894af85    baz.txt
 040000 tree c68d233a33c5c06e0340e4c224f0afca87c8ce87    foo
 ```
 
-树本身会包含一些指向其他内容的指针，例如`baz.txt` (blob) 和 `foo`
-(树)。如果我们用`git cat-file -p 4448adbf7ecd394f42ae135bbeed9676e894af85`，即通过哈希值查看 baz.txte 的内容，会得到以下信息：
+树本身会包含一些指向其他内容的指针，例如 `baz.txt` (blob) 和 `foo`
+(树)。如果我们用 `git cat-file -p 4448adbf7ecd394f42ae135bbeed9676e894af85`，即通过哈希值查看 baz.txt 的内容，会得到以下信息：
 
 ```
 git is wonderful
@@ -166,7 +166,7 @@ def load_reference(name_or_id):
 
 在硬盘上，Git 仅存储对象和引用：因为其数据模型仅包含这些东西。所有的 `git` 命令都对应着对提交树的操作，例如增加对象，增加或删除引用。
 
-当您输入某个指令时，请思考一下这条命令是如何对底层的图数据结构进行操作的。另一方面，如果您希望修改提交树，例如“丢弃未提交的修改和将 ‘master’ 引用指向提交`5d83f9e` 时，有什么命令可以完成该操作（针对这个具体问题，您可以使用`git checkout master; git reset --hard 5d83f9e`）
+当您输入某个指令时，请思考一下这条命令是如何对底层的图数据结构进行操作的。另一方面，如果您希望修改提交树，例如“丢弃未提交的修改和将 ‘master’ 引用指向提交 `5d83f9e` 时，有什么命令可以完成该操作（针对这个具体问题，您可以使用 `git checkout master; git reset --hard 5d83f9e`）
 
 # 暂存区
 
@@ -178,7 +178,7 @@ Git 处理这些场景的方法是使用一种叫做 “暂存区（staging area
 
 # Git 的命令行接口
 
-为了避免重复信息，我们将不会详细解释以下命令行。强烈推荐您阅读[Pro Git 中文版](https://git-scm.com/book/zh/v2)或可以观看本讲座的视频来学习。
+为了避免重复信息，我们将不会详细解释以下命令行。强烈推荐您阅读 [Pro Git 中文版](https://git-scm.com/book/zh/v2)或可以观看本讲座的视频来学习。
 
 
 ## 基础
@@ -401,14 +401,14 @@ command is used for merging.
 # 杂项
 
 - **图形用户界面**: Git 的 [图形用户界面客户端](https://git-scm.com/downloads/guis) 有很多，但是我们自己并不使用这些图形用户界面的客户端，我们选择使用命令行接口
-- **Shell 集成**: 将 Git 状态集成到您的 shell 中会非常方便。([zsh](https://github.com/olivierverdier/zsh-git-prompt),[bash](https://github.com/magicmonty/bash-git-prompt))。[Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)这样的框架中一般以及集成了这一功能
+- **Shell 集成**: 将 Git 状态集成到您的 shell 中会非常方便。([zsh](https://github.com/olivierverdier/zsh-git-prompt), [bash](https://github.com/magicmonty/bash-git-prompt))。[Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)这样的框架中一般以及集成了这一功能
 - **编辑器集成**: 和上面一条类似，将 Git 集成到编辑器中好处多多。[fugitive.vim](https://github.com/tpope/vim-fugitive) 是 Vim 中集成 GIt 的常用插件
 - **工作流**:我们已经讲解了数据模型与一些基础命令，但还没讨论到进行大型项目时的一些惯例 (
 有[很多](https://nvie.com/posts/a-successful-git-branching-model/)
 [不同的](https://www.endoflineblog.com/gitflow-considered-harmful)
 [处理方法](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow))
 - **GitHub**: Git 并不等同于 GitHub。 在 GitHub 中您需要使用一个被称作[拉取请求（pull request）](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)的方法来向其他项目贡献代码
-- **Other Git 提供商**: GitHub 并不是唯一的。还有像[GitLab](https://about.gitlab.com/) 和 [BitBucket](https://bitbucket.org/)这样的平台。
+- **Other Git 提供商**: GitHub 并不是唯一的。还有像 [GitLab](https://about.gitlab.com/) 和 [BitBucket](https://bitbucket.org/) 这样的平台。
 
 # 资源
 
@@ -427,9 +427,9 @@ command is used for merging.
 2. 克隆 [本课程网站的仓库](https://github.com/missing-semester/missing-semester)
     1. 将版本历史可视化并进行探索
     2. 是谁最后修改了 `README.md`文件？（提示：使用 `git log` 命令并添加合适的参数）
-    3. 最后一次修改`_config.yml` 文件中 `collections:` 行时的提交信息是什么？（提示：使用`git blame` 和 `git show`）
+    3. 最后一次修改`_config.yml` 文件中 `collections:` 行时的提交信息是什么？（提示：使用 `git blame` 和 `git show`）
 3. 使用 Git 时的一个常见错误是提交本不应该由 Git 管理的大文件，或是将含有敏感信息的文件提交给 Git 。尝试向仓库中添加一个文件并添加提交信息，然后将其从历史中删除 ( [这篇文章也许会有帮助](https://help.github.com/articles/removing-sensitive-data-from-a-repository/))；
-4. 从 GitHub 上克隆某个仓库，修改一些文件。当您使用 `git stash` 会发生什么？当您执行 `git log --all --oneline` 时会显示什么？通过 `git stash pop` 命令来撤销 `git stash`操作，什么时候会用到这一技巧？
-5. 与其他的命令行工具一样，Git 也提供了一个名为 `~/.gitconfig` 配置文件 (或 dotfile)。请在 `~/.gitconfig` 中创建一个别名，使您在运行 `git graph` 时，您可以得到 `git log --all --graph --decorate --oneline`的输出结果；
-6. 您可以通过执行`git config --global core.excludesfile ~/.gitignore_global` 在 `~/.gitignore_global` 中创建全局忽略规则。配置您的全局 gitignore 文件来字典忽略系统或编辑器的临时文件，例如 `.DS_Store`；
-7. 克隆 [本课程网站的仓库](https://github.com/missing-semester/missing-semester)，找找有没有错别字或其他可以改进的地方，在 GitHub 上发起拉取请求（ Pull Request）；
+4. 从 GitHub 上克隆某个仓库，修改一些文件。当您使用 `git stash` 会发生什么？当您执行 `git log --all --oneline` 时会显示什么？通过 `git stash pop` 命令来撤销 `git stash` 操作，什么时候会用到这一技巧？
+5. 与其他的命令行工具一样，Git 也提供了一个名为 `~/.gitconfig` 配置文件 (或 dotfile)。请在 `~/.gitconfig` 中创建一个别名，使您在运行 `git graph` 时，您可以得到 `git log --all --graph --decorate --oneline` 的输出结果；
+6. 您可以通过执行 `git config --global core.excludesfile ~/.gitignore_global` 在 `~/.gitignore_global` 中创建全局忽略规则。配置您的全局 gitignore 文件来字典忽略系统或编辑器的临时文件，例如 `.DS_Store`；
+7. 克隆 [本课程网站的仓库](https://github.com/missing-semester/missing-semester)，找找有没有错别字或其他可以改进的地方，在 GitHub 上发起拉取请求（Pull Request）；
