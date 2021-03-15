@@ -105,7 +105,7 @@ Git 中的对象可以是 blob、树或提交：
 type object = blob | tree | commit
 ```
 
-Git 在储存数据时，所有的对象都会基于它们的[SHA-1 hash](https://en.wikipedia.org/wiki/SHA-1)进行寻址。
+Git 在储存数据时，所有的对象都会基于它们的 [SHA-1 哈希](https://en.wikipedia.org/wiki/SHA-1) 进行寻址。
 
 ```
 objects = map<string, object>
@@ -120,7 +120,7 @@ def load(id):
 
 Blobs、树和提交都一样，它们都是对象。当它们引用其他对象时，它们并没有真正的在硬盘上保存这些对象，而是仅仅保存了它们的哈希值作为引用。
 
-例如，[above](#snapshots)例子中的树（可以通过 `git cat-file -p 698281bc680d1995c5f4caaf3359721a5a58d48d` 来进行可视化），看上去是这样的：
+例如，[上面](#snapshots)例子中的树（可以通过 `git cat-file -p 698281bc680d1995c5f4caaf3359721a5a58d48d` 来进行可视化），看上去是这样的：
 
 ```
 100644 blob 4448adbf7ecd394f42ae135bbeed9676e894af85    baz.txt
@@ -158,7 +158,7 @@ def load_reference(name_or_id):
 
 这样，Git 就可以使用诸如 "master" 这样人类刻度的名称来表示历史记录中某个特定的提交，而不需要在使用一长串十六进制字符了。
 
-有一个细节需要我们注意， 通常情况下，我们会想要知道“我们当前所在位置”，并将其标记下来。这样当我们创建新的快照的时候，我们就可以知道它的相对位置（如何设置它的“父辈”）。在 Git 中，我们当前的位置有一个特殊的索引，它就是"HEAD"。
+有一个细节需要我们注意， 通常情况下，我们会想要知道“我们当前所在位置”，并将其标记下来。这样当我们创建新的快照的时候，我们就可以知道它的相对位置（如何设置它的“父辈”）。在 Git 中，我们当前的位置有一个特殊的索引，它就是 "HEAD"。
 
 ## 仓库
 
@@ -378,7 +378,7 @@ command is used for merging.
 - `git push <remote> <local branch>:<remote branch>`: 将对象传送至远端并更新远端引用
 - `git branch --set-upstream-to=<remote>/<remote branch>`: 创建本地和远端分支的关联关系
 - `git fetch`: 从远端获取对象/索引
-- `git pull`: 相当于  `git fetch; git merge`
+- `git pull`: 相当于 `git fetch; git merge`
 - `git clone`: 从远端下载仓库
 
 ## 撤销
@@ -403,7 +403,7 @@ command is used for merging.
 - **图形用户界面**: Git 的 [图形用户界面客户端](https://git-scm.com/downloads/guis) 有很多，但是我们自己并不使用这些图形用户界面的客户端，我们选择使用命令行接口
 - **Shell 集成**: 将 Git 状态集成到您的 shell 中会非常方便。([zsh](https://github.com/olivierverdier/zsh-git-prompt), [bash](https://github.com/magicmonty/bash-git-prompt))。[Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)这样的框架中一般以及集成了这一功能
 - **编辑器集成**: 和上面一条类似，将 Git 集成到编辑器中好处多多。[fugitive.vim](https://github.com/tpope/vim-fugitive) 是 Vim 中集成 GIt 的常用插件
-- **工作流**:我们已经讲解了数据模型与一些基础命令，但还没讨论到进行大型项目时的一些惯例 (
+- **工作流**: 我们已经讲解了数据模型与一些基础命令，但还没讨论到进行大型项目时的一些惯例 (
 有[很多](https://nvie.com/posts/a-successful-git-branching-model/)
 [不同的](https://www.endoflineblog.com/gitflow-considered-harmful)
 [处理方法](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow))
@@ -423,7 +423,7 @@ command is used for merging.
 # 课后练习
 
 
-1. 如果您之前从来没有用过 Git，推荐您阅读 [Pro Git](https://git-scm.com/book/en/v2) 的前几章，或者完成像[Learn Git Branching](https://learngitbranching.js.org/)这样的教程。重点关注 Git 命令和数据模型相关内容；
+1. 如果您之前从来没有用过 Git，推荐您阅读 [Pro Git](https://git-scm.com/book/en/v2) 的前几章，或者完成像 [Learn Git Branching](https://learngitbranching.js.org/)这样的教程。重点关注 Git 命令和数据模型相关内容；
 2. 克隆 [本课程网站的仓库](https://github.com/missing-semester/missing-semester)
     1. 将版本历史可视化并进行探索
     2. 是谁最后修改了 `README.md`文件？（提示：使用 `git log` 命令并添加合适的参数）
