@@ -38,8 +38,9 @@ Sign up for the IAP 2020 class by filling out this [registration form](https://f
              <a href="{{ lecture.url }}">{{ lecture.title }}  {% if lecture.noclass %}[no class]{% endif %}</a><span style="float:right"><img src = "https://img.shields.io/badge/Chinese-✘-orange"></span>
         {% endif %}
         {% if lecture.sync %}
-           </a><span style="float:right"><img src = "https://img.shields.io/badge/sync-{{ lecture.syncdate }}-green"></span>
+           <span style="float:right"><img src = "https://img.shields.io/badge/sync-{{ lecture.syncdate }}-green"></span>
         {% else %}
+           <span style="float:right"><img src = "https://img.shields.io/badge/sync-{{ lecture.syncdate }}-orange"></span>
         {% endif %}
             
         </li>
