@@ -192,7 +192,7 @@ shell函数和脚本有如下一些不同点：
 # 查找所有名称为src的文件夹
 find . -name src -type d
 # 查找所有文件夹路径中包含test的python文件
-find . -path '*/test/*/*.py' -type f
+find . -path '*/test/*.py' -type f
 # 查找前一天修改的所有文件
 find . -mtime -1
 # 查找所有大小在500k至10M的tar.gz文件
