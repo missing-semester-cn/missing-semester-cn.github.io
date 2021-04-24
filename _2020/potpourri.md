@@ -88,7 +88,7 @@ WantedBy=multi-user.target
 # graphical.target在multi-user.target的基础上运行和GUI相关的服务
 ```
 
-如果你只是想定期运行一些程序，可以直接使用 [`cron`](http://man7.org/linux/man-pages/man8/cron.8.html)。它是一个系统内置的，用来执行定期任务的守护进程。
+如果你只是想定期运行一些程序，可以直接使用 [`cron`](https://www.man7.org/linux/man-pages/man8/cron.8.html)。它是一个系统内置的，用来执行定期任务的守护进程。
 
 
 ## FUSE
