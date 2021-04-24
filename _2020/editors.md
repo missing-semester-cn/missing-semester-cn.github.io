@@ -308,6 +308,8 @@ set editing-mode vi
 和用于 Firefox 的 [Tridactyl](https://github.com/tridactyl/tridactyl)。
 你甚至可以在 [Jupyter
 notebooks](https://github.com/lambdalisue/jupyter-vim-binding) 中用 Vim 快捷键。
+[这个列表](https://reversed.top/2016-08-13/big-list-of-vim-like-software) 中列举了支持类 vim 键位绑定的软件。
+
 
 # Vim 进阶
 
