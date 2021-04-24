@@ -38,9 +38,9 @@ Sign up for the IAP 2020 class by filling out this [registration form](https://f
              <a href="{{ lecture.url }}">{{ lecture.title }}  {% if lecture.noclass %}[no class]{% endif %}</a><span style="float:right"><img src = "https://img.shields.io/badge/Chinese-✘-orange"></span>
         {% endif %}
         {% if lecture.sync %}
-           <span style="float:right"><img src = "https://img.shields.io/badge/Sync_with_EN-{{ lecture.syncdate | date: '%y--%m--%d'}}-green"></span>
+           <span style="float:right"><img src = "https://img.shields.io/badge/Update-✔-green"></span>
         {% else %}
-           <span style="float:right"><img src = "https://img.shields.io/badge/Sync_with_EN{{ lecture.syncdate | date: '%y--%m--%d'}}-orange"></span>
+           <span style="float:right"><img src = "https://img.shields.io/badge/Update-✘-orange"></span>
         {% endif %}
             
         </li>
@@ -80,7 +80,7 @@ YouTube](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57
 - [Spanish](https://missing-semester-esp.github.io/)
 - [Turkish](https://missing-semester-tr.github.io/)
 - [Vietnamese](https://missing-semester-vn.github.io/)
-- 
+
 
 注意: 上述连接为社区翻译，我们并未验证其内容
 
