@@ -278,7 +278,7 @@ rg --stats PATTERN
 
 对于本课程的主题来说，我们希望对常用的情况进行优化。使用[`fasd`](https://github.com/clvv/fasd)可以查找最常用和/或最近使用的文件和目录。
 
-Fasd 基于 [_frecency_](https://developer.mozilla.org/en/The_Places_frecency_algorithm)对文件和文件排序，也就是说它会同时针对频率（_frequency_ ）和时效（ _recency_）进行排序。
+Fasd 基于 [_frecency_](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/Places/Frecency_algorithm)对文件和文件排序，也就是说它会同时针对频率（_frequency_ ）和时效（ _recency_）进行排序。
 
 最直接的用法是自动跳转 （_autojump_），对于经常访问的目录，在目录名子串前加入一个命令 `z` 就可以快速切换命令到该目录。例如， 如果您经常访问`/home/user/files/cool_project` 目录，那么可以直接使用 `z cool` 跳转到该目录。
 
