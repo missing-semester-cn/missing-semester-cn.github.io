@@ -240,6 +240,7 @@ $ echo 1 | sudo tee /sys/class/leds/input6::scrolllock/brightness
 
 # 课后练习
 
+0. 本课程需要使用类Unix shell，例如 Bash 或 ZSH。如果您在 Linux 或者 MacOS 上面完成本课程的练习，则不需要做任何特殊的操作。如果您使用的是 ，则您不应该使用 cmd 或是 Powershell；您可以使用[Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/)或者是 Linux 虚拟机。使用`echo $SHELL`命令可以查看您的 shell 是否满足要求。如果打印结果为`/bin/bash`或`/usr/bin/zsh`则是可以的。
 1. 在 `/tmp` 下新建一个名为 `missing` 的文件夹。
 2. 用 `man` 查看程序 `touch` 的使用手册。
 3. 用 `touch` 在 `missing` 文件夹中新建一个叫 `semester` 的文件。
