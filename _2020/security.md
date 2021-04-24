@@ -181,7 +181,7 @@ Keybase主要使用[社交网络证明 (social proof)](https://keybase.io/blog/c
 
 ## 密码管理器
 
-每个人都应该尝试使用密码管理器，比如[KeePassXC](https://keepassxc.org/)。
+每个人都应该尝试使用密码管理器，比如[KeePassXC](https://keepassxc.org/)、[pass](https://www.passwordstore.org/) 和 [1Password](https://1password.com))。
 
 密码管理器会帮助你对每个网站生成随机且复杂（表现为高熵）的密码，并使用你指定的主密码配合密钥生成函数来对称加密它们。
 
