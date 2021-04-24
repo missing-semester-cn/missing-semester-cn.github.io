@@ -92,8 +92,8 @@ echo "Starting program at $(date)" # date会被替换成日期和时间
 
 echo "Running program $0 with $# arguments with pid $$"
 
-for file in $@; do
-    grep foobar $file > /dev/null 2> /dev/null
+for file in "$@"; do
+    grep foobar "$file" > /dev/null 2> /dev/null
     # 如果模式没有找到，则grep退出状态为 1
     # 我们将标准输出流和标准错误流重定向到Null，因为我们并不关心这些信息
     if [[ $? -ne 0 ]]; then
@@ -192,7 +192,7 @@ shell函数和脚本有如下一些不同点：
 # 查找所有名称为src的文件夹
 find . -name src -type d
 # 查找所有文件夹路径中包含test的python文件
-find . -path '**/test/**/*.py' -type f
+find . -path '*/test/*/*.py' -type f
 # 查找前一天修改的所有文件
 find . -mtime -1
 # 查找所有大小在500k至10M的tar.gz文件
@@ -202,9 +202,9 @@ find . -size +500k -size -10M -name '*.tar.gz'
 
 
 ```bash
-# Delete all files with .tmp extension
+# 删除全部扩展名为.tmp 的文件
 find . -name '*.tmp' -exec rm {} \;
-# Find all PNG files and convert them to JPG
+# 查找全部的 PNG 文件并将其转换为 JPG
 find . -name '*.png' -exec convert {} {}.jpg \;
 ```
 
