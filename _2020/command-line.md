@@ -3,7 +3,7 @@ layout: lecture
 title: "命令行环境"
 date: 2020-01-21
 ready: true
-sync: true
+sync: false
 syncdate: 2021-04-24
 video:
   aspect: 56.25
