@@ -344,6 +344,7 @@ index 94bab17..f0013b2 100644
 - `git add <filename>`: 添加文件到暂存区
 - `git commit`: 创建一个新的提交
     - 如何编写 [良好的提交信息](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)!
+    - 为何要 [编写良好的提交信息](https://chris.beams.io/posts/git-commit/)
 - `git log`: 显示历史日志
 - `git log --all --graph --decorate`: 可视化历史记录（有向无环图）
 - `git diff <filename>`: 显示与上一次提交之间的差异
