@@ -347,7 +347,7 @@ index 94bab17..f0013b2 100644
     - 为何要 [编写良好的提交信息](https://chris.beams.io/posts/git-commit/)
 - `git log`: 显示历史日志
 - `git log --all --graph --decorate`: 可视化历史记录（有向无环图）
-- `git diff <filename>`: 显示与上一次提交之间的差异
+- `git diff <filename>`: 显示与暂存区文件的差异
 - `git diff <revision> <filename>`: 显示某个文件两个版本之间的差异
 - `git checkout <revision>`: 更新 HEAD 和目前的分支
 
