@@ -1,7 +1,7 @@
 ---
 layout: lecture
 title: "命令行环境"
-date: 2019-01-21
+date: 2020-01-21
 ready: true
 video:
   aspect: 56.25

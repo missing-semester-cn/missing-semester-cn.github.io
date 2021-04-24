@@ -1,7 +1,7 @@
 ---
 layout: lecture
 title: "提问&回答"
-date: 2019-01-30
+date: 2020-01-30
 ready: true
 video:
   aspect: 56.25

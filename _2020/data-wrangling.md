@@ -1,7 +1,7 @@
 ---
 layout: lecture
 title: "数据整理"
-date: 2019-01-16
+date: 2020-01-16
 ready: true
 video:
   aspect: 56.25
