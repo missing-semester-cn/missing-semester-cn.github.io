@@ -119,7 +119,7 @@ video:
 我们钟爱的插件主要与安全性与可用性有关：
 - [uBlock Origin](https://github.com/gorhill/uBlock) - 是一个[用途广泛（wide-spectrum）](https://github.com/gorhill/uBlock/wiki/Blocking-mode)的拦截器，它不仅可以拦截广告，还可以拦截第三方的页面，也可以拦截内部脚本和其他种类资源的加载。如果你打算花更多的时间去配置，前往[中等模式（medium mode）](https://github.com/gorhill/uBlock/wiki/Blocking-mode:-medium-mode)或者 [强力模式（hard mode）](https://github.com/gorhill/uBlock/wiki/Blocking-mode:-hard-mode)。在你调整好设置之前一些网站会停止工作，但是这些配置会显著提高你的网络安全水平。另外， [简易模式（easy mode）](https://github.com/gorhill/uBlock/wiki/Blocking-mode:-easy-mode)作为默认模式已经相当不错了，可以拦截大部分的广告和跟踪，你也可以自定义规则来拦截网站对象。
 - [Stylus](https://github.com/openstyles/stylus/) - 是Stylish的分支（不要使用Stylish，它会[窃取浏览记录](https://www.theregister.co.uk/2018/07/05/browsers_pull_stylish_but_invasive_browser_extension/))），这个插件可让你将自定义CSS样式加载到网站。使用Stylus，你可以轻松地自定义和修改网站的外观。可以删除侧边框，更改背景颜色，更改文字大小或字体样式。这可以使你经常访问的网站更具可读性。此外，Stylus可以找到其他用户编写并发布在[userstyles.org](https://userstyles.org/)中的样式。大多数常用的网站都有一个或几个深色主题样式。
-- 全页屏幕捕获 - 内置于 Firefox 和 [ Chrome 扩展程序](https://chrome.google.com/webstore/detail/full-page-screen-capture/fdpohaocaechififmbbbbbknoalclacl?hl=en)中。这些插件提供完整的网站截图，通常比打印要好用。
+- 全页屏幕捕获 - 内置于 [Firefox](https://screenshots.firefox.com/) 和 [ Chrome 扩展程序](https://chrome.google.com/webstore/detail/full-page-screen-capture/fdpohaocaechififmbbbbbknoalclacl?hl=en)中。这些插件提供完整的网站截图，通常比打印要好用。
 - [多账户容器](https://addons.mozilla.org/en-US/firefox/addon/multi-account-containers/) - 该插件使你可以将Cookie分为“容器”，从而允许你以不同的身份浏览web网页并且/或确保网站无法在它们之间共享信息。
 - 密码集成管理器 - 大多数密码管理器都有浏览器插件，这些插件帮你将登录凭据输入网站的过程不仅方便，而且更加安全。与简单复制粘贴用户名和密码相比，这些插件将首先检查网站域是否与列出的条目相匹配，以防止冒充网站的网络钓鱼窃取登录凭据。
 
