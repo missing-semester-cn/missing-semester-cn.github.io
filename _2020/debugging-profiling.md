@@ -1,7 +1,7 @@
 ---
 layout: lecture
 title: "调试及性能分析"
-date: 2019-01-23
+date: 2020-01-23
 ready: true
 video:
   aspect: 56.25

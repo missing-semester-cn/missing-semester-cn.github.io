@@ -1,7 +1,7 @@
 ---
 layout: lecture
 title: "Shell 工具和脚本"
-date: 2019-01-14
+date: 2020-01-14
 ready: true
 video:
   aspect: 56.25
