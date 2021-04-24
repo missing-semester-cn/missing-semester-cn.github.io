@@ -19,7 +19,7 @@ title: 计算机教育中缺失的一课
 Sign up for the IAP 2020 class by filling out this [registration form](https://forms.gle/TD1KnwCSV52qexVt9).
 {% endcomment %}
 
-# 日程 <span style="float:left"><img src = "https://img.shields.io/badge/文档同步时间-2021--04--24-green"></span>
+# 日程 <span style="float:right"><img src = "https://img.shields.io/badge/文档同步时间-2021--04--24-blue"></span>
 
 
 {% comment %}
