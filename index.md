@@ -72,9 +72,15 @@ YouTube](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57
 # 译文
 
 - [繁体中文](https://missing-semester-zh-hant.github.io/)
+- [Japanese](https://missing-semester-jp.github.io/)
 - [Korean](https://missing-semester-kr.github.io/)
+- [Portuguese](https://missing-semester-pt.github.io/)
+- [Russian](https://missing-semester-rus.github.io/)
+- [Serbian](https://netboxify.com/missing-semester/)
 - [Spanish](https://missing-semester-esp.github.io/)
 - [Turkish](https://missing-semester-tr.github.io/)
+- [Vietnamese](https://missing-semester-vn.github.io/)
+- 
 
 注意: 上述连接为社区翻译，我们并未验证其内容
 
