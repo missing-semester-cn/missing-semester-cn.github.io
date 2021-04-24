@@ -166,6 +166,8 @@ ssh myserver journalctl
  | awk '{print $2}' | paste -sd,
 ```
 
+如果您使用的是 MacOS：注意这个命令并不能配合 MacOS 系统默认的 BSD `paste`使用。参考[课程概览与 shell](https://missing-semester-cn.github.io/2020/course-shell/)的习题内容获取更多相关信息。
+
 我们可以利用 `paste`命令来合并行(`-s`)，并指定一个分隔符进行分割 (`-d`)，那`awk`的作用又是什么呢？
 
 ## awk -- 另外一种编辑器
