@@ -48,7 +48,7 @@ $ make
 make: *** No rule to make target 'plot-data.png', needed by 'paper.pdf'.  Stop.
 ```
 
-哟，有意思，我们是**有**构建 `plot-data.png` 的规则的，但是这是一条模式规则。因为源文件`foo.dat` 并不存在，因此 `make` 就会告诉您它不能构建 `plot-data.png`，让我们创建这些文件：
+哟，有意思，我们是**有**构建 `plot-data.png` 的规则的，但是这是一条模式规则。因为源文件`data.dat` 并不存在，因此 `make` 就会告诉您它不能构建 `plot-data.png`，让我们创建这些文件：
 
 ```console
 $ cat paper.tex
