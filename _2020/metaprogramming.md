@@ -4,6 +4,8 @@ title: "元编程"
 details: 构建系统、依赖管理、测试、持续集成
 date: 2020-01-27
 ready: true
+sync: true
+syncdate: 2021-04-24
 video:
   aspect: 56.25
   id: _Ms1Z4xfqv4
