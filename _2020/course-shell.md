@@ -1,7 +1,7 @@
 ---
 layout: lecture
 title: "课程概览与 shell"
-date: 2019-01-13
+date: 2020-01-13
 ready: true
 video:
   aspect: 56.25
