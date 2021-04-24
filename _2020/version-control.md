@@ -392,7 +392,7 @@ command is used for merging.
 # Git 高级操作
 
 - `git config`: Git 是一个 [高度可定制的](https://git-scm.com/docs/git-config) 工具
-- `git clone --shallow`: 克隆仓库，但是不包括版本历史信息
+- `git clone --depth=1`: 浅克隆（shallow clone），不包括完整的版本历史信息
 - `git add -p`: 交互式暂存
 - `git rebase -i`: 交互式变基
 - `git blame`: 查看最后修改某行的人
