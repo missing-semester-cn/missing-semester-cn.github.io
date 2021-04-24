@@ -3,6 +3,7 @@ layout: lecture
 title: "课程概览与 shell"
 date: 2020-01-13
 ready: true
+sync:true
 video:
   aspect: 56.25
   id: Z56Jmr9Z34Q
