@@ -3,6 +3,8 @@ layout: lecture
 title: "调试及性能分析"
 date: 2020-01-23
 ready: true
+sync: true
+syncdate: 2021-04-24
 video:
   aspect: 56.25
   id: l812pUnKxME
