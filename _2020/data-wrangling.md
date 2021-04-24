@@ -10,11 +10,6 @@ video:
   id: sz_dsktIjt4
 ---
 
-{% comment %}
-[Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anicor/data_wrangling_iap_2019/)
-{% endcomment %}
-
-
 您是否曾经有过这样的需求，将某种格式存储的数据转换成另外一种格式? 肯定有过，对吧！
 这也正是我们这节课所要讲授的主要内容。具体来讲，我们需要不断地对数据进行处理，直到得到我们想要的最终结果。
 
@@ -141,7 +136,7 @@ ssh myserver journalctl
  | sort | uniq -c
 ```
 
-`sort` 会对其输入数据进行排序。`uniq -c` 会把连续出现的行折叠为一行并使用出现次数作为前缀。我们希望按照出现次数排序，过滤出最常登陆的用户：
+`sort` 会对其输入数据进行排序。`uniq -c` 会把连续出现的行折叠为一行并使用出现次数作为前缀。我们希望按照出现次数排序，过滤出最常出现的用户名：
 
 ```bash
 ssh myserver journalctl
@@ -226,7 +221,7 @@ ssh myserver journalctl
  | awk '{print $1}' | R --slave -e 'x <- scan(file="stdin", quiet=TRUE); summary(x)'
 ```
 
-R 也是一种编程语言，它非常适合被用来进行数据分析和[绘制图表](https://ggplot2.tidyverse.org/)。这里我们不会讲的特别详细， 您只需要知道`summary` 可以打印统计结果。我们通过输入的信息计算出一个矩阵，然后R语言就可以得到我们想要的统计数据。
+R 也是一种编程语言，它非常适合被用来进行数据分析和[绘制图表](https://ggplot2.tidyverse.org/)。这里我们不会讲的特别详细， 您只需要知道`summary` 可以打印某个向量的统计结果。我们将输入的一系列数据存放在一个向量后，利用R语言就可以得到我们想要的统计数据。
 
 如果您希望绘制一些简单的图表， `gnuplot` 可以帮助到您：
 
