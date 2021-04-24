@@ -8,10 +8,6 @@ video:
   id: Z56Jmr9Z34Q
 ---
 
-{% comment %}
-[Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anic30/course_overview_iap_2019/)
-{% endcomment %}
-
 # 动机
 
 作为计算机科学家，我们都知道计算机最擅长帮助我们完成重复性的工作。
