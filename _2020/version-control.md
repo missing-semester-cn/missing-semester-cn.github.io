@@ -85,7 +85,7 @@ Git 中的提交是不可改变的。但这并不代表错误不能被修改，�
 type blob = array<byte>
 
 // 一个包含文件和目录的目录
-type tree = map<string, tree | file>
+type tree = map<string, tree | blob>
 
 // 每个提交都包含一个父辈，元数据和顶层树
 type commit = struct {
