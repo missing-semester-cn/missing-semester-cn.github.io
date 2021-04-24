@@ -183,8 +183,6 @@ print(baz)
 ```
 静态分析工具可以发现此类的问题。当我们使用[`pyflakes`](https://pypi.org/project/pyflakes) 分析代码的时候，我们会得到与这两处 bug 相关的错误信息。[`mypy`](http://mypy-lang.org/) 则是另外一个工具，它可以对代码进行类型检查。这里，`mypy` 会经过我们`bar` 起初是一个 `int` ，然后变成了 `float`。这些问题都可以在不运行代码的情况下被发现。
 
-在 shell 工具那一节课的时候，我们介绍了 [`shellcheck`](https://www.shellcheck.net/)，这是一个类似的工具，但它是应用于 shell 脚本的。
-
 ```bash
 $ pyflakes foobar.py
 foobar.py:6: redefinition of unused 'foo' from line 3
@@ -196,6 +194,8 @@ foobar.py:9: error: Incompatible types in assignment (expression has type "float
 foobar.py:11: error: Name 'baz' is not defined
 Found 3 errors in 1 file (checked 1 source file)
 ```
+
+在 shell 工具那一节课的时候，我们介绍了 [`shellcheck`](https://www.shellcheck.net/)，这是一个类似的工具，但它是应用于 shell 脚本的。
 
 大多数的编辑器和 IDE 都支持在编辑界面显示这些工具的分析结果、高亮有警告和错误的位置。
 这个过程通常称为 **code linting** 。风格检查或安全检查的结果同样也可以进行相应的显示。
