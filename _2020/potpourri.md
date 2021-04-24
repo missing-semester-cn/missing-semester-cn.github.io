@@ -236,8 +236,7 @@ Live USB 通过在闪存盘上 _写入_ 操作系统的镜像制作，而写入�
 - 超出用户可以使用的物理主机数量的虚拟机
   - 相比物理主机的固定开支，虚拟机的开支一般按运行的时间计算。所以如果用户只需要在短时间内使用大量算力，租用1000台虚拟机运行几分钟明显更加划算。
 
-受欢迎的 VPS 服务商有 [Amazon AWS](https://aws.amazon.com/)，[Google Cloud](https://cloud.google.com/)，以及
-[DigitalOcean](https://www.digitalocean.com/)。
+受欢迎的 VPS 服务商有 [Amazon AWS](https://aws.amazon.com/)，[Google Cloud](https://cloud.google.com/)、[ Microsoft Azure](https://azure.microsoft.com/)以及[DigitalOcean](https://www.digitalocean.com/)。
 
 MIT CSAIL 的成员可以使用 [CSAIL OpenStack instance](https://tig.csail.mit.edu/shared-computing/open-stack/)
 申请免费的虚拟机用于研究。
