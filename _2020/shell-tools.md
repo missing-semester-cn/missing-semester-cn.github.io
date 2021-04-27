@@ -130,7 +130,7 @@ mkdir foo bar
 # 下面命令会创建foo/a, foo/b, ... foo/h, bar/a, bar/b, ... bar/h这些文件
 touch {foo,bar}/{a..h}
 touch foo/x bar/y
-# 显示foo和bar文件的不同
+# 比较文件夹 foo 和 bar 中包含文件的不同
 diff <(ls foo) <(ls bar)
 # 输出
 # < x
