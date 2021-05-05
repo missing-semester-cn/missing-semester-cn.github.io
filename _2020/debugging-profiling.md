@@ -475,7 +475,7 @@ Summary
 
 ## 性能分析
 
-1. [这里](/static/files/sorts.py) 有一些排序算法的实现。请使用 [`cProfile`](https://docs.python.org/3/library/profile.html) 和 [`line_profiler`](https://github.com/pyutils/line_profiler) 来比较插入排序和快速排序的性能。两种算法的瓶颈分别在哪里？然后使用 `memory_profiler` 来检查内存消耗，为什么插入排序更好一些？然后在看看原地排序版本的快排。附加题：使用 `perf` 来查看不同算法的循环次数及缓存命中及丢失情况。
+1. [这里](/static/files/sorts.py) 有一些排序算法的实现。请使用 [`cProfile`](https://docs.python.org/3/library/profile.html) 和 [`line_profiler`](https://github.com/pyutils/line_profiler) 来比较插入排序和快速排序的性能。两种算法的瓶颈分别在哪里？然后使用 `memory_profiler` 来检查内存消耗，为什么插入排序更好一些？然后再看看原地排序版本的快排。附加题：使用 `perf` 来查看不同算法的循环次数及缓存命中及丢失情况。
 
 2. 这里有一些用于计算斐波那契数列 Python 代码，它为计算每个数字都定义了一个函数：
    ```python
@@ -498,7 +498,7 @@ Summary
    将代码拷贝到文件中使其变为一个可执行的程序。首先安装 [`pycallgraph`](http://pycallgraph.slowchop.com/en/master/)和[`graphviz`](http://graphviz.org/)(如果您能够执行`dot`, 则说明已经安装了 GraphViz.)。并使用 `pycallgraph graphviz -- ./fib.py` 来执行代码并查看`pycallgraph.png` 这个文件。`fib0` 被调用了多少次？我们可以通过记忆法来对其进行优化。将注释掉的部分放开，然后重新生成图片。这回每个`fibN` 函数被调用了多少次？
 3. 我们经常会遇到的情况是某个我们希望去监听的端口已经被其他进程占用了。让我们通过进程的PID查找相应的进程。首先执行 `python -m http.server 4444` 启动一个最简单的 web 服务器来监听 `4444` 端口。在另外一个终端中，执行 `lsof | grep LISTEN` 打印出所有监听端口的进程及相应的端口。找到对应的 PID 然后使用 `kill <PID>` 停止该进程。
 
-4. 限制进程资源也是一个非常有用的技术。执行 `stress -c 3` 并使用`htop` 对 CPU 消耗进行可视化。现在，执行`taskset --cpu-list 0,2 stress -c 3` 并可视化。`stress` 占用了3个 CPU 吗？为什么没有？阅读[`man taskset`](http://man7.org/linux/man-pages/man1/taskset.1.html)来寻找答案。附加题：使用 [`cgroups`](http://man7.org/linux/man-pages/man7/cgroups.7.html)来实现相同的操作，尝试使用`stress -m`来限制内存使用
+4. 限制进程资源也是一个非常有用的技术。执行 `stress -c 3` 并使用`htop` 对 CPU 消耗进行可视化。现在，执行`taskset --cpu-list 0,2 stress -c 3` 并可视化。`stress` 占用了3个 CPU 吗？为什么没有？阅读[`man taskset`](http://man7.org/linux/man-pages/man1/taskset.1.html)来寻找答案。附加题：使用 [`cgroups`](http://man7.org/linux/man-pages/man7/cgroups.7.html)来实现相同的操作，限制`stress -m`的内存使用。
 
 5. (进阶题) `curl ipinfo.io` 命令或执行 HTTP 请求并获取关于您 IP 的信息。打开 [Wireshark](https://www.wireshark.org/) 并抓取 `curl` 发起的请求和收到的回复报文。（提示：可以使用`http`进行过滤，只显示 HTTP 报文）
 
