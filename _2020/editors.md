@@ -376,7 +376,7 @@ notebooks](https://github.com/lambdalisue/jupyter-vim-binding) 中用 Vim 快捷
 
 1. 完成 `vimtutor`。 备注：它在一个
    [80x24](https://en.wikipedia.org/wiki/VT100)（80 列，24 行）
-   终端窗口看起来最好。
+   终端窗口看起来效果最好。
 1. 下载我们提供的 [vimrc](/2020/files/vimrc)，然后把它保存到 `~/.vimrc`。 通读这个注释详细的文件
    （用 Vim!）， 然后观察 Vim 在这个新的设置下看起来和使用起来有哪些细微的区别。
 1. 安装和配置一个插件：
