@@ -9,7 +9,7 @@ video:
   aspect: 56.25
   id: sz_dsktIjt4
 solution:
-    ready: true
+    ready: false
     url: data-wrangling-solution
 ---
 
