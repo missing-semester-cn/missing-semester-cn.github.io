@@ -144,4 +144,4 @@ gpg --encrypt --sign --armor -r me@anishathalye.com name_of_fil
     create mode 100644 security/notsafefile
     create mode 100644 security/secfile
   ```
-  ![1.png]({{site.url}}/2020/solutions/images/8/1.png)
+  ![1.png]({{site.url}}/2020/solutions/images/9/1.png)
