@@ -43,6 +43,12 @@ Sign up for the IAP 2020 class by filling out this [registration form](https://f
         {% else %}
            <span style="float:right"><img src = "https://img.shields.io/badge/Update-✘-orange"></span>
         {% endif %}
+        {% if lecture.solution %}
+        <span style="float:right"><a href="{{ lecture.solution }}"><img src = "https://img.shields.io/badge/Solution-✔-green"></a></span>
+            {% else %}
+            <span style="float:right"><img src = "https://img.shields.io/badge/Update-✘-orange"></span>
+            {% endif %}
+        
             
         </li>
     {% endif %}
