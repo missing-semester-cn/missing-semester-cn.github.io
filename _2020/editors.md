@@ -8,6 +8,9 @@ syncdate: 2021-04-24
 video:
   aspect: 56.25
   id: a6Q8Na575qc
+solution:
+    ready: true
+    url: editor-solution
 ---
 
 写作和写代码其实是两项非常不同的活动。当我们编程的时候，会经常在文件间进行切换、阅读、浏览和修改代码，而不是连续编写一大段的文字。因此代码编辑器和文本编辑器是很不同的两种工具（例如微软的 Word 与 Visual Studio Code）

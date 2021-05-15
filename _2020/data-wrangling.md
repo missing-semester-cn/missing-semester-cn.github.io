@@ -8,6 +8,9 @@ syncdate: 2021-04-24
 video:
   aspect: 56.25
   id: sz_dsktIjt4
+solution:
+    ready: true
+    url: data-wrangling-solution
 ---
 
 您是否曾经有过这样的需求，将某种格式存储的数据转换成另外一种格式? 肯定有过，对吧！

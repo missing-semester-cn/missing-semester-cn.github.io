@@ -8,6 +8,9 @@ syncdate: 2021-04-24
 video:
   aspect: 56.25
   id: Z56Jmr9Z34Q
+solution:
+    ready: true
+    url: course-shell-solution
 ---
 
 # 动机

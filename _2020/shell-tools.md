@@ -8,6 +8,9 @@ syncdate: 2021-04-24
 video:
   aspect: 56.25
   id: kgII-YWo3Zw
+solution:
+    ready: true
+    url: shell-tools-solution
 ---
 
 在这节课中，我们将会展示bash作为脚本语言的一些基础操作，以及几种最常用的shell工具。

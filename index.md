@@ -22,18 +22,13 @@ Sign up for the IAP 2020 class by filling out this [registration form](https://f
 # 日程 <span style="float:right"><img src = "https://img.shields.io/badge/文档同步时间-2021--04--24-blue"></span>
 
 
-{% comment %}
-**Lecture**: 35-225, 2pm--3pm<br>
-**Office hours**: 32-G9 lounge, 3pm--4pm (every day, right after lecture)
-{% endcomment %}
-
 <ul>
 {% assign lectures = site['2020'] | sort: 'date' %}
 {% for lecture in lectures %}
-    {% if lecture.phony != true %}
+    {% if lecture.phony != true and lecture.solution !=true  %}
         <li>
         <strong>{{ lecture.date | date: '%-m/%d' }}</strong>:
-        {% if lecture.ready %}
+        {% if lecture.ready%}
             <a href="{{ lecture.url }}">{{ lecture.title }}</a><span style="float:right"><img src = "https://img.shields.io/badge/Chinese-✔-green"></span>
         {% else %}
              <a href="{{ lecture.url }}">{{ lecture.title }}  {% if lecture.noclass %}[no class]{% endif %}</a><span style="float:right"><img src = "https://img.shields.io/badge/Chinese-✘-orange"></span>
@@ -43,13 +38,11 @@ Sign up for the IAP 2020 class by filling out this [registration form](https://f
         {% else %}
            <span style="float:right"><img src = "https://img.shields.io/badge/Update-✘-orange"></span>
         {% endif %}
-        {% if lecture.solution %}
-        <span style="float:right"><a href="{{ lecture.solution }}"><img src = "https://img.shields.io/badge/Solution-✔-green"></a></span>
+        {% if lecture.solution.ready%}
+        <span style="float:right"><a href="{{site.url}}/{{site.solution_url}}/{{lecture.solution.url}}"><img src = "https://img.shields.io/badge/Solution-✔-green"></a></span>
             {% else %}
-            <span style="float:right"><img src = "https://img.shields.io/badge/Update-✘-orange"></span>
+            <span style="float:right"><img src = "https://img.shields.io/badge/Solution-✘-orange"></span>
             {% endif %}
-        
-            
         </li>
     {% endif %}
 {% endfor %}
