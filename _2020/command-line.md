@@ -8,6 +8,9 @@ syncdate: 2021-04-24
 video:
   aspect: 56.25
   id: e8BO_dYxk5c
+solution:
+    ready: true
+    url: command-line-solution
 ---
 
 当您使用 shell 进行工作时，可以使用一些方法改善您的工作流，本节课我们就来讨论这些方法。

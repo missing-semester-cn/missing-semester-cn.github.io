@@ -8,6 +8,9 @@ syncdate: 2021-04-24
 video:
   aspect: 56.25
   id: l812pUnKxME
+solution:
+    ready: true
+    url: debugging-profiling-solution
 ---
 
 

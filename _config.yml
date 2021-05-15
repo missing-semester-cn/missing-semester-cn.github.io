@@ -1,7 +1,7 @@
 # Setup
 title: 'the missing semester of your cs education'
 url: https://missing-semester-cn.github.io
-
+solution_url: /2020/solutions/
 # Settings
 markdown: kramdown
 kramdown:
