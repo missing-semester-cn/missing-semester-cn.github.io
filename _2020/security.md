@@ -9,7 +9,7 @@ video:
   aspect: 56.25
   id: tjwobAmnKTo
 solution:
-    ready: true
+    ready: false
     url: security-solution
 ---
 
