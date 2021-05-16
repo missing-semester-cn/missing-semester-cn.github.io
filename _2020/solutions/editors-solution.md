@@ -29,22 +29,22 @@ solution: true
 6. 在你的其他工具中设置 Vim 快捷键 （见上面的操作指南）。
 7. 进一步自定义你的 ~/.vimrc 和安装更多插件。
   安装插件最简单的方法是使用 Vim 的包管理器，即使用 vim-plug 安装插件：
-* 安装 vim-plug
- ```bash
- $ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
- ```
-* 修改 ~/.vimrc
- ```vim
- call plug#begin()
- Plug 'preservim/NERDTree' #需要安装的插件 NERDTree
- Plug 'wikitopian/hardmode'  #安装 hardmode
- ..... # 更多插件
- call plug#end()
- ```
-* 在 vim 命令行中执行 `:PlugInstall`
+   1. 安装 vim-plug
+    ```bash
+    $ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    ```
+   2. 修改 ~/.vimrc
+    ```vim
+    call plug#begin()
+    Plug 'preservim/NERDTree' #需要安装的插件 NERDTree
+    Plug 'wikitopian/hardmode'  #安装 hardmode
+    ..... # 更多插件
+    call plug#end()
+    ```
+   3. 在 vim 命令行中执行 `:PlugInstall`
  ![1.png]({{site.url}}/2020/solutions//images/3/3.png)
- 8. (高阶)用 Vim 宏将 XML 转换到 JSON ([例子文件](https://missing-semester-cn.github.io/2020/files/example-data.xml))。 尝试着先完全自己做，但是在你卡住的时候可以查看上面 [宏](https://missing-semester-cn.github.io/2020/editors/#macros) 章节。  
+ 1. (高阶)用 Vim 宏将 XML 转换到 JSON ([例子文件](https://missing-semester-cn.github.io/2020/files/example-data.xml))。 尝试着先完全自己做，但是在你卡住的时候可以查看上面 [宏](https://missing-semester-cn.github.io/2020/editors/#macros) 章节。  
      1. Gdd, ggdd 删除第一行和最后一行
      2. 格式化最后一个元素的宏 （寄存器 e）             
       跳转到有 `<name>` 的行
