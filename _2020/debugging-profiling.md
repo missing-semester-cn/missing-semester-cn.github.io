@@ -9,7 +9,7 @@ video:
   aspect: 56.25
   id: l812pUnKxME
 solution:
-    ready: false
+    ready: true
     url: debugging-profiling-solution
 ---
 
