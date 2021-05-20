@@ -60,7 +60,7 @@ solution: true
 
     while true
     do
-        ./buggy.sh 2&> out.log
+        ./buggy.sh &> out.log
         if [[ $? -ne 0 ]]; then
             echo "failed after $count times"
             cat out.log
@@ -75,7 +75,7 @@ solution: true
     ```bash
     for ((count=1;;count++))
     do
-        ./buggy.sh 2&> out.log
+        ./buggy.sh &> out.log
         if [[ $? -ne 0 ]]; then
             echo "failed after $count times"
             cat out.log
