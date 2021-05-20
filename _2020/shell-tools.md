@@ -287,7 +287,7 @@ Fasd 基于 [_frecency_](https://developer.mozilla.org/en/The_Places_frecency_al
 
     - 所有文件（包括隐藏文件）
     - 文件打印以人类可以理解的格式输出 (例如，使用454M 而不是 454279954)
-    - 文件以最近访问顺序排序
+    - 文件以最近修改顺序排序
     - 以彩色文本显示输出结果
 
     典型输出如下：
@@ -355,4 +355,4 @@ ls -lath --color=auto
     find . -type f -name "*.html" | xargs -d '\n'  tar -cvzf archive.tar.gz
     {% endcomment %}
 
-5. (进阶) 编写一个命令或脚本递归的查找文件夹中最近使用的文件。更通用的做法，你可以按照最近的使用时间列出文件吗？
+5. (进阶) 编写一个命令或脚本递归的查找文件夹中最近修改的文件。更通用的做法，你可以按照最近的修改时间列出文件吗？
