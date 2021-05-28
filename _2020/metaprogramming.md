@@ -148,7 +148,7 @@ pdflatex paper.tex
 
 
 # 课后练习
-
+[习题解答]({{site.url}}/{{site.solution_url}}/{{page.solution.url}})
  1. 大多数的 makefiles 都提供了 一个名为 `clean` 的构建目标，这并不是说我们会生成一个名为`clean`的文件，而是我们可以使用它清理文件，让 make 重新构建。您可以理解为它的作用是“撤销”所有构建步骤。在上面的 makefile 中为`paper.pdf`实现一个`clean` 目标。您需要构建[phony](https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html)。您也许会发现 [`git ls-files`](https://git-scm.com/docs/git-ls-files) 子命令很有用。其他一些有用的 make 构建目标可以在[这里](https://www.gnu.org/software/make/manual/html_node/Standard-Targets.html#Standard-Targets)找到；
    
  2. 指定版本要求的方法很多，让我们学习一下 [Rust的构建系统](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html)的依赖管理。大多数的包管理仓库都支持类似的语法。对于每种语法(尖号、波浪号、通配符、比较、乘积)，构建一种场景使其具有实际意义；

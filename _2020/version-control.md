@@ -430,7 +430,7 @@ command is used for merging.
 
 # 课后练习
 
-
+[习题解答]({{site.url}}/{{site.solution_url}}/{{page.solution.url}})
 1. 如果您之前从来没有用过 Git，推荐您阅读 [Pro Git](https://git-scm.com/book/en/v2) 的前几章，或者完成像 [Learn Git Branching](https://learngitbranching.js.org/)这样的教程。重点关注 Git 命令和数据模型相关内容；
 2. Fork [本课程网站的仓库](https://github.com/missing-semester/missing-semester)
     1. 将版本历史可视化并进行探索
