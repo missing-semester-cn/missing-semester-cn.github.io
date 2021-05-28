@@ -261,6 +261,7 @@ ffmpeg -loglevel panic -i /dev/video0 -frames 1 -f image2 -
 ```
 
 # 课后练习
+[习题解答]({{site.url}}/{{site.solution_url}}/{{page.solution.url}})
 
 1. 学习一下这篇简短的 [交互式正则表达式教程](https://regexone.com/).
 2. 统计words文件 (`/usr/share/dict/words`) 中包含至少三个`a` 且不以`'s` 结尾的单词个数。这些单词中，出现频率前三的末尾两个字母是什么？ `sed`的 `y`命令，或者 `tr` 程序也许可以帮你解决大小写的问题。共存在多少种词尾两字母组合？还有一个很 有挑战性的问题：哪个组合从未出现过？
