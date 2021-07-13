@@ -163,7 +163,7 @@ def load_reference(name_or_id):
         return load(name_or_id)
 ```
 
-这样，Git 就可以使用诸如 "master" 这样人类刻度的名称来表示历史记录中某个特定的提交，而不需要在使用一长串十六进制字符了。
+这样，Git 就可以使用诸如 "master" 这样人类可读的名称来表示历史记录中某个特定的提交，而不需要在使用一长串十六进制字符了。
 
 有一个细节需要我们注意， 通常情况下，我们会想要知道“我们当前所在位置”，并将其标记下来。这样当我们创建新的快照的时候，我们就可以知道它的相对位置（如何设置它的“父辈”）。在 Git 中，我们当前的位置有一个特殊的索引，它就是 "HEAD"。
 
@@ -416,7 +416,7 @@ command is used for merging.
 [不同的](https://www.endoflineblog.com/gitflow-considered-harmful)
 [处理方法](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow))
 - **GitHub**: Git 并不等同于 GitHub。 在 GitHub 中您需要使用一个被称作[拉取请求（pull request）](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)的方法来向其他项目贡献代码
-- **Other Git 提供商**: GitHub 并不是唯一的。还有像 [GitLab](https://about.gitlab.com/) 和 [BitBucket](https://bitbucket.org/) 这样的平台。
+- **其他 Git 提供商**: GitHub 并不是唯一的。还有像 [GitLab](https://about.gitlab.com/) 和 [BitBucket](https://bitbucket.org/) 这样的平台。
 
 # 资源
 
