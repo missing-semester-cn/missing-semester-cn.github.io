@@ -1,7 +1,7 @@
 ---
 layout: lecture
 title: "课程概览与 shell"
-date: 2020-01-13
+date: 2021-10-16
 ready: true
 sync: true
 syncdate: 2021-04-24
@@ -12,6 +12,12 @@ solution:
     ready: true
     url: course-shell-solution
 ---
+
+# 开课注解
+
+线下课需要携带电脑，没有来得及安装 Linux 的：
+- Windows 可以暂时安装 WSL 使用
+- MacOS 可以暂时用系统的 shell
 
 # 动机
 

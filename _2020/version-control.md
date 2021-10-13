@@ -4,6 +4,7 @@ title: "版本控制(Git)"
 date: 2020-01-22
 ready: true
 sync: true
+hide: true
 syncdate: 2021-04-24
 video:
   aspect: 56.25

@@ -13,6 +13,15 @@ title: 计算机教育中缺失的一课
 
 关于[开设此课程的动机](/about/).
 
+# DynamicX 2021 秋季开课注解
+
+- 我们会在原有课程的基础上对具体的内容进行微调，以实际开课内容为准。
+- 每节课的课后练习也可能会进行调整，提交作业以这里的版本为准。
+- 你可以大胆地参考原课后练习的参考答案或者搜索引擎。
+- 你可以用下面的文字版教学来进行预习或复习。
+- 如果你认为自己已经掌握了下一节课的内容，需要加大力度，可以主动提出。
+- 如果你有其他问题随时在群里提出
+
 {% comment %}
 # Registration
 
@@ -25,9 +34,9 @@ Sign up for the IAP 2020 class by filling out this [registration form](https://f
 <ul>
 {% assign lectures = site['2020'] | sort: 'date' %}
 {% for lecture in lectures %}
-    {% if lecture.phony != true and lecture.solution !=true  %}
+    {% if lecture.phony != true and lecture.hide != true and lecture.solution !=true  %}
         <li>
-        <strong>{{ lecture.date | date: '%-m/%d' }}</strong>:
+        <strong>{{ lecture.date | date: '%Y/%-m/%d' }}</strong>:
         {% if lecture.ready%}
             <a href="{{ lecture.url }}">{{ lecture.title }}</a><span style="float:right"><img src = "https://img.shields.io/badge/Chinese-✔-green"></span>
         {% else %}
@@ -48,10 +57,12 @@ Sign up for the IAP 2020 class by filling out this [registration form](https://f
 {% endfor %}
 </ul>
 
+{% comment %}
 讲座视频可以在 [
 YouTube](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57J)上找到。
+{% endcomment %}
 
-# 关于本课程
+# 关于原课程
 
 **教员**: 本课程由 [Anish](https://www.anishathalye.com/)、 [Jon](https://thesquareplanet.com/) 和 [Jose](http://josejg.com/) 讲授。
 

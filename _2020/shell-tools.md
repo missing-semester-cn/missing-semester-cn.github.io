@@ -4,6 +4,7 @@ title: "Shell 工具和脚本"
 date: 2020-01-14
 ready: true
 sync: true
+hide: true
 syncdate: 2021-04-24
 video:
   aspect: 56.25
