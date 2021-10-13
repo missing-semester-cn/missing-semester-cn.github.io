@@ -20,7 +20,7 @@ solution:
 - MacOS 可以暂时用系统的 shell
 
 线下课大纲
-![](files/course-shell.png)
+![](../files/course-shell.png)
 
 # 动机
 
