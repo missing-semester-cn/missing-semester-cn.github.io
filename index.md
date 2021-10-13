@@ -11,7 +11,7 @@ title: 计算机教育中缺失的一课
 精通这些工具不仅可以帮助您更快的使用工具完成任务，并且可以帮助您解决在之前看来似乎无比复杂的问题。
 
 
-关于[开设此课程的动机](/about/).
+关于[开设此课程的动机](missing-semester/about/).
 
 # DynamicX 2021 秋季开课注解
 
@@ -38,9 +38,9 @@ Sign up for the IAP 2020 class by filling out this [registration form](https://f
         <li>
         <strong>{{ lecture.date | date: '%Y/%-m/%d' }}</strong>:
         {% if lecture.ready%}
-            <a href="{{ lecture.url }}">{{ lecture.title }}</a><span style="float:right"><img src = "https://img.shields.io/badge/Chinese-✔-green"></span>
+            <a href="{{ site.url }}{{ lecture.url }}">{{ lecture.title }}</a><span style="float:right"><img src = "https://img.shields.io/badge/Chinese-✔-green"></span>
         {% else %}
-             <a href="{{ lecture.url }}">{{ lecture.title }}  {% if lecture.noclass %}[no class]{% endif %}</a><span style="float:right"><img src = "https://img.shields.io/badge/Chinese-✘-orange"></span>
+             <a href="{{ site.url }}{{ lecture.url }}">{{ lecture.title }}  {% if lecture.noclass %}[no class]{% endif %}</a><span style="float:right"><img src = "https://img.shields.io/badge/Chinese-✘-orange"></span>
         {% endif %}
         {% if lecture.sync %}
            <span style="float:right"><img src = "https://img.shields.io/badge/Update-✔-green"></span>
