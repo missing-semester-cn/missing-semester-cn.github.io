@@ -4,6 +4,7 @@ title: "编辑器 (Vim)"
 date: 2020-01-15
 ready: true
 sync: true
+hide: true
 syncdate: 2021-04-24
 video:
   aspect: 56.25
