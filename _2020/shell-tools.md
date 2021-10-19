@@ -1,10 +1,9 @@
 ---
 layout: lecture
 title: "Shell 工具和脚本"
-date: 2020-01-14
+date: 2021-10-21
 ready: true
 sync: true
-hide: true
 syncdate: 2021-04-24
 video:
   aspect: 56.25
@@ -16,6 +15,12 @@ solution:
 
 在这节课中，我们将会展示bash作为脚本语言的一些基础操作，以及几种最常用的shell工具。
 
+# 开课注解
+
+*本节与[编辑器](../editors)在同一节线下课讲授*
+
+线下课大纲
+![](../files/editors-shell-tools.png)
 
 # Shell 脚本
 
@@ -287,6 +292,9 @@ Fasd 基于 [_frecency_](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/P
 还有一些更复杂的工具可以用来概览目录结构，例如 [`tree`](https://linux.die.net/man/1/tree), [`broot`](https://github.com/Canop/broot) 或更加完整的文件管理器，例如 [`nnn`](https://github.com/jarun/nnn) 或 [`ranger`](https://github.com/ranger/ranger)。
 
 # 课后练习
+
+**课后练习还未准备好**
+
 [习题解答]({{site.url}}/{{site.solution_url}}/{{page.solution.url}})
 
 1. 阅读 [`man ls`](https://man7.org/linux/man-pages/man1/ls.1.html) ，然后使用`ls` 命令进行如下操作：

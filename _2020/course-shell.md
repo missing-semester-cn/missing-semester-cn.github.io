@@ -280,5 +280,5 @@ $ echo 1 | sudo tee /sys/class/leds/input6::scrolllock/brightness
 
 4. 使用 `|` 和 `>` ，将 `semester` 文件输出的最后更改日期信息，写入主目录下的 `last-modified.txt` 的文件中
 
-5. 「加分题」写一段命令来从 `/sys` 中获取笔记本的电量信息，或者台式机 CPU 的温度。~~注意：macOS 并没有 sysfs，所以 Mac 用户可以跳过这一题。~~
+5. 「加分」写一段命令来从 `/sys` 中获取笔记本的电量信息，或者台式机 CPU 的温度。~~注意：macOS 并没有 sysfs，所以 Mac 用户可以跳过这一题。~~
 

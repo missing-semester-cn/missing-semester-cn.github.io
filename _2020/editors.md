@@ -1,7 +1,7 @@
 ---
 layout: lecture
 title: "编辑器 (Vim)"
-date: 2021-10-20
+date: 2021-10-21
 ready: true
 sync: true
 syncdate: 2021-04-24
@@ -15,11 +15,16 @@ solution:
 
 # 开课注解
 
-需要携带电脑并提前安装 vim：
+*本节与[Shell 工具和脚本](../shell-tools)在同一节线下课讲授*
+
+线下课需要携带电脑并提前安装 vim：
 
     sudo apt install vim
 
 注意，在第一次使用 vim 时你可能会面对如何退出的问题，你可以在下面找到答案。（或者粗暴地关掉 shell 窗口）
+
+线下课大纲
+![](../files/editors-shell-tools.png)
 
 # 介绍
 
@@ -386,16 +391,19 @@ notebooks](https://github.com/lambdalisue/jupyter-vim-binding) 中用 Vim 快捷
 
 # 课后练习
 
-**课后练习还未准备好**
+[原习题解答]({{site.url}}/{{site.solution_url}}/{{page.solution.url}})
 
-[习题解答]({{site.url}}/{{site.solution_url}}/{{page.solution.url}})
+**标记为「选做」的题目不要求完成且不计分**
 
 1. 完成 `vimtutor`。 备注：它在一个
    [80x24](https://en.wikipedia.org/wiki/VT100)（80 列，24 行）
    终端窗口看起来效果最好。
-1. 下载我们提供的 [vimrc](/2020/files/vimrc)，然后把它保存到 `~/.vimrc`。 通读这个注释详细的文件
+1. 下载我们提供的 [vimrc](../files/vimrc)，然后把它保存到 `~/.vimrc`。 通读这个注释详细的文件
    （用 Vim!）， 然后观察 Vim 在这个新的设置下看起来和使用起来有哪些细微的区别。
-1. 安装和配置一个插件：
+1. 练习使用 Vim, 在你自己的机器上重做 [演示](#demo)。
+1. 「**必须**」以后的作业中用命令行编辑器（Vim、nano 等）完成*所有的*文件编辑。每当不够高效的时候，或者你感觉 “一定有一个更好的方式”时，
+   尝试求助搜索引擎，很有可能有一个更好的方式。~~如果你遇到难题，可以来我们的答疑时间或者给我们发邮件。~~
+1. 「选做」安装和配置一个插件：
    [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim).
    1. 用 `mkdir -p ~/.vim/pack/vendor/start` 创建插件文件夹
    1. 下载这个插件： `cd ~/.vim/pack/vendor/start; git clone
@@ -407,10 +415,7 @@ notebooks](https://github.com/lambdalisue/jupyter-vim-binding) 中用 Vim 快捷
     1. 自定义 CtrlP： 添加
        [configuration](https://github.com/ctrlpvim/ctrlp.vim/blob/master/readme.md#basic-options)
        到你的 `~/.vimrc` 来用按 Ctrl-P 打开 CtrlP
-1. 练习使用 Vim, 在你自己的机器上重做 [演示](#demo)。
-1. 下个月用 Vim 完成_所有的_文件编辑。每当不够高效的时候，或者你感觉 “一定有一个更好的方式”时，
-   尝试求助搜索引擎，很有可能有一个更好的方式。如果你遇到难题，可以来我们的答疑时间或者给我们发邮件。
-1. 在其他工具中设置 Vim 快捷键 （见上面的操作指南）。
-1. 进一步自定义你的 `~/.vimrc` 和安装更多插件。
-1. （高阶）用 Vim 宏将 XML 转换到 JSON ([例子文件](/2020/files/example-data.xml))。
+1. 「选做」在其他工具（比如CLion）中设置 Vim 快捷键 （见上面的操作指南）。
+1. 「选做」进一步自定义你的 `~/.vimrc` 和安装更多插件。
+1. 「选做」用 Vim 宏将 XML 转换到 JSON ([例子文件](/2020/files/example-data.xml))。
    尝试着先完全自己做，但是在你卡住的时候可以查看上面[宏](#macros) 章节。
