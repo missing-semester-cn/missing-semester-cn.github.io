@@ -1,10 +1,9 @@
 ---
 layout: lecture
 title: "数据整理"
-date: 2020-01-16
+date: 2021-10-23
 ready: true
 sync: true
-hide: true
 syncdate: 2021-04-24
 video:
   aspect: 56.25
@@ -262,6 +261,9 @@ ffmpeg -loglevel panic -i /dev/video0 -frames 1 -f image2 -
 ```
 
 # 课后练习
+
+**课后练习还未准备好**
+
 [习题解答]({{site.url}}/{{site.solution_url}}/{{page.solution.url}})
 
 1. 学习一下这篇简短的 [交互式正则表达式教程](https://regexone.com/).

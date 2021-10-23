@@ -1,10 +1,9 @@
 ---
 layout: lecture
 title: "安全和密码学"
-date: 2020-01-28
+date: 2021-10-27
 ready: true
 sync: true
-hide: true
 syncdate: 2021-04-24
 video:
   aspect: 56.25
@@ -238,6 +237,9 @@ security concepts, tips
 解答了在一些应用环境下“应该使用什么加密？”的问题
 
 # 课后练习
+
+**课后练习还未准备好**
+
 [习题解答]({{site.url}}/{{site.solution_url}}/{{page.solution.url}})
 1. **熵**
     1. 假设一个密码是从四个小写的单词拼接组成，每个单词都是从一个含有10万单词的字典中随机选择，且每个单词选中的概率相同。
