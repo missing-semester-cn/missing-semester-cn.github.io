@@ -13,6 +13,15 @@ solution:
     url: command-line-solution
 ---
 
+# 开课注解
+
+*本节与[数据整理](../data-wrangling)在同一节线下课讲授*
+
+线下课大纲
+![](../files/data-wrangling-command-line.png)
+
+# 介绍
+
 当您使用 shell 进行工作时，可以使用一些方法改善您的工作流，本节课我们就来讨论这些方法。
 
 我们已经使用 shell 一段时间了，但是到目前为止我们的关注点主要集中在使用不同的命令上面。现在，我们将会学习如何同时执行多个不同的进程并追踪它们的状态、如何停止或暂停某个进程以及如何使进程在后台运行。
@@ -434,42 +443,27 @@ Host *.mit.edu
 
 # 课后练习
 
-**课后练习还未准备好**
+[原习题解答]({{site.url}}/{{site.solution_url}}/{{page.solution.url}})
 
-[习题解答]({{site.url}}/{{site.solution_url}}/{{page.solution.url}})
+**标记为「选做」的题目不要求完成且不计分**
+
 ## 任务控制
 
 1. 我们可以使用类似 `ps aux | grep` 这样的命令来获取任务的 pid ，然后您可以基于pid 来结束这些进程。但我们其实有更好的方法来做这件事。在终端中执行 `sleep 10000` 这个任务。然后用 `Ctrl-Z` 将其切换到后台并使用 `bg`来继续允许它。现在，使用 [`pgrep`](https://www.man7.org/linux/man-pages/man1/pgrep.1.html) 来查找 pid 并使用 [`pkill`](https://www.man7.org/linux/man-pages/man1/pgrep.1.html) 结束进程而不需要手动输入pid。(提示：: 使用 `-af` 标记)。
 
-2. 如果您希望某个进程结束后再开始另外一个进程， 应该如何实现呢？在这个练习中，我们使用 `sleep 60 &` 作为先执行的程序。一种方法是使用 [`wait`](http://man7.org/linux/man-pages/man1/wait.1p.html) 命令。尝试启动这个休眠命令，然后待其结束后再执行 `ls` 命令。
+2. 「选做」如果您希望某个进程结束后再开始另外一个进程， 应该如何实现呢？在这个练习中，我们使用 `sleep 60 &` 作为先执行的程序。一种方法是使用 [`wait`](http://man7.org/linux/man-pages/man1/wait.1p.html) 命令。尝试启动这个休眠命令，然后待其结束后再执行 `ls` 命令。
 
     但是，如果我们在不同的 bash 会话中进行操作，则上述方法就不起作用了。因为 `wait` 只能对子进程起作用。之前我们没有提过的一个特性是，`kill` 命令成功退出时其状态码为 0 ，其他状态则是非0。`kill -0` 则不会发送信号，但是会在进程不存在时返回一个不为0的状态码。请编写一个 bash 函数 `pidwait` ，它接受一个 pid 作为输入参数，然后一直等待直到该进程结束。您需要使用 `sleep` 来避免浪费 CPU 性能。
 
-## 终端多路复用
-
-1. 请完成这个 `tmux` [教程](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/) 参考[这些步骤](https://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/)来学习如何自定义 `tmux`。
 
 ## 别名
 
 1. 创建一个 `dc` 别名，它的功能是当我们错误的将 `cd` 输入为 `dc` 时也能正确执行。
 2.  执行 `history | awk '{$1="";print substr($0,2)}' | sort | uniq -c | sort -n | tail -n 10`  来获取您最常用的十条命令，尝试为它们创建别名。注意：这个命令只在 Bash 中生效，如果您使用 ZSH，使用`history 1` 替换 `history`。
 
-
-## 配置文件
-让我们帮助您进一步学习配置文件：
-
-1. 为您的配置文件新建一个文件夹，并设置好版本控制
-2. 在其中添加至少一个配置文件，比如说您的 shell，在其中包含一些自定义设置（可以从设置 `$PS1` 开始）。
-3. 建立一种在新设备进行快速安装配置的方法（无需手动操作）。最简单的方法是写一个 shell 脚本对每个文件使用 `ln -s`，也可以使用[专用工具](https://dotfiles.github.io/utilities/)
-4. 在新的虚拟机上测试该安装脚本。
-5. 将您现有的所有配置文件移动到项目仓库里。
-6. 将项目发布到GitHub。
-
-
-
 ## 远端设备
 
-进行下面的练习需要您先安装一个 Linux 虚拟机（如果已经安装过则可以直接使用），如果您对虚拟机尚不熟悉，可以参考[这篇教程](https://hibbard.eu/install-ubuntu-virtual-box/) 来进行安装。
+「加分」进行下面的练习需要您先安装一个 Linux 虚拟机（如果已经安装过则可以直接使用），如果您对虚拟机尚不熟悉，可以参考[这篇教程](https://hibbard.eu/install-ubuntu-virtual-box/) 来进行安装。
 
 1. 前往 `~/.ssh/` 并查看是否已经存在 SSH 密钥对。如果不存在，请使用`ssh-keygen -o -a 100 -t ed25519`来创建一个。建议为密钥设置密码然后使用`ssh-agent`，更多信息可以参考 [这里](https://www.ssh.com/ssh/agent)；
 2. 在`.ssh/config`加入下面内容： 
@@ -484,5 +478,21 @@ Host vm
 1. 使用 `ssh-copy-id vm` 将您的 ssh 密钥拷贝到服务器。
 2. 使用`python -m http.server 8888` 在您的虚拟机中启动一个 Web 服务器并通过本机的`http://localhost:9999` 访问虚拟机上的 Web 服务器
 3. 使用`sudo vim /etc/ssh/sshd_config` 编辑 SSH 服务器配置，通过修改`PasswordAuthentication`的值来禁用密码验证。通过修改`PermitRootLogin`的值来禁用 root 登录。然后使用`sudo service sshd restart`重启 `ssh` 服务器，然后重新尝试。
-4. (附加题) 在虚拟机中安装 [`mosh`](https://mosh.org/) 并启动连接。然后断开服务器/虚拟机的网络适配器。mosh可以恢复连接吗？
-5. (附加题) 查看`ssh`的`-N` 和 `-f` 选项的作用，找出在后台进行端口转发的命令是什么？
+4. 在虚拟机中安装 [`mosh`](https://mosh.org/) 并启动连接。然后断开服务器/虚拟机的网络适配器。mosh可以恢复连接吗？
+5. 查看`ssh`的`-N` 和 `-f` 选项的作用，找出在后台进行端口转发的命令是什么？
+
+## 终端多路复用
+
+1. 「选做」请完成这个 `tmux` [教程](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/) 参考[这些步骤](https://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/)来学习如何自定义 `tmux`。
+
+## 配置文件
+「选做」让我们帮助您进一步学习配置文件：
+
+1. 为您的配置文件新建一个文件夹，并设置好版本控制
+2. 在其中添加至少一个配置文件，比如说您的 shell，在其中包含一些自定义设置（可以从设置 `$PS1` 开始）。
+3. 建立一种在新设备进行快速安装配置的方法（无需手动操作）。最简单的方法是写一个 shell 脚本对每个文件使用 `ln -s`，也可以使用[专用工具](https://dotfiles.github.io/utilities/)
+4. 在新的虚拟机上测试该安装脚本。
+5. 将您现有的所有配置文件移动到项目仓库里。
+6. 将项目发布到GitHub。
+
+
