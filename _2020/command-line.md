@@ -1,10 +1,9 @@
 ---
 layout: lecture
 title: "命令行环境"
-date: 2020-01-21
+date: 2021-10-23
 ready: true
 sync: true
-hide: true
 syncdate: 2021-04-24
 video:
   aspect: 56.25
@@ -434,6 +433,9 @@ Host *.mit.edu
 
 
 # 课后练习
+
+**课后练习还未准备好**
+
 [习题解答]({{site.url}}/{{site.solution_url}}/{{page.solution.url}})
 ## 任务控制
 

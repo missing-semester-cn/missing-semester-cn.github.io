@@ -2,7 +2,7 @@
 layout: lecture
 title: "元编程"
 details: 构建系统、依赖管理、测试、持续集成
-date: 2020-01-27
+date: 2021-10-30
 ready: true
 sync: true
 hide: true
@@ -149,6 +149,9 @@ pdflatex paper.tex
 
 
 # 课后练习
+
+**课后练习还未准备好**
+
 [习题解答]({{site.url}}/{{site.solution_url}}/{{page.solution.url}})
  1. 大多数的 makefiles 都提供了 一个名为 `clean` 的构建目标，这并不是说我们会生成一个名为`clean`的文件，而是我们可以使用它清理文件，让 make 重新构建。您可以理解为它的作用是“撤销”所有构建步骤。在上面的 makefile 中为`paper.pdf`实现一个`clean` 目标。您需要将构建目标设置为[phony](https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html)。您也许会发现 [`git ls-files`](https://git-scm.com/docs/git-ls-files) 子命令很有用。其他一些有用的 make 构建目标可以在[这里](https://www.gnu.org/software/make/manual/html_node/Standard-Targets.html#Standard-Targets)找到；
    
