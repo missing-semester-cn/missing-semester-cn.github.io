@@ -2,7 +2,7 @@
 layout: lecture
 title: "元编程"
 details: 构建系统、依赖管理、测试、持续集成
-date: 2021-10-30
+date: 2021-11-3
 ready: true
 sync: true
 syncdate: 2021-04-24
