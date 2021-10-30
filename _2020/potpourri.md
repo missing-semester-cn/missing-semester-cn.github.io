@@ -1,7 +1,7 @@
 ---
 layout: lecture
 title: "大杂烩"
-date: 2021-10-30
+date: 2021-11-3
 ready: true
 sync: true
 syncdate: 2021-04-24

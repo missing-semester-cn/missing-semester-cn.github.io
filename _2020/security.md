@@ -1,7 +1,7 @@
 ---
 layout: lecture
 title: "安全和密码学"
-date: 2021-10-27
+date: 2021-10-30
 ready: true
 sync: true
 syncdate: 2021-04-24
@@ -12,6 +12,12 @@ solution:
     ready: true
     url: security-solution
 ---
+
+# 开课注解
+
+*本节与[版本控制（Git）](../version-control)在同一节线下课讲授*
+
+# 介绍
 
 去年的[这节课](/2019/security/)我们从计算机 _用户_ 的角度探讨了增强隐私保护和安全的方法。
 今年我们将关注比如散列函数、密钥生成函数、对称/非对称密码体系这些安全和密码学的概念是如何应用于前几节课所学到的工具（Git和SSH）中的。
