@@ -5,19 +5,14 @@ name: path-check
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: [ master ]
   pull_request:
     branches: [ master ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
   check:
-    if: github.event.label.name == '2021-finalproject'
+    if: contains(github.event.pull_request.labels.*.name, '2021-finalproject')
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
