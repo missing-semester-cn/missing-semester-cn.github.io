@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 echo "test"
 echo "[Check] environment variable..."
 if [ -z $ROS_MASTER_URI ];
