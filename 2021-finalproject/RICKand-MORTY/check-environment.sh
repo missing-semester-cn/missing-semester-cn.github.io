@@ -28,6 +28,7 @@ then
 else 
 	echo "Fail!"
 fi
+exit 0
 
 
 
