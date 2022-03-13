@@ -122,7 +122,7 @@ $ jobs
 
 `SIGKILL` 是一个特殊的信号，它不能被进程捕获并且它会马上结束该进程。不过这样做会有一些副作用，例如留下孤儿进程。
 
-您可以在 [这里](https://en.wikipedia.org/wiki/Signal_(IPC)) 或输入 [`man signal`](https://www.man7.org/linux/man-pages/man7/signal.7.html) 或使用 `kill -t` 来获取更多关于信号的信息。
+您可以在 [这里](https://en.wikipedia.org/wiki/Signal_(IPC)) 或输入 [`man signal`](https://www.man7.org/linux/man-pages/man7/signal.7.html) 或使用 `kill -l` 来获取更多关于信号的信息。
 
 
 # 终端多路复用
@@ -322,7 +322,7 @@ ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519
 `ssh` 会查询 `.ssh/authorized_keys` 来确认那些用户可以被允许登录。您可以通过下面的命令将一个公钥拷贝到这里：
 
 ```bash
-cat .ssh/id_ed25519.pub | ssh foobar@remote 'cat >> ~/.ssh/authorized_keys'
+cat .ssh/id_ed25519 | ssh foobar@remote 'cat >> ~/.ssh/authorized_keys'
 ```
 
 如果支持 `ssh-copy-id` 的话，可以使用下面这种更简单的解决方案：
