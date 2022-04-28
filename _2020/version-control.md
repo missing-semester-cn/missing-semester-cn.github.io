@@ -394,6 +394,7 @@ command is used for merging.
 - `git commit --amend`: 编辑提交的内容或信息
 - `git reset HEAD <file>`: 恢复暂存的文件
 - `git checkout -- <file>`: 丢弃修改
+- `git restore`: git2.32版本后取代git reset 进行许多撤销操作
 
 # Git 高级操作
 
