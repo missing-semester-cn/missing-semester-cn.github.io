@@ -18,7 +18,7 @@ solution:
 
 # Shell 脚本
 
-到目前为止，我们已经学习来如何在 shell 中执行命令，并使用管道将命令组合使用。但是，很多情况下我们需要执行一系列的操作并使用条件或循环这样的控制流。
+到目前为止，我们已经学习了如何在 shell 中执行命令，并使用管道将命令组合使用。但是，很多情况下我们需要执行一系列的操作并使用条件或循环这样的控制流。
 
 
 shell 脚本是一种更加复杂度的工具。
@@ -159,7 +159,7 @@ for arg in reversed(sys.argv[1:]):
 内核知道去用 python 解释器而不是 shell 命令来运行这段脚本，是因为脚本的开头第一行的 [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix))。
 
 在 `shebang` 行中使用 [`env`](https://man7.org/linux/man-pages/man1/env.1.html) 命令是一种好的实践，它会利用环境变量中的程序来解析该脚本，这样就提高来您的脚本的可移植性。`env` 会利用我们第一节讲座中介绍过的`PATH` 环境变量来进行定位。
-例如，使用了`env`的shebang看上去时这样的`#!/usr/bin/env python`。
+例如，使用了`env`的shebang看上去是这样的`#!/usr/bin/env python`。
 
 
 shell函数和脚本有如下一些不同点：
