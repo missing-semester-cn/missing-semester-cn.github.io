@@ -1,7 +1,7 @@
 ---
 layout: lecture
 title: "命令行环境"
-date: 2021-10-23
+date: 2022-10-12
 ready: true
 sync: true
 syncdate: 2021-04-24
