@@ -1,7 +1,7 @@
 ---
 layout: lecture
 title: "课程概览与 shell"
-date: 2022-10-16
+date: 2022-10-12
 ready: true
 sync: true
 syncdate: 2021-04-24
