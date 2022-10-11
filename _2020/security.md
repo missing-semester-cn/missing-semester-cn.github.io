@@ -1,7 +1,7 @@
 ---
 layout: lecture
 title: "安全和密码学"
-date: 2021-10-30
+date: 2022-10-30
 ready: true
 sync: true
 syncdate: 2021-04-24

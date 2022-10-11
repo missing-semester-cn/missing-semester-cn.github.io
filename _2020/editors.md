@@ -1,7 +1,7 @@
 ---
 layout: lecture
 title: "编辑器 (Vim)"
-date: 2021-10-21
+date: 2022-10-21
 ready: true
 sync: true
 syncdate: 2021-04-24
