@@ -268,7 +268,7 @@ $ echo 1 | sudo tee /sys/class/leds/input6::scrolllock/brightness
 4. 将以下内容一行一行地写入 `semester` 文件：
     ```
     #!/bin/sh
-    curl --head --silent https://gdut-dynamic-x.github.io
+    curl --head --silent https://gdut-dynamic-x.github.io/missing-semester/
     ```
     第一行可能有点棘手， `#` 在Bash中表示注释，而 `!` 即使被双引号（`"`）包裹也具有特殊的含义。
     单引号（`'`）则不一样，此处利用这一点解决输入问题。更多信息请参考  [Bash quoting 手册](https://www.gnu.org/software/bash/manual/html_node/Quoting.html)
