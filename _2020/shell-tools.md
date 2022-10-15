@@ -1,7 +1,7 @@
 ---
 layout: lecture
 title: "Shell 工具和脚本"
-date: 2022-10-19
+date: 2022-10-15
 ready: true
 sync: true
 syncdate: 2021-04-24

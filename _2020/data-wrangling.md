@@ -1,7 +1,7 @@
 ---
 layout: lecture
 title: "数据整理"
-date: 2022-10-15
+date: 2022-10-19
 ready: true
 sync: true
 syncdate: 2021-04-24
