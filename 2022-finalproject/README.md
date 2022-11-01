@@ -1,7 +1,7 @@
 # Final Project
 
 - 本次大作业的文件除特殊要求外都应使用合理的英文名称命名
-- 通过 pull request 的方式提交到[课程仓库](https://github.com/gdut-dynamic-x/missing-semester)，具体位置为 `2021-finalproject` 文件夹下以你 GitHub ID 命名的文件夹
+- 通过 pull request 的方式提交到[课程仓库](https://github.com/gdut-dynamic-x/missing-semester)，具体位置为 `2022-finalproject` 文件夹下以你 GitHub ID 命名的文件夹
 
 ## Pull Request
 
@@ -12,16 +12,14 @@ PR 考察分两阶段
 1. 第一阶段要求在11月7日21:00前开启你的 PR
    - 值得注意的是，你不必在完成下面的内容后再开启 PR，PR 会自动跟踪你在自己分支上的修改
    - 你的 PR 需要有合理且直观的标题和描述，不要空着，但这些内容是随时可以修改的，所以不必在开启 PR 时有过多的顾虑
-   - 你需要主动为你的 PR 增加名为 `2021-finalproject` 的 label，否则视为无效的作业
    - 你需要主动查看 PR 的合并检查项目并且解决自己可以解决的检查项目，下面介绍检查项目
        - 你的 PR 需要至少一个 reviewer，如果你认为自己已经无事可做了，可以发送 request review 来使你的 PR 更快地合并
        - 如果 reviewer 提出了修改意见，你需要在解决后回复，在确认完成后点击 resolved
        - 你的修改历史必须是线性的，也就是不能出现分支间 merge
-       - 你增加的文件必须在 `2021-finalproject` 文件夹中
+       - 你增加的文件必须在 `2022-finalproject` 文件夹中
 2. 第二阶段要求在11月10日21:00前完成合并
    - 值得注意的是，在第二阶段仍然可以修改或增加你的作业内容，但建议你尽量在这之前完成
    - 我们会在两个阶段的临界点修改其中一个检查项目，你需要在这之后再次通过所有检查项目，通过后再次 request review，如果没有问题，你的 PR 就会被合并
-   - 被修改的检查项目为：作业提交文件夹变更为 `_2021-finalproject`
    - 第二阶段不再接受新开的 PR，所以不要尝试通过重开 PR 或删除自己 Fork 的仓库来解决第二阶段提出的考验
 
 你可以在 MarkDown 文档中使用中文，但不要在 PR 的标题、描述及评论中使用中文  
