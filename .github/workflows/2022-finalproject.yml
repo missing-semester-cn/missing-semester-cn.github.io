@@ -4,11 +4,8 @@ name: path-check
 
 # Controls when the workflow will run
 on:
-  workflow_dispatch:
-  
   # Triggers the workflow on push or pull request events but only for the master branch
-  pull_request:
-    branches: [ master ]
+  [pull_request, workflow_dispatch]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
