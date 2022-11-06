@@ -3,12 +3,13 @@
 提交了一个文件
 ![pic1](1.png)
 发现文件有误
-使用reset命令（或git commit --amend来重新提交修改过的文件）
+使用reset命令（reset --hard会把文件一并改动）
 ![reset](reset.png)
+![reseth](reseth.png)
 ### 总结
 
 1. reset撤回修改后重新提交
-2. revert 版本号
+2. reset --hard(慎用，会把本地文件的修改一起reset)
 
 ## Question2
 
@@ -25,4 +26,6 @@
 ## Question3
 
 1. 合并某分支上的单个commit：git cherry-pick 文件名
-2. 在IDEA中合并
+2. 使用git merge ’要被合并的分支名’
+    ![merge1](merge1.png)
+    ![merge2](merge2.png)
