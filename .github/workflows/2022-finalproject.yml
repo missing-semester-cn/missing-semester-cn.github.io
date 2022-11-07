@@ -25,7 +25,7 @@ jobs:
         with:
           filters: |
             src:
-              - '!(2022-finalproject/**)'
+              - '!(_2022-finalproject/**)'
         # run only if some file in 'src' folder was changed
       - if: steps.changes.outputs.src == 'true'
         run: exit 1
