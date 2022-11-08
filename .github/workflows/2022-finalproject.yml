@@ -1,31 +1,29 @@
-# This is a basic workflow to help you get started with Actions
+name: 李光祥
 
-name: path-check
+### <font size=8> **#1** </font>
 
-# Controls when the workflow will run
-on:
-  # Triggers the workflow on push or pull request events but only for the master branch
-  [pull_request, workflow_dispatch]
+##1准备工作
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  # This workflow contains a single job called "build"
-  check:
-    if: contains(github.event.pull_request.labels.*.name, '2022-finalproject')
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+![](/home/emmm/图片/2022-11-06 15-17-02 的屏幕截图.png)
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      
-      - uses: dorny/paths-filter@v2
-        id: changes
-        with:
-          filters: |
-            src:
-              - '!(_2022-finalproject/**)'
-        # run only if some file in 'src' folder was changed
-      - if: steps.changes.outputs.src == 'true'
-        run: exit 1
+##2方式一（拉取最近一次提交到暂存区）![2022-11-06 15-30-21 的屏幕截图](/home/emmm/图片/2022-11-06 15-30-21 的屏幕截图.png)
+
+##3方式二（回到修改前的状态，再添加到暂存区）![2022-11-06 15-41-23 的屏幕截图](/home/emmm/图片/2022-11-06 15-41-23 的屏幕截图.png)
+
+###方式二好像错了，有一部分修改已经加入了暂存区
+
+改为下图方式![2022-11-06 15-46-19 的屏幕截图](/home/emmm/图片/2022-11-06 15-46-19 的屏幕截图.png)
+
+<font size=8> **#2** </font>
+
+##1![2022-11-06 16-08-19 的屏幕截图](/home/emmm/图片/2022-11-06 16-08-19 的屏幕截图.png)
+
+##2![2022-11-06 16-08-45 的屏幕截图](/home/emmm/图片/2022-11-06 16-08-45 的屏幕截图.png)
+
+<font size=8> **#3** </font>
+
+##1准备工作忘记截图了，这两个分支应该合并成功了吧？
+
+![2022-11-06 16-53-22 的屏幕截图](/home/emmm/图片/2022-11-06 16-53-22 的屏幕截图.png)
+
+##2![2022-11-06 16-57-25 的屏幕截图](/home/emmm/图片/2022-11-06 16-57-25 的屏幕截图.png)
