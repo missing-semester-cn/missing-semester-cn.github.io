@@ -1,0 +1,31 @@
+# This is a basic workflow to help you get started with Actions
+
+name: path-check
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  [pull_request, workflow_dispatch]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  check:
+    if: contains(github.event.pull_request.labels.*.name, '2022-finalproject')
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            src:
+              - '!(_2022-finalproject/**)'
+        # run only if some file in 'src' folder was changed
+      - if: steps.changes.outputs.src == 'true'
+        run: exit 1
