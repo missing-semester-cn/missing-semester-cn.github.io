@@ -5,8 +5,7 @@ Website for the [The Missing Semester of Your CS Education](https://missing.csai
 [中文站点](https://missing-semester-cn.github.io)(<span style="float:right"><img src = "https://img.shields.io/badge/最近一次与英文版同步-2021--04--24-green"></span>)
 
 
-Contributions are most welcome! If you have edits or new content to add, please
-open an issue or submit a pull request.
+Contributions are most welcome! If you have edits or new content to add, please open an issue or submit a pull request.
 
 ## Development
 
