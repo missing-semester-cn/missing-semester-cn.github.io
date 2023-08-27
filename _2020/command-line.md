@@ -322,7 +322,7 @@ ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519
 `ssh` 会查询 `.ssh/authorized_keys` 来确认那些用户可以被允许登录。您可以通过下面的命令将一个公钥拷贝到这里：
 
 ```bash
-cat .ssh/id_ed25519 | ssh foobar@remote 'cat >> ~/.ssh/authorized_keys'
+cat .ssh/id_ed25519.pub | ssh foobar@remote 'cat >> ~/.ssh/authorized_keys'
 ```
 
 如果支持 `ssh-copy-id` 的话，可以使用下面这种更简单的解决方案：
