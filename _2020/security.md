@@ -82,7 +82,7 @@ f7ff9e8b7bb2e09b70935a5d785e0cc5d9d0abf0
 
 ## 密码散列函数的应用
 
-- Git中的内容寻址存储(Content addressed storage)：[散列函数](https://en.wikipedia.org/wiki/Hash_function)是一个宽泛的概念（存在非密码学的散列函数），那么Git为什么要特意使用密码散列函数？
+- Git中的内容寻址存储(Content-addressed storage)：[散列函数](https://en.wikipedia.org/wiki/Hash_function)是一个宽泛的概念（存在非密码学的散列函数），那么Git为什么要特意使用密码散列函数？
 - 文件的信息摘要(Message digest)：像Linux ISO这样的软件可以从非官方的（有时不太可信的）镜像站下载，所以需要设法确认下载的软件和官方一致。
 官方网站一般会在（指向镜像站的）下载链接旁边备注安装文件的哈希值。
 用户从镜像站下载安装文件后可以对照公布的哈希值来确定安装文件没有被篡改。
