@@ -44,3 +44,5 @@ To contribute to this tanslation project, please book your topic by creating an 
 ## 新项目
 
 [Learncpp中文版](https://github.com/hanxiaomax/Learncpp_CN)
+
+add to learn pull request
