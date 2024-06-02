@@ -29,12 +29,25 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
         
-      - name: ShellCheck
-        uses: ludeeus/action-shellcheck@2.0.0
-            
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      # run shellcheck
+      - name: ShellCheck
+        uses: ludeeus/action-shellcheck@1.1.0
+      - name: Post comment
+        uses: mshick/add-pr-comment@v1
+        if: $
+        with:
+            message: |
+            $
+            repo-token: $
+            repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
+            allow-repeats: false # This is the default
+        
+            
