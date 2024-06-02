@@ -34,11 +34,14 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-
+    
+            
       # run shellcheck
       - name: ShellCheck
         uses: ludeeus/action-shellcheck@1.1.0
-
+      # run shellcheck 
+      - name: Lint Markdown
+        uses: tomwhross/write-good-action@v1.6
       # Post comment
       - name: Post comment
         uses: mshick/add-pr-comment@v1
