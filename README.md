@@ -27,18 +27,18 @@ To contribute to this tanslation project, please book your topic by creating an 
 
 |  lectures   | translator  | status |
 |  ----  | ----  |----  |
-| [course-shell.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/course-shell.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | Done |
-| [shell-tools.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/shell-tools.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | Done |
-| [editors.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/editors.md)  |  [@stechu](https://github.com/stechu) | Done |
-| [data-wrangling.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/data-wrangling.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | Done |
-| [command-line.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/command-line.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | Done |
-| [version-control.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/version-control.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | Done |
-| [debugging-profiling.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/debugging-profiling.md)  |[@Lingfeng AI](https://github.com/hanxiaomax)  | Done  |
-| [metaprogramming.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/metaprogramming.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | Done |
-| [security.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/security.md)  | [@catcarbon](https://github.com/catcarbon) | Done |
-| [potpourri.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/potpourri.md) |  [@catcarbon](https://github.com/catcarbon) | Done |
-| [qa.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/_2020/qa.md) | [@AA1HSHH](https://github.com/AA1HSHH) | Done |
-| [about.md](https://github.com/missing-semester-cn/missing-semester-cn.github.io/blob/master/about.md)  | [@Binlogo](https://github.com/Binlogo)  | Done |
+| [course-shell.md](_2020/course-shell.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | Done |
+| [shell-tools.md](_2020/shell-tools.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | Done |
+| [editors.md](_2020/editors.md)  |  [@stechu](https://github.com/stechu) | Done |
+| [data-wrangling.md](_2020/data-wrangling.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | Done |
+| [command-line.md](_2020/command-line.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | Done |
+| [version-control.md](_2020/version-control.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | Done |
+| [debugging-profiling.md](_2020/debugging-profiling.md)  |[@Lingfeng AI](https://github.com/hanxiaomax)  | Done  |
+| [metaprogramming.md](_2020/metaprogramming.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | Done |
+| [security.md](_2020/security.md)  | [@catcarbon](https://github.com/catcarbon) | Done |
+| [potpourri.md](_2020/potpourri.md) |  [@catcarbon](https://github.com/catcarbon) | Done |
+| [qa.md](_2020/qa.md) | [@AA1HSHH](https://github.com/AA1HSHH) | Done |
+| [about.md](about.md)  | [@Binlogo](https://github.com/Binlogo)  | Done |
 
 
 ## 新项目
