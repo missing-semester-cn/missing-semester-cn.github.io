@@ -14,6 +14,7 @@ title: 计算机教育中缺失的一课
 关于 [开设此课程的动机](/about/)。
 
 {% comment %}
+
 # Registration
 
 Sign up for the IAP 2020 class by filling out this [registration form](https://forms.gle/TD1KnwCSV52qexVt9).
