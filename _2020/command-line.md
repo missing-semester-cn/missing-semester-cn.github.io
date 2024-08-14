@@ -463,8 +463,8 @@ Host vm
     LocalForward 9999 localhost:8888
 ```
 
-1. 使用 `ssh-copy-id vm` 将您的 ssh 密钥拷贝到服务器。
-2. 使用 `python -m http.server 8888` 在您的虚拟机中启动一个 Web 服务器并通过本机的 `http://localhost:9999` 访问虚拟机上的 Web 服务器
-3. 使用 `sudo vim /etc/ssh/sshd_config` 编辑 SSH 服务器配置，通过修改 `PasswordAuthentication` 的值来禁用密码验证。通过修改 `PermitRootLogin` 的值来禁用 root 登录。然后使用 `sudo service sshd restart` 重启 `ssh` 服务器，然后重新尝试。
-4. (附加题) 在虚拟机中安装 [`mosh`](https://mosh.org/) 并启动连接。然后断开服务器/虚拟机的网络适配器。mosh 可以恢复连接吗？
-5. (附加题) 查看 `ssh` 的 `-N` 和 `-f` 选项的作用，找出在后台进行端口转发的命令是什么？
+3. 使用 `ssh-copy-id vm` 将您的 ssh 密钥拷贝到服务器。
+4. 使用 `python -m http.server 8888` 在您的虚拟机中启动一个 Web 服务器并通过本机的 `http://localhost:9999` 访问虚拟机上的 Web 服务器
+5. 使用 `sudo vim /etc/ssh/sshd_config` 编辑 SSH 服务器配置，通过修改 `PasswordAuthentication` 的值来禁用密码验证。通过修改 `PermitRootLogin` 的值来禁用 root 登录。然后使用 `sudo service sshd restart` 重启 `ssh` 服务器，然后重新尝试。
+6. (附加题) 在虚拟机中安装 [`mosh`](https://mosh.org/) 并启动连接。然后断开服务器/虚拟机的网络适配器。mosh 可以恢复连接吗？
+7. (附加题) 查看 `ssh` 的 `-N` 和 `-f` 选项的作用，找出在后台进行端口转发的命令是什么？
