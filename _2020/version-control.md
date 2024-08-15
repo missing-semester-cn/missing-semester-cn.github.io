@@ -13,7 +13,7 @@ solution:
     url: version-control-solution
 ---
 
-版本控制系统 (VCSs) 是一类用于追踪源代码（或其他文件、文件夹）改动的工具。顾名思义，这些工具可以帮助我们管理代码的修改历史；不仅如此，它还可以让协作编码变得更方便。VCS通过一系列的快照将某个文件夹及其内容保存了起来，每个快照都包含了文件或文件夹的完整状态。同时它还维护了快照创建者的信息以及每个快照的相关信息等等。
+版本控制系统 (VCSs) 是一类用于追踪源代码（或其他文件、文件夹）改动的工具。顾名思义，这些工具可以帮助我们管理代码的修改历史；不仅如此，它还可以让协作编码变得更方便。VCS 通过一系列的快照将某个文件夹及其内容保存了起来，每个快照都包含了文件或文件夹的完整状态。同时它还维护了快照创建者的信息以及每个快照的相关信息等等。
 
 为什么说版本控制系统非常有用？即使您只是一个人进行编程工作，它也可以帮您创建项目的快照，记录每个改动的目的、基于多分支并行开发等等。和别人协作开发时，它更是一个无价之宝，您可以看到别人对代码进行的修改，同时解决由于并行开发引起的冲突。
 
@@ -21,7 +21,7 @@ solution:
 
 - 当前模块是谁编写的？
 - 这个文件的这一行是什么时候被编辑的？是谁作出的修改？修改原因是什么呢？
-- 最近的1000个版本中，何时/为什么导致了单元测试失败？
+- 最近的 1000 个版本中，何时/为什么导致了单元测试失败？
 
 尽管版本控制系统有很多， 其事实上的标准则是 **Git** 。而这篇 [XKCD 漫画](https://xkcd.com/1597/) 则反映出了人们对 Git 的评价：
 
@@ -37,7 +37,7 @@ solution:
 
 ## 快照
 
-Git 将顶级目录中的文件和文件夹作为集合，并通过一系列快照来管理其历史记录。在Git的术语里，文件被称作Blob对象（数据对象），也就是一组数据。目录则被称之为“树”，它将名字与 Blob 对象或树对象进行映射（使得目录中可以包含其他目录）。快照则是被追踪的最顶层的树。例如，一个树看起来可能是这样的：
+Git 将顶级目录中的文件和文件夹作为集合，并通过一系列快照来管理其历史记录。在 Git 的术语里，文件被称作 Blob 对象（数据对象），也就是一组数据。目录则被称之为“树”，它将名字与 Blob 对象或树对象进行映射（使得目录中可以包含其他目录）。快照则是被追踪的最顶层的树。例如，一个树看起来可能是这样的：
 
 ```
 <root> (tree)
@@ -49,7 +49,7 @@ Git 将顶级目录中的文件和文件夹作为集合，并通过一系列快�
 +- baz.txt (blob, contents = "git is wonderful")
 ```
 
-这个顶层的树包含了两个元素，一个名为 "foo" 的树（它本身包含了一个blob对象 "bar.txt"），以及一个 blob 对象 "baz.txt"。
+这个顶层的树包含了两个元素，一个名为 "foo" 的树（它本身包含了一个 blob 对象 "bar.txt"），以及一个 blob 对象 "baz.txt"。
 
 ## 历史记录建模：关联快照
 
@@ -72,7 +72,7 @@ o <-- o <-- o <-- o
 
 <pre class="highlight">
 <code>
-o <-- o <-- o <-- o <---- <strong>o</strong>
+o <-- o <-- o <-- o <---- <strong> o </strong>
             ^            /
              \          v
               --- o <-- o
@@ -94,7 +94,7 @@ type tree = map<string, tree | blob>
 
 // 每个提交都包含一个父辈，元数据和顶层树
 type commit = struct {
-    parent: array<commit>
+    parents: array<commit>
     author: string
     message: string
     snapshot: tree
@@ -127,7 +127,7 @@ def load(id):
 
 Blobs、树和提交都一样，它们都是对象。当它们引用其他对象时，它们并没有真正的在硬盘上保存这些对象，而是仅仅保存了它们的哈希值作为引用。
 
-例如，[上面](#snapshots)例子中的树（可以通过 `git cat-file -p 698281bc680d1995c5f4caaf3359721a5a58d48d` 来进行可视化），看上去是这样的：
+例如，[上面](#snapshots) 例子中的树（可以通过 `git cat-file -p 698281bc680d1995c5f4caaf3359721a5a58d48d` 来进行可视化），看上去是这样的：
 
 ```
 100644 blob 4448adbf7ecd394f42ae135bbeed9676e894af85    baz.txt
@@ -185,7 +185,7 @@ Git 处理这些场景的方法是使用一种叫做 “暂存区（staging area
 
 # Git 的命令行接口
 
-为了避免重复信息，我们将不会详细解释以下命令行。强烈推荐您阅读 [Pro Git 中文版](https://git-scm.com/book/zh/v2)或可以观看本讲座的视频来学习。
+为了避免重复信息，我们将不会详细解释以下命令行。强烈推荐您阅读 [Pro Git 中文版](https://git-scm.com/book/zh/v2) 或可以观看本讲座的视频来学习。
 
 
 ## 基础
@@ -230,8 +230,8 @@ $ git commit -m 'Initial commit'
  create mode 100644 hello.txt
 ```
 
-With this, we've `git add`ed a file to the staging area, and then `git
-commit`ed that change, adding a simple commit message "Initial commit". If we
+With this, we've `git add` ed a file to the staging area, and then `git
+commit`ed that change, adding a simple commit message " Initial commit ". If we
 didn't specify a `-m` option, Git would open our text editor to allow us type a
 commit message.
 
@@ -394,7 +394,7 @@ command is used for merging.
 - `git commit --amend`: 编辑提交的内容或信息
 - `git reset HEAD <file>`: 恢复暂存的文件
 - `git checkout -- <file>`: 丢弃修改
-- `git restore`: git2.32版本后取代git reset 进行许多撤销操作
+- `git restore`: git2.32 版本后取代 git reset 进行许多撤销操作
 
 # Git 高级操作
 
@@ -410,13 +410,13 @@ command is used for merging.
 # 杂项
 
 - **图形用户界面**: Git 的 [图形用户界面客户端](https://git-scm.com/downloads/guis) 有很多，但是我们自己并不使用这些图形用户界面的客户端，我们选择使用命令行接口
-- **Shell 集成**: 将 Git 状态集成到您的 shell 中会非常方便。([zsh](https://github.com/olivierverdier/zsh-git-prompt), [bash](https://github.com/magicmonty/bash-git-prompt))。[Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh)这样的框架中一般已经集成了这一功能
+- **Shell 集成**: 将 Git 状态集成到您的 shell 中会非常方便。([zsh](https://github.com/olivierverdier/zsh-git-prompt), [bash](https://github.com/magicmonty/bash-git-prompt))。[Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) 这样的框架中一般已经集成了这一功能
 - **编辑器集成**: 和上面一条类似，将 Git 集成到编辑器中好处多多。[fugitive.vim](https://github.com/tpope/vim-fugitive) 是 Vim 中集成 Git 的常用插件
 - **工作流**: 我们已经讲解了数据模型与一些基础命令，但还没讨论到进行大型项目时的一些惯例 (
-有[很多](https://nvie.com/posts/a-successful-git-branching-model/)
+有 [很多](https://nvie.com/posts/a-successful-git-branching-model/)
 [不同的](https://www.endoflineblog.com/gitflow-considered-harmful)
 [处理方法](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow))
-- **GitHub**: Git 并不等同于 GitHub。 在 GitHub 中您需要使用一个被称作[拉取请求（pull request）](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)的方法来向其他项目贡献代码
+- **GitHub**: Git 并不等同于 GitHub。 在 GitHub 中您需要使用一个被称作 [拉取请求（pull request）](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) 的方法来向其他项目贡献代码
 - **其他 Git 提供商**: GitHub 并不是唯一的。还有像 [GitLab](https://about.gitlab.com/) 和 [BitBucket](https://bitbucket.org/) 这样的平台。
 
 # 资源
@@ -424,7 +424,7 @@ command is used for merging.
 - [Pro Git](https://git-scm.com/book/en/v2) ，**强烈推荐**！学习前五章的内容可以教会您流畅使用 Git 的绝大多数技巧，因为您已经理解了 Git 的数据模型。后面的章节提供了很多有趣的高级主题。（[Pro Git 中文版](https://git-scm.com/book/zh/v2)）；
 - [Oh Shit, Git!?!](https://ohshitgit.com/) ，简短的介绍了如何从 Git 错误中恢复；
 - [Git for Computer Scientists](https://eagain.net/articles/git-for-computer-scientists/) ，简短的介绍了 Git 的数据模型，与本文相比包含较少量的伪代码以及大量的精美图片；
-- [Git from the Bottom Up](https://jwiegley.github.io/git-from-the-bottom-up/)详细的介绍了 Git 的实现细节，而不仅仅局限于数据模型。好奇的同学可以看看；
+- [Git from the Bottom Up](https://jwiegley.github.io/git-from-the-bottom-up/) 详细的介绍了 Git 的实现细节，而不仅仅局限于数据模型。好奇的同学可以看看；
 - [How to explain git in simple words](https://smusamashah.github.io/blog/2017/10/14/explain-git-in-simple-words)；
 - [Learn Git Branching](https://learngitbranching.js.org/) 通过基于浏览器的游戏来学习 Git ；
 
@@ -432,11 +432,11 @@ command is used for merging.
 # 课后练习
 
 [习题解答]({{site.url}}/{{site.solution_url}}/{{page.solution.url}})
-1. 如果您之前从来没有用过 Git，推荐您阅读 [Pro Git](https://git-scm.com/book/en/v2) 的前几章，或者完成像 [Learn Git Branching](https://learngitbranching.js.org/)这样的教程。重点关注 Git 命令和数据模型相关内容；
+1. 如果您之前从来没有用过 Git，推荐您阅读 [Pro Git](https://git-scm.com/book/en/v2) 的前几章，或者完成像 [Learn Git Branching](https://learngitbranching.js.org/) 这样的教程。重点关注 Git 命令和数据模型相关内容；
 2. 克隆 [本课程网站的仓库](https://github.com/missing-semester-cn/missing-semester-cn.github.io.git)
     1. 将版本历史可视化并进行探索
-    2. 是谁最后修改了 `README.md`文件？（提示：使用 `git log` 命令并添加合适的参数）
-    3. 最后一次修改`_config.yml` 文件中 `collections:` 行时的提交信息是什么？（提示：使用 `git blame` 和 `git show`）
+    2. 是谁最后修改了 `README.md` 文件？（提示：使用 `git log` 命令并添加合适的参数）
+    3. 最后一次修改 `_config.yml` 文件中 `collections:` 行时的提交信息是什么？（提示：使用 `git blame` 和 `git show`）
 3. 使用 Git 时的一个常见错误是提交本不应该由 Git 管理的大文件，或是将含有敏感信息的文件提交给 Git 。尝试向仓库中添加一个文件并添加提交信息，然后将其从历史中删除 ( [这篇文章也许会有帮助](https://help.github.com/articles/removing-sensitive-data-from-a-repository/))；
 4. 从 GitHub 上克隆某个仓库，修改一些文件。当您使用 `git stash` 会发生什么？当您执行 `git log --all --oneline` 时会显示什么？通过 `git stash pop` 命令来撤销 `git stash` 操作，什么时候会用到这一技巧？
 5. 与其他的命令行工具一样，Git 也提供了一个名为 `~/.gitconfig` 配置文件 (或 dotfile)。请在 `~/.gitconfig` 中创建一个别名，使您在运行 `git graph` 时，您可以得到 `git log --all --graph --decorate --oneline` 的输出结果；
