@@ -7,7 +7,7 @@ video:
   id: BaLlAaHz-1k
 ---
 
-[Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anidgj/automation_iap_2019/)
+[Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anidgj/automation_iap_2019/) 1
 
 Sometimes you write a script that does something but you want for it to run periodically, say a backup task. You can always write an *ad hoc* solution that runs in the background and comes online periodically. However, most UNIX systems come with the cron daemon which can run task with a frequency up to a minute based on simple rules.
 
