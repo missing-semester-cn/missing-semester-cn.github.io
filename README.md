@@ -7,7 +7,7 @@ Website for the [The Missing Semester of Your CS Education](https://missing.csai
 
 Contributions are most welcome! If you have edits or new content to add, please open an issue or submit a pull request.
 
-## Development
+## Development（lxz）
 
 To build and view the site locally, run:
 
