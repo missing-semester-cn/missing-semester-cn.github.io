@@ -13,7 +13,7 @@ Sometimes you write a script that does something but you want for it to run peri
 
 On most UNIX systems the cron daemon, `crond` will be running by default but you can always check using `ps aux | grep crond`.
 
-## The crontab
+## The cronta
 
 The configuration file for cron can be displayed running `crontab -l` edited running `crontab -e` The time format that cron uses are five space separated fields along with the user and command
 
