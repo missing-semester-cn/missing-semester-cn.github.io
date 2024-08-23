@@ -11,7 +11,7 @@ title: 计算机教育中缺失的一课
 
 精通这些工具不仅可以帮助您更快的使用工具完成任务，并且可以帮助您解决在之前看来似乎无比复杂的问题。
 
-关于 [开设此课程的动机](/about/)。
+关于 [开设此课程的动机。](/about/)。
 
 {% comment %}
 
@@ -61,12 +61,12 @@ YouTube](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57
 
 我们也将本课程分享到了 MIT 之外，希望其他人也能受益于这些资源。您可以在下面这些地方找到相关文章和讨论。
 
- - [Hacker News](https://news.ycombinator.com/item?id=22226380)
- - [Lobsters](https://lobste.rs/s/ti1k98/missing_semester_your_cs_education_mit)
- - [/r/learnprogramming](https://www.reddit.com/r/learnprogramming/comments/eyagda/the_missing_semester_of_your_cs_education_mit/)
- - [/r/programming](https://www.reddit.com/r/programming/comments/eyagcd/the_missing_semester_of_your_cs_education_mit/)
- - [Twitter](https://twitter.com/jonhoo/status/1224383452591509507)
- - [YouTube](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57J)
+- [Hacker News](https://news.ycombinator.com/item?id=22226380)
+- [Lobsters](https://lobste.rs/s/ti1k98/missing_semester_your_cs_education_mit)
+- [/r/learnprogramming](https://www.reddit.com/r/learnprogramming/comments/eyagda/the_missing_semester_of_your_cs_education_mit/)
+- [/r/programming](https://www.reddit.com/r/programming/comments/eyagcd/the_missing_semester_of_your_cs_education_mit/)
+- [Twitter](https://twitter.com/jonhoo/status/1224383452591509507)
+- [YouTube](https://www.youtube.com/playlist?list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57J)
 
 # 译文
 
