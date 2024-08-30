@@ -44,7 +44,7 @@ title: "开设此课程的动机"
 不再大量注释代码。不再为解决 bug 而找遍所有代码。不再“我去，刚才是删了有用的代码？！”。
 我们将教你如何通过拉取请求来为他人的项目贡献代码。
 
-下面这个示例中，我们使用`git bisect`来定位哪个提交破坏了单元测试，并且通过`git revert`来进行修复。
+下面这个示例中，我们使用到git的相关指令，用`git bisect`来定位哪个提交破坏了单元测试，并且通过`git revert`来进行修复。
 
 <video autoplay="autoplay" loop="loop" controls muted playsinline  oncontextmenu="return false;"  preload="auto"  class="demo">
   <source src="/static/media/demos/git.mp4" type="video/mp4">
