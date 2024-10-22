@@ -74,7 +74,7 @@ ssh myserver journalctl
 
 `sed` 的正则表达式有些时候是比较奇怪的，它需要你在这些模式前添加 `\` 才能使其具有特殊含义。或者，您也可以添加 `-E` 选项来支持这些匹配。
 
-回过头我们再看 `/.*Disconnected from /`，我们会发现这个正则表达式可以匹配任何以若干任意字符开头，并接着包含 "Disconnected from" 的字符串。这也正式我们所希望的。但是请注意，正则表达式并不容易写对。如果有人将 "Disconnected from" 作为自己的用户名会怎样呢？
+回过头我们再看 `/.*Disconnected from /`，我们会发现这个正则表达式可以匹配任何以若干任意字符开头，并接着包含 "Disconnected from" 的字符串。这也正是我们所希望的。但是请注意，正则表达式并不容易写对。如果有人将 "Disconnected from" 作为自己的用户名会怎样呢？
 
 ```
 Jan 17 03:13:00 thesquareplanet.com sshd[2631]: Disconnected from invalid user Disconnected from 46.97.239.16 port 55920 [preauth]
