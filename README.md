@@ -1,4 +1,5 @@
 # 计算机教育中缺失的一课
+added some revision
 
 The Missing Semester of Your CS Education 英文课程网站在[这里](https://missing.csail.mit.edu/)！
 
