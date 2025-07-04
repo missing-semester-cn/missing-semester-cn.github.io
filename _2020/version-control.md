@@ -441,4 +441,4 @@ command is used for merging.
 4. 从 GitHub 上克隆某个仓库，修改一些文件。当您使用 `git stash` 会发生什么？当您执行 `git log --all --oneline` 时会显示什么？通过 `git stash pop` 命令来撤销 `git stash` 操作，什么时候会用到这一技巧？
 5. 与其他的命令行工具一样，Git 也提供了一个名为 `~/.gitconfig` 配置文件 (或 dotfile)。请在 `~/.gitconfig` 中创建一个别名，使您在运行 `git graph` 时，您可以得到 `git log --all --graph --decorate --oneline` 的输出结果；
 6. 您可以通过执行 `git config --global core.excludesfile ~/.gitignore_global` 在 `~/.gitignore_global` 中创建全局忽略规则。配置您的全局 gitignore 文件来自动忽略系统或编辑器的临时文件，例如 `.DS_Store`；
-7. Fork [本课程网站的仓库](https://github.com/missing-semester-cn/missing-semester-cn.github.io.git)，找找有没有错别字或其他可以改进的地方，在 GitHub 上发起拉取请求（Pull Request）；
+7. Fork [本课程网站的仓库](https://github.com/missing-semester-cn/missing-semester-cn.github.io.git)，找找有没有错别字或其他可以改进的地方，在 GitHub 上发起拉取请求（Pull Request)；
