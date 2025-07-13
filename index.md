@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 计算机教育中缺失的一课
+title: 计算机教育中缺失的一课y
 ---
 
 # The Missing Semester of Your CS Education 中文版
