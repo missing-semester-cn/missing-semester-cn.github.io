@@ -293,7 +293,7 @@ Fasd 基于 [_frecency_ ](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/
 
     - 所有文件（包括隐藏文件）
     - 文件打印以人类可以理解的格式输出 (例如，使用 454M 而不是 454279954)
-    - 文件以最近访问顺序排序
+    - 文件以最近修改顺序排序
     - 以彩色文本显示输出结果
 
     典型输出如下：
@@ -337,4 +337,4 @@ Fasd 基于 [_frecency_ ](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/
     {% endcomment %}
     如果您使用的是 MacOS，请注意默认的 BSD `find` 与 [GNU coreutils](https://en.wikipedia.org/wiki/List_of_GNU_Core_Utilities_commands) 中的是不一样的。你可以为 `find` 添加 `-print0` 选项，并为 `xargs` 添加 `-0` 选项。作为 Mac 用户，您需要注意 mac 系统自带的命令行工具和 GNU 中对应的工具是有区别的；如果你想使用 GNU 版本的工具，也可以使用 [brew 来安装](https://formulae.brew.sh/formula/coreutils)。
 
-5. （进阶）编写一个命令或脚本递归的查找文件夹中最近使用的文件。更通用的做法，你可以按照最近的使用时间列出文件吗？
+5. （进阶）编写一个命令或脚本递归的查找文件夹中最近修改的文件。更通用的做法，你可以按照最近的修改时间列出文件吗？
