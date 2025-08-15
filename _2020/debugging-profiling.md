@@ -150,7 +150,6 @@ print(bubble_sort([4, 2, 1, 8, 7, 6]))
 ```bash
 # On Linux
 sudo strace -e lstat ls -l > /dev/null
-4
 # On macOS
 sudo dtruss -t lstat64_extended ls -l > /dev/null
 ```

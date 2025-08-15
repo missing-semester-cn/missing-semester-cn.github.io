@@ -64,7 +64,7 @@ mcd () {
 命令通常使用 `STDOUT` 来返回输出值，使用 `STDERR` 来返回错误及错误码，便于脚本以更加友好的方式报告错误。
 返回码或退出状态是脚本/命令之间交流执行状态的方式。返回值 0 表示正常执行，其他所有非 0 的返回值都表示有错误发生。
 
-退出码可以搭配 `&&`（与操作符）和 `||`（或操作符）使用，用来进行条件判断，决定是否执行其他程序。它们都属于短路 [运算符](https://en.wikipedia.org/wiki/Short-circuit_evaluation)（short-circuiting） 同一行的多个命令可以用 `;` 分隔。程序 `true` 的返回码永远是 `0`，`false` 的返回码永远是 `1`。让我们看几个例子
+退出码可以搭配 `&&`（与操作符）和 `||`（或操作符）使用，用来进行条件判断，决定是否执行其他程序。它们都属于 [短路运算符](https://en.wikipedia.org/wiki/Short-circuit_evaluation)（short-circuiting） 同一行的多个命令可以用 `;` 分隔。程序 `true` 的返回码永远是 `0`，`false` 的返回码永远是 `1`。让我们看几个例子
 
 ```bash
 false || echo "Oops, fail"
@@ -210,7 +210,7 @@ find . -size +500k -size -10M -name '*.tar.gz'
 # 删除全部扩展名为.tmp 的文件
 find . -name '*.tmp' -exec rm {} \;
 # 查找全部的 PNG 文件并将其转换为 JPG
-find . -name '*.png' -exec convert {} {}.jpg \;
+find . -name '*.png' -exec magick {} {}.jpg \;
 ```
 
 尽管 `find` 用途广泛，它的语法却比较难以记忆。例如，为了查找满足模式 `PATTERN` 的文件，您需要执行 `find -name '*PATTERN*'` (如果您希望模式匹配时是不区分大小写，可以使用 `-iname` 选项）
@@ -242,7 +242,7 @@ find . -name '*.png' -exec convert {} {}.jpg \;
 # 查找所有使用了 requests 库的文件
 rg -t py 'import requests'
 # 查找所有没有写 shebang 的文件（包含隐藏文件）
-rg -u --files-without-match "^#!"
+rg -u --files-without-match "^#\!"
 # 查找所有的foo字符串，并打印其之后的5行
 rg foo -A 5
 # 打印匹配的统计信息（匹配的行和文件的数量）
