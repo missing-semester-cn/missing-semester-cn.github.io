@@ -7,8 +7,6 @@ video:
   id: 1vLcusYSrI4
 ---
 
-[Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anid4e/editors_iap_2019/)
-
 # Importance of Editors
 
 As programmers, we spend most of our time editing plain-text files. It's worth
@@ -37,7 +35,7 @@ The editor learning curves graph is a myth. Learning the basics of a powerful
 editor is quite easy (even though it might take years to master).
 
 Which editors are popular today? See this [Stack Overflow
-survey](https://insights.stackoverflow.com/survey/2018/#technology-most-popular-development-environments)
+survey](https://insights.stackoverflow.com/survey/2018/#development-environments-and-tools)
 (there may be some bias because Stack Overflow users may not be representative
 of programmers as a whole).
 
@@ -157,7 +155,7 @@ powerful, composable commands).
 - `s` substitute character (equal to `xi`)
 - visual mode + manipulation
     - select text, `d` to delete it or `c` to change it
-- `u` to undo, `<C-r` to redo
+- `u` to undo, `<C-r>` to redo
 - Lots more to learn: e.g. `~` flips the case of a character
 
 ### Resources

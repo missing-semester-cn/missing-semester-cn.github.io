@@ -4,7 +4,7 @@ title: "编辑器 (Vim)"
 date: 2020-01-15
 ready: true
 sync: true
-syncdate: 2021-04-24
+syncdate: 2025-08-16
 video:
   aspect: 56.25
   id: a6Q8Na575qc
@@ -70,7 +70,7 @@ Vim 的设计以大多数时间都花在阅读、浏览和进行少量编辑改�
 模式，`R` 进入替换模式，`v` 进入可视（一般）模式，`V` 进入可视（行）模式，`<C-v>`
 （Ctrl-V, 有时也写作 `^V`）进入可视（块）模式，`:` 进入命令模式。
 
-因为你会在使用 Vim 时大量使用 `<ESC>` 键，所以可以考虑把大小写锁定键重定义成 `<ESC>` 键（[MacOS 教程](https://vim.fandom.com/wiki/Map_caps_lock_to_escape_in_macOS)）。
+因为你会在使用 Vim 时大量使用 `<ESC>` 键，所以可以考虑把大小写锁定键重定义成 `<ESC>` 键（[MacOS 教程](https://vim.fandom.com/wiki/Map_caps_lock_to_escape_in_macOS)）或者创建一个[其他的映射](https://vim.fandom.com/wiki/Avoid_the_escape_key#Mappings)通过简单的按键序列来代替 `<ESC>`。
 
 # 基本操作
 
