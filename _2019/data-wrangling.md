@@ -7,8 +7,6 @@ video:
   id: VW2jn9Okjhw
 ---
 
-[Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anicor/data_wrangling_iap_2019/)
-
 Have you ever had a bunch of text and wanted to do something with it?
 Good. That's what data wrangling is all about!
 Specifically, adapting data from one format to another, until you end up
@@ -92,7 +90,7 @@ you can pass `-E`.
 So, looking back at `/.*Disconnected from /`, we see that it matches
 any text that starts with any number of characters, followed by the
 literal string "Disconnected from ". Which is what we wanted. But
-beware, regular expressions are trixy. What if someone tried to log in
+beware, regular expressions are tricky. What if someone tried to log in
 with the username "Disconnected from"? We'd have:
 
 ```
@@ -159,7 +157,7 @@ As you can probably imagine, you can come up with _really_ complicated
 regular expressions. For example, here's an article on how you might
 match an [e-mail
 address](https://www.regular-expressions.info/email.html). It's [not
-easy](https://emailregex.com/). And there's [lots of
+easy](https://web.archive.org/web/20221223174323/http://emailregex.com/). And there's [lots of
 discussion](https://stackoverflow.com/questions/201323/how-to-validate-an-email-address-using-a-regular-expression/1917982).
 And people have [written
 tests](https://fightingforalostcause.net/content/misc/2006/compare-email-regex.php).
@@ -376,10 +374,10 @@ rustup toolchain list | grep nightly | grep -vE "nightly-x86|01-17" | sed 's/-x8
    of those two-letter combinations are there? And for a challenge:
    which combinations do not occur?
 1. Find an online data set like [this
-   one](https://stats.wikimedia.org/EN/TablesWikipediaZZ.htm) or [this
+   one](https://commons.wikimedia.org/wiki/Data:Wikipedia_statistics/data.tab) or [this
    one](https://ucr.fbi.gov/crime-in-the-u.s/2016/crime-in-the-u.s.-2016/topic-pages/tables/table-1).
    Maybe another one [from
-   here](https://www.springboard.com/blog/free-public-data-sets-data-science-project/).
+   here](https://www.springboard.com/blog/data-science/free-public-data-sets-data-science-project/).
    Fetch it using `curl` and extract out just two columns of numerical
    data. If you're fetching HTML data,
    [`pup`](https://github.com/EricChiang/pup) might be helpful. For JSON

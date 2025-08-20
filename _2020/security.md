@@ -4,7 +4,7 @@ title: "安全和密码学"
 date: 2020-01-28
 ready: true
 sync: true
-syncdate: 2021-04-24
+syncdate: 2025-08-16
 video:
   aspect: 56.25
   id: tjwobAmnKTo

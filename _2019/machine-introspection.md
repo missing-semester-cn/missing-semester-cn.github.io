@@ -7,8 +7,6 @@ video:
   id: eNYT2Oq3PF8
 ---
 
-[Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anidns/machine_introspection_iap_2019/)
-
 Sometimes, computers misbehave. And very often, you want to know why.
 Let's look at some tools that help you do that!
 
@@ -82,7 +80,7 @@ port numbers.
 
 ## System configuration
 
-There are _many_ ways to configure your system, but we'll got through
+There are _many_ ways to configure your system, but we'll go through
 two very common ones: networking and services. Most applications on your
 system tell you how to configure them in their manpage, and usually it
 will involve editing files in `/etc`; the system configuration

@@ -7,8 +7,6 @@ video:
   id: 3fig2Vz8QXs
 ---
 
-[Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anid8p/version_control_iap_2019/)
-
 Whenever you are working on something that changes over time, it's
 useful to be able to _track_ those changes. This can be for a number of
 reasons: it gives you a record of what changed, how to undo it, who
@@ -317,7 +315,7 @@ if your push is rejected, what do you do?
    - `git pull --rebase` will start this process for you
    - whether you should merge or rebase is a hot topic! some good reads:
      - [this](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)
-     - [this](https://derekgourlay.com/blog/git-when-to-merge-vs-when-to-rebase/)
+     - [this](http://web.archive.org/web/20210106220723/https://derekgourlay.com/blog/git-when-to-merge-vs-when-to-rebase/)
      - [this](https://stackoverflow.com/questions/804115/when-do-you-use-git-rebase-instead-of-git-merge)
 
 # Further reading

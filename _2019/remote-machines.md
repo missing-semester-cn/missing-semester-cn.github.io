@@ -7,8 +7,6 @@ video:
   id: X5c2Y8BCowM
 ---
 
-[Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anie9u/remote_machines_iap_2019/)
-
 It has become more and more common for programmers to use remote servers in their everyday work. If you need to use remote servers in order to deploy backend software or you need a server with higher computational capabilities, you will end up using a Secure Shell (SSH). As with most tools covered, SSH is highly configurable so it is worth learning about it.
 
 
@@ -65,13 +63,13 @@ comes in two flavors: Local Port Forwarding and Remote Port Forwarding (see the 
 
 
 **Local Port Forwarding**
-![Local Port Forwarding](https://i.stack.imgur.com/a28N8.png  "Local Port Forwarding")
+![Local Port Forwarding](https://i.stack.imgur.com/a28N8.png)
 
 **Remote Port Forwarding**
-![Remote Port Forwarding](https://i.stack.imgur.com/4iK3b.png  "Remote Port Forwarding")
+![Remote Port Forwarding](https://i.stack.imgur.com/4iK3b.png)
 
 
-The most common scenario is local port forwarding where a service in the remote machine listens in a port and you want to link a port in your local machine to forward to the remote port. For example if we execute  `jupyter notebook` in the remote server that listens to the port `8888`. Thus to forward that to the local port `9999` we would do `ssh -L 9999:localhost:8888 foobar@remote_server` and then navigate to `locahost:9999` in our local machine.
+The most common scenario is local port forwarding where a service in the remote machine listens in a port and you want to link a port in your local machine to forward to the remote port. For example if we execute  `jupyter notebook` in the remote server that listens to the port `8888`. Thus to forward that to the local port `9999` we would do `ssh -L 9999:localhost:8888 foobar@remote_server` and then navigate to `localhost:9999` in our local machine.
 
 ## Graphics Forwarding
 
@@ -134,9 +132,9 @@ locally, and then you can use a local editor.
 
 ## Exercises
 
-1. For SSH to work the host needs to be running an SSH server. Install an SSH server (such as OpenSSH) in a virtual machine so you the rest of the exercises. To figure out what is the ip of the machine run the command `ip addr` and look for the inet field (ignore the `127.0.0.1` entry, that corresponds to the loopback interface).
+1. For SSH to work the host needs to be running an SSH server. Install an SSH server (such as OpenSSH) in a virtual machine so you can do the rest of the exercises. To figure out what is the ip of the machine run the command `ip addr` and look for the inet field (ignore the `127.0.0.1` entry, that corresponds to the loopback interface).
 
-1. Go to `~/.ssh/` and check if you have a pair of SSH keys there. If not, generate them with `ssh-keygen -t rsa -b 4096`. It is recommended that you use a password and use `ssh-agent` , more info [here](https://www.ssh.com/ssh/agents).
+1. Go to `~/.ssh/` and check if you have a pair of SSH keys there. If not, generate them with `ssh-keygen -t rsa -b 4096`. It is recommended that you use a password and use `ssh-agent` , more info [here](https://www.ssh.com/ssh/agent).
 
 1. Use `ssh-copy-id` to copy the key to your virtual machine. Test that you can ssh without a password. Then, edit your `sshd_config` in the server to disable password authentication by editing the value of `PasswordAuthentication`. Disable root login by editing the value of `PermitRootLogin`.
 

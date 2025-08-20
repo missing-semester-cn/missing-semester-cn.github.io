@@ -4,7 +4,7 @@ title: "Shell 工具和脚本"
 date: 2020-01-14
 ready: true
 sync: true
-syncdate: 2021-04-24
+syncdate: 2025-08-16
 video:
   aspect: 56.25
   id: kgII-YWo3Zw
@@ -64,7 +64,7 @@ mcd () {
 命令通常使用 `STDOUT` 来返回输出值，使用 `STDERR` 来返回错误及错误码，便于脚本以更加友好的方式报告错误。
 返回码或退出状态是脚本/命令之间交流执行状态的方式。返回值 0 表示正常执行，其他所有非 0 的返回值都表示有错误发生。
 
-退出码可以搭配 `&&`（与操作符）和 `||`（或操作符）使用，用来进行条件判断，决定是否执行其他程序。它们都属于短路 [运算符](https://en.wikipedia.org/wiki/Short-circuit_evaluation)（short-circuiting） 同一行的多个命令可以用 `;` 分隔。程序 `true` 的返回码永远是 `0`，`false` 的返回码永远是 `1`。让我们看几个例子
+退出码可以搭配 `&&`（与操作符）和 `||`（或操作符）使用，用来进行条件判断，决定是否执行其他程序。它们都属于 [短路运算符](https://en.wikipedia.org/wiki/Short-circuit_evaluation)（short-circuiting） 同一行的多个命令可以用 `;` 分隔。程序 `true` 的返回码永远是 `0`，`false` 的返回码永远是 `1`。让我们看几个例子
 
 ```bash
 false || echo "Oops, fail"
@@ -166,7 +166,7 @@ shell 函数和脚本有如下一些不同点：
 
 - 函数只能与 shell 使用相同的语言，脚本可以使用任意语言。因此在脚本中包含 `shebang` 是很重要的。
 - 函数仅在定义时被加载，脚本会在每次被执行时加载。这让函数的加载比脚本略快一些，但每次修改函数定义，都要重新加载一次。
-- 函数会在当前的 shell 环境中执行，脚本会在单独的进程中执行。因此，函数可以对环境变量进行更改，比如改变当前工作目录，脚本则不行。脚本需要使用 [`export`](https://man7.org/linux/man-pages/man1/export.1p.html) 将环境变量导出，并将值传递给环境变量。
+- 函数会在当前的 shell 环境中执行，脚本会在单独的进程中执行。因此，函数可以对环境变量进行更改，比如改变当前工作目录，脚本则不行。使用 [`export`](https://man7.org/linux/man-pages/man1/export.1p.html) 导出的环境变量会以传值的方式传递给脚本。
 - 与其他程序语言一样，函数可以提高代码模块性、代码复用性并创建清晰性的结构。shell 脚本中往往也会包含它们自己的函数定义。
 
 
@@ -210,7 +210,7 @@ find . -size +500k -size -10M -name '*.tar.gz'
 # 删除全部扩展名为.tmp 的文件
 find . -name '*.tmp' -exec rm {} \;
 # 查找全部的 PNG 文件并将其转换为 JPG
-find . -name '*.png' -exec convert {} {}.jpg \;
+find . -name '*.png' -exec magick {} {}.jpg \;
 ```
 
 尽管 `find` 用途广泛，它的语法却比较难以记忆。例如，为了查找满足模式 `PATTERN` 的文件，您需要执行 `find -name '*PATTERN*'` (如果您希望模式匹配时是不区分大小写，可以使用 `-iname` 选项）
@@ -242,7 +242,7 @@ find . -name '*.png' -exec convert {} {}.jpg \;
 # 查找所有使用了 requests 库的文件
 rg -t py 'import requests'
 # 查找所有没有写 shebang 的文件（包含隐藏文件）
-rg -u --files-without-match "^#!"
+rg -u --files-without-match "^#\!"
 # 查找所有的foo字符串，并打印其之后的5行
 rg foo -A 5
 # 打印匹配的统计信息（匹配的行和文件的数量）
@@ -293,7 +293,7 @@ Fasd 基于 [_frecency_ ](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/
 
     - 所有文件（包括隐藏文件）
     - 文件打印以人类可以理解的格式输出 (例如，使用 454M 而不是 454279954)
-    - 文件以最近访问顺序排序
+    - 文件以最近修改顺序排序
     - 以彩色文本显示输出结果
 
     典型输出如下：
@@ -337,4 +337,4 @@ Fasd 基于 [_frecency_ ](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/
     {% endcomment %}
     如果您使用的是 MacOS，请注意默认的 BSD `find` 与 [GNU coreutils](https://en.wikipedia.org/wiki/List_of_GNU_Core_Utilities_commands) 中的是不一样的。你可以为 `find` 添加 `-print0` 选项，并为 `xargs` 添加 `-0` 选项。作为 Mac 用户，您需要注意 mac 系统自带的命令行工具和 GNU 中对应的工具是有区别的；如果你想使用 GNU 版本的工具，也可以使用 [brew 来安装](https://formulae.brew.sh/formula/coreutils)。
 
-5. （进阶）编写一个命令或脚本递归的查找文件夹中最近使用的文件。更通用的做法，你可以按照最近的使用时间列出文件吗？
+5. （进阶）编写一个命令或脚本递归的查找文件夹中最近修改的文件。更通用的做法，你可以按照最近的修改时间列出文件吗？

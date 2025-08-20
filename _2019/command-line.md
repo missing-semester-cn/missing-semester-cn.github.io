@@ -7,8 +7,6 @@ video:
   id: i0rf1gpKL1E
 ---
 
-[Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anick3/commandline_environment_iap_2019/)
-
 ## Aliases & Functions
 
 As you can imagine it can become tiresome typing long commands that involve many flags or verbose options. Nevertheless, most shells support **aliasing**. For instance, an alias in bash has the following structure (note there is no space around the `=` sign):
@@ -131,7 +129,7 @@ If you are in need of navigating many folders and/or previewing many files, [ran
 
 ### `rg/fzf` vs `grep`
 
-`grep` is a great tool but if you want to grep through many files at once, there are better tools for that purpose. [ack](https://beyondgrep.com/), [ag](https://github.com/ggreer/the_silver_searcher) & [rg](https://github.com/BurntSushi/ripgrep) recursively search your current directory for a regex pattern while respecting your gitignore rules. They all work pretty similar but I favor `rg` due to how fast it can search my entire home directory.
+`grep` is a great tool but if you want to grep through many files at once, there are better tools for that purpose. [ack](https://github.com/beyondgrep/ack3), [ag](https://github.com/ggreer/the_silver_searcher) & [rg](https://github.com/BurntSushi/ripgrep) recursively search your current directory for a regex pattern while respecting your gitignore rules. They all work pretty similar but I favor `rg` due to how fast it can search my entire home directory.
 
 Similarly, it can be easy to find yourself doing `CMD | grep PATTERN` over an over again. [fzf](https://github.com/junegunn/fzf) is a command line fuzzy finder that enables you to interactively filter the output of pretty much any command.
 

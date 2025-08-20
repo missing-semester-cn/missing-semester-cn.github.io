@@ -4,7 +4,7 @@ title: "课程概览与 shell"
 date: 2020-01-13
 ready: true
 sync: true
-syncdate: 2021-04-24
+syncdate: 2025-08-16
 video:
   aspect: 56.25
   id: Z56Jmr9Z34Q

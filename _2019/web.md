@@ -7,8 +7,6 @@ video:
   id: XpZO3S8odec
 ---
 
-[Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anief6/web_and_browsers_iap_2019/)
-
 Apart from the terminal, the web browser is a tool you will find yourself spending significant amounts of time into. Thus it is worth learning how to use it efficiently and
 
 ## Shortcuts
@@ -44,7 +42,7 @@ The searchbar is a powerful tool too. Most browsers can infer search engines fro
 
 For example you can make so that `y SOME SEARCH TERMS` to directly search in youtube.
 
-Moreover, if you own a domain you can setup subdomain forwards using your registrar. For instance I have mapped [ht.josejg.com](https://ht.josejg.com) to this course website. That way I can just type `ht.` and the searchbar will autocomplete. Another good feature of this setup is that unlike bookmarks they will work in every browser.
+Moreover, if you own a domain you can setup subdomain forwards using your registrar. For instance I have mapped `https://ht.josejg.com` to this course website. That way I can just type `ht.` and the searchbar will autocomplete. Another good feature of this setup is that unlike bookmarks they will work in every browser.
 
 ## Privacy extensions
 
@@ -52,11 +50,11 @@ Nowadays surfing the web can get quite annoying due to ads and invasive due to t
 
 - **uBlock origin** ([Chrome](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm), [Firefox](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)): block ads and trackers based on predefined rules. You should also consider taking a look at the enabled blacklists in settings since you can enable more based on your region or browsing habits. You can even install filters from [around the web](https://github.com/gorhill/uBlock/wiki/Filter-lists-from-around-the-web)
 
-- **[Privacy Badger](https://www.eff.org/privacybadger)**: detects and blocks trackers automatically. For example when you go from website to website ad companies track which sites you visit and build a profile of you
+- **[Privacy Badger](https://privacybadger.org/)**: detects and blocks trackers automatically. For example when you go from website to website ad companies track which sites you visit and build a profile of you
 
 - **[HTTPS everywhere](https://www.eff.org/https-everywhere)** is a wonderful extension that redirects to HTTPS version of a website automatically, if available.
 
-You can find about more addons of this kind [here](https://www.privacytools.io/#addons)
+You can find about more addons of this kind [here](https://www.privacytools.io/privacy-browser-addons/)
 
 ## Style customization
 
@@ -85,7 +83,7 @@ a:link {
 }
 ```
 
-Moreover, Stylus can find styles written by other users and published in [userstyles.org](https://userstyles.org). Most common websites have one or several dark theme stylesheets for instance. FYI, you should not use Stylish since it was shown to leak user data, more [here](https://arstechnica.com/information-technology/2018/07/stylish-extension-with-2m-downloads-banished-for-tracking-every-site-visit/)
+Moreover, Stylus can find styles written by other users and published in [userstyles.org](https://userstyles.org/). Most common websites have one or several dark theme stylesheets for instance. FYI, you should not use Stylish since it was shown to leak user data, more [here](https://arstechnica.com/information-technology/2018/07/stylish-extension-with-2m-downloads-banished-for-tracking-every-site-visit/)
 
 
 ## Functionality Customization

@@ -4,7 +4,7 @@ title: "调试及性能分析"
 date: 2020-01-23
 ready: true
 sync: true
-syncdate: 2021-04-24
+syncdate: 2025-08-16
 video:
   aspect: 56.25
   id: l812pUnKxME
@@ -150,7 +150,6 @@ print(bubble_sort([4, 2, 1, 8, 7, 6]))
 ```bash
 # On Linux
 sudo strace -e lstat ls -l > /dev/null
-4
 # On macOS
 sudo dtruss -t lstat64_extended ls -l > /dev/null
 ```

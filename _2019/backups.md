@@ -7,8 +7,6 @@ video:
   id: lrpqYF8tcYQ
 ---
 
-[Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anifrx/backups_iap_2019/)
-
 There are two types of people:
 
 - Those who do backups
@@ -32,7 +30,7 @@ A common pitfall when performing backups is blindly trusting whatever the system
 
 ## Versioning
 
-You should understand that [RAID](https://en.wikipedia.org/wiki/RAID) is not a backup, and in general **mirroring is not a backup solution**. Simply syncing your files somewhere does not help in many scenarios such as:
+You should understand that [RAID](https://en.wikipedia.org/wiki/RAID) is not a backup, and in general **mirroring is not a backup solution**. Simply syncing your files somewhere will not help in several scenarios, such as:
 
 - Data corruption
 - Malicious software
@@ -72,7 +70,7 @@ Some other things you may want to look into are:
 
 ## Webservices
 
-Not all the data that you use lives on your hard disk. If you use **webservices** then it might be the case that some data you care about is stored there such as Google Docs presentations or Spotify playlists. An easy one to forget are email accounts with web access such as Gmail. However there are tools available to download the email files to your computer such as [gmvault](https://github.com/gaubert/gmvault). Figuring out a backup solution in scenario is somewhat trickier. Nevertheless, most of these services offer you the possibility to download that data, either directly or through a web API.
+Not all the data that you use lives on your hard disk. If you use **webservices**, then it might be the case that some data you care about, such as Google Docs presentations or Spotify playlists, is stored online. Another easy example that is easy to forget is email accounts with web access, such as Gmail. Figuring out a backup solution in these cases is somewhat trickier. However, there are many services that allow you to download your data, either directly or via an API. Tools such as [gmvault](https://github.com/gaubert/gmvault) for Gmail are available to download the email files to your computer.
 
 
 ## Webpages
@@ -95,8 +93,8 @@ Some good backup programs and services we have used and can honestly recommend:
 
 1. Figure out how to backup your email accounts
 
-1. Choose a webservice you use often (Spotify, Google Music, &c) and figure out what options for backing up your data are. Often people have already made tools (such as [youtube-dl](https://github.com/rg3/youtube-dl)) solutions based on available APIs.
+1. Choose a webservice you use often (Spotify, Google Music, etc.) and figure out what options for backing up your data are. Often people have already made tools (such as [youtube-dl](https://ytdl-org.github.io/youtube-dl/)) solutions based on available APIs.
 
 1. Think of a website you have visited repeatedly over the years and look it up in [archive.org](https://archive.org/web/), how many versions does it have?
 
-1. One way to efficiently implement deduplication is to use hardlinks. Whereas symbolic link (also called soft link) is a file that points to another file or folder, a hardlink is a exact copy of the pointer (it uses the same inode and points to the same place in the disk). Thus if the original file is removed a symlink stops working whereas a hard link doesn't. However, hardlinks only work for files. Try using the command `ln` to create hard links and compare them to symlinks created with `ln -s`. (In macOS you will need to install the gnu coreutils or the hln package).
+1. One way to efficiently implement deduplication is to use hardlinks. Whereas symbolic link (also called a soft link or a symlink) is a file that points to another file or folder, a hardlink is a exact copy of the pointer (it uses the same inode and points to the same place in the disk). Thus if the original file is removed a symlink stops working whereas a hard link doesn't. However, hardlinks only work for files. Try using the command `ln` to create hard links and compare them to symlinks created with `ln -s`. (In macOS you will need to install the gnu coreutils or the hln package).

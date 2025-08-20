@@ -7,8 +7,6 @@ video:
   id: tgvt473T8xA
 ---
 
-[Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anidxk/package_management_and_dependency_management_iap/)
-
 Software usually builds on (a collection of) other software, which necessitates
 dependency management.
 

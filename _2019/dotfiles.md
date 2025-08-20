@@ -7,8 +7,6 @@ video:
   id: YSZBWWJw3mI
 ---
 
-[Reddit Discussion](https://www.reddit.com/r/hackertools/comments/anidcd/dotfiles_iap_2019/)
-
 Many programs are configured using plain-text files known as "dotfiles"
 (because the file names begin with a `.`, e.g. `~/.gitconfig`, so that they are
 hidden in the directory listing `ls` by default).
@@ -147,7 +145,7 @@ utilities, examples, and tutorials
 # Exercises
 
 1. Create a folder for your dotfiles and set up [version
-   control](/version-control/).
+   control](/2019/version-control/).
 
 1. Add a configuration for at least one program, e.g. your shell, with some
    customization (to start off, it can be something as simple as customizing
@@ -156,7 +154,7 @@ utilities, examples, and tutorials
 1. Set up a method to install your dotfiles quickly (and without manual effort)
    on a new machine. This can be as simple as a shell script that calls `ln -s`
    for each file, or you could use a [specialized
-   utility](http://dotfiles.github.io/#general-purpose-dotfile-utilities).
+   utility](http://dotfiles.github.io/utilities/).
 
 1. Test your installation script on a fresh virtual machine.
 

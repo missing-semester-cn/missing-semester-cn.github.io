@@ -4,7 +4,7 @@ title: "数据整理"
 date: 2020-01-16
 ready: true
 sync: true
-syncdate: 2021-04-24
+syncdate: 2025-08-16
 video:
   aspect: 56.25
   id: sz_dsktIjt4
@@ -59,6 +59,8 @@ ssh myserver journalctl
 ```
 
 上面这段命令中，我们使用了一段简单的 *正则表达式*。正则表达式是一种非常强大的工具，可以让我们基于某种模式来对字符串进行匹配。`s` 命令的语法如下：`s/REGEX/SUBSTITUTION/`, 其中 `REGEX` 部分是我们需要使用的正则表达式，而 `SUBSTITUTION` 是用于替换匹配结果的文本。
+
+（您可能会从我们的 Vim [讲座笔记](/2020/editors/#advanced-vim) 中的"搜索和替换"部分认出这种语法！实际上，Vim 使用的搜索和替换语法与 `sed` 的替换命令相似。学习一个工具通常有助于您更熟练地使用其他工具。）
 
 ## 正则表达式
 
