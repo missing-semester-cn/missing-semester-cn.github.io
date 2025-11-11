@@ -345,14 +345,14 @@ notebooks](https://github.com/lambdalisue/jupyter-vim-binding) 中用 Vim 快捷
         - ...
     - Vim 命令 / 宏
         - `ggdd`, `Gdd` 删除第一行和最后一行
-        - 格式化最后一个元素的宏 （寄存器 `e`）
-            - 跳转到有 `<name>` 的行
+        - 格式化单个元素的宏（存放在 `e` 中）
+            - 转到有 `<name>` 的行
             - `qe^r"f>s": "<ESC>f<C"<ESC>q`
-        - 格式化一个 <person> 的宏
-            - 跳转到有 `<person>` 的行
+        - 格式化单个人的宏
+            - 转到有 `<person>` 的行
             - `qpS{<ESC>j@eA,<ESC>j@ejS},<ESC>q`
-        - 格式化一个 <person> 标签然后转到另外一个 <person> 的宏
-            - 跳转到有 `<person>` 的行
+        - 格式化单个人然后转到下一个人的宏
+            - 转到有 `<person>` 的行
             - `qq@pjq`
         - 执行宏到文件尾
             - `999@q`
