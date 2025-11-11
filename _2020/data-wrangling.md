@@ -216,8 +216,7 @@ END { print rows }
 echo "2*($(data | paste -sd+))" | bc -l
 ```
 
-您可以通过多种方式获取统计数据。如果已经安装了 R 语言，[`st`](https://github.com/nferraz/st) 是个不错的选择：
-
+有多种方式获取统计数据。[`st`](https://github.com/nferraz/st) 干净利落，但如果您已经安装了 [R](https://www.r-project.org)：
 
 ```bash
 ssh myserver journalctl
