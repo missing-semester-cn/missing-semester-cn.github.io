@@ -213,7 +213,7 @@ alias ll
 
 很多程序的配置都是通过纯文本格式的被称作 _点文件_ 的配置文件来完成的（之所以称为点文件，是因为它们的文件名以 `.` 开头，例如 `~/.vimrc`。也正因为此，它们默认是隐藏文件，`ls` 并不会显示它们）。
 
-shell 的配置也是通过这类文件完成的。在启动时，您的 shell 程序会读取很多文件以加载其配置项。根据 shell 本身的不同，您从登录开始还是以交互的方式完成这一过程可能会有很大的不同。关于这一话题，[这里](https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html) 有非常好的资源
+shell 的配置也是通过这类文件完成的。在启动时，您的 shell 程序会读取很多文件以加载其配置项。根据 shell 本身的不同，您从登录开始还是以交互的方式完成这一过程可能会有很大的不同。关于这一话题，[这里](https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html) 有非常好的资源。
 
 对于 `bash` 来说，在大多数系统下，您可以通过编辑 `.bashrc` 或 `.bash_profile` 来进行配置。在文件中您可以添加需要在启动时执行的命令，例如上文我们讲到过的别名，或者是您的环境变量。
 
@@ -245,7 +245,7 @@ shell 的配置也是通过这类文件完成的。在启动时，您的 shell �
 
 配置文件的一个常见的痛点是它可能并不能在多种设备上生效。例如，如果您在不同设备上使用的操作系统或者 shell 是不同的，则配置文件是无法生效的。或者，有时您仅希望特定的配置只在某些设备上生效。
 
-有一些技巧可以轻松达成这些目的。如果配置文件 if 语句，则您可以借助它针对不同的设备编写不同的配置。例如，您的 shell 可以这样做：
+有一些技巧可以轻松达成这些目的。如果配置文件支持 if 语句或类似的东西，则您可以借助它针对不同的设备编写不同的配置。例如，您的 shell 可以包含：
 
 ```bash
 if [[ "$(uname)" == "Linux" ]]; then {do_something}; fi
@@ -338,10 +338,10 @@ ssh-copy-id -i .ssh/id_ed25519.pub foobar@remote
 此时就需要进行 _端口转发_。端口转发有两种，一种是本地端口转发和远程端口转发（参见下图，该图片引用自这篇 [StackOverflow 文章](https://unix.stackexchange.com/questions/115897/whats-ssh-port-forwarding-and-whats-the-difference-between-ssh-local-and-remot)）中的图片。
 
 **本地端口转发**
-![Local Port Forwarding](https://i.stack.imgur.com/a28N8.png)
+![Local Port Forwarding](https://i.sstatic.net/a28N8.png)
 
 **远程端口转发**
-![Remote Port Forwarding](https://i.stack.imgur.com/4iK3b.png)
+![Remote Port Forwarding](https://i.sstatic.net/4iK3b.png)
 
 常见的情景是使用本地端口转发，即远端设备上的服务监听一个端口，而您希望在本地设备上的一个端口建立连接并转发到远程端口上。例如，我们在远端服务器上运行 Jupyter notebook 并监听 `8888` 端口。 然后，建立从本地端口 `9999` 的转发，使用 `ssh -L 9999:localhost:8888 foobar@remote_server` 。这样只需要访问本地的 `localhost:9999` 即可。
 
@@ -392,7 +392,7 @@ Host *.mit.edu
 -   更好的 tab 补全和选择
 -   路径展开 (`cd /u/lo/b` 会被展开为 `/usr/local/bin`)
 
-**框架** 也可以改进您的 shell。比较流行的通用框架包括 [prezto](https://github.com/sorin-ionescu/prezto) 或 [oh-my-zsh](https://ohmyz.sh/)。还有一些更精简的框架，它们往往专注于某一个特定功能，例如 [zsh 语法高亮](https://github.com/zsh-users/zsh-syntax-highlighting) 或 [zsh 历史子串查询](https://github.com/zsh-users/zsh-history-substring-search)。 像 [fish](https://fishshell.com/) 这样的 shell 包含了很多用户友好的功能，其中一些特性包括：
+**框架** 也可以改进您的 shell。比较流行的通用框架包括 [prezto](https://github.com/sorin-ionescu/prezto) 或 [oh-my-zsh](https://ohmyz.sh/)。还有一些更精简的框架，它们往往专注于某一个特定功能，例如 [zsh 语法高亮](https://github.com/zsh-users/zsh-syntax-highlighting) 或 [zsh 历史子串查询](https://github.com/zsh-users/zsh-history-substring-search)。像 [fish](https://fishshell.com/) 这样的 shell 已经默认包含了许多这类用户友好的功能，包括：
 
 -   向右对齐
 -   命令语法高亮
