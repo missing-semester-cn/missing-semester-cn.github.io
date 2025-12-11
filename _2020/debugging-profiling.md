@@ -197,25 +197,20 @@ Found 3 errors in 1 file (checked 1 source file)
 
 在 shell 工具那一节课的时候，我们介绍了 [`shellcheck`](https://www.shellcheck.net/)，这是一个类似的工具，但它是应用于 shell 脚本的。
 
-大多数的编辑器和 IDE 都支持在编辑界面显示这些工具的分析结果、高亮有警告和错误的位置。
-这个过程通常称为 **code linting** 。风格检查或安全检查的结果同样也可以进行相应的显示。
+多数编辑器和 IDE 都支持在编辑器界面内直接显示这些工具的输出结果，并高亮标出警告和错误的位置。这通常被称为**代码检查（code linting）**，它也可以用来展示其他类型的问题，例如代码风格违规或不安全的代码结构。
 
-在 vim 中，有 [`ale`](https://vimawesome.com/plugin/ale) 或 [`syntastic`](https://vimawesome.com/plugin/syntastic) 可以帮助您做同样的事情。
-在 Python 中， [`pylint`](https://www.pylint.org) 和 [`pep8`](https://pypi.org/project/pep8/) 是两种用于进行风格检查的工具，而 [`bandit`](https://pypi.org/project/bandit/) 工具则用于检查安全相关的问题。
+在 vim 中，插件 [`ale`](https://vimawesome.com/plugin/ale) 或 [`syntastic`](https://vimawesome.com/plugin/syntastic) 可以帮助您做同样的事情。
+在 Python 中， [`pylint`](https://www.pylint.org) 和 [`pep8`](https://pypi.org/project/pep8/) 是风格检查工具的典型例子，而 [`bandit`](https://pypi.org/project/bandit/) 则是设计用来发现常见安全漏洞的工具。对于其它语言，人们已经整理了非常详尽的静态分析工具列表，例如 [Awesome Static Analysis](https://github.com/mre/awesome-static-analysis)（您可能想去看看其中的 _Writing_ 一节）。代码检查工具 (linters) 则可以参考 [Awesome Linters](https://github.com/caramelomartins/awesome-linters)。
 
-对于其他语言的开发者来说，静态分析工具可以参考这个列表：[Awesome Static Analysis](https://github.com/mre/awesome-static-analysis) (您也许会对  _Writing_ 一节感兴趣) 。对于  linters 则可以参考这个列表： [Awesome Linters](https://github.com/caramelomartins/awesome-linters)。
+与风格检查相辅相成的是**代码格式化工具（code formatters）**，例如 Python 的 [`black`](https://github.com/psf/black)、Go 语言的 `gofmt`、Rust 的 `rustfmt` 以及 JavaScript、HTML 和 CSS 的 [`prettier`](https://prettier.io/)。这些工具会自动格式化您的代码，使其符合该编程语言通用的风格规范。虽然您可能不太情愿将代码风格的控制权交给工具，但标准化的代码格式不仅有助于他人阅读您的代码，也能让您更轻松地阅读他人（同样经过格式化）的代码。
 
-对于风格检查和代码格式化，还有以下一些工具可以作为补充：用于 Python 的 [`black`](https://github.com/psf/black)、用于 Go 语言的 `gofmt`、用于 Rust 的 `rustfmt` 或是用于 JavaScript, HTML 和 CSS 的 [`prettier`](https://prettier.io/) 。这些工具可以自动格式化您的代码，这样代码风格就可以与常见的风格保持一致。
-尽管您可能并不想对代码进行风格控制，标准的代码风格有助于方便别人阅读您的代码，也可以方便您阅读它的代码。
+# 性能分析 (Profiling)
 
-# 性能分析
-
-即使您的代码能够像您期望的一样运行，但是如果它消耗了您全部的 CPU 和内存，那么它显然也不是个好程序。算法课上我们通常会介绍大 O 标记法，但却没教给我们如何找到程序中的热点。
-鉴于 [过早的优化是万恶之源](http://wiki.c2.com/?PrematureOptimization)，您需要学习性能分析和监控工具，它们会帮助您找到程序中最耗时、最耗资源的部分，这样您就可以有针对性的进行性能优化。
+即使你的代码在功能上完全符合预期，但如果它在运行过程中耗尽了所有的 CPU 或内存资源，那也未必合格。算法课程通常会教授大 O 表示法，却很少教你如何找到程序中的热点 (hot spots)。鉴于[过早优化是万恶之源](http://wiki.c2.com/?PrematureOptimization)，您应该了解一下性能分析器 (profilers) 和监控工具。它们会帮助您找到程序中最耗时、最耗资源的部分，从而让您能够集中精力优化这些特定的部分。
 
 ## 计时
 
-和调试代码类似，大多数情况下我们只需要打印两处代码之间的时间即可发现问题。下面这个例子中，我们使用了 Python 的 [`time`](https://docs.python.org/3/library/time.html) 模块。
+与调试类似，多数情况下，只需打印代码从一处运行到另一处的时间，即可发现问题。下面是一个使用 Python [`time`](https://docs.python.org/3/library/time.html) 模块的例子：
 
 ```python
 import time, random
@@ -224,25 +219,25 @@ n = random.randint(1, 10) * 100
 # 获取当前时间 
 start = time.time()
 
-# 执行一些操作
+# 做些工作
 print("Sleeping for {} ms".format(n))
 time.sleep(n/1000)
 
 # 比较当前时间和起始时间
 print(time.time() - start)
 
-# Output
+# 输出
 # Sleeping for 500 ms
 # 0.5713930130004883
 ```
 
-不过，执行时间（wall clock time）也可能会误导您，因为您的电脑可能也在同时运行其他进程，也可能在此期间发生了等待。 对于工具来说，需要区分真实时间、用户时间和系统时间。通常来说，用户时间 + 系统时间代表了您的进程所消耗的实际 CPU （更详细的解释可以参照 [这篇文章](https://stackoverflow.com/questions/556405/what-do-real-user-and-sys-mean-in-the-output-of-time1)）。
+不过，墙上时间（wall clock time）也可能会有误导性，因为计算机可能同时在运行其他进程，或者在等待某些事件发生。工具通常会区分实际时间、用户时间和系统时间。通常用户时间加系统时间代表了您的进程在 CPU 上实际消耗了多少时间（更详细的解释可以参考 [这篇文章](https://stackoverflow.com/questions/556405/what-do-real-user-and-sys-mean-in-the-output-of-time1)）。
 
-- 真实时间 _Real_ - 从程序开始到结束流失掉的真实时间，包括其他进程的执行时间以及阻塞消耗的时间（例如等待 I/O 或网络）；
-- 用户时间 _User_ - CPU 执行用户代码所花费的时间；
-- 系统时间 _Sys_ - CPU 执行系统内核代码所花费的时间。
+- 真实时间 _Real_ - 程序从开始到结束流逝的墙上时间，包括其他进程使用的时间以及阻塞（例如等待 I/O 或网络）的时间
+- 用户时间 _User_ - CPU 执行用户态代码所花费的时间
+- 系统时间 _Sys_ - CPU 执行内核态代码所花费的时间
 
-例如，试着执行一个用于发起 HTTP 请求的命令并在其前面添加 [`time`](http://man7.org/linux/man-pages/man1/time.1.html) 前缀。网络不好的情况下您可能会看到下面的输出结果。请求花费了 2s 多才完成，但是进程仅花费了 15ms 的 CPU 用户时间和 12ms 的 CPU 内核时间。
+例如，试着写一个执行 HTTP 请求的命令，并在命令前加上 [`time`](http://man7.org/linux/man-pages/man1/time.1.html)。网络不好的情况下您可能会看到下面的输出结果。请求花费了 2 秒多才完成，但是进程仅花费了 15 毫秒的 CPU 用户时间和 12 毫秒的 CPU 内核时间。
 
 ```bash
 $ time curl https://missing.csail.mit.edu &> /dev/null
