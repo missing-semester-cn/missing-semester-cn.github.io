@@ -110,12 +110,12 @@ journalctl --since "1m ago" | grep Hello
 
 下面对 `pdb` 支持的命令进行简单的介绍：
 
-- **l**(ist) - 显示当前行附近的 11 行或继续执行之前的显示；
-- **s**(tep) - 执行当前行，并在第一个可能的地方停止；
-- **n**(ext) - 继续执行直到当前函数的下一条语句或者 return 语句；
+- **l**(ist) - 显示当前行周围的 11 行，或接着上次显示的，继续往下显示 11 行；
+- **s**(tep) - 执行当前行，并在第一个可能的时机停止（通常指步入函数）；
+- **n**(ext) - 继续执行，直到到达当前函数的下一行或函数返回（通常指步过函数）；
 - **b**(reak) - 设置断点（基于传入的参数）；
-- **p**(rint) - 在当前上下文对表达式求值并打印结果。还有一个命令是 **pp** ，它使用 [`pprint`](https://docs.python.org/3/library/pprint.html) 打印；
-- **r**(eturn) - 继续执行直到当前函数返回；
+- **p**(rint) - 在当前上下文对表达式求值并打印结果。还有一个 **pp** 命令，它使用 [`pprint`](https://docs.python.org/3/library/pprint.html) 打印；
+- **r**(eturn) - 执行到当前函数返回；
 - **q**(uit) - 退出调试器。
 
 让我们使用 `pdb` 来修复下面的 Python 代码（参考讲座视频）
@@ -133,19 +133,17 @@ def bubble_sort(arr):
 print(bubble_sort([4, 2, 1, 8, 7, 6]))
 ```
 
+注意，因为 Python 是一种解释型语言，所以我们可以使用 `pdb` shell 来执行命令和指令。[`ipdb`](https://pypi.org/project/ipdb/) 是 `pdb` 的增强版，它使用 [`IPython`](https://ipython.org) 作为 REPL 并开启了 tab 补全、语法高亮、更好的回溯和更好的内省，同时保留了与 `pdb` 模块相同的接口。
 
-注意，因为 Python 是一种解释型语言，所以我们可以通过 `pdb` shell 执行命令。
-[`ipdb`](https://pypi.org/project/ipdb/) 是一种增强型的 `pdb` ，它使用 [`IPython`](https://ipython.org) 作为 REPL 并开启了 tab 补全、语法高亮、更好的回溯和更好的内省，同时还保留了 `pdb` 模块相同的接口。
+对于更底层的编程语言，您可能需要了解一下 [`gdb`](https://www.gnu.org/software/gdb/)（及其改进版 [`pwndbg`](https://github.com/pwndbg/pwndbg)）和 [`lldb`](https://lldb.llvm.org/)。
 
-对于更底层的编程语言，您可能需要了解一下 [`gdb`](https://www.gnu.org/software/gdb/) ( 以及它的改进版 [`pwndbg`](https://github.com/pwndbg/pwndbg)) 和 [`lldb`](https://lldb.llvm.org/)。
-
-它们都对类 C 语言的调试进行了优化，它允许您探索任意进程及其机器状态：寄存器、堆栈、程序计数器等。
+它们针对类 C 语言的调试进行了优化，但也允许您探索几乎任何进程并获取其当前的机器状态，例如：寄存器、栈、程序计数器等。
 
 ## 专门工具
 
 即使您需要调试的程序是一个二进制的黑盒程序，仍然有一些工具可以帮助到您。当您的程序需要执行一些只有操作系统内核才能完成的操作时，它需要使用 [系统调用](https://en.wikipedia.org/wiki/System_call)。有一些命令可以帮助您追踪您的程序执行的系统调用。在 Linux 中可以使用 [`strace`](http://man7.org/linux/man-pages/man1/strace.1.html) ，在 macOS 和 BSD 中可以使用 [`dtrace`](http://dtrace.org/blogs/about/)。`dtrace` 用起来可能有些别扭，因为它使用的是它自有的 `D` 语言，但是我们可以使用一个叫做 [`dtruss`](https://www.manpagez.com/man/1/dtruss/) 的封装使其具有和 `strace` (更多信息参考 [这里](https://8thlight.com/blog/colin-jones/2015/11/06/dtrace-even-better-than-strace-for-osx.html))类似的接口
 
-下面的例子展现来如何使用 `strace` 或 `dtruss` 来显示 `ls` 执行时，对 [`stat`](http://man7.org/linux/man-pages/man2/stat.2.html) 系统调用进行追踪对结果。若需要深入了解 `strace`，[这篇文章](https://blogs.oracle.com/linux/strace-the-sysadmins-microscope-v2) 值得一读。
+下面的例子展现来如何使用 `strace` 或 `dtruss` 来显示在 `ls` 执行时追踪 [`stat`](http://man7.org/linux/man-pages/man2/stat.2.html) 系统调用的结果。若需要深入了解 `strace`，[这篇文章](https://blogs.oracle.com/linux/strace-the-sysadmins-microscope-v2) 值得一读。
 
 ```bash
 # On Linux
@@ -158,7 +156,7 @@ sudo dtruss -t lstat64_extended ls -l > /dev/null
 
 对于 web 开发， Chrome/Firefox 的开发者工具非常方便，功能也很强大：
 - 源码 -查看任意站点的 HTML/CSS/JS 源码；
-- 实时地修改 HTML, CSS, JS 代码 - 修改网站的内容、样式和行为用于测试（从这一点您也能看出来，网页截图是不可靠的）；
+- 实时修改 HTML, CSS, JS 代码 - 修改网站的内容、样式和行为用于测试（由此可见网页截图是不可信的）；
 - Javascript shell - 在 JS REPL 中执行命令；
 - 网络 - 分析请求的时间线；
 - 存储 - 查看 Cookies 和本地应用存储。
@@ -166,7 +164,7 @@ sudo dtruss -t lstat64_extended ls -l > /dev/null
 ## 静态分析
 
 有些问题是您不需要执行代码就能发现的。例如，仔细观察一段代码，您就能发现某个循环变量覆盖了某个已经存在的变量或函数名；或是有个变量在被读取之前并没有被定义。
-这种情况下 [静态分析](https://en.wikipedia.org/wiki/Static_program_analysis) 工具就可以帮我们找到问题。静态分析会将程序的源码作为输入然后基于编码规则对其进行分析并对代码的正确性进行推理。
+这种情况下 [静态分析](https://en.wikipedia.org/wiki/Static_program_analysis) 工具就可以帮我们找到问题。静态分析会将程序的源码作为输入然后基于规则对其进行分析并对代码的正确性进行推理。
 
 下面这段 Python 代码中存在几个问题。 首先，我们的循环变量 `foo` 覆盖了之前定义的函数 `foo`。最后一行，我们还把 `bar` 错写成了 `baz`，因此当程序完成 `sleep`  (一分钟)后，执行到这一行的时候便会崩溃。
 
