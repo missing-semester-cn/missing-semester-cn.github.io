@@ -74,13 +74,13 @@ done
 
 目前，系统开始使用 **system log**，您所有的日志都会保存在这里。大多数（但不是全部的）Linux 系统都会使用 `systemd`，这是一个系统守护进程，它会控制您系统中的很多东西，例如哪些服务应该启动并运行。`systemd` 会将日志以某种特殊格式存放于 `/var/log/journal`，您可以使用 [`journalctl`](http://man7.org/linux/man-pages/man1/journalctl.1.html) 命令显示这些消息。
 
-类似地，在 macOS 系统中是 `/var/log/system.log`，但是有更多的工具会使用系统日志，它的内容可以使用 [`log show`](https://www.manpagez.com/man/1/log/) 显示。
+类似地，在 macOS 系统中，除了有一个 `/var/log/system.log` 之外，越来越多的工具开始使用用 [`log show`](https://www.manpagez.com/man/1/log/) 显示的系统日志。
 
 对于大多数的 UNIX 系统，您也可以使用 [`dmesg`](http://man7.org/linux/man-pages/man1/dmesg.1.html) 命令来读取内核的日志。
 
 如果您希望将日志加入到系统日志中，您可以使用 [`logger`](http://man7.org/linux/man-pages/man1/logger.1.html) 这个 shell 程序。下面这个例子显示了如何使用 `logger` 并且如何找到能够将其存入系统日志的条目。
 
-不仅如此，大多数的编程语言都支持向系统日志中写日志。
+不仅如此，大多数的编程语言也提供写系统日志的方法。
 
 ```bash
 logger "Hello Logs"
@@ -110,12 +110,12 @@ journalctl --since "1m ago" | grep Hello
 
 下面对 `pdb` 支持的命令进行简单的介绍：
 
-- **l**(ist) - 显示当前行附近的 11 行或继续执行之前的显示；
-- **s**(tep) - 执行当前行，并在第一个可能的地方停止；
-- **n**(ext) - 继续执行直到当前函数的下一条语句或者 return 语句；
+- **l**(ist) - 显示当前行周围的 11 行，或接着上次显示的，继续往下显示 11 行；
+- **s**(tep) - 执行当前行，并在第一个可能的时机停止（通常指步入函数）；
+- **n**(ext) - 继续执行，直到到达当前函数的下一行或函数返回（通常指步过函数）；
 - **b**(reak) - 设置断点（基于传入的参数）；
-- **p**(rint) - 在当前上下文对表达式求值并打印结果。还有一个命令是 **pp** ，它使用 [`pprint`](https://docs.python.org/3/library/pprint.html) 打印；
-- **r**(eturn) - 继续执行直到当前函数返回；
+- **p**(rint) - 在当前上下文对表达式求值并打印结果。还有一个 **pp** 命令，它使用 [`pprint`](https://docs.python.org/3/library/pprint.html) 打印；
+- **r**(eturn) - 执行到当前函数返回；
 - **q**(uit) - 退出调试器。
 
 让我们使用 `pdb` 来修复下面的 Python 代码（参考讲座视频）
@@ -133,19 +133,17 @@ def bubble_sort(arr):
 print(bubble_sort([4, 2, 1, 8, 7, 6]))
 ```
 
+注意，因为 Python 是一种解释型语言，所以我们可以使用 `pdb` shell 来执行命令和指令。[`ipdb`](https://pypi.org/project/ipdb/) 是 `pdb` 的增强版，它使用 [`IPython`](https://ipython.org) 作为 REPL 并开启了 tab 补全、语法高亮、更好的回溯和更好的内省，同时保留了与 `pdb` 模块相同的接口。
 
-注意，因为 Python 是一种解释型语言，所以我们可以通过 `pdb` shell 执行命令。
-[`ipdb`](https://pypi.org/project/ipdb/) 是一种增强型的 `pdb` ，它使用 [`IPython`](https://ipython.org) 作为 REPL 并开启了 tab 补全、语法高亮、更好的回溯和更好的内省，同时还保留了 `pdb` 模块相同的接口。
+对于更底层的编程语言，您可能需要了解一下 [`gdb`](https://www.gnu.org/software/gdb/)（及其改进版 [`pwndbg`](https://github.com/pwndbg/pwndbg)）和 [`lldb`](https://lldb.llvm.org/)。
 
-对于更底层的编程语言，您可能需要了解一下 [`gdb`](https://www.gnu.org/software/gdb/) ( 以及它的改进版 [`pwndbg`](https://github.com/pwndbg/pwndbg)) 和 [`lldb`](https://lldb.llvm.org/)。
-
-它们都对类 C 语言的调试进行了优化，它允许您探索任意进程及其机器状态：寄存器、堆栈、程序计数器等。
+它们针对类 C 语言的调试进行了优化，但也允许您探索几乎任何进程并获取其当前的机器状态，例如：寄存器、栈、程序计数器等。
 
 ## 专门工具
 
 即使您需要调试的程序是一个二进制的黑盒程序，仍然有一些工具可以帮助到您。当您的程序需要执行一些只有操作系统内核才能完成的操作时，它需要使用 [系统调用](https://en.wikipedia.org/wiki/System_call)。有一些命令可以帮助您追踪您的程序执行的系统调用。在 Linux 中可以使用 [`strace`](http://man7.org/linux/man-pages/man1/strace.1.html) ，在 macOS 和 BSD 中可以使用 [`dtrace`](http://dtrace.org/blogs/about/)。`dtrace` 用起来可能有些别扭，因为它使用的是它自有的 `D` 语言，但是我们可以使用一个叫做 [`dtruss`](https://www.manpagez.com/man/1/dtruss/) 的封装使其具有和 `strace` (更多信息参考 [这里](https://8thlight.com/blog/colin-jones/2015/11/06/dtrace-even-better-than-strace-for-osx.html))类似的接口
 
-下面的例子展现来如何使用 `strace` 或 `dtruss` 来显示 `ls` 执行时，对 [`stat`](http://man7.org/linux/man-pages/man2/stat.2.html) 系统调用进行追踪对结果。若需要深入了解 `strace`，[这篇文章](https://blogs.oracle.com/linux/strace-the-sysadmins-microscope-v2) 值得一读。
+下面的例子展现来如何使用 `strace` 或 `dtruss` 来显示在 `ls` 执行时追踪 [`stat`](http://man7.org/linux/man-pages/man2/stat.2.html) 系统调用的结果。若需要深入了解 `strace`，[这篇文章](https://blogs.oracle.com/linux/strace-the-sysadmins-microscope-v2) 值得一读。
 
 ```bash
 # On Linux
@@ -158,7 +156,7 @@ sudo dtruss -t lstat64_extended ls -l > /dev/null
 
 对于 web 开发， Chrome/Firefox 的开发者工具非常方便，功能也很强大：
 - 源码 -查看任意站点的 HTML/CSS/JS 源码；
-- 实时地修改 HTML, CSS, JS 代码 - 修改网站的内容、样式和行为用于测试（从这一点您也能看出来，网页截图是不可靠的）；
+- 实时修改 HTML, CSS, JS 代码 - 修改网站的内容、样式和行为用于测试（由此可见网页截图是不可信的）；
 - Javascript shell - 在 JS REPL 中执行命令；
 - 网络 - 分析请求的时间线；
 - 存储 - 查看 Cookies 和本地应用存储。
@@ -166,7 +164,7 @@ sudo dtruss -t lstat64_extended ls -l > /dev/null
 ## 静态分析
 
 有些问题是您不需要执行代码就能发现的。例如，仔细观察一段代码，您就能发现某个循环变量覆盖了某个已经存在的变量或函数名；或是有个变量在被读取之前并没有被定义。
-这种情况下 [静态分析](https://en.wikipedia.org/wiki/Static_program_analysis) 工具就可以帮我们找到问题。静态分析会将程序的源码作为输入然后基于编码规则对其进行分析并对代码的正确性进行推理。
+这种情况下 [静态分析](https://en.wikipedia.org/wiki/Static_program_analysis) 工具就可以帮我们找到问题。静态分析会将程序的源码作为输入然后基于规则对其进行分析并对代码的正确性进行推理。
 
 下面这段 Python 代码中存在几个问题。 首先，我们的循环变量 `foo` 覆盖了之前定义的函数 `foo`。最后一行，我们还把 `bar` 错写成了 `baz`，因此当程序完成 `sleep`  (一分钟)后，执行到这一行的时候便会崩溃。
 
@@ -199,25 +197,20 @@ Found 3 errors in 1 file (checked 1 source file)
 
 在 shell 工具那一节课的时候，我们介绍了 [`shellcheck`](https://www.shellcheck.net/)，这是一个类似的工具，但它是应用于 shell 脚本的。
 
-大多数的编辑器和 IDE 都支持在编辑界面显示这些工具的分析结果、高亮有警告和错误的位置。
-这个过程通常称为 **code linting** 。风格检查或安全检查的结果同样也可以进行相应的显示。
+多数编辑器和 IDE 都支持在编辑器界面内直接显示这些工具的输出结果，并高亮标出警告和错误的位置。这通常被称为**代码检查（code linting）**，它也可以用来展示其他类型的问题，例如代码风格违规或不安全的代码结构。
 
-在 vim 中，有 [`ale`](https://vimawesome.com/plugin/ale) 或 [`syntastic`](https://vimawesome.com/plugin/syntastic) 可以帮助您做同样的事情。
-在 Python 中， [`pylint`](https://www.pylint.org) 和 [`pep8`](https://pypi.org/project/pep8/) 是两种用于进行风格检查的工具，而 [`bandit`](https://pypi.org/project/bandit/) 工具则用于检查安全相关的问题。
+在 vim 中，插件 [`ale`](https://vimawesome.com/plugin/ale) 或 [`syntastic`](https://vimawesome.com/plugin/syntastic) 可以帮助您做同样的事情。
+在 Python 中， [`pylint`](https://www.pylint.org) 和 [`pep8`](https://pypi.org/project/pep8/) 是风格检查工具的典型例子，而 [`bandit`](https://pypi.org/project/bandit/) 则是设计用来发现常见安全漏洞的工具。对于其它语言，人们已经整理了非常详尽的静态分析工具列表，例如 [Awesome Static Analysis](https://github.com/mre/awesome-static-analysis)（您可能想去看看其中的 _Writing_ 一节）。代码检查工具 (linters) 则可以参考 [Awesome Linters](https://github.com/caramelomartins/awesome-linters)。
 
-对于其他语言的开发者来说，静态分析工具可以参考这个列表：[Awesome Static Analysis](https://github.com/mre/awesome-static-analysis) (您也许会对  _Writing_ 一节感兴趣) 。对于  linters 则可以参考这个列表： [Awesome Linters](https://github.com/caramelomartins/awesome-linters)。
+与风格检查相辅相成的是**代码格式化工具（code formatters）**，例如 Python 的 [`black`](https://github.com/psf/black)、Go 语言的 `gofmt`、Rust 的 `rustfmt` 以及 JavaScript、HTML 和 CSS 的 [`prettier`](https://prettier.io/)。这些工具会自动格式化您的代码，使其符合该编程语言通用的风格规范。虽然您可能不太情愿将代码风格的控制权交给工具，但标准化的代码格式不仅有助于他人阅读您的代码，也能让您更轻松地阅读他人（同样经过格式化）的代码。
 
-对于风格检查和代码格式化，还有以下一些工具可以作为补充：用于 Python 的 [`black`](https://github.com/psf/black)、用于 Go 语言的 `gofmt`、用于 Rust 的 `rustfmt` 或是用于 JavaScript, HTML 和 CSS 的 [`prettier`](https://prettier.io/) 。这些工具可以自动格式化您的代码，这样代码风格就可以与常见的风格保持一致。
-尽管您可能并不想对代码进行风格控制，标准的代码风格有助于方便别人阅读您的代码，也可以方便您阅读它的代码。
+# 性能分析 (Profiling)
 
-# 性能分析
-
-即使您的代码能够像您期望的一样运行，但是如果它消耗了您全部的 CPU 和内存，那么它显然也不是个好程序。算法课上我们通常会介绍大 O 标记法，但却没教给我们如何找到程序中的热点。
-鉴于 [过早的优化是万恶之源](http://wiki.c2.com/?PrematureOptimization)，您需要学习性能分析和监控工具，它们会帮助您找到程序中最耗时、最耗资源的部分，这样您就可以有针对性的进行性能优化。
+即使你的代码在功能上完全符合预期，但如果它在运行过程中耗尽了所有的 CPU 或内存资源，那也未必合格。算法课程通常会教授大 O 表示法，却很少教你如何找到程序中的热点 (hot spots)。鉴于[过早优化是万恶之源](http://wiki.c2.com/?PrematureOptimization)，您应该了解一下性能分析器 (profilers) 和监控工具。它们会帮助您找到程序中最耗时、最耗资源的部分，从而让您能够集中精力优化这些特定的部分。
 
 ## 计时
 
-和调试代码类似，大多数情况下我们只需要打印两处代码之间的时间即可发现问题。下面这个例子中，我们使用了 Python 的 [`time`](https://docs.python.org/3/library/time.html) 模块。
+与调试类似，多数情况下，只需打印代码从一处运行到另一处的时间，即可发现问题。下面是一个使用 Python [`time`](https://docs.python.org/3/library/time.html) 模块的例子：
 
 ```python
 import time, random
@@ -226,25 +219,25 @@ n = random.randint(1, 10) * 100
 # 获取当前时间 
 start = time.time()
 
-# 执行一些操作
+# 做些工作
 print("Sleeping for {} ms".format(n))
 time.sleep(n/1000)
 
 # 比较当前时间和起始时间
 print(time.time() - start)
 
-# Output
+# 输出
 # Sleeping for 500 ms
 # 0.5713930130004883
 ```
 
-不过，执行时间（wall clock time）也可能会误导您，因为您的电脑可能也在同时运行其他进程，也可能在此期间发生了等待。 对于工具来说，需要区分真实时间、用户时间和系统时间。通常来说，用户时间 + 系统时间代表了您的进程所消耗的实际 CPU （更详细的解释可以参照 [这篇文章](https://stackoverflow.com/questions/556405/what-do-real-user-and-sys-mean-in-the-output-of-time1)）。
+不过，墙上时间（wall clock time）也可能会有误导性，因为计算机可能同时在运行其他进程，或者在等待某些事件发生。工具通常会区分实际时间、用户时间和系统时间。通常用户时间加系统时间代表了您的进程在 CPU 上实际消耗了多少时间（更详细的解释可以参考 [这篇文章](https://stackoverflow.com/questions/556405/what-do-real-user-and-sys-mean-in-the-output-of-time1)）。
 
-- 真实时间 _Real_ - 从程序开始到结束流失掉的真实时间，包括其他进程的执行时间以及阻塞消耗的时间（例如等待 I/O 或网络）；
-- 用户时间 _User_ - CPU 执行用户代码所花费的时间；
-- 系统时间 _Sys_ - CPU 执行系统内核代码所花费的时间。
+- 真实时间 _Real_ - 程序从开始到结束流逝的墙上时间，包括其他进程使用的时间以及阻塞（例如等待 I/O 或网络）的时间
+- 用户时间 _User_ - CPU 执行用户态代码所花费的时间
+- 系统时间 _Sys_ - CPU 执行内核态代码所花费的时间
 
-例如，试着执行一个用于发起 HTTP 请求的命令并在其前面添加 [`time`](http://man7.org/linux/man-pages/man1/time.1.html) 前缀。网络不好的情况下您可能会看到下面的输出结果。请求花费了 2s 多才完成，但是进程仅花费了 15ms 的 CPU 用户时间和 12ms 的 CPU 内核时间。
+例如，试着写一个执行 HTTP 请求的命令，并在命令前加上 [`time`](http://man7.org/linux/man-pages/man1/time.1.html)。网络不好的情况下您可能会看到下面的输出结果。请求花费了 2 秒多才完成，但是进程仅花费了 15 毫秒的 CPU 用户时间和 12 毫秒的 CPU 内核时间。
 
 ```bash
 $ time curl https://missing.csail.mit.edu &> /dev/null
