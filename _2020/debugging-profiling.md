@@ -74,13 +74,13 @@ done
 
 目前，系统开始使用 **system log**，您所有的日志都会保存在这里。大多数（但不是全部的）Linux 系统都会使用 `systemd`，这是一个系统守护进程，它会控制您系统中的很多东西，例如哪些服务应该启动并运行。`systemd` 会将日志以某种特殊格式存放于 `/var/log/journal`，您可以使用 [`journalctl`](http://man7.org/linux/man-pages/man1/journalctl.1.html) 命令显示这些消息。
 
-类似地，在 macOS 系统中是 `/var/log/system.log`，但是有更多的工具会使用系统日志，它的内容可以使用 [`log show`](https://www.manpagez.com/man/1/log/) 显示。
+类似地，在 macOS 系统中，除了有一个 `/var/log/system.log` 之外，越来越多的工具开始使用用 [`log show`](https://www.manpagez.com/man/1/log/) 显示的系统日志。
 
 对于大多数的 UNIX 系统，您也可以使用 [`dmesg`](http://man7.org/linux/man-pages/man1/dmesg.1.html) 命令来读取内核的日志。
 
 如果您希望将日志加入到系统日志中，您可以使用 [`logger`](http://man7.org/linux/man-pages/man1/logger.1.html) 这个 shell 程序。下面这个例子显示了如何使用 `logger` 并且如何找到能够将其存入系统日志的条目。
 
-不仅如此，大多数的编程语言都支持向系统日志中写日志。
+不仅如此，大多数的编程语言也提供写系统日志的方法。
 
 ```bash
 logger "Hello Logs"
