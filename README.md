@@ -29,17 +29,17 @@ bundle exec jekyll serve -w
 
 请在[sync-offical-2026](https://github.com/missing-semester-cn/missing-semester-cn.github.io/tree/sync-offical-2026)分支的README中认领任务并提交翻译。
 
-| 讲义 | 翻译者 | 状态 |
-| ---- | ---- | ---- |
-| [agentic-coding.md](_2026/agentic-coding.md) | [@Lingfeng AI](https://github.com/hanxiaomax) | 待翻译 |
-| [beyond-code.md](_2026/beyond-code.md) | 待分配 | 待翻译 |
-| [code-quality.md](_2026/code-quality.md) | 待分配 | 待翻译 |
-| [command-line-environment.md](_2026/command-line-environment.md) | 待分配 | 待翻译 |
-| [course-shell.md](_2026/course-shell.md) | 待分配 | 待翻译 |
-| [debugging-profiling.md](_2026/debugging-profiling.md) | 待分配 | 待翻译 |
-| [development-environment.md](_2026/development-environment.md) | 待分配 | 待翻译 |
-| [shipping-code.md](_2026/shipping-code.md) | 待分配 | 待翻译 |
-| [version-control.md](_2026/version-control.md) | 待分配 | 待翻译 |
+| 讲义                                                             | 翻译者                                        | 状态   |
+| ---------------------------------------------------------------- | --------------------------------------------- | ------ |
+| [agentic-coding.md](_2026/agentic-coding.md)                     | [@Lingfeng AI](https://github.com/hanxiaomax) | 待翻译 |
+| [beyond-code.md](_2026/beyond-code.md)                           | 待分配                                        | 待翻译 |
+| [code-quality.md](_2026/code-quality.md)                         | 待分配                                        | 待翻译 |
+| [command-line-environment.md](_2026/command-line-environment.md) | 待分配                                        | 待翻译 |
+| [course-shell.md](_2026/course-shell.md)                         | 待分配                                        | 待翻译 |
+| [debugging-profiling.md](_2026/debugging-profiling.md)           | 待分配                                        | 待翻译 |
+| [development-environment.md](_2026/development-environment.md)   | 待分配                                        | 待翻译 |
+| [shipping-code.md](_2026/shipping-code.md)                       | 待分配                                        | 待翻译 |
+| [version-control.md](_2026/version-control.md)                   | 待分配                                        | 待翻译 |
 
 -----------------
 
@@ -48,20 +48,20 @@ bundle exec jekyll serve -w
 想要参与这个翻译项目，请通过创建一个 issue 来预订您的主题，我会相应地更新此表格，以避免重复工作。
 
 
-|  讲义   | 翻译者  | 状态 |
-|  ----  | ----  |----  |
-| [course-shell.md](_2020/course-shell.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | 完成 |
-| [shell-tools.md](_2020/shell-tools.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | 完成 |
-| [editors.md](_2020/editors.md)  |  [@stechu](https://github.com/stechu) | 完成 |
-| [data-wrangling.md](_2020/data-wrangling.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | 完成 |
-| [command-line.md](_2020/command-line.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | 完成 |
-| [version-control.md](_2020/version-control.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | 完成 |
-| [debugging-profiling.md](_2020/debugging-profiling.md)  |[@Lingfeng AI](https://github.com/hanxiaomax)  | 完成  |
-| [metaprogramming.md](_2020/metaprogramming.md)  | [@Lingfeng AI](https://github.com/hanxiaomax) | 完成 |
-| [security.md](_2020/security.md)  | [@catcarbon](https://github.com/catcarbon) | 完成 |
-| [potpourri.md](_2020/potpourri.md) |  [@catcarbon](https://github.com/catcarbon) | 完成 |
-| [qa.md](_2020/qa.md) | [@AA1HSHH](https://github.com/AA1HSHH) | 完成 |
-| [about.md](about.md)  | [@Binlogo](https://github.com/Binlogo)  | 完成 |
+| 讲义                                                   | 翻译者                                        | 状态 |
+| ------------------------------------------------------ | --------------------------------------------- | ---- |
+| [course-shell.md](_2020/course-shell.md)               | [@Lingfeng AI](https://github.com/hanxiaomax) | 完成 |
+| [shell-tools.md](_2020/shell-tools.md)                 | [@Lingfeng AI](https://github.com/hanxiaomax) | 完成 |
+| [editors.md](_2020/editors.md)                         | [@stechu](https://github.com/stechu)          | 完成 |
+| [data-wrangling.md](_2020/data-wrangling.md)           | [@Lingfeng AI](https://github.com/hanxiaomax) | 完成 |
+| [command-line.md](_2020/command-line.md)               | [@Lingfeng AI](https://github.com/hanxiaomax) | 完成 |
+| [version-control.md](_2020/version-control.md)         | [@Lingfeng AI](https://github.com/hanxiaomax) | 完成 |
+| [debugging-profiling.md](_2020/debugging-profiling.md) | [@Lingfeng AI](https://github.com/hanxiaomax) | 完成 |
+| [metaprogramming.md](_2020/metaprogramming.md)         | [@Lingfeng AI](https://github.com/hanxiaomax) | 完成 |
+| [security.md](_2020/security.md)                       | [@catcarbon](https://github.com/catcarbon)    | 完成 |
+| [potpourri.md](_2020/potpourri.md)                     | [@catcarbon](https://github.com/catcarbon)    | 完成 |
+| [qa.md](_2020/qa.md)                                   | [@AA1HSHH](https://github.com/AA1HSHH)        | 完成 |
+| [about.md](about.md)                                   | [@Binlogo](https://github.com/Binlogo)        | 完成 |
 
 
 ## 新项目
