@@ -25,6 +25,10 @@ bundle exec jekyll serve -w
 
 ## 2026 课程状态
 
+
+
+请在[sync-offical-2026](https://github.com/missing-semester-cn/missing-semester-cn.github.io/tree/sync-offical-2026)分支的README中认领任务并提交翻译。
+
 | 讲义 | 翻译者 | 状态 |
 | ---- | ---- | ---- |
 | [agentic-coding.md](_2026/agentic-coding.md) | [@Lingfeng AI](https://github.com/hanxiaomax) | 待翻译 |
