@@ -25,6 +25,7 @@ bundle exec jekyll serve -w
 
 ## 2026 课程状态
 
+<<<<<<< HEAD
 
 
 请在[sync-offical-2026](https://github.com/missing-semester-cn/missing-semester-cn.github.io/tree/sync-offical-2026)分支的README中认领任务并提交翻译。
@@ -40,6 +41,19 @@ bundle exec jekyll serve -w
 | [development-environment.md](_2026/development-environment.md)   | 待分配                                        | 待翻译 |
 | [shipping-code.md](_2026/shipping-code.md)                       | 待分配                                        | 待翻译 |
 | [version-control.md](_2026/version-control.md)                   | 待分配                                        | 待翻译 |
+=======
+| 讲义 | 翻译者 | 状态 |
+| ---- | ---- | ---- |
+| [agentic-coding.md](_2026/agentic-coding.md) | [@Lingfeng AI](https://github.com/hanxiaomax) | 待翻译 |
+| [beyond-code.md](_2026/beyond-code.md) | 待分配 | 待翻译 |
+| [code-quality.md](_2026/code-quality.md) | 待分配 | 待翻译 |
+| [command-line-environment.md](_2026/command-line-environment.md) | 待分配 | 待翻译 |
+| [course-shell.md](_2026/course-shell.md) | 待分配 | 待翻译 |
+| [debugging-profiling.md](_2026/debugging-profiling.md) | 待分配 | 待翻译 |
+| [development-environment.md](_2026/development-environment.md) | 待分配 | 待翻译 |
+| [shipping-code.md](_2026/shipping-code.md) | 待分配 | 待翻译 |
+| [version-control.md](_2026/version-control.md) | 待分配 | 待翻译 |
+>>>>>>> 991aa59 (update readme)
 
 -----------------
 
