@@ -12,6 +12,7 @@ The Missing Semester of Your CS Education 英文课程网站在[这里](https://
 要在本地构建并查看网站，请运行：
 
 ```bash
+bundle install
 bundle exec jekyll serve -w
 ```
 
@@ -26,7 +27,7 @@ bundle exec jekyll serve -w
 
 | 讲义 | 翻译者 | 状态 |
 | ---- | ---- | ---- |
-| [agentic-coding.md](_2026/agentic-coding.md) | 待分配 | 待翻译 |
+| [agentic-coding.md](_2026/agentic-coding.md) | [@Lingfeng AI](https://github.com/hanxiaomax) | 待翻译 |
 | [beyond-code.md](_2026/beyond-code.md) | 待分配 | 待翻译 |
 | [code-quality.md](_2026/code-quality.md) | 待分配 | 待翻译 |
 | [command-line-environment.md](_2026/command-line-environment.md) | 待分配 | 待翻译 |
