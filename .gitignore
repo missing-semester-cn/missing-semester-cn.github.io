@@ -2,3 +2,4 @@
 .bundle/
 _site/
 .jekyll-metadata
+.claude/
