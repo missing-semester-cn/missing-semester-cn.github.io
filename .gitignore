@@ -1,5 +1,7 @@
 .ruby-version
 .bundle/
 _site/
+__pycache__/
 .jekyll-metadata
 .claude/
+vendor/

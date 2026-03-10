@@ -1,6 +1,7 @@
 # Setup
-title: 'the missing semester of your cs education'
+title: "the missing semester of your cs education"
 url: https://missing-semester-cn.github.io
+thumbnail: "/static/assets/thumbnails/default.png"
 solution_url: missing-notes-and-solutions/2020/solutions/
 # Settings
 markdown: kramdown
@@ -16,9 +17,11 @@ analytics:
   tracking_id: UA-53167467-11
 
 collections:
-  '2019':
+  "2019":
     output: true
-  '2020':
+  "2020":
+    output: true
+  "2026":
     output: true
 
 # Excludes

@@ -2,9 +2,9 @@
   <meta charset="utf-8">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/static/assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/assets/favicon-16x16.png">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="og:url" content="{{ page.url | prepend: site.url }}">
@@ -17,9 +17,7 @@
     <meta property="og:description" content="{{ description }}">
   {% endif %}
 
-  {% if page.short_title %}
-    {% assign title = page.short_title %}
-  {% elsif page.title %}
+  {% if page.title %}
     {% assign title = page.title %}
   {% else %}
     {% assign title = site.title %}
@@ -28,13 +26,20 @@
   <meta property="og:title" content="{{ title }}">
 
   {% if page.thumbnail %}
-    <meta name="twitter:image:src" content="{{ page.thumbnail | prepend: site.url }}">
-    <meta property="og:image" content="{{ page.thumbnail | prepend: site.url }}">
+    {% assign thumbnail = page.thumbnail %}
+  {% else %}
+    {% assign thumbnail = site.thumbnail %}
   {% endif %}
+  <meta name="twitter:image" content="{{ thumbnail | prepend: site.url }}">
+  <meta property="og:image" content="{{ thumbnail | prepend: site.url }}">
 
   <title>
     {% if page.title %}
-      {{ page.title }} &middot; {{ site.title }}
+      {% if page.nositetitle %}
+        {{ page.title }}
+      {% else %}
+        {{ page.title }} &middot; {{ site.title }}
+      {% endif %}
     {% else %}
       {{ site.title }}
     {% endif %}
@@ -42,6 +47,7 @@
 
   <link rel="stylesheet" href="/static/css/main.css">
   <link rel="stylesheet" href="/static/css/syntax.css">
+  <script defer src="/static/js/sidenotes.js"></script>
   <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro:200,300,400,500,600,700,900&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
