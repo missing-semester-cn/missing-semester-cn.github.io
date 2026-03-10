@@ -1,0 +1,11 @@
+services:
+  server:
+    image: missing-semester:latest
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - 4000:4000
+    volumes:
+      - ./:/app
+    restart: on-failure
