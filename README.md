@@ -30,7 +30,7 @@ bundle exec jekyll serve -w
 | [agentic-coding.md](_2026/agentic-coding.md) | [@Lingfeng AI](https://github.com/hanxiaomax) | 待翻译 |
 | [beyond-code.md](_2026/beyond-code.md) | 待分配 | 待翻译 |
 | [code-quality.md](_2026/code-quality.md) | 待分配 | 待翻译 |
-| [command-line-environment.md](_2026/command-line-environment.md) | 待分配 | 待翻译 |
+| [command-line-environment.md](_2026/command-line-environment.md) | [@Zeeh-Lin](https://github.com/Zeeh-Lin) | 已完成 |
 | [course-shell.md](_2026/course-shell.md) | [@天明](https://github.com/ztm0929) | 待翻译 |
 | [debugging-profiling.md](_2026/debugging-profiling.md) | 待分配 | 待翻译 |
 | [development-environment.md](_2026/development-environment.md) | 待分配 | 待翻译 |
