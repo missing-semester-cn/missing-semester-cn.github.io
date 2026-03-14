@@ -1,8 +1,8 @@
 ---
 layout: lecture
-title: "Code Quality"
+title: "代码质量"
 description: >
-  Learn about formatting, linting, testing, continuous integration, and more.
+  学习格式化、lint、测试、持续集成等内容。
 thumbnail: /static/assets/thumbnails/2026/lec9.png
 date: 2026-01-23
 ready: true
@@ -11,124 +11,124 @@ video:
   id: XBiLUNx84CQ
 ---
 
-There are a variety of tools and techniques that support developers in writing high-quality code. In this lecture, we'll cover:
+有各种各样的工具和技术可以帮助开发者编写高质量的代码。在这节课中，我们将介绍：
 
-- [Formatting](#formatting)
-- [Linting](#linting)
-- [Testing](#testing)
-- [Pre-commit hooks](#pre-commit-hooks)
-- [Continuous integration](#continuous-integration)
-- [Command runners](#command-runners)
+- [格式化](#格式化)
+- [Lint](#lint)
+- [测试](#测试)
+- [Pre-commit 钩子](#pre-commit-钩子)
+- [持续集成](#持续集成)
+- [命令运行器](#命令运行器)
 
-As a bonus topic, we'll also cover [regular expressions](#regular-expressions), a cross-cutting topic that has applications in code quality (e.g., for running a subset of tests that match a pattern) as well as other domains like IDEs (e.g., for search and replace).
+作为一个额外主题，我们还会介绍[正则表达式](#正则表达式)。这是一个贯穿多个领域的话题，既可用于代码质量相关场景（例如，运行匹配某个模式的一部分测试），也可用于 IDE 等其他领域（例如，查找与替换）。
 
-Many of these tools will be language-specific (e.g., the [Ruff](https://docs.astral.sh/ruff/) linter/formatter for Python). In some cases, tools will support multiple languages (e.g., the [Prettier](https://prettier.io/) code formatter). The concepts, however, are near universal --- you can find code formatters, linters, testing libraries, and so on for any programming language.
+这些工具中有许多会是语言特定的（例如 Python 的 [Ruff](https://docs.astral.sh/ruff/) linter/formatter）。有些工具则支持多种语言（例如代码格式化工具 [Prettier](https://prettier.io/)）。不过，这些概念几乎是通用的：对于任何编程语言，你都能找到代码格式化器、linter、测试库等等。
 
-# Formatting
+# 格式化
 
-Code auto-formatters automatically prettify surface syntax. This way, you can focus on the more deep and challenging problems, while the auto-formatting tool handles mundane details such as consistency of `'` versus `"` syntax for strings, having spaces surrounding binary operators (`x + y` instead of `x+y`), having `import` statements in sorted order, and avoiding over-length lines. One major benefit of code formatters is that they standardize code style across all developers working on a codebase.
+代码自动格式化工具会自动美化表层语法。这样一来，你就可以专注于更深层、更有挑战性的问题，而把诸如字符串使用 `'` 还是 `"`、二元运算符两边是否留空格（`x + y` 而不是 `x+y`）、`import` 语句是否按序排序、以及避免过长行等琐碎细节交给自动格式化工具处理。代码格式化器的一个主要好处，是它能在整个代码库的所有开发者之间统一代码风格。
 
-Some tools such as Prettier are [highly configurable](https://prettier.io/docs/configuration); you should check in the configuration file into [version control](/2026/version-control/) for your project. Other tools, such as [Black](https://github.com/psf/black) and [gofmt](https://pkg.go.dev/cmd/gofmt) have limited or no configurability, to reduce [bikeshedding](https://en.wikipedia.org/wiki/Law_of_triviality).
+有些工具，例如 Prettier，是[高度可配置的](https://prettier.io/docs/configuration)；你应该把配置文件一并提交到项目的[版本控制](/2026/version-control/)中。另一些工具，例如 [Black](https://github.com/psf/black) 和 [gofmt](https://pkg.go.dev/cmd/gofmt)，则只有有限的配置项，甚至完全不可配置，以减少[自行车棚问题](https://en.wikipedia.org/wiki/Law_of_triviality)。
 
-You can set up [IDE integration](/2026/development-environment/#code-intelligence-and-language-servers) with your code formatter, so that your code will be auto-formatted as you type or when you save a file. You can also add an [EditorConfig](https://editorconfig.org/) file to your project, which communicates to your IDE certain project-level settings like indent size for each file type.
+你可以为代码格式化器配置 [IDE 集成](/2026/development-environment/#code-intelligence-and-language-servers)，这样代码会在你输入时或保存文件时自动格式化。你也可以在项目中加入一个 [编辑器配置](https://editorconfig.org/) 文件，用来向 IDE 传达某些项目级设置，例如不同文件类型的缩进大小。
 
-# Linting
+# Lint
 
-Linters run static analysis (analyze your code without running it) to find antipatterns and potential issues in your code. These tools go deeper than autoformatters, looking beyond surface syntax. The level of depth of analysis varies by tool.
+Linter 会运行静态分析（即不运行代码就分析代码），以发现代码中的反模式和潜在问题。这类工具比自动格式化器看得更深，不只关注表层语法。分析的深度会因工具而异。
 
-Linters come equipped with lists of _rules_, with presets that can be configured on a project-level basis. Some linter rules produce false positives, so you can disable them on a per-file or per-line basis.
+Linter 通常内置一系列 _规则_，并提供可在项目级配置的预设。有些 linter 规则会产生误报，因此你可以按文件或按行禁用它们。
 
-Good linters will have built-in help or documentation that explains each linter rule --- what the rule is looking for, why it's bad, and what's a better alternative for the code pattern. For example, see the documentation for the [SIM102](https://docs.astral.sh/ruff/rules/collapsible-if/) rule in [Ruff](https://docs.astral.sh/ruff/) which catches unnecessarily nested `if` statements in Python code.
+好的 linter 会自带帮助信息或文档，解释每条规则在检查什么、为什么这不好，以及对应代码模式更好的替代方案是什么。例如，可以看看 [Ruff](https://docs.astral.sh/ruff/) 中 [SIM102](https://docs.astral.sh/ruff/rules/collapsible-if/) 规则的文档，它会捕获 Python 代码中不必要的嵌套 `if` 语句。
 
-Some linters can not only flag issues but also automatically fix certain issues for you.
+有些 linter 不仅能标出问题，还能自动帮你修复某些问题。
 
-Aside from language-specific linters, another tool that might come in handy is [semgrep](https://github.com/semgrep/semgrep), a "semantic grep" tool that works at the AST level (rather than character level, like grep) and supports many languages. You can use semgrep to easily write custom linter rules for your projects. For example, if you wanted to prevent the dangerous `subprocess.Popen(..., shell=True)` in Python, you could find that code pattern with:
+除了语言特定的 linter，还有一个可能很有用的工具是 [semgrep](https://github.com/semgrep/semgrep)。它是一个“语义 grep”工具，在 AST 层面工作（而不是像 grep 那样在字符层面工作），并支持许多语言。你可以用 semgrep 很方便地为项目编写自定义 linter 规则。举例来说，如果你想阻止 Python 中危险的 `subprocess.Popen(..., shell=True)`，你可以用下面的代码模式查找它：
 
 ```bash
 semgrep -l python -e "subprocess.Popen(..., shell=True, ...)"
 ```
 
-# Testing
+# 测试
 
-Software testing is a standard technique to increase your confidence in the correctness of your code. You write code, and then you write code that exercises the code you wrote and raises an error if the code doesn't work as expected.
+软件测试是一种标准技术，可以提高你对代码正确性的信心。你先写代码，然后再写代码去调用你刚写的代码；如果它的行为不符合预期，测试就会报错。
 
-You can write tests for chunks of code at different levels of granularity: _unit tests_ for individual functions, _integration tests_ for interaction between modules or services, and _functional tests_ for end-to-end scenarios. You can do _test-driven development_, where you write tests before you write any implementation code. When you find bugs in your code, you can write _regression tests_, so you'll catch if the functionality ever breaks in the future. You can write _property-based tests_, pioneered in [QuickCheck](https://hackage.haskell.org/package/QuickCheck) in Haskell, and implemented in many libraries, like [Hypothesis](https://hypothesis.readthedocs.io/) for Python. Which approach to testing is right depends on your project; likely, you will adopt some combination.
+你可以为不同粒度的代码编写测试：针对单个函数的 _单元测试_，针对模块或服务之间交互的 _集成测试_，以及针对端到端场景的 _功能测试_。你也可以进行 _测试驱动开发_，即先写测试，再写实现代码。当你在代码中发现 bug 时，可以编写 _回归测试_，这样未来功能再次损坏时你就能捕获到。你还可以编写 _基于性质的测试_，它由 Haskell 中的 [QuickCheck](https://hackage.haskell.org/package/QuickCheck) 开创，并在许多库中得到实现，例如 Python 的 [Hypothesis](https://hypothesis.readthedocs.io/)。哪种测试方式适合你，取决于你的项目；很可能你会采用其中若干种的组合。
 
-If your program has external dependencies like a database or web API, it may be helpful to _mock_ those dependencies in your tests, rather than have your code interact with third-party dependencies at test time.
+如果你的程序依赖数据库或 Web API 等外部依赖，那么在测试中对这些依赖进行 _模拟_ 往往会有帮助，而不是在测试时真的与第三方依赖交互。
 
-## Code coverage
+## 代码覆盖率
 
-Code coverage is a metric by which you can measure how good your tests are. Code coverage looks at which lines of your code are executed when your tests are run, so you can ensure you are covering all code paths. Code coverage tools can show you line-by-line coverage to guide you in writing tests. Services such as [Codecov](https://app.codecov.io) provide web interfaces for tracking and viewing code coverage over the history of a project.
+代码覆盖率是一个可用于衡量测试质量的指标。代码覆盖率关注的是：当测试运行时，你的哪些代码行被执行到了，这样你就可以确认自己覆盖了所有代码路径。代码覆盖率工具可以按行显示覆盖情况，从而指导你编写测试。像 [Codecov](https://app.codecov.io) 这样的服务会提供 Web 界面，用来跟踪和查看项目历史中的代码覆盖率。
 
-Like any metric, code coverage is not perfect; don't over-index on coverage, focus on writing high-quality tests.
+和任何指标一样，代码覆盖率也并不完美；不要过度关注覆盖率，更重要的是编写高质量的测试。
 
-# Pre-commit hooks
+# Pre-commit 钩子
 
-Git pre-commit [hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks), made easier by the [pre-commit](https://pre-commit.com/) framework, automatically run user-specified code prior to every Git commit. Projects commonly use pre-commit hooks to run formatters and linters, and sometimes tests, automatically before every commit, to ensure that committed code matches the project code style and is free of certain issues.
+Git 的 pre-commit [沟子](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) 在 [pre-commit](https://pre-commit.com/) 框架的帮助下更容易使用，它会在每次 Git 提交前自动运行用户指定的代码。项目通常会利用 pre-commit 钩子在每次提交前自动运行格式化器、linter，有时也会运行测试，以确保被提交的代码符合项目的代码风格，并且不存在某些问题。
 
-# Continuous integration
+# 持续集成
 
-Continuous integration (CI) services like [GitHub Actions](https://github.com/features/actions) can run scripts for you every time you push code (or on every pull request, or on a schedule). Developers commonly use CI services to run code quality tools including formatters, linters, and tests. For compiled languages, you can ensure code compiles; for statically typed languages, you can make sure it type checks. Running CI every push of new commits can catch errors introduced into the main version of the code; running on pull requests can catch issues with contributor submissions; running on a schedule can catch issues with external dependencies (e.g., a developer accidentally releases a breaking change as [semver-compatible](/2026/shipping-code/#releases--versioning)).
+[GitHub Actions](https://github.com/features/actions) 这样的持续集成（CI, Continuous Integration）服务可以在你每次推送代码时（或每次 pull request 时，或按计划）为你运行脚本。开发者通常会使用 CI 服务运行各种代码质量工具，包括格式化器、linter 和测试。对于编译型语言，你可以确保代码能够编译；对于静态类型语言，你可以确保类型检查通过。在每次推送新提交时运行 CI，可以捕获被引入主版本代码中的错误；在 pull request 上运行，可以发现贡献者提交中的问题；按计划运行，则可以发现外部依赖中的问题（例如，某个开发者意外发布了一个与 [semver-compatible](/2026/shipping-code/#releases--versioning) 声称兼容但实际上破坏行为的变更）。
 
-Because CI scripts run separately from developer machines, you can easily run long-running jobs there. This can be leveraged, for example, to run a _matrix_ of tests across different operating systems and programming language versions to ensure that the software works properly across all of them.
+由于 CI 脚本是在开发者机器之外独立运行的，你可以很方便地在那里运行耗时较长的任务。例如，这可以用来在不同操作系统和不同编程语言版本上运行测试 _矩阵_，以确保软件在所有这些环境中都能正常工作。
 
-Generally, the script running in CI will not directly make changes to your code: it will run tools in "check-only" mode rather than "fix" mode, so for example, the auto-formatter will raise an error when the code is not compliant with the format.
+一般来说，在 CI 中运行的脚本不会直接修改你的代码：它通常会以“只检查”模式而不是“修复”模式运行工具，例如当代码不符合格式要求时，自动格式化器会报错，而不是直接改动代码。
 
-Repositories often include [status badges](https://docs.github.com/en/actions/how-tos/monitor-workflows/add-a-status-badge) in their README, showing CI status and other information such as code coverage. For example, below is Missing Semester's current build status.
+代码仓库通常会在 README 中包含[状态徽章](https://docs.github.com/en/actions/how-tos/monitor-workflows/add-a-status-badge)，展示 CI 状态以及诸如代码覆盖率等其他信息。下面就是 Missing Semester 当前的构建状态。
 
 [![Build Status](https://github.com/missing-semester/missing-semester/actions/workflows/build.yml/badge.svg)](https://github.com/missing-semester/missing-semester/actions/workflows/build.yml) [![Links Status](https://github.com/missing-semester/missing-semester/actions/workflows/links.yml/badge.svg)](https://github.com/missing-semester/missing-semester/actions/workflows/links.yml)
 
-> Our [links checker](https://github.com/missing-semester/missing-semester/blob/master/.github/workflows/links.yml), which uses the [proof-html](https://github.com/anishathalye/proof-html) GitHub Action is often failing, usually due to issues with third-party websites. Still, it has helped us catch and fix many broken links (sometimes due to typos, most of the time due to websites moving around content without adding redirects or websites disappearing).
+> 我们的[链接检查器](https://github.com/missing-semester/missing-semester/blob/master/.github/workflows/links.yml)使用 [proof-html](https://github.com/anishathalye/proof-html) GitHub Action，它经常失败，通常是因为第三方网站出了问题。即便如此，它仍然帮助我们发现并修复了许多失效链接（有时是因为拼写错误，但更多时候是因为网站在没有加重定向的情况下移动了内容，或者网站直接消失了）。
 
-A good way to learn the particulars of CI services, formatters, linters, and testing libraries is by example. Find high-quality open-source projects on GitHub---the more similar to your project in programming language, domain, size and scope, and so on, the better---and study their `pyproject.toml`, `.github/workflows/`, `DEVELOPMENT.md`, and other relevant files.
+学习 CI 服务、格式化器、linter 和测试库具体细节的一个好方法，就是通过示例来学。去 GitHub 上找高质量的开源项目来研究，越接近你的项目越好，比如在编程语言、领域、规模和范围等方面都越相似越好，并研究它们的 `pyproject.toml`、`.github/workflows/`、`DEVELOPMENT.md` 以及其他相关文件。
 
-## Continuous deployment
+## 持续部署
 
-Continuous deployment makes use of CI infrastructure to actually _deploy_ changes. For example, the Missing Semester repository uses continuous deployment to GitHub pages so that whenever we `git push` updated lecture notes, the site is automatically built and deployed. You can build other types of [artifacts](/2026/shipping-code/) in CI, such as binaries for applications or Docker images for services.
+持续部署利用 CI 基础设施来真正 _部署_ 变更。例如，Missing Semester 仓库就使用持续部署到 GitHub Pages，因此每当我们 `git push` 更新后的讲义时，网站就会自动构建并部署。你也可以在 CI 中构建其他类型的[产物](/2026/shipping-code/)，例如应用程序的二进制文件，或者服务的 Docker 镜像。
 
-# Command runners
+# 命令运行器
 
-Command runners like [just](https://github.com/casey/just) simplify the task of running commands in the context of a project. As you build up code quality infrastructure for your project, you don't want to make your developers memorize commands like `uv run ruff check --fix`. With a command runner, this can turn into `just lint`, and you can have analogous invocations like `just format`, `just typecheck`, etc., for all the different tools a developer might want to run for your project.
+像 [just](https://github.com/casey/just) 这样的命令运行器，可以简化在项目上下文中运行命令这件事。当你为项目逐步建立起代码质量基础设施时，你不会希望开发者去记住像 `uv run ruff check --fix` 这样的命令。有了命令运行器，这就可以变成 `just lint`，同时你还可以为项目中开发者想运行的各种工具提供类似的调用方式，比如 `just format`、`just typecheck` 等等。
 
-Some language-specific project or package managers have built-in support for such functionality, which means you don't need to use a language-agnostic tool like `just`. For example, the `scripts` section of a `package.json` for [npm](https://nodejs.org/en/learn/getting-started/an-introduction-to-the-npm-package-manager) (Node.js) and the `tool.hatch.envs.*.scripts` sections of a `pyproject.toml` for [Hatch](https://hatch.pypa.io/) (Python) support this functionality.
+有些语言特定的项目或包管理器已经内置了对这类功能的支持，这意味着你不需要使用像 `just` 这样与语言无关的工具。例如，[npm](https://nodejs.org/en/learn/getting-started/an-introduction-to-the-npm-package-manager)（Node.js）的 `package.json` 中的 `scripts` 部分，以及 [Hatch](https://hatch.pypa.io/)（Python）的 `pyproject.toml` 中 `tool.hatch.envs.*.scripts` 相关部分，都支持这一功能。
 
-# Regular expressions
+# 正则表达式
 
-_Regular expressions_, commonly abbreviated as "regex", is a language used to represent sets of strings. Regex patterns are commonly used for pattern matching in various contexts such as command-line tools and IDEs. For example, [ag](https://github.com/ggreer/the_silver_searcher) supports regex patterns for codebase-wide search (e.g., `ag "import .* as .*"` will find all renamed imports in Python), and [go test](https://pkg.go.dev/cmd/go#hdr-Test_packages) supports a `-run [regexp]` option for selecting a subset of tests. Furthermore, programming languages have built-in support or third-party libraries for regular expression matching, so you can use regexes for functionality such as pattern matching, validation, and parsing.
+_正则表达式_，通常缩写为 “regex”，是一种用来表示字符串集合的语言。Regex 模式常被用于各种场景中的模式匹配，例如命令行工具和 IDE。比如，[ag](https://github.com/ggreer/the_silver_searcher) 支持用 regex 模式做整个代码库范围的搜索（例如，`ag "import .* as .*"` 会找出 Python 中所有重命名导入），而 [go test](https://pkg.go.dev/cmd/go#hdr-Test_packages) 支持 `-run [regexp]` 选项来选择测试的一个子集。此外，编程语言通常内置了正则表达式支持，或者有第三方库可用，因此你可以用 regex 来实现模式匹配、校验和解析等功能。
 
-To help build intuition, below are some examples of regex patterns. In this lecture, we use [Python regex syntax](https://docs.python.org/3/library/re.html). There are many flavors of regex, with slight variation between them, especially in the more sophisticated functionality. You can use an online regex tester like [regex101](https://regex101.com/) to develop and debug regular expressions.
+为了帮助建立直觉，下面给出一些 regex 模式的示例。在本讲中，我们使用 [Python regex 语法](https://docs.python.org/3/library/re.html)。Regex 有很多不同“风味”，它们之间会有一些细微差异，尤其是在更高级的功能上。你可以使用像 [regex101](https://regex101.com/) 这样的在线 regex 测试器来开发和调试正则表达式。
 
-- `abc` --- matches the literal "abc".
-- `missing|semester` --- matches the string "missing" or the string "semester".
-- `\d{4}-\d{2}-\d{2}` --- matches dates in YYYY-MM-DD format, such as "2026-01-14". Beyond ensuring that the string consists of four digits, a dash, two digits, a dash, and two digits, this does not validate the date, so "2026-01-99" matches this regex pattern too.
-- `.+@.+` --- matches email addresses, strings that contain some text, then an "@", and then some more text. This does only the most basic validation and matches strings like "nonsense@@@email". A regex that matches email addresses with no false positives or negatives [exists](https://pdw.ex-parrot.com/Mail-RFC822-Address.html) but is impractical.
+- `abc` --- 匹配字面量字符串 “abc”。
+- `missing|semester` --- 匹配字符串 “missing” 或字符串 “semester”。
+- `\d{4}-\d{2}-\d{2}` --- 匹配 YYYY-MM-DD 格式的日期，例如 “2026-01-14”。除了保证字符串由四位数字、一个连字符、两位数字、一个连字符以及两位数字组成之外，它并不会验证这个日期是否合法，因此 “2026-01-99” 也会匹配这个 regex 模式。
+- `.+@.+` --- 匹配电子邮件地址，也就是包含一些文本、接着一个 “@”、然后再跟一些文本的字符串。这只做了最基础的校验，因此像 “nonsense@@@email” 这样的字符串也会匹配。一个对电子邮件地址既无误报也无漏报的 regex [确实存在](https://pdw.ex-parrot.com/Mail-RFC822-Address.html)，但并不实用。
 
-## Regex syntax
+## Regex 语法
 
-You can find a comprehensive guide to regex syntax in [this documentation](https://docs.python.org/3/library/re.html#regular-expression-syntax) (or one of many other resources available online). Here are some of the basic building blocks:
+你可以在[这份文档](https://docs.python.org/3/library/re.html#regular-expression-syntax)中找到一份完整的 regex 语法指南（或者网上很多其他资源中的任意一份）。下面是一些基本构件：
 
-- `abc` matches the literal string, when the characters have no special meaning (in this example, "abc")
-- `.` matches any single character
-- `[abc]` matches a single character contained in the brackets (in this example, "a", "b", or "c")
-- `[^abc]` matches a single character except those contained in the brackets (e.g., "d")
-- `[a-f]` matches a single character contained in the range indicated in the brackets (e.g., "c", but not "q")
-- `a|b` matches either pattern (e.g., "a" or "b")
-- `\d` matches any digit character (e.g., "3")
-- `\w` matches any word character (e.g., "x")
-- `\b` matches any word _boundary_ (e.g., in the string "missing semester", matches just before the "m", just after the "g", just before the "s", and just after the "r")
-- `(...)` matches the group of a pattern
-- `...?` matches zero or one of a pattern, such as `words?` to match "word" or "words"
-- `...*` matches any number of a pattern, such as `.*` to match any number of any character
-- `...+` matches one or more of a pattern, such as `\d+` to match any non-zero number of digits
-- `...{N}` matches exactly N of a pattern, such as `\d{4}` for 4 digits
-- `\.` matches a literal "."
-- `\\` matches a literal "\\"
-- `^` matches the start of the line
-- `$` matches the end of the line
+- `abc` 在字符没有特殊含义时匹配该字面量字符串（本例中为 “abc”）
+- `.` 匹配任意单个字符
+- `[abc]` 匹配方括号中包含的任意一个字符（本例中为 “a”、“b” 或 “c”）
+- `[^abc]` 匹配除方括号中字符之外的任意一个字符（例如 “d”）
+- `[a-f]` 匹配方括号中所示范围内的任意一个字符（例如 “c”，但不包括 “q”）
+- `a|b` 匹配任一模式（例如 “a” 或 “b”）
+- `\d` 匹配任意数字字符（例如 “3”）
+- `\w` 匹配任意单词字符（例如 “x”）
+- `\b` 匹配任意单词 _边界_（例如，在字符串 “missing semester” 中，会匹配 “m” 前面、“g” 后面、“s” 前面以及 “r” 后面的位置）
+- `(...)` 匹配一个模式组
+- `...?` 匹配零个或一个模式，例如 `words?` 可匹配 “word” 或 “words”
+- `...*` 匹配任意数量的某个模式，例如 `.*` 可匹配任意数量的任意字符
+- `...+` 匹配一个或多个某个模式，例如 `\d+` 可匹配非零个数字
+- `...{N}` 精确匹配 N 个某个模式，例如 `\d{4}` 表示 4 位数字
+- `\.` 匹配字面量 “.”
+- `\\` 匹配字面量 “\\”
+- `^` 匹配行首
+- `$` 匹配行尾
 
-## Capture groups and references
+## 捕获组与引用
 
-If you use regex groups `(...)`, you can refer to sub-parts of the match for extraction or search-and-replace purposes. For example, to extract just the month from a YYYY-MM-DD style date, you can use the following Python code:
+如果你使用 regex 分组 `(...)`，你就可以引用匹配结果中的子部分，以便提取或进行查找替换。例如，如果想从 YYYY-MM-DD 形式的日期中只提取月份，可以使用下面这段 Python 代码：
 
 ```python
 >>> import re
@@ -136,31 +136,31 @@ If you use regex groups `(...)`, you can refer to sub-parts of the match for ext
 '01'
 ```
 
-In your text editor, you can use reference capture groups in replace patterns. The syntax might vary between IDEs. For example, in VS Code, you can use variables like `$1`, `$2`, etc., and in Vim, you can use `\1`, `\2`, etc., to reference groups.
+在文本编辑器中，你可以在替换模式里使用对捕获组的引用。具体语法在不同 IDE 中可能不同。例如，在 VS Code 中，你可以使用 `$1`、`$2` 等变量，而在 Vim 中，你可以使用 `\1`、`\2` 等来引用分组。
 
-## Limitations
+## 局限性
 
-[Regular languages](https://en.wikipedia.org/wiki/Regular_language) are powerful but limited; there are classes of strings that cannot be expressed as a standard regex (e.g., it is [not possible](https://en.wikipedia.org/wiki/Pumping_lemma_for_regular_languages) to write a regular expression that matches the set of strings {a^n b^n \| n &ge; 0}, the set of strings of a number of "a"s followed by the same number of "b"s; more practically, languages like HTML are not regular languages). In practice, modern regex engines support features like lookahead and backreferences that extend support beyond regular languages, and they are practically extremely useful, but it is important to know that they are still limited in their expressive power. For more sophisticated languages, you might need to reach for a more capable type of parser (for one example, see [pyparsing](https://github.com/pyparsing/pyparsing), a [PEG](https://en.wikipedia.org/wiki/Parsing_expression_grammar) parser).
+[正则语言](https://en.wikipedia.org/wiki/Regular_language)很强大，但也有局限；有一些字符串类别无法用标准 regex 表达（例如，[不可能](https://en.wikipedia.org/wiki/Pumping_lemma_for_regular_languages)写出一个正则表达式来匹配集合 {a^n b^n \| n &ge; 0}，也就是若干个 “a” 后面跟着相同数量的 “b” 所组成的字符串集合；更实际地说，像 HTML 这样的语言也不是正则语言）。在实践中，现代 regex 引擎支持前瞻、反向引用等特性，这使它们的能力超出了正则语言；它们在实际中也极其有用，但了解它们在表达能力上仍然有限这一点依然很重要。对于更复杂的语言，你可能需要使用能力更强的解析器（例如 [pyparsing](https://github.com/pyparsing/pyparsing)，一种 [PEG](https://en.wikipedia.org/wiki/Parsing_expression_grammar) 解析器）。
 
-## Learning regex
+## 学习 regex
 
-We recommend learning the fundamentals (what we have covered in this lecture), and then looking at regex references as you need them, rather than memorizing the entirety of the language.
+我们建议先学习基础知识（也就是本讲覆盖的内容），然后在需要时查阅 regex 参考资料，而不是试图把整门语言全部背下来。
 
-Conversational AI tools can be effective at helping you generating regex patterns. For example, try prompting your favorite LLM with the following query:
+对话式 AI 工具在帮助你生成 regex 模式方面也可能很有效。例如，可以尝试向你喜欢的 LLM 提交下面这个问题：
 
 ```
-Write a Python-style regex pattern that matches the requested path from log lines from Nginx. Here is an example log line:
+编写一个 Python 风格的正则表达式模式，该模式与 Nginx 日志行中请求的路径相匹配。这是一个示例日志行：
 
 169.254.1.1 - - [09/Jan/2026:21:28:51 +0000] "GET /feed.xml HTTP/2.0" 200 2995 "-" "python-requests/2.32.3"
 ```
 
-# Exercises
+# 练习
 
-1. Configure a formatter, linter, and pre-commit hooks for a project you're working on. If you have lots of errors: autoformatting should take care of the format errors. For the linter errors, try using an [AI agent](/2026/agentic-coding/) to fix all the linter errors. Make sure the AI agent can run the linter and observe the results, so that it can run in an iterative loop to fix all the issues. Check the results carefully to ensure the AI doesn't break your code!
-1. Learn a testing library for a language you know and write a unit test for a project you're working on. Run a code coverage tool, generate an HTML-formatted coverage report, and observe the results. Can you find the lines that are covered? Your code coverage will likely be very low. Try manually writing some tests to improve it. Try using an [AI agent](/2026/agentic-coding/) to improve coverage; make sure the coding agent can run tests with coverage and produce a line-by-line coverage report, so it knows where to focus. Are the AI-generated tests actually good?
-1. Set up continuous integration to run on every push for a project you're working on. Have CI run formatting, linting, and tests. Break your code on purpose (e.g., introduce a linter violation), and ensure that CI catches it.
-1. Try writing a [regex pattern](#regular-expressions) and use the `grep` [command-line tool](/2026/course-shell/) to find occurrences of `subprocess.Popen(..., shell=True)` in your code. Now, try to "break" the regex pattern. Does [semgrep](#linting) still successfully match the dangerous code that trips up your grep invocation?
-1. Practice regex search-and-replace in your IDE or text editor by replacing the `-` [Markdown bullet markers](https://spec.commonmark.org/0.31.2/#bullet-list-marker) with `*` bullet markers in [these lecture notes](https://raw.githubusercontent.com/missing-semester/missing-semester/refs/heads/master/_2026/code-quality.md). Note that just replacing all the "-" characters in the file would be incorrect, as there are many uses of that character that are not bullet markers.
-1. Write a regex to capture from JSON structures of the form `{"name": "Alyssa P. Hacker", "college": "MIT"}` the name (e.g., `Alyssa P. Hacker`, in this example). Hint: in your first attempt, you might end up writing a regex that extracts `Alyssa P. Hacker", "college": "MIT`; read about greedy quantifiers in the [Python regex docs](https://docs.python.org/3/library/re.html) to figure out how to fix it.
-    1. Make the regex pattern work even in situations where the name has a `"` character in it (double quotes can be escaped in JSON with `\"`).
-    1. We do **not** recommend using regular expressions for sophisticated parsing problems in practice. Figure out how to use your programming language's JSON parser for this task. Write a command-line program that takes as input, on stdin, a JSON structure of the form described above, and output, on stdout, the name. You should only need a couple lines of code to do this. In Python, you can do it easily in one line of code beyond `import json`.
+1. 为你正在进行的一个项目配置格式化器、linter 和 pre-commit 钩子。如果你有很多错误：自动格式化应当能够处理格式错误。对于 linter 错误，试着使用一个 [AI agent](/2026/agentic-coding/) 来修复所有 linter 错误。确保这个 AI agent 能运行 linter 并观察结果，这样它就可以在迭代循环中修复所有问题。仔细检查结果，确保 AI 没有破坏你的代码！
+1. 学习一种你熟悉语言的测试库，并为你正在进行的一个项目编写一个单元测试。运行代码覆盖率工具，生成 HTML 格式的覆盖率报告，并观察结果。你能找到哪些行被覆盖了吗？你的代码覆盖率很可能会很低。尝试手动编写一些测试来改进它。也试着使用一个 [AI agent](/2026/agentic-coding/) 来提高覆盖率；确保这个 coding agent 能以带覆盖率的方式运行测试，并生成逐行覆盖率报告，这样它才知道该聚焦在哪里。AI 生成的测试真的好吗？
+1. 为你正在进行的一个项目设置持续集成，并让它在每次 push 时运行。让 CI 运行格式化、lint 和测试。故意把你的代码弄坏（例如，引入一条 linter 违规），并确认 CI 能抓到它。
+1. 试着写一个[正则表达式](#正则表达式)，并使用 `grep` [命令行工具](/2026/course-shell/) 在你的代码中查找 `subprocess.Popen(..., shell=True)` 的出现位置。然后，试着“破坏”这个 regex 模式。[semgrep](#lint) 是否仍然能成功匹配到那些会让你的 grep 调用失效的危险代码？
+1. 在你的 IDE 或文本编辑器里练习 regex 查找替换，把[这些讲义](https://raw.githubusercontent.com/missing-semester/missing-semester/refs/heads/master/_2026/code-quality.md)中的 `-` [Markdown 项目符号标记](https://spec.commonmark.org/0.31.2/#bullet-list-marker)替换为 `*` 项目符号标记。注意，直接替换文件中所有的 `-` 字符是不正确的，因为该字符在文件中还有很多并非项目符号标记的用途。
+1. 写一个 regex，从形如 `{"name": "Alyssa P. Hacker", "college": "MIT"}` 的 JSON 结构中捕获 name（例如本例中的 `Alyssa P. Hacker`）。提示：在第一次尝试时，你可能最终会写出一个提取 `Alyssa P. Hacker", "college": "MIT` 的 regex；读一读 [Python regex 文档](https://docs.python.org/3/library/re.html)中关于贪婪量词的内容，弄清楚如何修复它。
+    1. 让这个 regex 模式在 name 中包含 `"` 字符时也能工作（在 JSON 中，双引号可以用 `\"` 转义）。
+    1. 在实践中，我们 **不** 推荐用正则表达式解决复杂解析问题。弄清楚如何用你所使用编程语言的 JSON 解析器来完成这个任务。写一个命令行程序，从标准输入读取上述形式的 JSON 结构，并把 name 输出到标准输出。你应该只需要几行代码就能完成。在 Python 中，除了 `import json` 之外，一行代码就可以轻松做到。
