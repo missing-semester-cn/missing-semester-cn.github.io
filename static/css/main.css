@@ -12,18 +12,9 @@
 }
 
 html {
-/*  font-size: 14px;
-  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
   font-family: "Source Sans Pro", sans-serif;
   font-size: 14pt;
   line-height: 1.5;
-}
-
-@media(min-width: 480px) {
-  html {
-    /*font-size: 16px;*/
-    font-size: 14pt;
-  }
 }
 
 body {
@@ -36,7 +27,6 @@ body {
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1rem;
   font-weight: bold;
-  /*text-decoration: underline;*/
   line-height: 1.25;
   font-size: 1rem;
 }
@@ -107,7 +97,6 @@ code {
   background-color: rgba(27,31,35,.05);
   border-radius: 3px;
   padding: 0 0.2rem;
-  /*font-size: 0.9em;*/
   font-size: 12pt;
 }
 
@@ -116,7 +105,6 @@ pre {
   margin: 1rem;
   padding: 0.5rem 0.7rem;
   border: 1px dashed #444;
-  /*font-size: .8rem;*/
   font-size: 11pt;
   overflow-x: auto;
 }
@@ -164,6 +152,127 @@ hr {
   border-bottom: 1px solid #fff;
 }
 
+blockquote {
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  background-color: rgba(36, 0, 140, 0.05);
+  border-left: 3px solid #24008c;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+blockquote.epigraph {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 1.5rem 0 1.5rem 1rem;
+}
+
+blockquote.epigraph p {
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+blockquote.epigraph footer {
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+@media (min-width: 64rem) {
+  #content {
+    position: relative;
+  }
+
+  .sidenote-column {
+    position: absolute;
+    top: 0;
+    left: calc(100% + 1.5rem);
+    width: 14rem;
+  }
+
+  /* Hide inline sidenotes on desktop, show margin ones */
+  .sidenote-inline {
+    display: none;
+  }
+
+  .sidenote-margin {
+    position: absolute;
+    width: 100%;
+    padding: 0.2rem 0.5rem 0.5rem 0.5rem;
+    margin: 0;
+    font-size: 0.8rem;
+    color: #000;
+    background: none;
+    border: none;
+    border-left: 2px solid #54008c;
+  }
+
+  .sidenote-ref {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem 0;
+    width: 100%;
+    background-color: #e8e8e8;
+    font-size: 0.7rem;
+    line-height: 1.4;
+    padding: 0.15rem 0.5rem;
+    box-sizing: border-box;
+  }
+
+  .sidenote-arrows {
+    color: #54008c;
+    letter-spacing: 0.1em;
+  }
+
+  .sidenote-label {
+    color: #666;
+    text-transform: uppercase;
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+  }
+
+  .sidenote-num {
+    color: #54008c;
+    font-size: 0.65rem;
+    font-weight: bold;
+    margin-right: 0.15rem;
+    margin-bottom: 0.1rem;
+    display: block;
+  }
+
+  .sidenote-back {
+    color: #54008c;
+    text-decoration: none;
+    font-size: 0.9em;
+  }
+
+  .sidenote-back:hover {
+    text-decoration: underline;
+  }
+}
+
+@media (max-width: 63.99rem) {
+  /* Hide margin sidenotes and column on mobile, show inline ones */
+  .sidenote-column {
+    display: none;
+  }
+
+  .sidenote-inline {
+    display: block;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    background-color: #faf8fc;
+    border-left: 3px solid #54008c;
+  }
+
+  .sidenote-ref {
+    display: none;
+  }
+}
+
 /* Classes */
 
 .title {
@@ -171,8 +280,8 @@ hr {
 }
 
 .subtitle {
-  font-size: 1.5rem;
-  margin-left: 1rem;
+  margin-top: -1rem;
+  font-size: 1.25rem;
 }
 
 .small {
@@ -187,9 +296,12 @@ hr {
   text-align: center;
 }
 
-.gap {
-  margin-top: 4rem;
-  margin-bottom: 4rem;
+.padded {
+  padding: 10rem 0;
+}
+
+.bordered {
+  border: 1px solid #ccc;
 }
 
 .accent {
@@ -200,6 +312,7 @@ hr {
   position: relative;
   height: 0;
   margin-bottom: 1rem;
+  background: black;
 }
 
 .youtube-wrapper iframe {
@@ -208,6 +321,14 @@ hr {
   left: 0;
   width: 100%;
   height: 100%;
+  border: 0;
+}
+
+.construction {
+  display: block;
+  padding: .5em 1em;
+  background: rgba(0, 0, 0, 0.1);
+  border-left: 2px solid #54008c;
 }
 
 /* Elements */
@@ -228,13 +349,12 @@ hr {
   margin: 0;
   padding: 0.25rem 1rem;
   font-family: "Source Code Pro", "Menlo", "DejaVu Sans Mono", "Lucida Console", monospace;
-  background: #54008c;
+  background: #24008c;
   color: #fff;
 }
 
 #top-nav {
-  max-width: 75rem;
-  /* padding-left:8rem; */
+  max-width: 40rem;
   margin: auto;
   text-align: center;
 }
@@ -312,6 +432,10 @@ input[type=checkbox]:checked ~ .menu-label:after {
     text-align: initial;
   }
 
+  input[type=checkbox]:checked ~ .trigger {
+    display: inline;
+  }
+
   .nav-link {
     display: initial;
   }
@@ -323,84 +447,114 @@ input[type=checkbox]:checked ~ .menu-label:after {
 
 @media (prefers-color-scheme: dark) {
 
-    body {
-        background-color: #303030;
-        color: #ddd
-    }
+  body {
+    background-color: #303030;
+    color: #ddd
+  }
 
-    a {
-      color: #66D9EF;
-      /*color: #A6E22E;*/
-      text-decoration: none;
-    }
+  a {
+    color: #66D9EF;
+    text-decoration: none;
+  }
 
-    a:hover {
-      color: #000;
-      background-color: #66D9EF;
-      text-decoration: none;
-    }
+  a:hover {
+    color: #000;
+    background-color: #66D9EF;
+    text-decoration: none;
+  }
 
-    h1, h2, h3, h4, h5, h6 {
-        color: #eee;
-      }
+  h1, h2, h3, h4, h5, h6 {
+    color: #eee;
+  }
 
-    #nav-bg, a#logo, #top-nav a {
-      background-color: #A6E22E;
-      color: #202020;
-    }
+  #nav-bg, a#logo, #top-nav a {
+    background-color: #A6E22E;
+    color: #202020;
+  }
 
-    a:hover > code  {
-        background-color: #66D9EF;
-    }
+  a:hover > code  {
+    background-color: #66D9EF;
+  }
 
-    .accent {
-        color: #F92672;
-    }
+  .accent {
+    color: #F92672;
+  }
+
+  .construction {
+    background: rgba(0, 0, 0, 0.5);
+    border-left: 2px solid #A6E22E;
+  }
+
+  blockquote {
+    background-color: rgba(166, 226, 46, 0.06);
+    border-left-color: #A6E22E;
+  }
+
+  .sidenote-margin {
+    color: #bbb;
+    border-left-color: #A6E22E;
+  }
+
+  .sidenote-inline {
+    border-left-color: #A6E22E;
+  }
+
+  .sidenote-ref {
+    background-color: #404040;
+  }
+
+  .sidenote-arrows {
+    color: #A6E22E;
+  }
+
+  .sidenote-label {
+    color: #aaa;
+  }
+
+  .sidenote-num {
+    color: #A6E22E;
+  }
+
+  .sidenote-back {
+    color: #A6E22E;
+  }
+}
+
+@media (prefers-color-scheme: dark) and (min-width: 64rem) {
+  .sidenote-margin {
+    background: none;
+    color: #ddd;
+  }
+}
+
+@media (prefers-color-scheme: dark) and (max-width: 63.99rem) {
+  .sidenote-inline {
+    background-color: rgba(166, 226, 46, 0.06);
+  }
 }
 
 @media print {
   #nav-bg, #logo, #top-nav { display: none; }
-  h1.title ~ p.center.gap.accent { display: none; }
+  h1.title ~ p.center.padded.bordered { display: none; }
   .youtube-wrapper { display: none; }
+  .sidenote-column { display: none; }
+  .sidenote-ref { display: none; }
+  .sidenote-inline {
+    display: block;
+    background: none;
+    border-left: 2px solid #999;
+    padding: 0 0 0 0.75rem;
+    margin: 1rem 0;
+  }
   html { font-size: 1em; font-family: sans-serif; }
   body { background: none; }
   #content { max-width: none; }
   h1.title { text-align: center; }
   h1, h2, h3, h4, h5, h6 { break-after: avoid-page; page-break-after: avoid; }
   #content hr:last-of-type { display: none; }
-  #content pre { break-inside: avoid-page; page-break-inside: avoid; }
+  #content pre { break-inside: avoid-page; page-break-inside: avoid; white-space: pre-wrap; }
   #content div.small:last-of-type { display: none; }
-}
-
-.ribbon {
-  background-color: #8cbcea;
-  overflow: hidden;
-  white-space: nowrap;
-  /* top left corner */
-  position: absolute;
-  right: -50px;
-  top: 40px;
-  /* 45 deg ccw rotation */
-  -webkit-transform: rotate(45deg);
-     -moz-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-       -o-transform: rotate(45deg);
-          transform: rotate(45deg);
-  /* shadow */
-  -webkit-box-shadow: 0 0 10px #888;
-     -moz-box-shadow: 0 0 10px #888;
-          /* box-shadow: 0 0 10px #888; */
-          box-shadow: 0px -1px 20px 0px #562c8c6b;
-}
-.ribbon a {
-  border: 1px solid #000;
-  color: #000;
-  display: block;
-  font: bold 81.25% "Helvetica Neue", Helvetica, Arial, sans-serif;
-  margin: 1px 0;
-  padding: 10px 50px;
-  text-align: center;
-  text-decoration: none;
-  /* shadow */
-  /* text-shadow: 0 0 5px #444; */
+  a[href^="https://"]::after, a[href^="http://"]::after {
+    content: "("attr(href)")"; font-family: monospace; margin: 0 .25em;
+  }
 }
