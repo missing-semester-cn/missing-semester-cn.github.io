@@ -40,7 +40,6 @@ bundle exec jekyll serve -w
 | [development-environment.md](_2026/development-environment.md)   | [@Zeeh-Lin](https://github.com/Zeeh-Lin)      | 完成   |
 | [shipping-code.md](_2026/shipping-code.md)                       | 待分配                                        | 待翻译 |
 | [version-control.md](_2026/version-control.md)                   | 待分配                                        | 待翻译 |
-
 -----------------
 
 ## 项目状态
