@@ -49,8 +49,8 @@ bundle exec jekyll serve -w
 | [code-quality.md](_2026/code-quality.md) | [@Zeeh-Lin](https://github.com/Zeeh-Lin) | 完成 |
 | [command-line-environment.md](_2026/command-line-environment.md) | [@Zeeh-Lin](https://github.com/Zeeh-Lin) | 完成 |
 | [course-shell.md](_2026/course-shell.md) | [@天明](https://github.com/ztm0929) | 完成 |
-| [debugging-profiling.md](_2026/debugging-profiling.md) | [@Zeeh-Lin](https://github.com/Zeeh-Lin) | 待翻译 |
-| [development-environment.md](_2026/development-environment.md) | [@Zeeh-Lin](https://github.com/Zeeh-Lin) | 待翻译 |
+| [debugging-profiling.md](_2026/debugging-profiling.md) | [@Zeeh-Lin](https://github.com/Zeeh-Lin) | 完成 |
+| [development-environment.md](_2026/development-environment.md) | [@Zeeh-Lin](https://github.com/Zeeh-Lin) | 完成 |
 | [shipping-code.md](_2026/shipping-code.md) | 待分配 | 待翻译 |
 | [version-control.md](_2026/version-control.md) | 待分配 | 待翻译 |
 >>>>>>> 991aa59 (update readme)
