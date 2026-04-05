@@ -355,11 +355,12 @@ blockquote.epigraph footer {
 }
 
 #top-nav {
-  max-width: 48rem;
+  max-width: 64rem;
   margin: auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 2.5rem;
   flex-wrap: wrap;
 }
 
@@ -375,6 +376,7 @@ blockquote.epigraph footer {
 
 a#logo {
   color: #f2deff;
+  font-weight: bold;
 }
 
 a:hover#logo {
@@ -416,7 +418,7 @@ input[type=checkbox]:checked ~ .menu-label:after {
 }
 
 .nav-link:before {
-  content: "- ";
+  content: "";
 }
 
 .nav-badge {
@@ -427,11 +429,17 @@ input[type=checkbox]:checked ~ .menu-label:after {
   display: inline-block;
   height: 20px;
   vertical-align: middle;
+  opacity: 0.85;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.nav-badge img:hover {
+  opacity: 1;
 }
 
 @media (min-width: 46rem) {
   .nav-badge {
-    margin-left: 5px;
+    margin-left: 0;
   }
 
   .nav-badge:before {
@@ -453,13 +461,14 @@ input[type=checkbox]:checked ~ .menu-label:after {
   .trigger {
     display: flex;
     align-items: center;
-    flex-grow: 1;
-    justify-content: flex-end;
+    justify-content: center;
+    gap: 1.25rem;
   }
 
   .trigger-child {
     display: flex;
     align-items: center;
+    gap: 1.25rem;
   }
 
   input[type=checkbox]:checked ~ .trigger {
@@ -471,7 +480,7 @@ input[type=checkbox]:checked ~ .menu-label:after {
   }
 
   .nav-link:before {
-    content: "| ";
+    content: "";
   }
 }
 

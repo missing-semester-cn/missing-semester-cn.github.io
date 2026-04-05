@@ -1,8 +1,8 @@
 ---
 layout: page
-title: 历年课程
+title: 往期课程
 description: >
-  查看所有历年版本的 Missing Semester 课程。
+  往期课程
 ---
 
 {% comment %} pop to remove default "posts" collection {% endcomment %}
@@ -10,11 +10,11 @@ description: >
 <ul>
 {% for collection in sorted_collections %}
     {% if forloop.index == 1 %}
-        <li><a href="/">{{ collection.label }}</a> (最新)</li>
+        <li><a href="/">{{ collection.label }}</a> (当前)</li>
     {% else %}
         <li><a href="/{{ collection.label }}/">{{ collection.label }}</a></li>
     {% endif %}
 {% endfor %}
 </ul>
 
-每年的课程都是完整独立的。我们建议从最新版本的资料开始学习。不同年份涵盖的主题会有所变化，因此我们继续托管早期版本课程的讲义和视频。
+每年的讲座内容都是完全独立的。我们建议您从最新版本的课程材料开始学习。由于每年的授课主题都会有所变化，因此我们会继续保留早期版本课程的讲义和视频。
