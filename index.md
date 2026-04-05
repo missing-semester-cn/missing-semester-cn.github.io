@@ -110,7 +110,12 @@ Sign up for the IAP 2026 class by filling out this [registration form](https://f
 
 ## 致谢
 
+
+
 感谢 Elaine Mello 和 [MIT Open Learning](https://openlearning.mit.edu/) 让我们能够录制讲座视频。感谢 Luis Turino / [SIPB](https://sipb.mit.edu/) 作为 [SIPB IAP 2026](https://sipb.mit.edu/iap/) 的一部分支持本课程。
+
+## 中文翻译贡献者
+[![贡献者](https://contrib.rocks/image?repo=missing-semester-cn/missing-semester-cn.github.io)](https://github.com/missing-semester-cn/missing-semester-cn.github.io/graphs/contributors)
 
 ---
 

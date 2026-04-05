@@ -351,12 +351,16 @@ blockquote.epigraph footer {
   font-family: "Source Code Pro", "Menlo", "DejaVu Sans Mono", "Lucida Console", monospace;
   background: #24008c;
   color: #fff;
+  font-size: 0.9rem;
 }
 
 #top-nav {
-  max-width: 40rem;
+  max-width: 48rem;
   margin: auto;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 #top-nav a {
@@ -415,25 +419,51 @@ input[type=checkbox]:checked ~ .menu-label:after {
   content: "- ";
 }
 
+.nav-badge {
+  vertical-align: middle;
+}
+
+.nav-badge img {
+  display: inline-block;
+  height: 20px;
+  vertical-align: middle;
+}
+
+@media (min-width: 46rem) {
+  .nav-badge {
+    margin-left: 5px;
+  }
+
+  .nav-badge:before {
+    content: "" !important;
+  }
+
+  .nav-badge a:hover {
+    background-color: transparent;
+  }
+}
+
 /* in terms of our fixed-width layout; if smaller than this, we want to
  * collapse the menu */
-@media (min-width: 40rem) {
+@media (min-width: 46rem) {
   .menu-label {
     display: none;
   }
 
   .trigger {
-    display: inline;
-    padding-top: inherit;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: flex-end;
   }
 
   .trigger-child {
-    display: inline;
-    text-align: initial;
+    display: flex;
+    align-items: center;
   }
 
   input[type=checkbox]:checked ~ .trigger {
-    display: inline;
+    display: flex;
   }
 
   .nav-link {
