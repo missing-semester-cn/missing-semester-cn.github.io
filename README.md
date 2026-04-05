@@ -2,7 +2,7 @@
 
 The Missing Semester of Your CS Education 英文课程网站在[这里](https://missing.csail.mit.edu/)！
 
-这是[中文站点](https://missing-semester-cn.github.io)(<span style="float:right"><img src = "https://img.shields.io/badge/最近一次与英文版同步-2021--04--24-green"></span>)
+这是[中文站点](https://missing-semester-cn.github.io)(<span style="float:right"><img src = "https://img.shields.io/badge/最近一次与英文版同步-2026--04--06-green"></span>)
 
 
 欢迎为本项目做出贡献！如果您要编辑添加内容，请提出 issue 或提交 pull request。
@@ -23,6 +23,12 @@ bundle exec jekyll serve -w
 有关贡献或翻译的更多信息，请参见[这里](https://missing.csail.mit.edu/license)。
 
 -----------------
+
+## 贡献者
+
+[![贡献者](https://contrib.rocks/image?repo=missing-semester-cn/missing-semester-cn.github.io)](https://github.com/missing-semester-cn/missing-semester-cn.github.io/graphs/contributors)
+
+
 
 ## 2026 课程状态
 
