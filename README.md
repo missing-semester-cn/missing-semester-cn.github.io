@@ -15,7 +15,6 @@ The Missing Semester of Your CS Education 英文课程网站在[这里](https://
 bundle install
 bundle exec jekyll serve -w
 #PATH="/opt/homebrew/opt/ruby/bin:$PATH" bundle exec jekyll serve
-#PATH="/opt/homebrew/opt/ruby/bin:$PATH" bundle exec jekyll serve
 ```
 
 ## 许可说明
@@ -51,7 +50,7 @@ bundle exec jekyll serve -w
 
 -----------------
 
-## 项目状态
+## 2020 课程状态 
 
 想要参与这个翻译项目，请通过创建一个 issue 来预订您的主题，我会相应地更新此表格，以避免重复工作。
 
