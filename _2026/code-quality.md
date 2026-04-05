@@ -64,7 +64,7 @@ semgrep -l python -e "subprocess.Popen(..., shell=True, ...)"
 
 # Pre-commit 钩子
 
-Git 的 pre-commit [沟子](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) 在 [pre-commit](https://pre-commit.com/) 框架的帮助下更容易使用，它会在每次 Git 提交前自动运行用户指定的代码。项目通常会利用 pre-commit 钩子在每次提交前自动运行格式化器、linter，有时也会运行测试，以确保被提交的代码符合项目的代码风格，并且不存在某些问题。
+Git 的 pre-commit [钩子](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) 在 [pre-commit](https://pre-commit.com/) 框架的帮助下更容易使用，它会在每次 Git 提交前自动运行用户指定的代码。项目通常会利用 pre-commit 钩子在每次提交前自动运行格式化器、linter，有时也会运行测试，以确保被提交的代码符合项目的代码风格，并且不存在某些问题。
 
 # 持续集成
 
