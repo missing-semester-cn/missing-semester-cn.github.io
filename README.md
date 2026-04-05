@@ -34,7 +34,7 @@ bundle exec jekyll serve -w
 
 | 讲义                                                             | 翻译者                                        | 状态   |
 | ---------------------------------------------------------------- | --------------------------------------------- | ------ |
-| [agentic-coding.md](_2026/agentic-coding.md)                     | [@Lingfeng AI](https://github.com/hanxiaomax) | 待翻译 |
+| [agentic-coding.md](_2026/agentic-coding.md)                     | [@Lingfeng AI](https://github.com/hanxiaomax) | 完成   |
 | [beyond-code.md](_2026/beyond-code.md)                           | [@Zeeh-Lin](https://github.com/Zeeh-Lin)      | 完成   |
 | [code-quality.md](_2026/code-quality.md)                         | [@Zeeh-Lin](https://github.com/Zeeh-Lin)      | 完成   |
 | [command-line-environment.md](_2026/command-line-environment.md) | [@Zeeh-Lin](https://github.com/Zeeh-Lin)      | 完成   |
