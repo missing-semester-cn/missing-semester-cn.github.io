@@ -1,8 +1,8 @@
 ---
 layout: lecture
-title: "Packaging and Shipping Code"
+title: "打包和分发代码"
 description: >
-  Learn about project packaging, environments, versioning, and deploying libraries, applications, and services.
+  学习项目打包、环境、版本管理、和部署库、应用和服务。
 thumbnail: /static/assets/thumbnails/2026/lec6.png
 date: 2026-01-20
 ready: true
