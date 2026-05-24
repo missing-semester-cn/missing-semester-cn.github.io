@@ -2,13 +2,13 @@
 layout: lecture
 title: "代码质量"
 description: >
-  学习格式化、lint、测试、持续集成等内容。
+    学习格式化、lint、测试、持续集成等内容。
 thumbnail: /static/assets/thumbnails/2026/lec9.png
 date: 2026-01-23
 ready: true
 video:
-  aspect: 56.25
-  id: XBiLUNx84CQ
+    aspect: 56.25
+    id: XBiLUNx84CQ
 ---
 
 有各种各样的工具和技术可以帮助开发者编写高质量的代码。在这节课中，我们将介绍：
@@ -140,7 +140,7 @@ _正则表达式_，通常缩写为 “regex”，是一种用来表示字符串
 
 ## 局限性
 
-[正则语言](https://en.wikipedia.org/wiki/Regular_language)很强大但也有局限，有些字符串类别无法用标准 regex 表达（比如[不可能](https://en.wikipedia.org/wiki/Pumping_lemma_for_regular_languages)写出一个正则表达式来匹配集合 {a^n b^n | n >= 0}，即若干个 “a” 后面跟相同数量的 “b”；更实际地说，HTML 也不是正则语言）。实践中，现代 regex 引擎支持前瞻、反向引用等特性，能力已超出正则语言；它们在实际中极其有用，但了解其表达能力的有限性仍然重要。对于更复杂的语言，可能需要更强的解析器（如 [pyparsing](https://github.com/pyparsing/pyparsing)，一种 [PEG](https://en.wikipedia.org/wiki/Parsing_expression_grammar) 解析器）。
+[正则语言](https://en.wikipedia.org/wiki/Regular_language)很强大但也有局限，有些字符串类别无法用标准 regex 表达（比如[不可能](https://en.wikipedia.org/wiki/Pumping_lemma_for_regular_languages)写出一个正则表达式来匹配集合 `{a^n b^n | n >= 0}`，即若干个 “a” 后面跟相同数量的 “b”；更实际地说，HTML 也不是正则语言）。实践中，现代 regex 引擎支持前瞻、反向引用等特性，能力已超出正则语言；它们在实际中极其有用，但了解其表达能力的有限性仍然重要。对于更复杂的语言，可能需要更强的解析器（如 [pyparsing](https://github.com/pyparsing/pyparsing)，一种 [PEG](https://en.wikipedia.org/wiki/Parsing_expression_grammar) 解析器）。
 
 ## 学习 regex
 
