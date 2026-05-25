@@ -1,8 +1,8 @@
 ---
 layout: lecture
-title: "Packaging and Shipping Code"
+title: "代码的打包与交付"
 description: >
-  Learn about project packaging, environments, versioning, and deploying libraries, applications, and services.
+  学习项目打包和封装环境，版本控制，和部署库，应用，和服务。
 thumbnail: /static/assets/thumbnails/2026/lec6.png
 date: 2026-01-20
 ready: true
@@ -11,32 +11,28 @@ video:
   id: KBMiB-8P4Ns
 ---
 
-Getting code to work as intended is hard; getting that same code to run on a machine different from your own is often harder.
+让代码想你预想中那样运行很难，但把同样的代码在你自己机器上跑一般情况下可能更困难。
+交付代码意味着把你写的代码转换成一种可用的形式，让别人不需要完全复制你的环境就能运行。
+交付代码有多种形式，具体取决于编程语言、系统库、操作系统等诸多因素。
+这也取决于你在搭建什么：一个软件库，一个命令行工具或一个网络服务都有不同的需求和部署步骤。
+无论如何，所有这些场景背后都有一个共同的规律：我们需要定义清楚可交付物是什么（也就是制品），以及它对周围环境做出了哪些假设。
 
-Shipping code means taking the code you wrote and converting it into a usable form that someone else can run without your computer's exact setup.
-Shipping code takes many forms and depends on the choices of programming language, system libraries, and operating system, among many other factors.
-It also depends on what you are building: a software library, a command line tool, and a web service all have different requirements and deployment steps.
-Regardless, there is a common pattern between all these scenarios: we need to define what the deliverable is --- a.k.a. the _artifact_ --- and what assumptions it makes about the environment around it.
+在这篇演讲中，我们将会覆盖：
 
-In this lecture, we'll cover:
+- [依赖与环境](#dependencies--environments)
+- [制品和包装](#artifacts--packaging)
+- [发布与版本](#releases--versioning)
+- [可复用性](#reproducibility)
+- [虚拟机和容器](#vms--containers)
+- [设置](#configuration)
+- [服务与编排](#services--orchestration)
+- [交付](#publishing)
 
-- [Dependencies & Environments](#dependencies--environments)
-- [Artifacts & Packaging](#artifacts--packaging)
-- [Releases & Versioning](#releases--versioning)
-- [Reproducibility](#reproducibility)
-- [VMs & Containers](#vms--containers)
-- [Configuration](#configuration)
-- [Services & Orchestration](#services--orchestration)
-- [Publishing](#publishing)
+由于真实的例子对于理解很有帮助，我们将会通过Python生态中的一些例子赖解释这些概念。尽管对于有些工具对于其他编程语言环境会不一样，这些概念却极度雷同。
 
-We'll explain these concepts through examples from the Python ecosystem, as concrete examples are helpful for understanding. While the tools are different for other programming language ecosystems, the concepts will largely be the same.
+# 依赖与环境s
 
-# Dependencies & Environments
-
-In modern software development, layers of abstraction are ubiquitous.
-Programs naturally offload logic to other libraries or services.
-However, this introduces a _dependency_ relationship between your program and the libraries it requires to function.
-For instance, in Python, to fetch the content of a website we often do:
+在现代软件开发中，多层的抽象化是不可或缺的。程序自然会将其逻辑交由其他库或服务来处理。但是，这就在你的代码和代码运行所需的库中引入了一个“依赖”的关系。比如，在Python中，如果你想要抓取一个网站的内容，我们经常会：
 
 ```python
 import requests
@@ -44,7 +40,7 @@ import requests
 response = requests.get("https://missing.csail.mit.edu")
 ```
 
-Yet the `requests` library does not come bundled with the Python runtime, so if we try to run this code without having `requests` installed, Python will raise an error:
+尽管`requests`库并没有在Python的运行时被捆绑加载，所以，如果我们要尝试在没有`requests`安装的情况下运行这串代码，Python会报出这个错：
 
 ```console
 $ python fetch.py
@@ -54,14 +50,14 @@ Traceback (most recent call last):
 ModuleNotFoundError: No module named 'requests'
 ```
 
-To make this library available we need to first run `pip install requests` to install it.
-`pip` is the command line tool that the Python programming language provides for installing packages.
-Executing `pip install requests` produces the following sequence of actions:
+为了使这个库能够被访问，我们首先需要运行`pip install requests`来安装它。
+`pip`是Python编程语言提供用于下载包的一个命令行工具。
+运行`pip install requests`会产生以下一系列活动：
 
-1. Search for requests in the Python Package Index ([PyPI](https://pypi.org/))
-1. Search for the appropriate artifact for the platform we are running under
-1. Resolve dependencies --- the `requests` library itself depends on other packages, so the installer must find compatible versions of all transitive dependencies and install them beforehand
-1. Download the artifacts, then unpack and copy the files into the right places in our filesystem
+1. 在Python Package Index ([PyPI](https://pypi.org/))中查找`requests`库;
+1. 搜索适用于当前运行平台的构件;
+1. 解析依赖关系——`requests`库本身也依赖其他包，因此安装程序必须找到所有传递性依赖的兼容版本，并事先安装它们;
+1. 下载这些构件，然后解压并将文件复制到我们文件系统中的正确位置。
 
 ```console
 $ pip install requests
@@ -78,9 +74,8 @@ Collecting certifi>=2017.4.17
 Installing collected packages: urllib3, idna, charset-normalizer, certifi, requests
 Successfully installed certifi-2024.8.30 charset-normalizer-3.4.0 idna-3.10 requests-2.32.3 urllib3-2.2.3
 ```
-
-Here we can see that `requests` has its own dependencies such as `certifi` or `charset-normalizer` and that they have to be installed before `requests` can be installed.
-Once installed, the Python runtime can find this library when importing it.
+这里我们可以看到`requests`拥有自己的依赖，像是`certifi`或`charset-normalizer`，他们需要在`requests`被下载前被提前下载。
+一旦下载，Python运行时就可以在导入的时候找到这个库。
 
 ```console
 $ python -c 'import requests; print(requests.__path__)'
