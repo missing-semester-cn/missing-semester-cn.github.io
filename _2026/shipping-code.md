@@ -30,7 +30,7 @@ video:
 
 由于真实的例子对于理解很有帮助，我们将会通过Python生态中的一些例子赖解释这些概念。尽管对于有些工具对于其他编程语言环境会不一样，这些概念却极度雷同。
 
-# 依赖与环境s
+# 依赖与环境
 
 在现代软件开发中，多层的抽象化是不可或缺的。程序自然会将其逻辑交由其他库或服务来处理。但是，这就在你的代码和代码运行所需的库中引入了一个“依赖”的关系。比如，在Python中，如果你想要抓取一个网站的内容，我们经常会：
 
@@ -84,20 +84,17 @@ $ python -c 'import requests; print(requests.__path__)'
 $ pip list | grep requests
 requests        2.32.3
 ```
+编程语言有不同的工具、传统和惯例来安装和发布库。
+在一些语言（比如Rust）中，工具链是统一化的——`cargo`一手负责构建、测试、依赖管理和发布。
+而在其他语言（比如Python）中，统一化发生在规范层面——并非只有一个工具，而是有一套标准化的规范来定义打包的工作方式，从而允许多个相互竞争的工具各自执行各项任务（（`pip`与[`uv`](https://docs.astral.sh/uv/), `setuptools`、[`hatch`](https://hatch.pypa.io/)与[`poetry`](https://python-poetry.org/)）。另外，在其他的生态比如LaTeX,
+而在某些生态系统中，比如LaTeX,像TeX Live或MacTeX这样的发行版会预装成千上万个软件包
 
-Programming languages have different tools, conventions and practices for installing and publishing libraries.
-In some languages like Rust, the toolchain is unified --- `cargo` handles building, testing, dependency management, and publishing.
-In others like Python, the unification happens at a specification level --- rather than a single tool, there are standardized specifications that define how packaging works, allowing multiple competing tools for each task (`pip` vs [`uv`](https://docs.astral.sh/uv/), `setuptools` vs [`hatch`](https://hatch.pypa.io/) vs [`poetry`](https://python-poetry.org/)).
-And in some ecosystems like LaTeX, distributions like TeX Live or MacTeX come bundled with thousands of packages pre-installed.
+引入依赖也会引入冲突。
+冲突在程序需要同一个依赖的不同版本时发生后。比如说，如果`tensorflow==2.3.0`需要`numpy>=1.16.0,<1.19.0`和`pandas==1.2.0`，那么任何满足`numpy>=1.16.5,<1.19.0`的版本都是合格的。但是如果你项目中的其他的包需要`numpy>=1.19`，会因为没有任何满足所有限制的合格版本二产生冲突。
 
-Introducing dependencies also introduces dependency conflicts.
-Conflicts happen when programs require incompatible versions of the same dependency.
-For example, if `tensorflow==2.3.0` requires `numpy>=1.16.0,<1.19.0` and `pandas==1.2.0`  requires `numpy>=1.16.5`, then any version satisfying `numpy>=1.16.5,<1.19.0` will be valid.
-But if another package in your project requires `numpy>=1.19`, you have a conflict with no valid version that satisfies all constraints.
-
-This situation --- where multiple packages require mutually incompatible versions of shared dependencies --- is commonly referred to as _dependency hell_.
-One way to deal with conflicts is to isolate the dependencies of each program into their own _environment_.
-In Python we create a virtual environment by running:
+这种多个包需要一个共同依赖的相斥版本的情况通常被称为，_依赖地狱（dependency hell）_。
+一种解决这些冲突的方法时把每个程序的依赖分进他们自己的 _环境_ 里。
+再Python中我们通过运行以下代码来创建虚拟环境：
 
 ```console
 $ which python
@@ -118,11 +115,11 @@ Package Version
 ------- -------
 pip     24.0
 ```
+你可以把一个环境想象成一个完全与编程语言运行时不相干的一个版本，他拥有自己的一套下载的包。
+这种虚拟环境（venv）隔离所有在全局的Python下载的依赖。
+对于每一个项目都有独自的虚拟环境是一个好习惯，每个都包含项目所需要的依赖。
 
-You can think of an environment as an entire standalone version of the language runtime with its own set of installed packages.
-This virtual environment or venv isolates the installed dependencies from the global Python installation.
-It is a good practice to have a virtual environment for each project, containing the dependencies it requires.
-
+> 尽管许多现代操作系统
 > While many modern operating systems ship with installations of programming language runtimes like Python, it is unwise to modify these installations since the OS might rely on them for its own functionality. Prefer using separate environments instead.
 
 In some languages, the installation protocol is not defined by a tool but as a specification.
