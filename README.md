@@ -32,17 +32,17 @@ bundle exec jekyll serve -w
 
 ## 2026 课程状态
 
-| 讲义                                                             | 翻译者                                        | 状态   |
-| ---------------------------------------------------------------- | --------------------------------------------- | ------ |
-| [agentic-coding.md](_2026/agentic-coding.md)                     | [@Lingfeng AI](https://github.com/hanxiaomax) | 完成   |
-| [beyond-code.md](_2026/beyond-code.md)                           | [@Zeeh-Lin](https://github.com/Zeeh-Lin)      | 完成   |
-| [code-quality.md](_2026/code-quality.md)                         | [@Zeeh-Lin](https://github.com/Zeeh-Lin)      | 完成   |
-| [command-line-environment.md](_2026/command-line-environment.md) | [@Zeeh-Lin](https://github.com/Zeeh-Lin)      | 完成   |
-| [course-shell.md](_2026/course-shell.md)                         | [@天明](https://github.com/ztm0929)           | 完成   |
-| [debugging-profiling.md](_2026/debugging-profiling.md)           | [@Zeeh-Lin](https://github.com/Zeeh-Lin)      | 完成   |
-| [development-environment.md](_2026/development-environment.md)   | [@Zeeh-Lin](https://github.com/Zeeh-Lin)      | 完成   |
-| [shipping-code.md](_2026/shipping-code.md)                       | 待分配                                        | 待翻译 |
-| [version-control.md](_2026/version-control.md)                   | 待分配                                        | 待翻译 |
+| 讲义　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 | 翻译者　　　　　　　　　　　　　　　　　　　　 | 状态 |
+| ------------------------------------------------------------------| ------------------------------------------------| ------|
+| [agentic-coding.md](_2026/agentic-coding.md)　　　　　　　　　　 | [@Lingfeng AI](https://github.com/hanxiaomax)　| 完成 |
+| [beyond-code.md](_2026/beyond-code.md)　　　　　　　　　　　　　 | [@Zeeh-Lin](https://github.com/Zeeh-Lin)　　　 | 完成 |
+| [code-quality.md](_2026/code-quality.md)　　　　　　　　　　　　 | [@Zeeh-Lin](https://github.com/Zeeh-Lin)　　　 | 完成 |
+| [command-line-environment.md](_2026/command-line-environment.md) | [@Zeeh-Lin](https://github.com/Zeeh-Lin)　　　 | 完成 |
+| [course-shell.md](_2026/course-shell.md)　　　　　　　　　　　　 | [@天明](https://github.com/ztm0929)　　　　　　| 完成 |
+| [debugging-profiling.md](_2026/debugging-profiling.md)　　　　　 | [@LouisCaiKM7](https://github.com/LouisCaiKM7) | 完成 |
+| [development-environment.md](_2026/development-environment.md)　 | [@LouisCaiKM7](https://github.com/LouisCaiKM7) | 完成 |
+| [shipping-code.md](_2026/shipping-code.md)　　　　　　　　　　　 | [@LouisCaiKM7](https://github.com/LouisCaiKM7) | 完成 |
+| [version_control.md](_2026/version_control.md)　　　　　　　　　 | [@LouisCaiKM7](https://github.com/LouisCaiKM7) | 完成 |
 
 -----------------
 
