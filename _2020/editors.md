@@ -220,8 +220,8 @@ def main():
   - `jj.` 重复第二个打印
   - `jjo` 在 if 打开一行
   - 加入 "else: print()"
-- fizz fizz
-  - `ci'` 变到 fizz
+- 将 5 的整数倍对应的输出从 fizz 改为 buzz
+  - `ci'` 将引号内的内容改为 buzz
 - 命令控制行参数
   - `ggO` 向上打开
   - "import sys"
