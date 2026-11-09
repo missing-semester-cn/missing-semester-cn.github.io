@@ -44,6 +44,7 @@ print(extract(download_contents("https://raw.githubusercontent.com/missing-semes
 
 > 为了获得更直观的演示，你可以作为后续任务让智能体运行生成的脚本。观察输出结果，然后尝试让它做些修改（例如，要求它只保留绝对 URL）。
 
+<a id="how-ai-models-and-agents-work"></a>
 # AI 模型和智能体的工作原理
 
 全面解释现代[大语言模型 (LLM)](https://en.wikipedia.org/wiki/Large_language_model)及智能体框架等基础设施的内部原理超出了本课程范围。但对一些关键概念建立高层次的理解，有助于有效地*使用*这项前沿技术并理解其局限。

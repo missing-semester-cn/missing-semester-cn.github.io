@@ -92,6 +92,7 @@ Git 的 pre-commit [钩子](https://git-scm.com/book/en/v2/Customizing-Git-Git-H
 
 有些语言特定的项目或包管理器已内置了这类功能，不需要用像 `just` 这样与语言无关的工具。比如 [npm](https://nodejs.org/en/learn/getting-started/an-introduction-to-the-npm-package-manager)（Node.js）的 `package.json` 中的 `scripts` 部分，以及 [Hatch](https://hatch.pypa.io/)（Python）的 `pyproject.toml` 中 `tool.hatch.envs.*.scripts` 相关部分都支持。
 
+<a id="regular-expressions"></a>
 # 正则表达式
 
 _正则表达式_，通常缩写为 “regex”，是一种用来表示字符串集合的语言。Regex 模式常被用于各种场景中的模式匹配，例如命令行工具和 IDE。比如，[ag](https://github.com/ggreer/the_silver_searcher) 支持用 regex 模式做整个代码库范围的搜索（例如，`ag "import .* as .*"` 会找出 Python 中所有重命名导入），而 [go test](https://pkg.go.dev/cmd/go#hdr-Test_packages) 支持 `-run [regexp]` 选项来选择测试的一个子集。此外，编程语言通常内置了正则表达式支持，或者有第三方库可用，因此你可以用 regex 来实现模式匹配、校验和解析等功能。
