@@ -42,7 +42,7 @@ bundle exec jekyll serve -w
 | [debugging-profiling.md](_2026/debugging-profiling.md)           | [@Zeeh-Lin](https://github.com/Zeeh-Lin)      | 完成   |
 | [development-environment.md](_2026/development-environment.md)   | [@Zeeh-Lin](https://github.com/Zeeh-Lin)      | 完成   |
 | [shipping-code.md](_2026/shipping-code.md)                       | 待分配                                        | 待翻译 |
-| [version-control.md](_2026/version-control.md)                   | 待分配                                        | 待翻译 |
+| [version-control.md](_2026/version-control.md)                   | [@OiChihang](https://github.com/OiChihang)   | 完成   |
 
 -----------------
 
